@@ -1,6 +1,6 @@
-# Lezione 1 — Introduzione all'IA e Fondamenti Matematici
+# Lezione 1 - Introduzione all'IA e Fondamenti Matematici
 
-Corso: Fondamenti dell'Intelligenza Artificiale — Prof.ssa Eleonora Iotti — UniPR — A.A. 2025/2026.
+Corso: Fondamenti dell'Intelligenza Artificiale - Prof.ssa Eleonora Iotti - UniPR - A.A. 2025/2026.
 
 ---
 
@@ -168,18 +168,18 @@ L'IA si articola lungo due assi:
 
 ### Tappe storiche fondamentali
 
-- **1950** — Alan Turing, *Computing Machinery and Intelligence* (rivista *Mind*). Pone la domanda "Can machines think?" e propone l'**Imitation Game** (Test di Turing): un computer è intelligente se è in grado di imitare una persona in una conversazione.
-- **Anni '70** — Reti neurali artificiali: simulare il cervello a livello cellulare (neuroni, assoni, soma). Apprendimento tramite training set / test set.
-- **1980** — *Neocognitron* di Kunihiko Fukushima: prima rete neurale per riconoscimento di testo manoscritto.
-- **1989** — **LeNet** (Yann LeCun): applica l'algoritmo di **backpropagation** al Neocognitron.
-- **1997** — Deep Blue (IBM) sconfigge Kasparov a scacchi (branching factor > 40, ~50 mosse).
-- **2012** — **AlexNet** (Alex Krizhevsky) vince ImageNet → boom del Deep Learning.
-- **2013** — Variational Autoencoders (Kingma, Welling).
-- **2014** — **GAN** (Generative Adversarial Networks, Ian Goodfellow). VGG16/VGG19 (Simonyan, Zisserman).
-- **2015** — Inception (Google). Diffusion models. AlphaGo (DeepMind) sconfigge Fan Hui (branching factor > 250, ~350 mosse).
-- **2018** — StyleGAN (NVIDIA): generazione di volti fake in alta definizione.
-- **2019** — **Premio Turing** a LeCun, Bengio, Hinton per il Deep Learning.
-- **2022** — DALL-E (OpenAI), Midjourney, StableDiffusion. ChatGPT.
+- **1950** - Alan Turing, *Computing Machinery and Intelligence* (rivista *Mind*). Pone la domanda "Can machines think?" e propone l'**Imitation Game** (Test di Turing): un computer è intelligente se è in grado di imitare una persona in una conversazione.
+- **Anni '70** - Reti neurali artificiali: simulare il cervello a livello cellulare (neuroni, assoni, soma). Apprendimento tramite training set / test set.
+- **1980** - *Neocognitron* di Kunihiko Fukushima: prima rete neurale per riconoscimento di testo manoscritto.
+- **1989** - **LeNet** (Yann LeCun): applica l'algoritmo di **backpropagation** al Neocognitron.
+- **1997** - Deep Blue (IBM) sconfigge Kasparov a scacchi (branching factor > 40, ~50 mosse).
+- **2012** - **AlexNet** (Alex Krizhevsky) vince ImageNet → boom del Deep Learning.
+- **2013** - Variational Autoencoders (Kingma, Welling).
+- **2014** - **GAN** (Generative Adversarial Networks, Ian Goodfellow). VGG16/VGG19 (Simonyan, Zisserman).
+- **2015** - Inception (Google). Diffusion models. AlphaGo (DeepMind) sconfigge Fan Hui (branching factor > 250, ~350 mosse).
+- **2018** - StyleGAN (NVIDIA): generazione di volti fake in alta definizione.
+- **2019** - **Premio Turing** a LeCun, Bengio, Hinton per il Deep Learning.
+- **2022** - DALL-E (OpenAI), Midjourney, StableDiffusion. ChatGPT.
 
 ### IA forte vs IA debole
 - **IA forte**: un computer correttamente programmato può avere intelligenza non distinguibile da quella umana (Hobbes: "ragionare non è altro che calcolare").

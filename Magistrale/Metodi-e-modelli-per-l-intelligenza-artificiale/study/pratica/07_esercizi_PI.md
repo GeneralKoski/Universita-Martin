@@ -1,4 +1,4 @@
-# 07 — Esercizi: Programmazione Intera
+# 07 - Esercizi: Programmazione Intera
 
 ## Esercizi disponibili
 - 📂 `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /ese_5_2026.pdf`
@@ -21,7 +21,7 @@ Dato un testo (es. "Pronto Soccorso deve scegliere medici per coprire interventi
 - "almeno uno dei due vincoli" → variabile y disgiuntiva + M-grandi
 
 ### B) Riconoscere il tipo di problema
-"Questo è uno Zaino?" / "Questo è un Set Covering?" / ecc. — leggi attentamente il vincolo (≥ e per copertura, ≤ e per packing, = e per partition).
+"Questo è uno Zaino?" / "Questo è un Set Covering?" / ecc. - leggi attentamente il vincolo (≥ e per copertura, ≤ e per packing, = e per partition).
 
 ### C) Confrontare formulazioni
 Date due formulazioni P_1 e P_2 dello stesso problema:

@@ -72,10 +72,10 @@ Notazione tipica per modellare il sistema in threat modeling:
 ## Mitigation strategies
 
 Per ogni minaccia identificata:
-1. **Mitigate** — implementare controlli.
-2. **Eliminate** — rimuovere la feature/asset.
-3. **Transfer** — assicurazione, terze parti.
-4. **Accept** — rischio residuo accettabile.
+1. **Mitigate** - implementare controlli.
+2. **Eliminate** - rimuovere la feature/asset.
+3. **Transfer** - assicurazione, terze parti.
+4. **Accept** - rischio residuo accettabile.
 
 ## Quando
 

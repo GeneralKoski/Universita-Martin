@@ -1,10 +1,10 @@
-# 04 — Esercizi: Dijkstra
+# 04 - Esercizi: Dijkstra
 
 ## Esercizi disponibili
 - 📂 `Elly/4_Cammini_Minimi_Dijkstra/ese_3.1_2026.pdf`
-- 📂 `Elly/4_Cammini_Minimi_Dijkstra/Sol-piano-rinn-ott.pdf` — problema "piano di rinnovo ottimale" (applicazione)
+- 📂 `Elly/4_Cammini_Minimi_Dijkstra/Sol-piano-rinn-ott.pdf` - problema "piano di rinnovo ottimale" (applicazione)
 - 📂 `Elly/6_Albero_Ricoprente_Minimo_(MST) /sol-ese-dijkstra(ese3.1).pdf`
-- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` — esame 28 giugno 2005, esercizio 2
+- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` - esame 28 giugno 2005, esercizio 2
 
 ## Schema operativo (tabella iterazioni)
 1. Tabella con colonne = nodi, righe = (λ, p) per ogni iterazione

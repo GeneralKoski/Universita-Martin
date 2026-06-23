@@ -1,4 +1,4 @@
-## Lezione 6 — Visione Artificiale (Computer Vision)
+## Lezione 6 - Visione Artificiale (Computer Vision)
 
 Obiettivo della Computer Vision: creare un modello del mondo reale a partire da immagini bidimensionali (image processing). Si possono trattare più immagini (ricostruzione 3D), immagini fuori dallo spettro visibile, immagini statiche o video.
 

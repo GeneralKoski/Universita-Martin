@@ -25,9 +25,9 @@ Caso più comune con failure rate costante λ:
 ## Curva a vasca da bagno (bathtub)
 
 Tre fasi del failure rate hardware:
-1. **Infant mortality** — λ decrescente (difetti di produzione)
-2. **Useful life** — λ costante (failure casuali)
-3. **Wear-out** — λ crescente (usura)
+1. **Infant mortality** - λ decrescente (difetti di produzione)
+2. **Useful life** - λ costante (failure casuali)
+3. **Wear-out** - λ crescente (usura)
 
 Il software non ha wear-out fisico ma può degradare per software rot, modifiche, dipendenze obsolete.
 

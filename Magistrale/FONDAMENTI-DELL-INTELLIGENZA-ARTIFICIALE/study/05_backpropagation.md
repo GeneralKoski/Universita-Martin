@@ -1,4 +1,4 @@
-## Lezione 5 — Backpropagation e teorema di approssimazione universale
+## Lezione 5 - Backpropagation e teorema di approssimazione universale
 
 Obiettivo: calcolare in modo efficiente il gradiente $\nabla_\theta \mathcal{L}$ rispetto a tutti i parametri $\theta = (W^{(1)}, b^{(1)}, \ldots, W^{(L+1)}, b^{(L+1)})$ di una rete neurale, per poter applicare la discesa del gradiente.
 
@@ -52,20 +52,20 @@ Per i pesi del primo strato $w_{ij}^{(1)}$ il calcolo richiede la chain rule com
 
 ### 2.2 I 5 step per $\partial \mathcal{L}/\partial w_{ij}^{(1)}$
 
-**Step 1 — derivata di $s_j^{(1)}$ rispetto a $w_{ij}^{(1)}$:**
+**Step 1 - derivata di $s_j^{(1)}$ rispetto a $w_{ij}^{(1)}$:**
 $$\frac{\partial s_j^{(1)}}{\partial w_{ij}^{(1)}} = x_i, \qquad \frac{\partial s_k^{(1)}}{\partial w_{ij}^{(1)}} = 0 \;\; (k \neq j).$$
 
-**Step 2 — derivata di $\sigma(s_j^{(1)})$ via chain rule:**
+**Step 2 - derivata di $\sigma(s_j^{(1)})$ via chain rule:**
 $$\frac{d\sigma(s_j^{(1)})}{d w_{ij}^{(1)}} = \sigma'(s_j^{(1)}) \cdot x_i, \qquad \frac{d\sigma(s_k^{(1)})}{d w_{ij}^{(1)}} = 0 \;\; (k \neq j).$$
 
-**Step 3 — derivata di $s_k^{(2)}$ rispetto a $w_{ij}^{(1)}$:** poiché $s_k^{(2)} = \sum_{v=1}^{m_1} w_{vk}^{(2)} \sigma(s_v^{(1)}) + b_k^{(2)}$,
+**Step 3 - derivata di $s_k^{(2)}$ rispetto a $w_{ij}^{(1)}$:** poiché $s_k^{(2)} = \sum_{v=1}^{m_1} w_{vk}^{(2)} \sigma(s_v^{(1)}) + b_k^{(2)}$,
 $$\frac{\partial s_k^{(2)}}{\partial w_{ij}^{(1)}} = \sum_{v=1}^{m_1} w_{vk}^{(2)} \cdot \sigma'(s_v^{(1)}) \cdot \frac{\partial s_v^{(1)}}{\partial w_{ij}^{(1)}} = w_{jk}^{(2)} \cdot \sigma'(s_j^{(1)}) \cdot x_i,$$
 poiché solo $v=j$ sopravvive.
 
-**Step 4 — attivazione $\sigma(s_k^{(2)}) \rightsquigarrow y_k$:** chain rule $d\sigma/d w = (d\sigma/ds)\cdot(ds/dw)$:
+**Step 4 - attivazione $\sigma(s_k^{(2)}) \rightsquigarrow y_k$:** chain rule $d\sigma/d w = (d\sigma/ds)\cdot(ds/dw)$:
 $$\frac{d \sigma(s_k^{(2)})}{d w_{ij}^{(1)}} = \sigma'(s_k^{(2)}) \cdot w_{jk}^{(2)} \cdot \sigma'(s_j^{(1)}) \cdot x_i \qquad \forall k = 1,\ldots,M.$$
 
-**Step 5 — derivata della norma $\|\sigma(s^{(2)}) - y\|$:** sommando su tutte le componenti $k$ dell'output,
+**Step 5 - derivata della norma $\|\sigma(s^{(2)}) - y\|$:** sommando su tutte le componenti $k$ dell'output,
 $$\frac{\partial \|\sigma(s^{(2)}) - y\|}{\partial w_{ij}^{(1)}} = \sum_{k=1}^{M} \frac{\sigma(s_k^{(2)}) - y_k}{\|\sigma(s^{(2)}) - y\|} \cdot \sigma'(s_k^{(2)}) \cdot w_{jk}^{(2)} \cdot \sigma'(s_j^{(1)}) \cdot x_i.$$
 
 ### 2.3 Risultato finale (mediato sul dataset)

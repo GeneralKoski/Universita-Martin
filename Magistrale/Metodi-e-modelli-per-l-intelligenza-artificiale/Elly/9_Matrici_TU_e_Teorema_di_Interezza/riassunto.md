@@ -1,8 +1,8 @@
-# 9 — Matrici Totalmente Unimodulari e Teorema di Interezza (Lezioni 19-20)
+# 9 - Matrici Totalmente Unimodulari e Teorema di Interezza (Lezioni 19-20)
 
 ## Contenuto cartella
-- `Lezioni 19-20.pdf` — TU, teorema di interezza, applicazione dualità forte
-- `sol_es_Lez_19_20.pdf` — soluzione esercizio
+- `Lezioni 19-20.pdf` - TU, teorema di interezza, applicazione dualità forte
+- `sol_es_Lez_19_20.pdf` - soluzione esercizio
 
 ## Argomenti
 
@@ -21,12 +21,12 @@ Per (PI) max c^T x, Ax = b, x ≥ 0, x ∈ ℤⁿ:
 **Definizione**: A intera è TU se ogni sua sottomatrice quadrata ha det ∈ {−1, 0, +1}.
 **Conseguenza**: a_ij ∈ {0, −1, 1}.
 
-### Riconoscimento — condizioni necessarie e sufficienti (equivalenze)
+### Riconoscimento - condizioni necessarie e sufficienti (equivalenze)
 A è TU ⟺ Aᵀ TU ⟺ −A TU ⟺ [A, A] TU ⟺ [A, I] TU ⟺ [A, −A] TU ⟺ [A; I] TU ⟺ [A; −I] TU.
 
 Le operazioni elementari (scambio righe/colonne, cancellazione, moltiplicare per −1) **preservano** la TU.
 
-### Riconoscimento — condizione sufficiente operativa
+### Riconoscimento - condizione sufficiente operativa
 A è TU se:
 1. a_ij ∈ {0, −1, 1}
 2. Ogni colonna ha **al massimo 2 coefficienti non nulli**

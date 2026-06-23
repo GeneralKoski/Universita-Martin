@@ -4,8 +4,8 @@
 
 **MISRA** = Motor Industry Software Reliability Association (UK). Pubblica linee guida per l'uso sicuro di linguaggi in sistemi critici. Le più usate:
 
-- **MISRA C:2012** (e amendment 1, 2, 3, 4) — standard de facto per C in automotive, aerospace, medical.
-- **MISRA C:2023** — aggiornamento più recente.
+- **MISRA C:2012** (e amendment 1, 2, 3, 4) - standard de facto per C in automotive, aerospace, medical.
+- **MISRA C:2023** - aggiornamento più recente.
 - **MISRA C++:2008** e **MISRA C++:2023**.
 - **AUTOSAR C++14** (poi confluito in MISRA C++:2023).
 
@@ -14,9 +14,9 @@ Scopo: ridurre l'uso delle parti **insicure / ambigue / mal definite** di C/C++.
 ## Perché C è pericoloso
 
 Il linguaggio C ha:
-- **Undefined behavior** (UB) — il compilatore può fare qualsiasi cosa (es. signed overflow, dereference di NULL, accesso fuori array).
-- **Unspecified behavior** — più comportamenti accettabili, non documentato quale.
-- **Implementation-defined** — il compilatore deve documentare la scelta.
+- **Undefined behavior** (UB) - il compilatore può fare qualsiasi cosa (es. signed overflow, dereference di NULL, accesso fuori array).
+- **Unspecified behavior** - più comportamenti accettabili, non documentato quale.
+- **Implementation-defined** - il compilatore deve documentare la scelta.
 - **Locale-specific behavior**.
 
 In MISRA si limitano fortemente i costrutti che portano a questi comportamenti.
@@ -24,49 +24,49 @@ In MISRA si limitano fortemente i costrutti che portano a questi comportamenti.
 ## Struttura delle regole MISRA C:2012
 
 Ogni regola ha:
-- **Number** — es. Rule 14.4.
+- **Number** - es. Rule 14.4.
 - **Category**: *Mandatory*, *Required*, *Advisory*.
 - **Decidability**: *Decidable* / *Undecidable* (analizzabile staticamente?).
 - **Scope**: *Single Translation Unit* / *System*.
 - **Description** + Rationale + Esempi.
 
 Categorie di severità:
-- **Mandatory** — non si deroga.
-- **Required** — deroga possibile con giustificazione formale (deviation).
-- **Advisory** — raccomandazione, deroga libera ma documentata.
+- **Mandatory** - non si deroga.
+- **Required** - deroga possibile con giustificazione formale (deviation).
+- **Advisory** - raccomandazione, deroga libera ma documentata.
 
 ## Esempi di regole notevoli
 
 ### Tipi e conversioni
 
-- **Rule 10.x** — restrizioni su conversioni implicite tra tipi.
-- **Rule 11.x** — restrizioni su conversioni di puntatori.
-- **Rule 12.x** — restrizioni su espressioni (precedenze, side effect).
+- **Rule 10.x** - restrizioni su conversioni implicite tra tipi.
+- **Rule 11.x** - restrizioni su conversioni di puntatori.
+- **Rule 12.x** - restrizioni su espressioni (precedenze, side effect).
 
 ### Control flow
 
-- **Rule 14.4** — il controllo di un `if`, `while`, ecc. deve essere di tipo essenzialmente booleano.
-- **Rule 15.5** — una funzione deve avere un singolo punto di uscita (advisory; spesso oggetto di deviation).
-- **Rule 15.7** — `if ... else if` deve terminare con `else`.
-- **Rule 16.x** — `switch` deve avere `default`, ogni `case` deve terminare con `break` (eccezioni esplicite).
+- **Rule 14.4** - il controllo di un `if`, `while`, ecc. deve essere di tipo essenzialmente booleano.
+- **Rule 15.5** - una funzione deve avere un singolo punto di uscita (advisory; spesso oggetto di deviation).
+- **Rule 15.7** - `if ... else if` deve terminare con `else`.
+- **Rule 16.x** - `switch` deve avere `default`, ogni `case` deve terminare con `break` (eccezioni esplicite).
 
 ### Memoria e puntatori
 
-- **Rule 18.x** — restrizioni su aritmetica dei puntatori.
-- **Rule 21.3** (Required) — niente uso di `malloc`, `calloc`, `realloc`, `free` dalla standard library (memoria dinamica disabilitata in molti sistemi safety-critical).
-- **Rule 22.x** — chiusura di risorse, controllo di errori.
+- **Rule 18.x** - restrizioni su aritmetica dei puntatori.
+- **Rule 21.3** (Required) - niente uso di `malloc`, `calloc`, `realloc`, `free` dalla standard library (memoria dinamica disabilitata in molti sistemi safety-critical).
+- **Rule 22.x** - chiusura di risorse, controllo di errori.
 
 ### Funzioni di libreria
 
-- **Rule 21.6** — niente `printf`/`scanf` family (hanno UB su input scorretto).
-- **Rule 21.7** — niente `atoi`/`atof` (no error reporting).
-- **Rule 21.8** — niente `system`, `getenv`, `exit`, `abort`.
-- **Rule 21.9** — niente `bsearch`, `qsort`.
-- **Rule 21.10** — niente `<time.h>` (eccetto subset).
+- **Rule 21.6** - niente `printf`/`scanf` family (hanno UB su input scorretto).
+- **Rule 21.7** - niente `atoi`/`atof` (no error reporting).
+- **Rule 21.8** - niente `system`, `getenv`, `exit`, `abort`.
+- **Rule 21.9** - niente `bsearch`, `qsort`.
+- **Rule 21.10** - niente `<time.h>` (eccetto subset).
 
 ### Preprocessor
 
-- **Rule 20.x** — restrizioni su macro, `#include`, `#define`.
+- **Rule 20.x** - restrizioni su macro, `#include`, `#define`.
 - Macro con side effect → vietate.
 
 ## Deviation process
@@ -115,7 +115,7 @@ Coding standard sviluppato per F-35. Predecessore di AUTOSAR C++. Storicamente i
 
 Coding standard C++ confluito poi in MISRA C++.
 
-### POWER OF TEN (NASA/JPL — Holzmann)
+### POWER OF TEN (NASA/JPL - Holzmann)
 
 10 regole per software ad altissima integrità:
 
@@ -149,8 +149,8 @@ Memory safety by construction (borrow checker). In crescita per safety-critical 
 
 Pratica raccomandata da IEC 61508 a SIL 2+. Esempi:
 
-- **Input validation** — controllo range, NULL, lunghezze.
-- **Assertion** — verifiche di invarianti runtime.
+- **Input validation** - controllo range, NULL, lunghezze.
+- **Assertion** - verifiche di invarianti runtime.
 - **Range checks** prima di accessi array.
 - **Default safe** in switch (anche se irraggiungibili).
 - **Time-out** su operazioni che potrebbero bloccarsi.

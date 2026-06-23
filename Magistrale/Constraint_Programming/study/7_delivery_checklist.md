@@ -1,4 +1,4 @@
-# Recap Consegna — Progetto 19: Sudoku Instance Generation
+# Recap Consegna - Progetto 19: Sudoku Instance Generation
 
 Stato del progetto rispetto ai punti della consegna ufficiale. Da rileggere prima dell'orale per avere pronte le risposte sui requisiti.
 
@@ -37,4 +37,4 @@ Stato del progetto rispetto ai punti della consegna ufficiale. Da rileggere prim
 
 Il **punto 1** ("linear constraints for capacity and cost"). Risposta pronta:
 
-> *"Era un residuo di copia-incolla dal progetto 18 (Transit Line Frequency Optimization); lei ha confermato via email di ignorarlo. Il Sudoku non ha dimensioni di capacità o costo — è un problema di pura soddisfazione, modellato con `alldifferent`."*
+> *"Era un residuo di copia-incolla dal progetto 18 (Transit Line Frequency Optimization); lei ha confermato via email di ignorarlo. Il Sudoku non ha dimensioni di capacità o costo - è un problema di pura soddisfazione, modellato con `alldifferent`."*

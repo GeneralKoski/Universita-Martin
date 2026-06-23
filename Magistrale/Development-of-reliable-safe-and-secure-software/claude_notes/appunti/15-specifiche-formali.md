@@ -3,10 +3,10 @@
 ## Perché formalizzare
 
 Linguaggio naturale è ambiguo. Specifiche formali offrono:
-- **Precisione** — interpretazione unica.
-- **Analizzabilità** — verifica automatica di consistenza, completezza, proprietà.
-- **Generazione** — di test, codice, documentazione da una sorgente unica.
-- **Comunicazione** — tra stakeholder con linguaggio condiviso.
+- **Precisione** - interpretazione unica.
+- **Analizzabilità** - verifica automatica di consistenza, completezza, proprietà.
+- **Generazione** - di test, codice, documentazione da una sorgente unica.
+- **Comunicazione** - tra stakeholder con linguaggio condiviso.
 
 Costo: skill richiesto, tempo iniziale alto, difficoltà di review da parte di non esperti.
 
@@ -27,9 +27,9 @@ Il corso, da programma, **non si addentra nei metodi formali** ma li cita per il
 
 Specificare il comportamento di una funzione/metodo con:
 
-- **Pre-condizione** — stato richiesto al chiamante.
-- **Post-condizione** — stato garantito al ritorno.
-- **Invariante** — proprietà sempre vera per la classe/modulo.
+- **Pre-condizione** - stato richiesto al chiamante.
+- **Post-condizione** - stato garantito al ritorno.
+- **Invariante** - proprietà sempre vera per la classe/modulo.
 
 Esempio (sintassi Eiffel-like):
 
@@ -73,8 +73,8 @@ Usata in software safety-critical (es. Darlington nuclear). Tabelle per definire
 Modello reattivo: stati + transizioni etichettate da eventi/condizioni/azioni.
 
 Estensioni:
-- **Statecharts** (Harel) — stati gerarchici, parallelismo, history.
-- **UML state machines** — basati su statecharts, standardizzati.
+- **Statecharts** (Harel) - stati gerarchici, parallelismo, history.
+- **UML state machines** - basati su statecharts, standardizzati.
 
 Buoni per:
 - Sistemi reattivi e protocolli.
@@ -90,8 +90,8 @@ Non adatti a:
 ### Z
 
 Notazione basata su set theory + logic. Schema:
-- **State schema** — stato del sistema con invarianti.
-- **Operation schema** — pre/post condizioni di operazioni.
+- **State schema** - stato del sistema con invarianti.
+- **Operation schema** - pre/post condizioni di operazioni.
 
 Pesante per esecuzione, forte per analisi e prova.
 

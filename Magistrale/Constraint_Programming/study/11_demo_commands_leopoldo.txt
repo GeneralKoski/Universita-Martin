@@ -1,5 +1,5 @@
 ════════════════════════════════════════════════════════════════════════
- COMANDI PER LA DEMO LIVE — Sudoku Instance Generation
+ COMANDI PER LA DEMO LIVE - Sudoku Instance Generation
  (da tenere aperto nel terminale; usare SOLO se il prof chiede la demo)
 ════════════════════════════════════════════════════════════════════════
 
@@ -15,15 +15,15 @@ Python o in MiniZinc. I comandi sotto mostrano ogni pezzo.
 ────────────────────────────────────────────────────────────────────────
 1) GENERARE UN PUZZLE
 ────────────────────────────────────────────────────────────────────────
-Demo principale — genera un puzzle a soluzione unica con strategia "random"
+Demo principale - genera un puzzle a soluzione unica con strategia "random"
 (seed fisso = risultato riproducibile). Stampa quanti indizi (clues) restano.
   python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_puzzle.json --backend python --strategy random --seed 7
 
-Variante "symmetry" — toglie gli indizi a coppie simmetriche (puzzle "bello"
+Variante "symmetry" - toglie gli indizi a coppie simmetriche (puzzle "bello"
 da giornale). Finisce con PIÙ indizi: paga la "doppia tassa" (vedi report 6.2).
   python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_symmetry.json --backend python --strategy symmetry --seed 7
 
-Stesso comando ma con backend MiniZinc — dimostra che i check girano anche sul
+Stesso comando ma con backend MiniZinc - dimostra che i check girano anche sul
 solver CP "ufficiale" (Gecode), non solo sul solver Python. È più lento.
   python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_minizinc.json --backend minizinc --strategy random --seed 7
 
@@ -57,7 +57,7 @@ Poi verifico che il puzzle ottimizzato sia ANCORA unico (correttezza preservata)
 
 
 ────────────────────────────────────────────────────────────────────────
-4) NOVITÀ: SIMMETRIE — GRIGLIE COMPLETE SENZA KAGGLE (report §7.3)
+4) NOVITÀ: SIMMETRIE - GRIGLIE COMPLETE SENZA KAGGLE (report §7.3)
 ────────────────────────────────────────────────────────────────────────
 Crea nuove griglie complete trasformandone di esistenti (permutazione cifre,
 righe nelle bande, bande, trasposizione). Istantaneo, nessuna chiamata al solver.
@@ -69,7 +69,7 @@ autosufficiente, non dipende dal dataset esterno.
 
 
 ────────────────────────────────────────────────────────────────────────
-5) NOVITÀ: BACKEND MiniZinc-Python (report §7.2 — il risultato NEGATIVO)
+5) NOVITÀ: BACKEND MiniZinc-Python (report §7.2 - il risultato NEGATIVO)
 ────────────────────────────────────────────────────────────────────────
 Terzo backend via libreria minizinc-python. Da dire: NON è più veloce del
 subprocess (avvolge comunque la CLI). Usa il venv dove è installato il pacchetto.

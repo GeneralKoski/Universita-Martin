@@ -1,4 +1,4 @@
-# Lezione 3 — Discesa del Gradiente e Reti Neurali
+# Lezione 3 - Discesa del Gradiente e Reti Neurali
 
 ## 1. Algoritmo di Discesa del Gradiente
 
@@ -34,7 +34,7 @@ Dato un minimo $\underline{m}$ (quando noto) e una soglia $\varepsilon>0$, l'ite
 
 ---
 
-## 2. Reti Neurali — Modello Base: Percettrone
+## 2. Reti Neurali - Modello Base: Percettrone
 
 ### 2.1 Definizione
 - Funzione $f_{\underline{w},b}:\mathbb{R}^N\to\mathbb{R}$ con parametri $\underline{w}\in\mathbb{R}^N$ (pesi) e $b\in\mathbb{R}$ (bias).

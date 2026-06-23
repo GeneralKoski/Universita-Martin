@@ -18,7 +18,7 @@ Per ogni componente trovi:
    - 1.3 `sudoku_solver_dom_w_deg.mzn`
    - 1.4 `sudoku_generate_full_grid.mzn`
    - 1.5 `sudoku_non_unique_check.mzn`
-2. [Backend Python — `sudoku_pipeline.py`](#2-backend-python--sudoku_pipelinepy)
+2. [Backend Python - `sudoku_pipeline.py`](#2-backend-python--sudoku_pipelinepy)
    - 2.1 Solver e candidate values
    - 2.2 Counting con limite
    - 2.3 Solve-excluding (solve-and-block in Python)
@@ -32,9 +32,9 @@ Per ogni componente trovi:
    - 3.3 `benchmark.py`
 4. [Import dataset](#4-import-dataset)
    - 4.1 `import_kaggle_solutions.py` (reservoir sampling)
-5. [Plot dei risultati — `plot_results.py`](#5-plot-dei-risultati--plot_resultspy)
-6. [Packaging — `package_for_delivery.sh`](#6-packaging--package_for_deliverysh)
-7. [Configurazione del solver — `spec/gecode_local.msc`](#7-configurazione-del-solver--specgecode_localmsc)
+5. [Plot dei risultati - `plot_results.py`](#5-plot-dei-risultati--plot_resultspy)
+6. [Packaging - `package_for_delivery.sh`](#6-packaging--package_for_deliverysh)
+7. [Configurazione del solver - `spec/gecode_local.msc`](#7-configurazione-del-solver--specgecode_localmsc)
 
 ---
 
@@ -72,11 +72,11 @@ solve
 
 **Walkthrough**:
 
-- `int: n = 9` — costante simbolica. Non serve per il 9×9 ma rende riusabile la definizione su 4×4 / 16×16 cambiando una sola riga.
-- `array[IDX, IDX] of 0..9: clues` — parametro a 81 celle dove `0` è "vuota". Importante: il dominio del parametro include `0`, ma il dominio delle variabili `grid` parte da `1`. Lo `0` non è mai un valore valido di Sudoku, è solo un sentinel per "cella libera".
-- `array[IDX, IDX] of var 1..9: grid` — 81 variabili intere con dominio iniziale `{1..9}`.
+- `int: n = 9` - costante simbolica. Non serve per il 9×9 ma rende riusabile la definizione su 4×4 / 16×16 cambiando una sola riga.
+- `array[IDX, IDX] of 0..9: clues` - parametro a 81 celle dove `0` è "vuota". Importante: il dominio del parametro include `0`, ma il dominio delle variabili `grid` parte da `1`. Lo `0` non è mai un valore valido di Sudoku, è solo un sentinel per "cella libera".
+- `array[IDX, IDX] of var 1..9: grid` - 81 variabili intere con dominio iniziale `{1..9}`.
 - Il primo `constraint forall ... where clues[i,j] > 0` è il **canale di input**: lega le clue al modello senza modificare il modello stesso. Il `where` è un filtro statico: MiniZinc espande il forall solo per le posizioni con clue > 0.
-- I tre `alldifferent` sono il cuore del Sudoku: 9 righe, 9 colonne, 9 blocchi 3×3. La costruzione del blocco usa `3*br+dr` con `br ∈ 0..2` e `dr ∈ 1..3`, quindi indici 1..3, 4..6, 7..9 — i 3 blocchi orizzontali. Stesso schema su `bc, dc` per quelli verticali.
+- I tre `alldifferent` sono il cuore del Sudoku: 9 righe, 9 colonne, 9 blocchi 3×3. La costruzione del blocco usa `3*br+dr` con `br ∈ 0..2` e `dr ∈ 1..3`, quindi indici 1..3, 4..6, 7..9 - i 3 blocchi orizzontali. Stesso schema su `bc, dc` per quelli verticali.
 - `solve :: int_search(...) satisfy`:
   - `int_search(vars, varsel, valsel, exploration)` è l'annotazione di ricerca.
   - **`first_fail`**: scegli la variabile col dominio più piccolo. È l'euristica "fail-first": se devi sbagliare, sbaglia presto (riduci la profondità del sotto-albero).
@@ -168,7 +168,7 @@ solve
 **Punti da saper difendere**:
 
 - **"Perché esiste se usi Kaggle?"**
-  → Tre motivi: (1) fallback se il Kaggle dataset non è disponibile; (2) verifica strutturale autonoma — se questo modello produce griglie valide, il modello CP è corretto; (3) dimostrazione che il progetto non dipende da dati esterni proprietari.
+  → Tre motivi: (1) fallback se il Kaggle dataset non è disponibile; (2) verifica strutturale autonoma - se questo modello produce griglie valide, il modello CP è corretto; (3) dimostrazione che il progetto non dipende da dati esterni proprietari.
 - **"`indomain_random` è deterministico?"**
   → Dipende dal seed del solver. Gecode usa un seed di default; passandolo da CLI (`--rnd-seed N`) si ha riproducibilità.
 
@@ -203,13 +203,13 @@ constraint
 - **"Perché non `grid != known_solution` direttamente?"**
   → MiniZinc supporta `array != array` come elementwise, ma esprimerlo via `exists` è più chiaro pedagogicamente e più robusto nel parsing.
 - **"Cosa succede se la prima soluzione è sbagliata?"**
-  → Non può esserlo: viene dal solver corretto, è già stata validata. Se per qualche ragione fosse non valida, il blocking constraint farebbe rifiutare anche la "vera" soluzione e tornerebbe UNSAT prematuramente — ma la validazione del solver garantisce che non succeda.
+  → Non può esserlo: viene dal solver corretto, è già stata validata. Se per qualche ragione fosse non valida, il blocking constraint farebbe rifiutare anche la "vera" soluzione e tornerebbe UNSAT prematuramente - ma la validazione del solver garantisce che non succeda.
 - **"Costo della seconda ricerca?"**
   → Nello scenario "puzzle unico" deve esaurire l'albero per dimostrare UNSAT. Su Sudoku 9×9 con propagazione `alldifferent` di Régin, costa ~ms. Su scala più grande sarebbe il collo di bottiglia.
 
 ---
 
-## 2. Backend Python — `sudoku_pipeline.py`
+## 2. Backend Python - `sudoku_pipeline.py`
 
 Il file ha 578 righe. Contiene il modulo Python "fa-tutto": solver, counting, solve-and-block, parser MiniZinc, strategie di rimozione, loop di generazione, CLI.
 
@@ -709,7 +709,7 @@ for item in instances:
 
 - Itera su istanze pre-definite (es. `data/test/benchmark_instances.json`).
 - Per ognuna, scrive un file temp, chiama `sudoku_pipeline.py check`, raccoglie il risultato.
-- Lo usiamo per il benchmark MiniZinc puro (`benchmark_minizinc_timeout300.json`) — verifica funzionale del backend MiniZinc senza il costo del loop di generazione completo.
+- Lo usiamo per il benchmark MiniZinc puro (`benchmark_minizinc_timeout300.json`) - verifica funzionale del backend MiniZinc senza il costo del loop di generazione completo.
 
 **Punti da saper difendere**:
 
@@ -749,7 +749,7 @@ with input_path.open("r") as fh:
 
 **Walkthrough**:
 
-- **Algoritmo R di Vitter** — sampling streaming uniforme da una sorgente di dimensione sconosciuta (in realtà nota qui, ma il pattern è streaming-friendly).
+- **Algoritmo R di Vitter** - sampling streaming uniforme da una sorgente di dimensione sconosciuta (in realtà nota qui, ma il pattern è streaming-friendly).
 - Per i primi `k=50` elementi: riempi il reservoir.
 - Per gli elementi successivi: con probabilità `k/i` (dove `i` è la posizione corrente), sostituisci un elemento casuale del reservoir.
 - Risultato: ogni elemento del CSV ha probabilità identica `k/N` di finire nel reservoir, senza dover caricare 1M righe in memoria.
@@ -775,7 +775,7 @@ def parse_grid(text: str) -> list[list[int]]:
 
 ---
 
-## 5. Plot dei risultati — `plot_results.py`
+## 5. Plot dei risultati - `plot_results.py`
 
 **Cosa**: legge il CSV del benchmark e produce 3 PNG.
 
@@ -801,7 +801,7 @@ def plot_time_vs_clues(rows, out_path):
 
 ---
 
-## 6. Packaging — `package_for_delivery.sh`
+## 6. Packaging - `package_for_delivery.sh`
 
 **Cosa**: crea lo zip finale di consegna.
 
@@ -832,7 +832,7 @@ INCLUDE=(
 
 ---
 
-## 7. Configurazione del solver — `spec/gecode_local.msc`
+## 7. Configurazione del solver - `spec/gecode_local.msc`
 
 **Cosa**: solver configuration (`.msc` = MiniZinc Solver Configuration) che dice a MiniZinc come trovare Gecode.
 
@@ -850,7 +850,7 @@ Contenuto tipico:
 **Walkthrough**:
 
 - File JSON con i metadati del solver: come si chiama, dove sta il binario `fzn-gecode`, dove sono le librerie MiniZinc-specific.
-- Punta al binario via PATH (`"executable": "fzn-gecode"`) per portabilità — non hardcoda un path assoluto.
+- Punta al binario via PATH (`"executable": "fzn-gecode"`) per portabilità - non hardcoda un path assoluto.
 - Si invoca con `minizinc --solver spec/gecode_local.msc <model> <data>`.
 
 **Punti da saper difendere**:
@@ -883,7 +883,7 @@ Quando il prof punta su un punto specifico, vai a queste sezioni:
 
 Tienine pronto uno da mostrare se il prof chiede una demo:
 
-1. Apri `data/test/unique_puzzle.json` — è un puzzle 9×9 con 30 clue noto unico.
+1. Apri `data/test/unique_puzzle.json` - è un puzzle 9×9 con 30 clue noto unico.
 2. Mostra:
    ```
    python3 scripts/sudoku_pipeline.py check \

@@ -1,4 +1,4 @@
-# Lezione 4 — Apprendimento Supervisionato, Loss e Discesa del Gradiente
+# Lezione 4 - Apprendimento Supervisionato, Loss e Discesa del Gradiente
 
 ## 1. Apprendimento Supervisionato (Machine Learning)
 
@@ -34,7 +34,7 @@ Per $|D|=m$:
 $$\boxed{\;\mathcal{L}_1(D):=\sum_{i=1}^m \big\|f^*(\underline{x}_i)-F_\theta(\underline{x}_i)\big\|=\sum_{i=1}^m\|\underline{y}_i^*-F_\theta(\underline{x}_i)\|\;}$$
 - Interpretazione geometrica: per $|D|=2$ corrisponde alla **geometria del taxi** (somma delle distanze).
 
-### 2.2 Loss $L_2$ — Errore Quadratico Medio (MSE)
+### 2.2 Loss $L_2$ - Errore Quadratico Medio (MSE)
 Per $|D|=m$, $f^*:\mathbb{R}^N\to\mathbb{R}^M$, $F_\theta:\mathbb{R}^N\to\mathbb{R}^M$:
 $$\boxed{\;\mathcal{L}_2(D)=\frac{1}{2m}\sum_{i=1}^m\big\|f^*(\underline{x}_i)-F_\theta(\underline{x}_i)\big\|^2=\frac{1}{2m}\sum_{i=1}^m\big\|\underline{y}_i^*-F_\theta(\underline{x}_i)\big\|^2\;}$$
 - Vista come funzione dei parametri: $\mathcal{L}:\mathbb{R}^P\to\mathbb{R}$, $\theta\mapsto\mathcal{L}(\theta)$.
@@ -121,7 +121,7 @@ $$\frac{\partial (f\circ g)}{\partial x_k}=\sum_{i=1}^N\frac{\partial f}{\partia
 $$\nabla(f\circ g)=\Big(\frac{\partial(f\circ g)}{\partial x_1},\dots,\frac{\partial(f\circ g)}{\partial x_M}\Big)$$
 
 ### 5.4 Caso 3: $f:\mathbb{R}^N\to\mathbb{R}^K$, $g:\mathbb{R}^M\to\mathbb{R}^N$
-$f\circ g:\mathbb{R}^M\to\mathbb{R}^N\to\mathbb{R}^K$ (Jacobiani composti — caso più generale).
+$f\circ g:\mathbb{R}^M\to\mathbb{R}^N\to\mathbb{R}^K$ (Jacobiani composti - caso più generale).
 
 ---
 

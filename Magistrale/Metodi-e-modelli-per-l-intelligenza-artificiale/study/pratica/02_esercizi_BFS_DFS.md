@@ -1,7 +1,7 @@
-# 02 — Esercizi: BFS e DFS
+# 02 - Esercizi: BFS e DFS
 
 ## Esercizi disponibili
-- 📂 `Elly/2_Procedure_BFS_e_DFS/ese_1_2026.pdf` — esercizio ufficiale 2026
+- 📂 `Elly/2_Procedure_BFS_e_DFS/ese_1_2026.pdf` - esercizio ufficiale 2026
 - Esercizi sugli appunti scritti dei colleghi (`AAA METODI E MODELLI...pdf`, prime lezioni)
 
 ## Schema operativo BFS

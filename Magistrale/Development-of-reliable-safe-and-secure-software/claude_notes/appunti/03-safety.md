@@ -13,14 +13,14 @@ Assenza di conseguenze catastrofiche per utenti, terzi e ambiente. Sistemi safet
 
 ## Hazard Analysis
 
-### FTA — Fault Tree Analysis
+### FTA - Fault Tree Analysis
 
 Top-down: si parte da un evento indesiderato (top event) e si scompone con porte logiche AND/OR fino ai basic events.
 
 - Utile per individuare **cut set minimi** (combinazioni minime di fault che causano il top event).
 - Quantitativa se si associano probabilità ai basic events.
 
-### FMEA — Failure Mode and Effects Analysis
+### FMEA - Failure Mode and Effects Analysis
 
 Bottom-up: per ogni componente si elencano i modi di failure, gli effetti locali e globali, le cause.
 
@@ -32,7 +32,7 @@ Tabella tipica: Component | Failure Mode | Cause | Local Effect | System Effect 
 
 Hazard and Operability Study: usa parole guida (NO, MORE, LESS, REVERSE, AS WELL AS, OTHER THAN) applicate ai parametri di processo.
 
-## SIL — Safety Integrity Level
+## SIL - Safety Integrity Level
 
 IEC 61508 definisce 4 livelli (SIL 1–4) in base alla riduzione del rischio richiesta:
 

@@ -1,4 +1,4 @@
-# 05 — Floyd–Warshall
+# 05 - Floyd–Warshall
 
 📂 Fonte: `Elly/5_Cammini_Minimi_Floyd_Warshall/Lezioni 9-10.pdf`
 

@@ -274,14 +274,14 @@ Three of the extensions listed in the first version of this report were subseque
 
 The greedy scheme of Section 4.1 is order-dependent and stops at a local minimum. The flag `--optimize-attempts N` adds a post-optimization pass based on an *add-one-remove-many* move: a removed cell is re-filled with its solution value (uniqueness is preserved by construction, adding a clue can never create a second solution), then a fresh greedy removal pass runs over all current clues in a new random order. If the pass removes at least two cells the net clue count decreases and the move is kept; otherwise it is rolled back. This is a simple local search on top of the CP check, escaping the plateau the greedy pass got stuck in.
 
-Measured on the 50-grid sample (random strategy, counting, 100 attempts, ~2400 extra checks ≈ 30 s per grid with the Python backend): **47 of 50 runs improved**, the mean drops from 24.5 to **22.1** clues and the minimum reaches **20** — a bound the plain greedy hit zero times across 1500 benchmark runs, while the optimization reaches ≤21 on 11 of 50 grids. The pass turns the lucky tail of the greedy distribution into a systematic outcome.
+Measured on the 50-grid sample (random strategy, counting, 100 attempts, ~2400 extra checks ≈ 30 s per grid with the Python backend): **47 of 50 runs improved**, the mean drops from 24.5 to **22.1** clues and the minimum reaches **20** - a bound the plain greedy hit zero times across 1500 benchmark runs, while the optimization reaches ≤21 on 11 of 50 grids. The pass turns the lucky tail of the greedy distribution into a systematic outcome.
 
 | Configuration | Mean | Min | Max |
 | ------------- | ---- | --- | --- |
 | Greedy only | 24.5 | 22 | 27 |
 | Greedy + optimization | 22.1 | 20 | 25 |
 
-The returns diminish sharply: on a sample grid, 20 attempts reach 21 clues and 1000 attempts (50× the checks) still stop at 21. The local move plateaus quickly, which is consistent with two facts: the minimum clue count is a property of each complete grid (most grids do not even admit a 17-clue puzzle), and reaching 19 or fewer requires coordinated multi-cell reconfigurations outside the reach of a single add-one-remove-many move. Enlarging the neighbourhood does help — Section 7.4 lowers the mean with a variable-neighbourhood variant — but, as shown there, even a branch-and-bound search does not push the minimum below 20 within a practical budget.
+The returns diminish sharply: on a sample grid, 20 attempts reach 21 clues and 1000 attempts (50× the checks) still stop at 21. The local move plateaus quickly, which is consistent with two facts: the minimum clue count is a property of each complete grid (most grids do not even admit a 17-clue puzzle), and reaching 19 or fewer requires coordinated multi-cell reconfigurations outside the reach of a single add-one-remove-many move. Enlarging the neighbourhood does help - Section 7.4 lowers the mean with a variable-neighbourhood variant - but, as shown there, even a branch-and-bound search does not push the minimum below 20 within a practical budget.
 
 ![Optimization](assets/plot_optimization.png)
 
@@ -307,7 +307,7 @@ Together with `sudoku_generate_full_grid.mzn`, this makes the pipeline fully sel
 The local search of Section 7.1 re-adds a single clue per perturbation. Two stronger strategies were implemented to test whether more search effort lowers the clue count further:
 
 - **Variable-neighbourhood** (`--optimize-readd k`): each perturbation re-adds up to `k` clues, with `k` growing from 1 towards `k` as attempts stall (diversification) and resetting after every improvement (intensification).
-- **Branch-and-bound** (`--bnb-nodes N`): a node-bounded search over the binary keep/remove decision per cell, warm-started from the local-search incumbent. The "remove" branch is taken only while the puzzle stays unique with all undecided cells present (a sound prune by monotonicity), and the bound `kept ≥ best` cuts branches that can no longer improve. The full tree is exponential — the minimum-clue subset space is of order `C(81, ~22)` — so the search is capped at `N` nodes and restarted from reshuffled orders.
+- **Branch-and-bound** (`--bnb-nodes N`): a node-bounded search over the binary keep/remove decision per cell, warm-started from the local-search incumbent. The "remove" branch is taken only while the puzzle stays unique with all undecided cells present (a sound prune by monotonicity), and the bound `kept ≥ best` cuts branches that can no longer improve. The full tree is exponential - the minimum-clue subset space is of order `C(81, ~22)` - so the search is capped at `N` nodes and restarted from reshuffled orders.
 
 Comparison on **408 grids sampled fresh from the 9M-row Kaggle dataset** (random strategy, counting, 100 attempts, `k=3`, `N=8000`):
 
@@ -320,7 +320,7 @@ Comparison on **408 grids sampled fresh from the 9M-row Kaggle dataset** (random
 
 **Findings**. The variable neighbourhood is a genuine improvement over the single-cell local search: it lowers the mean from 22.08 to 21.54 and wins on **192 of 408** grids while losing on only 37, at almost no extra cost (51 vs 49 s). Branch-and-bound, by contrast, does **not** pay off: it ties the variable neighbourhood on 396 of 408 grids and beats it on just 12, while costing nearly twice the time (92 s). Within any practical node budget the warm-started DFS explores only a sliver of the astronomically large subset space, so it cannot systematically outperform a good metaheuristic. This reinforces the recurring lesson of Section 7.2: the residual gap to 17 is governed by the grid-determined minimum, and closing it would require an exact combinatorial method (unavoidable-set / hitting-set formulations, as in McGuire et al.), not more generic search.
 
-The clue-count **distribution** over the 408 grids confirms how concentrated the achievable minimum is — the variable neighbourhood lands at 20–22 clues on 98% of grids:
+The clue-count **distribution** over the 408 grids confirms how concentrated the achievable minimum is - the variable neighbourhood lands at 20–22 clues on 98% of grids:
 
 | Clues reached | 20 | 21 | 22 | 23 | 24 |
 | ------------- | -- | -- | -- | -- | -- |

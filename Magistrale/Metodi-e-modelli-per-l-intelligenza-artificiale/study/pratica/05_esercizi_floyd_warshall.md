@@ -1,4 +1,4 @@
-# 05 — Esercizi: Floyd–Warshall
+# 05 - Esercizi: Floyd–Warshall
 
 ## Esercizi disponibili
 - 📂 `Elly/5_Cammini_Minimi_Floyd_Warshall/ese_4_2026.pdf`

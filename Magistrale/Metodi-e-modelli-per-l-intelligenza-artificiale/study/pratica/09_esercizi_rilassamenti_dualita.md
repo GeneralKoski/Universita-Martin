@@ -1,4 +1,4 @@
-# 09 — Esercizi: rilassamenti e dualità
+# 09 - Esercizi: rilassamenti e dualità
 
 ## Esercizi disponibili
 - 📂 `Elly/8_Rilassamenti_e_Dualità/ese_7_2026.pdf`
@@ -23,7 +23,7 @@ Dato un PI:
 3. La soluzione del PL è una **stima dall'alto** (per max) sul valore ottimo del PI
 
 ### C) Dualità
-"Scrivi il duale del seguente PL" — applicazione meccanica delle regole:
+"Scrivi il duale del seguente PL" - applicazione meccanica delle regole:
 - max ↔ min
 - Variabili → vincoli (e viceversa)
 - ≤ → variabile ≥ 0, ≥ → variabile ≤ 0, = → variabile libera

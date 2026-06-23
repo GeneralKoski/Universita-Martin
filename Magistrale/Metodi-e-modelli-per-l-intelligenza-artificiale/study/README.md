@@ -1,4 +1,4 @@
-# Piano di studio — Metodi e Modelli per l'IA
+# Piano di studio - Metodi e Modelli per l'IA
 
 Percorso ottimale per preparare l'esame, suddiviso in **teoria** e **pratica**. I file sono numerati: seguili in ordine.
 
@@ -7,8 +7,8 @@ Percorso ottimale per preparare l'esame, suddiviso in **teoria** e **pratica**. 
 1. Per ogni argomento: **teoria prima**, poi **pratica** dello stesso numero.
    - Es. leggi `teoria/01_*.md` → fai `pratica/01_*.md` → poi passa a `02`.
 2. Argomenti raggruppati in 2 macro-blocchi (come da indicazioni dei colleghi):
-   - **Blocco A — Algoritmi sui grafi** (file 01-06)
-   - **Blocco B — Programmazione intera & ottimizzazione combinatoria** (file 07-14 teoria, 07-12 pratica)
+   - **Blocco A - Algoritmi sui grafi** (file 01-06)
+   - **Blocco B - Programmazione intera & ottimizzazione combinatoria** (file 07-14 teoria, 07-12 pratica)
 3. Alla fine, **simulazione d'esame** completa con `esami nicolodi risolti.pdf` (vedi `pratica/13_simulazione_esame.md`).
 
 ## Programma 6 CFU (limite ufficiale)
@@ -18,8 +18,8 @@ Il programma per Scienze Informatiche **arriva fino a "Trasporto generalizzato e
 
 ```
 study/
-├── teoria/    — concetti, definizioni, teoremi, dimostrazioni (per l'orale)
-└── pratica/   — esercizi e algoritmi da eseguire a mano (per lo scritto)
+├── teoria/    - concetti, definizioni, teoremi, dimostrazioni (per l'orale)
+└── pratica/   - esercizi e algoritmi da eseguire a mano (per lo scritto)
 ```
 
 ## Note per studente lavoratore (non frequentante)

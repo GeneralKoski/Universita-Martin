@@ -1,9 +1,9 @@
-# 03 — Esercizi: Equazioni di Bellman
+# 03 - Esercizi: Equazioni di Bellman
 
 ## Esercizi disponibili
 - 📂 `Elly/3_Cammini_Minimi_Equazioni_di_Bellman/ese_2_2026.pdf`
 - 📂 `Elly/3_Cammini_Minimi_Equazioni_di_Bellman/ese_3_2026.pdf`
-- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` — esame 28 giugno 2005, esercizio 1 (con soluzione svolta)
+- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` - esame 28 giugno 2005, esercizio 1 (con soluzione svolta)
 
 ## Schema operativo
 1. **Verifica**: il grafo è senza circuiti? (altrimenti Bellman non vale)

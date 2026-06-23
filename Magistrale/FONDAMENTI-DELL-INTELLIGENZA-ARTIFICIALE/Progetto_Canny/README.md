@@ -19,10 +19,10 @@ python main.py path/to/image.jpg
 python main.py photo.jpg 1.4 5 0.05 0.15
 ```
 Output:
-- `edges.png` — mappa binaria dei bordi
-- `pipeline.png` — figura con i 6 stadi della pipeline (per il report)
+- `edges.png` - mappa binaria dei bordi
+- `pipeline.png` - figura con i 6 stadi della pipeline (per il report)
 
 ## Struttura
-- `canny.py` — implementazione algoritmica (NumPy puro)
-- `main.py` — runner di esempio + visualizzazione
-- `report/` — report in LaTeX (template IEEE, max 1 pagina)
+- `canny.py` - implementazione algoritmica (NumPy puro)
+- `main.py` - runner di esempio + visualizzazione
+- `report/` - report in LaTeX (template IEEE, max 1 pagina)

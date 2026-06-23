@@ -1,8 +1,8 @@
-# 12 — Esercizi: flussi, trasporto e problemi riducibili
+# 12 - Esercizi: flussi, trasporto e problemi riducibili
 
 ## Esercizi disponibili
 - Esempi nelle Lezioni 21-22.pdf
-- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` — vari problemi di flusso/trasporto
+- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` - vari problemi di flusso/trasporto
 
 ## Tipologie di esercizio
 

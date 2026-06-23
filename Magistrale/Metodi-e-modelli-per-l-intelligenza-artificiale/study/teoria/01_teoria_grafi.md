@@ -1,4 +1,4 @@
-# 01 — Teoria dei grafi (basi)
+# 01 - Teoria dei grafi (basi)
 
 📂 Fonte: `Elly/1_Elementi_di_Teoria_dei_Grafi/Lezioni 1-2.pdf`
 
@@ -16,7 +16,7 @@ Acquisire il vocabolario di base per tutto il corso. Senza questo, il resto non 
 ## Teoremi da conoscere (per l'orale)
 1. **Teorema di Eulero (1736)**: G ha ciclo euleriano ⟺ G connesso ∧ ogni nodo ha grado pari
 2. **Caratterizzazione albero**: 5 affermazioni equivalenti
-3. **Teorema di Fulkerson**: G orientato è numerabile progressivamente ⟺ è senza circuiti — sapere la **dimostrazione** (algoritmo costruttivo)
+3. **Teorema di Fulkerson**: G orientato è numerabile progressivamente ⟺ è senza circuiti - sapere la **dimostrazione** (algoritmo costruttivo)
 
 ## Trappole tipiche
 - Confondere ciclo euleriano (passa per ogni *arco*) con hamiltoniano (passa per ogni *nodo*)

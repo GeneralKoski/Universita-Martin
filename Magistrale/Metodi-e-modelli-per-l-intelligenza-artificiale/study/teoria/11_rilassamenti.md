@@ -1,4 +1,4 @@
-# 11 — Rilassamenti
+# 11 - Rilassamenti
 
 📂 Fonte: `Elly/8_Rilassamenti_e_Dualità/Lezioni 17-18.pdf`
 
@@ -21,7 +21,7 @@ Si rilassa l'integralità: PI → PL (max c^T x su P invece che P ∩ ℤⁿ).
 **P_1 ⊆ P_2 ⟹ z*_PL1 ≤ z*_PL2** (formulazione migliore = stima migliore).
 
 ### Rilassamenti combinatori
-- **TSP** rilassato con Assegnazione (z*_TSP ≥ z*_ASS — è un min!)
+- **TSP** rilassato con Assegnazione (z*_TSP ≥ z*_ASS - è un min!)
 - **STSP** (simmetrico) rilassato con **1-alberi**:
   - 1-albero = 2 archi su nodo 1 + MST sui nodi {2,…,n}
   - Ogni tour è un 1-albero, non viceversa

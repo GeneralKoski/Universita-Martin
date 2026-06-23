@@ -1,8 +1,8 @@
-# 1 — Elementi di Teoria dei Grafi (Lezioni 1-2)
+# 1 - Elementi di Teoria dei Grafi (Lezioni 1-2)
 
 ## Contenuto cartella
-- `Lezioni 1-2.pdf` — teoria
-- `Lezioni 1-2bis.pdf` — figure di esempio (grafi orientati/non orientati, cammini, cicli, alberi, alberi ricoprenti)
+- `Lezioni 1-2.pdf` - teoria
+- `Lezioni 1-2bis.pdf` - figure di esempio (grafi orientati/non orientati, cammini, cicli, alberi, alberi ricoprenti)
 
 ## Argomenti
 

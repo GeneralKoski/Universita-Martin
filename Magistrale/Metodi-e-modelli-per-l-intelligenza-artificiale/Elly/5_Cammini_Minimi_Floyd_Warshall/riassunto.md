@@ -1,8 +1,8 @@
-# 5 — Cammini Minimi: Floyd–Warshall (Lezioni 9-10)
+# 5 - Cammini Minimi: Floyd–Warshall (Lezioni 9-10)
 
 ## Contenuto cartella
-- `Lezioni 9-10.pdf` — algoritmo di Floyd–Warshall
-- `ese_4_2026.pdf` — esercizio
+- `Lezioni 9-10.pdf` - algoritmo di Floyd–Warshall
+- `ese_4_2026.pdf` - esercizio
 
 ## Problema
 Calcolare cammini minimi **fra tutte le coppie di nodi** di G = (V, A) orientato, con ℓ_ij ∈ ℝ.

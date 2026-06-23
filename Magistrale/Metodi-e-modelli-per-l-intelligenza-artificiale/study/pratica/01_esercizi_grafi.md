@@ -1,4 +1,4 @@
-# 01 — Esercizi: teoria dei grafi
+# 01 - Esercizi: teoria dei grafi
 
 ## Esercizi base
 1. Dato un grafo con 7 nodi e una lista di archi, disegnarlo, indicare grado di ogni nodo, identificare cammini, cicli, alberi ricoprenti.
@@ -6,7 +6,7 @@
 3. Applicare l'**algoritmo di Fulkerson** per numerare progressivamente i nodi di un DAG.
 
 ## Esercizi disponibili
-- 📂 `Elly/2_Procedure_BFS_e_DFS/ese_1_2026.pdf` (esercizio 1) — anche pertinente per BFS/DFS
+- 📂 `Elly/2_Procedure_BFS_e_DFS/ese_1_2026.pdf` (esercizio 1) - anche pertinente per BFS/DFS
 - Quaderni colleghi: `Appunti_colleghi/Zip_appunti/esercizi MMD.pdf` (primi capitoli)
 
 ## Cosa fare

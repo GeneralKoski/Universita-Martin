@@ -1,4 +1,4 @@
-# Cheatsheet — ripasso rapido
+# Cheatsheet - ripasso rapido
 
 ## Concetti chiave
 
@@ -21,9 +21,9 @@
 
 ## Hazard analysis
 
-- **FTA** — top-down, top event → basic events, AND/OR.
-- **FMEA** — bottom-up, componente → failure mode → effetto.
-- **HAZOP** — guide words su parametri.
+- **FTA** - top-down, top event → basic events, AND/OR.
+- **FMEA** - bottom-up, componente → failure mode → effetto.
+- **HAZOP** - guide words su parametri.
 
 ## SIL (IEC 61508)
 
@@ -69,7 +69,7 @@ Economy, fail-safe defaults, complete mediation, open design, separation of priv
 
 ## Hoare logic
 
-{P} S {Q} — total correctness richiede anche terminazione.
+{P} S {Q} - total correctness richiede anche terminazione.
 
 While: trovare invariante I tale che {I ∧ B} S {I}.
 

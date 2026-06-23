@@ -2,17 +2,17 @@
 
 ## Triade CIA
 
-- **Confidentiality** — solo soggetti autorizzati accedono all'informazione.
-- **Integrity** — l'informazione non viene alterata in modo non autorizzato.
-- **Availability** — il servizio è disponibile quando richiesto.
+- **Confidentiality** - solo soggetti autorizzati accedono all'informazione.
+- **Integrity** - l'informazione non viene alterata in modo non autorizzato.
+- **Availability** - il servizio è disponibile quando richiesto.
 
 Estensioni: **Authenticity**, **Non-repudiation**, **Accountability** (modello Parkerian Hexad aggiunge possesso, utilità).
 
 ## AAA
 
-- **Authentication** — verificare l'identità (chi sei).
-- **Authorization** — verificare i permessi (cosa puoi fare).
-- **Accounting/Auditing** — tracciare le azioni (cosa hai fatto).
+- **Authentication** - verificare l'identità (chi sei).
+- **Authorization** - verificare i permessi (cosa puoi fare).
+- **Accounting/Auditing** - tracciare le azioni (cosa hai fatto).
 
 ## Fattori di autenticazione
 
@@ -53,13 +53,13 @@ Duale di Bell-LaPadula:
 
 ## Principi di Saltzer & Schroeder (1975)
 
-1. **Economy of mechanism** — semplicità.
-2. **Fail-safe defaults** — negato di default.
-3. **Complete mediation** — controllare ogni accesso.
-4. **Open design** — non security through obscurity.
-5. **Separation of privilege** — più condizioni per accedere.
-6. **Least privilege** — minimi permessi necessari.
-7. **Least common mechanism** — minimizzare componenti condivisi.
-8. **Psychological acceptability** — usabilità.
+1. **Economy of mechanism** - semplicità.
+2. **Fail-safe defaults** - negato di default.
+3. **Complete mediation** - controllare ogni accesso.
+4. **Open design** - non security through obscurity.
+5. **Separation of privilege** - più condizioni per accedere.
+6. **Least privilege** - minimi permessi necessari.
+7. **Least common mechanism** - minimizzare componenti condivisi.
+8. **Psychological acceptability** - usabilità.
 
 Aggiunti più tardi: **defense in depth**, **fail securely**, **don't trust services**, **secure the weakest link**.

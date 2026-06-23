@@ -1,6 +1,6 @@
-# Lezione 7 — Integrazione in $\mathbb{R}^N$ e Convoluzione
+# Lezione 7 - Integrazione in $\mathbb{R}^N$ e Convoluzione
 
-> Riferimento: `Lezione_7/Lezione 7.pdf` — Prof. Iotti, Fondamenti di IA, UniPR.
+> Riferimento: `Lezione_7/Lezione 7.pdf` - Prof. Iotti, Fondamenti di IA, UniPR.
 > Obiettivo: costruire l'integrale di Riemann in $\mathbb{R}^N$, dimostrarne le proprietà fondamentali, definire la convoluzione 1D/2D e dimostrare commutatività, linearità ed equivarianza alla traslazione tramite cambio di variabile (jacobiano). Casi notevoli: filtro media, filtro gaussiano.
 
 ---
@@ -59,8 +59,8 @@ Sia $f : \mathbb{R}^N \to \mathbb{R}$ **limitata** ($|f(\underline{x})| < \delta
 
 ### 3.1 Minoranti e maggioranti semplici
 
-- $S_-(f) = \{\psi \in \mathcal{S} : \psi(\underline{x}) \le f(\underline{x})\ \forall \underline{x} \in \mathbb{R}^N\}$ — minoranti semplici.
-- $S_+(f) = \{\varphi \in \mathcal{S} : \varphi(\underline{x}) \ge f(\underline{x})\ \forall \underline{x} \in \mathbb{R}^N\}$ — maggioranti semplici.
+- $S_-(f) = \{\psi \in \mathcal{S} : \psi(\underline{x}) \le f(\underline{x})\ \forall \underline{x} \in \mathbb{R}^N\}$ - minoranti semplici.
+- $S_+(f) = \{\varphi \in \mathcal{S} : \varphi(\underline{x}) \ge f(\underline{x})\ \forall \underline{x} \in \mathbb{R}^N\}$ - maggioranti semplici.
 - Osservazione: $S_-(f) \neq \emptyset$ e $S_+(f) \neq \emptyset$ perché $f$ è limitata e a supporto compatto (basta prendere $\pm \delta \cdot \mathbf{1}_K$).
 
 ### 3.2 Definizione di integrale di Riemann
@@ -137,7 +137,7 @@ $$w \ge 0, \qquad \int_{\mathbb{R}} w(t)\, dt = 1 \quad (\text{o }\iint w = 1\te
 
 ---
 
-## 7. Proprietà della convoluzione (1D) — con dimostrazione
+## 7. Proprietà della convoluzione (1D) - con dimostrazione
 
 ### 7.1 Commutatività: $(x*w)(t) = (w*x)(t)$
 
@@ -220,7 +220,7 @@ $$a = \rho\cos\theta, \qquad b = \rho\sin\theta, \qquad \rho = \sqrt{a^2+b^2}\ge
 
 ---
 
-## 10. Sintesi — checklist d'esame
+## 10. Sintesi - checklist d'esame
 
 - [ ] Sapere definire compatto, scatola, indicatrice, funzione semplice.
 - [ ] Saper scrivere $\int_{\mathbb{R}^N}\varphi$ per $\varphi$ semplice (altezza × prodotto basi).
@@ -229,6 +229,6 @@ $$a = \rho\cos\theta, \qquad b = \rho\sin\theta, \qquad \rho = \sqrt{a^2+b^2}\ge
 - [ ] Formula cambio di variabile con $|\det J_g|$.
 - [ ] Definizione convoluzione 1D e 2D, ruolo del kernel come densità ($w\ge 0,\ \int w=1$).
 - [ ] Filtro media: kernel + calcolo esplicito.
-- [ ] Dimostrare commutatività (1D e 2D), linearità, equivarianza alla traslazione/posizione (1D e 2D) — sempre via cambio di variabile con jacobiano.
+- [ ] Dimostrare commutatività (1D e 2D), linearità, equivarianza alla traslazione/posizione (1D e 2D) - sempre via cambio di variabile con jacobiano.
 - [ ] Filtro gaussiano: forma, separabilità, passaggio in polari ($|\det J_g|=\rho$), troncamento $\sim 3\sigma$, discretizzazione.
 - [ ] Distinguere **equivarianza** da **invarianza**: la convoluzione è equivariante alle traslazioni.

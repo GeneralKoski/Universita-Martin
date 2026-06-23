@@ -1,13 +1,13 @@
-# 11 — Esercizi: Matrici TU e Teorema di Interezza
+# 11 - Esercizi: Matrici TU e Teorema di Interezza
 
 ## Esercizi disponibili
-- 📂 `Elly/9_Matrici_TU_e_Teorema_di_Interezza/sol_es_Lez_19_20.pdf` — esercizio con soluzione
+- 📂 `Elly/9_Matrici_TU_e_Teorema_di_Interezza/sol_es_Lez_19_20.pdf` - esercizio con soluzione
 
 ## Tipologie di esercizio
 
 ### A) Riconoscere se una matrice è TU
 1. **Check coefficienti**: tutti in {0, ±1}? Se no → non TU.
-2. **Check colonne**: ognuna ha al massimo 2 non nulli? Se no, **non si può concludere** con la condizione sufficiente (ma potrebbe essere TU lo stesso — vedi i controesempi al teorema necessario).
+2. **Check colonne**: ognuna ha al massimo 2 non nulli? Se no, **non si può concludere** con la condizione sufficiente (ma potrebbe essere TU lo stesso - vedi i controesempi al teorema necessario).
 3. **Check partizione delle righe** in M_1, M_2 secondo le regole:
    - colonne con 2 "+1" o 2 "−1" → righe in **insiemi diversi**
    - colonne con "+1" e "−1" → righe nello **stesso insieme**

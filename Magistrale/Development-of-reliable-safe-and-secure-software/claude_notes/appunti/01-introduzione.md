@@ -4,12 +4,12 @@
 
 Capacità di un sistema di erogare un servizio di cui ci si possa giustificatamente fidare. Concetto ombrello (Laprie, Avizienis) che include:
 
-- **Availability** — disponibilità del servizio quando richiesto
-- **Reliability** — continuità del servizio corretto
-- **Safety** — assenza di conseguenze catastrofiche per utenti e ambiente
-- **Confidentiality** — assenza di divulgazione non autorizzata
-- **Integrity** — assenza di alterazioni improprie dello stato
-- **Maintainability** — capacità di subire modifiche e riparazioni
+- **Availability** - disponibilità del servizio quando richiesto
+- **Reliability** - continuità del servizio corretto
+- **Safety** - assenza di conseguenze catastrofiche per utenti e ambiente
+- **Confidentiality** - assenza di divulgazione non autorizzata
+- **Integrity** - assenza di alterazioni improprie dello stato
+- **Maintainability** - capacità di subire modifiche e riparazioni
 
 **Security** = confidentiality + integrity + availability (CIA).
 
@@ -32,10 +32,10 @@ Fault --(attivazione)--> Error --(propagazione)--> Failure
 
 ## Mezzi per la dependability
 
-1. **Fault prevention** — evitare l'introduzione di fault (processo, metodologia)
-2. **Fault tolerance** — erogare servizio corretto in presenza di fault (ridondanza, recovery)
-3. **Fault removal** — ridurre numero/severità dei fault (testing, verifica)
-4. **Fault forecasting** — stimare presenza, incidenza e conseguenze (analisi, modelli)
+1. **Fault prevention** - evitare l'introduzione di fault (processo, metodologia)
+2. **Fault tolerance** - erogare servizio corretto in presenza di fault (ridondanza, recovery)
+3. **Fault removal** - ridurre numero/severità dei fault (testing, verifica)
+4. **Fault forecasting** - stimare presenza, incidenza e conseguenze (analisi, modelli)
 
 ## Reliable vs Safe vs Secure
 

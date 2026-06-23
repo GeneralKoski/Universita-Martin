@@ -1,9 +1,9 @@
-# 4 — Cammini Minimi: Algoritmo di Dijkstra (Lezioni 7-8)
+# 4 - Cammini Minimi: Algoritmo di Dijkstra (Lezioni 7-8)
 
 ## Contenuto cartella
-- `Lezioni 7-8.pdf` — algoritmo di Dijkstra (teoria + esempio)
-- `ese_3.1_2026.pdf` — esercizio
-- `Sol-piano-rinn-ott.pdf` — soluzione esercizio "piano di rinnovo ottimale"
+- `Lezioni 7-8.pdf` - algoritmo di Dijkstra (teoria + esempio)
+- `ese_3.1_2026.pdf` - esercizio
+- `Sol-piano-rinn-ott.pdf` - soluzione esercizio "piano di rinnovo ottimale"
 
 ## Ipotesi
 - G = (V, A) orientato

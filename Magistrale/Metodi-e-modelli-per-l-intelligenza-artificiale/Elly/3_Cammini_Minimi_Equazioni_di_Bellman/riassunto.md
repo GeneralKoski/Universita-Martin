@@ -1,8 +1,8 @@
-# 3 — Cammini Minimi: Equazioni di Bellman (Lezioni 5-6)
+# 3 - Cammini Minimi: Equazioni di Bellman (Lezioni 5-6)
 
 ## Contenuto cartella
-- `Lezioni 5-6.pdf` — teoria delle equazioni di Bellman
-- `ese_2_2026.pdf`, `ese_3_2026.pdf` — esercizi
+- `Lezioni 5-6.pdf` - teoria delle equazioni di Bellman
+- `ese_2_2026.pdf`, `ese_3_2026.pdf` - esercizi
 
 ## Problema
 Dato G = (V, A) orientato, una funzione lunghezza ℓ: A → ℝ e un nodo s ∈ V. Determinare per ogni j ∈ V un cammino di lunghezza minima da s a j.

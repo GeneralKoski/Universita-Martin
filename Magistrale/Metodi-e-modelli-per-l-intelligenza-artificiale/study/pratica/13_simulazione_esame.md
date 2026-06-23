@@ -1,9 +1,9 @@
-# 10 — Simulazione d'esame
+# 10 - Simulazione d'esame
 
 Quando arrivi qui, hai studiato tutto. Ora alleni la **resistenza** e la **gestione del tempo**.
 
 ## Risorsa principale
-- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` (48 pp.) — tracce risolte degli anni passati
+- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` (48 pp.) - tracce risolte degli anni passati
 - 📂 `Appunti_colleghi/Zip_appunti/NICOLODI REVISIONI 1.pdf` (18 pp.)
 
 ## Modalità (da scheda ufficiale + indicazioni colleghi)

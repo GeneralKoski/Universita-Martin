@@ -1,6 +1,6 @@
 # Metodi e modelli per l'intelligenza artificiale
 
-Appunti, esercizi e materiale di studio per il corso **Metodi e modelli per l'intelligenza artificiale** — Laurea Magistrale in Scienze Informatiche, Università di Parma.
+Appunti, esercizi e materiale di studio per il corso **Metodi e modelli per l'intelligenza artificiale** - Laurea Magistrale in Scienze Informatiche, Università di Parma.
 
 ## Informazioni corso (A.A. 2025/2026)
 
@@ -8,12 +8,12 @@ Appunti, esercizi e materiale di studio per il corso **Metodi e modelli per l'in
 |---|---|
 | Codice | 334989 |
 | Corso di laurea | Scienze Informatiche (LM) |
-| Mutuato da | Ingegneria Gestionale — Metodi e modelli per le decisioni (9 CFU, DISTI) |
+| Mutuato da | Ingegneria Gestionale - Metodi e modelli per le decisioni (9 CFU, DISTI) |
 | Programma 6 CFU | fino a *Trasporto generalizzato e problemi facili* incluso |
-| Anno / Semestre | 1° anno — 2° semestre |
+| Anno / Semestre | 1° anno - 2° semestre |
 | CFU | 6 |
 | Ore | 48 (lezioni frontali) |
-| SSD | MAT/03 — Geometria |
+| SSD | MAT/03 - Geometria |
 | Tipologia | Affine / Integrativa |
 | Lingua | Italiano |
 | Docente | Prof. Lorenzo Nicolodi |
@@ -71,13 +71,13 @@ Lezioni frontali con esempi, applicazioni ed esercizi assegnati e discussi a lez
 ## Link utili
 
 - [Pagina del corso (UniPR)](https://corsi.unipr.it/it/ugov/degreecourse/334989)
-- [Corso di laurea — Scienze Informatiche](https://corsi.unipr.it/it/scheda/cdlm-info)
-- [Materiale didattico — Elly2025](https://elly2025.didattica.unipr.it/course/index.php?categoryid=2)
+- [Corso di laurea - Scienze Informatiche](https://corsi.unipr.it/it/scheda/cdlm-info)
+- [Materiale didattico - Elly2025](https://elly2025.didattica.unipr.it/course/index.php?categoryid=2)
 - [Calendario esami](https://corsi.unipr.it/it/ugov/degreecourse/334989)
 
 ## Contatti
 
 - **Docente:** Prof. Lorenzo Nicolodi
-- **Presidente CdS:** Prof. Vincenzo Bonnici — <vincenzo.bonnici@unipr.it>
-- **Manager didattica:** Dott.ssa Claudia Buga — <claudia.buga@unipr.it>
+- **Presidente CdS:** Prof. Vincenzo Bonnici - <vincenzo.bonnici@unipr.it>
+- **Manager didattica:** Dott.ssa Claudia Buga - <claudia.buga@unipr.it>
 - **Segreteria studenti:** <segreteria.scienze@unipr.it>

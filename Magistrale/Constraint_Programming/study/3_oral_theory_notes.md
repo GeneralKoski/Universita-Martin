@@ -260,7 +260,7 @@ constraint b -> (z = 10);
 
 **Quando aiutano**: quando il propagator di `c'` deduce informazioni che il propagator di `c` non riesce a ottenere da solo, perché lavora su una struttura algebrica diversa.
 
-**Esempio classico**: `alldifferent(x₁, …, xₙ)` con `xᵢ ∈ 1..n`. Il propagator di Régin garantisce AC. Aggiungere `sum(xᵢ) = n(n+1)/2` non cambia le soluzioni, ma fornisce **bound consistency** sulla somma — utile se hai informazione lineare da combinare.
+**Esempio classico**: `alldifferent(x₁, …, xₙ)` con `xᵢ ∈ 1..n`. Il propagator di Régin garantisce AC. Aggiungere `sum(xᵢ) = n(n+1)/2` non cambia le soluzioni, ma fornisce **bound consistency** sulla somma - utile se hai informazione lineare da combinare.
 
 **Sul Sudoku 9×9**: i vincoli `sum=45` su righe/colonne/blocchi sono implicati da `alldifferent`. In pratica il guadagno è marginale (`alldifferent` è già fortissimo), ma esistono come dimostrazione del principio. Su problemi dove i propagatori globali sono assenti, i vincoli ridondanti possono fare la differenza tra "minuti" e "ore".
 
@@ -419,4 +419,4 @@ Una **soluzione** è un assegnamento `α : X → ⋃ D` con `α(xᵢ) ∈ D(xᵢ
 → Contare *tutte* le soluzioni sì. Contare fino a 2 (`#≥2`) è in NP, basta esibire 2 soluzioni come testimonianza. Il progetto sfrutta questo. Vedi §3.
 
 **"Hai gestito le simmetrie del Sudoku?"**
-→ Nel modello base no, perché le clue rompono già le simmetrie. Per il modello di generazione delle griglie complete potrei aggiungere `lex_less` sulle prime righe — è un'estensione documentata in §10 e nel report §7.
+→ Nel modello base no, perché le clue rompono già le simmetrie. Per il modello di generazione delle griglie complete potrei aggiungere `lex_less` sulle prime righe - è un'estensione documentata in §10 e nel report §7.

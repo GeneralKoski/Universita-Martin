@@ -1,4 +1,4 @@
-# Domande d'esame — risposte complete
+# Domande d'esame - risposte complete
 
 Risposte in stile "esame scritto" alle 32 domande di esempio fornite dalla
 prof.ssa Iotti. Ordine originale conservato. Dove utile, formule e definizioni
@@ -330,7 +330,7 @@ ReLU'(z) = 1 se z > 0,  0 se z < 0  (non differenziabile in 0)
   - **non satura per `z > 0`** → niente vanishing gradient nella zona attiva;
   - induce **sparsità** (molti neuroni inattivi);
   - empiricamente accelera fortemente l'addestramento di reti profonde.
-- **Contro**: **dying ReLU** — neuroni con `z ≤ 0` su tutti gli esempi hanno
+- **Contro**: **dying ReLU** - neuroni con `z ≤ 0` su tutti gli esempi hanno
   gradiente nullo permanentemente.
 - **Uso**: hidden layer di tutte le moderne reti deep (CNN, transformer in
   alcune posizioni, MLP profondi). Varianti: Leaky ReLU, PReLU, ELU, GELU.
@@ -436,7 +436,7 @@ dove `ℓ(ŷ, t)` è una **per-sample loss** (perdita su singolo esempio).
 2. **Guida l'ottimizzazione**: il gradiente `∇_θ L` indica la direzione di
    aggiornamento dei parametri (discesa del gradiente).
 3. **Codifica il problema**: scegliere la loss equivale a definire cosa
-   significa "errare" — regressione, classificazione e modelli generativi
+   significa "errare" - regressione, classificazione e modelli generativi
    richiedono loss diverse.
 4. **Determina le proprietà del modello**: convessità, robustezza agli
    outlier, calibrazione probabilistica dipendono dalla scelta di `ℓ`.
@@ -753,7 +753,7 @@ moderni (PyTorch, TensorFlow) la implementano in modo automatico
 **3. Abilitazione del deep learning.** Prima della backprop (Rumelhart,
 Hinton, Williams 1986) era noto solo come addestrare l'SLP, limitato ai
 problemi linearmente separabili. La backprop ha sbloccato l'addestramento
-degli MLP — quindi delle reti universali (vedi Q10) — e tutto ciò che ne è
+degli MLP - quindi delle reti universali (vedi Q10) - e tutto ciò che ne è
 seguito.
 
 **4. Modularità.** Ogni layer espone solo un'interfaccia "forward
@@ -774,7 +774,7 @@ sperimentali.
 
 ### Enunciato preciso (Cybenko 1989)
 Sia `φ: ℝ → ℝ` una funzione continua, limitata, monotona crescente
-(detta "funzione sigmoidale" — la sigmoide standard ne è un esempio). Sia
+(detta "funzione sigmoidale" - la sigmoide standard ne è un esempio). Sia
 `K ⊂ ℝᴺ` un compatto. Allora le combinazioni lineari finite della forma
 
 ```
@@ -813,7 +813,7 @@ compatto** con precisione arbitraria. Le reti neurali sono dunque
   non garantisce buone performance su dati nuovi.
 - **Profondità vs larghezza**: il teorema parla di reti shallow (`L = 1`).
   Risultati successivi mostrano che reti **deep** approssimano molte
-  funzioni con esponenzialmente meno neuroni — vantaggio espressivo della
+  funzioni con esponenzialmente meno neuroni - vantaggio espressivo della
   profondità che il teorema universale non cattura.
 
 ### Importanza
@@ -961,9 +961,9 @@ colore percepite. Utile per metriche di similarità.
 
 ### Trade-off complessivo
 La rappresentazione dell'immagine è il risultato di tre scelte:
-- Quante celle sulla griglia? (campionamento — risoluzione spaziale)
-- Quanti livelli per cella? (quantizzazione — profondità di colore)
-- In che sistema? (spazio colorimetrico — interpretazione semantica)
+- Quante celle sulla griglia? (campionamento - risoluzione spaziale)
+- Quanti livelli per cella? (quantizzazione - profondità di colore)
+- In che sistema? (spazio colorimetrico - interpretazione semantica)
 
 ---
 
@@ -1155,7 +1155,7 @@ L'unica differenza con la cross-correlazione è il segno meno (o equivalentement
 il flip del kernel su entrambi gli assi).
 
 ### Differenza formale chiave
-- **Cross-correlazione**: il kernel viene **applicato direttamente** —
+- **Cross-correlazione**: il kernel viene **applicato direttamente** -
   scivola sull'immagine e si fa il prodotto pesato.
 - **Convoluzione**: il kernel viene **prima ribaltato** (flip orizzontale e
   verticale) e poi applicato.
@@ -1593,7 +1593,7 @@ traslazione** dei filtri convoluzionali in image processing e nelle CNN.
 Se `f` ha supporto in `A` e `g` in `B`, allora `f * g` ha supporto in
 `A + B = {a + b : a ∈ A, b ∈ B}`. La convoluzione "allarga" il supporto.
 
-**10. Caso particolare 2D — separabilità.**
+**10. Caso particolare 2D - separabilità.**
 Se `g(x, y) = g₁(x) · g₂(y)`, allora:
 ```
 (f * g)(x, y) = ((f *_x g₁) *_y g₂)(x, y)
@@ -1678,7 +1678,7 @@ L'MLP non ha questa progressività spaziale.
 
 **5. Inductive bias.**
 La CNN incorpora ipotesi a priori adatte alle immagini: località,
-condivisione pesi, equivarianza. L'MLP è "neutro" — più flessibile in
+condivisione pesi, equivarianza. L'MLP è "neutro" - più flessibile in
 linea di principio ma molto meno efficiente sui dati con struttura.
 
 ### Quando usare quale
@@ -2127,13 +2127,13 @@ L'equilibrio del gioco è il **punto di sella di Nash**: a convergenza,
 ### Algoritmo di addestramento
 A ogni iterazione si alterna:
 
-**Step 1 — aggiorna D** (per `k` step):
+**Step 1 - aggiorna D** (per `k` step):
 ```
 ∇_θ_D [ (1/m) Σ log D(xᵢ) + (1/m) Σ log(1 − D(G(zⱼ))) ]
 ```
 Salita di gradiente.
 
-**Step 2 — aggiorna G**:
+**Step 2 - aggiorna G**:
 ```
 ∇_θ_G (1/m) Σ log(1 − D(G(zⱼ)))
 ```
@@ -2301,8 +2301,8 @@ profonde.
 
 ### Funzionamento generale
 Una **Convolutional Neural Network (CNN)** è una rete neurale specializzata
-per dati con struttura a griglia (immagini). Trasforma l'input — un tensore
-`H × W × C` (altezza × larghezza × canali) — in un output (es. vettore di
+per dati con struttura a griglia (immagini). Trasforma l'input - un tensore
+`H × W × C` (altezza × larghezza × canali) - in un output (es. vettore di
 probabilità di classi) attraverso una sequenza di layer specializzati.
 
 L'idea di fondo è una **gerarchia di rappresentazioni**:

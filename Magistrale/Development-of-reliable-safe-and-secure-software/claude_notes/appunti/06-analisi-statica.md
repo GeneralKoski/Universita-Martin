@@ -4,13 +4,13 @@ Analisi del codice **senza eseguirlo**. Complementare al testing.
 
 ## Tipi
 
-- **Linting** — convenzioni, code smell (ESLint, PHPStan a livello base, pylint).
-- **Type checking** — sistemi di tipi (TypeScript, mypy, Psalm).
-- **Data-flow analysis** — propagazione di valori/proprietà nel CFG.
-- **Control-flow analysis** — costruzione del CFG, dead code, unreachable.
-- **Abstract interpretation** — semantica approssimata su domini astratti.
-- **Symbolic execution** — analisi con valori simbolici, accumula path conditions.
-- **Model checking** — verifica automatica di proprietà su un modello finito.
+- **Linting** - convenzioni, code smell (ESLint, PHPStan a livello base, pylint).
+- **Type checking** - sistemi di tipi (TypeScript, mypy, Psalm).
+- **Data-flow analysis** - propagazione di valori/proprietà nel CFG.
+- **Control-flow analysis** - costruzione del CFG, dead code, unreachable.
+- **Abstract interpretation** - semantica approssimata su domini astratti.
+- **Symbolic execution** - analisi con valori simbolici, accumula path conditions.
+- **Model checking** - verifica automatica di proprietà su un modello finito.
 
 ## Soundness vs completeness
 

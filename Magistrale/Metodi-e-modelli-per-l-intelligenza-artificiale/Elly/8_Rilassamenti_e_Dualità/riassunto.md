@@ -1,9 +1,9 @@
-# 8 — Rilassamenti e Dualità (Lezioni 17-18)
+# 8 - Rilassamenti e Dualità (Lezioni 17-18)
 
 ## Contenuto cartella
-- `Lezioni 17-18.pdf` — rilassamenti, rilassamento lineare, lagrangiano, dualità
-- `ese_7_2026.pdf` — esercizio (1-albero e STSP)
-- `sol-ese-7.pdf` — soluzione esercizio 7
+- `Lezioni 17-18.pdf` - rilassamenti, rilassamento lineare, lagrangiano, dualità
+- `ese_7_2026.pdf` - esercizio (1-albero e STSP)
+- `sol-ese-7.pdf` - soluzione esercizio 7
 
 ## Stime per il valore ottimo z*
 Dato un problema di max z* = max{c(x): x ∈ X}:

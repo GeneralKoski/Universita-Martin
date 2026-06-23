@@ -1,4 +1,4 @@
-# 02 — BFS e DFS
+# 02 - BFS e DFS
 
 📂 Fonte: `Elly/2_Procedure_BFS_e_DFS/Lezioni 3-4.pdf`
 

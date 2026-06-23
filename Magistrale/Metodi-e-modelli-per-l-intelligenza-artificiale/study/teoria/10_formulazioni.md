@@ -1,4 +1,4 @@
-# 10 — Formulazioni e prospettiva geometrica
+# 10 - Formulazioni e prospettiva geometrica
 
 📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /Lezioni 15-16.pdf`
 

@@ -1,4 +1,4 @@
-# 03 — Equazioni di Bellman
+# 03 - Equazioni di Bellman
 
 📂 Fonte: `Elly/3_Cammini_Minimi_Equazioni_di_Bellman/Lezioni 5-6.pdf`
 

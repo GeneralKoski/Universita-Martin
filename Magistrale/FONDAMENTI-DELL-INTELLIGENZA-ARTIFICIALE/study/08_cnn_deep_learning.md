@@ -1,6 +1,6 @@
-# Lezione 8 — CNN, Pooling, Backpropagation, RNN
+# Lezione 8 - CNN, Pooling, Backpropagation, RNN
 
-> Riferimenti: `Lezione_8/Lezione 8.pdf`, `l8a.pdf`, `l8b.pdf` — Prof. Iotti, Fondamenti di IA, UniPR.
+> Riferimenti: `Lezione_8/Lezione 8.pdf`, `l8a.pdf`, `l8b.pdf` - Prof. Iotti, Fondamenti di IA, UniPR.
 > Obiettivo: passare dalla convoluzione all'architettura CNN, definirne formalmente il blocco convoluzionale e il pooling, derivare la backpropagation (cross-correlation con kernel flippato; indicatrice del massimo per max-pool), introdurre regolarizzazione (dropout) e dati sequenziali (RNN). Cenni su modelli generativi.
 
 ---
@@ -75,7 +75,7 @@ dove:
 - Confronto con MLP fully-connected su un'immagine $1000 \times 1000$:
   - MLP: ogni neurone del primo layer ha $10^6$ pesi $\Rightarrow$ milioni/miliardi di parametri.
   - CNN con $K$ filtri $3\times 3$: $9K$ parametri (+ bias) totali, indipendentemente dalle dimensioni dell'immagine.
-- Consente **equivarianza alla traslazione** (l'attivazione si sposta con l'input — vedi Lezione 7) e drastica riduzione del numero di parametri.
+- Consente **equivarianza alla traslazione** (l'attivazione si sposta con l'input - vedi Lezione 7) e drastica riduzione del numero di parametri.
 
 ---
 
@@ -205,7 +205,7 @@ $$\underline{0} \to f \xrightarrow{\underline{x}(0)} \underline{y}(0) \to f \xri
 
 ---
 
-## 9. Sintesi — checklist d'esame
+## 9. Sintesi - checklist d'esame
 
 - [ ] Definizione di cross-correlation e relazione $(x \star w)(t) = (x * w^-)(-t)$.
 - [ ] Architettura tipo CNN: Conv + Pool $\times k$ + MLP.
@@ -213,7 +213,7 @@ $$\underline{0} \to f \xrightarrow{\underline{x}(0)} \underline{y}(0) \to f \xri
 - [ ] Definizione di slice e fibra di un tensore.
 - [ ] Formula esplicita $C_{ij}^k = \sigma\big(\sum_c \sum_\ell \sum_m w_{\ell m}\, x_{i-\ell, j-m}^{(c)} + b\big)$.
 - [ ] Argomento dei **pesi condivisi**: $m^2$ parametri/filtro indipendenti dalle dimensioni dell'immagine, vs. milioni/miliardi in MLP fully-connected.
-- [ ] Backprop nel blocco conv: $\partial \mathcal{L}/\partial w_{ij}^{(\ell)} = \sum_v \delta_v^{(\ell+1)} w_{jv}^{(\ell+1)} \cdot (d\sigma/ds \star \underline{x})_i$ — implementata come **cross-correlation** col kernel flippato.
+- [ ] Backprop nel blocco conv: $\partial \mathcal{L}/\partial w_{ij}^{(\ell)} = \sum_v \delta_v^{(\ell+1)} w_{jv}^{(\ell+1)} \cdot (d\sigma/ds \star \underline{x})_i$ - implementata come **cross-correlation** col kernel flippato.
 - [ ] Max-pooling: definizione, **non differenziabile**; backprop tramite indicatrice $\mathbf{1}_{\{s_j = p_{ij}^k\}}$ (solo il "vincitore" riceve gradiente).
 - [ ] Average pooling come alternativa lineare e differenziabile.
 - [ ] Dropout: cosa fa e perché regolarizza.

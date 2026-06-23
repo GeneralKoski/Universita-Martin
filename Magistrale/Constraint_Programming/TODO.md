@@ -1,4 +1,4 @@
-# TODO — Constraint Programming
+# TODO - Constraint Programming
 
 Stato: progetto tecnicamente completo, manca solo la preparazione dell'orale.
 

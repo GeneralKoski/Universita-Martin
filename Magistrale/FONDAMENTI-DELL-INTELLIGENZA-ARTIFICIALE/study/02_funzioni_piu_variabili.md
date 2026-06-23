@@ -1,4 +1,4 @@
-# Lezione 2 — Funzioni in più variabili
+# Lezione 2 - Funzioni in più variabili
 
 Continuazione dei fondamenti matematici. Si tratta di funzioni `f: ℝᴺ → ℝ` (e `F: ℝᴺ → ℝᴹ`), continuità, derivabilità, differenziabilità, gradiente, teorema di Schwartz.
 
@@ -32,7 +32,7 @@ Confrontando: `x·y = ‖x‖·‖y‖·cos θ` ⇒ formula del coseno.
 
 ---
 
-## 2. Funzioni in più variabili — definizioni
+## 2. Funzioni in più variabili - definizioni
 
 - **Scalare**: `f: ℝᴺ → ℝ`, `(x₁,...,xₙ) ↦ y ∈ ℝ`. Per ogni vettore x ∈ ℝᴺ esiste un unico y ∈ ℝ.
 - **Vettoriale**: `F: ℝᴺ → ℝᴹ`, `F = (f₁,...,fₘ)ᵀ`, ogni `fᵢ: ℝᴺ → ℝ`.
@@ -194,8 +194,8 @@ Sia `f: ℝᴺ → ℝ` con derivate parziali esistenti in B(x₀, r), r > 0. Se
 ### Derivate seconde
 Per `f: ℝ² → ℝ` ci sono 4 derivate seconde:
 - `∂²f/∂x²` (xx)
-- `∂²f/∂x∂y` (yx, prima rispetto a y, poi rispetto a x — *mista*)
-- `∂²f/∂y∂x` (xy, prima rispetto a x, poi rispetto a y — *mista*)
+- `∂²f/∂x∂y` (yx, prima rispetto a y, poi rispetto a x - *mista*)
+- `∂²f/∂y∂x` (xy, prima rispetto a x, poi rispetto a y - *mista*)
 - `∂²f/∂y²` (yy)
 
 ### Esempio

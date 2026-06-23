@@ -1,7 +1,7 @@
-# Email to Prof. Bagnara — request for course material and exam info
+# Email to Prof. Bagnara - request for course material and exam info
 
 **To:** roberto.bagnara@unipr.it
-**Subject:** Request for information on course material and exam — Development of Reliable, Safe and Secure Software
+**Subject:** Request for information on course material and exam - Development of Reliable, Safe and Secure Software
 
 ---
 

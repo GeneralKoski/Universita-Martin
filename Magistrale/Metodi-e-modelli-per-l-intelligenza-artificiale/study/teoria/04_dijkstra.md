@@ -1,4 +1,4 @@
-# 04 — Algoritmo di Dijkstra
+# 04 - Algoritmo di Dijkstra
 
 📂 Fonte: `Elly/4_Cammini_Minimi_Dijkstra/Lezioni 7-8.pdf`
 

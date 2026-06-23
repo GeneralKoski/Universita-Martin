@@ -15,7 +15,7 @@
 \pagestyle{fancy}\fancyhf{}\rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \begin{document}\small
-\begin{center}{\Large\bfseries Domande d'esame — risposte complete}\end{center}
+\begin{center}{\Large\bfseries Domande d'esame - risposte complete}\end{center}
 Risposte in stile "esame scritto" alle 32 domande di esempio fornite dalla prof.ssa Iotti. Ordine originale conservato. Dove utile, formule e definizioni formali sono incluse esplicitamente.
 \newpage
 \section*{Q1. Cosa si intende per "spazio metrico" e in che modo la "metrica euclidea su $\mathbb{R}$" vi si relaziona?}
@@ -182,7 +182,7 @@ Per superare questi limiti si introduce il \textbf{Multi-Layer Perceptron (MLP)}
 \item \textbf{non satura per $z > 0$} $\to $ niente vanishing gradient nella zona attiva;
 \item induce \textbf{sparsità} (molti neuroni inattivi);
 \item empiricamente accelera fortemente l'addestramento di reti profonde.
-\item \textbf{Contro}: \textbf{dying ReLU} — neuroni con $z \le  0$ su tutti gli esempi hanno gradiente nullo permanentemente.
+\item \textbf{Contro}: \textbf{dying ReLU} - neuroni con $z \le  0$ su tutti gli esempi hanno gradiente nullo permanentemente.
 \item \textbf{Uso}: hidden layer di tutte le moderne reti deep (CNN, transformer in alcune posizioni, MLP profondi). Varianti: Leaky ReLU, PReLU, ELU, GELU.
 \end{itemize}
 \subsection*{Tabella sintetica}
@@ -241,7 +241,7 @@ dove $\ell (\hat{y}, t)$ è una \textbf{per-sample loss} (perdita su singolo ese
 \begin{enumerate}
 \item \textbf{Definisce l'obiettivo}: l'apprendimento si formalizza come $\theta * = \operatorname{argmin}_\theta  L(\theta )$.
 \item \textbf{Guida l'ottimizzazione}: il gradiente $\nabla _\theta  L$ indica la direzione di aggiornamento dei parametri (discesa del gradiente).
-\item \textbf{Codifica il problema}: scegliere la loss equivale a definire cosa significa "errare" — regressione, classificazione e modelli generativi richiedono loss diverse.
+\item \textbf{Codifica il problema}: scegliere la loss equivale a definire cosa significa "errare" - regressione, classificazione e modelli generativi richiedono loss diverse.
 \item \textbf{Determina le proprietà del modello}: convessità, robustezza agli outlier, calibrazione probabilistica dipendono dalla scelta di $\ell $.
 \end{enumerate}
 \subsection*{Esempio: Mean Squared Error (MSE)}
@@ -409,7 +409,7 @@ Da $\delta ^{(l)}$ si ottengono direttamente $\partial L/\partial W^{(l)}$ e $\p
 \subsection*{Importanza per gli MLP}
 \textbf{1. Efficienza.} Il costo è $O(P)$ con \texttt{P} numero totale di parametri, lo stesso ordine di un singolo forward pass. Senza backprop si dovrebbe stimare ogni $\partial L/\partial \theta _k$ con differenze finite (\texttt{P} forward pass), rendendo il training proibitivo per reti con milioni di parametri.
 \textbf{2. Generalità.} Funziona per qualunque architettura computabile come grafo di operazioni differenziabili (MLP, CNN, RNN, transformer). I framework moderni (PyTorch, TensorFlow) la implementano in modo automatico (autograd).
-\textbf{3. Abilitazione del deep learning.} Prima della backprop (Rumelhart, Hinton, Williams 1986) era noto solo come addestrare l'SLP, limitato ai problemi linearmente separabili. La backprop ha sbloccato l'addestramento degli MLP — quindi delle reti universali (vedi Q10) — e tutto ciò che ne è seguito.
+\textbf{3. Abilitazione del deep learning.} Prima della backprop (Rumelhart, Hinton, Williams 1986) era noto solo come addestrare l'SLP, limitato ai problemi linearmente separabili. La backprop ha sbloccato l'addestramento degli MLP - quindi delle reti universali (vedi Q10) - e tutto ciò che ne è seguito.
 \textbf{4. Modularità.} Ogni layer espone solo un'interfaccia "forward + backward"; nuovi layer si possono inserire purché definiscano la loro derivata locale. Questo ha permesso un'esplosione di architetture sperimentali.
 \subsection*{Limiti}
 \begin{itemize}
@@ -419,7 +419,7 @@ Da $\delta ^{(l)}$ si ottengono direttamente $\partial L/\partial W^{(l)}$ e $\p
 \newpage
 \section*{Q15. Cosa afferma il "Teorema di approssimazione universale"?}
 \subsection*{Enunciato preciso (Cybenko 1989)}
-Sia $\varphi : \mathbb{R} \to  \mathbb{R}$ una funzione continua, limitata, monotona crescente (detta "funzione sigmoidale" — la sigmoide standard ne è un esempio). Sia $K \subset  \mathbb{R}^{N}$ un compatto. Allora le combinazioni lineari finite della forma
+Sia $\varphi : \mathbb{R} \to  \mathbb{R}$ una funzione continua, limitata, monotona crescente (detta "funzione sigmoidale" - la sigmoide standard ne è un esempio). Sia $K \subset  \mathbb{R}^{N}$ un compatto. Allora le combinazioni lineari finite della forma
 \[ F(x) = \sum _{i=1}^{M} \alpha _{i} \cdot  \varphi (w_{i} \cdot  x + b_{i}) \]
 con $M \in  \mathbb{N}$, $\alpha _{i}, b_{i} \in  \mathbb{R}$, $w_{i} \in  \mathbb{R}^{N}$, sono \textbf{dense nello spazio $C(K)$} delle funzioni continue su \texttt{K}. In altri termini, per ogni $f \in  C(K)$ e ogni $\varepsilon  > 0$ esistono $M, \alpha _{i}, w_{i}, b_{i}$ tali che
 \[ \operatorname{sup}_{x \in  K} |F(x) - f(x)| < \varepsilon  \]
@@ -437,7 +437,7 @@ Una \textbf{rete neurale feedforward con un solo layer nascosto} e numero suffic
 \item \textbf{Numero di neuroni \texttt{M}}: nessun bound utile in pratica; può essere esponenziale nella dimensione \texttt{N} (curse of dimensionality).
 \item \textbf{Apprendibilità}: il teorema dice che esistono pesi buoni, non che la discesa del gradiente li trovi.
 \item \textbf{Generalizzazione}: l'approssimazione vale sui dati di training (su \texttt{K}), non garantisce buone performance su dati nuovi.
-\item \textbf{Profondità vs larghezza}: il teorema parla di reti shallow ($L = 1$). Risultati successivi mostrano che reti \textbf{deep} approssimano molte funzioni con esponenzialmente meno neuroni — vantaggio espressivo della profondità che il teorema universale non cattura.
+\item \textbf{Profondità vs larghezza}: il teorema parla di reti shallow ($L = 1$). Risultati successivi mostrano che reti \textbf{deep} approssimano molte funzioni con esponenzialmente meno neuroni - vantaggio espressivo della profondità che il teorema universale non cattura.
 \end{itemize}
 \subsection*{Importanza}
 È la \textbf{giustificazione teorica} dell'uso delle reti neurali come modelli generali. Risponde all'obiezione storica (post Minsky–Papert) sulla limitatezza espressiva dei modelli neurali: i singoli percettroni sono limitati, ma un MLP con un layer nascosto è universale. Il successo pratico del deep learning, però, dipende da fattori (ottimizzazione, regolarizzazione, dati abbondanti, profondità) che il teorema da solo non spiega.
@@ -495,9 +495,9 @@ Lo \textbf{spazio colorimetrico} (o color space) è il sistema matematico con cu
 \subsection*{Trade-off complessivo}
 La rappresentazione dell'immagine è il risultato di tre scelte:
 \begin{itemize}
-\item Quante celle sulla griglia? (campionamento — risoluzione spaziale)
-\item Quanti livelli per cella? (quantizzazione — profondità di colore)
-\item In che sistema? (spazio colorimetrico — interpretazione semantica)
+\item Quante celle sulla griglia? (campionamento - risoluzione spaziale)
+\item Quanti livelli per cella? (quantizzazione - profondità di colore)
+\item In che sistema? (spazio colorimetrico - interpretazione semantica)
 \end{itemize}
 \newpage
 \section*{Q18. Come si utilizza un istogramma per operazioni di elaborazione su immagini in scala di grigi?}
@@ -582,7 +582,7 @@ In 2D:
 L'unica differenza con la cross-correlazione è il segno meno (o equivalentemente il flip del kernel su entrambi gli assi).
 \subsection*{Differenza formale chiave}
 \begin{itemize}
-\item \textbf{Cross-correlazione}: il kernel viene \textbf{applicato direttamente} — scivola sull'immagine e si fa il prodotto pesato.
+\item \textbf{Cross-correlazione}: il kernel viene \textbf{applicato direttamente} - scivola sull'immagine e si fa il prodotto pesato.
 \item \textbf{Convoluzione}: il kernel viene \textbf{prima ribaltato} (flip orizzontale e verticale) e poi applicato.
 \end{itemize}
 Per kernel \textbf{simmetrici} (es. gaussiano, Laplaciano isotropo) le due operazioni coincidono. Per kernel \textbf{asimmetrici} (es. Sobel) i risultati differiscono per il segno o per uno specchio.
@@ -794,7 +794,7 @@ Conseguenza: filtri lineari sono caratterizzati dalla loro \textbf{risposta in f
 \[ T_a(f * g) = T_a(f) * g = f * T_a(g) \]
 Questa è la proprietà che giustifica matematicamente l'\textbf{equivarianza per traslazione} dei filtri convoluzionali in image processing e nelle CNN.
 \textbf{9. Supporto.} Se \texttt{f} ha supporto in \texttt{A} e \texttt{g} in \texttt{B}, allora $f * g$ ha supporto in $A + B = {a + b : a \in  A, b \in  B}$. La convoluzione "allarga" il supporto.
-\textbf{10. Caso particolare 2D — separabilità.} Se $g(x, y) = g_{1}(x) \cdot  g_{2}(y)$, allora:
+\textbf{10. Caso particolare 2D - separabilità.} Se $g(x, y) = g_{1}(x) \cdot  g_{2}(y)$, allora:
 \[ (f * g)(x, y) = ((f *_x g_{1}) *_y g_{2})(x, y) \]
 La convoluzione 2D si decompone in due convoluzioni 1D: enorme risparmio computazionale ($O(k^{2}) \to  O(2k)$ per kernel $k\times k$). Esempio classico: la gaussiana 2D è il prodotto di due gaussiane 1D.
 \subsection*{Conclusione}
@@ -841,7 +841,7 @@ Gerarchia spaziale & no & sì (via pooling) \\ \hline
 CNN con primo conv $3\times 3\times 3 \to  64$ filtri: \texttt{1728} parametri. La differenza in parametri è di \textbf{5 ordini di grandezza} o più.
 \textbf{3. Equivarianza per traslazione.} Una CNN riconosce un pattern indipendentemente dalla sua posizione: lo stesso kernel viene applicato in ogni posizione. Un MLP deve "imparare" ogni traslazione separatamente.
 \textbf{4. Gerarchia di feature (con pooling/strides).} Layer iniziali $\to $ bordi e texture (feature locali, piccoli campi recettivi). Layer profondi $\to $ oggetti complessi (campi recettivi grandi). L'MLP non ha questa progressività spaziale.
-\textbf{5. Inductive bias.} La CNN incorpora ipotesi a priori adatte alle immagini: località, condivisione pesi, equivarianza. L'MLP è "neutro" — più flessibile in linea di principio ma molto meno efficiente sui dati con struttura.
+\textbf{5. Inductive bias.} La CNN incorpora ipotesi a priori adatte alle immagini: località, condivisione pesi, equivarianza. L'MLP è "neutro" - più flessibile in linea di principio ma molto meno efficiente sui dati con struttura.
 \subsection*{Quando usare quale}
 \begin{itemize}
 \item \textbf{MLP}: dati tabulari, vettoriali, senza struttura spaziale.
@@ -1085,10 +1085,10 @@ Le due reti sono addestrate alternativamente con obiettivi opposti:
 L'equilibrio del gioco è il \textbf{punto di sella di Nash}: a convergenza, \texttt{p\_G = p\_data} e $D(x) = 1/2$ ovunque (\texttt{D} non sa più distinguere).
 \subsection*{Algoritmo di addestramento}
 A ogni iterazione si alterna:
-\textbf{Step 1 — aggiorna D} (per \texttt{k} step):
+\textbf{Step 1 - aggiorna D} (per \texttt{k} step):
 \[ \nabla _{\theta _D} [ (1/m) \sum  \operatorname{log} D(x_{i}) + (1/m) \sum  \operatorname{log}(1 - D(G(z_{j}))) ] \]
 Salita di gradiente.
-\textbf{Step 2 — aggiorna G}:
+\textbf{Step 2 - aggiorna G}:
 \[ \nabla _{\theta _G} (1/m) \sum  \operatorname{log}(1 - D(G(z_{j}))) \]
 Discesa di gradiente.
 In pratica si usa la \textbf{non-saturating loss} per \texttt{G}:
@@ -1184,7 +1184,7 @@ Vanishing e exploding gradients sono manifestazioni dello stesso problema strutt
 \newpage
 \section*{Q32. Spiega il funzionamento di una CNN, indicando il ruolo di ciascun tipo di layer (convoluzionale, pooling, lineare).}
 \subsection*{Funzionamento generale}
-Una \textbf{Convolutional Neural Network (CNN)} è una rete neurale specializzata per dati con struttura a griglia (immagini). Trasforma l'input — un tensore $H \times  W \times  C$ (altezza $\times $ larghezza $\times $ canali) — in un output (es. vettore di probabilità di classi) attraverso una sequenza di layer specializzati.
+Una \textbf{Convolutional Neural Network (CNN)} è una rete neurale specializzata per dati con struttura a griglia (immagini). Trasforma l'input - un tensore $H \times  W \times  C$ (altezza $\times $ larghezza $\times $ canali) - in un output (es. vettore di probabilità di classi) attraverso una sequenza di layer specializzati.
 L'idea di fondo è una \textbf{gerarchia di rappresentazioni}:
 \begin{itemize}
 \item Layer iniziali estraggono feature \textbf{locali ed elementari} (bordi, texture).

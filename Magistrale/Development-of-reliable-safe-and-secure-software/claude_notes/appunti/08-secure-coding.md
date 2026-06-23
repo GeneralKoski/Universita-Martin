@@ -2,14 +2,14 @@
 
 ## OWASP Top 10 (2021)
 
-1. **A01 Broken Access Control** — controlli di autorizzazione mancanti/aggirabili.
-2. **A02 Cryptographic Failures** — dati sensibili non protetti, algoritmi obsoleti.
-3. **A03 Injection** — SQL, NoSQL, OS command, LDAP.
-4. **A04 Insecure Design** — difetti architetturali.
-5. **A05 Security Misconfiguration** — default insicuri, header mancanti.
-6. **A06 Vulnerable and Outdated Components** — dipendenze con CVE note.
-7. **A07 Identification and Authentication Failures** — gestione credenziali debole.
-8. **A08 Software and Data Integrity Failures** — supply chain, deserializzazione insicura.
+1. **A01 Broken Access Control** - controlli di autorizzazione mancanti/aggirabili.
+2. **A02 Cryptographic Failures** - dati sensibili non protetti, algoritmi obsoleti.
+3. **A03 Injection** - SQL, NoSQL, OS command, LDAP.
+4. **A04 Insecure Design** - difetti architetturali.
+5. **A05 Security Misconfiguration** - default insicuri, header mancanti.
+6. **A06 Vulnerable and Outdated Components** - dipendenze con CVE note.
+7. **A07 Identification and Authentication Failures** - gestione credenziali debole.
+8. **A08 Software and Data Integrity Failures** - supply chain, deserializzazione insicura.
 9. **A09 Security Logging and Monitoring Failures**.
 10. **A10 Server-Side Request Forgery (SSRF)**.
 

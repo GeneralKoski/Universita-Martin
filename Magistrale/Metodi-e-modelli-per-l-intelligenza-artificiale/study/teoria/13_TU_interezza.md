@@ -1,4 +1,4 @@
-# 13 — Matrici TU e Teorema di Interezza
+# 13 - Matrici TU e Teorema di Interezza
 
 📂 Fonte: `Elly/9_Matrici_TU_e_Teorema_di_Interezza/Lezioni 19-20.pdf`
 
@@ -17,7 +17,7 @@ Capire quando un PI è "facile": si può risolvere col solo rilassamento lineare
 | Non orientato (generico) | Non TU in generale (es. triangolo: det = 2) |
 | Non orientato **bipartito** | **TU** |
 
-## Teorema di Interezza (forma canonica) — il più importante
+## Teorema di Interezza (forma canonica) - il più importante
 Sia A intera. Sono **equivalenti**:
 1. I vertici di P*(A,b) = {x : Ax ≤ b, x ≥ 0} sono interi ∀ b intero
 2. max{c^T x : Ax ≤ b, x ≥ 0} ammette SBA ottima intera ∀ b intero

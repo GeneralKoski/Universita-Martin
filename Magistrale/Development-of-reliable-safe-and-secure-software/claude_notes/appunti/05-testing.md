@@ -7,11 +7,11 @@
 
 ## Livelli di test
 
-- **Unit test** — singola unità (funzione, classe).
-- **Integration test** — interazione tra moduli.
-- **System test** — sistema completo end-to-end.
-- **Acceptance test** — verifica con l'utente/cliente.
-- **Regression test** — assicura che modifiche non rompano funzionalità esistenti.
+- **Unit test** - singola unità (funzione, classe).
+- **Integration test** - interazione tra moduli.
+- **System test** - sistema completo end-to-end.
+- **Acceptance test** - verifica con l'utente/cliente.
+- **Regression test** - assicura che modifiche non rompano funzionalità esistenti.
 
 ## Approcci
 
@@ -21,11 +21,11 @@
 
 ## Coverage criteria (white-box)
 
-- **Statement coverage** — ogni istruzione eseguita almeno una volta.
-- **Branch coverage** — ogni ramo (if/else) eseguito.
-- **Condition coverage** — ogni condizione booleana valutata true e false.
-- **MC/DC** (Modified Condition/Decision Coverage) — richiesto da DO-178C livello A; ogni condizione mostra indipendentemente il proprio effetto sul decision.
-- **Path coverage** — ogni cammino (esplosione combinatoria).
+- **Statement coverage** - ogni istruzione eseguita almeno una volta.
+- **Branch coverage** - ogni ramo (if/else) eseguito.
+- **Condition coverage** - ogni condizione booleana valutata true e false.
+- **MC/DC** (Modified Condition/Decision Coverage) - richiesto da DO-178C livello A; ogni condizione mostra indipendentemente il proprio effetto sul decision.
+- **Path coverage** - ogni cammino (esplosione combinatoria).
 - **Loop coverage**: 0, 1, n iterazioni.
 
 Gerarchia: path ⊃ branch ⊃ statement.
@@ -72,12 +72,12 @@ Specificare proprietà invarianti, lo strumento genera input casuali per cercare
 
 ## Test doubles
 
-- **Dummy** — passato ma non usato.
-- **Stub** — risposta predefinita.
-- **Fake** — implementazione semplificata funzionante.
-- **Mock** — verifica le interazioni.
-- **Spy** — registra le chiamate.
+- **Dummy** - passato ma non usato.
+- **Stub** - risposta predefinita.
+- **Fake** - implementazione semplificata funzionante.
+- **Mock** - verifica le interazioni.
+- **Spy** - registra le chiamate.
 
 ## Limiti
 
-> Testing can show the presence of bugs, never their absence. — Dijkstra
+> Testing can show the presence of bugs, never their absence. - Dijkstra

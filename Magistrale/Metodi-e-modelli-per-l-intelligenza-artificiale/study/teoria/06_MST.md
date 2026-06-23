@@ -1,4 +1,4 @@
-# 06 — Minimum Spanning Tree (MST)
+# 06 - Minimum Spanning Tree (MST)
 
 📂 Fonte: `Elly/6_Albero_Ricoprente_Minimo_(MST) /Lezioni 11-12.pdf`
 

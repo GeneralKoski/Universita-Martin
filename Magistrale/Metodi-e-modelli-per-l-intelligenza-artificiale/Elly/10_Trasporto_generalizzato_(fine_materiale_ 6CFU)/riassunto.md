@@ -1,9 +1,9 @@
-# 10 — Trasporto generalizzato e problemi "facili" (Lezioni 21-22)
+# 10 - Trasporto generalizzato e problemi "facili" (Lezioni 21-22)
 
 > **Fine del programma 6 CFU** (per Scienze Informatiche).
 
 ## Contenuto cartella
-- `Lezioni 21-22.pdf` — flussi di costo minimo, problema del trasporto, assegnazione, cammino minimo, abbinamento
+- `Lezioni 21-22.pdf` - flussi di costo minimo, problema del trasporto, assegnazione, cammino minimo, abbinamento
 
 ## Argomenti
 
@@ -43,7 +43,7 @@ x ≥ 0
 In forma canonica:
 $$\min c^T x \quad \text{s.t.}\quad \begin{bmatrix} A \\ -A \\ I_m \end{bmatrix} x \leq \begin{bmatrix} b \\ -b \\ h \end{bmatrix},\quad x \geq 0$$
 
-### Teorema 1.2 — Interezza delle SBA
+### Teorema 1.2 - Interezza delle SBA
 Se capacità h e domande/offerte b sono **intere**, allora ogni SBA (e in particolare ogni SBA ottima) del problema di trasporto generalizzato ha **componenti intere** ⟹ flussi interi sugli archi.
 
 **Idea**: la matrice di incidenza nodi-archi di un grafo orientato è TU ⟹ applicabile il Teorema di Interezza in forma canonica.

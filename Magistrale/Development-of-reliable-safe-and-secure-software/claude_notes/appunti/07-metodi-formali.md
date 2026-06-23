@@ -6,7 +6,7 @@ Tecniche basate su matematica e logica per **specificare** e **verificare** sist
 
 ```
 testing  ←  static analysis  ←  model checking  ←  theorem proving
-(meno garanzie, più scalabile) ←———————————→ (più garanzie, meno scalabile)
+(meno garanzie, più scalabile) ←-----------→ (più garanzie, meno scalabile)
 ```
 
 ## Specifiche formali
@@ -42,25 +42,25 @@ Dato un modello M (FSM/Kripke structure) e una formula φ in logica temporale, d
 ### Logiche temporali
 
 **LTL** (Linear Temporal Logic):
-- X φ — next
-- F φ — eventually (finally)
-- G φ — globally (always)
-- φ U ψ — until
+- X φ - next
+- F φ - eventually (finally)
+- G φ - globally (always)
+- φ U ψ - until
 
 **CTL** (Computation Tree Logic): aggiunge quantificatori sui path A (all) ed E (exists). Es. AG, EF, AF.
 
 ### Esempi di proprietà
 
-- **Safety**: "qualcosa di brutto non accade mai" — G ¬bad
-- **Liveness**: "qualcosa di buono accadrà" — F good
+- **Safety**: "qualcosa di brutto non accade mai" - G ¬bad
+- **Liveness**: "qualcosa di buono accadrà" - F good
 - **Fairness**: G F enabled → G F executed
 
 ### Problema
 
 State explosion: |stati| esponenziale nelle variabili. Mitigazioni:
-- **BDD** (Binary Decision Diagrams) — symbolic model checking.
-- **Bounded model checking** (BMC) — esplora fino a profondità k, riduce a SAT.
-- **Abstraction** — astrazione/raffinamento (CEGAR).
+- **BDD** (Binary Decision Diagrams) - symbolic model checking.
+- **Bounded model checking** (BMC) - esplora fino a profondità k, riduce a SAT.
+- **Abstraction** - astrazione/raffinamento (CEGAR).
 - **Partial order reduction**.
 
 Tool: SPIN, NuSMV, CBMC, TLA+ TLC, UPPAAL (real-time).
@@ -75,9 +75,9 @@ Dimostrazione interattiva o automatica di teoremi. L'utente guida la prova, il t
 
 ### Esempi famosi
 
-- **CompCert** — compilatore C verificato in Coq.
-- **seL4** — microkernel verificato (Isabelle/HOL).
-- **AWS s2n** / **HACL\*** — librerie crittografiche verificate.
+- **CompCert** - compilatore C verificato in Coq.
+- **seL4** - microkernel verificato (Isabelle/HOL).
+- **AWS s2n** / **HACL\*** - librerie crittografiche verificate.
 
 ## Quando usare cosa
 

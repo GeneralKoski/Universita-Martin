@@ -1,4 +1,4 @@
-# 12 — Dualità
+# 12 - Dualità
 
 📂 Fonte: `Elly/8_Rilassamenti_e_Dualità/Lezioni 17-18.pdf`
 
@@ -28,8 +28,8 @@ Su grafo non orientato:
 **Non sono in dualità forte in generale** (es. triangolo: max M = 1, min R = 2).
 
 Formulazione PI:
-- Matching: max e^T x, Ax ≤ e, x ∈ {0,1}ⁿ — è un **set packing**
-- Copertura: min e^T y, A^T y ≥ e, y ∈ {0,1}ⁿ — è un **set covering**
+- Matching: max e^T x, Ax ≤ e, x ∈ {0,1}ⁿ - è un **set packing**
+- Copertura: min e^T y, A^T y ≥ e, y ∈ {0,1}ⁿ - è un **set covering**
 
 I rilassamenti lineari delle due sono **uno il duale dell'altro** (in dualità forte di PL).
 

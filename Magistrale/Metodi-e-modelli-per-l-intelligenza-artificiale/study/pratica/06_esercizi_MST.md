@@ -1,4 +1,4 @@
-# 06 — Esercizi: MST
+# 06 - Esercizi: MST
 
 ## Esercizi disponibili
 - Esempio nelle Lezioni 11-12.pdf

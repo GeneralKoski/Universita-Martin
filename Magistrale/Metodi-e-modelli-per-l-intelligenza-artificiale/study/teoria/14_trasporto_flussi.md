@@ -1,4 +1,4 @@
-# 14 — Trasporto Generalizzato e problemi "facili"
+# 14 - Trasporto Generalizzato e problemi "facili"
 
 📂 Fonte: `Elly/10_Trasporto_generalizzato_(fine_materiale_ 6CFU)/Lezioni 21-22.pdf`
 

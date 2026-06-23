@@ -1,4 +1,4 @@
-# 07 — Programmazione Intera (PI)
+# 07 - Programmazione Intera (PI)
 
 📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /Lezioni 13-14.pdf`
 
@@ -6,9 +6,9 @@
 Capire **cos'è** un PI, perché è difficile, come si distingue dalla PL.
 
 ## Da sapere a memoria
-- **PL**: max c^T x, Ax ≤ b, x ≥ 0, x ∈ ℝⁿ — variabili continue
-- **PI**: come sopra ma x ∈ ℤⁿ — variabili intere
-- **PIB**: x ∈ {0,1}ⁿ — binarie/0-1
+- **PL**: max c^T x, Ax ≤ b, x ≥ 0, x ∈ ℝⁿ - variabili continue
+- **PI**: come sopra ma x ∈ ℤⁿ - variabili intere
+- **PIB**: x ∈ {0,1}ⁿ - binarie/0-1
 - **PIM**: alcune intere, altre continue
 
 ## Perché la PI è difficile

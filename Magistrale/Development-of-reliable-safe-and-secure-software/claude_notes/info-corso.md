@@ -1,13 +1,13 @@
 # Informazioni ufficiali del corso
 
-Fonte: [pagina ufficiale Unipr](https://corsi.unipr.it/it/ugov/degreecourse/189149) — Laurea magistrale in Scienze Informatiche.
+Fonte: [pagina ufficiale Unipr](https://corsi.unipr.it/it/ugov/degreecourse/189149) - Laurea magistrale in Scienze Informatiche.
 
 ## Dati generali
 
 - **Codice**: 1009069
-- **Docente**: Prof. Roberto Bagnara — roberto.bagnara@unipr.it
+- **Docente**: Prof. Roberto Bagnara - roberto.bagnara@unipr.it
 - **CFU**: 6 (48 ore di lezioni frontali)
-- **SSD**: INF/01 — Informatica
+- **SSD**: INF/01 - Informatica
 - **Tipologia**: caratterizzante, discipline informatiche
 - **Anno**: 1° anno LM, secondo semestre
 - **Lingua**: inglese
@@ -35,7 +35,7 @@ VI. Verifica del software
 - Nancy G. Leveson. *Engineering a Safer World: Systems Thinking Applied to Safety*. MIT Press, 2012. ISBN 978-0-262-01662-9.
 - Mauro Pezzè, Michal Young. *Software Testing and Analysis: Process, Principles and Techniques*. Wiley, 2008. ISBN 0471455938.
 - Michael Jackson. *Software Requirements & Specifications: a lexicon of practice, principles and prejudices*. ACM Press/Addison-Wesley, 1995. ISBN 978-0-201-87712-0.
-- FAA — Air Traffic Organization. *Requirements Engineering Management Handbook*. U.S. DoT, FAA, 2009.
+- FAA - Air Traffic Organization. *Requirements Engineering Management Handbook*. U.S. DoT, FAA, 2009.
 - Derek M. Jones. *Evidence-based Software Engineering*. <http://www.knosof.co.uk/ESEUR/ESEUR-draft.pdf>
 
 ## Metodi didattici
