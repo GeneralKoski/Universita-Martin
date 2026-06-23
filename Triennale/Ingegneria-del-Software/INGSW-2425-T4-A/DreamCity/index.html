@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/App/Views/css/loginPage.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Accedi al tuo account</h2>
+      <form
+        action="http://localhost/Routes/UserRoutes.php/authenticateUser"
+        method="POST"
+      >
+        <label for="username">Nome Utente</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+
+        <button type="submit">Accedi</button>
+        <label for="registration"
+          ><a href="/registration"><small>Registrati</small></a></label
+        >
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+body {
+  margin: 0px;
+}
+
+#grid-container {
+  position: absolute;
+  margin-left: 160px;
+  width: 10000px;
+  height: 10000px;
+  border: 1px solid black;
+  background-color: #6dcf40;
+  z-index: -1;
+  padding-right: 160px;
+}
+
+.grid-cell {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.controls {
+  width: 150px;
+}
+
+.controls button,
+.selected button {
+  display: block;
+  width: 60px;
+  height: 50px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#selectedIcon {
+  cursor: default;
+}
+
+.controls button:hover,
+#rotate:hover {
+  background-color: grey;
+}
+
+.selectedDescription {
+  width: 150px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.preview {
+  position: absolute;
+  pointer-events: none;
+  border: 2px dashed #888;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: none;
+}
+
+.userDescription {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  height: 100%;
+  background-color: #6dcf40;
+  color: black;
+}
+
+#buttons {
+  font-size: 25px;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pfp {
+  width: 160px;
+  text-align: center;
+}
+
+#avatar {
+  max-width: 60px;
+  min-width: 60px;
+  max-height: 60px;
+  min-height: 60px;
+  border-radius: 50%;
+}
+
+#logout {
+  color: black;
+}
+
+#maps {
+  color: blue;
+}
+
+.roundabout {
+  border: 10px solid #7f7f7f;
+  border-radius: 100px;
+}
+
+.toggle-button {
+  margin: 5px;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #f9e26a;
+}
+
+.messages {
+  position: relative;
+  right: 1450%;
+  top: -50%;
+  width: 300px;
+  max-height: 300px;
+  background-color: #fff;
+  border: 2px solid #5fa3ec;
+  border-radius: 5px;
+  overflow-y: auto;
+  padding: 5px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.messages.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 2px;
+  border: 1px solid #82d17c;
+  border-radius: 5px;
+  background-color: #eaf7f5;
+}
+
+.message h2 {
+  font-size: 1.1em;
+  color: #5fa3ec;
+  margin: 0 0 5px;
+}
+
+.message p {
+  margin: 5px 0;
+}
+
+.acceptdecline {
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: #5fa3ec;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+}
+
+.acceptdecline:hover {
+  background-color: #f9e26a;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.add-message-btn {
+  margin-bottom: 2px;
+  background-color: #5fa3ec;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add-message-btn:hover {
+  background-color: #f9e26a;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #5fa3ec;
+}
+
+.modal textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #5fa3ec;
+}
+
+.modal button {
+  width: 30%;
+  padding: 10px;
+  background-color: #5fa3ec;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #f9e26a;
+}

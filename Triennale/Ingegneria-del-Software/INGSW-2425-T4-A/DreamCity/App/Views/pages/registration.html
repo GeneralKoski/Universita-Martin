@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="/App/Views/css/loginPage.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Registra il tuo account</h2>
+      <form
+        action="http://localhost/Routes/UserRoutes.php/createUser"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <label for="username">Nome Utente</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <label for="avatar">Foto Profilo</label>
+        <input
+          type="file"
+          id="avatar"
+          name="avatar"
+          accept="image/*"
+          required
+        />
+
+        <button type="submit">Registrati</button>
+        <label for="registration"
+          ><a href="/"><small>Torna al login</small></a></label
+        >
+      </form>
+    </div>
+  </body>
+</html>

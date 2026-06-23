@@ -1,0 +1,136 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightsteelblue;
+}
+
+h1 {
+  margin: 20px 0;
+  color: black;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  border: 2px outset grey;
+  background-color: transparent;
+  border-radius: 10%;
+}
+
+.griglia-mappa {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.box-mappa {
+  position: relative;
+  background: grey;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.box-mappa:hover {
+  transform: scale(1.05);
+}
+
+.immagine-mappa {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.titolo-mappa {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: whitesmoke;
+}
+
+.descrizione-mappa {
+  padding: 0 10px;
+  color: lightgrey;
+  font-size: 0.9em;
+}
+
+.felicita-mappa {
+  padding: 0 10px;
+  color: yellow;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.cittadini-mappa {
+  color: orange;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.aggiungi-mappa {
+  margin: 20px 0;
+}
+
+.aggiungi-mappa button {
+  background-color: rgb(84, 84, 255);
+  color: white;
+  border: 1px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.aggiungi-mappa button:hover {
+  background-color: rgb(36, 36, 255);
+}
+
+#mapLogout {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  color: black;
+}
+
+#mapLogout i {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+.keep-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgb(137, 203, 39);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.keep-button:hover {
+  background-color: green;
+}

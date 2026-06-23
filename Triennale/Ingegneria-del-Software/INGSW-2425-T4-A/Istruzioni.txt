@@ -1,0 +1,8 @@
+-Apri la cartella del progetto con il tuo IDE preferito (ad esempio Visual Studio Code);
+-Verifica che Docker sia in esecuzione sul tuo computer (solitamente tramite Docker Desktop);
+-Dal terminale di VSCode, esegui il comando docker-compose build per effettuare la build del progetto;
+-Dopo aver completato la build, lancia il comando docker-compose up -d per avviare il progetto in modalità detached, così da poter continuare a utilizzare lo stesso terminale;
+-Una volta avviato, puoi accedere al progetto dal browser, andando sul localhost;
+-Per fermare il progetto, esegui il comando docker-compose stop nel terminale oppure il comando docker-compose down per interrompere l'esecuzione ed eliminare anche i container. Se desideri rimuovere anche i volumi del database, usa il comando docker-compose down -v.
+
+Questa sequenza permetterà di avviare correttamente il progetto in locale su qualsiasi Sistema Operativo.
