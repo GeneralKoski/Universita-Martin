@@ -1,0 +1,126 @@
+\documentclass[conference,9pt]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[italian]{babel}
+
+\begin{document}
+
+\title{Canny Edge Detector: studio e implementazione}
+
+\author{\IEEEauthorblockN{Martin Trajkovski}
+\IEEEauthorblockA{\textit{Corso di Laurea in Scienze Informatiche} \\
+\textit{Universit\`a degli Studi di Parma}\\
+Matricola: 397464}
+}
+
+\maketitle
+
+\begin{abstract}
+Studio e implementazione da zero in NumPy del Canny Edge Detector. La pipeline
+copre smoothing gaussiano, gradiente con filtri di Sobel, non-maximum
+suppression, double threshold e hysteresis, secondo il programma del corso
+(filtri lineari, derivate parziali, convoluzione 2D). Si discutono le scelte
+implementative pi\`u rilevanti e l'effetto dei parametri $\sigma$ e delle
+soglie sul risultato finale.
+\end{abstract}
+
+\section{Introduzione}
+L'\textit{edge detection} mira a estrarre i contorni di un'immagine come
+luoghi di forte variazione di luminanza, riducendo il dato visivo a una
+rappresentazione strutturale compatta. Il rilevatore di
+Canny~\cite{canny1986} combina filtraggio, derivazione e sogliatura in una
+pipeline che soddisfa tre criteri di ottimalit\`a (buona detection, buona
+localizzazione, risposta singola per bordo) ed \`e tuttora standard di
+riferimento~\cite{gonzalez}.
+
+\section{Pipeline}
+Sia $I:\mathbb{R}^2\to\mathbb{R}$ l'immagine in scala di grigi. La pipeline
+applicata \`e:
+
+\textbf{1. Smoothing.} Convoluzione con kernel gaussiano
+$G_\sigma(x,y)=\frac{1}{2\pi\sigma^2}\exp\!\left(-\frac{x^2+y^2}{2\sigma^2}\right)$
+per ridurre il rumore: $I_s = I * G_\sigma$.
+
+\textbf{2. Gradiente.} Approssimazione discreta tramite filtri di Sobel:
+$G_x = I_s * S_x,\ G_y = I_s * S_y$, da cui magnitudo
+$M=\sqrt{G_x^2+G_y^2}$ e direzione $\theta=\arctan2(G_y,G_x)$.
+
+\textbf{3. Non-Maximum Suppression.} Per ogni pixel si discretizza $\theta$ in
+uno dei quattro settori $\{0^\circ,45^\circ,90^\circ,135^\circ\}$ e si conserva
+$M(i,j)$ solo se massimo locale lungo la direzione del gradiente.
+
+\textbf{4. Double Threshold.} Definite due soglie $T_l<T_h$ relative a
+$\max M$, i pixel sono classificati come \emph{forti} ($\ge T_h$),
+\emph{deboli} ($T_l\le \cdot < T_h$) o scartati.
+
+\textbf{5. Hysteresis.} I pixel deboli vengono promossi a edge se connessi
+(8-vicinato) a un pixel forte; gli altri sono soppressi.
+
+\section{Scelte implementative}
+L'implementazione \`e in \texttt{NumPy} puro, senza ricorrere a OpenCV o
+\texttt{scipy.ndimage}, per esplicitare ogni passaggio della pipeline.
+
+\textbf{Conversione in luminanza.} Si usa la combinazione ITU-R BT.601
+$Y=0.299R+0.587G+0.114B$ anzich\'e una media uniforme, perch\'e pesa i canali
+in funzione della sensibilit\`a percettiva e produce un'immagine di intensit\`a
+pi\`u coerente con la luminosit\`a vista.
+
+\textbf{Convoluzione.} Implementata con
+\texttt{numpy.lib.stride\_tricks.sliding\_window\_view} ed
+\texttt{einsum}, che vettorializza il prodotto kernel-finestra evitando
+cicli Python espliciti. Il padding \`e \texttt{edge} (replica del bordo) per
+non introdurre artefatti scuri ai margini, e il kernel viene flippato in modo
+da realizzare la vera convoluzione e non la semplice correlazione.
+
+\textbf{Sobel vs Prewitt.} Si \`e scelto il filtro di Sobel perch\'e i pesi
+$(1,2,1)$ sull'asse ortogonale equivalgono a uno smoothing gaussiano discreto
+$3\times 3$, rendendo il gradiente meno sensibile al rumore residuo rispetto a
+Prewitt (pesi uniformi $(1,1,1)$), a parit\`a di costo computazionale.
+
+\textbf{NMS a 4 settori.} La direzione $\theta\in[0,\pi)$ viene quantizzata in
+quattro settori da $45^\circ$. \`E un compromesso standard: evita
+l'interpolazione bilineare tra pixel (pi\`u accurata ma pi\`u costosa) e
+mantiene il confronto su vicini esatti.
+
+\textbf{Soglie relative e hysteresis.} $T_l$ e $T_h$ sono frazioni di
+$\max M$, cos\`i gli stessi parametri funzionano su range di intensit\`a
+diversi; l'hysteresis itera fino a punto fisso, esplicitando la propagazione
+di connettivit\`a in 8-vicinato.
+
+\section{Risultati}
+L'algoritmo \`e stato testato su immagini reali con $\sigma=1.4$,
+kernel $5\times 5$, $T_l=0.05\cdot\max M$, $T_h=0.15\cdot\max M$.
+La Figura~\ref{fig:pipeline} mostra gli stadi intermedi: lo smoothing
+attenua la tessitura ma preserva i contorni principali, la magnitudo del
+gradiente li evidenzia con spessore di alcuni pixel, l'NMS li assottiglia
+a un pixel e la sogliatura con hysteresis rimuove le risposte spurie
+mantenendo le strutture connesse. Esperimenti sul parametro $\sigma$
+($0.8$, $1.4$, $2.5$) confermano il \textit{trade-off} tra dettaglio e
+soppressione del rumore tipico del rilevatore.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{pipeline.png}
+\caption{Stadi della pipeline: grayscale, smoothing, magnitudo del gradiente,
+NMS, double threshold, edge finali.}
+\label{fig:pipeline}
+\end{figure}
+
+\section{Conclusioni}
+Le quattro idee chiave del corso, ovvero convoluzione 2D, derivate via Sobel,
+sogliatura adattiva e connessione di componenti, bastano a costruire un
+rilevatore di bordi competitivo, con $\sigma$ come parametro pi\`u critico.
+
+\begin{thebibliography}{1}
+\bibitem{canny1986} J. Canny, ``A Computational Approach to Edge Detection,''
+\textit{IEEE Trans. Pattern Anal. Mach. Intell.}, vol. PAMI-8, no. 6, 1986.
+\bibitem{gonzalez} R. C. Gonzalez and R. E. Woods, \textit{Digital Image
+Processing}, 4th ed., Pearson, 2018.
+\end{thebibliography}
+
+\end{document}

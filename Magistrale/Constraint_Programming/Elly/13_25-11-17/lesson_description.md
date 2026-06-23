@@ -1,0 +1,1 @@
+Haplotyping problem presentation and analysis of specifications. From specifications to CSP: modelling equivalence classes and representatives selection. The importance of reification to deduce properties of the CSP.

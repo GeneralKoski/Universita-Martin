@@ -1,0 +1,27 @@
+Abbiamo descritto un esperimento che si propone di farci riflettere sul teorema limite centrale. Per la precisione
+
+Si ripete N volte l'esperimento che la funzione puntiRetta.m realizza, ovvero un esperimento cui soggiace la distribuzione di Poisson (ricordate? contiamo quanti punti troviamo in un intervallo di lunghezza data su cui sono stati gettati punti a caso, ma a densità lineare costante). Attenzione! Ognuna delle N ripetizioni è un esperimento che a sua volta ripete molte volte il conteggio dei punti trovati in un dato intervallo!
+Da ognuno degli N esperimenti registriamo il valor medio del numero di punti trovati. Sappiamo che il valore atteso è dato da lambda*lunghezza dell'intervallo (ovvero il parametro della poissoniana): i numeri medi che registriamo (sono medie aritmetiche di tutti i valori registrati) oscillano intorno a questo valore.
+Notate che il codice che conduce questo esperimento lo ripete per tre volte: per due volte abbiamo mantenuto lo stesso parametro della poissoniana, ma cambiato il numero di esperimenti entro puntiRetta.m (attenzione: questo vuol dire che gli N numeri che registriamo sono medie aritmetiche calcolate su campioni di diverse cardinalità); la terza volta abbiamo cambiato il parametro della poissoniana.
+Osserveremo che emergeranno delle distribuzioni gaussiane...
+Lo riprenderemo in mano a breve...
+
+Abbiamo poi riconsiderato un sistema che è stato il nostro pirmo esempio di simulazione, ovvero il modello di Ehrenfest: ne abbiamo calcolato la matrice di Markov e abbiamo trovato l'autovalore 1. Benissimo! Sappiamo che l'autovettore ad esso associato deve avere entrate tutte concordi in segno e può dunque essere rinormalizzato a dare una legittima distribuzione di probabilità: tale distribuzione di probabilità deve essere la distribuzione asintotica (stazionaria) del processo. Vero! In effetti abbiamo confrontato quanto trovato con quanto avevamo già calcolato per altra via (ricordate? funzione generatrice ...), ossia: la distribuzione stazionaria del processo è una binomiale di parametri N e 0.5. In effetti il confronto fra i due risultati ci restituiva perfetto accordo. Ma ... ma nello spettro della matrice di Markov del processo di Ehrenfest abbiamo trovato anche l'autovalore -1. Notiamo che questo non è contraddittorio rispetto a quanto avevamo dimostrato: gli autovalori che non sono 1 sono in modulo minori o uguali a 1. Il problema è che sembrerebbe che la convergenza alla distribuzione di equilibrio sia impedita dal contributo di questo autovalore (che è oscillante). In effetti, se consideriamo la potenza n-ma della matrice del processo non riconosciamo la forma usuale (asintoticamente, non troviamo colonne tutte uguali e uguali alla distribuzione stazionaria...) Vi ho invitato a trovare la soluzione del problema...
+
+Abbiamo anche iniziato a pensare a simulare la evoluzione di una CODA. Diciamo che definiamo la situazione che ci interessa così
+
+C'è uno sportello che eroga un servizio. L'operatore allo sportello serve di volta in volta una persona, mentre le altre persone attendono (in coda, appunto...)
+La coda si accorcia per effetto delle persone che via via vengono servite e si allunga per effetto delle persone che via via arrivano e si aggiungono alla coda.
+Capiamo subito quale sia la natura stocastica del modello: la descrizione naturale è che ci sia una certa distribuzione di probabilità per i tempi di servizio e una altra distribuzione di probabilità per i tempi a cui si verificano gli arrivi.
+Possiamo attenderci che ci sia una frequenza di arrivi più o meno costante: ci aspettiamo per gli arrivi una qualche natura poissoniana, anche se non siamo interessati ai conteggi, ma ai tempi di intercorrenza (dopo l'arrivo di qualcuno, fra quanto tempo arriverà la prossima persona?)
+Il modello per i tempi di servizio potrebbe essere anche molto semplice: tempo di servizio costante...
+Dopo avere descritto operativamente cosa vogliamo modellare, siamo passati ad una descrizione operativa dello schema di simulazione.
+
+Per prima cosa abbiamo chiarito cosa si potesse assumere come identificatore di una data configurazione del sistema: la lunghezza della coda. Il problema è: quando misuriamo la lunghezza? La nostra scelta è stata di misurare la lunghezza della coda al compimento di ogni servizio (possiamo pensare che l'operatore, mentre chiama "avanti il prossimo!", registra la lunghezza della coda in quel momento).
+Come individuare la successione di configurazioni? Non possiamo pensare a una descrizione nel tempo continuo ... pensiamo piuttosto a tempi discreti, necessari per pensare al formalismo di processi di Markov: a tali tempi daremo la probabilità di transire da una configurazione (lunghezza) ad una altra.
+In realtà abbiamo osservato come il punto fondamentale del modello di simulazione fosse proprio la generazione dei tempi a cui occorrono gli eventi significativi: viene completato un servizio, arriva una nuova persona.
+Per quanto riguarda i tempi di servizio, li potremo inizialmente fissare costanti.
+Un ingrediente importante di questo codice è la generazione dei tempi di arrivo, ovvero i tempi di intercorrenza di un processo poissoniano. Abbiamo accennato quale sia la distribuzione cui detti tempi obbediscono: si tratterà di una distribuzione esponenziale.
+Non abbiamo iniziato la stesura del programma di simulazione (nessun codice... ad ora), ma abbiamo definito uno schema di simulazione.
+
+Le note accluse aiutano a ripercorrere quanto visto.

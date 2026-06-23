@@ -1,0 +1,52 @@
+Abbiamo avuto modo di fare ulteriori commenti sull'ambiente di Matlab. Sulla base di quanto già detto in precedenza e di quanto visto ancora oggi, possiamo dire che ora possiamo riconoscere i due caposaldi dell'ambiente:
+
+Matlab è un linguaggio interpretato.
+Tutto in Matlab è una MATRICE.
+Se consultate il diario della sessione Matlab, potrete vedere come abbiamo un poco sottolineato qualche altro aspetto del linguaggio, ad esempio:
+
+Poiché tutto in Matlab è una matrice, è importante imparare a conoscere i vari modi di istanziare nuove variabili (che saranno di fatto quasi sempre matriciali), così come i modi di accedere ai suoi valori, eventualmente anche cambiandoli.
+Inserire valori per gli elementi di una matrici è naturale. Ricordiamo come sia sempre possibile procedere inserendo esplicitamente valori entro parentesi quadre (ricordate il diverso status della virgola e del punto e virgola!).
+L'indicizzazione (sia per leggere, sia per aggiungere o ridefinire entrate di una matrice) è naturale. Ricordiamo esplicitamente che in generale possiamo accedere ad intere sotto-matrici; possiamo in generale scrivere matrici di indici per accedere a tanti elementi contemporaneamente. Attenzione al fatto che c'è sempre modo di accedere agli elementi con un singolo indice (indipendentemente da quante dimensioni abbia la matrice generalizzata); ricordiamo che l'indice che corre più rapidamente è l'ultimo.
+È possibile generare matrici di tutti zeri (zeros) o uni (ones), mentre la matrice identità si ottiene con eye (es, eye(4)).
+Abbiamo a disposizione un certo numero di modi per ri-allocare dinamicamente la dimensione di una variabile, semplicemente inizializzando entrate fino ad allora non presenti.
+Poiché tutto in Matlab è una matrice, le operazioni sono essenzialmente matriciali (ad esempio, lo *  è la moltiplicazione righe per colonne). Molto spesso la ottimizzazione di un codice viene per prima cosa ricondotta ad una scrittura il più possibile matriciale. Potete fare un esperimento con tic e toc (guardate, grazie all'help, di cosa si tratta: prendiamo così il tempo di esecuzione): confrontate una moltiplicazione fatta con la espressione matriciale e la stessa moltiplicazione fatta con cicli for innestati... Lo abbiamo già fatto anche a lezione...
+Abbiamo imparato come si possa salvare (save) e (ri)caricare (load) lo spazio di lavoro: molto utile per riprendere a lavorare dopo che ci siamo interrotti nel fare qualcosa ...
+Quanto ai contenuti, abbiamo ripreso in mano il codice più evoluto per la simulazione del gioco delle tre carte. Morale: è inutile simulare pedissequamente quello che faremmo simulando fisicamente (nel caso in esame, maneggiando davvero carte da gioco...). L'importante è far salve le regole (quasi sempre saranno regole probabilistiche)!
+
+La ottimizzazione dei codici ha molto spesso a che fare con una struttura che sappia muovere efficientemente i macrostati rilevanti del sistema!
+
+Vi ricordo come in ogni simulazione dobbiamo sempre realizzare i due passaggi che (ripetiamo...) struttureranno ogni nostra simulazione:
+
+individuazione dei gradi di libertà e loro traduzione in una struttura dati;
+implementazione della dinamica del sistema.
+Faccio notare come la cosa più importante sia quasi sempre la scelta che facciamo di COME rappresentare i gradi di libertà del sistema, sempre attenti al fatto che la informazione cui siamo interessati non sta tanto in microstati del sistema, quanto piuttosto nei suoi  macrostati ... e svariate volte ce n'è addirittura uno solo!  Nel caso in esame per il modello di Ehrenfest, una biglia può assumere tante diverse posizioni entro l'urna, ma l'unica informazione che noi registriamo è che essa è presente in una o nell'altra urna. Un ulteriore esempio di microstato (un dato di dettaglio, diremmo)  potrebbe essere il colore delle biglie, a cui pure siamo indifferenti.
+
+Ora, il macrostato per eccellenza è il numero di biglie in una urna (quante biglie siano nell'altra risulta per complemento). In sostanza, possiamo pensare di spingere all'estremo la descrizione in termini di MACROSTATI. Nella nostra prima implementazione di un codice di simulazione, abbiamo accettato di non descrivere la posizione delle singole biglie, ma almeno di dire chi fosse dove (in termini di ASSOCIAZIONE DI UNA BIGLIA AD UN'URNA o di NUMERI DI OCCUPAZIONE). Alla fine, però, ciò sui siamo davvero interessati lo afferriamo ... guardando semplicemente al numero di biglie in un'urna e nell'altra! Allora, abbiamo concluso che HA SENSO GUARDARE AL MACROSTATO PER ECCELLENZA: IL NUMERO DI BIGLIE IN UN'URNA. Ovvero: un solo numero descrive ora il sistema. Come simulare allora? Ce lo ha suggerito Elia
+
+Ovviamente, è banale la risposta alla prima (ormai consueta) domanda: come descrivo il sistema? Mi basta dare UN SOLO NUMERO, ovvero quante biglie stanno in una urna.
+Come lo faccio evolvere? La ricetta è semplice. Se n1 biglie sono nella urna U1, estraggo equiprobabilmente un numero fra 1 e N: se questo numero è maggiore di n1, allora ho pescato una biglia dall'altra urna e conseguentemente n1 -> n1+1; se viceversa il numero estratto è minore/uguale a n1, allora ho estratto una biglia da U1 e conseguentemente n1 -> n1-1.
+Se ci pensate, la giustificazione più semplice di questo modo di procedere è questa: poiché non mi interessa la identità delle particelle, ma la numerazione è solo funzionale all'estrazione, posso pensare di rinumerare le biglie facendo in modo che le n1 in U1 siano numerate con i numeri da 1 a n1. Una spiegazione più elegante fa leva sul fatto che risulta definita la probabilità che la biglia estratta si trovi in un'urna piuttosto che nell'altra.
+Utilizzando il (nuovo) codice scritto, abbiamo condotto qualche esperimento: vogliamo alla fine verificare in che senso il modello di Ehrenfest sia un BUON MODELLO per studiare la questione della irreversibilità. Per farlo, abbiamo verificato che succedesse della QUANTITÀ da noi SALVATA al termine della simulazione, così come scritta da Elia: l'evoluzione del numero di biglie in una delle 2 urne; ovviamente è così noto anche quante siano nell'altra (ma nulla osserviamo sul chi sia dove, come già osservato).
+
+Abbiamo verificato un certo numero di proprietà. Fissiamoci sulle quelle che abbiamo imparato guardando a sistemi non troppo piccoli (di ordine 102 o 103, non di ordine 10):
+
+Partendo da una situazione fuori equilibrio (tutte le biglie in una stessa urna e niente nell'urna su cui fermiamo la nostra attenzione) il sistema evolve verso una situazione in cui il numero di biglie in una urna si muove attorno al valore N/2.
+La prima fase dell'evoluzione è quella che manifesta l'andamento sistematico più chiaro: c'è un aumento sistematico del numero di biglie, finché non si raggiunga un numero di ordine N/2.
+Le fluttuazioni attorno a N/2 sono molto diverse a seconda della cardinalità del sistema: più il sistema è grande, minori sono le fluttuazioni percentuali attorno ad N/2. Questa è una delle caratteristiche che più rende il modello buono. Esso ha il comportamento tipico che descrive il raggiungimento del cosiddetto limite termodinamico nei sistemi fisici macroscopici: maggiore il numero di gradi di libertà, minori le fluttuazioni percentuali.
+Ad ogni modo, non riscontriamo situazioni in cui il sistema ritorni verso la condizione iniziale (fuori equilibrio): questa è la verifica della irreversibilità.
+Attenzione! Quando la taglia del sistema diventa piccola (basterà prenderla di ordine 10) vedremo che questi comportamenti cambiano!
+
+Il lavoro della lezione di oggi ci ha dato modo di imparare/rivedere (nuove) funzionalità grafiche di Matlab, segnatamente:
+
+Dire che bbiamo fatto conoscenza con le primissime funzionalità di grafica vuol dire essenzialmente un primo contatto con il comando plot. Vedremo che la grafica di Matlab è estremamente ricca!
+Abbiamo visto come sia possibile disegnare (linee) spezzate o simboli (diversi per forma e colore) isolati.
+Abbiamo sottolineato la possibilità di trattenere quanto già disegnato nella finestra grafica, con ciò potendo "sovrapporre" nuovi elementi alla grafica originaria (cfr comando hold; consultando l'help potrete ritrovare un poco delle cose viste, le diverse varianti sintattiche del comando e la presenza di una funzione test ishold).
+Abbiamo visto come una finestra grafica possa essere salvata, peraltro in diversi formati (con il formato caratterizzato dalla estensione fig possiamo in particolare riprendere una figura e proseguire nella sua elaborazione in un secondo momento).
+Abbiamo imparato ad organizzare una finestra di grafica in più quadri mediante il comando subplot.
+Un discorso un minimo più approfondito meriterà ancora la funzione hist. Di questo parleremo in dettaglio nella prossima puntata...
+Da ultimo, vi ricordo che abbiamo anche fatto qualche primo (rapidissimo!) richiamo di teoria della probabilità! Vi ho detto come vorrò verificare quale sia la vostra conoscenza operativa dei contenuti che avete studiato: il corso si ripropone di farvi fare agevolmente conti in teoria della probabilità. Qualche richiamo (telegrafico) su argomenti la cui conoscenza ho provato a sondare:
+
+abbiamo verificato che vi sono (ben) note le distribuzioni binomiale, poissoniana, gaussiana, esponenziale. Molte cose interessanti discenderanno da una buona conoscenza di queste distribuzioni;
+per quanto binomiale e poissoniana siano distribuzioni su supporti discreti (nel primo caso un supporto limitato a cardinalità finita, nel secondo un supporto infinito, ovvero tutti gli interi positivi e lo zero), mentre la gaussiana ha un supporto infinito (l'intero asse reale); e per quanto questa differenza sia assolutamente ovvia (pensiamo ai conteggi finiti che sono alla base della costruzione della distribuzione binomiale: sostanzialmente immaginiamo di testare N volte un evento che può realizzarsi con una probabilità p); dicevamo ... per quanto valga quanto prima detto, ci sono regimi in cui binomiale e poissoniana tendono ad assomigliare alla gaussiana;
+due osservazioni generali a proposito di quanto abbiamo appena detto: (a) ci sarà in gioco (ci aspettiamo) un qualche regime di gran numero di eventi ... (b) per quanto il supporto della gaussiana sia infinito, il suo supporto efficace è limitato...
+ovviamente, se una binomiale tende ad una gaussiana, ci aspettiamo che tenda ad una gaussiana che riproduca i suoi momenti (in particolare valor medio e varianza); la stessa cosa deve valere per una poissoniana che tende ad una gaussiana.

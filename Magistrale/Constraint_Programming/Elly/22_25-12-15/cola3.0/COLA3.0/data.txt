@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Protein specification file COLA 3.0, file data.txt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Syntax:
+%% 
+%% ID=: name of the protein (simple string)
+%% sequence: mandatory on the line next to ID=, only lower case 1 char amino acids
+%% H x y: discretized helix between amino acids x and y (included)
+%% S x y: discretized strand between amino acids x and y (included)
+%% B x y: disulfide bridge between amino acids x and y
+%% P x y file.pdb: rigid block from amino acids x and y completely 
+%%                 contained into file.pdb. NOTE: the file must contain
+%%                 exactly y-x+1 amino acids
+%% p x y i j file.pdb: rigid block from amino acids x and y contained
+%%                     into file.pdb from position i to position j. 
+%%                     This is useful to select a block from a protein
+%% C x y: there is a chain from x to y (multiple chains are supported)
+%% E end of list
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The tags H S B P p can appears unlimitedly for each protein description
+%% Note: the amino acids indexes start from 1 w.r.t. sequence provided
+%%       and are counted according to their position in primary sequence
+%%       (NO REFERENCE to PDB amino acid numbering!)
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% example of FCC patterns 
+ID=1ZDD
+fnmqcqrrfyealhdpnlneeqrnakiksirddc
+H 2 12
+H 19 32
+B 4 33
+E
+
+%%% in this case the helices are directly read from original file
+ID=1ZDDP
+fnmqcqrrfyealhdpnlneeqrnakiksirddc
+p 1 11 1 11 1ZDD.pdb
+p 18 31 18 31 1ZDD.pdb
+B 3 32
+E
+
+%%% Protein 1KON, multi domain (see http://www.cathdb.info/cgi-bin/cath/Chain.pl?chain_id=1konA)
+%%% example of multiple domain protein, simple docking
+%%% here there are two chains, corresponding to 2 rigid blocks
+%%% this can be seen a a docking problem
+ID=1KON
+ghskwantrhrkaaqdakrgkiftkiirelvtaakldanprlraavdkalsnnmtrdtlnraiarganmetiiyegygpggtaimieclsdnrnrtvaevrhafskcggnlgtdgsvaylfskkgvisfekgdedtimeaaleagaedvvtyddgaidvytaweemgkvrdaleaaglkadsaevsmipstkadmdaetapklmrlidmledcddvqevyhngeisdevaatl
+C 1 66
+C 67 233
+p 1 66 1 66 1KON.pdb
+p 67 233 67 233 1KON.pdb
+E
+
+
+%%% example of multiple domain protein, folding of domains
+%%% here there are two chains, corresponding to 4 rigid blocks (the domains, read from pdb)
+ID=1KON1
+ghskwantrhrkaaqdakrgkiftkiirelvtaakldanprlraavdkalsnnmtrdtlnraiarganmetiiyegygpggtaimieclsdnrnrtvaevrhafskcggnlgtdgsvaylfskkgvisfekgdedtimeaaleagaedvvtyddgaidvytaweemgkvrdaleaaglkadsaevsmipstkadmdaetapklmrlidmledcddvqevyhngeisdevaatl
+C 1 66
+C 67 233
+p 1 66 1 66 1KON.pdb
+p 69 113 69 113 1KON.pdb
+p 118 190 118 190 1KON.pdb
+p 194 233 194 233 1KON.pdb
+E

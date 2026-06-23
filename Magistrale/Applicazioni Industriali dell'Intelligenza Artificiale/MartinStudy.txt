@@ -1,0 +1,94 @@
+PARTE 4: AGENTE, ARBITRATO E RAGIONAMENTO
+
+1. Il Ruolo di Qwen-VL-72B come Agente Senior
+Nel progetto non ci limitiamo a usare modelli di computer vision come YOLO, infatti il cuore del sistema è
+il MedicalAgent che utilizza il Large Language Model Multimodale di Qwen-VL-72B che agisce da Arbitro Clinico.
+
+Qwen riceve tre flussi di dati fusi insieme:
+1.  Visione Locale (Crops): YOLO identifica dei "bounding box" (aree sospette).
+    Queste aree vengono ritagliate ed inviate all'LLM ad alta risoluzione.
+2.  Conoscenza Esterna (RAG): Attraverso `RagTool`, interroghiamo il database vettoriale di ChromaDB
+    le quali informazioni vengono poi iniettate nel prompt per guidare l'LLM.
+3.  Contesto Globale (Swin-B): L'LLM riceve anche l'esito del classificatore globale. Se Swin-B dice che
+    l'immagine è negativa, ma YOLO trova un box, l'LLM viene allertato con una nota di cautela per evitare falsi positivi.
+
+2. Implementazione Tecnica e Ottimizzazione
+   -Encoding e Latenza: Inviamo le immagini codificate in Base64 dopo un ridimensionamento a 1024px.
+    Questo garantisce il miglior compromesso tra dettaglio diagnostico e velocità di risposta del server HPC.
+   -Integrazione Metadati: Se l'utente specifica la proiezione (AP/PA anteroposteriore, posteroanteriore), questa informazione entra nel prompt tecnico,
+    permettendo all'LLM di verificare se l'anatomia visibile (es. posizione delle scapole o clavicole) corrisponde alla tecnica dichiarata.
+
+
+POSSIBILI DOMANDE DEL PROFESSORE
+1.  D: Perchè usare un LLM invece di addestrare meglio YOLO?
+    R: YOLO è eccezionale nel trovare oggetti, ma manca di "senso clinico". L'LLM può capire che un'opacità in una certa zona è semplicemente la sovrapposizione di un osso e può spiegare il perché in linguaggio naturale, rendendo l'IA "Explainable" (XAI).
+
+2.  D: Come gestite il rischio di allucinazioni dell'LLM?
+    R: Usiamo il RAG. L'LLM non risponde basandosi solo sulla sua memoria latente, ma deve confrontare l'immagine con i protocolli medici reali estratti in tempo reale dal database. Inoltre, la temperatura del modello è impostata a 0.1 per favorire risposte deterministiche e precise.
+
+3.  D: Cos'è quel "Multimodal Arbitration" di cui parli?
+    R: È il processo in cui l'LLM riceve opinioni contrastanti e deve decidere chi ha ragione analizzando il contesto anatomico dell'area ritagliata.
+
+
+---
+
+
+PARTE 5: TRASPARENZA, ARCHITETTURA E REPORTING
+
+1. L'Interfaccia Streamlit e lo "Streaming del Pensiero"
+Abbiamo progettato l'interfaccia per essere dinamica. Infatti, invece di mostrare una barra di
+caricamento generica, l'utente vede il processo di ragionamento in tempo reale.
+Ogni step (Analisi Tecnica, Analisi Area 1, Area 2, ecc.) appare non appena l'LLM finisce di elaborare,
+creando trasparenza operativa.
+
+2. Toolstack
+Backend/UI: Python 3.12, Streamlit per la presenza di componenti riutilizzabili
+Visione: YOLO v10, YOLO v11, Swin Transformer-B
+Multimodal LLM: Qwen-VL-72B che comunica con un Endpoint dell'HPC
+Vector DB/RAG: ChromaDB, FastEmbed con il modello Multilingual-E5-Large che garantisce una vasta conoscenza
+Deployment: Docker che ci permette di avere un ambiente riproducibile, NVIDIA Container Toolkit
+per sfruttare l'accelerazione GPU per i modelli YOLO e Swin locali
+Utilities: OpenCV per il preprocessing, FPDF per la generazione del report PDF, Pandas/Altair per la generazione dei grafici
+
+
+POSSIBILI DOMANDE DEL PROFESSORE
+
+1.  D: Perché avete scelto Docker invece di un'installazione standard?
+    R: Nel settore medicale, la riproducibilità è fondamentale. Docker garantisce che l'ambiente (versioni di Python, driver CUDA, librerie OpenCV) sia identico ovunque, eliminando il problema "sul mio PC funziona".
+
+2.  D: Come gestite la privacy in questo sistema?
+    R: Il sistema è progettato per funzionare in locale o in server privati. Il calcolo dell'hash MD5 non contiene dati sensibili del paziente, ma solo l'impronta digitale dell'immagine per l'indicizzazione.
+
+3.  D: Cosa aggiunge il report PDF rispetto alla visualizzazione web?
+    R: Il PDF è un documento immutabile che può essere allegato alla cartella clinica del paziente. Il nostro generatore (`pdf_generator.py`) pulisce il markdown e impagina i risultati in modo professionale, separando la sintesi diagnostica dal dettaglio tecnico.
+
+
+---
+
+
+PARTE 6: RISULTATI E VISIONE FUTURA
+
+1. Dashboard di Performance
+Abbiamo integrato una dashboard di performance basata su Pandas e Altair, che interroga i dati archiviati per monitorare
+metriche chiave come la confidenza media dei modelli e la distribuzione dei casi positivi e negativi.
+Questo strumento offre una panoramica epidemiologica chiara e costante sull'andamento delle analisi effettuate nel tempo.
+
+2. Verso il Futuro: DICOM e Diagnosi 360°
+Attualmente il sistema accetta comuni file immagine (PNG/JPG). La prossima evoluzione prevede:
+    - Integrazione DICOM nativa: Per leggere i metadati originali delle macchine radiografiche (dose di radiazioni, specifiche del sensore).
+    - Espansione della Knowledge Base: Caricando tramite ChromaDB nuovi PDF allargando quindi la knowledgebase su più punti di vista.
+    - Segmentazione polmonare: Tramite un algoritmo di segmentazione polmonare, ritaglio i polmoni per poi inviarli al LLM.
+    - Cascade R-CNN: Per migliorare la precisione del rilevamento di noduli polmonari.
+
+
+POSSIBILI DOMANDE DEL PROFESSORE
+
+1.  D: Come misureresti il successo clinico di XRayAnalyzer?
+    R: Oltre alla precisione tecnica, il vero successo è quanto il sistema aiuti il medico a lavorare più velocemente e a non farsi sfuggire casi poco evidenti o "nascosti" che un occhio stanco potrebbe ignorare.
+
+2.  D: È facile scalare il database di conoscenza (RAG)?
+    R: Sì, grazie a ChromaDB. Basta aggiungere nuovi file PDF nella cartella di knowledge base e rieseguire l'embedding. Non è necessario ri-addestrare i modelli neurali (Swin o YOLO), rendendo il sistema estremamente flessibile.
+
+3.  D: Qual è il limite attuale del progetto?
+    R: Il limite principale è la dipendenza dalla connettività per l'LLM. Tuttavia, l'architettura è modulare e permette di sostituire l'endpoint remoto con un modello locale più piccolo per ambienti totalmente offline.
+

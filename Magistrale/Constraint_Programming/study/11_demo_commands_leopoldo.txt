@@ -1,0 +1,94 @@
+════════════════════════════════════════════════════════════════════════
+ COMANDI PER LA DEMO LIVE — Sudoku Instance Generation
+ (da tenere aperto nel terminale; usare SOLO se il prof chiede la demo)
+════════════════════════════════════════════════════════════════════════
+
+PRIMA DI TUTTO: spostarsi nella cartella del progetto
+  cd ~/Desktop/Università/Constraint_Programming/project/sudoku_instance_generation
+
+Schema mentale: la pipeline parte da una griglia COMPLETA, toglie indizi a
+una a una (greedy con rollback) e dopo ogni rimozione controlla che la
+soluzione resti UNICA. Python orchestra, il check di unicità può girare in
+Python o in MiniZinc. I comandi sotto mostrano ogni pezzo.
+
+
+────────────────────────────────────────────────────────────────────────
+1) GENERARE UN PUZZLE
+────────────────────────────────────────────────────────────────────────
+Demo principale — genera un puzzle a soluzione unica con strategia "random"
+(seed fisso = risultato riproducibile). Stampa quanti indizi (clues) restano.
+  python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_puzzle.json --backend python --strategy random --seed 7
+
+Variante "symmetry" — toglie gli indizi a coppie simmetriche (puzzle "bello"
+da giornale). Finisce con PIÙ indizi: paga la "doppia tassa" (vedi report 6.2).
+  python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_symmetry.json --backend python --strategy symmetry --seed 7
+
+Stesso comando ma con backend MiniZinc — dimostra che i check girano anche sul
+solver CP "ufficiale" (Gecode), non solo sul solver Python. È più lento.
+  python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_minizinc.json --backend minizinc --strategy random --seed 7
+
+
+────────────────────────────────────────────────────────────────────────
+2) VERIFICARE L'UNICITÀ
+────────────────────────────────────────────────────────────────────────
+Stesso puzzle, due metodi a confronto: devono dare lo STESSO verdetto.
+ - counting: enumera le soluzioni e si ferma alla seconda
+ - solve-and-block: risolve, vieta quella soluzione, riprova; se UNSAT è unico
+  python3 scripts/sudoku_pipeline.py check --input data/generated/demo_puzzle.json --backend python --method counting
+  python3 scripts/sudoku_pipeline.py check --input data/generated/demo_puzzle.json --backend python --method solve-and-block
+
+Check su un puzzle di test già pronto nel repo (input non generato da noi).
+  python3 scripts/sudoku_pipeline.py check --input data/test/unique_puzzle.json --backend python
+
+
+────────────────────────────────────────────────────────────────────────
+3) NOVITÀ: OTTIMIZZAZIONE POST-RIMOZIONE (report §7.1 / §7.4)
+────────────────────────────────────────────────────────────────────────
+Local search sopra il greedy: riaggiunge un indizio e ripulisce di nuovo, per
+uscire dai minimi locali. Da vedere dal vivo: il numero di clues SCENDE (~10s).
+  python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_opt.json --backend python --strategy random --seed 7 --optimize-attempts 20
+
+Variante più aggressiva (variable-neighbourhood): riaggiunge fino a 3 indizi.
+È quella che nei benchmark batte la versione base (report §7.4).
+  python3 scripts/sudoku_pipeline.py generate --source data/solved/sample_solutions.json --output data/generated/demo_vns.json --backend python --strategy random --seed 7 --optimize-attempts 50 --optimize-readd 3
+
+Poi verifico che il puzzle ottimizzato sia ANCORA unico (correttezza preservata).
+  python3 scripts/sudoku_pipeline.py check --input data/generated/demo_opt.json --backend python
+
+
+────────────────────────────────────────────────────────────────────────
+4) NOVITÀ: SIMMETRIE — GRIGLIE COMPLETE SENZA KAGGLE (report §7.3)
+────────────────────────────────────────────────────────────────────────
+Crea nuove griglie complete trasformandone di esistenti (permutazione cifre,
+righe nelle bande, bande, trasposizione). Istantaneo, nessuna chiamata al solver.
+  python3 scripts/sudoku_pipeline.py augment --input data/solved/sample_solutions.json --output data/generated/demo_augmented.json --count 5 --seed 1
+
+Genero un puzzle partendo da una griglia "aumentata": prova che la pipeline è
+autosufficiente, non dipende dal dataset esterno.
+  python3 scripts/sudoku_pipeline.py generate --source data/generated/demo_augmented.json --output data/generated/demo_from_aug.json --backend python --strategy random --seed 3
+
+
+────────────────────────────────────────────────────────────────────────
+5) NOVITÀ: BACKEND MiniZinc-Python (report §7.2 — il risultato NEGATIVO)
+────────────────────────────────────────────────────────────────────────
+Terzo backend via libreria minizinc-python. Da dire: NON è più veloce del
+subprocess (avvolge comunque la CLI). Usa il venv dove è installato il pacchetto.
+  .venv/bin/python scripts/sudoku_pipeline.py check --input data/generated/demo_puzzle.json --backend minizinc-api --method counting
+
+
+────────────────────────────────────────────────────────────────────────
+6) VALIDAZIONE SU PUZZLE 17-CLUE (report §6.6)
+────────────────────────────────────────────────────────────────────────
+Check su veri puzzle a 17 indizi (minimo teorico, da Royle): il nostro checker
+li riconosce "unique". NB: ognuno richiede secondi, non ms (17 indizi = ricerca
+enorme). Esegue il check sulla prima griglia del file di test.
+  python3 -c "import json,sys; sys.path.insert(0,'scripts'); from sudoku_pipeline import evaluate_puzzle; from pathlib import Path; g=json.load(open('data/test/royle_17clue_sample.json'))['puzzles'][0]; print(evaluate_puzzle(Path('.').resolve(), g, 'python', None, method='counting')['status'])"
+
+
+────────────────────────────────────────────────────────────────────────
+SE IL PROF CHIEDE I NUMERI GROSSI (dati grezzi nel repo)
+────────────────────────────────────────────────────────────────────────
+ - benchmark principale: results/full_benchmark.csv (500 griglie x 3 strategie x 2 metodi = 3000 run)
+ - confronto ottimizzatori: results/overnight_comparison.csv (408 griglie: VNS batte v1 su 192, B&B inutile)
+ - confronto backend API: results/minizinc_api_comparison.json (subprocess 0.20s vs api 0.36s per check)
+ - validazione 17-clue: data/test/royle_17clue_sample.json (5 puzzle, tutti "unique")

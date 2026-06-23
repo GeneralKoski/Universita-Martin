@@ -1,0 +1,38 @@
+Siamo partiti ricordando brevemente qualche semplice concetto chiave in teoria della probabilità:
+
+L'evento SOMMA di (due o più) eventi è l'evento che si realizza se si realizza almeno uno di essi.
+Due (o più) eventi possono essere COMPATIBILI o INCOMPATIBILI; in caso di eventi incompatibili, la probabilità della loro somma è la somma delle probabilità.
+L'evento PRODOTTO di (due o più) eventi è l'evento che si realizza se si realizzano tutti.
+Due (o più) eventi possono essere DIPENDENTI o INDIPENDENTI; in caso di eventi indipendenti, la probabilità del loro prodotto è il prodotto delle probabilità.
+Nel caso di eventi dipendenti, la realizzazione di uno dipende dalla realizzazione (o meno) degli altri e la probabilità del prodotto assume la forma (consideriamo il prodotto di due soli eventi) P(AB) = P(A) P(B|A) = P(B) P(A|B), dove P(A|B) è la probabilità di A condizionata al realizzarsi di B.
+Somma e prodotto di eventi sono riconducibili alle operazioni insiemistiche (rispettivamente) di UNIONE e INTERSEZIONE.
+Solo un brevissimo ripasso, ma che (come vedremo a breve) ci consente di risolvere un problemino...
+
+Siamo poi tornati al modello di Ehrenfest. Diciamo subito che questo è stato anche il pretesto per tornare sulla questione funzioni/script-files: il file diario vi farà fare mente locale su quanto visto (ancora una volta: con uno script-file otteniamo esattamente quanto otterremmo digitando noi stessi i comandi contenuti, ed in partcolare tutte le variabili istanziate rimarranno nel nostro spazio di lavoro...)
+
+Siamo poi passati a dare una occhiata a che cosa succede quando prendiamo un SISTEMA di BASSA CARDINALITÀ. Per N=10 abbiamo fatto una scoperta interessante.
+
+Per N di ordine 10 abbiamo trovato che le fluttuazioni percentuali sono di ordine 100%.
+Questo vuol dire in particolare che il ritorno alla condizione iniziale (tutte le biglie in una sola urna) non sembra proprio così impossibile: il processo non presenta la firma della irreversibilità in modo troppo marcato.
+In sostanza, stiamo approntando un linguaggio in cui esprimere in modo preciso la questione reversibilità e irreversibilità: per sistemi grandi la probabilità di tornare alla condizione iniziale (molto distante da quella che pare essere una situazione di equilibrio) è piccola, mentre non lo è poi così tanto per sistemi piccoli. In sostanza, siamo arrivati ad una descrizione più precisa della irreversibilità per sistemi macroscopici, che avevamo anticipato: non parliamo tanto di qualcosa impossibile, ma di qualcosa che è estremamente improbabile.
+
+Siamo poi passati a calcolare frequenze; stiamo parlando delle frequenze con cui si manifestano i diversi valori possibili di n (numero di biglie in una delle due urne) Provando a ripetere l'esperimento per tempi di simulazione più o meno lunghi, abbiamo provato a verificare se e come LE FREQUENZE SI STABILIZZINO. Se questo è quello che succede (ricordate? abbiamo già citato il nostro approccio frequentista), siamo portati a credere che ci sia sotto una distribuzione di PROBABILITÀ: c'è in effetti una probabilità calcolabile a priori (lo faremo! e più avanti scopriremo che questo ha che fare con la interpretazione del modello come un processo di Markov). In sostanza: scopriamo (in modo empirico o per calcolo esplicito) di poter/saper calcolare qual è la probabilità che ci siano ad esempio N/2 o (che so...) 2N/3 particelle in una urna.
+
+Il modo di procedere è stato semplice:
+
+Abbiamo dapprima utilizzato la funzione hist per verificare quanti conteggi cadessero entro un dato intervallo di valori (parliamo del numero di biglie presenti in una delle due urne, quello denominato n, già discusso fornire la più efficace descrizione del sistema in termini del macrostato rilevante). All'inizio abbiamo controllato semplicemente il numero di intervalli (bins) utilizzato da Matlab. Ricordate? prende il max e il min dei valori e divide l'intervallo in 10 sotto-intervalli, oppure (non lo abbiamo fatto, ma potete provare a consultare help hist) in un numero di intervalli pari alla nostra richiesta.
+Abbiamo poi richiesto (cfr output raccolto dal comando hist ove non si chieda un output grafico) i conteggi per un dato set di intervalli, da noi scelto.
+Nel caso di N basso (numero complessivo di biglie) è stato a quel punto semplice ottenere i conteggi per ogni configurazione possibile, per poi passare dai conteggi alle frequenze.
+A questo punto, ripetendo l'esperimento per un numero sempre maggiore di iterazioni, abbiamo osservato lo stabilizzarsi delle frequenze che è il chiaro indizio dell'emergere di una distribuzione di probabilità che presiede al fenomeno osservato, stabilizzarsi che non è nient'altro che il manifestarsi della legge dei grandi numeri.
+In particolare, abbiamo osservato una simmetria della distribuzione attorno al valore centrale (peraltro, il valore atteso, ovvero N/2).
+Di più, abbiamo osservato come per sistemi con N grande, la distribuzione delle frequenze tendesse ad assumere una forma sempre più liscia.
+Abbiamo infine introddotto un problema descritto da un nuovo gioco di urne. Sostanzialmente; alla fine, un pretesto per tornare sulla questione della descrizione in termini di MACROSTATI e MICROSTATI. Segnatamente:
+
+Si abbia a disposizione una urna con 3 biglie NERE e 2 BIANCHE, da disporre a caso (si pensi alla solita procedura di estrazione dall'urna in questione) in altre 2 URNE: una urna U3 che conterrà 3 (e solo 3) biglie, e una U2 che ne conterrà 2 (e solo 2).
+Per prima cosa dobbiamo definire chi siano (e dunque anche quanti siano) i macrostati di colore: vogliamo cioè riguardare come macrostati del sistema quelli a fissato numero di nere in U3, bianche in U2 etc...
+La domanda seguente è quali siano le probabilità di ottenere i vari MACROSTATI DI COLORE del nostro sistema.
+La soluzione può essere ottenuta in un approccio costruttivo. Possiamo pensare ad un modo di realizzare i vari macrostati. Segnatamente, possiamo pensare di mettere tutte e cinque le biglie in una sola urna, per poi estrarre in sequenza 3 biglie, da mettere in U3: la probabilità che ci interessa è la probabilità di ottenere in questo modo i vari macrostati del sistema.
+A proposito del meccanismo appena richiamato, ricordate come la procedura di estrazione che determina un dato macrostato possa essere riguardata come evento somma di eventi incompatibili, ciascuno dei quali è invece un evento prodotto di eventi.
+In pratica, questo è stato un pretesto per vedere cosa ricordate di teoria della probabilità. La soluzione del problema viene infatti dalla applicazione di semplici risultati di teoria della probabilità: formula classica, eventi somma e prodotto, eventi compatibili/incompatibili e dipendenti/indipendenti ...
+
+Il documento pdf che trovate accluso vi riporta come abbiamo insieme impostato i conti: provate a portarli voi stessi a compimento!

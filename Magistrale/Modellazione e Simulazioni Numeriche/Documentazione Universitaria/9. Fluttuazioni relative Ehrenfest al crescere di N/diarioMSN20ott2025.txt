@@ -1,0 +1,494 @@
+nn100 = biglie(1e2,1e5);
+subplot(311)
+plot(nn100)
+nn500 = biglie(5e2,1e5);
+subplot(312)
+plot(nn500)
+nn1000 = biglie(1e3,1e5);
+subplot(313)
+plot(nn1000)
+figure
+bar(0:1e3,binopdf(0:1e3,1e3,0.5),'r')
+axis([400 600 0 0.03])
+hold
+Current plot held
+plot(0:400,MYgss(0:400,500,sqrt(1e3*0.5*0.5)),'k')
+plot(0:400,MYgss(0:400,500,sqrt(1e3*0.5*0.5)),'k')
+figure
+plot(0:400,MYgss(0:400,500,sqrt(1e3*0.5*0.5)),'k')
+plot(400:600,MYgss(400:600,500,sqrt(1e3*0.5*0.5)),'k')
+bar(0:1e2,binopdf(0:1e2,1e2,0.5),'r')
+bar(0:1e3,binopdf(0:1e3,1e3,0.5),'r')
+bar(0:1e3,binopdf(0:1e3,1e3,0.01),'r')
+axis
+
+ans =
+
+   1.0e+03 *
+
+   -0.0012    1.0012         0    0.0001
+
+axis([0 40 ans(3:4)])
+bar(0:1e3,binopdf(0:1e3,1e3,0.001),'r')
+axis
+
+ans =
+
+   1.0e+03 *
+
+   -0.0012    1.0012         0    0.0004
+
+axis([0 20 ans(3:4)])
+bar(0:1e3,binopdf(0:1e3,1e3,0.01),'r')
+axis
+
+ans =
+
+   1.0e+03 *
+
+   -0.0012    1.0012         0    0.0001
+
+axis([0 40 ans(3:4)])
+bar(0:1e3,binopdf(0:1e3,1e3,0.001),'r')
+axis
+
+ans =
+
+   1.0e+03 *
+
+   -0.0012    1.0012         0    0.0004
+
+axis([0 10 ans(3:4)])
+1e3*0.001
+
+ans =
+
+     1
+
+sqrt(1e3*0.001*(1-0.001))
+
+ans =
+
+    0.9995
+
+figure
+plot(-10:0.01:10,MYgss(-10:0.01:10,1,ans),'k')
+plot(-10:0.01:10,MYgss(-10:1:10,0,1),'k')
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('plot')" style="font-weight:bold">plot</a>
+Specify the coordinates as vectors or matrices of the same size, or as a vector and a matrix that share the same length
+in at least one dimension.
+} 
+plot(-10:0.01:10,MYgss(-10:0.01:10,0,1),'k')
+hold
+Current plot held
+plot([-1,-1],[0.0.4],'r')
+ plot([-1,-1],[0.0.4],'r')
+                  ↑
+{Invalid expression. Check for missing multiplication operator, missing or unbalanced delimiters, or other syntax error.
+To construct matrices, use brackets instead of parentheses.
+} 
+plot([-1,-1],[0,0.4],'r')
+plot([1,1],[0,0.4],'r')
+plot([-2,-2],[0,0.4],'r')
+plot([2,2],[0,0.4],'r')
+plot([-3,-3],[0,0.4],'r')
+plot([3,3],[0,0.4],'r')
+type MYgss.m
+
+function res = MYgss(x,x0,sgm)
+
+if nargin == 1
+    x0 = 0;
+    sgm = 1;
+end
+
+res = 1/sqrt(2*pi*sgm^2) * exp( - ((x-x0).^2)/(2*sgm^2));
+
+end
+integral(@MYgss,-1e3,1e3)
+
+ans =
+
+    1.0000
+
+integral(@MYgss,-1,1)
+
+ans =
+
+    0.6827
+
+integral(@MYgss,-2,2)
+
+ans =
+
+    0.9545
+
+integral(@MYgss,-3,3)
+
+ans =
+
+    0.9973
+
+integral(@MYgss,-4,4)
+
+ans =
+
+    0.9999
+
+format long
+ans
+
+ans =
+
+   0.999936657516334
+
+integral(@MYgss,-5,5)
+
+ans =
+
+   0.999999426696856
+
+format short
+integral(@MYgss,-2,2,[],0,2)
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('integralParseArgs', '/Applications/MATLAB_R2025a.app/toolbox/matlab/funfun/private/integralParseArgs.m', 1)" style="font-weight:bold">integralParseArgs</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2025a.app/toolbox/matlab/funfun/private/integralParseArgs.m',1,0)">line 1</a>)
+Invalid argument at position 1. A name is expected.
+
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('integral', '/Applications/MATLAB_R2025a.app/toolbox/matlab/funfun/integral.m', 86)" style="font-weight:bold">integral</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2025a.app/toolbox/matlab/funfun/integral.m',86,0)">line 86</a>)
+opstruct = integralParseArgs(varargin{:});
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+help integral
+ <strong>integral</strong> - Numerical integration
+    This MATLAB function numerically integrates function fun from xmin to
+    xmax using global adaptive quadrature and default error tolerances.
+
+    Syntax
+      q = <strong>integral</strong>(fun,xmin,xmax)
+      q = <strong>integral</strong>(fun,xmin,xmax,Name,Value)
+
+    Input Arguments
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/integral.html#btbbkta-1-fun">fun</a> - Integrand
+        function handle
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/integral.html#btbbkta-1-xmin">xmin</a> - Lower limit of x
+        real number | complex number
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/integral.html#btbbkta-1-xmax">xmax</a> - Upper limit of x
+        real number | complex number
+
+    Name-Value Arguments
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/integral.html#btbbkta-1-AbsTol">AbsTol</a> - Absolute error tolerance
+        1e-10 (default) | nonnegative real number
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/integral.html#btbbkta-1-RelTol">RelTol</a> - Relative error tolerance
+        1e-6 (default) | nonnegative real number
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/integral.html#btbbkta-1-ArrayValued">ArrayValued</a> - Array-valued function flag
+        false or 0 (default) | true or 1
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/integral.html#btbbkta-1-Waypoints">Waypoints</a> - Integration waypoints
+        vector
+
+    Examples
+      <a href="matlab:openExample('matlab/ImproperIntegralExample')">Improper Integral</a>
+      <a href="matlab:openExample('matlab/ParameterizedFunctionExample')">Parameterized Function</a>
+      <a href="matlab:openExample('matlab/SingularityatLowerLimitExample')">Singularity at Lower Limit</a>
+      <a href="matlab:openExample('matlab/ComplexContourIntegrationUsingWaypointsExample')">Complex Contour Integration Using Waypoints</a>
+      <a href="matlab:openExample('matlab/VectorValuedFunctionExample')">Vector-Valued Function</a>
+      <a href="matlab:openExample('matlab/ImproperIntegralofOscillatoryFunctionExample')">Improper Integral of Oscillatory Function</a>
+
+    See also <a href="matlab:help integral2 -displayBanner">integral2</a>, <a href="matlab:help integral3 -displayBanner">integral3</a>, <a href="matlab:help trapz -displayBanner">trapz</a>
+
+    Introduced in MATLAB in R2012a
+    <a href="matlab:doc integral">Documentation for integral</a>
+    <a href="matlab:matlab.lang.internal.introspective.overloads.displayOverloads('integral')">Other uses of integral</a>
+
+quad(@MYgss,-2,2,[],0,2)
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('MYgss', '/Users/francescodirenzo/Documents/MATLAB/MYgss.m', 8)" style="font-weight:bold">MYgss</a> (<a href="matlab: opentoline('/Users/francescodirenzo/Documents/MATLAB/MYgss.m',8,0)">line 8</a>)
+res = 1/sqrt(2*pi*sgm^2) * exp( - ((x-x0).^2)/(2*sgm^2));
+                  ^^^
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('quad', '/Applications/MATLAB_R2025a.app/toolbox/matlab/funfun/quad.m', 67)" style="font-weight:bold">quad</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2025a.app/toolbox/matlab/funfun/quad.m',67,0)">line 67</a>)
+y = f(x, varargin{:});
+    ^^^^^^^^^^^^^^^^^
+} 
+quad(@MYgss,-2,2,[],[],0,2)
+
+ans =
+
+    0.6827
+
+help quad
+ <strong>quad</strong> - (Not recommended) Numerically evaluate integral, adaptive Simpson quadrature
+    This MATLAB function approximates the integral of function fun from a to
+    b using recursive adaptive Simpson quadrature:
+
+    Syntax
+      q = <strong>quad</strong>(fun,a,b)
+      q = <strong>quad</strong>(fun,a,b,tol)
+      q = <strong>quad</strong>(fun,a,b,tol,trace)
+      [q,fcnEvals] = <strong>quad</strong>(___)
+
+    Input Arguments
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/quad.html#mw_534457cb-9040-417f-ba75-6e680d3ded02">fun</a> - Integrand
+        function handle
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/quad.html#mw_67b9678e-2aa9-4170-b3be-ed9f9c166af3">a</a> - Integration limits (as separate arguments)
+        scalars
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/quad.html#mw_67b9678e-2aa9-4170-b3be-ed9f9c166af3">b</a> - Integration limits (as separate arguments)
+        scalars
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/quad.html#mw_0a3f482b-8911-4441-b71a-dc0ce44a8dc2">tol</a> - Absolute error tolerance
+        [] or 1e-6 (default) | scalar
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/quad.html#mw_75b87ccd-fc12-4fe3-b953-5d6154913617">trace</a> - Toggle for diagnostic information
+        nonzero scalar
+
+    Output Arguments
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/quad.html#mw_8cef7d1c-6979-4219-93dd-4f6c956e71db">q</a> - Value of integral
+        scalar
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/matlab/ref/quad.html#mw_eb7a9a15-588e-43ff-ae50-ae6c1b9e27c6">fcnEvals</a> - Number of function evaluations
+        scalar
+
+    Examples
+      <a href="matlab:openExample('matlab/ComputeDefiniteIntegralExample')">Compute Definite Integral</a>
+
+    See also <a href="matlab:help quad2d -displayBanner">quad2d</a>, <a href="matlab:help quadgk -displayBanner">quadgk</a>, <a href="matlab:help trapz -displayBanner">trapz</a>, <a href="matlab:help integral -displayBanner">integral</a>, <a href="matlab:help integral2 -displayBanner">integral2</a>, <a href="matlab:help integral3 -displayBanner">integral3</a>
+
+    Introduced in MATLAB before R2006a
+    <a href="matlab:doc quad">Documentation for quad</a>
+
+type quad.m
+
+function [Q,fcnt] = quad(funfcn,a,b,tol,trace,varargin)
+%QUAD   Numerically evaluate integral, adaptive Simpson quadrature.
+%   Q = QUAD(FUN,A,B) tries to approximate the integral of scalar-valued
+%   function FUN from A to B to within an error of 1.e-6 using recursive
+%   adaptive Simpson quadrature. FUN is a function handle. The function
+%   Y=FUN(X) should accept a vector argument X and return a vector result
+%   Y, the integrand evaluated at each element of X.
+%
+%   Q = QUAD(FUN,A,B,TOL) uses an absolute error tolerance of TOL
+%   instead of the default, which is 1.e-6.  Larger values of TOL
+%   result in fewer function evaluations and faster computation,
+%   but less accurate results.  The QUAD function in MATLAB 5.3 used
+%   a less reliable algorithm and a default tolerance of 1.e-3.
+%
+%   Q = QUAD(FUN,A,B,TOL,TRACE) with non-zero TRACE shows the values
+%   of [fcnt a b-a Q] during the recursion. Use [] as a placeholder to
+%   obtain the default value of TOL.
+%
+%   [Q,FCNT] = QUAD(...) returns the number of function evaluations.
+%
+%   Use array operators .*, ./ and .^ in the definition of FUN
+%   so that it can be evaluated with a vector argument.
+%
+%   QUAD will be removed in a future release. Use INTEGRAL instead.
+%
+%   Example:
+%      Q = quad(@myfun,0,2);
+%   where the file myfun.m defines the function:
+%      %-------------------%
+%      function y = myfun(x)
+%      y = 1./(x.^3-2*x-5);
+%      %-------------------%
+%
+%   or, use a parameter for the constant:
+%      Q = quad(@(x)myfun2(x,5),0,2);
+%   where the file myfun2.m defines the function:
+%      %----------------------%
+%      function y = myfun2(x,c)
+%      y = 1./(x.^3-2*x-c);
+%      %----------------------%
+%
+%   Class support for inputs A, B, and the output of FUN:
+%      float: double, single
+%
+%   See also INTEGRAL, INTEGRAL2, INTEGRAL3, QUADGK, QUAD2D, TRAPZ, 
+%   FUNCTION_HANDLE.
+
+%   Based on "adaptsim" by Walter Gander.
+%   http://www.inf.ethz.ch/personal/gander
+
+%   Reference:
+%   [1] W. Gander and W. Gautschi, Adaptive Quadrature - Revisited,
+%       BIT Vol. 40, No. 1, March 2000, pp. 84-101.
+
+%   Copyright 1984-2017 The MathWorks, Inc.
+
+f = fcnchk(funfcn);
+if nargin < 4 || isempty(tol), tol = 1.e-6; end
+if nargin < 5 || isempty(trace), trace = 0; end
+if ~isscalar(a) || ~isscalar(b)
+    error(message('MATLAB:quad:scalarLimits'));
+end
+
+% Initialize with three unequal subintervals.
+h = 0.13579*(b-a);
+x = [a a+h a+2*h (a+b)/2 b-2*h b-h b];
+y = f(x, varargin{:});
+fcnt = 7;
+if numel(y) ~= fcnt
+    error(message('MATLAB:quad:funNotVectorized'));
+end
+
+% Fudge endpoints to avoid infinities.
+if ~isfinite(y(1))
+    y(1) = f(a+eps(superiorfloat(a,b))*(b-a),varargin{:});
+    fcnt = fcnt+1;
+end
+if ~isfinite(y(7))
+    y(7) = f(b-eps(superiorfloat(a,b))*(b-a),varargin{:});
+    fcnt = fcnt+1;
+end
+
+% Call the recursive core integrator.
+hmin = eps(b-a)/1024;
+[Q(1),fcnt,warn(1)] = ...
+    quadstep(f,x(1),x(3),y(1),y(2),y(3),tol,trace,fcnt,hmin,varargin{:});
+[Q(2),fcnt,warn(2)] = ...
+    quadstep(f,x(3),x(5),y(3),y(4),y(5),tol,trace,fcnt,hmin,varargin{:});
+[Q(3),fcnt,warn(3)] = ...
+    quadstep(f,x(5),x(7),y(5),y(6),y(7),tol,trace,fcnt,hmin,varargin{:});
+Q = sum(Q);
+warn = max(warn);
+
+switch warn
+    case 1
+        warning(message('MATLAB:quad:MinStepSize'))
+    case 2
+        warning(message('MATLAB:quad:MaxFcnCount'))
+    case 3
+        warning(message('MATLAB:quad:ImproperFcnValue'))
+    otherwise
+        % No warning.
+end
+
+% ------------------------------------------------------------------------
+
+function [Q,fcnt,warn] = quadstep(f,a,b,fa,fc,fb,tol,trace,fcnt,hmin,varargin)
+%QUADSTEP  Recursive core routine for function QUAD.
+
+maxfcnt = 10000;
+
+% Evaluate integrand twice in interior of subinterval [a,b].
+h = b - a;
+c = (a + b)/2;
+x = [(a + c)/2, (c + b)/2];
+y = f(x, varargin{:});
+fcnt = fcnt + 2;
+fd = y(1);
+fe = y(2);
+
+% Three point Simpson's rule.
+Q1 = (h/6)*(fa + 4*fc + fb);
+
+% Five point double Simpson's rule.
+Q2 = (h/12)*(fa + 4*fd + 2*fc + 4*fe + fb);
+
+% One step of Romberg extrapolation.
+Q = Q2 + (Q2 - Q1)/15;
+
+if trace
+    fprintf('%8.0f %16.10f %18.8e %16.10f\n',fcnt,a,h,Q);
+end
+
+% Check termination criteria.
+if ~isfinite(Q)
+    % Infinite or Not-a-Number function value encountered.
+    warn = 3;
+    return
+end
+if fcnt > maxfcnt
+    % Maximum function count exceeded; singularity likely.
+    warn = 2;
+    return
+end
+if abs(Q2 - Q) <= tol
+    % Accuracy over this subinterval is acceptable.
+    warn = 0;
+    return
+end
+if abs(h) < hmin || c == a || c == b
+    % Minimum step size reached; singularity possible.
+    warn = 1;
+    return
+end
+
+% Subdivide into two subintervals.
+[Qac,fcnt,warnac] = quadstep(f,a,c,fa,fd,fc,tol,trace,fcnt,hmin,varargin{:});
+[Qcb,fcnt,warncb] = quadstep(f,c,b,fc,fe,fb,tol,trace,fcnt,hmin,varargin{:});
+Q = Qac + Qcb;
+warn = max(warnac,warncb);
+type MYgss.m
+
+function res = MYgss(x,x0,sgm)
+
+if nargin == 1
+    x0 = 0;
+    sgm = 1;
+end
+
+res = 1/sqrt(2*pi*sgm^2) * exp( - ((x-x0).^2)/(2*sgm^2));
+
+end
+quad(@MYgss,-2,2,[],[],0,2)
+
+ans =
+
+    0.6827
+
+quad(@MYgss,-2,2,[],[],1,2)
+
+ans =
+
+    0.6247
+
+quad(@MYgss,-1,3,[],[],1,2)
+
+ans =
+
+    0.6827
+
+quad(@MYgss,-2,2,[],[],0,2)
+
+ans =
+
+    0.6827
+
+quad(@MYgss,-1,1)
+
+ans =
+
+    0.6827
+
+quad(@MYgss,-3,5,[],[],1,2)
+
+ans =
+
+    0.9545
+
+quad(@MYgss,-5,7,[],[],1,2)
+
+ans =
+
+    0.9973
+
+1e3*0.001
+
+ans =
+
+     1
+
+sqrt(1e3*0.001*(1-0.001))
+
+ans =
+
+    0.9995
+
+1e9*0.001
+
+ans =
+
+     1000000
+
+sqrt(1e9*0.001*(1-0.001))
+
+ans =
+
+  999.4999
+
+diary off

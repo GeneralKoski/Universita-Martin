@@ -1,0 +1,68 @@
+# Project: Constraint solver
+# Makefile created by Dev-C++ 4.9.9.1
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = AllVariables.o Constraint.o ConstraintStore.o main.o Search.o Variable.o TrailStack.o SearchComplete.o SearchBest.o SearchBestHeurBBF.o SearchSimple.o load.o Pattern.o Utils.o $(RES)
+LINKOBJ  = AllVariables.o Constraint.o ConstraintStore.o main.o Search.o Variable.o TrailStack.o SearchComplete.o SearchBest.o SearchBestHeurBBF.o SearchSimple.o load.o Pattern.o Utils.o $(RES)
+LIBS =  -L"C:/Programmi/Dev-Cpp/lib" -L"C:/Documents and Settings/Ale/Desktop/gecode-1.3.1/install/bin" -L"C:/Documents and Settings/Ale/Desktop/gecode-1.3.1"  -g3 
+INCS =  -I"C:/Programmi/Dev-Cpp/include"  -I"C:/Documents and Settings/Ale/Desktop/gecode-1.3.1" 
+CXXINCS =  -I"C:/Programmi/Dev-Cpp/include/c++/3.3.1"  -I"C:/Programmi/Dev-Cpp/include/c++/3.3.1/mingw32"  -I"C:/Programmi/Dev-Cpp/include/c++/3.3.1/backward"  -I"C:/Programmi/Dev-Cpp/lib/gcc-lib/mingw32/3.3.1/include"  -I"C:/Programmi/Dev-Cpp/include"  -I"C:/Documents and Settings/Ale/Desktop/gecode-1.3.1/install/include"  -I"C:/Documents and Settings/Ale/Desktop/gecode-1.3.1/install"  -I"C:/Documents and Settings/Ale/Desktop/gecode-1.3.1" 
+BIN  = "Constraint solver.exe"
+CXXFLAGS = $(CXXINCS)   -w -fexpensive-optimizations -O3 -g3
+CFLAGS = $(INCS)   -w -fexpensive-optimizations -O3 -g3
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before "Constraint solver.exe" all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Constraint solver.exe" $(LIBS)
+
+AllVariables.o: AllVariables.c
+	$(CPP) -c AllVariables.c -o AllVariables.o $(CXXFLAGS)
+
+Constraint.o: Constraint.c
+	$(CPP) -c Constraint.c -o Constraint.o $(CXXFLAGS)
+
+ConstraintStore.o: ConstraintStore.c
+	$(CPP) -c ConstraintStore.c -o ConstraintStore.o $(CXXFLAGS)
+
+main.o: main.c
+	$(CPP) -c main.c -o main.o $(CXXFLAGS)
+
+Search.o: Search.c
+	$(CPP) -c Search.c -o Search.o $(CXXFLAGS)
+
+Variable.o: Variable.c
+	$(CPP) -c Variable.c -o Variable.o $(CXXFLAGS)
+
+TrailStack.o: TrailStack.c
+	$(CPP) -c TrailStack.c -o TrailStack.o $(CXXFLAGS)
+
+SearchComplete.o: SearchComplete.c
+	$(CPP) -c SearchComplete.c -o SearchComplete.o $(CXXFLAGS)
+
+SearchBest.o: SearchBest.c
+	$(CPP) -c SearchBest.c -o SearchBest.o $(CXXFLAGS)
+
+SearchBestHeurBBF.o: SearchBestHeurBBF.c
+	$(CPP) -c SearchBestHeurBBF.c -o SearchBestHeurBBF.o $(CXXFLAGS)
+
+SearchSimple.o: SearchSimple.c
+	$(CPP) -c SearchSimple.c -o SearchSimple.o $(CXXFLAGS)
+
+load.o: load.c
+	$(CPP) -c load.c -o load.o $(CXXFLAGS)
+
+Pattern.o: Pattern.c
+	$(CPP) -c Pattern.c -o Pattern.o $(CXXFLAGS)
+
+Utils.o: Utils.c
+	$(CPP) -c Utils.c -o Utils.o $(CXXFLAGS)

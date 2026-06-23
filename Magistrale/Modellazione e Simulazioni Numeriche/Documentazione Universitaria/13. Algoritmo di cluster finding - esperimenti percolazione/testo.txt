@@ -1,0 +1,26 @@
+Abbiamo introdotto un primo algoritmo di cluster finding. Lo abbiamo conosciuto tramite quello che gli anglosassoni chiamano reverse engineering... ovvero interpretando la sua implementazione così come realizzata dai vostri colleghi dello scorso anno accademico. Si tratta di un algoritmo robusto, di cui però non ci sfuggono le debolezze... Vediamo brevemente come procede. Per simulare la percolazione, esso costituisce il nostro punto di partenza.
+
+Diciamo subito che al reticolo sono associate due strutture dati, di fatto delle matrici (abbiamo in realtà scelto di mettere insieme le due matrici entro una unica struct di Matlab, capace di contenere tutte le altre informazioni rilevanti; help struct vi farà anche più di quanto abbiamo visto). In questo modo, possiamo assegnare ad ogni sito non solo il "valore" colorato/non-colorato, ma anche una label, inizialmente messa a zero. Questa etichetta rimarrà a zero per i siti non colorati, mentre conterrà l'identificativo di cluster per i siti colorati (evidentemente, sarà l'id del cluster cui il sito appartiene).
+L'algoritmo ha un doppio livello: il livello più esterno è costituito da un ciclo che visita tutti i siti colorati del reticolo, fermandosi e trasferendo il controllo al livello più interno quando si incontra un sito colorato e non ancora visitato (riconoscibile per la label ancora a zero). Nel percorrere il ciclo esterno pensiamo di avere sempre a disposizione una etichetta: quella corrente da piazzare (se abbiamo riconosciuto già n-1 cluster, avremo a disposizione la etichetta n).
+Il livello interno provvede a riconoscere ed etichettare il cluster cui il sito (colorato e non ancora etichettato) appartiene. Per far questo utilizziamo una pila alla cui base mettiamo il sito in questione: al momento è l'unico sito che conosciamo appartenere al cluster. Pensiamo ora di mettere un puntatore a puntare la base della pila: esso dunque all'inizio punta l'unico sito impilato. Visitiamo tutti i siti primi vicini del sito puntato e ogni volta che uno di essi sia colorato e non ancora etichettato provvediamo a (1) etichettarlo e (2) impilarlo in cima alla pila. Dopo aver terminato la visita di tutti i primi vicini del sito puntato, facciamo risalire di una posizione il puntatore lungo la pila, puntando ora un nuovo sito, per cui ripetiamo quanto appena detto (ne esploriamo i primi vicini, etichettando ed impilando siti che abbiamo trovato colorati e non etichettati).
+Si noti che per effetto delle operazioni descritte: (1) la pila cresce, fino a contenere tutti i siti facenti parte del cluster che stiamo riconoscendo; (2) la nostra risalita lungo la pila procede fino a che non potremo risalire oltre: quando questo accade, avremo riconosciuto tutto il cluster.
+L'algoritmo è robusto e ci lascia (potenzialmente) con tutte le informazioni cui potremmo essere interessati: numero di cluster, loro dimensione (l'altezza della pila al momento in cui ci arrestiamo) ed identificativo di cluster per ciascun sito colorato. Non è però sicuramente ottimale quanto a tempi di calcolo: è evidente che torniamo più e più volte a considerare uno stesso sito...
+
+NOTA BENE! Per implementare l'algoritmo abbiamo in particolare bisogno di accedere ai primi vicini. Mentre è semplice accedere ai primi vicini dei siti non-sul-bordo, dobbiamo curare il caso particolare in cui ci troviamo sui bordi. La soluzione che lo scorso anno era stata implementata consiste nel bordare di zeri il nostro reticolo e di visitare davvero solo i siti  non-sul-bordo.
+
+Abbiamo dunque guardato alla funzione (ancora una volta: scritta lo scorso anno da vostri colleghi) che fa tutti i passaggi necessari e sufficienti per lo studio della percolazione su un singolo reticolo, ovvero:
+
+viene creato e colorato il reticolo;
+vengono riconosciuti ed etichettati i cluster venutisi a creare;
+si verifica se si sia verificata percolazione LR (Left-Right) o TB (Top Bottom).
+Abbiamo pure guardato ed eseguito lo script file che (per quanto a relativamente bassa statistica e per poche, piccole taglie del reticolo) ha consentito un primo studio del problema:
+
+si cicla su un certo numero di taglie del reticolo ...
+... e, a fissata taglia, su un certo numero di valori della probabilità di colorazione; ...
+... a fissata taglia e valore della probabilità di colorazione, si effettuano un certo numero di esperimenti, registrando la frequenza di percolazione.
+Oltre a migliorare la statistica, ci rimane una domanda importantissima a cui rispondere: come assegnare un errore alle frequenze determinate, così da poter avere una idea (quantitativa!) della affidabilità dei risultati?
+
+Non solo, vi è stato chiesto di provare a migliorare i codici così che sia possibile:
+
+calcolare separatamente le frequenze di percolazione LR e TB (ci aspettiamo che siano uguali ... ancora una volta ... entro che margini di errore?!);
+annotare (oltre alla eventuale avvenuta percolazione) informazioni che sono disponibili al termine della esecuzione della ricerca dei cluster, ovvero numero e taglia dei cluster trovati (sarà così possibile determinare taglie medie, taglie massime, ...).

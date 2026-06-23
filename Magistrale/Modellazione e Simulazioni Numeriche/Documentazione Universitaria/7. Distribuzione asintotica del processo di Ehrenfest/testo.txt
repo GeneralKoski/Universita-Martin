@@ -1,0 +1,16 @@
+Abbiamo concluso il calcolo della probabilità stazionaria del processo di Ehrenfest: si tratta di una distribuzione binomiale. Potremmo chiederci se questo ci suggerisca qualcosa
+
+Possiamo riconoscere che la distribuzione ottenuta è quella che descrive la probabilità a priori di realizzare una data configurazione del sistema: sostanzialmente, possiamo pensare di disporre a caso ogni biglia in una delle due urne.
+Da quanto detto sopra, è chiaro che detta probabilità a priori è una binomiale: si tratta di una procedura di prove ripetute (per ogni biglia scegliamo a caso dove mettere), descritta da N prove (il numero di biglie) e probabilità 0.5 (per ogni biglia scegliamo a caso dove mettere...)
+È sicuramente interessante notare come il calcolo di questa probabilità a priori non sappia niente della dinamica (le regole del gioco) del processo di Ehrenfest, ma questa distribuzione emerge come distribuzione stazionaria/asintotica di detto processo! Su questa osservazione torneremo a proposito della teoria delle catene di Markov...
+Vale la pena ricordare come sia stato possibile riconoscere la distribuzione binomiale utilizzando la formula (di Newton) per la potenza del binomio. Alla fine, è stato un modo per introdurre (ripassare...) il coefficiente binomiale e la forma stessa della distribuzione binomiale (o Bernoulliana).
+
+Abbiamo poi confrontato la distribuzione binomiale di parametri N,1/2 con le frequenze statistiche che avevamo calcolato dopo aver simulato il processo di Ehrenfest su tempi lunghi, per tre diversi valori di N. Vi ricordo che queste frequenze sono calcolate facendo eseguire lo script DoYourJobL.m: non riporto il file Matlab che contiene il risultato perché è molto pesante (mentre ottenere i risultati prende poco tempo...). Il confronto ha ovviamente mostrato un ottimo accordo. L'analisi condotta ci ha portato naturalmente a discutere (richiamare, visto la conoscete già!) le caratteristiche fondamentali della distribuzione binomiale (o bernoulliana).
+
+Abbiamo avuto il pretesto per osservare come per grandi N (e per il valore di p=0.5, come per la binomiale distribuzione asintotica del processo di Ehrenfest) la distribuzione binomiale tenda ad assomigliare ad una gaussiana (Quale? ... ricordate? ... quella che ha i valori di x0 e sigma che restituiscono gli stessi valori di valor medio e varianza della binomiale in questione...).
+
+Sono accluse delle note su cui torneremo, in cui sono presentate le caratteristiche salienti di Binomiale (o Bernoulliana), Poissoniana e Gaussiana.
+
+Sono anche accluse delle noticine che presentano una raccolta di un certo numero di risultati elementari in teoria delle probabilità. Come esempio di risultati riportati abbiamo riparlato della formula che esprime la probabilità della somma di tre eventi compatibili.
+
+Ritroverete tutti i risultati di cui già abbiamo parlato (e che abbiamo utilizzato per calcoli elementari), del tipo di formula classica, eventi somma e prodotto, eventi compatibili/incompatibili e dipendenti/indipendenti ...
