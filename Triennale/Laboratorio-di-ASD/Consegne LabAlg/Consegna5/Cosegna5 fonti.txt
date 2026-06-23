@@ -1,0 +1,29 @@
+Abbiamo implementato l'algoritmo di Prim partendo dal pseudocodice:
+Prim(V(G), E(G), w):
+S ← { }, T ← { }
+key[s] ← 0
+for v ∈ V(G) \ {s}:
+key[v] ← ∞, π[v] ← NULL
+Crea Q coda di priorit`a vuota
+for v ∈ V(G):
+Insert(Q, v, key[v])
+while Q 6= ∅:
+u ← Del-Min(Q)
+S ← S ∪ {u}, T ← T ∪ {π[u]}
+for e = uv ∈ E(G) tale che v ∈/ S:
+if w(e) < key[v]:
+Decrease-Key(Q, v, w(e))
+key[v] ← w(e), π[v] ← e
+return(T)
+
+reperito da: https://ricerca.mat.uniroma3.it/users/melo/GE460_2021/Dallorto.pdf
+
+Un esempio di input sarebbe:
+5 6
+0 1 4
+0 2 3
+1 2 1
+2 3 2
+3 4 4
+4 0 7
+2

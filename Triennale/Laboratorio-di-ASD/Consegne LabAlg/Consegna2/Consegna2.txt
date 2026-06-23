@@ -1,0 +1,35 @@
+Creando due alberi predefiniti root1 e root2:
+	node_t *root1 = node_new(1);
+	global_ptr_ref = root1;
+
+	tree_print_graph(root1);
+	tree_insert_child_L(root1, 2);
+	tree_print_graph(root1);
+	tree_insert_child_L(root1->L, 3);
+	tree_print_graph(root1);
+	tree_insert_child_L(root1->L->L, 4);
+	tree_print_graph(root1);
+	tree_insert_child_L(root1->L->L->L, 5);
+	tree_print_graph(root1);
+
+
+
+	node_t *root2 = node_new(1);
+	global_ptr_ref = root2;
+
+	tree_print_graph(root2);
+	tree_insert_child_L(root2, 2);
+	tree_print_graph(root2);
+	tree_insert_child_L(root2->L, 3);
+	tree_print_graph(root2);
+	tree_insert_child_L(root2->L->L, 4);
+	tree_print_graph(root2);
+	tree_insert_child_L(root2->L->L->L, 5);
+	tree_print_graph(root2);
+ed eliminando le due righe:
+	insert_random_rec(root1);
+	insert_random_rec(root2);
+mi ritrovo in output:
+	Is root1 balanced? No
+	Is root2 balanced? No
+	Is root1 a subtree of root2? Yes
