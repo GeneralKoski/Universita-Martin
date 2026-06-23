@@ -1,20 +1,22 @@
 # TODO — Esame Fondamenti IA
 
-Stato aggiornato al 2026-05-04. Esame: progetto + scritto da 3 domande
+Stato aggiornato al 2026-06-23. Esame: progetto + scritto da 3 domande
 (Prof.ssa E. Iotti, UniPR). Studente lavoratore, no orale.
-Date scritto: 16/30 giugno, 14 luglio, 1/15 settembre 2026.
+Appello scelto: **14 luglio 2026** (PRENOTATO).
 
 ---
 
-## 1. Progetto — Canny Edge Detector
+## 1. Progetto — Canny Edge Detector — ✅ CONSEGNATO
 
-Concordato implicitamente (è il progetto VA 2 da `progetti.pdf`).
-Codice e figure pronti in `Progetto_Canny/`.
+Progetto VA 2 da `progetti.pdf`. Consegnato alla prof via mail il 2026-06-23
+(zip con codice + report).
 
-- [ ] Compilare `Progetto_Canny/report/report.tex` su Overleaf → PDF
-- [ ] Verificare che il report stia in **1 pagina** (max consentito per lavoratori)
-- [ ] (opzionale) Aggiungere confronto con `cv2.Canny` per validazione qualitativa
-- [ ] (opzionale) Testare su una terza immagine più rumorosa per discutere i limiti
+- [x] Compilato `Progetto_Canny/report/report.tex` su Overleaf → `report_canny.pdf`
+- [x] Report in **1 pagina** (max consentito per lavoratori)
+- [x] Mail di consegna inviata a `eleonora.iotti@unipr.it` con `Canny_Trajkovski.zip`
+- [ ] **In attesa di conferma della prof** sulle modalità (mail/orale)
+- [~] (opzionale) Confronto con `cv2.Canny` — non necessario
+- [~] (opzionale) Terza immagine più rumorosa — non necessario
 
 ## 2. Scritto — 3 domande dettagliate
 
@@ -22,8 +24,8 @@ Codice e figure pronti in `Progetto_Canny/`.
 
 ### Materiali da recuperare/aspettare
 - [ ] Aprire `domande.docx` per capire lo stile delle domande di esempio
-- [ ] Aspettare gli **esempi di risposte** che la prof pubblicherà su Elly (~14 maggio)
-- [ ] Recuperare le **videoregistrazioni** delle lezioni dal gruppo Teams del corso
+- [x] Esempi di risposte della prof → in `Esame_-_progetto_report_domande/risposte_esempio_prof.pdf`
+- [~] Videoregistrazioni lezioni dal Teams — non interessano, skip
 
 ### Mappatura programma → lezioni (da completare)
 Per ogni macro-area, verificare cosa c'è già nel repo e cosa va recuperato:
@@ -63,13 +65,14 @@ Lezione 8 ha già `RIASSUNTO.md`. Replicare per le altre:
 - [ ] `Lezione_7/RIASSUNTO.md`
 
 ### Auto-test
-- [ ] Provare a rispondere alla domanda di esempio in `domande.docx` come se fossi all'esame, cronometrato
-- [ ] Confrontare con la risposta-esempio quando pubblicata
+- [ ] Provare a rispondere alle domande di `domande.docx` come se fossi all'esame, cronometrato
+- [ ] Confrontare con `risposte_esempio_prof.pdf` (già disponibili)
 
 ## 3. Logistica
 
-- [ ] Iscrizione su Esse3 a una delle date dello scritto (decidere quale in base alla preparazione)
-- [ ] Consegna progetto + report PDF alla prof (modalità da chiarire — probabilmente via mail o caricamento Elly)
+- [x] Iscrizione su Esse3 — **PRENOTATO appello 14/07/2026** (finestra prenotazioni 14/06–09/07)
+- [x] Consegna progetto + report PDF alla prof — inviata via mail il 2026-06-23
+- [ ] Attendere conferma della prof sulle modalità di consegna/orale
 
 ---
 
