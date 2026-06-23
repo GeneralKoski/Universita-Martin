@@ -1,7 +1,7 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[italian]{babel}
 \usepackage{amsmath,amssymb}
-\usepackage[margin=1.6cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 \usepackage{enumitem}
 \usepackage{array}
 \usepackage{fancyhdr}
@@ -14,1259 +14,326 @@
 \setlist{nosep,leftmargin=1.3em}
 \pagestyle{fancy}\fancyhf{}\rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
-\begin{document}\small
-\begin{center}{\Large\bfseries Domande d'esame - risposte complete}\end{center}
-Risposte in stile "esame scritto" alle 32 domande di esempio fornite dalla prof.ssa Iotti. Ordine originale conservato. Dove utile, formule e definizioni formali sono incluse esplicitamente.
-\newpage
+\begin{document}
 \section*{Q1. Cosa si intende per "spazio metrico" e in che modo la "metrica euclidea su $\mathbb{R}$" vi si relaziona?}
-\subsection*{Definizione di spazio metrico}
-Uno \textbf{spazio metrico} è una coppia $(X, d)$ dove \texttt{X} è un insieme non vuoto e $d: X \times  X \to  \mathbb{R}$ è una funzione, detta \textbf{distanza} o \textbf{metrica}, che soddisfa i seguenti assiomi per ogni $x, y, z \in  X$:
+Uno \textbf{spazio metrico} è una coppia $(X, d)$ con \texttt{X} insieme non vuoto e $d: X \times  X \to  \mathbb{R}$ (distanza) che per ogni \texttt{x, y, z} soddisfa 4 assiomi:
 \begin{enumerate}
-\item \textbf{Non-negatività}: $d(x, y) \ge  0$
-\item \textbf{Identità degli indiscernibili}: $d(x, y) = 0 \Leftrightarrow  x = y$
-\item \textbf{Simmetria}: $d(x, y) = d(y, x)$
-\item \textbf{Disuguaglianza triangolare}: $d(x, z) \le  d(x, y) + d(y, z)$
+\item \textbf{Non-negatività}: $d(x,y) \ge  0$
+\item \textbf{Identità}: $d(x,y) = 0 \Leftrightarrow  x = y$
+\item \textbf{Simmetria}: $d(x,y) = d(y,x)$
+\item \textbf{Disuguaglianza triangolare}: $d(x,z) \le  d(x,y) + d(y,z)$
 \end{enumerate}
-La metrica formalizza in modo astratto la nozione intuitiva di "distanza", indipendentemente dalla natura di \texttt{X}.
-\subsection*{La metrica euclidea su $\mathbb{R}$}
-Su $X = \mathbb{R}$ la metrica naturale è $d(x, y) = |x - y|$. È immediato verificare che soddisfa i quattro assiomi (la triangolare segue dalla disuguaglianza $|a + b| \le  |a| + |b|$). $(\mathbb{R}, |\cdot |)$ è quindi uno spazio metrico, ed è il prototipo di tutti gli spazi metrici trattati nel corso.
-\subsection*{Generalizzazione a $\mathbb{R}^{N}$}
-Su $\mathbb{R}^{N}$ la metrica euclidea è $d(x, y) = \|x - y\|_{2} = \sqrt{\sum _{i} (x_{i} - y_{i})^{2}}$, indotta dalla norma euclidea $\|\cdot \|_{2}$. Soddisfa gli assiomi (la triangolare segue dalla disuguaglianza di Cauchy–Schwarz).
-\subsection*{Perché serve nel corso}
-Tutti i concetti di limite, continuità, convergenza, ottimizzazione richiedono una nozione di "vicinanza": la metrica è il minimo strumento che la rende formale. La discesa del gradiente, ad esempio, vive in $(\mathbb{R}^{N}, \|\cdot \|_{2})$; le immagini digitali sono punti di $\mathbb{R}^{N}$ con $N = larghezza \times  altezza \times  canali$.
+La \textbf{metrica euclidea su $\mathbb{R}$} è $d(x,y) = |x - y|$: soddisfa i 4 assiomi ed è il caso prototipo. Si generalizza a $\mathbb{R}^{N}$ con $d(x,y) = \|x - y\|_{2} = \sqrt{\sum _{i}(x_{i} - y_{i})^{2}}$. La metrica serve perché tutti i concetti di limite, continuità e ottimizzazione (es. discesa del gradiente in $\mathbb{R}^{N}$) richiedono una nozione di "vicinanza".
 \newpage
-\section*{Q2. Come si definisce la "continuità" per una funzione @@INL124@@, e qual è il significato di "continuità separata"?}
-\subsection*{Continuità (definizione $\varepsilon $–$\delta $)}
-$f: \mathbb{R}^{N} \to  \mathbb{R}$ è \textbf{continua} in $x_{0} \in  \mathbb{R}^{N}$ se:
-\[ \forall \varepsilon  > 0,  \exists \delta  > 0  :  \forall x \in  \mathbb{R}^{N},  \|x - x_{0}\| < \delta   \Rightarrow   |f(x) - f(x_{0})| < \varepsilon  \]
-\texttt{f} è continua su $\mathbb{R}^{N}$ ($f \in  C^{0}(\mathbb{R}^{N})$) se è continua in ogni punto. In termini metrici: $d(x, x_{0}) < \delta  \Rightarrow  d(f(x), f(x_{0})) < \varepsilon $. È la stessa idea della definizione di Cauchy nel caso $N = 1$, generalizzata da intervalli a "palle" in $\mathbb{R}^{N}$ (dischi se $N = 2$, sfere se $N = 3$, ecc.).
-\subsection*{Continuità separata}
-Per $N = 2$, $f: \mathbb{R}^{2} \to  \mathbb{R}$ è \textbf{continua separatamente in x} se, fissato $y = y_{0}$, la funzione di una variabile $g(x) = f(x, y_{0})$ è continua in ogni \texttt{x}. Analogamente continua separatamente in \texttt{y}. Si dice \textbf{separatamente continua} se lo è in entrambe le variabili.
-\subsection*{Relazione tra le due nozioni}
-\textbf{La continuità globale implica quella separata, ma non viceversa.} Il controesempio classico è:
-\[ f(x, y) = xy / (x^{2} + y^{2})   se (x,y) \ne  (0,0),     f(0,0) = 0 \]
-Lungo gli assi \texttt{f} è identicamente 0 (continua separatamente in \texttt{(0,0)}), ma lungo la retta $y = x$ vale $1/2$ per ogni $x \ne  0$, quindi non ha limite in \texttt{(0,0)} e non è globalmente continua.
-\subsection*{Significato}
-La continuità globale richiede controllo del valore di \texttt{f} in *ogni* direzione di avvicinamento; quella separata solo lungo gli assi. È la prima manifestazione del fatto che il calcolo in più variabili non è la semplice giustapposizione di calcoli a una variabile.
+\section*{Q2. Come si definisce la "continuità" per una funzione @@INL35@@, e qual è il significato di "continuità separata"?}
+\texttt{f} è \textbf{continua} in $x_{0}$ se:
+\[ \forall \varepsilon  > 0, \exists \delta  > 0 : \|x - x_{0}\| < \delta  \Rightarrow  |f(x) - f(x_{0})| < \varepsilon  \]
+Cioè: a piccole variazioni dell'input corrispondono piccole variazioni dell'output (definizione di Cauchy generalizzata da intervalli a "palle" in $\mathbb{R}^{N}$).
+La \textbf{continuità separata} richiede che \texttt{f} sia continua rispetto a una variabile alla volta, tenendo fisse le altre.
+\textbf{Relazione}: la continuità (congiunta) implica quella separata, \textbf{ma non viceversa}. Controesempio: $f(x,y) = xy/(x^{2}+y^{2})$ (e $f(0,0)=0$) è separatamente continua nell'origine (vale 0 sugli assi) ma non continua (vale $1/2$ sulla retta $y=x$). È la prima prova che il calcolo in più variabili non è la semplice somma di calcoli a una variabile.
 \newpage
 \section*{Q3. Qual è la relazione tra "derivata direzionale", "derivata parziale" e "gradiente" nel calcolo in più variabili?}
-\subsection*{Derivata direzionale}
-Per $f: \mathbb{R}^{N} \to  \mathbb{R}$, $x_{0} \in  \mathbb{R}^{N}$ e versore $v \in  \mathbb{R}^{N}$ ($\|v\| = 1$), la \textbf{derivata direzionale} di \texttt{f} in $x_{0}$ lungo \texttt{v} è:
-\[ \partial f/\partial v (x_{0}) = lim (h\to 0) [f(x_{0} + h\cdot v) - f(x_{0})] / h \]
-Misura il tasso istantaneo di variazione di \texttt{f} muovendosi da $x_{0}$ nella direzione \texttt{v}.
-\subsection*{Derivata parziale}
-Caso particolare della direzionale: si sceglie $v = e_{i}$, l'\texttt{i}-esimo versore della base canonica. Si ottiene la \textbf{derivata parziale}:
-\[ \partial f/\partial x_{i} (x_{0}) = lim (h\to 0) [f(x_{0} + h\cdot e_{i}) - f(x_{0})] / h \]
-cioè la derivata di \texttt{f} quando si lascia variare solo la coordinata \texttt{i}-esima e si tengono fisse le altre.
-\subsection*{Gradiente}
-Il \textbf{gradiente} di \texttt{f} in $x_{0}$ è il vettore delle derivate parziali:
-\[ \nabla f(x_{0}) = (\partial f/\partial x_{1}, \partial f/\partial x_{2}, ..., \partial f/\partial x_{n})(x_{0}) \in  \mathbb{R}^{N} \]
-\subsection*{Relazione (per funzioni differenziabili)}
-Se \texttt{f} è differenziabile in $x_{0}$, allora la derivata direzionale lungo qualunque \texttt{v} si esprime come prodotto scalare:
-\[ \partial f/\partial v (x_{0}) = \nabla f(x_{0}) \cdot  v \]
-Conseguenze fondamentali:
 \begin{itemize}
-\item Il gradiente "contiene" tutte le derivate direzionali.
-\item $|\partial f/\partial v| \le  \|\nabla f\|$ per Cauchy–Schwarz, con uguaglianza quando \texttt{v} è parallelo a $\nabla f$. Quindi \textbf{$\nabla f(x_{0})$ indica la direzione di massima crescita di \texttt{f} in $x_{0}$}, e $-\nabla f(x_{0})$ quella di massima decrescita.
-\item Se $\nabla f(x_{0}) = 0$, $x_{0}$ è un punto critico (candidato a minimo, massimo o sella).
+\item \textbf{Derivata direzionale} lungo il versore \texttt{v}: $D_{v}f(x_{0}) = lim_{h\to 0} [f(x_{0}+hv) - f(x_{0})]/h$. Misura la variazione di \texttt{f} muovendosi nella direzione \texttt{v}.
+\item \textbf{Derivata parziale}: derivata direzionale lungo un versore della base canonica $e_{i}$ (deriva rispetto a $x_{i}$, fissate le altre).
+\item \textbf{Gradiente}: vettore delle derivate parziali $\nabla f = (\partial f/\partial x_{1}, \dots , \partial f/\partial x_{n})$.
 \end{itemize}
-\subsection*{Ruolo nel corso}
-Il gradiente è il cuore dell'ottimizzazione: la discesa del gradiente sfrutta proprio la proprietà di massima decrescita per ridurre iterativamente la funzione di costo nelle reti neurali.
+\textbf{Relazione} (se \texttt{f} differenziabile): $D_{v}f = \nabla f \cdot  v$. Conseguenze:
+\begin{itemize}
+\item il gradiente contiene tutte le derivate direzionali;
+\item $\nabla f$ punta nella direzione di \textbf{massima crescita} (e $-\nabla f$ di massima decrescita), per Cauchy-Schwarz;
+\item $\nabla f = 0$ indica un punto critico.
+\end{itemize}
+Questa proprietà è il cuore della discesa del gradiente.
 \newpage
 \section*{Q4. Descrivi il "metodo iterativo di discesa del gradiente" e la sua finalità.}
-\subsection*{Finalità}
-La \textbf{discesa del gradiente} (gradient descent, GD) è un metodo iterativo per trovare un minimo locale di una funzione differenziabile $f: \mathbb{R}^{N} \to  \mathbb{R}$. È lo strumento standard per minimizzare funzioni di costo nell'apprendimento automatico, dove \texttt{f} rappresenta l'errore del modello sui dati di training in funzione dei parametri.
-\subsection*{Idea}
-Da Q3 sappiamo che $-\nabla f(x)$ è la direzione di massima decrescita locale. Il metodo costruisce una successione ${x_{k}}$ muovendosi a ogni passo nella direzione opposta al gradiente.
-\subsection*{Algoritmo}
-\begin{enumerate}
-\item Scegliere un punto iniziale $x_{0} \in  \mathbb{R}^{N}$ e un \textbf{learning rate} $\eta  > 0$.
-\item Per $k = 0, 1, 2, ...$:
-\end{enumerate}
+\textbf{Finalità}: trovare un minimo di una funzione differenziabile \texttt{f} (es. la funzione di costo di una rete) quando non c'è soluzione in forma chiusa.
+\textbf{Idea}: poiché $-\nabla f$ è la direzione di massima decrescita, ci si muove a ogni passo in quella direzione.
+\textbf{Algoritmo}: scelto $x_{0}$ e un \textbf{learning rate} $\eta  > 0$:
 \[ x_{k+1} = x_{k} - \eta  \cdot  \nabla f(x_{k}) \]
-\begin{enumerate}
-\item Iterare finché un criterio di arresto è soddisfatto: $\|\nabla f(x_{k})\| < tol$, numero massimo di iterazioni, o variazione di \texttt{f} sotto soglia.
-\end{enumerate}
-\subsection*{Intuizione geometrica}
-Si immagini \texttt{f} come una superficie e una pallina che rotola: a ogni passo si sceglie la direzione di pendenza più ripida verso il basso e si avanza di un tratto proporzionale a $\eta $.
-\subsection*{Ruolo del learning rate @@INL187@@}
-\begin{itemize}
-\item $\eta $ troppo piccolo $\to $ convergenza molto lenta.
-\item $\eta $ troppo grande $\to $ oscillazioni o divergenza (si "salta" oltre il minimo).
-\item In pratica si usano $\eta $ adattivi (Adam, RMSProp) o decay schedule.
-\end{itemize}
-\subsection*{Garanzie}
-Per \texttt{f} convessa e differenziabile con gradiente Lipschitziano, scegliendo $\eta $ opportunamente piccolo, GD converge al minimo globale. In generale (\texttt{f} non convessa, come nelle reti neurali) converge solo a un punto critico, che può essere un minimo locale o un punto di sella.
-\subsection*{Varianti rilevanti}
-\begin{itemize}
-\item \textbf{Batch GD}: usa tutti i dati a ogni passo (costoso).
-\item \textbf{Stochastic GD (SGD)}: usa un singolo esempio (rumoroso ma veloce).
-\item \textbf{Mini-batch}: compromesso, standard nel deep learning.
-\end{itemize}
+fino a un criterio di arresto ($\|\nabla f\|$ piccola, max iterazioni).
+\textbf{Learning rate}: troppo grande $\to $ oscilla/diverge; troppo piccolo $\to $ lentissimo. \textbf{Garanzia}: converge al minimo globale solo se \texttt{f} è convessa; altrimenti a un punto critico. Varianti: Batch GD, SGD (un esempio per volta), Mini-batch.
 \newpage
 \section*{Q5. Descrivi il metodo della discesa del gradiente. In quali casi potrebbe non convergere al minimo globale?}
-\subsection*{Metodo}
-(Vedi Q4 per la definizione formale e l'algoritmo.) Sintesi: aggiornamento $x_{k+1} = x_{k} - \eta  \cdot  \nabla f(x_{k})$ che sfrutta il fatto che $-\nabla f$ è la direzione di massima decrescita locale.
-\subsection*{Casi di non convergenza al minimo globale}
-Pur essendo un metodo robusto, la discesa del gradiente garantisce solo la convergenza a un \textbf{punto critico}. Le situazioni problematiche sono:
-\textbf{1. Funzione non convessa con minimi locali multipli.} GD si ferma nel primo minimo locale incontrato, che può non essere globale. Esempio: $f(x) = x^{4} - 3x^{2} + x$. Le funzioni di costo delle reti neurali profonde sono fortemente non convesse.
-\textbf{2. Punti di sella.} In dimensione alta, i punti critici sono prevalentemente selle (Hessiana con autovalori di segno misto), non minimi. $\nabla f = 0$ in una sella ferma l'algoritmo anche se non è un minimo. Le tecniche moderne (momentum, Adam) aiutano a "scappare" dalle selle.
-\textbf{3. Plateau / regioni con gradiente quasi nullo.} Se $\|\nabla f\| \approx  0$ su una regione estesa, gli aggiornamenti diventano trascurabili e l'algoritmo "si blocca". Tipico nei modelli con sigmoidi sature (vanishing gradient).
-\textbf{4. Learning rate inadeguato.}
-\begin{itemize}
-\item $\eta $ troppo grande $\to $ oscillazioni attorno al minimo o divergenza ($f(x_{k+1}) > f(x_{k})$).
-\item $\eta $ troppo piccolo $\to $ convergenza lentissima, può non raggiungere il minimo nel budget computazionale disponibile.
-\end{itemize}
-\textbf{5. Inizializzazione sfortunata.} Punto di partenza in un bacino di attrazione "sbagliato": GD scende verso il minimo locale di quel bacino. La scelta di $x_{0}$ è cruciale; nelle reti neurali si usano inizializzazioni specifiche (Xavier, He) per evitarlo.
-\textbf{6. Funzione non differenziabile o gradiente non Lipschitz.} Se \texttt{f} non è differenziabile in qualche punto (es. ReLU in 0) si ricorre a sub-gradienti; se $\nabla f$ non è Lipschitz, le garanzie teoriche di convergenza saltano.
-\subsection*{Conclusione}
-GD trova un minimo globale solo se la funzione è \textbf{convessa}. Per funzioni generiche garantisce solo un punto critico. Nel deep learning si accetta questa limitazione perché in pratica i minimi locali raggiunti producono modelli di buona qualità.
+Metodo: $x_{k+1} = x_{k} - \eta \cdot \nabla f(x_{k})$ (vedi Q4).
+Garantisce solo la convergenza a un \textbf{punto critico}. Non raggiunge il minimo globale quando:
+\begin{enumerate}
+\item \textbf{Funzione non convessa con minimi locali} (tipico delle reti): si ferma nel primo minimo locale.
+\item \textbf{Punti di sella} ($\nabla f=0$ ma non minimo), frequenti in alta dimensione.
+\item \textbf{Plateau} con gradiente quasi nullo: avanzamento bloccato (vanishing gradient).
+\item \textbf{Learning rate sbagliato}: troppo grande $\to $ diverge; troppo piccolo $\to $ non arriva nel tempo utile.
+\item \textbf{Inizializzazione sfortunata}: finisce nel bacino di un minimo locale scadente.
+\end{enumerate}
+In sintesi: minimo globale garantito \textbf{solo se \texttt{f} è convessa}.
 \newpage
 \section*{Q6. Come funziona un Single Layer Perceptron (SLP)? Quali sono i suoi limiti?}
-\subsection*{Architettura}
-Il \textbf{Single Layer Perceptron (SLP)} è il modello più semplice di rete neurale, introdotto da Rosenblatt nel 1958. Ha:
-\begin{itemize}
-\item \texttt{N} ingressi $x = (x_{1}, ..., x_{n})$
-\item \texttt{N} pesi $w = (w_{1}, ..., w_{n})$
-\item un termine di \textbf{bias} $b \in  \mathbb{R}$
-\item una \textbf{funzione di attivazione} $\varphi $ (storicamente la funzione gradino)
-\item una singola uscita \texttt{y}
-\end{itemize}
-\subsection*{Calcolo}
-L'uscita è:
-\[ z = w \cdot  x + b = \sum _{i} w_{i} x_{i} + b \]
-\[ y = \varphi (z) \]
-dove con la funzione gradino: $\varphi (z) = 1 se z \ge  0,  \varphi (z) = 0 altrimenti$.
-Geometricamente, l'SLP definisce un \textbf{iperpiano} $w \cdot  x + b = 0$ in $\mathbb{R}^{N}$ e classifica i punti in base al lato dell'iperpiano in cui si trovano. È un classificatore binario lineare.
-\subsection*{Apprendimento (regola del perceptron)}
-Dato un dataset etichettato ${(x_{i}, t_{i})}$, si aggiornano i pesi:
-\[ w \leftarrow  w + \eta  (t_{i} - y_{i}) x_{i} \]
-\[ b \leftarrow  b + \eta  (t_{i} - y_{i}) \]
-Il \textbf{teorema di convergenza del perceptron} garantisce che, se i dati sono linearmente separabili, l'algoritmo converge in un numero finito di passi.
-\subsection*{Limiti}
-\textbf{1. Solo problemi linearmente separabili.} L'SLP può risolvere AND, OR, NOT, ma \textbf{non lo XOR} (Minsky \& Papert, 1969): non esiste un iperpiano che separi i punti \texttt{\{(0,0), (1,1)\}} da \texttt{\{(0,1), (1,0)\}}. Questo limite è considerato la causa del primo "inverno dell'IA".
-\textbf{2. Una sola superficie di decisione lineare.} Non può approssimare funzioni non lineari né rappresentare classi non convesse o disconnesse.
-\textbf{3. Funzione di attivazione non differenziabile.} Il gradino non è differenziabile in 0 e ha gradiente nullo altrove, quindi non si può usare la backpropagation. Si usa la regola del perceptron, valida solo nel caso linearmente separabile.
-\subsection*{Soluzione}
-Per superare questi limiti si introduce il \textbf{Multi-Layer Perceptron (MLP)}: aggiungendo strati nascosti e attivazioni non lineari (sigmoide, ReLU) si ottiene un approssimatore universale (vedi Q10).
+L'\textbf{SLP} ha ingressi \texttt{x}, pesi \texttt{w}, bias \texttt{b} e attivazione $\varphi $ (storicamente il gradino). Calcola:
+\[ z = w \cdot  x + b,   y = \varphi (z) \]
+Definisce un \textbf{iperpiano} $w\cdot x + b = 0$ e classifica i punti in base al lato in cui cadono: è un \textbf{classificatore lineare binario}. Si addestra con la regola del perceptron, che converge se i dati sono linearmente separabili.
+\textbf{Limiti}:
+\begin{enumerate}
+\item Risolve \textbf{solo problemi linearmente separabili}: NON lo XOR (Minsky-Papert).
+\item Una sola superficie di decisione lineare: niente funzioni non lineari.
+\item Il gradino non è differenziabile $\to $ niente backpropagation.
+\end{enumerate}
+Si superano con il \textbf{MLP} (strati nascosti + attivazioni non lineari).
 \newpage
 \section*{Q7. Confronta le funzioni di attivazione ReLU, sigmoide e tanh in termini di proprietà matematiche e applicazioni.}
-\subsection*{Sigmoide}
-\[ \sigma (z) = 1 / (1 + e^{-z}) \]
-\[ \sigma '(z) = \sigma (z) \cdot  (1 - \sigma (z)) \]
-\begin{itemize}
-\item \textbf{Codominio}: \texttt{(0, 1)}.
-\item \textbf{Monotonia}: strettamente crescente.
-\item \textbf{Derivata}: $\sigma '(z) \in  (0, 1/4]$, massima in $z = 0$.
-\item \textbf{Pro}: interpretabile come probabilità; storicamente la prima usata.
-\item \textbf{Contro}: \textbf{vanishing gradient} (per \texttt{|z|} grande $\sigma ' \approx  0$); output non centrato in 0 (rallenta la convergenza).
-\item \textbf{Uso}: output di classificatori binari; gate di LSTM/GRU.
-\end{itemize}
-\subsection*{Tangente iperbolica (tanh)}
-\[ \operatorname{tanh}(z) = (e^{z} - e^{-z}) / (e^{z} + e^{-z}) = 2\sigma (2z) - 1 \]
-\[ \operatorname{tanh}'(z) = 1 - \operatorname{tanh}^{2}(z) \]
-\begin{itemize}
-\item \textbf{Codominio}: $(-1, 1)$, \textbf{centrato in 0}.
-\item \textbf{Derivata}: $\in  (0, 1]$, massima in $z = 0$.
-\item \textbf{Pro}: rispetto alla sigmoide, output centrato $\to $ gradienti più bilanciati, convergenza più rapida.
-\item \textbf{Contro}: soffre comunque di vanishing gradient per \texttt{|z|} grande.
-\item \textbf{Uso}: hidden layer di RNN classiche, contesti in cui serve simmetria.
-\end{itemize}
-\subsection*{ReLU (Rectified Linear Unit)}
-\[ ReLU(z) = \operatorname{max}(0, z) \]
-\[ ReLU'(z) = 1 se z > 0,  0 se z < 0  (non differenziabile in 0) \]
-\begin{itemize}
-\item \textbf{Codominio}: $[0, +\infty )$.
-\item \textbf{Pro}:
-\item costo computazionale minimo (un confronto);
-\item \textbf{non satura per $z > 0$} $\to $ niente vanishing gradient nella zona attiva;
-\item induce \textbf{sparsità} (molti neuroni inattivi);
-\item empiricamente accelera fortemente l'addestramento di reti profonde.
-\item \textbf{Contro}: \textbf{dying ReLU} - neuroni con $z \le  0$ su tutti gli esempi hanno gradiente nullo permanentemente.
-\item \textbf{Uso}: hidden layer di tutte le moderne reti deep (CNN, transformer in alcune posizioni, MLP profondi). Varianti: Leaky ReLU, PReLU, ELU, GELU.
-\end{itemize}
-\subsection*{Tabella sintetica}
 \begin{center}\renewcommand{\arraystretch}{1.25}
 \begin{tabular}{|l|l|l|l|}\hline
-\textbf{Proprietà} & \textbf{Sigmoide} & \textbf{tanh} & \textbf{ReLU} \\ \hline
-Codominio & (0,1) & ($-1$,1) & [0,+$\infty $) \\ \hline
-Centrata in 0 & no & sì & no \\ \hline
-Derivata massima & 0.25 & 1 & 1 \\ \hline
-Vanishing gradient & sì & sì & no (z>0) \\ \hline
-Costo computazionale & alto (exp) & alto(exp) & basso \\ \hline
-Differenziabile ovunque & sì & sì & no (in 0) \\ \hline
+\textbf{} & \textbf{Formula} & \textbf{Codominio} & \textbf{Note} \\ \hline
+\textbf{Sigmoide} & $\sigma (z)=1/(1+e^{-z})$ & (0,1) & satura $\to $ vanishing gradient; non centrata in 0 \\ \hline
+\textbf{tanh} & $(e^{z}-e^{-z})/(e^{z}+e^{-z})$ & ($-1$,1) & centrata in 0; satura comunque \\ \hline
+\textbf{ReLU} & \texttt{max(0,z)} & [0,$\infty $) & no saturazione per z>0; veloce; "dying ReLU" per z<0 \\ \hline
 \end{tabular}\end{center}
-\subsection*{Conclusione}
-La scelta dipende dal ruolo del layer: ReLU è lo standard per gli strati nascosti in deep learning; sigmoide e softmax sono usate in output per classificazione; tanh sopravvive in alcune architetture ricorrenti.
+\begin{itemize}
+\item \textbf{Sigmoide}: derivata $\sigma '=\sigma (1-\sigma ) \le  1/4$; interpretabile come probabilità. Uso: output binario, gate LSTM.
+\item \textbf{tanh}: output centrato $\to $ gradienti più bilanciati della sigmoide. Uso: hidden layer RNN.
+\item \textbf{ReLU}: derivata 1 per z>0 $\to $ niente vanishing gradient, induce sparsità. È lo \textbf{standard} negli hidden layer delle reti deep.
+\end{itemize}
 \newpage
 \section*{Q8. Spiega il principio dell'algoritmo di backpropagation in un MLP con un layer nascosto.}
-\subsection*{Contesto}
-Un \textbf{Multi-Layer Perceptron (MLP)} con un layer nascosto è una funzione parametrica $f_\theta : \mathbb{R}^{N} \to  \mathbb{R}^{M}$ definita da:
-\[ h = \varphi (W^{(1)} x + b^{(1)})        (attivazioni del layer nascosto) \]
-\[ \hat{y} = \psi (W^{(2)} h + b^{(2)})        (uscita) \]
-dove $\theta  = (W^{(1)}, b^{(1)}, W^{(2)}, b^{(2)})$ sono i parametri, $\varphi $ e $\psi $ sono funzioni di attivazione. Dato un dataset ${(x_{i}, t_{i})}$, si vuole minimizzare una funzione di costo $L(\theta )$ (es. MSE, cross-entropy) tramite discesa del gradiente. Per applicarla servono $\partial L/\partial W^{(1)}$, $\partial L/\partial W^{(2)}$, $\partial L/\partial b^{(1)}$, $\partial L/\partial b^{(2)}$.
-\subsection*{Principio: regola della catena}
-La \textbf{backpropagation} è l'applicazione sistematica della \textbf{chain rule} del calcolo differenziale per calcolare i gradienti di \texttt{L} rispetto a tutti i parametri in tempo lineare nel numero di pesi.
-\subsection*{Forward pass}
-Dato un input \texttt{x}:
-\begin{enumerate}
-\item $z^{(1)} = W^{(1)} x + b^{(1)}$,   $h = \varphi (z^{(1)})$
-\item $z^{(2)} = W^{(2)} h + b^{(2)}$,   $\hat{y} = \psi (z^{(2)})$
-\item Calcolo della loss $L(\hat{y}, t)$.
-\end{enumerate}
-Si memorizzano $x, z^{(1)}, h, z^{(2)}, \hat{y}$ (servono nel backward).
-\subsection*{Backward pass}
-Si propagano gli "errori" (gradienti) all'indietro:
-\textbf{Layer di output:}
-\[ \delta ^{(2)} = \partial L/\partial z^{(2)} = \partial L/\partial \hat{y} \cdot  \psi '(z^{(2)}) \]
-\[ \partial L/\partial W^{(2)} = \delta ^{(2)} \cdot  h^{T} \]
-\[ \partial L/\partial b^{(2)} = \delta ^{(2)} \]
-\textbf{Layer nascosto:}
-\[ \delta ^{(1)} = (W^{(2)T} \delta ^{(2)}) \odot  \varphi '(z^{(1)})        (\odot  = prodotto element-wise) \]
-\[ \partial L/\partial W^{(1)} = \delta ^{(1)} \cdot  x^{T} \]
-\[ \partial L/\partial b^{(1)} = \delta ^{(1)} \]
-\subsection*{Aggiornamento}
-Con i gradienti calcolati, si aggiornano i parametri via gradient descent:
-\[ W^{(l)} \leftarrow  W^{(l)} - \eta  \cdot  \partial L/\partial W^{(l)} \]
-\[ b^{(l)} \leftarrow  b^{(l)} - \eta  \cdot  \partial L/\partial b^{(l)} \]
-\subsection*{Importanza}
-Prima della backprop (Rumelhart, Hinton, Williams 1986), addestrare reti multilayer era proibitivo. La backprop ha reso possibile il deep learning moderno: il costo di un passo di addestramento è circa $2\times $ il costo del forward pass, indipendentemente dalla profondità della rete.
+MLP con un layer nascosto:
+\[ h = \varphi (W^{(1)}x + b^{(1)}),   \hat{y} = \psi (W^{(2)}h + b^{(2)}) \]
+La \textbf{backpropagation} calcola i gradienti della loss rispetto a tutti i parametri applicando la \textbf{regola della catena} all'indietro.
+\textbf{Forward}: calcola $z^{(1)}, h, z^{(2)}, \hat{y}$ e la loss \texttt{L}.
+\textbf{Backward} (propaga l'errore $\delta $):
+\[ \delta ^{(2)} = \partial L/\partial \hat{y} \cdot  \psi '(z^{(2)})              \partial L/\partial W^{(2)} = \delta ^{(2)} h^{T} \]
+\[ \delta ^{(1)} = (W^{(2)T} \delta ^{(2)}) \odot  \varphi '(z^{(1)})      \partial L/\partial W^{(1)} = \delta ^{(1)} x^{T} \]
+\textbf{Update}: $W \leftarrow  W - \eta  \cdot  \partial L/\partial W$.
+Riutilizzando i calcoli intermedi, il costo di un passo è \textasciitilde{}$2\times $ il forward, indipendentemente dalla profondità: è ciò che rende addestrabili gli MLP.
 \newpage
 \section*{Q9. Cos'è una funzione di costo e quale ruolo svolge nel processo di apprendimento? Fai un esempio con la MSE.}
-\subsection*{Definizione}
-Una \textbf{funzione di costo} (o \textbf{loss function}, \textbf{error function}) è una funzione $L: \Theta  \to  \mathbb{R}^{+}$ che misura quanto il modello parametrico $f_\theta $ si discosti dai dati di training. Formalmente, dato un dataset $D = {(x_{i}, t_{i})}_{i=1}^n$:
-\[ L(\theta ) = (1/n) \sum _{i} \ell (f_\theta (x_{i}), t_{i}) \]
-dove $\ell (\hat{y}, t)$ è una \textbf{per-sample loss} (perdita su singolo esempio).
-\subsection*{Ruolo nell'apprendimento}
-\begin{enumerate}
-\item \textbf{Definisce l'obiettivo}: l'apprendimento si formalizza come $\theta * = \operatorname{argmin}_\theta  L(\theta )$.
-\item \textbf{Guida l'ottimizzazione}: il gradiente $\nabla _\theta  L$ indica la direzione di aggiornamento dei parametri (discesa del gradiente).
-\item \textbf{Codifica il problema}: scegliere la loss equivale a definire cosa significa "errare" - regressione, classificazione e modelli generativi richiedono loss diverse.
-\item \textbf{Determina le proprietà del modello}: convessità, robustezza agli outlier, calibrazione probabilistica dipendono dalla scelta di $\ell $.
-\end{enumerate}
-\subsection*{Esempio: Mean Squared Error (MSE)}
-Per problemi di \textbf{regressione} ($t_{i} \in  \mathbb{R}$), la loss più comune è la \textbf{MSE} (o L2 loss):
+Una \textbf{funzione di costo} $L(\theta )$ misura quanto le predizioni del modello si discostano dai target sul training set. L'apprendimento si formula come $\theta * = \operatorname{argmin}_\theta  L(\theta )$ e la si minimizza con la discesa del gradiente ($\nabla _\theta  L$ indica come aggiornare i parametri).
+\textbf{Esempio - MSE} (regressione):
 \[ L(\theta ) = (1/n) \sum _{i} (f_\theta (x_{i}) - t_{i})^{2} \]
-\textbf{Proprietà:}
-\begin{itemize}
-\item Differenziabile ovunque, con gradiente $\partial \ell /\partial \hat{y} = 2(\hat{y} - t)$. Combinata con la chain rule, si presta perfettamente alla backpropagation.
-\item \textbf{Convessa nei parametri} se $f_\theta $ è lineare in $\theta $ (es. regressione lineare).
-\item \textbf{Penalizza fortemente gli errori grandi} (quadratico): un errore doppio pesa quattro volte. Ne consegue sensibilità agli outlier.
-\item \textbf{Interpretazione probabilistica}: minimizzare la MSE equivale alla \textbf{massima verosimiglianza} sotto l'ipotesi che $t = f(x) + \varepsilon $ con $\varepsilon  \sim  N(0, \sigma ^{2})$.
-\end{itemize}
-\subsection*{Confronto con L1 (MAE)}
-La \textbf{L1 loss} ($\ell  = |\hat{y} - t|$) è più robusta agli outlier ma non differenziabile in 0 e ha gradiente costante (cattivo segnale di "vicinanza" al minimo). La scelta L1 vs L2 è un trade-off classico in ML.
-\subsection*{Per classificazione}
-La MSE non è adatta a problemi di classificazione: la loss standard è la \textbf{cross-entropy}, derivata dalla massima verosimiglianza con distribuzione categoriale (vedi Q29).
+Proprietà: differenziabile (gradiente $2(\hat{y}-t)$, ideale per backprop); penalizza quadraticamente gli errori grandi (sensibile agli outlier); minimizzarla equivale alla massima verosimiglianza con rumore gaussiano. Per la classificazione si usa invece la cross-entropy (Q29).
 \newpage
 \section*{Q10. Qual è il significato del teorema di approssimazione universale per le reti neurali?}
-\subsection*{Enunciato (Cybenko 1989, Hornik 1991)}
-Sia $\varphi $ una funzione di attivazione \textbf{non polinomiale} continua (es. sigmoide, tanh, ReLU). Per ogni funzione continua $f: K \subset  \mathbb{R}^{N} \to  \mathbb{R}$ definita su un compatto \texttt{K}, e per ogni $\varepsilon  > 0$, esistono un intero \texttt{M}, pesi $w_{i} \in  \mathbb{R}^{N}$, bias $b_{i} \in  \mathbb{R}$ e coefficienti $\alpha _{i} \in  \mathbb{R}$ tali che la funzione
-\[ F(x) = \sum _{i=1}^{M} \alpha _{i} \cdot  \varphi (w_{i} \cdot  x + b_{i}) \]
-(cioè un \textbf{MLP con un singolo layer nascosto} di larghezza \texttt{M}) approssimi \texttt{f} uniformemente:
-\[ \operatorname{sup}_{x \in  K} |F(x) - f(x)| < \varepsilon  \]
-\subsection*{Significato concettuale}
-\textbf{Le reti neurali con almeno un layer nascosto sono approssimatori universali}: non c'è alcuna funzione continua "fuori portata" per un MLP, in linea di principio.
-\subsection*{Cosa dice e cosa NON dice il teorema}
-\textbf{Dice:}
-\begin{itemize}
-\item L'esistenza di una rete che approssima \texttt{f} con precisione arbitraria.
-\item È sufficiente \textbf{un solo} layer nascosto.
-\item Vale per un'ampia classe di attivazioni (qualunque non polinomiale).
-\end{itemize}
-\textbf{NON dice:}
-\begin{itemize}
-\item \textbf{Quanti neuroni servono.} \texttt{M} può essere astronomicamente grande; per funzioni complesse cresce esponenzialmente con la dimensione (curse of dimensionality).
-\item \textbf{Come trovare i pesi.} Il teorema è esistenziale: garantisce che esistano parametri buoni, ma non come ottenerli (la backprop trova un minimo locale, non necessariamente quello che realizza l'approssimazione).
-\item \textbf{Generalizzazione}: il teorema riguarda l'approssimazione su \texttt{K}, non cosa succede su nuovi dati.
-\item \textbf{Profondità}: con un layer si può, ma reti \textbf{profonde} approssimano molte funzioni con esponenzialmente meno neuroni rispetto a reti shallow larghe (vantaggio espressivo della profondità).
-\end{itemize}
-\subsection*{Importanza storica e pratica}
-Il teorema fornisce la \textbf{giustificazione teorica} dell'uso delle reti neurali: cancella l'obiezione "le reti sono troppo limitate per essere universali" (fondata per l'SLP, vedi Q6, ma falsa per gli MLP). Tuttavia da solo non spiega il successo pratico del deep learning, che dipende anche da ottimizzazione, regolarizzazione e dati.
+Una rete con \textbf{un solo layer nascosto} e attivazione non polinomiale, con abbastanza neuroni, può approssimare \textbf{qualunque funzione continua} su un compatto con precisione arbitraria:
+\[ F(x) = \sum _{i} \alpha _{i} \varphi (w_{i}\cdot x + b_{i}),   \operatorname{sup}_K |F(x) - f(x)| < \varepsilon  \]
+\textbf{Significato}: gli MLP sono \textbf{approssimatori universali}, nessuna funzione continua è fuori portata (a differenza dell'SLP, Q6).
+\textbf{Cosa NON dice}: quanti neuroni servono (può essere enorme), come trovare i pesi (è un risultato di sola esistenza), nulla sulla generalizzazione. In pratica le reti \textbf{profonde} ottengono lo stesso con molti meno neuroni.
 \newpage
 \section*{Q11. Quali sono i componenti fondamentali di un "percettrone" o "neurone artificiale", e a cosa servono i "pesi" e il "bias"?}
-\subsection*{Componenti}
-Un \textbf{neurone artificiale} (modello di McCulloch–Pitts esteso da Rosenblatt) è la più piccola unità computazionale di una rete neurale. È composto da quattro elementi:
-\textbf{1. Ingressi $x = (x_{1}, ..., x_{n})$.} Vettore di valori reali in input. Possono essere feature dei dati grezzi (pixel di un'immagine, parole di un testo) o uscite di altri neuroni in strati precedenti.
-\textbf{2. Pesi $w = (w_{1}, ..., w_{n})$.} Un parametro reale per ciascun ingresso. Modulano l'importanza relativa di ogni input nella decisione del neurone.
-\textbf{3. Bias $b \in  \mathbb{R}$.} Un parametro scalare aggiuntivo, indipendente dagli ingressi.
-\textbf{4. Funzione di attivazione $\varphi : \mathbb{R} \to  \mathbb{R}$.} Funzione non lineare (sigmoide, tanh, ReLU, ecc.) applicata al risultato dell'aggregazione lineare.
-\subsection*{Calcolo}
-Il neurone calcola:
-\[ z = w \cdot  x + b = \sum _{i} w_{i} x_{i} + b           (pre-attivazione) \]
-\[ y = \varphi (z)                                 (attivazione) \]
-\subsection*{Ruolo dei pesi}
-I pesi $w_{i}$ rappresentano \textbf{l'importanza} di ciascun input:
+Componenti: \textbf{ingressi} \texttt{x}, \textbf{pesi} \texttt{w}, \textbf{bias} \texttt{b}, \textbf{attivazione} $\varphi $. Calcolo:
+\[ z = w \cdot  x + b,   y = \varphi (z) \]
 \begin{itemize}
-\item $w_{i}$ grande in valore assoluto $\to $ l'input $x_{i}$ ha forte influenza.
-\item $w_{i} \approx  0$ $\to $ l'input $x_{i}$ viene ignorato.
-\item $w_{i} < 0$ $\to $ relazione inversa (più alto è $x_{i}$, meno il neurone è attivato).
+\item \textbf{Pesi}: misurano l'importanza di ogni input ($w_{i}$ grande $\to $ input influente; $w_{i}<0$ $\to $ relazione inversa). \texttt{w} è il vettore normale all'iperpiano di decisione $w\cdot x+b=0$.
+\item \textbf{Bias}: \textbf{trasla} l'iperpiano; senza, passerebbe sempre per l'origine, limitando le funzioni rappresentabili. Rende la decisione \textbf{affine} invece che lineare.
 \end{itemize}
-Geometricamente, \texttt{w} è il \textbf{vettore normale} all'iperpiano di decisione $w \cdot  x + b = 0$. L'apprendimento consiste nel trovare i pesi che producono la corretta separazione/regressione.
-\subsection*{Ruolo del bias}
-Il bias \texttt{b} \textbf{trasla} l'iperpiano di decisione. Senza bias l'iperpiano passerebbe sempre per l'origine, limitando enormemente le funzioni rappresentabili.
-Esempio: un neurone deve attivarsi quando $x > 5$. Senza bias, con un solo peso \texttt{w}, la condizione $wx \ge  0$ non può catturare $x > 5$. Con $b = -5w$, la condizione $wx - 5w \ge  0 \Leftrightarrow  x \ge  5$ diventa rappresentabile.
-In termini formali, il bias garantisce che la classe di funzioni rappresentabili sia \textbf{affine} anziché solo \textbf{lineare}, e questo è cruciale per la capacità espressiva.
-\subsection*{Trucco implementativo}
-Spesso si "assorbe" il bias estendendo $x \leftarrow  (1, x_{1}, ..., x_{n})$ e $w \leftarrow  (b, w_{1}, ..., w_{n})$, riducendo il calcolo a un singolo prodotto scalare $w \cdot  x$.
+L'apprendimento consiste nel trovare \texttt{w} e \texttt{b} corretti.
 \newpage
 \section*{Q12. Definisci la "funzione di costo" e illustra la differenza tra "loss L1" (geometria del taxi) e "loss L2" (MSE).}
-\subsection*{Funzione di costo}
-(Definizione formale: vedi Q9.) È una funzione $L(\theta )$ che misura l'errore medio del modello sui dati di training; l'apprendimento la minimizza.
-\subsection*{Loss L2 (Mean Squared Error)}
-Per $\hat{y}, t \in  \mathbb{R}$:
-\[ \ell _L2(\hat{y}, t) = (\hat{y} - t)^{2} \]
-\[ L_L2(\theta ) = (1/n) \sum _{i} (f_\theta (x_{i}) - t_{i})^{2} \]
-Per vettori $\hat{y}, t \in  \mathbb{R}^{m}$, è il quadrato della \textbf{norma euclidea}: $\ell _L2 = \|\hat{y} - t\|_{2}^{2} = \sum _{j} (\hat{y}_{j} - t_{j})^{2}$.
-Geometricamente corrisponde alla \textbf{distanza euclidea} al quadrato nel codominio.
-\subsection*{Loss L1 (Mean Absolute Error, geometria del taxi)}
-\[ \ell _L1(\hat{y}, t) = |\hat{y} - t| \]
-\[ L_L1(\theta ) = (1/n) \sum _{i} |f_\theta (x_{i}) - t_{i}| \]
-Per vettori $\ell _L1 = \|\hat{y} - t\|_{1} = \sum _{j} |\hat{y}_{j} - t_{j}|$. Corrisponde alla \textbf{distanza Manhattan} (geometria del taxi): la distanza che percorrerebbe un taxi muovendosi solo lungo le strade di una griglia rettangolare.
-\subsection*{Differenze chiave}
+Funzione di costo: $L(\theta )$ che misura l'errore medio del modello (vedi Q9).
+\begin{itemize}
+\item \textbf{L2 (MSE)}: $\ell  = (\hat{y}-t)^{2}$, per vettori $\|\hat{y}-t\|_{2}^{2}$. Distanza \textbf{euclidea}.
+\item \textbf{L1 (MAE)}: $\ell  = |\hat{y}-t|$, per vettori $\|\hat{y}-t\|_{1}$. Distanza \textbf{Manhattan} (taxi).
+\end{itemize}
 \begin{center}\renewcommand{\arraystretch}{1.25}
 \begin{tabular}{|l|l|l|}\hline
-\textbf{Proprietà} & \textbf{L1 (MAE)} & \textbf{L2 (MSE)} \\ \hline
-Geometria & taxi/Manhattan & euclidea \\ \hline
+\textbf{} & \textbf{L1 (MAE)} & \textbf{L2 (MSE)} \\ \hline
 Crescita errore & lineare & quadratica \\ \hline
-Differenziabile in 0 & no (cuspide) & sì \\ \hline
-Gradiente & $\pm 1$ (costante) & $2(\hat{y} - t)$ (lineare) \\ \hline
-Sensibilità outlier & bassa (robusto) & alta \\ \hline
+Differenziabile in 0 & no & sì \\ \hline
+Gradiente & $\pm 1$ costante & $2(\hat{y}-t)$ \\ \hline
+Outlier & robusta & sensibile \\ \hline
 Stimatore ottimo & mediana & media \\ \hline
-Interpretazione MLE & rumore Laplace & rumore Gaussiano \\ \hline
 \end{tabular}\end{center}
-\subsection*{Implicazioni pratiche}
-\begin{itemize}
-\item \textbf{Outlier}: la L2 amplifica errori grandi (un errore di 10 conta 100), la L1 li tratta linearmente. In presenza di outlier, L1 dà modelli più robusti.
-\item \textbf{Ottimizzazione}: la L2 ha gradiente proporzionale all'errore, fornendo un segnale "graduale" che facilita la convergenza; la L1 ha gradiente di modulo costante, può causare oscillazioni vicino al minimo.
-\item \textbf{Compromesso}: la \textbf{Huber loss} combina L1 (per \texttt{|errore|} grande) e L2 (per \texttt{|errore|} piccolo) per avere robustezza + differenziabilità.
-\end{itemize}
-\subsection*{Quale scegliere}
-\begin{itemize}
-\item L2: regressione standard, dati senza outlier, target gaussiani.
-\item L1: dati con outlier, mediana come quantità di interesse, problemi geometrici.
-\end{itemize}
+L2 amplifica gli errori grandi (buon segnale di convergenza ma sensibile agli outlier); L1 è robusta ma con gradiente costante. Compromesso: \textbf{Huber loss}.
 \newpage
 \section*{Q13. Elenca e descrivi brevemente almeno quattro "funzioni di attivazione" comunemente utilizzate nelle reti neurali artificiali.}
-Una \textbf{funzione di attivazione} $\varphi : \mathbb{R} \to  \mathbb{R}$ introduce non linearità nel neurone, trasformando la pre-attivazione $z = w\cdot x + b$ nell'output. Senza non linearità, una rete profonda collasserebbe in una semplice trasformazione lineare. Le quattro più comuni sono:
-\subsection*{1. Sigmoide (logistica)}
-\[ \sigma (z) = 1 / (1 + e^{-z}),    \sigma (z) \in  (0, 1) \]
-\begin{itemize}
-\item \textbf{Forma}: curva a "S" liscia, satura a 0 per $z \to  -\infty $ e a 1 per $z \to  +\infty $.
-\item \textbf{Derivata}: $\sigma '(z) = \sigma (z)(1 - \sigma (z)) \le  1/4$.
-\item \textbf{Pro}: interpretabile come probabilità.
-\item \textbf{Contro}: vanishing gradient nelle code; output non centrato in 0.
-\item \textbf{Uso}: output di classificazione binaria, gate di LSTM/GRU.
-\end{itemize}
-\subsection*{2. Tangente iperbolica (tanh)}
-\[ \operatorname{tanh}(z) = (e^{z} - e^{-z}) / (e^{z} + e^{-z}),    \operatorname{tanh}(z) \in  (-1, 1) \]
-\begin{itemize}
-\item \textbf{Forma}: come la sigmoide ma centrata e riscalata.
-\item \textbf{Derivata}: $\operatorname{tanh}'(z) = 1 - \operatorname{tanh}^{2}(z) \le  1$.
-\item \textbf{Pro}: output centrato in 0 $\to $ gradienti più bilanciati.
-\item \textbf{Contro}: soffre comunque di vanishing gradient.
-\item \textbf{Uso}: hidden layer di RNN; storicamente preferita alla sigmoide negli hidden layer prima dell'avvento della ReLU.
-\end{itemize}
-\subsection*{3. ReLU (Rectified Linear Unit)}
-\[ ReLU(z) = \operatorname{max}(0, z) \]
-\begin{itemize}
-\item \textbf{Forma}: lineare per $z > 0$, nulla per $z \le  0$.
-\item \textbf{Derivata}: $ReLU'(z) = 1$ se $z > 0$, \texttt{0} se $z < 0$.
-\item \textbf{Pro}: nessuna saturazione per $z > 0$ (no vanishing gradient nella zona attiva); sparsità; calcolo banale.
-\item \textbf{Contro}: dying ReLU (neuroni sempre inattivi); non differenziabile in 0.
-\item \textbf{Uso}: standard de facto negli hidden layer di reti deep (CNN, MLP).
-\end{itemize}
-\subsection*{4. Softmax}
-\[ \operatorname{softmax}(z)_{i} = e^{zi} / \sum _{j} e^{zj},    \sum _{i} \operatorname{softmax}(z)_{i} = 1 \]
-\begin{itemize}
-\item \textbf{Forma}: funzione vettoriale $\mathbb{R}^{K} \to  \Delta ^{K-1}$ (simplesso). Generalizza la sigmoide a \texttt{K} classi.
-\item \textbf{Pro}: produce una distribuzione di probabilità sulle classi; combinata con cross-entropy ha gradienti semplici e ben condizionati.
-\item \textbf{Contro}: richiede normalizzazione su tutto il vettore; è una funzione vettoriale (non element-wise come le altre).
-\item \textbf{Uso}: layer di output per classificazione multiclasse.
-\end{itemize}
-\subsection*{Bonus: varianti moderne}
-\begin{itemize}
-\item \textbf{Leaky ReLU}: $\operatorname{max}(\alpha z, z)$ con $\alpha  \approx  0.01$, evita dying ReLU.
-\item \textbf{GELU}: $z \cdot  \Phi (z)$ con $\Phi $ cdf gaussiana, smooth, usata nei transformer.
-\item \textbf{Swish/SiLU}: $z \cdot  \sigma (z)$, simile a GELU.
-\end{itemize}
+L'attivazione $\varphi $ introduce non linearità (senza, la rete collasserebbe in una trasformazione lineare).
+\begin{enumerate}
+\item \textbf{Sigmoide} $\sigma (z)=1/(1+e^{-z})$ $\in $ (0,1): interpretabile come probabilità; satura (vanishing gradient). Uso: output binario.
+\item \textbf{tanh} $\in $ ($-1$,1): come la sigmoide ma centrata in 0 $\to $ gradienti più bilanciati. Uso: hidden layer RNN.
+\item \textbf{ReLU} \texttt{max(0,z)}: nessuna saturazione per z>0, calcolo banale, sparsità. Standard negli hidden layer.
+\item \textbf{Softmax} $e^{zi}/\sum _{j}e^{zj}$: trasforma un vettore in distribuzione di probabilità (somma 1). Uso: output classificazione multiclasse.
+\end{enumerate}
+(Varianti: Leaky ReLU, GELU.)
 \newpage
 \section*{Q14. Qual è il principio su cui si basa l'algoritmo di "backpropagation" e come mai è importante per l'addestramento di MLP?}
-\subsection*{Principio}
-La \textbf{backpropagation} è un algoritmo per calcolare in modo efficiente i gradienti della funzione di costo rispetto a tutti i parametri di una rete neurale. Si basa su due idee fondamentali:
-\textbf{1. Regola della catena (chain rule).} Una rete neurale è una \textbf{composizione} di funzioni: $f_\theta  = f_L \circ  f_{L-1} \circ  ... \circ  f_1$. Il gradiente di una composizione si calcola applicando ricorsivamente la chain rule:
-\[ \partial L/\partial \theta _k = \partial L/\partial f_L \cdot  \partial f_L/\partial f_{L-1} \cdot  ... \cdot  \partial f_{k+1}/\partial f_k \cdot  \partial f_{k/\partial \theta _k} \]
-\textbf{2. Calcolo all'indietro (reverse-mode automatic differentiation).} Anziché calcolare $\partial L/\partial \theta _k$ per ogni parametro separatamente (costoso), si propagano i gradienti \textbf{dall'output verso l'input} riutilizzando i calcoli intermedi. Il "segnale di errore" $\delta ^{(l)} = \partial L/\partial z^{(l)}$ viene trasmesso dal layer \texttt{L} al layer \texttt{1} con la formula ricorsiva:
-\[ \delta ^{(l)} = (W^{(l+1)T} \delta ^{(l+1)}) \odot  \varphi '(z^{(l)}) \]
-Da $\delta ^{(l)}$ si ottengono direttamente $\partial L/\partial W^{(l)}$ e $\partial L/\partial b^{(l)}$.
-\subsection*{Algoritmo (sintesi)}
+Si basa su due idee:
 \begin{enumerate}
-\item \textbf{Forward pass}: calcola e memorizza $z^{(l)}, h^{(l)}$ per $l = 1, ..., L$.
-\item \textbf{Loss}: calcola $L(\hat{y}, t)$ e $\delta ^{(L)} = \partial L/\partial z^{(L)}$.
-\item \textbf{Backward pass}: per $l = L-1, ..., 1$ propaga $\delta ^{(l)}$ indietro.
-\item \textbf{Aggiornamento}: $\theta  \leftarrow  \theta  - \eta  \cdot  \nabla _\theta  L$.
+\item \textbf{Regola della catena}: una rete è una composizione di funzioni, quindi il gradiente è il prodotto delle derivate locali lungo gli strati.
+\item \textbf{Calcolo all'indietro}: si propaga il "segnale di errore" dall'output all'input riusando i calcoli intermedi:
 \end{enumerate}
-\subsection*{Importanza per gli MLP}
-\textbf{1. Efficienza.} Il costo è $O(P)$ con \texttt{P} numero totale di parametri, lo stesso ordine di un singolo forward pass. Senza backprop si dovrebbe stimare ogni $\partial L/\partial \theta _k$ con differenze finite (\texttt{P} forward pass), rendendo il training proibitivo per reti con milioni di parametri.
-\textbf{2. Generalità.} Funziona per qualunque architettura computabile come grafo di operazioni differenziabili (MLP, CNN, RNN, transformer). I framework moderni (PyTorch, TensorFlow) la implementano in modo automatico (autograd).
-\textbf{3. Abilitazione del deep learning.} Prima della backprop (Rumelhart, Hinton, Williams 1986) era noto solo come addestrare l'SLP, limitato ai problemi linearmente separabili. La backprop ha sbloccato l'addestramento degli MLP - quindi delle reti universali (vedi Q10) - e tutto ciò che ne è seguito.
-\textbf{4. Modularità.} Ogni layer espone solo un'interfaccia "forward + backward"; nuovi layer si possono inserire purché definiscano la loro derivata locale. Questo ha permesso un'esplosione di architetture sperimentali.
-\subsection*{Limiti}
-\begin{itemize}
-\item Richiede memoria proporzionale alla profondità (per memorizzare le attivazioni intermedie).
-\item Soffre di vanishing/exploding gradients in reti molto profonde (vedi Q31), problema mitigato da residual connections, normalizzazioni e attivazioni non saturanti.
-\end{itemize}
+\[ \delta ^{(l)} = (W^{(l+1)T} \delta ^{(l+1)}) \odot  \varphi '(z^{(l)}) \]
+da cui $\partial L/\partial W^{(l)}$ e $\partial L/\partial b^{(l)}$.
+\textbf{Importanza}: calcola \textbf{tutti} i gradienti in tempo $O(P)$, come un solo forward pass (senza, servirebbero \texttt{P} valutazioni con differenze finite $\to $ training impossibile per reti con milioni di parametri). Funziona per qualunque architettura differenziabile e ha reso possibile il deep learning.
 \newpage
 \section*{Q15. Cosa afferma il "Teorema di approssimazione universale"?}
-\subsection*{Enunciato preciso (Cybenko 1989)}
-Sia $\varphi : \mathbb{R} \to  \mathbb{R}$ una funzione continua, limitata, monotona crescente (detta "funzione sigmoidale" - la sigmoide standard ne è un esempio). Sia $K \subset  \mathbb{R}^{N}$ un compatto. Allora le combinazioni lineari finite della forma
-\[ F(x) = \sum _{i=1}^{M} \alpha _{i} \cdot  \varphi (w_{i} \cdot  x + b_{i}) \]
-con $M \in  \mathbb{N}$, $\alpha _{i}, b_{i} \in  \mathbb{R}$, $w_{i} \in  \mathbb{R}^{N}$, sono \textbf{dense nello spazio $C(K)$} delle funzioni continue su \texttt{K}. In altri termini, per ogni $f \in  C(K)$ e ogni $\varepsilon  > 0$ esistono $M, \alpha _{i}, w_{i}, b_{i}$ tali che
-\[ \operatorname{sup}_{x \in  K} |F(x) - f(x)| < \varepsilon  \]
-L'estensione di Hornik (1991) generalizza il risultato a qualunque funzione di attivazione non polinomiale.
-\subsection*{Interpretazione}
-Una \textbf{rete neurale feedforward con un solo layer nascosto} e numero sufficiente di neuroni può approssimare \textbf{qualunque funzione continua su un compatto} con precisione arbitraria. Le reti neurali sono dunque \textbf{approssimatori universali}.
-\subsection*{Cosa garantisce}
-\begin{itemize}
-\item \textbf{Esistenza} di una rete che approssima \texttt{f} entro $\varepsilon $.
-\item È sufficiente \textbf{un singolo layer nascosto}.
-\item Vale per un'ampia classe di attivazioni (qualunque non polinomiale: tanh, sigmoide, ReLU, ...).
-\end{itemize}
-\subsection*{Cosa NON garantisce}
-\begin{itemize}
-\item \textbf{Numero di neuroni \texttt{M}}: nessun bound utile in pratica; può essere esponenziale nella dimensione \texttt{N} (curse of dimensionality).
-\item \textbf{Apprendibilità}: il teorema dice che esistono pesi buoni, non che la discesa del gradiente li trovi.
-\item \textbf{Generalizzazione}: l'approssimazione vale sui dati di training (su \texttt{K}), non garantisce buone performance su dati nuovi.
-\item \textbf{Profondità vs larghezza}: il teorema parla di reti shallow ($L = 1$). Risultati successivi mostrano che reti \textbf{deep} approssimano molte funzioni con esponenzialmente meno neuroni - vantaggio espressivo della profondità che il teorema universale non cattura.
-\end{itemize}
-\subsection*{Importanza}
-È la \textbf{giustificazione teorica} dell'uso delle reti neurali come modelli generali. Risponde all'obiezione storica (post Minsky–Papert) sulla limitatezza espressiva dei modelli neurali: i singoli percettroni sono limitati, ma un MLP con un layer nascosto è universale. Il successo pratico del deep learning, però, dipende da fattori (ottimizzazione, regolarizzazione, dati abbondanti, profondità) che il teorema da solo non spiega.
+Afferma che una rete feedforward con \textbf{un solo layer nascosto} e attivazione non polinomiale (sigmoide, tanh, ReLU…), con un numero sufficiente di neuroni, può approssimare \textbf{qualunque funzione continua su un compatto} con precisione arbitraria:
+\[ F(x) = \sum _{i} \alpha _{i} \varphi (w_{i}\cdot x + b_{i}),   \operatorname{sup}_K |F(x) - f(x)| < \varepsilon  \]
+È la \textbf{giustificazione teorica} delle reti neurali come modelli generali. Garantisce l'esistenza di pesi buoni, ma \textbf{non} quanti neuroni servano, né che la discesa del gradiente li trovi, né la generalizzazione su dati nuovi. (Stesso contenuto di Q10.)
 \newpage
 \section*{Q16. Descrivere le fasi principali del processo di "digitalizzazione delle immagini", specificando i concetti di "campionamento" e "quantizzazione".}
-\subsection*{Definizione}
-La \textbf{digitalizzazione} di un'immagine è il processo che converte una rappresentazione \textbf{continua} del mondo reale (luminosità che varia con continuità nello spazio e nei valori di intensità) in una \textbf{rappresentazione discreta} finita, manipolabile da un calcolatore. Si articola in tre fasi: acquisizione, campionamento, quantizzazione.
-\subsection*{1. Acquisizione}
-Un sensore (CCD, CMOS) misura l'intensità luminosa proveniente dalla scena. Modello matematico: $f: \mathbb{R}^{2} \to  \mathbb{R}^{+}$,    $(x, y) \mapsto  f(x, y)$ con $f(x, y)$ proporzionale all'energia luminosa incidente sul punto $(x, y)$. Per immagini a colori si hanno 3 funzioni (R, G, B).
-\subsection*{2. Campionamento (sampling)}
-È la \textbf{discretizzazione del dominio spaziale}. Si sceglie una griglia regolare di $M \times  N$ punti e si valuta \texttt{f} in ciascun nodo:
-\[ f_d[i, j] = f(i \cdot  \Delta x, j \cdot  \Delta y),    i = 0,...,M-1,  j = 0,...,N-1 \]
-$\Delta x, \Delta y$ sono i passi di campionamento; $M \times  N$ è la \textbf{risoluzione}. Ogni elemento della matrice risultante è un \textbf{pixel} (picture element).
-\textbf{Effetti del campionamento:}
+La digitalizzazione converte un'immagine continua in una matrice di pixel in due fasi principali:
 \begin{itemize}
-\item Risoluzione bassa $\to $ perdita di dettaglio, \textbf{aliasing} (artefatti come pattern moiré, bordi a scalini).
-\item \textbf{Teorema di Nyquist–Shannon}: per evitare aliasing, la frequenza di campionamento deve essere almeno doppia rispetto alla massima frequenza presente nel segnale. Si applica un filtro passa-basso (anti-aliasing) prima di campionare.
+\item \textbf{Campionamento}: discretizzazione del \textbf{dominio spaziale}. Si valuta l'immagine su una griglia $M\times N$ di punti (i pixel) $\to $ definisce la \textbf{risoluzione}. Campionare troppo poco causa \textbf{aliasing}; il teorema di Nyquist richiede frequenza di campionamento $\ge $ doppio della massima frequenza del segnale.
+\item \textbf{Quantizzazione}: discretizzazione del \textbf{codominio} (intensità). I valori continui vengono mappati su \texttt{L} livelli (tipicamente $L=256$, 8 bit). Pochi livelli $\to $ \textbf{banding/posterizzazione}.
 \end{itemize}
-\subsection*{3. Quantizzazione}
-È la \textbf{discretizzazione del codominio} (dei valori di intensità). I valori continui di \texttt{f} vengono mappati in un insieme finito di \texttt{L} livelli:
-\[ f_q[i, j] = Q(f_d[i, j]) \in  {0, 1, ..., L-1} \]
-Tipicamente $L = 256$ (8 bit per pixel per canale). La quantizzazione introduce \textbf{errore di quantizzazione} (rumore) limitato a $\pm 0.5 \cdot  \Delta L$.
-\textbf{Effetti della quantizzazione:}
-\begin{itemize}
-\item Pochi livelli (\texttt{L} piccolo) $\to $ \textbf{banding/posterizzazione}: bande visibili in transizioni morbide.
-\item Molti livelli $\to $ immagine fedele ma file più grande.
-\end{itemize}
-\subsection*{4. (Opzionale) Codifica}
-L'immagine quantizzata viene salvata in un formato (PNG, JPEG, ecc.) che può applicare compressione lossless o lossy.
-\subsection*{Risultato}
-Un'\textbf{immagine digitale} è una matrice (o tensore se a colori) $I \in  {0, 1, ..., L-1}^{M\times N\times C}$, dove $C = 1$ per scala di grigi e $C = 3$ per RGB.
-\subsection*{Trade-off}
-La qualità dipende da campionamento (risoluzione spaziale) e quantizzazione (profondità di colore). Più sono fini, più l'immagine è fedele al continuo, ma più memoria richiede.
+Risultato: immagine digitale $I \in  {0,\dots ,L-1}^{M\times N\times C}$ ($C=1$ grigi, $C=3$ RGB).
 \newpage
 \section*{Q17. Cosa si intende per immagine digitale? Spiega i concetti di campionamento, quantizzazione e spazio colorimetrico.}
-\subsection*{Immagine digitale}
-Un'\textbf{immagine digitale} è una rappresentazione discreta e finita di una scena reale, ottenuta dal processo di digitalizzazione. Formalmente è una funzione
-\[ I: {0, ..., M-1} \times  {0, ..., N-1} \to  V^C \]
-dove $M \times  N$ è la risoluzione spaziale, \texttt{C} il numero di canali e $V = {0, 1, ..., L-1}$ l'insieme dei livelli quantizzati. Ogni elemento \texttt{I[i, j]} è un \textbf{pixel}.
-\subsection*{Campionamento}
-Discretizzazione del \textbf{dominio spaziale}: la luminosità continua viene misurata su una griglia regolare di punti (vedi Q16 per la definizione formale e il teorema di Nyquist).
-Esempio: una foto $1920\times 1080$ ha $1920 \times  1080 \approx  2 milioni$ di pixel. Aumentare la risoluzione $\to $ maggiore dettaglio spaziale, maggiore costo di memoria e calcolo.
-\subsection*{Quantizzazione}
-Discretizzazione del \textbf{codominio dei valori}: i valori di luminanza continui vengono mappati in un insieme finito di livelli. Con 8 bit per canale si hanno $L = 256$ livelli ($0 = nero$, $255 = bianco massimo$ in scala di grigi).
-L'errore di quantizzazione è uniforme su $[-\Delta L/2, +\Delta L/2]$ con $\Delta L = 1/L$.
-\subsection*{Spazio colorimetrico}
-Lo \textbf{spazio colorimetrico} (o color space) è il sistema matematico con cui si rappresenta il colore. Definisce \textbf{come} i valori numerici di un pixel vengono interpretati come colori percepiti.
-\textbf{Spazi principali:}
-\textbf{1. RGB (Red, Green, Blue).} Modello additivo basato sui tre colori primari della sintesi additiva. Ogni pixel è una terna $(R, G, B) \in  [0, 255]^{3}$. È lo standard per display (monitor, smartphone, TV) perché riflette il funzionamento dei pixel a sub-componenti R/G/B.
-\textbf{2. Scala di grigi (luminanza).} Singolo canale $Y \in  [0, 255]$. Conversione standard ITU-R BT.601: $Y = 0.299 R + 0.587 G + 0.114 B$. I pesi tengono conto della sensibilità percettiva del verde > rosso > blu.
-\textbf{3. HSV (Hue, Saturation, Value).} Modello percettivo: tinta (\texttt{H}), saturazione (\texttt{S}), luminosità (\texttt{V}). Utile per operazioni semantiche sul colore (es. "trova tutto ciò che è rosso").
-\textbf{4. CMYK (Cyan, Magenta, Yellow, Key/Black).} Sintesi sottrattiva. Standard per la stampa.
-\textbf{5. YCbCr / YUV.} Separa luminanza (\texttt{Y}) da crominanza (\texttt{Cb, Cr}). Sfruttato in compressione (JPEG, MPEG): l'occhio è meno sensibile alla crominanza, che può essere sotto-campionata.
-\textbf{6. CIE Lab.} Percettivamente uniforme: distanze nello spazio approssimano differenze di colore percepite. Utile per metriche di similarità.
-\subsection*{Trade-off complessivo}
-La rappresentazione dell'immagine è il risultato di tre scelte:
+Un'\textbf{immagine digitale} è una matrice (tensore) di pixel $H\times W\times C$, ottenuta per digitalizzazione.
 \begin{itemize}
-\item Quante celle sulla griglia? (campionamento - risoluzione spaziale)
-\item Quanti livelli per cella? (quantizzazione - profondità di colore)
-\item In che sistema? (spazio colorimetrico - interpretazione semantica)
+\item \textbf{Campionamento}: discretizzazione spaziale su griglia $\to $ risoluzione (vedi Q16).
+\item \textbf{Quantizzazione}: discretizzazione dei valori di intensità su \texttt{L} livelli (vedi Q16).
+\item \textbf{Spazio colorimetrico}: il sistema con cui i numeri del pixel diventano colore:
+\item \textbf{RGB}: additivo, 3 canali, standard per i display;
+\item \textbf{Scala di grigi}: 1 canale, $Y = 0.299R + 0.587G + 0.114B$ (luminanza);
+\item \textbf{HSV}: tinta/saturazione/valore, utile per selezioni per colore;
+\item \textbf{YCbCr}: separa luminanza e crominanza, sfruttato nella compressione (JPEG).
 \end{itemize}
 \newpage
 \section*{Q18. Come si utilizza un istogramma per operazioni di elaborazione su immagini in scala di grigi?}
-\subsection*{Istogramma}
-L'\textbf{istogramma} di un'immagine in scala di grigi \texttt{I} con \texttt{L} livelli (es. $L = 256$) è il vettore $h: {0, ..., L-1} \to  \mathbb{N}$ definito da:
-\[ h(k) = \#{(i, j) : I[i, j] = k} \]
-cioè il \textbf{numero di pixel} che hanno intensità \texttt{k}. Spesso si usa la versione normalizzata $p(k) = h(k) / (M\cdot N)$, che è una distribuzione di probabilità (probabilità che un pixel scelto a caso abbia intensità \texttt{k}).
-L'istogramma fornisce una sintesi \textbf{statistica} della distribuzione dell'intensità nell'immagine, indipendente dalla disposizione spaziale dei pixel.
-\subsection*{Cosa rivela}
+L'\textbf{istogramma} $h(k)$ conta i pixel con intensità \texttt{k}; normalizzato $p(k)=h(k)/(MN)$ è la distribuzione delle intensità. Rivela esposizione e contrasto (stretto = basso contrasto; spostato = sotto/sovra-esposto).
+Operazioni:
 \begin{itemize}
-\item \textbf{Esposizione}: istogramma concentrato a sinistra $\to $ immagine sotto-esposta (scura); concentrato a destra $\to $ sovraesposta.
-\item \textbf{Contrasto}: istogramma stretto e concentrato $\to $ basso contrasto; istogramma esteso su tutto il range $\to $ alto contrasto.
-\item \textbf{Picchi multipli}: presenza di regioni omogenee (es. soggetto vs sfondo).
+\item \textbf{Stretching del contrasto}: rimappa il range usato \texttt{[a,b]} su $[0,L-1]$.
+\item \textbf{Equalizzazione}: usa la CDF come trasformazione, $I' = (L-1)\cdot CDF(I)$ $\to $ istogramma \textasciitilde{}uniforme, massimizza il contrasto.
+\item \textbf{Sogliatura (thresholding)}: scelta una soglia \texttt{T} (anche automatica, Otsu) si binarizza per separare oggetto/sfondo.
 \end{itemize}
-\subsection*{Operazioni basate sull'istogramma}
-\textbf{1. Stretching del contrasto (normalizzazione).} Se l'istogramma occupa solo $[a, b] \subset  [0, L-1]$, si rimappa linearmente all'intero range:
-\[ I'[i, j] = (L-1) \cdot  (I[i, j] - a) / (b - a) \]
-Espande l'istogramma a tutto il range, aumentando il contrasto.
-\textbf{2. Equalizzazione dell'istogramma.} Si applica come trasformazione la \textbf{funzione di distribuzione cumulativa} $CDF(k) = \sum _{j\le k} p(j)$:
-\[ I'[i, j] = \operatorname{round}((L-1) \cdot  CDF(I[i, j])) \]
-L'istogramma risultante è approssimativamente \textbf{uniforme}: l'immagine usa in modo bilanciato tutti i livelli di grigio. Massimizza il contrasto globale ed è utile per immagini sotto-esposte/sovraesposte.
-\textbf{3. Sogliatura (thresholding).} Si sceglie una soglia \texttt{T} (manuale o automatica come \textbf{Otsu}, che massimizza la varianza inter-classe sull'istogramma) e si binarizza:
-\[ B[i, j] = 1 se I[i, j] \ge  T, else 0 \]
-Operazione fondamentale per segmentazione semplice (separare oggetto da sfondo). L'istogramma bimodale facilita la scelta di \texttt{T} come "valle" tra i due picchi.
-\textbf{4. Histogram matching (specification).} Trasforma l'immagine in modo che il suo istogramma corrisponda a un istogramma target (es. quello di un'immagine di riferimento). Utile per uniformare colori tra immagini.
-\textbf{5. Operazioni puntuali (LUT).} Qualunque trasformazione $T: V \to  V$ (es. correzione gamma, negativo, contrast stretching) può essere realizzata come \textbf{lookup table} indicizzata dall'istogramma; è un'operazione \texttt{O(1)} per pixel.
-\subsection*{Limiti}
-L'istogramma \textbf{ignora la struttura spaziale}: due immagini molto diverse possono avere lo stesso istogramma. Per operazioni che dipendono dal contesto locale servono filtri (es. Sobel) o istogrammi locali (CLAHE).
+Limite: l'istogramma \textbf{ignora la struttura spaziale} (due immagini diverse possono avere lo stesso istogramma).
 \newpage
 \section*{Q19. Spiega come funziona il filtro di Sobel e quale informazione estrae da un'immagine.}
-\subsection*{Obiettivo}
-Il \textbf{filtro di Sobel} è un operatore differenziale discreto usato per calcolare un'\textbf{approssimazione del gradiente} dell'intensità di un'immagine. Estrae informazione sui \textbf{bordi} (edge), cioè sui luoghi di forte variazione di luminosità.
-\subsection*{Kernel di Sobel}
-Il filtro consiste in due kernel $3\times 3$, uno per ciascuna direzione assiale:
+Il \textbf{Sobel} approssima il \textbf{gradiente} dell'intensità per estrarre i \textbf{bordi}. Usa due kernel $3\times 3$:
 \begin{verbatim}
         | -1  0  +1 |              | -1  -2  -1 |
 S_x =   | -2  0  +2 |       S_y =  |  0   0   0 |
         | -1  0  +1 |              | +1  +2  +1 |
 \end{verbatim}
-\texttt{S\_x} approssima la derivata parziale $\partial I/\partial x$ (variazioni orizzontali); \texttt{S\_y} approssima $\partial I/\partial y$ (variazioni verticali).
-\subsection*{Operazione}
-Si applicano i due kernel via \textbf{convoluzione} (o cross-correlazione, vedi Q20) all'immagine \texttt{I}:
-\[ G_x = I * S_x        (gradiente orizzontale) \]
-\[ G_y = I * S_y        (gradiente verticale) \]
-Dai due si ricavano:
-\[ M(i, j) = \sqrt{G_x^{2}(i,j) + G_y^{2}(i,j)}      magnitudo del gradiente \]
-\[ \theta (i, j) = \operatorname{arctan2}(G_y(i,j), G_x(i,j))       direzione del gradiente \]
-\subsection*{Informazione estratta}
-\begin{itemize}
-\item \textbf{$M(i, j)$}: quanto rapidamente varia l'intensità nel pixel $(i, j)$. Valori alti = bordo; valori bassi = regione uniforme.
-\item \textbf{$\theta (i, j)$}: direzione perpendicolare al bordo (direzione di massima variazione dell'intensità).
-\end{itemize}
-Sogliando \texttt{M} si ottiene una mappa binaria dei bordi.
-\subsection*{Perché funziona}
-Un bordo è una transizione rapida di intensità. Le derivate parziali $\partial I/\partial x$ e $\partial I/\partial y$ quantificano queste transizioni; la magnitudo del gradiente $|\nabla I| = \sqrt{(\partial I/\partial x)^{2} + (\partial I/\partial y)^{2}}$ è invariante per rotazione e indica la "forza" del bordo.
-\subsection*{Vantaggi del Sobel rispetto ad altre approssimazioni}
-I pesi \texttt{(1, 2, 1)} sull'asse ortogonale alla direzione di derivazione realizzano implicitamente un \textbf{smoothing gaussiano} $3\times 3$. Il Sobel combina quindi:
-\begin{enumerate}
-\item \textbf{Smoothing} (riduzione del rumore tramite media pesata).
-\item \textbf{Derivazione} (rilevazione del bordo).
-\end{enumerate}
-In un solo filtro, a parità di costo computazionale del Prewitt (che usa pesi uniformi \texttt{(1,1,1)} ed è più sensibile al rumore).
-\subsection*{Connessione con il calcolo}
-Il Sobel può essere derivato dallo sviluppo di Taylor della derivata discreta. Il fatto che combini differenziazione e smoothing è una manifestazione concreta del fatto che, per estrarre derivate da segnali rumorosi, è essenziale filtrare prima.
-\subsection*{Uso nel pipeline di Canny}
-Il Sobel è il secondo stadio del Canny edge detector (vedi progetto d'esame): dopo lo smoothing gaussiano, calcola gradiente e direzione che alimentano il non-maximum suppression.
+Per convoluzione si ottengono $G_x = I*S_x$ e $G_y = I*S_y$, da cui:
+\[ M = \sqrt{G_x^{2} + G_y^{2}}        (magnitudo: forza del bordo) \]
+\[ \theta  = \operatorname{arctan2}(G_y, G_x)        (direzione del bordo) \]
+\texttt{M} alta = bordo, bassa = zona uniforme. I pesi \texttt{(1,2,1)} fanno anche uno \textbf{smoothing} implicito $\to $ meno sensibile al rumore del Prewitt. È il secondo stadio della pipeline di Canny (progetto d'esame).
 \newpage
 \section*{Q20. Qual è la differenza tra convoluzione e cross-correlazione? Fornisci una definizione formale.}
-\subsection*{Cross-correlazione}
-La \textbf{cross-correlazione} tra due funzioni (o segnali, immagini) $f, g: \mathbb{R}^{n} \to  \mathbb{R}$ è definita come:
-\[ (f \star  g)(t) = \int  f(\tau ) \cdot  g(t + \tau ) d\tau               (continua) \]
-\[ (f \star  g)[n] = \sum _k f[k] \cdot  g[n + k]               (discreta) \]
-In 2D (immagini), con \texttt{I} immagine e \texttt{K} kernel di dimensione $(2m+1) \times  (2n+1)$:
-\[ (I \star  K)[i, j] = \sum _{u=-m}^{m} \sum _{v=-n}^{n} I[i+u, j+v] \cdot  K[u, v] \]
-\subsection*{Convoluzione}
-La \textbf{convoluzione} è simile alla cross-correlazione ma con il \textbf{kernel "flippato"} (riflesso rispetto all'origine):
-\[ (f * g)(t) = \int  f(\tau ) \cdot  g(t - \tau ) d\tau               (continua) \]
-\[ (f * g)[n] = \sum _k f[k] \cdot  g[n - k]               (discreta) \]
-In 2D:
-\[ (I * K)[i, j] = \sum _{u=-m}^{m} \sum _{v=-n}^{n} I[i-u, j-v] \cdot  K[u, v] \]
-\[ = \sum _{u, v} I[i+u, j+v] \cdot  K[-u, -v] \]
-L'unica differenza con la cross-correlazione è il segno meno (o equivalentemente il flip del kernel su entrambi gli assi).
-\subsection*{Differenza formale chiave}
-\begin{itemize}
-\item \textbf{Cross-correlazione}: il kernel viene \textbf{applicato direttamente} - scivola sull'immagine e si fa il prodotto pesato.
-\item \textbf{Convoluzione}: il kernel viene \textbf{prima ribaltato} (flip orizzontale e verticale) e poi applicato.
-\end{itemize}
-Per kernel \textbf{simmetrici} (es. gaussiano, Laplaciano isotropo) le due operazioni coincidono. Per kernel \textbf{asimmetrici} (es. Sobel) i risultati differiscono per il segno o per uno specchio.
-\subsection*{Proprietà che differenziano}
-\textbf{Convoluzione:}
-\begin{itemize}
-\item \textbf{Commutativa}: $f * g = g * f$.
-\item \textbf{Associativa}: $(f * g) * h = f * (g * h)$.
-\item \textbf{Distributiva} rispetto alla somma.
-\item \textbf{Teorema di convoluzione}: $F{f * g} = F{f} \cdot  F{g}$ (la trasformata di Fourier converte conv. in prodotto).
-\end{itemize}
-\textbf{Cross-correlazione:}
-\begin{itemize}
-\item \textbf{Non è commutativa}: $f \star  g \ne  g \star  f$ in generale.
-\item \textbf{Non è associativa}.
-\item È molto usata per rilevare la posizione di un pattern in un segnale (template matching).
-\end{itemize}
-\subsection*{Nel deep learning}
-I "convolutional layer" delle CNN, nonostante il nome, implementano in realtà la \textbf{cross-correlazione}: si applica il kernel direttamente, senza flip. La distinzione è irrilevante operativamente perché i pesi del kernel sono \textbf{appresi}: se il flip fosse necessario, la rete imparerebbe il kernel già flippato.
-\subsection*{Quando il flip conta}
-\begin{itemize}
-\item \textbf{Image processing classico} (Canny, filtri, edge detection): la distinzione è significativa per la coerenza con la teoria del segnale. Implementare \texttt{convolve2d} invece di \texttt{correlate2d} cambia il segno di alcuni kernel (es. Sobel).
-\item \textbf{Sistemi LTI}: la risposta a un input è la convoluzione con la risposta impulsiva. La definizione di convoluzione è obbligatoria perché solo lei riproduce le proprietà fisiche dei sistemi.
-\end{itemize}
+\textbf{Cross-correlazione} (2D): il kernel scorre e si applica direttamente:
+\[ (I \star  K)[i,j] = \sum _{u,v} I[i+u, j+v] \cdot  K[u,v] \]
+\textbf{Convoluzione} (2D): come sopra ma con il \textbf{kernel ribaltato} (segno meno):
+\[ (I * K)[i,j] = \sum _{u,v} I[i-u, j-v] \cdot  K[u,v] \]
+Differenza: la convoluzione ribalta il kernel di $180^{\circ}$ prima di applicarlo; per kernel simmetrici coincidono. Solo la \textbf{convoluzione} è commutativa e associativa (e soddisfa il teorema di Fourier). Le CNN, nonostante il nome, usano la cross-correlazione: i pesi sono appresi, quindi il flip è irrilevante.
 \newpage
 \section*{Q21. Quali sono le proprietà principali dell'operazione di convoluzione?}
-Le proprietà della convoluzione $*$ la rendono lo strumento centrale per l'analisi dei sistemi lineari e per l'elaborazione di segnali e immagini.
-\subsection*{1. Commutatività}
-\[ f * g = g * f \]
-L'ordine degli operandi non conta. Operativamente: applicare il kernel \texttt{g} all'immagine \texttt{f} produce lo stesso risultato di applicare \texttt{f} a \texttt{g} (utile per ottimizzazioni: si può scambiare per ridurre il costo).
-\subsection*{2. Associatività}
-\[ (f * g) * h = f * (g * h) \]
-Permette di \textbf{comporre filtri}: applicare in sequenza i filtri \texttt{g} e \texttt{h} equivale ad applicare un singolo filtro $g * h$. Utile per pre-calcolare filtri compositi e ridurre il numero di passaggi.
-\subsection*{3. Distributività rispetto alla somma}
-\[ f * (g + h) = (f * g) + (f * h) \]
-La convoluzione è \textbf{lineare} in entrambi gli argomenti.
-\subsection*{4. Linearità (omogeneità)}
-\[ (\alpha  f) * g = f * (\alpha  g) = \alpha  (f * g),    \alpha  \in  \mathbb{R} \]
-\subsection*{5. Esistenza dell'identità}
-La \textbf{delta di Dirac} $\delta $ è l'elemento neutro:
-\[ f * \delta  = f \]
-Nel discreto, $\delta [n] = 1 se n=0, 0 altrove$. Convolvere per $\delta $ lascia il segnale invariato.
-\subsection*{6. Differenziazione}
-\[ (f * g)' = f' * g = f * g' \]
-La derivata della convoluzione è la convoluzione con la derivata. Nel discreto/2D: applicare un filtro derivativo (Sobel, Laplaciano) è \textbf{lineare} e si può scambiare con altri filtri lineari. Conseguenza importante: si può calcolare $(I * G)' = I * G'$ (convolvere con la derivata del gaussiano), evitando di derivare numericamente l'immagine smussata.
-\subsection*{7. Teorema di convoluzione (proprietà spettrale)}
-Sia \texttt{F} la trasformata di Fourier. Allora:
-\[ F{f * g} = F{f} \cdot  F{g} \]
-\[ F{f \cdot  g} = F{f} * F{g} \]
-La convoluzione nel dominio spaziale corrisponde al \textbf{prodotto} nel dominio delle frequenze. Conseguenze:
-\begin{itemize}
-\item Filtri lineari sono caratterizzati dalla loro \textbf{risposta in frequenza}.
-\item Convoluzioni costose si possono calcolare via FFT in $O(N \operatorname{log} N)$ invece che $O(N^{2})$.
-\end{itemize}
-\subsection*{8. Invarianza per traslazione}
-Se $T_a(f)(x) = f(x - a)$ è la traslazione, allora:
-\[ T_a(f * g) = T_a(f) * g = f * T_a(g) \]
-La convoluzione \textbf{commuta} con le traslazioni. È la proprietà chiave che rende le CNN equivarianti per traslazione: lo stesso pattern in posizione diversa produce la stessa risposta traslata.
-\subsection*{9. Separabilità (caso speciale 2D)}
-Se $K(x, y) = K_x(x) \cdot  K_y(y)$, allora $I * K = (I * K_x) * K_y$ (prima filtro 1D orizzontale, poi 1D verticale). Riduce il costo da $O(M\cdot N\cdot k^{2})$ a $O(M\cdot N\cdot k)$. Esempi separabili: gaussiano (la più importante), filtro media, Sobel separabile in $[1,2,1]^{T}$ per \texttt{[1,0,-1]}.
-\subsection*{10. Smoothing del massimo}
-Se $f, g \ge  0$ e \texttt{g} è una funzione di smussamento (es. gaussiana normalizzata), la convoluzione \textbf{non aumenta i massimi locali} e \textbf{riduce il rumore}.
-\subsection*{Conseguenze pratiche}
-\begin{itemize}
-\item \textbf{Modularità}: filtri si compongono con regole algebriche pulite.
-\item \textbf{Efficienza}: separabilità + FFT $\to $ calcolo veloce.
-\item \textbf{Teoria solida}: i filtri lineari sono completamente caratterizzati dal kernel, e la loro analisi è ben sviluppata in dominio sia spaziale sia frequenziale.
-\end{itemize}
+\begin{enumerate}
+\item \textbf{Commutativa}: $f*g = g*f$
+\item \textbf{Associativa}: $(f*g)*h = f*(g*h)$ $\to $ permette di comporre filtri
+\item \textbf{Distributiva} sulla somma: $f*(g+h) = f*g + f*h$
+\item \textbf{Lineare}: $(\alpha f)*g = \alpha (f*g)$
+\item \textbf{Elemento neutro}: la delta di Dirac, $f*\delta  = f$
+\item \textbf{Differenziazione}: $(f*g)' = f'*g = f*g'$ (es. derivata della gaussiana)
+\item \textbf{Teorema di convoluzione}: $F{f*g} = F{f}\cdot F{g}$ $\to $ in frequenza diventa prodotto, calcolo via FFT
+\item \textbf{Invarianza per traslazione} $\to $ base dell'equivarianza delle CNN
+\item \textbf{Separabilità}: se $K = Kx\cdot Ky$, costo da $O(k^{2})$ a $O(k)$ (es. gaussiana)
+\end{enumerate}
 \newpage
 \section*{Q22. Illustra l'utilizzo dell'"istogramma dei livelli di grigio" in relazione agli "operatori puntuali" per la manipolazione di immagini luminanza.}
-\subsection*{Istogramma e operatori puntuali}
-Un \textbf{operatore puntuale} è una trasformazione $T: V \to  V$ (con $V = {0, ..., L-1}$) applicata pixel per pixel: $I'[i, j] = T(I[i, j])$, \textbf{senza dipendenza dal vicinato}. Esempi: negativo, contrast stretching, correzione gamma, sogliatura.
-L'\textbf{istogramma} $h(k) = \#{pixel con intensit\text{à} k}$ (vedi Q18) è la distribuzione delle intensità. L'effetto di un operatore puntuale \texttt{T} è completamente prevedibile dall'istogramma: i pixel che condividono la stessa intensità subiscono la stessa trasformazione, quindi la nuova distribuzione si calcola da \texttt{h} e \texttt{T} senza guardare l'immagine.
-\subsection*{Relazione formale}
-Se \texttt{T} è una funzione iniettiva, l'istogramma trasformato è:
-\[ h'(T(k)) = h(k) \]
-Se \texttt{T} non è iniettiva (mappa più valori sullo stesso output):
-\[ h'(j) = \sum _{k : T(k) = j} h(k) \]
-L'istogramma è quindi sia \textbf{strumento diagnostico} (rivela esposizione, contrasto) sia \textbf{dato di lavoro} per progettare operatori puntuali.
-\subsection*{Operatori puntuali principali}
-\textbf{1. Negativo (inversione).}
-\[ T(k) = (L - 1) - k \]
-Usato in radiografia, per evidenziare strutture chiare su sfondo scuro. L'istogramma risulta speculare.
-\textbf{2. Correzione gamma.}
-\[ T(k) = (L - 1) \cdot  (k / (L - 1))^\gamma  \]
+Un \textbf{operatore puntuale} trasforma ogni pixel in funzione del solo suo valore: $I'[i,j] = T(I[i,j])$, senza guardare i vicini. L'effetto sull'istogramma è prevedibile: se \texttt{T} è iniettiva $h'(T(k)) = h(k)$.
+Principali operatori (definiti tramite \texttt{T}):
 \begin{itemize}
-\item $\gamma  < 1$: scurisce le ombre, schiarisce i mezzi-toni $\to $ utile per immagini sovraesposte.
-\item $\gamma  > 1$: schiarisce le ombre $\to $ utile per immagini scure.
-\item $\gamma  = 1$: identità.
+\item \textbf{Negativo}: $T(k) = (L-1) - k$
+\item \textbf{Correzione gamma}: $T(k) = (L-1)(k/(L-1))^\gamma $ ($\gamma $<1 schiarisce le ombre)
+\item \textbf{Contrast stretching}: $T(k) = (L-1)(k-a)/(b-a)$
+\item \textbf{Equalizzazione}: $T(k) = (L-1)\cdot CDF(k)$ $\to $ istogramma uniforme
+\item \textbf{Sogliatura}: $T(k) = 0$ se $k<T$, altrimenti $L-1$
 \end{itemize}
-Compensa la non linearità percettiva della luminosità (sensibilità dell'occhio alle ombre).
-\textbf{3. Contrast stretching (normalizzazione).} Mappa \texttt{[a, b]} (range effettivo dell'istogramma) su $[0, L-1]$:
-\[ T(k) = (L - 1) \cdot  (k - a) / (b - a) \]
-Distribuisce l'istogramma su tutto il range, aumentando il contrasto.
-\textbf{4. Equalizzazione dell'istogramma.} Usa la CDF dell'istogramma come trasformazione:
-\[ T(k) = \operatorname{round}((L - 1) \cdot  CDF(k)) \]
-Produce un istogramma approssimativamente uniforme. Massimizza il contrasto globale e l'entropia dell'immagine.
-\textbf{5. Sogliatura.}
-\[ T(k) = 0 se k < T,  L - 1 se k \ge  T \]
-Binarizza l'immagine. La scelta di \texttt{T} può essere manuale o automatica (metodo di Otsu, basato sulla varianza inter-classe sull'istogramma).
-\textbf{6. Compressione/dilatazione del range.} Mappature lineari a tratti per enfatizzare specifiche fasce di intensità.
-\subsection*{Implementazione: lookup table (LUT)}
-Tutti gli operatori puntuali si implementano efficientemente come \textbf{LUT}: si pre-calcola un array \texttt{T[0..L-1]} con i valori della trasformazione, e si applica $I'[i, j] = T[I[i, j]]$. Costo $O(M\cdot N)$ indipendente dalla complessità di \texttt{T}.
-\subsection*{Vantaggi degli operatori puntuali}
-\begin{itemize}
-\item \textbf{Costo computazionale minimo} (\texttt{O(1)} per pixel via LUT).
-\item \textbf{Locali}: nessuna interazione tra pixel, parallelizzabili banalmente.
-\item \textbf{Reversibili} se \texttt{T} è iniettiva.
-\end{itemize}
-\subsection*{Limiti}
-\begin{itemize}
-\item \textbf{Cieche al contesto spaziale}: non riducono il rumore (servono filtri), non rilevano bordi (servono operatori differenziali).
-\item L'istogramma non distingue oggetto da sfondo se condividono lo stesso range di intensità.
-\end{itemize}
-\subsection*{Conclusione}
-L'istogramma è la "fotografia statistica" dell'immagine; gli operatori puntuali sono le sue manipolazioni più semplici. La loro combinazione copre la maggior parte delle correzioni di luminosità e contrasto in fotografia, imaging medico e pre-processing.
+Si implementano via \textbf{lookup table} (\texttt{O(1)} per pixel). Limite: ciechi al contesto spaziale (non riducono rumore, non rilevano bordi).
 \newpage
 \section*{Q23. In che modo i "polinomi di Taylor" vengono applicati per la creazione di "filtri di sharpening" come il filtro di Sobel o il filtro Laplaciano?}
-\subsection*{Polinomi di Taylor}
-Per una funzione differenziabile $f: \mathbb{R} \to  \mathbb{R}$, lo \textbf{sviluppo di Taylor} in $x_{0}$ con incremento \texttt{h} è:
-\[ f(x_{0} + h) = f(x_{0}) + h\cdot f'(x_{0}) + (h^{2}/2)\cdot f''(x_{0}) + (h^{3}/6)\cdot f'''(x_{0}) + O(h^{4}) \]
-In più variabili (caso $f: \mathbb{R}^{2} \to  \mathbb{R}$):
-\[ f(x+h, y+k) = f(x,y) + h\cdot \partial f/\partial x + k\cdot \partial f/\partial y \]
-\[ + (1/2)(h^{2}\cdot \partial ^{2}f/\partial x^{2} + 2hk\cdot \partial ^{2}f/\partial x\partial y + k^{2}\cdot \partial ^{2}f/\partial y^{2}) + ... \]
-\subsection*{Idea: derivate discrete da Taylor}
-Un'immagine digitale è una funzione discreta \texttt{I[i, j]}. Per estrarre informazione differenziale (bordi, dettagli, sharpening) servono \textbf{approssimazioni discrete} delle derivate. Si usano combinazioni lineari dei valori di pixel vicini, e i coefficienti si ricavano dallo sviluppo di Taylor.
-\subsection*{Derivata prima (Sobel)}
-Per la derivata prima $\partial I/\partial x$ in $(i, j)$:
-\[ I[i, j+1] = I[i, j] + (\partial I/\partial x)\cdot 1 + (1/2)(\partial ^{2}I/\partial x^{2}) + O(1) \]
-\[ I[i, j-1] = I[i, j] - (\partial I/\partial x)\cdot 1 + (1/2)(\partial ^{2}I/\partial x^{2}) + O(1) \]
-Sottraendo:
-\[ I[i, j+1] - I[i, j-1] = 2 (\partial I/\partial x) + O(1) \]
-\[ \Rightarrow  \partial I/\partial x \approx  (I[i, j+1] - I[i, j-1]) / 2 \]
-Questa è la \textbf{differenza centrata}, esatta a meno di $O(h^{2})$. Il filtro corrispondente è $[-1, 0, +1]$.
-Per ridurre la sensibilità al rumore si \textbf{media} la stima centrata su tre righe verticali con pesi \texttt{(1, 2, 1)} (media pesata che dà peso doppio al centro):
-\begin{verbatim}
-        | -1  0  +1 |
-S_x =   | -2  0  +2 |
-        | -1  0  +1 |
-\end{verbatim}
-Questo è il \textbf{kernel di Sobel} orizzontale: derivata prima $+$ smoothing gaussiano implicito, entrambi giustificati come approssimazioni di Taylor.
-\subsection*{Derivata seconda (Laplaciano)}
-Sommando le due espansioni precedenti:
-\[ I[i, j+1] + I[i, j-1] = 2\cdot I[i, j] + (\partial ^{2}I/\partial x^{2}) + O(h^{4}) \]
-\[ \Rightarrow  \partial ^{2}I/\partial x^{2} \approx  I[i, j+1] - 2 I[i, j] + I[i, j-1] \]
-Il \textbf{Laplaciano} è la somma delle derivate seconde: $\nabla ^{2}I = \partial ^{2}I/\partial x^{2} + \partial ^{2}I/\partial y^{2}$. Ne risulta il kernel:
-\begin{verbatim}
-        | 0   1   0 |
-L =     | 1  -4   1 |
-        | 0   1   0 |
-\end{verbatim}
-Variante con vicini diagonali (basata su un'espansione 2D più completa):
-\begin{verbatim}
-        | 1   1   1 |
-L8 =    | 1  -8   1 |
-        | 1   1   1 |
-\end{verbatim}
-\subsection*{Sharpening tramite Laplaciano}
-Il Laplaciano di un'immagine evidenzia \textbf{i punti di massima curvatura} dell'intensità (dove la derivata seconda è grande), che sono i bordi.
-Il filtro di \textbf{sharpening} combina l'immagine originale con il Laplaciano:
-\[ I_sharp = I - k \cdot  \nabla ^{2}I       con k > 0 \]
-Il segno $-$ è dovuto al fatto che $\nabla ^{2}I$ è negativo nei picchi di intensità. L'effetto: i bordi vengono accentuati, l'immagine appare più "nitida".
-In forma di kernel singolo (per $k = 1$ con Laplaciano $L_{4}$):
-\begin{verbatim}
-        |  0  -1   0 |
-H =     | -1   5  -1 |
-        |  0  -1   0 |
-\end{verbatim}
-\subsection*{Sintesi del legame}
-\begin{itemize}
-\item I \textbf{valori di un pixel e dei suoi vicini} stanno in relazione tramite Taylor.
-\item Combinazioni lineari di vicini, scelte secondo Taylor, producono \textbf{approssimazioni discrete delle derivate} (prime, seconde, miste).
-\item Filtri come \textbf{Sobel} (derivata prima $\to $ magnitudo del gradiente $\to $ bordi) e \textbf{Laplaciano} (derivata seconda $\to $ enhancement dei dettagli) sono applicazioni dirette di questa idea.
-\item Lo sharpening è la combinazione $I - k\cdot \nabla ^{2}I$, ottenuta sottraendo un termine basato sulla derivata seconda per accentuare le variazioni rapide.
-\end{itemize}
-In sintesi: \textbf{i filtri differenziali sono polinomi di Taylor discretizzati sui vicini di un pixel.}
+Le derivate discrete di un'immagine si ricavano dallo \textbf{sviluppo di Taylor} dei pixel vicini.
+\textbf{Derivata prima} (Sobel): sottraendo gli sviluppi di $I[i,j+1]$ e $I[i,j-1]$:
+\[ \partial I/\partial x \approx  (I[i,j+1] - I[i,j-1]) / 2     \to  kernel [-1, 0, +1] \]
+mediato sulle tre righe con pesi \texttt{(1,2,1)} dà il kernel di Sobel.
+\textbf{Derivata seconda} (Laplaciano): sommando gli sviluppi:
+\[ \partial ^{2}I/\partial x^{2} \approx  I[i,j+1] - 2I[i,j] + I[i,j-1] \]
+\[ \nabla ^{2}I = \partial ^{2}I/\partial x^{2} + \partial ^{2}I/\partial y^{2}   \to  kernel [[0,1,0],[1,-4,1],[0,1,0]] \]
+\textbf{Sharpening}: $I_sharp = I - k\cdot \nabla ^{2}I$ (accentua i bordi). In sintesi: i filtri differenziali sono \textbf{polinomi di Taylor discretizzati} sui vicini di un pixel.
 \newpage
 \section*{Q24. Definisci l'operazione di convoluzione nel continuo e indicane le principali proprietà, sia in una che in due variabili.}
-\subsection*{Convoluzione in una variabile (continua)}
-Date due funzioni $f, g: \mathbb{R} \to  \mathbb{R}$ integrabili, la loro \textbf{convoluzione} è:
-\[ (f * g)(t) = \int _{-\infty }^{+\infty } f(\tau ) \cdot  g(t - \tau ) d\tau  \]
-Concettualmente: si "fa scorrere" \texttt{g} (riflessa attorno all'origine) sopra \texttt{f}, calcolando in ogni posizione \texttt{t} l'integrale del loro prodotto. Operativamente: per ogni \texttt{t}, è una \textbf{media pesata} di \texttt{f} con pesi \texttt{g}.
-\subsection*{Convoluzione in due variabili (continua)}
-Date $f, g: \mathbb{R}^{2} \to  \mathbb{R}$:
-\[ (f * g)(x, y) = \int \int _{\mathbb{R}^{2}} f(u, v) \cdot  g(x - u, y - v) du dv \]
-Per immagini si usa la versione \textbf{discreta} ottenuta sostituendo gli integrali con somme (vedi Q20).
-\subsection*{Proprietà principali}
-\textbf{1. Commutatività.}
-\[ f * g = g * f \]
-Dimostrazione: cambio di variabile $\sigma  = t - \tau $.
-\textbf{2. Associatività.}
-\[ (f * g) * h = f * (g * h) \]
-Permette di comporre filtri lineari in qualunque ordine.
-\textbf{3. Distributività rispetto alla somma.}
-\[ f * (g + h) = (f * g) + (f * h) \]
-\textbf{4. Linearità (omogeneità).}
-\[ (\alpha  f) * g = \alpha  (f * g),   \forall \alpha  \in  \mathbb{R} \]
-\textbf{5. Identità: delta di Dirac.} La convoluzione ha come elemento neutro la \textbf{distribuzione di Dirac} $\delta $:
-\[ f * \delta  = f \]
-La $\delta $ "punta" nell'origine ed è il limite di funzioni concentrate (es. una gaussiana che si stringe).
-\textbf{6. Differenziazione.}
-\[ (f * g)' = f' * g = f * g' \]
-La derivata della convoluzione è la convoluzione di una funzione con la derivata dell'altra. In 2D: $\partial (f * g)/\partial x = (\partial f/\partial x) * g = f * (\partial g/\partial x)$. \textbf{Conseguenza pratica}: per stimare $(I * G)'$ (derivata dell'immagine smussata con gaussiana) si convolve direttamente con \texttt{G'} (derivata della gaussiana), evitando la derivazione numerica dell'immagine.
-\textbf{7. Teorema di convoluzione.} La trasformata di Fourier \texttt{F} converte la convoluzione in prodotto:
-\[ F{f * g} = F{f} \cdot  F{g} \]
-\[ F{f \cdot  g} = (1/2\pi ) F{f} * F{g} \]
-Conseguenza: filtri lineari sono caratterizzati dalla loro \textbf{risposta in frequenza}; convoluzioni di grandi kernel si calcolano via FFT in $O(N \operatorname{log} N)$.
-\textbf{8. Invarianza per traslazione.} Se $T_a(f)(x) = f(x - a)$:
-\[ T_a(f * g) = T_a(f) * g = f * T_a(g) \]
-Questa è la proprietà che giustifica matematicamente l'\textbf{equivarianza per traslazione} dei filtri convoluzionali in image processing e nelle CNN.
-\textbf{9. Supporto.} Se \texttt{f} ha supporto in \texttt{A} e \texttt{g} in \texttt{B}, allora $f * g$ ha supporto in $A + B = {a + b : a \in  A, b \in  B}$. La convoluzione "allarga" il supporto.
-\textbf{10. Caso particolare 2D - separabilità.} Se $g(x, y) = g_{1}(x) \cdot  g_{2}(y)$, allora:
-\[ (f * g)(x, y) = ((f *_x g_{1}) *_y g_{2})(x, y) \]
-La convoluzione 2D si decompone in due convoluzioni 1D: enorme risparmio computazionale ($O(k^{2}) \to  O(2k)$ per kernel $k\times k$). Esempio classico: la gaussiana 2D è il prodotto di due gaussiane 1D.
-\subsection*{Conclusione}
-La convoluzione è un'operazione \textbf{lineare}, \textbf{invariante per traslazione} (LTI), che fornisce un linguaggio matematicamente solido per:
-\begin{itemize}
-\item elaborazione di segnali e immagini (filtri),
-\item analisi di sistemi fisici (risposta impulsiva),
-\item deep learning (CNN).
-\end{itemize}
-Le sue proprietà algebriche e spettrali permettono di costruire e analizzare filtri in modo modulare ed efficiente.
+\textbf{1 variabile}:
+\[ (f * g)(t) = \int  f(\tau ) g(t - \tau ) d\tau  \]
+\textbf{2 variabili}:
+\[ (f * g)(x,y) = \iint  f(u,v) g(x-u, y-v) du dv \]
+Concettualmente: si fa scorrere \texttt{g} (riflessa) su \texttt{f} e si integra il prodotto (media pesata).
+Proprietà: commutativa, associativa, distributiva, lineare; elemento neutro $\delta $; differenziazione $(f*g)' = f'*g$; teorema di convoluzione (Fourier $\to $ prodotto); invarianza per traslazione; separabilità in 2D. (Vedi Q21.) È un'operazione \textbf{lineare e invariante per traslazione}, base di filtri, sistemi LTI e CNN.
 \newpage
 \section*{Q25. Quali sono le differenze strutturali e funzionali tra un MLP e una CNN?}
-\subsection*{MLP (Multi-Layer Perceptron)}
-Architettura feedforward general-purpose, composta da strati \textbf{fully-connected}: ogni neurone di un layer riceve in input \textbf{tutti} i neuroni del layer precedente.
-Calcolo per uno strato:
-\[ h = \varphi (W\cdot x + b)        W \in  \mathbb{R}^{m\times n},  x \in  \mathbb{R}^{n},  b \in  \mathbb{R}^{m} \]
-\subsection*{CNN (Convolutional Neural Network)}
-Architettura specializzata per dati con \textbf{struttura a griglia} (immagini, audio spettrale, video). I layer principali sono:
-\begin{itemize}
-\item \textbf{Convolutional layer}: applica kernel di piccole dimensioni (es. $3\times 3$, $5\times 5$) a tutta l'immagine.
-\item \textbf{Pooling layer}: riduce la risoluzione spaziale.
-\item \textbf{Fully-connected layer} finali per classificazione.
-\end{itemize}
-Calcolo di un convolutional layer:
-\[ h[i, j, c'] = \varphi (\sum _{u, v, c} W[u, v, c, c'] \cdot  x[i+u, j+v, c] + b[c']) \]
-\subsection*{Differenze strutturali}
 \begin{center}\renewcommand{\arraystretch}{1.25}
 \begin{tabular}{|l|l|l|}\hline
 \textbf{Aspetto} & \textbf{MLP} & \textbf{CNN} \\ \hline
-Connettività & full (denso) & locale (kernel) \\ \hline
-Condivisione pesi & no & sì (stesso kernel ovunque) \\ \hline
-Numero parametri & molto alto & ridotto \\ \hline
-Input nativo & vettore 1D & tensore 2D/3D ($H\times W\times C$) \\ \hline
-Equivarianza traslazione & no & sì (per costruzione) \\ \hline
-Gerarchia spaziale & no & sì (via pooling) \\ \hline
+Connettività & fully-connected & locale (kernel) \\ \hline
+Pesi & indipendenti & \textbf{condivisi} \\ \hline
+N. parametri & altissimo & ridotto \\ \hline
+Input & vettore 1D & tensore $H\times W\times C$ \\ \hline
+Equivarianza traslazione & no & sì \\ \hline
 \end{tabular}\end{center}
-\subsection*{Differenze funzionali}
-\textbf{1. Sfruttamento della struttura spaziale.} L'MLP "appiattisce" l'immagine in un vettore, perdendo la nozione di vicinanza tra pixel. La CNN preserva la griglia 2D ed estrae feature locali (bordi, texture, parti di oggetto) che si combinano in modo gerarchico.
-\textbf{2. Numero di parametri.} MLP che processa un'immagine $224\times 224\times 3$:
-\begin{itemize}
-\item input flatten: \texttt{150528} neuroni
-\item primo hidden con \texttt{1000} unità: $\approx  1.5\cdot 10^{8}$ parametri.
-\end{itemize}
-CNN con primo conv $3\times 3\times 3 \to  64$ filtri: \texttt{1728} parametri. La differenza in parametri è di \textbf{5 ordini di grandezza} o più.
-\textbf{3. Equivarianza per traslazione.} Una CNN riconosce un pattern indipendentemente dalla sua posizione: lo stesso kernel viene applicato in ogni posizione. Un MLP deve "imparare" ogni traslazione separatamente.
-\textbf{4. Gerarchia di feature (con pooling/strides).} Layer iniziali $\to $ bordi e texture (feature locali, piccoli campi recettivi). Layer profondi $\to $ oggetti complessi (campi recettivi grandi). L'MLP non ha questa progressività spaziale.
-\textbf{5. Inductive bias.} La CNN incorpora ipotesi a priori adatte alle immagini: località, condivisione pesi, equivarianza. L'MLP è "neutro" - più flessibile in linea di principio ma molto meno efficiente sui dati con struttura.
-\subsection*{Quando usare quale}
-\begin{itemize}
-\item \textbf{MLP}: dati tabulari, vettoriali, senza struttura spaziale.
-\item \textbf{CNN}: immagini, audio (spettrogrammi), video (con estensione 3D), reti per dati 2D/3D in generale.
-\item \textbf{Trasformazione moderna}: i transformer competono con le CNN sulle immagini (Vision Transformer), eliminando la convoluzione esplicita ma reintroducendo equivalenze tramite positional encoding.
-\end{itemize}
-\subsection*{Conclusione}
-Una CNN è un MLP con vincoli architetturali (località, condivisione pesi) che incorporano l'\textbf{inductive bias} della struttura spaziale delle immagini. Questo le rende drasticamente più efficienti in parametri e dati necessari, oltre che equivariate per traslazione.
+L'MLP appiattisce l'immagine perdendo la struttura spaziale; la CNN preserva la griglia 2D ed estrae feature locali con pesi condivisi. Su un'immagine $224\times 224\times 3$, un MLP avrebbe \textasciitilde{}$10^{8}$ parametri nel primo strato, una CNN poche migliaia. Una CNN è di fatto un MLP con vincoli (località + condivisione pesi) che incorporano l'\textbf{inductive bias} delle immagini: molti meno parametri ed equivarianza per traslazione.
 \newpage
 \section*{Q26. Perché le "Convolutional Neural Networks (CNN)" sono particolarmente efficaci per la gestione di "dati a griglia", come le immagini?}
-I dati a griglia (immagini, video, spettrogrammi audio, dati su grafi regolari) condividono tre proprietà che le CNN sfruttano per costruzione, e che invece un MLP deve "scoprire" da zero dai dati.
-\subsection*{1. Località (locality)}
-\textbf{Proprietà del dato}: in un'immagine, le informazioni rilevanti per identificare un pattern sono \textbf{concentrate in una regione locale}. Un bordo, una texture, una parte di volto si manifestano in un intorno di pixel; pixel distanti tendono a essere indipendenti.
-\textbf{Sfruttamento CNN}: ogni kernel ha \textbf{dimensione piccola} ($3\times 3$, $5\times 5$) e analizza solo un intorno. Layer più profondi, applicandosi a feature già locali, vedono regioni più grandi (campo recettivo crescente). Questo costruisce una \textbf{gerarchia spaziale}: bordi $\to $ texture $\to $ parti $\to $ oggetti.
-\subsection*{2. Condivisione di pesi (weight sharing)}
-\textbf{Proprietà del dato}: lo stesso pattern (es. un bordo verticale, un occhio) può apparire in qualunque posizione. La distribuzione di un pattern non dipende dalla sua posizione assoluta.
-\textbf{Sfruttamento CNN}: lo \textbf{stesso kernel viene applicato in ogni posizione} dell'immagine. Conseguenze:
-\begin{itemize}
-\item \textbf{Equivarianza per traslazione}: traslare l'input traslando l'output della stessa quantità.
-\item \textbf{Riduzione drastica dei parametri}: un kernel $3\times 3$ con \texttt{C} canali e \texttt{C'} filtri ha $9\cdot C\cdot C'$ pesi indipendentemente dalla risoluzione dell'immagine.
-\item \textbf{Generalizzazione spaziale}: se la rete impara a rilevare "occhio" in alto a sinistra, lo riconosce automaticamente anche in basso a destra.
-\end{itemize}
-\subsection*{3. Composizionalità gerarchica}
-\textbf{Proprietà del dato}: gli oggetti complessi sono \textbf{composti da parti} che a loro volta sono fatte di pattern più semplici. Un volto è fatto di occhi, naso, bocca; un occhio è fatto di iride, pupilla, palpebra; questi sono fatti di bordi e texture; questi sono fatti di variazioni di intensità.
-\textbf{Sfruttamento CNN}: l'architettura impila layer convoluzionali, con \textbf{pooling/strides} che riducono progressivamente la risoluzione spaziale.
-\begin{itemize}
-\item Layer 1: feature elementari (bordi, gradienti) su campi recettivi piccoli.
-\item Layer intermedi: combinazioni di feature (angoli, texture).
-\item Layer profondi: parti di oggetti, oggetti completi (campi recettivi che coprono tutta l'immagine).
-\end{itemize}
-Questa gerarchia rispecchia la struttura compositiva del dato.
-\subsection*{4. Robustezza per costruzione}
-\begin{itemize}
-\item \textbf{Invarianza per piccole traslazioni}: il pooling rende la rappresentazione poco sensibile a piccoli spostamenti.
-\item \textbf{Invarianza approssimata per piccole deformazioni}: convoluzione + pooling tollerano lievi distorsioni locali.
-\end{itemize}
-Queste invarianze sono \textbf{proprietà desiderate} per la classificazione di immagini.
-\subsection*{Confronto quantitativo con un MLP}
-\begin{itemize}
-\item Un MLP per immagini $1000\times 1000$ richiederebbe pesi $O(10^{6} \cdot  n_hidden)$, ingestibile.
-\item Una CNN con kernel $3\times 3$ e poche decine di filtri ha pochi millesimi dei parametri, e generalizza meglio perché incorpora i bias corretti.
-\end{itemize}
-\subsection*{Estensioni}
-\begin{itemize}
-\item \textbf{Video}: convoluzioni 3D (spazio + tempo).
-\item \textbf{Volumi medici (TC, RM)}: convoluzioni 3D (volumetriche).
-\item \textbf{Audio}: convoluzioni 1D o 2D su spettrogrammi.
-\item \textbf{Grafi}: graph neural networks, generalizzazione delle CNN a domini non regolari.
-\end{itemize}
-\subsection*{Conclusione}
-L'efficacia delle CNN deriva dall'allineamento tra l'architettura e le \textbf{simmetrie naturali} del dato a griglia: località spaziale, equivarianza per traslazione, gerarchia compositiva. Imporre queste simmetrie come \textbf{inductive bias} anziché lasciarle apprendere riduce drasticamente i parametri necessari e migliora la generalizzazione.
+Sfruttano per costruzione tre proprietà dei dati a griglia:
+\begin{enumerate}
+\item \textbf{Località}: i pattern (bordi, texture) sono in regioni locali $\to $ kernel piccoli; strati profondi vedono regioni più grandi (campo recettivo crescente).
+\item \textbf{Condivisione dei pesi}: lo stesso kernel ovunque $\to $ \textbf{equivarianza per traslazione}, pochi parametri (un kernel $3\times 3$ ha $9\cdot C\cdot C'$ pesi indipendentemente dalla risoluzione), generalizzazione spaziale.
+\item \textbf{Composizionalità gerarchica}: con conv + pooling si costruiscono feature sempre più astratte (bordi $\to $ parti $\to $ oggetti).
+\end{enumerate}
+Imporre queste simmetrie come inductive bias (invece di farle apprendere a un MLP) riduce drasticamente i parametri e migliora la generalizzazione.
 \newpage
 \section*{Q27. Dare una breve descrizione dei minimi esempi di strati utilizzati in una CNN: "layer convoluzionale", "funzione di attivazione ReLU", "layer di pooling", e "dropout".}
-\subsection*{1. Layer convoluzionale (conv)}
-\textbf{Operazione.} Applica \texttt{K} filtri (kernel) di dimensione spaziale piccola (es. $3\times 3$ o $5\times 5$) e profondità pari ai canali in input. Per ciascun filtro $k = 1, ..., K$:
-\[ y[i, j, k] = \sum _{u, v, c} W_k[u, v, c] \cdot  x[i+u, j+v, c] + b_k \]
-\textbf{Iperparametri principali:}
 \begin{itemize}
-\item \textbf{kernel size}: $f \times  f$ ($3\times 3$ standard).
-\item \textbf{stride}: passo di scorrimento del kernel.
-\item \textbf{padding}: \texttt{valid} (no padding) o \texttt{same} (mantiene la risoluzione).
-\item \textbf{numero di filtri} \texttt{K}: definisce la profondità dell'output.
+\item \textbf{Convoluzionale}: applica \texttt{K} filtri appresi (es. $3\times 3$) all'input $\to $ feature map. $y[i,j,k] = \sum  W_k[u,v,c]\cdot x[i+u,j+v,c] + b_k$. Estrae feature locali. Iperparametri: kernel size, stride, padding, n. filtri.
+\item \textbf{ReLU}: \texttt{max(0,z)} element-wise dopo la conv. Introduce non linearità, niente vanishing gradient per z>0, induce sparsità.
+\item \textbf{Pooling} (es. max $2\times 2$): riduce la risoluzione spaziale $\to $ meno calcolo, invarianza a piccole traslazioni, campo recettivo maggiore. Senza parametri.
+\item \textbf{Dropout}: in training spegne ogni neurone con probabilità \texttt{p} (e riscala di $1/(1-p)$). \textbf{Regolarizzazione} anti-overfitting (effetto ensemble). Disattivato in inference.
 \end{itemize}
-\textbf{Output:} un tensore $H' \times  W' \times  K$ con $H' = (H - f + 2p)/s + 1$, idem per \texttt{W'}.
-\textbf{Ruolo:} estrarre feature locali (bordi, texture, pattern complessi nei layer profondi). Pesi appresi dalla backpropagation.
-\subsection*{2. Funzione di attivazione ReLU}
-\textbf{Definizione:} $ReLU(z) = \operatorname{max}(0, z)$.
-\textbf{Operazione.} Applicata element-wise dopo ogni conv layer:
-\[ a[i, j, k] = ReLU(y[i, j, k]) \]
-\textbf{Ruolo:}
-\begin{itemize}
-\item Introduce \textbf{non linearità}, condizione necessaria per l'espressività della rete (senza, una stack di conv è solo una conv lineare).
-\item Computazionalmente banale (un confronto).
-\item \textbf{Niente vanishing gradient} per $z > 0$ (gradiente costante = 1) $\to $ permette di addestrare reti profonde.
-\item Induce \textbf{sparsità} (molti neuroni inattivi $\to $ rappresentazioni più compatte).
-\end{itemize}
-\textbf{Limite:} dying ReLU (neuroni con $z \le  0$ su tutti gli input restano permanentemente inattivi). Risolto da varianti (Leaky ReLU, PReLU, ELU).
-\subsection*{3. Layer di pooling}
-\textbf{Operazione.} Riduce la risoluzione spaziale aggregando vicinati di pixel. Le due varianti più comuni:
-\textbf{Max pooling} $2\times 2$ con stride 2:
-\[ y[i, j, k] = \operatorname{max}{ x[2i+u, 2j+v, k] : u, v \in  {0, 1} } \]
-\textbf{Average pooling} $2\times 2$:
-\[ y[i, j, k] = (1/4) \sum _{u, v \in  {0,1}} x[2i+u, 2j+v, k] \]
-\textbf{Effetto:}
-\begin{itemize}
-\item \textbf{Riduce la risoluzione spaziale} (tipicamente di $2\times $).
-\item \textbf{Aumenta il campo recettivo effettivo} dei layer successivi.
-\item \textbf{Crea invarianza approssimata} per piccole traslazioni (la posizione esatta del pattern conta meno).
-\item \textbf{Riduce parametri e calcolo} nei layer successivi.
-\end{itemize}
-\textbf{Iperparametri:} dimensione finestra ($2\times 2$ standard), stride.
-Il \textbf{global average pooling} (media su tutta la mappa spaziale) è ormai preferito al pooling tradizionale prima della testa di classificazione, perché elimina i parametri dei layer fully-connected finali.
-\subsection*{4. Dropout}
-\textbf{Operazione.} Durante l'addestramento, ogni neurone viene "spento" (impostato a 0) con probabilità \texttt{p} (es. $p = 0.5$):
-\[ y[i] = x[i] \cdot  m[i] / (1 - p),   m[i] \sim  Bernoulli(1 - p) \]
-La divisione per $1 - p$ mantiene l'\textbf{aspettativa} invariata (inverted dropout). In \textbf{inference}, il dropout è disattivato.
-\textbf{Ruolo:}
-\begin{itemize}
-\item \textbf{Regolarizzazione}: previene overfitting forzando la rete a non dipendere da specifici neuroni; impara rappresentazioni ridondanti.
-\item \textbf{Effetto ensemble}: equivale ad allenare implicitamente un'enorme famiglia di sotto-reti e a fare media in inference.
-\end{itemize}
-\textbf{Posizionamento tipico:} dopo i layer fully-connected; nelle moderne CNN (con BatchNorm e architetture residual) è meno usato nei conv, più comune nei classificatori finali e nei transformer.
-\subsection*{Stack tipico di una CNN}
-\begin{verbatim}
-Conv -> ReLU -> Conv -> ReLU -> Pooling -> ... -> Flatten -> FC -> Dropout -> FC -> Softmax
-\end{verbatim}
-\subsection*{Layer addizionali (utile per completezza)}
-\begin{itemize}
-\item \textbf{Batch Normalization}: normalizza le attivazioni, accelera training e permette learning rate maggiori.
-\item \textbf{Skip/Residual connections} (ResNet): aggiungono \texttt{x} all'output, permettendo reti molto profonde (centinaia di layer).
-\end{itemize}
+Stack tipico: $Conv \to  ReLU \to  Pool \to  \dots  \to  FC \to  Dropout \to  FC \to  Softmax$.
 \newpage
 \section*{Q28. Per quale tipo di dati sono concepite le "Recurrent Neural Networks (RNN)" e quale problematica affrontano?}
-\subsection*{Dati di destinazione: sequenze}
-Le \textbf{Recurrent Neural Networks (RNN)} sono architetture concepite per \textbf{dati sequenziali}, ovvero successioni $x = (x_{1}, x_{2}, ..., x_T)$ in cui \textbf{l'ordine} degli elementi è informativo. Esempi:
-\begin{itemize}
-\item \textbf{Testo} (linguaggio naturale): sequenza di parole o caratteri.
-\item \textbf{Audio}: campioni o frame nel tempo.
-\item \textbf{Serie temporali}: dati finanziari, meteorologici, sensoriali.
-\item \textbf{Video}: sequenza di frame.
-\item \textbf{Sequenze biologiche}: DNA, proteine.
-\end{itemize}
-L'ipotesi chiave è che \texttt{x\_t} dipenda dal \textbf{contesto precedente} $(x_{1}, ..., x_{t-1})$.
-\subsection*{Problema affrontato: dipendenze temporali}
-Le architetture feedforward (MLP, CNN) hanno due limiti su dati sequenziali:
-\begin{enumerate}
-\item \textbf{Input di lunghezza variabile}: una rete feedforward ha input fisso; sequenze di lunghezza diversa richiederebbero padding o reti separate.
-\item \textbf{Mancanza di stato/memoria}: nessun meccanismo per "ricordare" informazioni di passi precedenti.
-\end{enumerate}
-Le RNN risolvono entrambi introducendo uno \textbf{stato nascosto} che si aggiorna a ogni passo temporale.
-\subsection*{Architettura base}
-A ogni passo temporale \texttt{t}:
-\[ h_t = \varphi (W_h \cdot  h_{t-1} + W_x \cdot  x_t + b)         (stato nascosto) \]
-\[ y_t = \psi (W_y \cdot  h_t + b_y)                        (output, opzionale) \]
-dove:
-\begin{itemize}
-\item $h_t \in  \mathbb{R}^{d}$ è lo \textbf{stato} al tempo \texttt{t} (riassunto del passato).
-\item \texttt{W\_h, W\_x, W\_y} sono pesi \textbf{condivisi nel tempo} (come la condivisione spaziale nelle CNN, ma sull'asse temporale).
-\item $\varphi $ è tipicamente \texttt{tanh}.
-\end{itemize}
-L'idea è che \texttt{h\_t} codifichi tutto ciò che la rete "ricorda" di $(x_{1}, ..., x_t)$. La condivisione dei pesi nel tempo dà alle RNN \textbf{equivarianza temporale} e le rende applicabili a sequenze di lunghezza arbitraria.
-\subsection*{Apprendimento: backpropagation through time (BPTT)}
-La rete viene "srotolata" nel tempo (\texttt{T} copie del cell ricorrente collegate in catena), e la backpropagation classica si applica al grafo risultante. Il gradiente $\partial L/\partial W_h$ somma contributi da tutti i passi temporali.
-\subsection*{Problematiche delle RNN classiche}
-\textbf{1. Vanishing/exploding gradients su lunghe sequenze.} Il gradiente attraversa \texttt{T} moltiplicazioni per la stessa matrice \texttt{W\_h}:
-\begin{itemize}
-\item Se gli autovalori di \texttt{W\_h} sono $< 1$, il gradiente svanisce $\to $ la rete non impara dipendenze a lungo termine.
-\item Se $> 1$, esplode $\to $ instabilità numerica.
-\end{itemize}
-Questo limita le RNN classiche a dipendenze di pochi passi.
-\textbf{2. Difficoltà di addestramento.} La sequenzialità impedisce parallelizzazione efficace su GPU.
-\subsection*{Soluzioni: LSTM e GRU}
-\textbf{LSTM (Long Short-Term Memory, Hochreiter \& Schmidhuber 1997)} introduce una \textbf{cell state} \texttt{c\_t} (memoria a lungo termine) e tre \textbf{gate} (forget, input, output) regolati da sigmoidi:
-\[ f_t = \sigma (W_f [h_{t-1}, x_t] + b_f)        forget gate \]
-\[ i_t = \sigma (W_i [h_{t-1}, x_t] + b_i)        input gate \]
-\[ o_t = \sigma (W_o [h_{t-1}, x_t] + b_o)        output gate \]
-\[ \tilde{c}_t = \operatorname{tanh}(W_c [h_{t-1}, x_t] + b_c) \]
-\[ c_t = f_t \odot  c_{t-1} + i_t \odot  \tilde{c}_t \]
-\[ h_t = o_t \odot  \operatorname{tanh}(c_t) \]
-I gate permettono di \textbf{mantenere o cancellare selettivamente} informazione nella cell state, mitigando il vanishing gradient e abilitando dipendenze a lungo termine (centinaia di passi).
-\textbf{GRU (Gated Recurrent Unit, Cho 2014)}: variante più semplice con due gate (reset, update), spesso prestazioni comparabili a LSTM con meno parametri.
-\subsection*{Applicazioni storiche}
-\begin{itemize}
-\item \textbf{Modelli di linguaggio} (predizione next-word).
-\item \textbf{Traduzione automatica} (encoder-decoder).
-\item \textbf{Speech recognition}.
-\item \textbf{Generazione di testo/musica}.
-\end{itemize}
-\subsection*{Stato dell'arte attuale}
-I \textbf{Transformer} (Vaswani 2017), basati sull'attenzione, hanno largamente soppiantato le RNN sulla maggior parte dei task NLP grazie a:
-\begin{itemize}
-\item parallelizzabilità,
-\item capacità di modellare dipendenze arbitrariamente lunghe,
-\item prestazioni superiori a parità di compute.
-\end{itemize}
-Le RNN/LSTM restano comunque rilevanti in contesti con vincoli di memoria o per streaming online.
+Le \textbf{RNN} sono concepite per \textbf{dati sequenziali} (testo, audio, serie temporali, video) in cui l'ordine conta e ogni elemento dipende dal contesto precedente.
+Risolvono due limiti delle reti feedforward sulle sequenze: input di lunghezza variabile e assenza di memoria. Introducono uno \textbf{stato nascosto} aggiornato a ogni passo:
+\[ h_t = \varphi (W_h h_{t-1} + W_x x_t + b) \]
+\texttt{h\_t} riassume il passato; i pesi sono \textbf{condivisi nel tempo}. Si addestrano con la backpropagation through time.
+\textbf{Problema principale}: \textbf{vanishing/exploding gradient} su lunghe sequenze (il gradiente attraversa \texttt{T} moltiplicazioni per \texttt{W\_h}) $\to $ non imparano dipendenze a lungo termine. Soluzione: \textbf{LSTM/GRU}, che con dei gate mantengono selettivamente la memoria.
 \newpage
 \section*{Q29. Quali sono le principali caratteristiche della "funzione di costo cross-entropy" e della "funzione di attivazione softmax", e in quale contesto sono spesso utilizzate?}
-\subsection*{Contesto}
-La coppia \textbf{softmax + cross-entropy} è lo standard per la \textbf{classificazione multiclasse} (assegnare a un input una di \texttt{K} classi mutuamente esclusive). La softmax produce una distribuzione di probabilità sulle classi; la cross-entropy misura la distanza tra la distribuzione predetta e quella vera.
-\subsection*{Funzione softmax}
-Data una pre-attivazione $z = (z_{1}, ..., z_{k}) \in  \mathbb{R}^{K}$ (i \textbf{logit}), la \textbf{softmax} restituisce un vettore di probabilità:
-\[ \operatorname{softmax}(z)_{i} = e^{z_{i}} / \sum _{j} e^{z_{j}}        i = 1, ..., K \]
-\textbf{Proprietà:}
-\begin{itemize}
-\item $\operatorname{softmax}(z)_{i} \in  (0, 1)$ e $\sum _{i} \operatorname{softmax}(z)_{i} = 1$ $\to $ distribuzione valida sul simplesso $\Delta ^{K-1}$.
-\item \textbf{Generalizzazione della sigmoide}: per $K = 2$, equivale alla sigmoide applicata a $z_{1} - z_{2}$.
-\item \textbf{Invariante per traslazione costante}: $\operatorname{softmax}(z + c) = \operatorname{softmax}(z)$ per ogni $c \in  \mathbb{R}$. In pratica si sottrae $\operatorname{max}(z)$ per stabilità numerica (evitare overflow di $e^z$).
-\item \textbf{Differenziabile} ovunque, con derivata $\partial \operatorname{softmax}(z)_{i}/\partial z_{j} = \operatorname{softmax}(z)_{i} (\delta _{ij} - \operatorname{softmax}(z)_{j})$.
-\end{itemize}
-\textbf{Interpretazione:} la classe predetta $\operatorname{argmax}_{i} \operatorname{softmax}(z)_{i}$ è anche $\operatorname{argmax}_{i} z_{i}$ (la softmax è monotona componente per componente nel logit massimo); il valore softmax esprime la \textbf{confidenza} della predizione.
-\subsection*{Funzione di costo cross-entropy}
-Per una distribuzione vera $t = (t_{1}, ..., t_{k})$ e predetta $p = (p_{1}, ..., p_{k})$:
-\[ H(t, p) = - \sum _{i} t_{i} \cdot  \operatorname{log} p_{i} \]
-In classificazione multiclasse \texttt{t} è \textbf{one-hot} ($t_{i} = 1$ per la classe vera, 0 altrove), quindi:
-\[ H(t, p) = - \operatorname{log} p_{c}      con c = classe vera \]
-Si vuole $p_c \to  1$, equivalente a minimizzare $-\operatorname{log} p_c$.
-\textbf{Interpretazione probabilistica.} La cross-entropy è la \textbf{negative log-likelihood} sotto un modello categoriale; minimizzarla equivale alla \textbf{massima verosimiglianza} della classe vera.
-\textbf{Interpretazione informazionale.} Misura il numero medio di bit (o nat) necessari a codificare \texttt{t} usando il codice ottimale per \texttt{p}. Quando $p = t$, è uguale all'entropia di \texttt{t}; differenze positive misurano "l'inefficienza" di \texttt{p} come modello di \texttt{t}. La differenza $H(t, p) - H(t, t) = D_KL(t \| p)$ è la \textbf{divergenza di Kullback–Leibler}.
-\subsection*{Combinazione softmax + cross-entropy}
-Si applica la softmax ai logit della rete, e si calcola la cross-entropy con l'etichetta one-hot:
-\[ L = - \operatorname{log}( e^{z_c} / \sum _{j} e^{z_{j}} ) = - z_c + \operatorname{log} \sum _{j} e^{z_{j}} \]
-\textbf{Gradiente molto pulito} (proprietà fondamentale):
-\[ \partial L/\partial z_{i} = \operatorname{softmax}(z)_{i} - t_{i} = p_{i} - t_{i} \]
-Il gradiente è la \textbf{differenza tra probabilità predetta e target}, identico nella forma a quello della MSE per regressione lineare. Questa struttura semplice rende la backpropagation molto efficiente e numericamente stabile.
-\subsection*{Vantaggi della coppia softmax + cross-entropy}
-\begin{enumerate}
-\item \textbf{Probabilità calibrate} (in linea di principio): la softmax produce probabilità interpretabili.
-\item \textbf{Gradiente non saturante}: a differenza di MSE + softmax, dove i gradienti possono saturare, la coppia CE + softmax produce gradienti robusti.
-\item \textbf{Stabilità numerica}: l'implementazione \texttt{log\_softmax + nll\_loss} evita di calcolare esplicitamente $e^{z_{i}}$ problematici.
-\item \textbf{Generalizzazione}: per $K = 2$ si riduce alla \textbf{binary cross-entropy} con sigmoide, che è il caso speciale standard.
-\end{enumerate}
-\subsection*{Contesti di utilizzo}
-\begin{itemize}
-\item \textbf{Classificazione multiclasse} (immagini ImageNet, documenti per argomento, fonemi).
-\item \textbf{Modelli di linguaggio} (predizione del prossimo token su un vocabolario di decine di migliaia di parole).
-\item \textbf{Politiche stocastiche in RL} (distribuzione su azioni).
-\item \textbf{Knowledge distillation} (cross-entropy tra distribuzioni di modelli).
-\end{itemize}
-\subsection*{Quando NON usare softmax + CE}
-\begin{itemize}
-\item \textbf{Multi-label} (classi non esclusive): si usano sigmoide indipendenti + binary cross-entropy per ciascun output.
-\item \textbf{Regressione}: MSE/MAE sono appropriate, non CE.
-\end{itemize}
+Coppia standard per la \textbf{classificazione multiclasse}.
+\textbf{Softmax} trasforma i logit in distribuzione di probabilità:
+\[ \operatorname{softmax}(z)_{i} = e^{zi} / \sum _{j} e^{zj},    \sum _{i} = 1 \]
+Generalizza la sigmoide a \texttt{K} classi; invariante per costante additiva (si sottrae $\operatorname{max}(z)$ per stabilità).
+\textbf{Cross-entropy} misura la distanza dalla distribuzione vera; con target one-hot:
+\[ L = - \sum _{i} t_{i} \operatorname{log} p_{i} = - \operatorname{log} p_c   (c = classe vera) \]
+È la negative log-likelihood (massima verosimiglianza).
+Insieme danno un \textbf{gradiente pulito}: $\partial L/\partial z_{i} = p_{i} - t_{i}$. Uso: classificazione multiclasse, modelli di linguaggio (next token). Per $K=2$ $\to $ binary cross-entropy con sigmoide.
 \newpage
 \section*{Q30. Descrivi l'approccio dei modelli "Generative Adversarial Networks (GAN)".}
-\subsection*{Cosa sono}
-Le \textbf{Generative Adversarial Networks (GAN)}, introdotte da Goodfellow et al. nel 2014, sono un framework per \textbf{modelli generativi}: imparano a produrre nuovi campioni che sembrano provenire dalla distribuzione di un dataset di training (es. volti, paesaggi, animali fotorealistici).
-A differenza dei modelli generativi classici (Variational Autoencoder, modelli autoregressive), le GAN \textbf{non massimizzano esplicitamente una verosimiglianza}: imparano per \textbf{contraddittorio}, mediante una "competizione" tra due reti.
-\subsection*{Architettura}
-Due reti neurali in competizione:
-\textbf{1. Generatore $G: \mathbb{R}^d \to  \mathbb{R}^N$.} Trasforma un vettore di rumore $z \sim  p_z$ (es. gaussiano standard \texttt{d}-dim) in un campione $G(z)$ nello spazio dei dati (es. immagine). L'obiettivo del generatore è "ingannare" il discriminatore, producendo campioni indistinguibili da quelli reali.
-\textbf{2. Discriminatore $D: \mathbb{R}^N \to  [0, 1]$.} Riceve un campione e produce la probabilità che sia \textbf{reale} (proveniente dal dataset) anziché \textbf{falso} (prodotto da \texttt{G}). È un classificatore binario.
-\subsection*{Obiettivo (gioco minimax)}
-Le due reti sono addestrate alternativamente con obiettivi opposti:
-\[ \operatorname{min}_G \operatorname{max}_D V(D, G) = E_{x\sim p_data} [\operatorname{log} D(x)] + E_{z\sim p_z} [\operatorname{log}(1 - D(G(z)))] \]
+Le \textbf{GAN} sono modelli generativi basati su due reti in \textbf{competizione}:
 \begin{itemize}
-\item \textbf{D} vuole massimizzare \texttt{V}: dare alta probabilità ai dati reali e bassa ai falsi.
-\item \textbf{G} vuole minimizzare \texttt{V}: produrre campioni che \texttt{D} ritiene reali.
+\item \textbf{Generatore} \texttt{G}: da rumore \texttt{z} genera dati falsi $G(z)$, vuole ingannare D.
+\item \textbf{Discriminatore} \texttt{D}: stima la probabilità che un campione sia reale.
 \end{itemize}
-L'equilibrio del gioco è il \textbf{punto di sella di Nash}: a convergenza, \texttt{p\_G = p\_data} e $D(x) = 1/2$ ovunque (\texttt{D} non sa più distinguere).
-\subsection*{Algoritmo di addestramento}
-A ogni iterazione si alterna:
-\textbf{Step 1 - aggiorna D} (per \texttt{k} step):
-\[ \nabla _{\theta _D} [ (1/m) \sum  \operatorname{log} D(x_{i}) + (1/m) \sum  \operatorname{log}(1 - D(G(z_{j}))) ] \]
-Salita di gradiente.
-\textbf{Step 2 - aggiorna G}:
-\[ \nabla _{\theta _G} (1/m) \sum  \operatorname{log}(1 - D(G(z_{j}))) \]
-Discesa di gradiente.
-In pratica si usa la \textbf{non-saturating loss} per \texttt{G}:
-\[ \nabla _{\theta _G} - (1/m) \sum  \operatorname{log} D(G(z_{j})) \]
-che fornisce gradienti più forti quando \texttt{G} produce campioni facili da identificare come falsi.
-\subsection*{Difficoltà}
-Le GAN sono notoriamente difficili da addestrare:
-\begin{itemize}
-\item \textbf{Instabilità}: il gioco minimax non ha garanzie di convergenza uniforme; oscillazioni e divergenza sono comuni.
-\item \textbf{Mode collapse}: \texttt{G} impara a produrre solo pochi campioni "facili" che ingannano \texttt{D}, ignorando la diversità del dataset.
-\item \textbf{Vanishing gradient per G}: se \texttt{D} è troppo bravo, $\operatorname{log}(1 - D(G(z)))$ satura e \texttt{G} non riceve segnale utile.
-\item \textbf{Bilanciamento}: \texttt{G} e \texttt{D} devono progredire in parallelo; se uno domina, l'apprendimento si blocca.
-\end{itemize}
-\subsection*{Varianti rilevanti}
-\begin{itemize}
-\item \textbf{DCGAN} (Radford 2015): linee guida architetturali per usare conv layer in \texttt{G} e \texttt{D}, prima GAN visivamente convincente.
-\item \textbf{WGAN / WGAN-GP} (Arjovsky 2017): sostituiscono la cross-entropy con la \textbf{Wasserstein distance}, con gradient penalty per stabilità.
-\item \textbf{Conditional GAN (cGAN)}: condiziona \texttt{G} e \texttt{D} su un'etichetta (es. classe), permette generazione controllata.
-\item \textbf{CycleGAN}: traduzione tra domini senza coppie (es. cavalli $\leftrightarrow $ zebre).
-\item \textbf{StyleGAN} (Karras 2018): GAN ad alta risoluzione con controllo fine dello stile, alla base dei "deepfake" di volti.
-\end{itemize}
-\subsection*{Contesti di utilizzo}
-\begin{itemize}
-\item \textbf{Generazione di immagini} fotorealistiche (volti, oggetti, scene).
-\item \textbf{Image-to-image translation} (sketch $\to $ foto, colorizzazione, super-resolution).
-\item \textbf{Domain adaptation} e \textbf{data augmentation}.
-\item \textbf{Generazione di musica, testo, video} (con varianti specifiche).
-\item \textbf{Modelli per simulazione fisica} (dati sintetici per training).
-\end{itemize}
-\subsection*{Stato dell'arte attuale}
-Negli ultimi anni le GAN sono state in larga parte soppiantate da \textbf{modelli a diffusione} (Stable Diffusion, DALL-E 2, Imagen) per la generazione di immagini, grazie a maggiore stabilità di training e qualità superiore. Le GAN restano competitive in domini specifici (volti ad alta risoluzione, traduzione tra stili) e in contesti dove la velocità di inferenza è prioritaria.
-\subsection*{Conclusione}
-L'approccio GAN è elegante: invece di specificare esplicitamente la distribuzione \texttt{p\_data} (difficile in alta dimensione), si delega a un discriminatore il compito di "valutare la qualità" dei campioni generati. Il framework adversarial ha ispirato decine di varianti e ha aperto la strada alla moderna AI generativa.
+Si addestrano in un \textbf{gioco minimax}:
+\[ \operatorname{min}_G \operatorname{max}_D  E[\operatorname{log} D(x)] + E[\operatorname{log}(1 - D(G(z)))] \]
+\texttt{D} massimizza (distinguere vero/falso), \texttt{G} minimizza (produrre campioni credibili). All'equilibrio \texttt{p\_G = p\_data} e $D = 1/2$ (non distingue più).
+\textbf{Difficoltà}: addestramento instabile, \textbf{mode collapse} (G genera pochi campioni ripetitivi), vanishing gradient per G se D è troppo bravo (si usa la non-saturating loss $-\operatorname{log} D(G(z))$).
 \newpage
 \section*{Q31. Quali problemi possono sorgere nella retropropagazione in MLP profondi (vanishing/exploding gradients)?}
-\subsection*{Origine del problema}
-Nella backpropagation in una rete profonda, il gradiente rispetto ai pesi del layer \texttt{l} si ottiene \textbf{moltiplicando} una catena di Jacobiani dei layer successivi:
-\[ \partial L/\partial W^{(l)} \propto  J^{(L)} \cdot  J^{(L-1)} \cdot  ... \cdot  J^{(l+1)} \cdot  ... \]
-dove $J^{(k)} = \partial h^{(k)}/\partial h^{(k-1)} = W^{(k)T} \cdot  \operatorname{diag}(\varphi '(z^{(k)}))$.
-Se la \textbf{norma} di questa catena cresce o decresce esponenzialmente con la profondità $L - l$, si manifestano due patologie speculari.
-\subsection*{1. Vanishing gradient}
-\textbf{Sintomo:} $\|\partial L/\partial W^{(l)}\| \to  0$ per \texttt{l} lontano dall'output. I layer iniziali ricevono gradienti \textbf{trascurabili} e non vengono praticamente aggiornati. La rete impara solo gli ultimi layer, con capacità ridotta.
-\textbf{Cause:}
+Nella backprop il gradiente di uno strato profondo è il \textbf{prodotto} di molte Jacobiane $J^{(k)} = W^{(k)T} \operatorname{diag}(\varphi '(z^{(k)}))$. Se la norma di questa catena cresce o decresce esponenzialmente con la profondità:
 \begin{itemize}
-\item \textbf{Attivazioni saturanti} (sigmoide, tanh): per \texttt{|z|} grande, $\varphi '(z) \approx  0$. Il prodotto di molti $\varphi '$ piccoli decade esponenzialmente.
-\item \textbf{Pesi inizializzati troppo piccoli}: gli autovalori delle Jacobiane hanno modulo $< 1$, prodotto contrattivo.
+\item \textbf{Vanishing}: $\|\partial L/\partial W\| \to  0$, gli strati iniziali non imparano. Cause: attivazioni saturanti (sigmoide/tanh, $\varphi '\approx 0$), pesi piccoli.
+\item \textbf{Exploding}: $\|\partial L/\partial W\| \to  \infty $, aggiornamenti enormi, divergenza/NaN. Cause: pesi grandi, RNN su lunghe sequenze.
 \end{itemize}
-\textbf{Effetti pratici:}
-\begin{itemize}
-\item Convergenza lentissima dei layer iniziali.
-\item Reti profonde (>10 layer con sigmoidi) impossibili da addestrare.
-\item Storicamente la principale ragione per cui il deep learning ha avuto un "inverno" prima del 2006-2012.
-\end{itemize}
-\subsection*{2. Exploding gradient}
-\textbf{Sintomo:} $\|\partial L/\partial W^{(l)}\| \to  \infty $. I gradienti diventano enormi, gli aggiornamenti $W \leftarrow  W - \eta \cdot \nabla $ "esplodono", i pesi divergono fino a \texttt{NaN}.
-\textbf{Cause:}
-\begin{itemize}
-\item \textbf{Pesi inizializzati troppo grandi}: autovalori delle Jacobiane $> 1$, prodotto espansivo.
-\item \textbf{Reti ricorrenti} su lunghe sequenze (BPTT moltiplica \texttt{T} Jacobiane della stessa cella).
-\end{itemize}
-\textbf{Effetti pratici:}
-\begin{itemize}
-\item Training instabile, loss che oscilla o esplode.
-\item Comune nelle RNN classiche su lunghe sequenze.
-\end{itemize}
-\subsection*{Caratterizzazione formale}
-Per una rete con pesi i.i.d. e attivazione lineare, il prodotto di \texttt{L} matrici random ha norma che cresce/decresce come $\lambda ^L$ dove $\lambda $ è il raggio spettrale medio. La condizione $\lambda  \approx  1$ (isometria) è fragile e richiede \textbf{inizializzazione attenta}.
-\subsection*{Soluzioni / mitigazioni}
-\textbf{1. Inizializzazione corretta dei pesi.}
-\begin{itemize}
-\item \textbf{Xavier/Glorot} (per tanh/sigmoide): $W \sim  N(0, 2/(n_in + n_out))$.
-\item \textbf{He} (per ReLU): $W \sim  N(0, 2/n_in)$.
-\end{itemize}
-Mantengono la varianza delle attivazioni e dei gradienti circa costante attraverso i layer.
-\textbf{2. Funzioni di attivazione non saturanti.}
-\begin{itemize}
-\item \textbf{ReLU} ha derivata costante 1 per $z > 0$, evitando il vanishing nella zona attiva. È la principale ragione del successo del deep learning moderno.
-\item Varianti (Leaky ReLU, ELU, GELU) migliorano oltre.
-\end{itemize}
-\textbf{3. Normalizzazione delle attivazioni.}
-\begin{itemize}
-\item \textbf{Batch Normalization} (Ioffe \& Szegedy 2015): normalizza media e varianza delle pre-attivazioni in ogni mini-batch. Stabilizza le distribuzioni interne e mitiga vanishing/exploding.
-\item Varianti: Layer Norm (RNN, transformer), Instance Norm, Group Norm.
-\end{itemize}
-\textbf{4. Skip / residual connections.} Le \textbf{ResNet} (He et al. 2016) introducono connessioni $y = F(x) + x$. Il gradiente attraversa direttamente la skip, evitando di moltiplicare per Jacobiane piccole. Permette di addestrare reti con centinaia di layer.
-\textbf{5. Gradient clipping.} Per exploding gradient, si \textbf{tronca} la norma del gradiente:
-\[ g \leftarrow  g \cdot  \operatorname{min}(1, c / \|g\|) \]
-Standard per RNN/LSTM su lunghe sequenze.
-\textbf{6. Architetture con gating} (LSTM, GRU). I gate moltiplicativi creano percorsi additivi che evitano la moltiplicazione ripetuta di pesi.
-\textbf{7. Optimizer adattivi} (Adam, RMSProp). Normalizzano la magnitudo del gradiente per parametro, mitigando exploding e accelerando dove vanishing.
-\subsection*{Conclusione}
-Vanishing e exploding gradients sono manifestazioni dello stesso problema strutturale: la moltiplicazione ripetuta di Jacobiane in reti profonde amplifica o estingue i gradienti esponenzialmente. Il deep learning moderno è in larga parte \textbf{l'insieme di tecniche} (ReLU, Xavier/He init, BatchNorm, ResNet, Adam, gradient clipping) che insieme stabilizzano questa moltiplicazione e permettono l'addestramento di reti molto profonde.
+\textbf{Soluzioni}: inizializzazione \textbf{Xavier/He}; attivazioni non saturanti (\textbf{ReLU}); \textbf{Batch Normalization}; \textbf{skip/residual connections} (ResNet); \textbf{gradient clipping} (per l'exploding); architetture con gate (LSTM); optimizer adattivi (Adam). Il deep learning moderno è in gran parte l'insieme di queste tecniche.
 \newpage
 \section*{Q32. Spiega il funzionamento di una CNN, indicando il ruolo di ciascun tipo di layer (convoluzionale, pooling, lineare).}
-\subsection*{Funzionamento generale}
-Una \textbf{Convolutional Neural Network (CNN)} è una rete neurale specializzata per dati con struttura a griglia (immagini). Trasforma l'input - un tensore $H \times  W \times  C$ (altezza $\times $ larghezza $\times $ canali) - in un output (es. vettore di probabilità di classi) attraverso una sequenza di layer specializzati.
-L'idea di fondo è una \textbf{gerarchia di rappresentazioni}:
+Una \textbf{CNN} trasforma un'immagine $H\times W\times C$ in un output (es. classi) tramite una \textbf{gerarchia di feature}: bordi $\to $ parti $\to $ oggetti. Ruolo dei layer:
 \begin{itemize}
-\item Layer iniziali estraggono feature \textbf{locali ed elementari} (bordi, texture).
-\item Layer intermedi le combinano in \textbf{parti} (occhi, ruote, foglie).
-\item Layer finali aggregano le parti in \textbf{concetti globali} (volti, oggetti).
+\item \textbf{Convoluzionale}: estrae \textbf{feature locali} con filtri condivisi ($y = \sum W_k\cdot x + b_k$). Località + condivisione pesi $\to $ equivarianza e pochi parametri. Seguito da ReLU.
+\item \textbf{Pooling}: \textbf{down-sampling} spaziale; riduce calcolo, dà invarianza a piccole traslazioni, aumenta il campo recettivo. Senza parametri.
+\item \textbf{Lineare (fully-connected)}: alla fine, combina globalmente le feature per la \textbf{classificazione} (+ softmax). Sta in fondo perché ha molti parametri e lavora su feature già compatte.
 \end{itemize}
-I tre tipi principali di layer hanno ruoli complementari.
-\subsection*{1. Layer convoluzionale}
-\textbf{Ruolo:} estrazione di \textbf{feature locali}.
-\textbf{Operazione:} convolve l'input con \texttt{K} filtri di dimensione spaziale piccola (es. $3\times 3$) e profondità pari ai canali in input. Per il filtro \texttt{k}-esimo:
-\[ y[i, j, k] = \sum _{u, v, c} W_k[u, v, c] \cdot  x[i+u, j+v, c] + b_k \]
-\textbf{Perché funziona:}
-\begin{itemize}
-\item \textbf{Località}: ogni pixel di output dipende solo da un piccolo intorno dell'input.
-\item \textbf{Condivisione pesi}: lo stesso kernel è applicato in tutte le posizioni $\to $ riduzione drastica dei parametri ed equivarianza per traslazione.
-\item \textbf{Filtri appresi}: i pesi sono ottimizzati dalla backpropagation per rilevare pattern utili per il task.
-\end{itemize}
-Tipicamente seguito da una funzione di attivazione (ReLU) e talvolta da batch normalization.
-\textbf{Iperparametri:} kernel size, numero di filtri, stride, padding.
-\subsection*{2. Layer di pooling}
-\textbf{Ruolo:} \textbf{down-sampling spaziale} + invarianza locale.
-\textbf{Operazione:} riduce la risoluzione aggregando vicinati. Le forme più comuni sono \textbf{max pooling} e \textbf{average pooling} con finestra $2\times 2$, stride 2 (vedi Q27).
-\textbf{Perché funziona:}
-\begin{itemize}
-\item \textbf{Riduce la risoluzione} spaziale di un fattore 2 per dimensione $\to $ meno calcoli e parametri nei layer successivi.
-\item \textbf{Aumenta il campo recettivo effettivo}: i kernel dei layer successivi vedono regioni più grandi dell'immagine originale.
-\item \textbf{Crea invarianza approssimata} per piccole traslazioni: la posizione esatta di un pattern conta meno, conta che ci sia.
-\item \textbf{Costruisce la gerarchia spaziale}: alternando conv (estrazione) e pooling (compressione spaziale), la rete passa da feature locali ad alta risoluzione a feature globali a bassa risoluzione.
-\end{itemize}
-\textbf{Nessun parametro apprendibile} (oltre eventuale stride): il pooling è un'operazione fissa.
-\subsection*{3. Layer lineare (fully-connected)}
-\textbf{Ruolo:} \textbf{classificazione finale} o regressione, combinando le feature globali estratte dai layer precedenti.
-\textbf{Operazione:} dopo l'ultimo blocco conv/pooling, le feature $H' \times  W' \times  C'$ vengono \textbf{appiattite} in un vettore. Uno o più layer fully-connected applicano:
-\[ y = \varphi (W \cdot  x + b) \]
-dove ogni neurone vede tutti i valori del vettore appiattito. L'ultimo layer FC produce i logit (es. uno per classe), seguiti da softmax per classificazione multiclasse.
-\textbf{Perché qui e non altrove:}
-\begin{itemize}
-\item I FC hanno \textbf{molti parametri} (ogni neurone è connesso a tutti gli input): metterli all'inizio sarebbe inefficiente.
-\item Alla fine della pipeline, le feature sono già state ridotte di dimensione e arricchite semanticamente: i FC integrano l'informazione globalmente per la decisione finale.
-\end{itemize}
-\textbf{Tendenza moderna:} sostituire (parzialmente) i FC finali con \textbf{global average pooling} (media spaziale per ogni canale $\to $ vettore di dimensione \texttt{C'}), riducendo drasticamente i parametri e l'overfitting (es. in ResNet).
-\subsection*{Architettura tipica}
+Struttura tipica:
 \begin{verbatim}
-Input (H x W x 3)
-   |
-Conv -> ReLU -> Conv -> ReLU -> MaxPool       (blocco 1: feature locali)
-   |
-Conv -> ReLU -> Conv -> ReLU -> MaxPool       (blocco 2: feature più astratte)
-   |
-Conv -> ReLU -> Conv -> ReLU -> MaxPool       (blocco 3: feature semantiche)
-   |
-GlobalAvgPool / Flatten
-   |
-FC -> ReLU -> Dropout -> FC -> Softmax        (testa di classificazione)
+Input -> [Conv -> ReLU -> Pool] x N -> Flatten -> FC -> Softmax
 \end{verbatim}
-\subsection*{Layer ausiliari rilevanti}
-\begin{itemize}
-\item \textbf{Activation function (ReLU)} dopo ogni conv/FC: introduce non linearità (vedi Q27).
-\item \textbf{Batch Normalization}: normalizza le attivazioni, accelera training e stabilizza.
-\item \textbf{Dropout}: regolarizzazione, soprattutto nei FC.
-\item \textbf{Skip / residual connections} (ResNet): permettono reti molto profonde.
-\end{itemize}
-\subsection*{Esempi storici di architetture}
-\begin{itemize}
-\item \textbf{LeNet-5} (LeCun 1998): prima CNN di successo, riconoscimento di cifre manoscritte.
-\item \textbf{AlexNet} (2012): CNN profonda, vince ImageNet, dà avvio al deep learning moderno.
-\item \textbf{VGG} (2014): conv $3\times 3$ impilati in profondità.
-\item \textbf{ResNet} (2015): residual connections, oltre 100 layer.
-\item \textbf{EfficientNet} (2019): scaling sistematico di profondità, larghezza, risoluzione.
-\end{itemize}
-\subsection*{Sintesi del ruolo dei layer}
-\begin{center}\renewcommand{\arraystretch}{1.25}
-\begin{tabular}{|l|l|l|}\hline
-\textbf{Layer} & \textbf{Ruolo} & \textbf{Parametri} \\ \hline
-Convoluzionale & Estrazione feature locali, equivarianti & sì (kernel) \\ \hline
-Pooling & Down-sampling, invarianza locale & no \\ \hline
-Fully-connected & Aggregazione globale, classificazione finale & sì (matrice) \\ \hline
-ReLU & Non linearità & no \\ \hline
-BatchNorm & Normalizzazione attivazioni & sì ($\gamma $, $\beta $) \\ \hline
-Dropout & Regolarizzazione & no \\ \hline
-\end{tabular}\end{center}
-\subsection*{Conclusione}
-Una CNN funziona come un \textbf{estrattore gerarchico di feature}: i layer convoluzionali estraggono pattern locali sempre più astratti, i pooling riducono la risoluzione e accumulano contesto, e i layer fully-connected finali combinano tutto per la decisione. La sinergia tra questi layer, unita all'inductive bias della località/condivisione/composizionalità, spiega il successo delle CNN su dati a griglia.
 *Fine delle 32 domande.*
 \end{document}
