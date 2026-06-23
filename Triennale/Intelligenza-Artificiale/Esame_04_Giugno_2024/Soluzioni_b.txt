@@ -1,0 +1,36 @@
+ESERCIZIO 1.2
+Punto 1:
+arc rappresentano gli archi nel grafo. Indicano che esiste l'arco diretto da A a B, da A a C e da C a D;
+path(X, X) indica che esiste sempre un percorso da un nodo a se stesso;
+path(X, Y):- arc(X, Z), path(Z,Y) indica che esiste un percorso da X a Y se esiste un nodo Z tale che c'è un arco da X a Z e un percorso da Z a Y.
+
+Punto 2:
+Caso Base si verifica se S = c usando la regola del path(X, X) ma non è una soluzione valida.
+
+Applichiamo la regola di path(X, Y):- arc(X, Z), path(Z,Y). Prolog cerca un arco che inizia in S e punta a qualche nodo intermedio Z, poi cercherà un percorso da Z a c.
+PRIMO TENTATIVO: arc(S, Z), si prova arc(S, c) con S = a. Trova arc(a, c) che esiste, quindi path(a, c) è soddisfatto. pertanto S = a è una soluzione.
+SECONDO TENTATIVO: arc(S, Z), si prova arc(S,Z) con S = a. Trova arc(a, b) e poi cerca path(b, c) che non esiste, quindi questa non è una soluzione.
+TERZO TENTATIVO: arc(S, Z), si prova arc(S, Z) con S = c. Trova arc(c, d) e poi cerca path(d, c) che non esiste, quindi questa non è una soluzione.
+In conclusione si trova che il valore che soddisfa la condizione è solamente con S = a.
+
+
+
+
+
+ESERCIZIO 2.1 dobbiamo calcolare il gradiente della funzione 
+𝑓(𝑥,𝑦)=5𝑒𝑥cos(2𝜋𝑦) nel punto (1,2).
+
+Step 1: Calcolo le derivate parziali in ∂f/∂x e ∂f/∂y: 
+Nel primo caso trovo ∂f/∂x = 5𝑒𝑥cos(2πy);
+Nel secondo caso trovo ∂f/∂y = −10πe𝑥 sin(2πy)
+
+Step 2: Calcolo il gradiente nel punto (1, 2):
+Nel primo caso trovo ∂f/∂x = 5e^1 cos(2π x 2) = 5e cos(4π). Poichè 4π = 1 (dato che 4π è multiplo intero di 2π) trovo la soluzione uguale a 5e;
+Nel secondo caso trovo ∂f/∂y = −10πe^1 sin(2π x 2) = -10π e sin(4π). Poichè 4π = 0 (dato che 4π è multiplo intero di 2π) trovo la soluzione uguale a 0;
+Il gradiente della funzione nel punto (1, 2) è quindi ∇f(1,2) = (5e, 0).
+
+
+
+
+
+ESERCIZIO 2.2
