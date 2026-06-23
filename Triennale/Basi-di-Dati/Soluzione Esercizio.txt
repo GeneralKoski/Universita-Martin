@@ -1,0 +1,165 @@
+create table corsi_laurea (
+  codice integer not null,
+  nome varchar(100) not null,
+  descrizione varchar(250) not null,
+  numero_anni_corso integer not null, -- attributo non nel testo esercizio
+  primary key (codice)
+);
+
+create table insegnamenti (
+  codice integer not null,
+  nome varchar(100) not null,
+  crediti integer not null,
+  ssd varchar(15) not null,
+  primary key (codice)
+);
+
+create table manifesti (
+  laurea integer not null,
+  insegnamento integer not null,
+  fondamentale boolean not null,
+  anno_corso integer not null,
+  foreign key (insegnamento) references insegnamenti(codice),
+  foreign key (laurea) references corsi_laurea(codice),
+  primary key (laurea, insegnamento)
+);
+
+create table studenti (
+  matricola integer not null,
+  nome varchar(100) not null,
+  cognome varchar(100) not null,
+  data_nascita date not null,
+  primary key (matricola)
+);
+
+create table iscrizioni (
+  studente integer not null references studenti(matricola),
+  anno_iscrizione integer not null,
+  laurea integer not null references corsi_laurea(codice),
+  data_iscrizione date not null,
+  anno_corso integer not null,
+  primary key (studente, anno_iscrizione)
+);
+
+-- vincolo sull'anno di corso (non era nel testo)
+
+alter table iscrizioni
+add constraint anno_corso_sensato
+check ( anno_corso between 1 and 6 );
+
+--------------------------------------------
+
+-- estrarre i nomi dei corsi di laurea il cui manifesto comprende un
+-- insegnamento di informatica (ssd uguale a INF/01 oppure ING-INF/05)
+-- come corso fondamentale;
+
+select distinct c.nome
+from manifesti m, insegnamenti i, corsi_laurea c
+where m.insegnamento = i.codice
+  and m.laurea = c.codice
+  and m.fondamentale
+  -- and i.ssd in ('INF/01', 'ING-INF/05')
+  and (i.ssd = 'INF/01' or i.ssd = 'ING-INF/05');
+
+----------------------------------
+
+-- per ogni corso di laurea, estrarre le date di nascita dello studente
+-- più giovane e dello studente più vecchio iscritti a tale corso
+-- nell'anno 2012;
+
+select c.nome as corso_laurea,
+  min(s.data_nascita) as min_nascita,
+  max(s.data_nascita) as max_nascita
+from studenti s, iscrizioni i, corsi_laurea c
+where s.matricola = i.studente
+  and i.laurea = c.codice
+  and i.anno_iscrizione = 2012
+group by c.nome;
+
+-------------------------
+
+-- estrarre l'elenco degli insegnamenti che compaiono come fondamentali
+-- in almeno tre corsi di laurea;
+
+select distinct i.codice, i.nome
+from insegnamenti i, manifesti m1, manifesti m2, manifesti m3
+where i.codice = m1.insegnamento
+  and i.codice = m2.insegnamento
+  and i.codice = m3.insegnamento
+  and m1.laurea < m2.laurea
+  and m2.laurea < m3.laurea
+  and m1.fondamentale
+  and m2.fondamentale
+  and m3.fondamentale;
+
+-- in alternativa
+
+select i.codice, i.nome
+from insegnamenti i, manifesti m
+where i.codice = m.insegnamento
+  and m.fondamentale
+group by i.codice, i.nome
+having count(*) >= 3;
+
+-----------------------------------------------
+
+-- per ogni insegnamento, calcolare il numero (presunto) di studenti
+-- iscritti nell'anno 2012 che frequentano l'insegnamento; uno studente
+-- è frequentante se l'insegnamento compare nel piano degli studi del
+-- corso al quale è iscritto ed è erogato nello stesso anno di corso
+-- dello studente.
+
+select ins.codice, ins.nome,
+       count(*) as numero_ipotetico_studenti_frequentanti
+from manifesti m, iscrizioni i, insegnamenti ins
+where i.anno_iscrizione = 2012
+  and i.laurea = m.laurea
+  and i.anno_corso = m.anno_corso
+  and ins.codice = m.insegnamento
+group by ins.codice, ins.nome
+
+---------------------------------------------------------------
+
+-- per ogni studente che nel 2020 era iscritto all'anno N
+-- del corso di laurea CL e N < del numero di anni di corso del CL
+-- iscrivilo per l'anno 2021 all'anno di corso N+1
+-- in data odierna
+
+-- Iscrizioni(studente(fk), anno iscrizione, laurea(fk),
+--            data iscrizione, anno corso)
+
+insert into iscrizioni (studente, anno_iscrizione, laurea,
+                        data_iscrizione, anno_corso)
+select i.studente, 2021, i.laurea, current_date, i.anno_corso + 1
+from iscrizioni i, corsi_laurea c
+where i.laurea = c.codice
+  and i.anno_iscrizione = 2020
+  and i.anno_corso < c.numero_anni_corso
+
+-- modificare gli insegnamenti dei settori di informatica
+-- portanto a 6 cfu quelli da 5 cfu
+-- e a 9 cfu quelli da 10 cfu
+
+update insegnamenti
+set crediti = case crediti
+              when 5 then 6
+              when 10 then 9
+              else crediti
+              end
+where ssd in ('INF/01', 'ING-INF/05');
+
+--------------------------------------------------
+
+-- esprimere come espressione dell'algebra relazionale il vincolo che
+-- impone che ogni studente sia maggiorenne quando effettua l'iscrizione
+-- ad un corso
+
+/*
+
+  i := iscrizioni
+  s := studenti
+
+   SEL_{ (i.data_iscrizione - s.data_nascita) < (18 * 365) }
+      ( s join_{ s.matricola = i.studente } i ) = { }
+
+*/
