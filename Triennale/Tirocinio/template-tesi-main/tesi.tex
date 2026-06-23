@@ -1,0 +1,113 @@
+\documentclass{theme/uniprthesis}
+
+\usepackage[italian]{babel}
+\usepackage{todonotes}
+\usepackage{blindtext} 			
+\usepackage{ifdraft}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage{lipsum} 
+\usepackage{footmisc}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{xcolor} 
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{url}
+\lstdefinelanguage{JavaScript}{
+  keywords={const, let, var, function, if, else, return, export, class},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+}
+\lstset{
+  language=JavaScript,
+  basicstyle=\ttfamily\small, % Font tipo monospazio
+  keywordstyle=\bfseries\color{blue}, % Parole chiave in grassetto e blu
+  commentstyle=\color{green}, % Commenti in verde
+  stringstyle=\color{red}, % Stringhe in rosso
+  showstringspaces=false,
+  breaklines=true, % A capo automatico se la linea è troppo lunga
+  frame=single, % Cornice intorno al codice
+  numbers=left, % Numeri di riga a sinistra
+  numberstyle=\tiny\color{gray}, % Stile dei numeri di riga
+}
+
+\title{Progettazione e Sviluppo di un Gestionale Interno per l'Ottimizzazione dei Processi Aziendali}
+\author{Martin Trajkovski}
+\advisor{Prof. Vincenzo Arceri}
+\college{Dipartimento di Scienze Matematiche, Fisiche e Informatiche}
+\degree{Corso di Laurea Triennale in Informatica}
+\degreeyears{2023--2024}
+\serialNumber{335566}
+
+\newcommand{\coadvisor}{} 
+
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage
+}
+
+\begin{document}
+
+\maketitle
+\blankpage
+
+\newpage
+\thispagestyle{empty}
+\null\vspace{\stretch{1}}
+\begin{flushright}
+	\textit{Talk is cheap. Show me the code.}
+\end{flushright}
+\vspace{\stretch{3}}\null
+\newpage
+\blankpage
+
+\newpage
+\thispagestyle{empty}
+\null\vspace{\stretch{1}}
+\begin{flushright}
+	\textit{Alla mia famiglia, per il loro amore, supporto e instancabile fiducia. }
+\end{flushright}
+\vspace{\stretch{3}}\null
+\newpage
+\blankpage
+
+% \pagestyle{plain}
+\pagenumbering{arabic}
+\tableofcontents
+
+\include{capitoli/introduzione}
+	
+\pagestyle{fancy}
+\include{capitoli/gestionale}
+\include{capitoli/implementazioni}
+\include{capitoli/migliorie}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conclusioni
+\pagestyle{plain}
+\include{capitoli/conclusione}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliograﬁa
+\pagestyle{plain}
+\include{capitoli/bibliografia}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ringraziamenti
+\include{capitoli/ringraziamenti}
+\newpage
+\thispagestyle{empty}
+\null\vspace{\stretch{1}}
+\vspace{\stretch{3}}\null
+\newpage
+
+\blankpage
+\end{document}
