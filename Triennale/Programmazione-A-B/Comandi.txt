@@ -1,0 +1,44 @@
+float numero con la virgola
+import java.util.Scanner per importare lo scanner input
+Scanner sc = new Scanner(System.in) per inizializzare lo scanner
+s = sc.nextLine() legge il valore o la stringa inserita dall'utente e la impone ad s
+sc.close() per chiudere la lettura dei valori dallo scanner
+System.out.println(k)
+String s = "hello"		per concatenare String s = r + "!"
+s.length() ritorna la lunghezza della stringa o dell'array
+s.charAt(i) ritorna il carattere nella posizione i della stringa s
+s == r confronta le reference
+s.equals(r) confronta gli oggetti
+s.indexOf(c) ritorna la prima posizione del carattere c nella stringa s
+s.substring(int1, int2) ritorna la sottostringa di s dalla posizione int1 a int2. Se si omette int2, resituisce da int1 alla fine
+Character.toUpperCase(s.charAt(0)) mette in lettera maiuscola il carattere alla posizione 0 della stringa s
+x.toString() converte il valore di x in Stringa
+Integer.parseInt(s) restituisce il valore intero della stringa s, se possibile
+L'operatore THIS riferisce ai valori dei PRIVATE
+Un valore Public non ha riferimenti di THIS
+Private Static Int dichiara un valore incrementabile
+Private Static Final Int dichiara un valore non modificabile
+La dichiarazione in Default rende visibile il campo nella propria classe e package
+.getNext() nelle liste per passare al dato successivo
+.getValue() per avere il valore di un dato
+.setNext(int) per dare ad un dato il valore inserito
+class Studente : public Persona crea una classe Studente che è sottoclasse di Persona
+In C++ -->Studente() : Persona()    nel costruttore senza parametri Studente viene richiamato il costruttore senza parametri della superclasse Persona per non ripetere
+protected:	si da ai dati tenuti privati ad una classe ma utilizzabili nelle sue sottoclassi
+In C++ per utilizzare i metodi della superclasse bisogna specificare con ad esempio pc.Punto::print() quindi mettere il nome della superclasse e :: prima del richiamo
+void stampa(ostream& dest) crea la classe che stampa. Al suo interno dest << variabile << "eventuale stringa" << endl;	nome.stampa(cout) quando si richiama la funz.
+ofstream f;	serve per l'output, può essere utilizzato per la stampa come nome.stampa(f);
+
+In Java -->Quadrato extends Rettangolo   per definire una sottoclasse Quadrato della superclasse Rettangolo
+Dentro il costruttore di quadrato scrivo super(l,l) per richiamare il costruttore della superclasse passando i parametri del lato. Sempre la prima riga di codice
+q instanceof Rettangolo restituisce un true o false a seconda se q è una sottoclasse di Rettangolo o meno
+Qualsiasi classe è sottoclasse di Object
+(Rettangolo)o.area() per il casting di o in classe Rettangolo
+Un oggetto di tipo Quadrato può richiamare funzioni delle sue superclassi (ex. Rettangolo, Object...) ma mai delle sottoclassi
+Classe clone() --> esempio class Razionale clone() ritorna un new razionale con valori this.num e this.den --> return new Razionale(this.num, this.den)
+try { *codice* } catch (RuntimeException any) { *codice da stampare in caso di errore durante la compilazione* }
+Public class C implements I {...}	per definire una classe che implementa un'interfaccia, infatti non si usa extends ma implements 
+int[] arr	definisce un array
+arr = new arr[DIM]	dà una dimensione all'array
+
+Quando dichiaro una classe templatica es. Coppia<T> {...} al suo interno sostituisco qualsiasi tipo (int, double...) con T. Quando creo un elemento nel main, scrivo Coppia<*Tipo di dato*> a = new Coppia<*Tipo di dato*>(*assegnazione dei valori*)		esempio		Coppia<Integer> a = new Coppia<Integer>(1,2)
