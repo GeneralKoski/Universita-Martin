@@ -1,0 +1,25 @@
+# wn99  - 2800.000 MHz -  44.80 GFLOPS (Peak)
+# gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)
+
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  4.42,   0.45,  wn99 , gcc4
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.93,   2.14,  wn99 , gcc4-O2
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.13,   15.04,  wn99 , gcc4-O2-GSL
+# gcc (GCC) 13.2.0
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.95,   2.10,  wn99 , gcc13-O2
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.13,   15.09,  wn99 , gcc13-O2-GSL
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.93,   2.15,  wn99 , gcc13-O2-fast
+# icc version 19.0.5.281 (gcc version 4.8.5 compatibility)
+
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.21,   9.39,  wn99 , icc-O2
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.13,   15.02,  wn99 , icc-O2-GSL
+mm_gsl.c(34): remark #15009: main has been targeted for automatic cpu dispatch
+# N  gflop  tempo(s)  GFLOP/s  Hostname  
+1000, 2.00,  0.17,   11.49,  wn99 , icc-O2-AVX

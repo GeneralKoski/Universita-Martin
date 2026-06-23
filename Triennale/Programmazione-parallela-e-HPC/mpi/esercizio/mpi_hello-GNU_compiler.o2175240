@@ -1,0 +1,25 @@
+# SLURM_JOB_NODELIST     : wn[21-22]
+# SLURM_CPUS_PER_TASK    : 
+# SLURM_JOB_CPUS_PER_NODE: 4(x2)
+Lmod has detected the following error: You can only have one compiler module
+loaded at a time.
+You already have intel loaded.
+To correct the situation, please execute the following command:
+
+  $ module swap intel gnu/5.4.0
+
+
+While processing the following module(s):
+    Module fullname  Module Filename
+    ---------------  ---------------
+    gnu/5.4.0        /opt/ohpc/pub/modulefiles/gnu/5.4.0
+
+Hello from task 1 on wn21!
+Hello from task 2 on wn21!
+Hello from task 0 on wn21!
+MASTER: Number of MPI tasks is: 8
+Hello from task 3 on wn21!
+Hello from task 6 on wn22!
+Hello from task 7 on wn22!
+Hello from task 5 on wn22!
+Hello from task 4 on wn22!
