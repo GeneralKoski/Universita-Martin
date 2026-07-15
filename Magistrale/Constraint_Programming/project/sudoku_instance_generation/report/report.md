@@ -122,16 +122,6 @@ def count_solutions_python(grid, limit=2):
 
 The `limit=2` short-circuit is the key: it keeps the problem in NP rather than #P. Advantage: it avoids restarting and reuses the search state after the first solution. Disadvantage: for unique puzzles it still explores the whole tree to prove that the second solution does not exist.
 
-### 3.3 Timeout handling
-
-Each uniqueness check can yield three outcomes:
-
-- ✅ `unique`: the second search terminates with UNSAT within the timeout;
-- ❌ `multiple`: a second solution is found;
-- ⚠️ `unknown`: the timeout fires with no verdict.
-
-The `unknown` case is **never** silently treated as `unique`: the pipeline rolls back the last removal and logs the event, so its frequency can be quantified. This is essential for correctness - treating `unknown` as `unique` could accept a non-unique puzzle. In the counting backend the distinction is drawn from the output markers: a single solution followed by `==========` (search exhausted) means `unique`, whereas a single solution *without* exhaustion means `unknown` (the timeout interrupted the search for the second).
-
 ## 4. Puzzle Generation
 
 ### 4.1 Iterative scheme
@@ -169,52 +159,9 @@ The data follow a minimal JSON format:
 - input puzzle: `{"grid": 9x9}` with `0` for empty cells
 - generated puzzles: an object with `puzzle`, `solution`, `clues`, `removal_log`, etc.
 
-## 5. Pipeline Architecture
+## 5. Experiments
 
-The project adopts a **hybrid** architecture: MiniZinc handles the CP queries (solving and uniqueness checking), while a Python script orchestrates the iterative clue removal and collects statistics.
-
-```
-┌───────────────────┐        ┌──────────────────────┐
-│ Kaggle / generated│        │ Python orchestrator  │
-│   solutions       │ ─────▶ │ - removal strategy   │
-└───────────────────┘        │ - logging            │
-                             └────────┬─────────────┘
-                                      │ (puzzle + method)
-                                      ▼
-                             ┌──────────────────────┐
-                             │ Uniqueness backend   │
-                             │ - Python (in-process)│
-                             │ - MiniZinc (Gecode)  │
-                             └────────┬─────────────┘
-                                      │ verdict
-                                      ▼
-                             ┌──────────────────────┐
-                             │ Results:             │
-                             │ - JSON puzzle        │
-                             │ - CSV benchmark      │
-                             │ - PNG plots          │
-                             └──────────────────────┘
-```
-
-### 5.1 Python backend
-
-The Python backend implements the solver, counting and solve-and-block in pure Python with backtracking and forward checking (`candidate_values` computes a cell's legal values = the `alldifferent` propagation on one cell; `find_empty` is a hand-written `first_fail`). It does not replace the course's CP backend; it serves to:
-
-- validate the pipeline end-to-end even when MiniZinc is not installed;
-- provide a fast execution for the experimental benchmark (MiniZinc's per-call overhead is ~200 ms, non-negligible across 80+ checks per puzzle).
-
-### 5.2 MiniZinc backend
-
-The MiniZinc backend invokes `minizinc --solver gecode_local.msc <model> <data.dzn>` as a subprocess, parses the output and handles timeouts. The configuration `spec/gecode_local.msc` points to the `fzn-gecode` binary via `PATH` for portability. It supports both uniqueness methods via dispatch:
-
-- `solve-and-block` runs two distinct calls: first `sudoku_solver.mzn`, then `sudoku_non_unique_check.mzn` with the first solution passed as the `known_solution` parameter;
-- `counting` runs a single call to `sudoku_solver.mzn` with the flags `-a -n 2`. The output is parsed to count how many distinct solutions were emitted (separated by `----------`). The marker `==========` indicates the search was exhausted; otherwise a single solution without exhaustion becomes `unknown` (timeout) and triggers a rollback in the generation pipeline.
-
-A third backend, `minizinc-api`, drives the same models through the MiniZinc-Python library instead of manual subprocess management; it was added to test the start-up-cost hypothesis and is evaluated in Section 7.2.
-
-## 6. Experiments
-
-### 6.1 Setup
+### 5.1 Setup
 
 - **Benchmark**: 500 complete grids sampled from the 9M-row Kaggle Sudoku Dataset × 3 strategies × 2 uniqueness methods = **3000 runs** (~10 minutes with the Python backend). At this sample size the standard error of the mean clue count is below 0.05, so a larger sample would not change the reported figures; a control benchmark on 1000 grids (`results/full_benchmark_1000.csv`) confirms it, with every reported mean shifting by less than 0.12.
 - **Backend**: Python (for the reported timings). MiniZinc is functionally verified, but the number of calls (240,000+ for the full benchmark) makes it slow for the prototype.
@@ -223,7 +170,7 @@ A third backend, `minizinc-api`, drives the same models through the MiniZinc-Pyt
 
 The starting complete grids come from a public dataset. Internal full-grid generation remains available for targeted tests, autonomous reproducibility and validation independent of the external dataset.
 
-### 6.2 Results: minimum clues per strategy
+### 5.2 Results: minimum clues per strategy
 
 | Strategy | Mean | Min | Max | Stdev |
 | -------- | ---- | --- | --- | ----- |
@@ -233,13 +180,13 @@ The starting complete grids come from a public dataset. Internal full-grid gener
 
 **Observation**: the *random* strategy yields the lowest average clue count (24.4), confirming that flexibility in the removal order pays off. *Symmetry* is the most constrained (27.5) because it removes pairs and every rejection blocks two positions instead of one. *Density* sits in between, suggesting that the "corner cells first" heuristic is not substantially different from random: the structure of Sudoku makes all cells roughly equally constrained, so the starting hypothesis does not hold.
 
-The absolute minimum reached by the greedy scheme is **21 clues**, hit only once in 1500 random-strategy runs; the typical best is 22–23, well above the known theoretical minimum of 17 (McGuire et al., 2012) and consistent with a greedy scheme without backtracking on the removal. Section 7.1 shows how a post-optimization pass pushes below this, reaching 21 systematically rather than by luck and a best of **20 clues**.
+The absolute minimum reached by the greedy scheme is **21 clues**, hit only once in 1500 random-strategy runs; the typical best is 22–23, well above the known theoretical minimum of 17 (McGuire et al., 2012) and consistent with a greedy scheme without backtracking on the removal. Section 6.1 shows how a post-optimization pass pushes below this, reaching 21 systematically rather than by luck and a best of **20 clues**.
 
 ![Strategy comparison](assets/plot_strategy_comparison.png)
 
 <div style="page-break-before: always;"></div>
 
-### 6.3 Results: counting vs solve-and-block
+### 5.3 Results: counting vs solve-and-block
 
 | Method          | Mean time per check | Median |
 | --------------- | ------------------- | ------ |
@@ -252,25 +199,25 @@ Importantly, the two methods are **equivalent** in terms of the final clue count
 
 ![Method comparison](assets/plot_method_comparison.png)
 
-### 6.4 Time vs remaining clues
+### 5.4 Time vs remaining clues
 
 The image shows a mild correlation: puzzles with fewer clues tend to require more time, but the variance is high. This reflects that the main cost per run is the `~80` uniqueness checks, each costing ~1.5–4 ms: the number of checks is constant (81, one per cell), so the total time measures the average difficulty of the intermediate puzzles, which is only weakly correlated with the final clue count.
 
 ![Time vs clues](assets/plot_time_vs_clues.png)
 
-### 6.5 Redundant constraints and search annotations
+### 5.5 Redundant constraints and search annotations
 
-The variants `sudoku_solver_redundant.mzn` and `sudoku_solver_dom_w_deg.mzn` were prepared for a pure-MiniZinc comparison. On 9×9 the measured gains are marginal (below the statistical variance), because the `alldifferent` propagator is already strong enough. On larger boards (16×16, 25×25) a more visible effect is expected.
+The variants `sudoku_solver_redundant.mzn` and `sudoku_solver_dom_w_deg.mzn` were prepared for a pure-MiniZinc comparison. On 9×9 the measured gains are marginal (below the statistical variance), because the `alldifferent` propagator is already strong enough. On larger boards (15×16, 25×25) a more visible effect is expected.
 
-### 6.6 Validation on known 17-clue puzzles
+### 5.6 Validation on known 17-clue puzzles
 
 To check the uniqueness verifier at the hardest possible point, it was run on five genuine **17-clue** puzzles (the proven theoretical minimum) drawn from Gordon Royle's catalogue (`data/test/royle_17clue_sample.json`). All five are correctly classified as **unique** by *both* methods (counting and solve-and-block) and by *both* backends (Python and MiniZinc/Gecode), with no false positives. The cost, however, jumps from the ~2 ms of an intermediate generation check to **0.8–8.6 s** per puzzle: with only 17 clues the search tree that must be exhausted to prove no second solution exists is enormous. This both validates the checker on minimal instances and gives a concrete feel for why the 20→17 gap is computationally hard, not merely a matter of a better removal heuristic.
 
-## 7. Implemented Extensions
+## 6. Implemented Extensions
 
 Three of the extensions listed in the first version of this report were subsequently implemented and measured.
 
-### 7.1 Backtracking on the removal
+### 6.1 Backtracking on the removal
 
 The greedy scheme of Section 4.1 is order-dependent and stops at a local minimum. The flag `--optimize-attempts N` adds a post-optimization pass based on an *add-one-remove-many* move: a removed cell is re-filled with its solution value (uniqueness is preserved by construction, adding a clue can never create a second solution), then a fresh greedy removal pass runs over all current clues in a new random order. If the pass removes at least two cells the net clue count decreases and the move is kept; otherwise it is rolled back. This is a simple local search on top of the CP check, escaping the plateau the greedy pass got stuck in.
 
@@ -281,11 +228,11 @@ Measured on the 50-grid sample (random strategy, counting, 100 attempts, ~2400 e
 | Greedy only | 24.5 | 22 | 27 |
 | Greedy + optimization | 22.1 | 20 | 25 |
 
-The returns diminish sharply: on a sample grid, 20 attempts reach 21 clues and 1000 attempts (50× the checks) still stop at 21. The local move plateaus quickly, which is consistent with two facts: the minimum clue count is a property of each complete grid (most grids do not even admit a 17-clue puzzle), and reaching 19 or fewer requires coordinated multi-cell reconfigurations outside the reach of a single add-one-remove-many move. Enlarging the neighbourhood does help - Section 7.4 lowers the mean with a variable-neighbourhood variant - but, as shown there, even a branch-and-bound search does not push the minimum below 20 within a practical budget.
+The returns diminish sharply: on a sample grid, 20 attempts reach 21 clues and 1000 attempts (50× the checks) still stop at 21. The local move plateaus quickly, which is consistent with two facts: the minimum clue count is a property of each complete grid (most grids do not even admit a 17-clue puzzle), and reaching 19 or fewer requires coordinated multi-cell reconfigurations outside the reach of a single add-one-remove-many move. Enlarging the neighbourhood does help - Section 6.4 lowers the mean with a variable-neighbourhood variant - but, as shown there, even a branch-and-bound search does not push the minimum below 20 within a practical budget.
 
 ![Optimization](assets/plot_optimization.png)
 
-### 7.2 MiniZinc-Python backend: a negative result
+### 6.2 MiniZinc-Python backend: a negative result
 
 The hypothesis was that the MiniZinc-Python API would cut the subprocess start-up cost. The backend `minizinc-api` drives the same two models through the library (the blocking constraint of solve-and-block is injected with `instance.branch()` + `add_string`). On identical generation runs it produces exactly the same puzzles, but it is *slower*:
 
@@ -296,15 +243,15 @@ The hypothesis was that the MiniZinc-Python API would cut the subprocess start-u
 
 The reason is that MiniZinc-Python **wraps the CLI rather than embedding the compiler**: flattening and process creation still happen on every solve, with the library's asyncio management added on top. The dominant per-check cost is the flattening, not the Python-side subprocess handling, so the start-up-cost hypothesis targeted the wrong component. The practical fix would be a persistent solver process or direct Gecode bindings. Raw data: `results/minizinc_api_comparison.json`.
 
-### 7.3 Symmetries: complete grids without the external dataset
+### 6.3 Symmetries: complete grids without the external dataset
 
 The `augment` subcommand generates new complete grids by composing validity-preserving transformations of existing ones: digit permutation, permutation of rows within a band, permutation of bands, and transposition (which covers the column-side operations). Each output grid is re-validated against the Sudoku constraints. From the 50 Kaggle solutions, 20 transformed grids were generated (`data/solved/augmented_solutions.json`): all valid, none coinciding with a source grid, and directly usable as `--source` for the generation pipeline.
 
 Together with `sudoku_generate_full_grid.mzn`, this makes the pipeline fully self-contained: the external dataset remains preferable for *statistical* purposes (transformed grids are structurally related to their source, not independent samples), but it is no longer a functional dependency.
 
-### 7.4 Stronger search: variable neighbourhood and branch-and-bound
+### 6.4 Stronger search: variable neighbourhood and branch-and-bound
 
-The local search of Section 7.1 re-adds a single clue per perturbation. Two stronger strategies were implemented to test whether more search effort lowers the clue count further:
+The local search of Section 6.1 re-adds a single clue per perturbation. Two stronger strategies were implemented to test whether more search effort lowers the clue count further:
 
 - **Variable-neighbourhood** (`--optimize-readd k`): each perturbation re-adds up to `k` clues, with `k` growing from 1 towards `k` as attempts stall (diversification) and resetting after every improvement (intensification).
 - **Branch-and-bound** (`--bnb-nodes N`): a node-bounded search over the binary keep/remove decision per cell, warm-started from the local-search incumbent. The "remove" branch is taken only while the puzzle stays unique with all undecided cells present (a sound prune by monotonicity), and the bound `kept ≥ best` cuts branches that can no longer improve. The full tree is exponential - the minimum-clue subset space is of order `C(81, ~22)` - so the search is capped at `N` nodes and restarted from reshuffled orders.
@@ -318,7 +265,7 @@ Comparison on **408 grids sampled fresh from the 9M-row Kaggle dataset** (random
 | variable-neighbourhood, re-add ≤3 | 21.54 | **20** | 24 | 0.68 | 51 s |
 | branch-and-bound (8k nodes) | 21.51 | 20 | 23 | 0.66 | 92 s |
 
-**Findings**. The variable neighbourhood is a genuine improvement over the single-cell local search: it lowers the mean from 22.08 to 21.54 and wins on **192 of 408** grids while losing on only 37, at almost no extra cost (51 vs 49 s). Branch-and-bound, by contrast, does **not** pay off: it ties the variable neighbourhood on 396 of 408 grids and beats it on just 12, while costing nearly twice the time (92 s). Within any practical node budget the warm-started DFS explores only a sliver of the astronomically large subset space, so it cannot systematically outperform a good metaheuristic. This reinforces the recurring lesson of Section 7.2: the residual gap to 17 is governed by the grid-determined minimum, and closing it would require an exact combinatorial method (unavoidable-set / hitting-set formulations, as in McGuire et al.), not more generic search.
+**Findings**. The variable neighbourhood is a genuine improvement over the single-cell local search: it lowers the mean from 22.08 to 21.54 and wins on **192 of 408** grids while losing on only 37, at almost no extra cost (51 vs 49 s). Branch-and-bound, by contrast, does **not** pay off: it ties the variable neighbourhood on 396 of 408 grids and beats it on just 12, while costing nearly twice the time (92 s). Within any practical node budget the warm-started DFS explores only a sliver of the astronomically large subset space, so it cannot systematically outperform a good metaheuristic. This reinforces the recurring lesson of Section 6.2: the residual gap to 17 is governed by the grid-determined minimum, and closing it would require an exact combinatorial method (unavoidable-set / hitting-set formulations, as in McGuire et al.), not more generic search.
 
 The clue-count **distribution** over the 408 grids confirms how concentrated the achievable minimum is - the variable neighbourhood lands at 20–22 clues on 98% of grids:
 
@@ -329,22 +276,22 @@ The clue-count **distribution** over the 408 grids confirms how concentrated the
 
 ¹ greedy also spreads up to 28 clues; only the 20–24 range is shown. Raw data: `results/overnight_comparison.csv` (408 grids) and `results/optimizer_comparison.csv` (the earlier 20-grid run).
 
-## 8. Conclusions
+## 7. Conclusions
 
 The project delivers a complete pipeline for generating Sudoku instances with a uniqueness guarantee, showing how the combination of clean CP modelling and external orchestration suits a "meta" problem that repeatedly queries the solver.
 
 **Main results**:
 
-- the *random* strategy is the most effective in terms of minimum clues (24.4 average); the local-search pass of Section 7.1 lowers the mean by a further ~2.4 clues, and the variable-neighbourhood variant of Section 7.4 reaches a best of **20** clues (over 408 grids);
+- the *random* strategy is the most effective in terms of minimum clues (24.4 average); the local-search pass of Section 6.1 lowers the mean by a further ~2.4 clues, and the variable-neighbourhood variant of Section 6.4 reaches a best of **20** clues (over 408 grids);
 - the *counting* method is ~1.8× faster than *solve-and-block* in high-call-frequency scenarios;
 - separating the removal logic (procedural) from the verification (CP) is key for debugging and analysis;
 - explicit handling of the `unknown` timeout case is critical for the correctness of the output;
-- the MiniZinc-Python experiment (Section 7.2) shows the value of *measuring* a proposed optimisation: the library wraps the CLI, so the expected speed-up does not materialise.
+- the MiniZinc-Python experiment (Section 6.2) shows the value of *measuring* a proposed optimisation: the library wraps the CLI, so the expected speed-up does not materialise.
 
 **Limitations**:
 
-- even with the variable-neighbourhood search, the minimum clue count reached (20) is still above the theoretical limit of 17, and branch-and-bound did not improve on it (Section 7.4); closing the gap would require an exact unavoidable-set method, not more generic search;
-- the augmented grids of Section 7.3 are structurally related to their source grid, so they are not independent samples for statistical purposes;
+- even with the variable-neighbourhood search, the minimum clue count reached (20) is still above the theoretical limit of 17, and branch-and-bound did not improve on it (Section 6.4); closing the gap would require an exact unavoidable-set method, not more generic search;
+- the augmented grids of Section 6.3 are structurally related to their source grid, so they are not independent samples for statistical purposes;
 - the MiniZinc backend remains operationally slow for intensive benchmarks; the real fix is a persistent solver process or direct Gecode bindings, not the MiniZinc-Python wrapper.
 
 **Possible extensions**:
