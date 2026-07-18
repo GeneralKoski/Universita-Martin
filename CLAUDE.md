@@ -23,7 +23,7 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 - Applicazioni Industriali dell'Intelligenza Artificiale - **30** (2° anno, a scelta - anticipato)
 - Big Data e Data Mining - **28** (1° anno)
-- Constraint Programming - **30L** (1° anno; Martin ha già esposto, l'amico Leopoldo deve ancora esporre)
+- Constraint Programming - **30L** (1° anno; sia Martin sia l'amico Leopoldo hanno esposto)
 - English B2 for STEM - **idoneo** (1° anno, 26 giugno 2026)
 - Fondamenti dell'Intelligenza Artificiale - **28** (1° anno, 14 luglio 2026)
 - Modellazione e Simulazioni Numeriche - **24** (1° anno, a scelta)
