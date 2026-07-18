@@ -21,12 +21,12 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 ### Superati (6)
 
-- Applicazioni Industriali dell'Intelligenza Artificiale - **30** (2° anno, a scelta - anticipato)
-- Big Data e Data Mining - **28** (1° anno)
-- Constraint Programming - **30L** (1° anno; sia Martin sia l'amico Leopoldo hanno esposto)
-- English B2 for STEM - **idoneo** (1° anno, 26 giugno 2026)
-- Fondamenti dell'Intelligenza Artificiale - **28** (1° anno, 14 luglio 2026)
-- Modellazione e Simulazioni Numeriche - **24** (1° anno, a scelta)
+- Applicazioni Industriali dell'Intelligenza Artificiale - **30** (6 CFU, a scelta - anticipato dal 2° anno, 02/02/2026)
+- Big Data e Data Mining - **28** (6 CFU, obbligatorio, 13/02/2026)
+- Constraint Programming - **30L** (6 CFU, obbligatorio, 12/06/2026; sia Martin sia l'amico Leopoldo hanno esposto)
+- English B2 for STEM - **idoneo** (3 CFU, a scelta, 26/06/2026)
+- Fondamenti dell'Intelligenza Artificiale - **28** (6 CFU, obbligatorio, sostenuto il 14/07/2026; al 18/07/2026 NON ancora verbalizzato su Esse3)
+- Modellazione e Simulazioni Numeriche - **24** (6 CFU, a scelta, 22/04/2026)
 
 ### Da sostenere - Primo anno
 
@@ -40,3 +40,19 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 - Analisi Statica e Verifica del Software (9 CFU)
 - Laboratorio di Intelligenza Artificiale (6 CFU)
 - Programmazione Dichiarativa (6 CFU)
+
+### Voto di laurea - proiezione
+
+Dati ufficiali Esse3 UniPR (matricola 397464, al 18/07/2026):
+
+- Media ponderata: **28,00** (da 4 esami votati da 6 CFU: 30, 28, 30, 24; 30L conta come 30)
+- Voto di partenza: **102,66** = (28/30)×110
+- CFU acquisiti: 27 - Esami superati: 5/9 (Fondamenti ancora da verbalizzare)
+
+Bonus: **+3** per essere in corso, **+7 max** per la tesi. Base 102,66 + 3 = 105,66, poi punti tesi:
+
+- 0 punti tesi → ~106
+- **4 punti tesi → 110**
+- 7 punti tesi → 112,66 → **110 e lode**
+
+Nota: gli esami da 9 CFU (Linguaggi, Analisi Statica) pesano il 50% in più di quelli da 6, quindi lì un bel voto sposta molto la media. Modellazione (24) è l'unico voto che tira giù la media.
