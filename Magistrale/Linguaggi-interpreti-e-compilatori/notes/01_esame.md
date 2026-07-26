@@ -1,5 +1,14 @@
 # Modalità d'esame
 
+## 📍 Stato attuale (2026-07-26)
+
+| Parte | Peso | Stato |
+|---|---|---|
+| Seminario (`misc-no-printf`) | 30% | ✅ svolto **23 giugno 2026**, valido per tutti gli appelli dell'a.a. 2025/26 |
+| Orale | 70% | ⏳ **giovedì 10 settembre 2026** |
+
+La timeline operativa più sotto è quindi già percorsa: resta solo l'orale. Calendario di studio in [`../TODO.md`](../TODO.md).
+
 ## ⚠️ Modalità ufficiale (sito UniPR + mail del docente)
 
 L'esame è composto da **due parti separate, in date diverse**:

@@ -1,6 +1,6 @@
 # 09 - TSP e Localizzazione di Impianti
 
-📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /Lezioni 15-16.pdf`
+📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/Lezioni 15-16.pdf`
 
 ## Obiettivi
 Saper formulare due problemi classici di OC.

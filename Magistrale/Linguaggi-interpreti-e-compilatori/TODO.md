@@ -1,6 +1,10 @@
 # TODO - esame Linguaggi, Interpreti e Compilatori
 
-Stato: 2026-05-05.
+Stato: 2026-07-26.
+
+> **ORALE FISSATO: giovedì 10 settembre 2026.** Seminario già svolto il 23 giugno 2026 (30% del voto, valido per tutti gli appelli dell'a.a.): resta solo l'orale (70%).
+>
+> Attenzione: il 17 settembre c'è lo scritto di Metodi e Modelli, quindi i 7 giorni dopo l'orale LIC non sono studio utile per LIC. Vedi la sezione "Pianificazione verso il 10 settembre" in fondo.
 
 > **Per studiare:** entry point unico in [`study/`](study/README.md). 8 blocchi numerati nell'ordine in cui vanno affrontati.
 
@@ -33,25 +37,18 @@ Per il dettaglio del lavoro tecnico già fatto vedi `Martin/1_clang-tidy_custom_
 
 **Bonus**: LLM trova bug fuori scope (troncamento `2.5→2`, `nullptr` UB) → conferma complementarità.
 
-### ~~2. Mail al prof~~ ✅ FATTO 2026-05-15
-Seminario fissato: **martedì 23 giugno 2026, ore 12:30** (dopo lo scritto di Metodologie del prof).
-Orale LIC: intenzione 26 agosto 2026.
-**TODO residuo**: inviare promemoria al prof sabato 21 / lunedì 22 giugno (richiesto esplicitamente).
+### ~~2. Mail al prof + seminario~~ ✅ FATTO
+Seminario **svolto martedì 23 giugno 2026** (30% del voto). Vale per **tutti gli appelli dell'a.a. 2025/26**: non va rifatto anche se ti ripresenti a un appello successivo.
+Orale LIC: **10 settembre 2026** (era in ballo anche il 26 agosto, scartato).
 
 ### ~~3. Slide vere~~ ✅ v1 FATTA 2026-05-05
 `SLIDES.md` con frontmatter Marp + tema custom (palette blu/rosso/verde, JetBrains Mono, gradient cover); diagramma architettura inline (HTML+CSS, 7 box colorati); export `SLIDES.pdf` 13 pagine. Resta solo un pass di review a freddo prima di mandarle al prof.
 
-### 4. Demo cronometrata + pratica script (~4-5h)
-**Pre-requisito:** rileggi prima `Martin/1_clang-tidy_custom_check/SCRIPT.md` per allineare i comandi della demo con le frasi-pivot delle slide 11 e 12 (demo).
-
-- Terminale dedicato: prompt corto, font ≥ 18pt, sfondo chiaro
-- Pre-popolare `~/.bash_history` con i comandi della demo (basta freccia ↑)
-- Provare la demo **almeno 5 volte**, target 4-5 min per la sezione "demo live"
-- **Piano B**: registrare un video da 2'30" (QuickTime) come backup se la live si rompe
-- **Pratica voce alta dello script:** leggere `SCRIPT.md` 2-3 volte cronometrando l'intero seminario (target 15 min), per memorizzare i punti pivot. Alla terza lettura non dovresti più dipendere dal foglio.
+### ~~4. Demo cronometrata + pratica script~~ ✅ CONSUMATO nel seminario del 23/06
+Materiale del seminario (demo, slide, script verbale). Non serve più per l'orale del 10 settembre, ma il progetto `misc-no-printf` resta un **esempio concreto da citare all'orale** (front end di clang, AST matcher, diagnostica).
 
 ### ~~5. Script verbale~~ ✅ FATTO 2026-05-05
-`Martin/1_clang-tidy_custom_check/SCRIPT.md`: frasi pivot tecnico-fluide per ogni slide, apertura/chiusura forte, transizioni esplicite, Q&A con 6 domande probabili + risposte preparate, note operative. Resta solo la pratica a voce alta (2-3 volte cronometrate).
+`Martin/1_clang-tidy_custom_check/SCRIPT.md`: frasi pivot tecnico-fluide per ogni slide, apertura/chiusura forte, transizioni esplicite, Q&A con 6 domande probabili + risposte preparate, note operative. Usato al seminario.
 
 ### 6. Studio orale dei 9 capitoli (~12-14h)
 Seguire `study_method/STUDY_PLAN.md`:
@@ -102,30 +99,32 @@ Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave pe
 | Slide v1 (PDF) | ✅ fatto | - |
 | Script verbale | ✅ fatto | - |
 | Audit materiali studio | ✅ fatto | - |
-| Demo cronometrata + video backup + pratica voce alta | ⏳ | 4-5h |
-| Pass review slide a freddo | ⏳ | 0.5h |
-| Mail al prof | ✅ fatto (seminario 23 giu 12:30) | - |
-| Promemoria al prof (21-22 giu) | ⏳ | 5 min |
+| Demo cronometrata + slide + script | ✅ consumato al seminario | - |
+| Seminario (30% del voto) | ✅ svolto 23/06/2026 | - |
 | Studio orale 9 capitoli + parsing | ⏳ | 12-14h |
 | Cheatsheet + 57 domande + incrocio | ⏳ | 7-10h |
 | Ripasso intensivo | ⏳ | 2h |
-| **Totale residuo** | | **~26-32h** |
+| **Totale residuo (solo orale)** | | **~21-26h** |
 
-## 📅 Ordine di lavoro suggerito
+## 📅 Pianificazione verso il 10 settembre
+
+Aggiornato al 2026-07-26 (domenica). Il calendario è **condiviso con Metodi e Modelli** (scritto il 17 settembre), che ha un carico circa doppio (~40-50h fra teoria, pratica e simulazioni) e va quindi caricato prima. Vedi `../Metodi-e-modelli-per-l-intelligenza-artificiale/study/README.md`.
 
 ```
-Sett. corrente : Fase 1 100% chiusa, slide v1 fatte - script verbale + review a freddo
-+1             : demo cronometrata + video backup + pass review slide
-+2             : MAIL AL PROF + eventuali rifiniture slide
-+3             : studio orale lez 1-5
-+4             : studio orale lez 6-9 + cheatsheet
-+5             : SEMINARIO + 44 domande
-+6             : domande incrocio
-giorno -1      : ripasso leggero
-giorno 0       : ORALE
+27 lug - 16 ago  : METODI (blocco A grafi, poi blocco B PI) - LIC in pausa
+17 - 23 ago      : LIC studio orale lez 1-5 + parsing (notes/08_parsing.md)
+24 - 30 ago      : LIC studio orale lez 6-9 + cheatsheet a memoria
+31 ago - 6 set   : LIC 57 domande a voce + domande incrocio (+1 simulazione scritta Metodi)
+7 - 9 set        : LIC ripasso intensivo (solo "Punti chiave", niente cose nuove)
+10 set (gio)     : ORALE LIC
+11 - 16 set      : solo METODI - simulazioni scritte + dimostrazioni per l'orale
+17 set (gio)     : SCRITTO METODI
 ```
 
-Buffer 1 settimana ovunque per imprevisti.
+**Vincoli da tenere a mente:**
+- I 7 giorni fra i due esami servono a Metodi, non a LIC: il grosso di Metodi va chiuso **prima** del 10 settembre.
+- Il seminario è già in cassaforte e pesa il 30%: l'orale sposta il restante 70%, quindi non c'è nulla da recuperare, solo da difendere.
+- Buffer: se il blocco Metodi sfonda i tempi, la settimana 31 ago - 6 set è la prima da sacrificare (domande incrocio), **non** il ripasso 7-9 set.
 
 ---
 

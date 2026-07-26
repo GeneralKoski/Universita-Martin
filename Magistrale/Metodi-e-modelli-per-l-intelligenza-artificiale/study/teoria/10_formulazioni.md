@@ -1,6 +1,6 @@
 # 10 - Formulazioni e prospettiva geometrica
 
-📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /Lezioni 15-16.pdf`
+📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/Lezioni 15-16.pdf`
 
 ## Obiettivi
 Capire perché non basta "scrivere" un PI: la qualità della formulazione conta.

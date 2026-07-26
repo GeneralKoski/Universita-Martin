@@ -1,6 +1,6 @@
 # 06 - Minimum Spanning Tree (MST)
 
-📂 Fonte: `Elly/6_Albero_Ricoprente_Minimo_(MST) /Lezioni 11-12.pdf`
+📂 Fonte: `Elly/6_Albero_Ricoprente_Minimo_(MST)/Lezioni 11-12.pdf`
 
 ## Obiettivi
 Albero ricoprente di costo minimo in un grafo non orientato pesato.

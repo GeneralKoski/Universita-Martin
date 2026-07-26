@@ -3,7 +3,7 @@
 📂 Fonte: `Elly/8_Rilassamenti_e_Dualità/Lezioni 17-18.pdf`
 
 ## Obiettivi
-Ottenere stime **dall'alto** sul valore ottimo di un PI, indispensabili per branch & bound.
+Ottenere stime **dall'alto** (duali) sul valore ottimo di un PI: sono il modo per dire quanto è buona una soluzione ammissibile senza risolvere il problema. È il capitolo più sfruttato allo scritto, vedi `../pratica/09_esercizi_rilassamenti_dualita.md`.
 
 ## Da sapere a memoria
 - Stime **primali** (dal basso, da soluzioni ammissibili) vs **duali** (dall'alto, da rilassamenti/dualità)

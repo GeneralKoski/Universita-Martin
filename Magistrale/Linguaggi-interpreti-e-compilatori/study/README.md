@@ -1,8 +1,10 @@
 # Study - preparazione esame
 
+> **ORALE: giovedì 10 settembre 2026.** Seminario svolto il 23 giugno 2026 (30% del voto, già in cassaforte): resta solo l'orale, che pesa il **70%**. Calendario in `../TODO.md`.
+
 Punto d'ingresso unico per lo studio. I file sono numerati nell'ordine esatto in cui vanno affrontati, dal primo all'ultimo giorno.
 
-Tutto il lavoro tecnico del seminario (check `misc-no-printf`, run reali, confronto LLM, slide v1, script verbale, audit materiali studio) è già chiuso. Vedi `../TODO.md` per lo stato dettagliato.
+Tutto il lavoro del seminario (check `misc-no-printf`, run reali, confronto LLM, slide, script verbale, demo) è chiuso e **consumato al seminario del 23 giugno**: i blocchi 5, 6 e 7 qui sotto sono storia, non lavoro residuo. Restano i blocchi **1-4** (studio orale) e **8** (ripasso). Vedi `../TODO.md` per lo stato dettagliato.
 
 ---
 
@@ -14,21 +16,18 @@ Tutto il lavoro tecnico del seminario (check `misc-no-printf`, run reali, confro
 | 2 | Cheatsheet a memoria | 3h | [`02_cheatsheet.md`](02_cheatsheet.md) |
 | 3 | 57 domande tipo a voce (2-3 min ognuna) | 3-4h | [`03_domande_tipo.md`](03_domande_tipo.md) |
 | 4 | Domande incrocio | 2-3h | [`04_domande_incrocio.md`](04_domande_incrocio.md) |
-| 5 | Demo cronometrata 5× + video backup | 4-5h | [`05_demo_cronometrata.md`](05_demo_cronometrata.md) |
-| 6 | Pratica voce alta script | 1h | [`06_pratica_script.md`](06_pratica_script.md) |
-| 7 | ✅ Mail al prof - seminario fissato **23 giu ore 12:30** | - | [`07_mail_prof.md`](07_mail_prof.md) |
+| 5 | ✅ Demo cronometrata + video backup | - | [`05_demo_cronometrata.md`](05_demo_cronometrata.md) |
+| 6 | ✅ Pratica voce alta script | - | [`06_pratica_script.md`](06_pratica_script.md) |
+| 7 | ✅ Mail al prof - seminario **svolto 23 giu 2026** | - | [`07_mail_prof.md`](07_mail_prof.md) |
 | 8 | Ripasso intensivo sera prima orale | 2h | [`08_ripasso_intensivo.md`](08_ripasso_intensivo.md) |
-| | **Totale** | **~28-32h** | |
-
-Buffer 1 settimana per imprevisti.
+| | **Totale residuo** | **~21-26h** | |
 
 ---
 
 ## Logica dell'ordine
 
-- **1-4** = orale (70% del voto): si fa per primo perché richiede il blocco di tempo più grande e va sedimentato.
-- **5-6** = seminario (30% del voto): la parte tecnica è già pronta, manca solo la pratica.
-- **7** = mail al prof: dopo che slide e demo sono provate, così se chiede di vederle sono spedibili subito.
+- **1-4** = orale (70% del voto): è tutto il lavoro che resta, richiede il blocco di tempo più grande e va sedimentato.
+- **5-7** = seminario (30% del voto): ✅ chiuso il 23 giugno 2026, vale per tutti gli appelli dell'a.a. Tenuti qui come storico.
 - **8** = ripasso: la sera prima dell'orale, **niente cose nuove**.
 
 ## Convenzioni

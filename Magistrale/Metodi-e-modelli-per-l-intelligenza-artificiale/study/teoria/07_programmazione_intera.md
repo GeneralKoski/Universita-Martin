@@ -1,6 +1,6 @@
 # 07 - Programmazione Intera (PI)
 
-📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /Lezioni 13-14.pdf`
+📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/Lezioni 13-14.pdf`
 
 ## Obiettivi
 Capire **cos'è** un PI, perché è difficile, come si distingue dalla PL.
@@ -13,7 +13,7 @@ Capire **cos'è** un PI, perché è difficile, come si distingue dalla PL.
 
 ## Perché la PI è difficile
 - I metodi della PL **non funzionano** direttamente (la soluzione del rilassamento lineare in genere è frazionaria)
-- Servono algoritmi specifici: **branch & bound**, **piani di taglio**, programmazione dinamica
+- Servono algoritmi specifici: **branch & bound**, **piani di taglio**, programmazione dinamica. Le Lezioni 13-14 li **citano** come panoramica, ma nel programma 6 CFU non vengono sviluppati: sapere che esistono e a cosa servono basta, non vanno saputi eseguire
 - Spazio combinatorio enorme (Dantzig: 70 lavori → 70! soluzioni)
 
 ## Tempo stimato: 1 ora

@@ -1,8 +1,15 @@
 # 02 - Esercizi: BFS e DFS
 
 ## Esercizi disponibili
-- 📂 `Elly/2_Procedure_BFS_e_DFS/ese_1_2026.pdf` - esercizio ufficiale 2026
-- Esercizi sugli appunti scritti dei colleghi (`AAA METODI E MODELLI...pdf`, prime lezioni)
+
+| Fonte | Contenuto |
+|---|---|
+| `Elly/2_Procedure_BFS_e_DFS/ese_1_2026.pdf` | foglio 1: (1) recipienti da 3 e 5 litri, raccogliere 4 litri nel più grande; (2) barcaiolo/lupo/capra/cavolo. Entrambi da ricondurre a esplorazione su un **grafo degli stati** |
+| `Appunti_colleghi/Zip_appunti/esercizi MMD.pdf` p. 2 | **soluzione del foglio 1** (su Elly non c'è): per i recipienti lo stato è la coppia `(x,y)` dei contenuti e la sequenza minima si legge dai livelli BFS - 6 mosse; per il barcaiolo i 10 stati ammissibili sono disegnati come grafo bipartito sx/dx |
+| `Appunti_colleghi/Zip_appunti/esercizi MMD.pdf` p. 3 | esempio di **DFS** con notazione a parentesi e albero di visita |
+| `AAA METODI E MODELLI PER LE DECISIONI.pdf` | appunti dei gestionali, prime lezioni (approfondimento) |
+
+Il punto dell'esercizio non è l'algoritmo ma la **modellazione**: capire che gli stati sono i nodi e le mosse ammissibili sono gli archi. Una volta costruito il grafo, la BFS è meccanica.
 
 ## Schema operativo BFS
 1. Disegna il grafo

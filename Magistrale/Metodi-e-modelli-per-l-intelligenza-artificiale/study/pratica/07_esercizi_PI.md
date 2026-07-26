@@ -1,9 +1,17 @@
 # 07 - Esercizi: Programmazione Intera
 
 ## Esercizi disponibili
-- 📂 `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /ese_5_2026.pdf`
-- 📂 `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /ese_6_2026.pdf` (con soluzione `ese_6_2026_sol.pdf`)
-- 📂 `Appunti_colleghi/Zip_appunti/esercizi MMD.pdf`
+
+| Fonte | Contenuto |
+|---|---|
+| `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/ese_5_2026.pdf` | 6 città con distanze stradali, centro servizi installabile in ogni nodo, copertura entro 11 km → formulare il PI che minimizza le installazioni (**set covering**; prima vanno calcolati gli insiemi di copertura) |
+| `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/ese_6_2026.pdf` | **5 esercizi di sola formulazione**: (1) vincoli logici su 7 investimenti con binarie, (2) attivazione corsi con min/max studenti, (3) scelta corsi minimizzando le ore del venerdì, (4) cutting-stock, (5) sequenziamento su macchina singola (PIM) |
+| `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/ese_6_2026_sol.pdf` | soluzioni del foglio 6, complete di definizione delle variabili |
+| `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/sol-ese-cop-seq-stsp.pdf` | soluzioni di copertura, sequenziamento e STSP |
+| `Elly/8_Rilassamenti_e_Dualità/ese_7_2026.pdf` es. 1 | localizzazione supermercati siti × distretti → **impaccamento** (soluzione in `sol-ese-7.pdf`, con la matrice di incidenza scritta per esteso) |
+| `esonero 2022` es. 5 | 6 clienti serviti da 4 rotte → set covering |
+
+L'esercizio 1 del foglio 6 (i 6 vincoli logici con variabili binarie) è il più utile in assoluto: sono esattamente i pattern che servono per tradurre qualunque testo. Vale la pena saperli scrivere a memoria.
 
 ## Tipologie di esercizio
 

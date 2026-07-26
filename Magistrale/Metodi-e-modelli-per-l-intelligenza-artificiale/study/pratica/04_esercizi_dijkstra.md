@@ -1,10 +1,16 @@
 # 04 - Esercizi: Dijkstra
 
 ## Esercizi disponibili
-- 📂 `Elly/4_Cammini_Minimi_Dijkstra/ese_3.1_2026.pdf`
-- 📂 `Elly/4_Cammini_Minimi_Dijkstra/Sol-piano-rinn-ott.pdf` - problema "piano di rinnovo ottimale" (applicazione)
-- 📂 `Elly/6_Albero_Ricoprente_Minimo_(MST) /sol-ese-dijkstra(ese3.1).pdf`
-- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` - esame 28 giugno 2005, esercizio 2
+
+| Fonte | Contenuto |
+|---|---|
+| `Elly/4_Cammini_Minimi_Dijkstra/ese_3.1_2026.pdf` | equazioni di Bellman sul grafo piccolo (ripreso dal foglio 2) + **Dijkstra da 1=A a tutti gli altri** su un grafo di 8 nodi A-H |
+| `Elly/6_Albero_Ricoprente_Minimo_(MST)/sol-ese-dijkstra(ese3.1).pdf` | soluzione dell'esercizio sopra |
+| `Elly/5_Cammini_Minimi_Floyd_Warshall/ese_4_2026.pdf` es. 1 | matrice costi `c_ij` = acquisto macchinari inizio anno i → fine anno j: interpretare come cammino minimo e risolvere **con Dijkstra** |
+| `Elly/4_Cammini_Minimi_Dijkstra/Sol-piano-rinn-ott.pdf` | soluzione del piano di rinnovo (l'esercizio è nel foglio 3, capitolo Bellman) |
+| `esami nicolodi risolti.pdf` | **4 tracce svolte**: 28 giugno 2005 es. 2, 6 settembre 2005 es. 1, 20 settembre 2006 es. 1, 19 febbraio 2007 es. 1 (quest'ultima con nodi A-H) |
+
+Dijkstra esce in **4 appelli su 12**: è il secondo esercizio più frequente dopo Floyd-Warshall e il duale lagrangiano. Le 4 tracce svolte bastano per allenarlo fino all'automatismo.
 
 ## Schema operativo (tabella iterazioni)
 1. Tabella con colonne = nodi, righe = (λ, p) per ogni iterazione

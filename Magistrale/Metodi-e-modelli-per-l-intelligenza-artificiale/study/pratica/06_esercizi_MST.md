@@ -2,7 +2,7 @@
 
 ## Esercizi disponibili
 - Esempio nelle Lezioni 11-12.pdf
-- 📂 `Elly/6_Albero_Ricoprente_Minimo_(MST) /sol_esercizi_(3.4bisese_2).pdf`
+- 📂 `Elly/6_Albero_Ricoprente_Minimo_(MST)/sol_esercizi_(3.4bisese_2).pdf`
 - 📂 `Appunti_colleghi/Zip_appunti/esercizi MMD.pdf`
 
 ## Schema operativo

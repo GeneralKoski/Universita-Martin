@@ -30,9 +30,9 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 ### Da sostenere - Primo anno
 
-- **Linguaggi, Interpreti e Compilatori** (9 CFU) - seminario svolto il 23 giugno 2026; manca la seconda metà dell'esame, prevista per il 26 agosto oppure il 10 settembre 2026
+- **Linguaggi, Interpreti e Compilatori** (9 CFU) - **orale fissato il 10 settembre 2026**. Seminario (30% del voto) già svolto il 23 giugno 2026 e valido per tutti gli appelli dell'a.a.; resta solo l'orale (70%), domande aperte su tutto il programma
+- **Metodi e Modelli per l'Intelligenza Artificiale** (6 CFU) - **scritto fissato il 17 settembre 2026**, poi orale. Corso mutuato dai gestionali (9 CFU): programma 6 CFU fino a *Trasporto generalizzato e problemi facili* incluso, e allo scritto un esercizio in meno rispetto ai gestionali (da ricordare al prof Nicolodi). Da verificare su Esse3 se l'orale è in giornata o in data successiva
 - Development of Reliable, Safe and Secure Software (6 CFU)
-- Metodi e Modelli per l'Intelligenza Artificiale (6 CFU)
 
 ### Da sostenere - Secondo anno (2026-27)
 

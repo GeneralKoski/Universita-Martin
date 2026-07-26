@@ -1,6 +1,6 @@
 # 08 - Ottimizzazione Combinatoria (OC)
 
-📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria /Lezioni 13-14.pdf`
+📂 Fonte: `Elly/7_Programmazione_Lineare_&_Ottimizzazione_Combinatoria/Lezioni 13-14.pdf`
 
 ## Obiettivi
 Riconoscere problemi combinatori e formularli come PIB.

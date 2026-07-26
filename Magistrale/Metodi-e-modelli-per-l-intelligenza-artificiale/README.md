@@ -2,6 +2,8 @@
 
 Appunti, esercizi e materiale di studio per il corso **Metodi e modelli per l'intelligenza artificiale** - Laurea Magistrale in Scienze Informatiche, Università di Parma.
 
+> **SCRITTO: giovedì 17 settembre 2026**, poi orale. Da verificare su Esse3 se l'orale è nella stessa giornata o in data successiva. Sette giorni prima (10 settembre) c'è l'orale di LIC, quindi il grosso di questo esame va chiuso **prima** di quella data: piano in [`study/README.md`](study/README.md).
+
 ## Informazioni corso (A.A. 2025/2026)
 
 | Campo | Valore |
@@ -57,8 +59,22 @@ Lezioni frontali con esempi, applicazioni ed esercizi assegnati e discussi a lez
 
 ## Modalità d'esame
 
-- Prova **scritta**: risoluzione di esercizi
-- Prova **orale**: argomenti teorici e applicazioni
+Entrambe le prove sono obbligatorie (non è stato sostenuto il parziale).
+
+- Prova **scritta** (17 settembre 2026): risoluzione di esercizi, 90-120 min. Due macro-blocchi: (1) algoritmi sui grafi - BFS/DFS, Bellman, Dijkstra, Floyd-Warshall, MST; (2) programmazione intera e ottimizzazione combinatoria - formulazioni, TSP, localizzazione, rilassamenti, TU.
+- Prova **orale**: argomenti teorici e applicazioni, cioè definizioni e **dimostrazioni** (elenco in `study/pratica/13_simulazione_esame.md`).
+
+**Specificità del caso 6 CFU** (corso mutuato dai gestionali, 9 CFU):
+
+- Il programma si ferma a *Trasporto generalizzato e problemi facili* incluso: fuori branch and bound completo, piani di taglio, programmazione dinamica.
+- Allo scritto dovrebbe toccare **un esercizio in meno** rispetto ai gestionali. Conviene ricordarlo al prof Nicolodi in apertura: gli appunti dei colleghi dicono "se il prof si ricorda".
+
+**Due cose che la scheda non dice** (emerse dal censimento in `study/pratica/00_ANATOMIA_ESAME.md`):
+
+- Lo scritto nel formato recente (esonero 2022, fogli di esercizi 2026) chiede anche **dimostrazioni scritte** e **modellazione applicata**, non solo esecuzione di algoritmi.
+- Il prof usa anche **quiz Elly/Moodle** a scelta multipla e a risposta numerica sugli stessi argomenti (`Appunti_colleghi/Zip_appunti/NICOLODI REVISIONI 1.pdf`). Non è chiaro se rientrino nello scritto del 17 settembre: **da verificare**.
+
+Fonti: scheda ufficiale del corso + `Appunti_colleghi/Modalità_esame.txt` + censimento del materiale d'esame.
 
 ## Bibliografia
 

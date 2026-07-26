@@ -1,10 +1,20 @@
 # 10 - Simulazione d'esame
 
+> **Scritto: giovedì 17 settembre 2026.** Da calendario (`../README.md`): 1ª simulazione nella settimana 31 ago - 6 set, 2ª e 3ª fra l'11 e il 16 settembre, dopo l'orale di LIC.
+
 Quando arrivi qui, hai studiato tutto. Ora alleni la **resistenza** e la **gestione del tempo**.
 
 ## Risorsa principale
 - 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` (48 pp.) - tracce risolte degli anni passati
 - 📂 `Appunti_colleghi/Zip_appunti/NICOLODI REVISIONI 1.pdf` (18 pp.)
+
+## Tracce più rappresentative
+
+Non tutte le tracce valgono uguale. Dal censimento in [`00_ANATOMIA_ESAME.md`](00_ANATOMIA_ESAME.md):
+
+- **I Esonero, 3 maggio 2022** (foto in `Appunti_colleghi/Zip_appunti/parziale/`) - la più vicina al formato attuale: Floyd-Warshall parziale, TSP 1-albero, una dimostrazione sul rilassamento, una modellazione applicata (sostituzione macchinari → cammino minimo + Dijkstra), un set covering, più una dimostrazione facoltativa sulle condizioni di ottimalità lagrangiane.
+- **13 luglio 2005** - BFS a livelli, Floyd-Warshall parziale, MST, zaino 0-1 con duale lagrangiano completo. Copre da sola quasi tutto il blocco grafi.
+- **9 febbraio 2006** - Floyd-Warshall con due cicli negativi + zaino 0-1 con `L*(μ)` a tratti e grafico.
 
 ## Modalità (da scheda ufficiale + indicazioni colleghi)
 - **Scritto**: risoluzione esercizi (algoritmi sui grafi + formulazione PI)

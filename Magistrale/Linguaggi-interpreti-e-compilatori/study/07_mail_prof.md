@@ -2,9 +2,9 @@
 
 ## Date confermate
 
-- **Seminario:** martedì **23 giugno 2026, ore 12:30** (dopo lo scritto di Metodologie)
-- **Orale LIC:** 26 agosto 2026 (intenzione)
-- **Promemoria al prof:** sabato 21 giugno o lunedì 22 giugno (richiesto esplicitamente)
+- **Seminario:** martedì **23 giugno 2026, ore 12:30** (dopo lo scritto di Metodologie) - ✅ **svolto**. Vale per tutti gli appelli dell'a.a. 2025/26, non va rifatto.
+- **Orale LIC:** giovedì **10 settembre 2026** (il 26 agosto era l'altra opzione, scartata)
+- **Promemoria al prof:** era richiesto 2 giorni prima del seminario (21-22 giugno) - non più rilevante, il seminario è passato
 
 ## Scambio mail (riassunto)
 
@@ -20,5 +20,5 @@
 
 ## TODO residuo
 
-- [ ] **Sabato 21 / lunedì 22 giugno**: inviare promemoria al prof
-- [ ] Verificare aula / modalità (presenza vs Teams) qualche giorno prima
+- [ ] **Iscrizione all'appello del 10 settembre su Esse3** (verificare che sia aperta e chiudere l'iscrizione)
+- [ ] Verificare aula / modalità (presenza vs Teams) qualche giorno prima dell'orale

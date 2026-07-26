@@ -1,8 +1,11 @@
 # 12 - Esercizi: flussi, trasporto e problemi riducibili
 
 ## Esercizi disponibili
-- Esempi nelle Lezioni 21-22.pdf
-- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` - vari problemi di flusso/trasporto
+- Esempi nelle `Elly/10_Trasporto_generalizzato_(fine_materiale_ 6CFU)/Lezioni 21-22.pdf` - **unica fonte di esercizi su questo argomento**
+
+⚠️ **Non ci sono esercizi di flusso/trasporto negli esami risolti.** Ho controllato tutte le 48 pagine di `esami nicolodi risolti.pdf` (12 appelli, 2005-2007): nessuno contiene flusso di costo minimo, trasporto, assegnazione o massimo flusso. Compaiono solo abbinamento e copertura, che qui sono trattati come casi riducibili al flusso ma negli esami escono nella forma combinatoria (trovare M e R su un grafo disegnato, vedi `09_esercizi_rilassamenti_dualita.md`).
+
+Conseguenza pratica: su questo capitolo **non puoi fare pratica su tracce d'esame vere**. Ha senso studiarlo per l'orale (le riduzioni, la TU della matrice di incidenza) e per saper formulare, non allenare un'esecuzione.
 
 ## Tipologie di esercizio
 

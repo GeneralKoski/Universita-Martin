@@ -5,6 +5,17 @@ Segui i passi **in ordine**: ogni argomento poggia sui precedenti.
 
 Programma 6 CFU: si arriva fino al file **14 (Trasporto generalizzato)** incluso.
 
+> **Prima di distribuire le ore, leggi [`../pratica/00_ANATOMIA_ESAME.md`](../pratica/00_ANATOMIA_ESAME.md).** Questa guida è ordinata in modo **didattico** (ogni capitolo poggia sul precedente) e assegna tempi uniformi, ma l'esame non pesa i capitoli in modo uniforme. Su 12 appelli censiti:
+>
+> - cap. 11-12 (rilassamenti e dualità) → **7 appelli su 12**
+> - cap. 05 (Floyd-Warshall) → **6 su 12**
+> - cap. 04 (Dijkstra) → 4 su 12
+> - cap. 14 (trasporto/flussi) → **0 su 12** (solo orale: non esistono tracce d'esame su questo capitolo)
+>
+> Usa l'ordine di questa guida per **capire**, e i pesi dell'anatomia per decidere **quanto esercitarti** su ciascun capitolo.
+
+> **Le dimostrazioni non servono solo all'orale.** Nel formato recente (esonero 2022, foglio 7 del 2026) alcune dimostrazioni sono esercizi **dello scritto**. Vedi la checklist in fondo, sezione "da saper scrivere".
+
 **Abbinamento teoria → pratica.** Nel Blocco A è 1:1 (teoria 0X → `../pratica/0X_*`).
 Nel Blocco B la pratica raggruppa più argomenti di teoria:
 | Teoria | Pratica |
@@ -102,7 +113,7 @@ Matrici TU e Teorema di Interezza: quando un PI è "facile".
 Flusso di costo minimo e trasporto generalizzato; tutto si riduce a questo.
 - **Autocontrollo:** riproduci a memoria la tabella "problema → riduzione a flusso".
 
-> **Checkpoint Blocco B:** dato un problema, sai (1) formularlo come PI/PIB, (2) dire se è "facile" (matrice TU) o serve rilassamento/branch & bound?
+> **Checkpoint Blocco B:** dato un problema, sai (1) formularlo come PI/PIB, (2) dire se è "facile" (matrice TU ⟹ basta il rilassamento lineare) oppure se serve una stima duale via rilassamento?
 
 ---
 
@@ -111,6 +122,18 @@ Flusso di costo minimo e trasporto generalizzato; tutto si riduce a questo.
 1. Ripassa **solo le dimostrazioni** (elenco sotto) - sono il cuore dell'orale.
 2. Rivedi le **domande ricorrenti** qui sotto.
 3. Fai la simulazione completa: `../pratica/13_simulazione_esame.md`.
+
+### Dimostrazioni da saper SCRIVERE (escono allo scritto)
+
+Fonti: `Elly/8_Rilassamenti_e_Dualità/ese_7_2026.pdf`, `Elly/9_Matrici_TU_e_Teorema_di_Interezza/sol_es_Lez_19_20.pdf`, esonero 2022.
+
+- [ ] Dato un programma e una sua modifica, **provare che è un rilassamento** (verificare le due condizioni: `X ⊆ T` e `f(x) ≥ c(x)` su X) - esonero 2022 es. 3
+- [ ] Se `P = Conv(X)` e `x*` è SBA ottima di (PL), allora `x*` è ottima per (PI) - foglio 7 es. 2
+- [ ] Se `x* ∈ S` allora è ottima per (PI); se `c^T x* = c^T x̂` con `x̂ ∈ S` allora `x̂` è ottima - foglio 7 es. 3
+- [ ] Condizione di ottimalità lagrangiana: `ū ≥ 0`, `x̄` ottima di `P(ū)`, ammissibile per (P) e `ū^T(Dx̄ − d) = 0` ⟹ `x̄` ottima per (P) - esonero 2022 es. 6 (facoltativo)
+- [ ] `A` TU ⟹ i vertici di `P*(A,b)` sono interi, per ogni `b` intero (si passa a `Â = [A | Iₘ]`, anch'essa TU) - Lezioni 19-20
+
+Sono cinque, tutte corte, tutte con soluzione disponibile. Vanno provate a penna almeno una volta ciascuna: saperle "a senso" non basta per scriverle.
 
 ### Dimostrazioni da saper esporre a voce (checklist)
 - [ ] Teorema di Fulkerson (numerabilità progressiva)

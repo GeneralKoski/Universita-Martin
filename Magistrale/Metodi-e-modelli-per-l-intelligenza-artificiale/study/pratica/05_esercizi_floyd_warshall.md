@@ -1,9 +1,16 @@
 # 05 - Esercizi: Floyd–Warshall
 
 ## Esercizi disponibili
-- 📂 `Elly/5_Cammini_Minimi_Floyd_Warshall/ese_4_2026.pdf`
-- Esempi nelle Lezioni 9-10.pdf
-- 📂 `Appunti_colleghi/Zip_appunti/esami nicolodi risolti.pdf` (vari esami)
+
+| Fonte | Contenuto |
+|---|---|
+| `Elly/5_Cammini_Minimi_Floyd_Warshall/ese_4_2026.pdf` | es. 1 costi macchinari → cammino minimo con Dijkstra; **es. 2 completare F-W da `D^(0)`/`P^(0)`** su 4 nodi con pesi negativi |
+| `Elly/5_Cammini_Minimi_Floyd_Warshall/Lezioni 9-10.pdf` | due esempi svolti: grafo 4 nodi con circuito negativo riconosciuto, grafo 5 nodi senza circuiti |
+| `Appunti_colleghi/Zip_appunti/esercizi MMD.pdf` | svolgimento del foglio 4 (su Elly la soluzione non c'è) |
+| `esami nicolodi risolti.pdf` | **6 tracce svolte**: 13 lug 2005, 20 set 2005, 9 feb 2006, 26 giu 2006, 22 gen 2007, 20 giu 2007 |
+| `parziale/WhatsApp Image 2024-03-28*` | esercizio 1 dell'esonero 2022, stessa forma |
+
+**Questo è l'esercizio più frequente dell'esame: 6 appelli su 12, più l'esonero.** Nella forma tipica non parti da zero, ma da `D^(k)` e `P^(k)` già calcolate ("la terza iterazione ha prodotto le seguenti matrici: completare l'algoritmo"). Sei tracce svolte sono abbondanti: usane 3 per imparare e 3 come verifica a freddo.
 
 ## Schema operativo
 1. Costruisci D⁽⁰⁾: ℓ_ij sugli archi, 0 sulla diagonale, ∞ altrove
