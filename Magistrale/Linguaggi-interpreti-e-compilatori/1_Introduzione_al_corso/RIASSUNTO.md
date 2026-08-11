@@ -42,3 +42,11 @@ L'esame è in **due parti separate**:
 - Il corso ha forte componente teorica (linguaggi formali, automi, dataflow) e pratica (Flex, Bison, LLVM)
 - Le esercitazioni di laboratorio (cartelle 5 e 6) sono parte integrante: il lexer C++ basato su Flex e il mini-linguaggio TinyP coprono praticamente tutto il front end
 - Conviene leggere in parallelo la slide del docente (in italiano) e quelle tratte da EaC (in inglese) - coprono lo stesso argomento da angoli leggermente diversi
+
+## Punti chiave per l'orale
+Questo capitolo non contiene materia d'esame in senso stretto, ma la **mappa** su cui appoggiare tutto il resto. Serve a due cose concrete durante il colloquio:
+
+- **Saper enunciare la scaletta delle 9 macro-aree in ordine** (interpreti/compilatori → struttura → lessicale → sintattica → semantica statica → IR → generazione codice → middle end → interpretazione astratta). Ti dà un modo per aprire una risposta collocando l'argomento nella pipeline invece di partire a freddo dai dettagli, e ti permette di seguire il prof quando salta da una parte all'altra del programma
+- **Sapere quale formalismo abita ogni fase**: RE/automi nel lessicale, CFG/PDA nella sintassi, algoritmi ad-hoc nella semantica statica, punto fisso e approssimazione nel middle end. È la chiave di lettura di tutto il corso: ogni fase è una coppia *specifica dichiarativa* + *implementazione operativa*
+- **Citare correttamente il libro di testo**: Cooper & Torczon, *Engineering a Compiler*, 2ª ed., 2011 (EaC). Non è il Dragon Book, che è il riferimento classico ma non quello adottato
+- Le parti **teorica** e **pratica** del corso sono pensate in coppia: per ogni tecnica esiste uno strumento visto in esercitazione (Flex, Bison, TinyP, clang-tidy, `opt`). Avere pronto lo strumento corrispondente a ogni argomento è il modo più rapido di dimostrare di aver seguito

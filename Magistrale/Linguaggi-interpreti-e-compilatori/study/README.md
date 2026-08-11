@@ -4,6 +4,8 @@
 
 Punto d'ingresso unico per lo studio. I file sono numerati nell'ordine esatto in cui vanno affrontati, dal primo all'ultimo giorno.
 
+> **Per sapere cosa studiare oggi: [`00_CALENDARIO.md`](00_CALENDARIO.md)** - piano giorno per giorno dall'11 agosto al 10 settembre, con i file da aprire e le checkbox. Questo README resta la vista per blocchi tematici e il riferimento sul metodo.
+
 Tutto il lavoro del seminario (check `misc-no-printf`, run reali, confronto LLM, slide, script verbale, demo) è chiuso e **consumato al seminario del 23 giugno**: i blocchi 5, 6 e 7 qui sotto sono storia, non lavoro residuo. Restano i blocchi **1-4** (studio orale) e **8** (ripasso). Vedi `../TODO.md` per lo stato dettagliato.
 
 ---

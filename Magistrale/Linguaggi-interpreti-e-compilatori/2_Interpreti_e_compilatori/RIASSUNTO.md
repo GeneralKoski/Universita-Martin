@@ -40,7 +40,8 @@
 ## Libro adottato
 **Keith D. Cooper & Linda Torczon - *Engineering a Compiler*, 2nd ed., Morgan Kaufmann, 2011**
 
-## Punti da ricordare per l'orale
+## Punti chiave per l'orale
 - Distinzione netta interprete vs compilatore, e perché alla fine serve sempre *qualche* interprete (l'hardware)
-- Il significato pratico di "ottimizzante": euristico, non ottimale
-- Saper portare un esempio di approccio misto (Java/JVM/JIT è il caso classico)
+- Il significato pratico di "ottimizzante": euristico, non ottimale. **Mai dire "ottimo": si dice "migliore di prima"**
+- Saper portare un esempio di approccio misto (Java/JVM/JIT è il caso classico), e sapere che la distinzione compilato/interpretato è una proprietà dell'**implementazione**, non del linguaggio (esistono interpreti C++ come cling e compilatori per linguaggi "interpretati")
+- Le tre motivazioni per studiare compilatori, in ordine di peso: applicazione di teoria (RE/automi, CFG/PDA, punto fisso), algoritmi e strutture dati sofisticati, estensione di compilatori esistenti - non scriverne uno da zero

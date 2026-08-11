@@ -110,16 +110,20 @@ Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave pe
 
 Aggiornato al **2026-08-11** (martedì). **Metodi e Modelli è stato rinviato alla sessione invernale**: l'appello del 17 settembre non si sostiene, quindi i 30 giorni da qui all'orale sono **tutti per LIC**. Il calendario non è più condiviso.
 
-Con ~21-26h di lavoro residuo su 30 giorni il vincolo non è più il tempo. Il tempo liberato **non va diluito**: va investito nella pratica di laboratorio (Step 2 di `study_method/STUDY_PLAN.md`), che nelle versioni precedenti del piano era la prima cosa a cadere. È quella che dà gli esempi concreti da citare all'orale.
+Con ~21-26h di lavoro residuo su 30 giorni il vincolo non è più il tempo. Il tempo liberato **non va diluito**: va investito nella pratica di laboratorio (Step 2 di `study_method/STUDY_PLAN.md`), che nelle versioni precedenti del piano era la prima cosa a cadere, e nel parsing, che era l'argomento coperto peggio. Totale rivisto: **~32h**.
+
+> **Piano giorno per giorno: [`study/00_CALENDARIO.md`](study/00_CALENDARIO.md).** È la fonte unica per "cosa apro oggi", con le checkbox da spuntare. Qui sotto solo la vista settimanale.
 
 ```
-11 - 17 ago  : studio orale step 1-6 (intro, interpreti, struttura, lexer, Flex, parsing)   ~6-7h
-18 - 24 ago  : studio orale step 7-10 (context-sensitive + TinyP, IR, middle end, astratta) ~8-9h
-25 - 31 ago  : PRATICA laboratorio (lexer C++, TinyP 4 binari, LLVM playground) + cheatsheet a memoria  ~6h
-1 - 6 set    : 57 domande a voce (due passaggi, il 2° a distanza di un giorno) + domande incrocio  ~6-7h
-7 - 9 set    : ripasso intensivo (solo "Punti chiave" + glossario, niente cose nuove)  ~2h
+11 - 17 ago  : intro + struttura + lexer + Flex, poi parsing I-II    ~8h
+18 - 24 ago  : parsing III, context-sensitive, IR, procedure abstraction, OOL, code shape, LVN/dominatori  ~11h
+25 - 31 ago  : dataflow, interpretazione astratta, laboratorio, cheatsheet a memoria   ~11h
+1 - 6 set    : 57 domande a voce (due passaggi) + domande incrocio + simulazione   ~10h
+7 - 9 set    : ripasso intensivo (solo "Punti chiave" + glossario, niente cose nuove)   ~4.5h
 10 set (gio) : ORALE LIC
 ```
+
+⚠️ **Materiale mancante da scaricare da Elly entro sabato 15 agosto:** le due sezioni **Analisi sintattica** (slide EaC 08-14) ed **Esercitazione su analisi sintattica** (`Bison.pdf` + esempi di parser flex & bison) non sono mai state scaricate. Vanno in `5b_Analisi_sintattica/` e `5c_Esercitazione_su_analisi_sintattica/`. Dettagli in `study/00_CALENDARIO.md`. Verificato l'11/08: tutto il resto del materiale è integro (38 PDF/slide controllati, nessun file corrotto o troncato).
 
 **Vincoli da tenere a mente:**
 - Il seminario è già in cassaforte e pesa il 30%: l'orale sposta il restante 70%, quindi non c'è nulla da recuperare, solo da difendere.
