@@ -22,6 +22,7 @@ Per il dettaglio del lavoro tecnico già fatto vedi `Martin/1_clang-tidy_custom_
 - **Confronto LLM reale completato (2026-05-05)**: 6 snippet × 2 modelli × 2 chat fresche = 24 run. Wow moment confermato sullo snippet 06 (overload resolution): clang-tidy 100% deterministico, LLM 50/50 sul finding chiave. Vedi `Martin/1_clang-tidy_custom_check/comparison/COMPARISON.md`.
 - **Slide v1 (2026-05-05)**: `SLIDES.md` riscritto con frontmatter Marp + tema custom, esportato in `SLIDES.pdf` 13 pagine. Diagramma architettura inline a 7 box colorati. Resta solo un pass di review a freddo.
 - **Script verbale (2026-05-05)**: `Martin/1_clang-tidy_custom_check/SCRIPT.md` con frasi pivot tecnico-fluide per ogni slide, apertura/chiusura forte (~15s ognuna), transizioni esplicite, Q&A con 6 domande probabili + risposte preparate, note operative.
+- **Recupero materiale mancante (2026-08-11)**: confronto con l'inventario completo di Elly via API. Due sezioni del corso non erano mai state scaricate → nuove cartelle `5b_Analisi_sintattica/` (slide EaC 08-14) e `5c_Esercitazione_su_analisi_sintattica/` (`Bison.pdf` + 6 parser compilabili), entrambe con `RIASSUNTO.md`. Aggiunto al cheatsheet il blocco parsing che mancava del tutto (FIRST/FOLLOW, tabella LL(1), item LR(1), conflitti, precedenza Bison), 5 domande nuove (57 → 62), 12 voci di glossario. Nient'altro manca: le slide EaC 13, 19, 21 e 28 su Elly non esistono.
 - **Materiali studio orale (2026-05-05)**: audit completo dei 9 RIASSUNTO + `notes/`. Chiuse lacune bloccanti per orale 70% (era assente l'analisi sintattica → nuovo `notes/08_parsing.md` ~670 righe; corretti errori in Live equation, Galois connection, dominator init; aggiunte sezioni in IR (GEP, invoke, conversioni, refcount, access link), Middle End (Available Expr+GCSE, Very Busy+hoisting, IV+strength reduction, mem2reg/SROA/instcombine/LICM), Interpretazione Astratta (Knaster-Tarski, Kleene, soundness con dim, esempio Intervals)). Glossario esteso, 13 nuove domande (44 → 57).
 
 ---
@@ -50,11 +51,12 @@ Materiale del seminario (demo, slide, script verbale). Non serve più per l'oral
 ### ~~5. Script verbale~~ ✅ FATTO 2026-05-05
 `Martin/1_clang-tidy_custom_check/SCRIPT.md`: frasi pivot tecnico-fluide per ogni slide, apertura/chiusura forte, transizioni esplicite, Q&A con 6 domande probabili + risposte preparate, note operative. Usato al seminario.
 
-### 6. Studio orale dei 9 capitoli (~12-14h)
-Seguire `study_method/STUDY_PLAN.md`:
+### 6. Studio orale degli 11 capitoli (~17-19h)
+Seguire `study/00_CALENDARIO.md` (o `study_method/STUDY_PLAN.md` per il metodo):
 - Lez 1-3 (Intro, Interpreti vs Compilatori, Struttura): 1.5h
 - Lez 4-5 (Analisi lessicale, Flex): 2h
-- **Parsing (analisi sintattica) - `notes/08_parsing.md`** (CFG, LL(1), LR(1), conflitti, LALR/Bison): 2h. Lacuna chiusa nel 2026-05-05; non c'è una cartella di lezione dedicata, il file `notes/08_parsing.md` è la fonte unica.
+- **Parsing (analisi sintattica): 4h.** Ordine: prima `notes/08_parsing.md` (sintesi italiana, dà la struttura), poi `5b_Analisi_sintattica/` (slide EaC 08-14, recuperate da Elly l'11/08/2026)
+- **Esercitazione Bison - `5c_Esercitazione_su_analisi_sintattica/`: 1.5h.** `Bison.pdf` + i sei parser `calc-*`; il confronto `calc-2` vs `calc-2-prec` è la domanda d'orale su Bison
 - Lez 6 (Analisi dipendente da contesto, TinyP): 2h
 - Lez 7 (IR, LLVM, GEP, code shape, invoke, conversioni, access link): 2-3h
 - Lez 8 (Middle end, dataflow, Available/Very Busy, induction var, LLVM passes): 2-3h
@@ -62,18 +64,19 @@ Seguire `study_method/STUDY_PLAN.md`:
 
 Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave per l'orale" → rispondi a voce alle domande.
 
-### 7. Memorizzazione cheatsheet (~3h)
+### 7. Memorizzazione cheatsheet (~3.5h)
 `notes/02_cheatsheet.md`:
 - Equazioni delle 4 DFA classiche (Live, Reaching, Available, Very Busy) + tabella riepilogo direzione/meet/init/fixpoint
 - Algoritmo LVN
 - Algoritmo Hopcroft (worklist) con definizione precisa di `δ⁻¹(s, c)`
-- FIRST/FOLLOW (algoritmo) + tabella domini astratti
+- **Blocco parsing** (aggiunto l'11/08/2026, prima mancava del tutto): algoritmo FIRST/FOLLOW, regola di riempimento della tabella LL(1) e condizione di LL(1)-ità, item LR(1) con `closure`/`goto`, tabella dei due conflitti, direttive di precedenza Bison e confronto grammatica stratificata vs piatta
+- Tabella domini astratti
 - Formula GEP, Galois connection, Knaster-Tarski/Kleene
 - Calling convention, activation record, vtable
 
-### 8. 57 domande tipo (~3-4h)
-`notes/04_domande_tipo.md` (era 44, +13 dopo l'audit del 2026-05-05):
-- Sezioni: Introduzione, Front end, **Analisi sintattica** (nuova), IR e back end, Middle end, Interpretazione astratta, Strumenti, Trick
+### 8. 62 domande tipo (~4h)
+`notes/04_domande_tipo.md` (44 iniziali, +13 dopo l'audit del 2026-05-05, +5 sull'esercitazione Bison l'11/08/2026):
+- Sezioni: Introduzione, Front end, Analisi sintattica, IR e back end, Middle end, Interpretazione astratta, Strumenti, Trick, **Esercitazione Bison** (nuova)
 - Risposta a voce, cronometrando 2-3 min ognuna
 - Le 13 domande nuove hanno traccia di risposta - usala come autovalutazione (rispondi prima, poi confronta)
 - Per quelle su cui esiti: torna al RIASSUNTO o al PDF
@@ -85,7 +88,7 @@ Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave pe
 - Middle end Clang vs interpretazione astratta
 
 ### 10. Ripasso intensivo (~2h, sera prima dell'orale)
-- Solo "Punti chiave per l'orale" dei 9 RIASSUNTO
+- Solo "Punti chiave per l'orale" degli 11 RIASSUNTO
 - Glossario `notes/03_glossario.md`
 - **Niente cose nuove**
 
@@ -101,16 +104,18 @@ Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave pe
 | Audit materiali studio | ✅ fatto | - |
 | Demo cronometrata + slide + script | ✅ consumato al seminario | - |
 | Seminario (30% del voto) | ✅ svolto 23/06/2026 | - |
-| Studio orale 9 capitoli + parsing | ⏳ | 12-14h |
-| Cheatsheet + 57 domande + incrocio | ⏳ | 7-10h |
-| Ripasso intensivo | ⏳ | 2h |
-| **Totale residuo (solo orale)** | | **~21-26h** |
+| Recupero materiale mancante da Elly | ✅ fatto 11/08/2026 | - |
+| Studio orale 11 capitoli (parsing e Bison inclusi) | ⏳ | 17-19h |
+| Laboratorio (lexer, Bison, TinyP, LLVM) | ⏳ | 4h |
+| Cheatsheet + 62 domande + incrocio + simulazione | ⏳ | 11.5h |
+| Ripasso intensivo | ⏳ | 4.5h |
+| **Totale residuo (solo orale)** | | **~32h** |
 
 ## 📅 Pianificazione verso il 10 settembre
 
 Aggiornato al **2026-08-11** (martedì). **Metodi e Modelli è stato rinviato alla sessione invernale**: l'appello del 17 settembre non si sostiene, quindi i 30 giorni da qui all'orale sono **tutti per LIC**. Il calendario non è più condiviso.
 
-Con ~21-26h di lavoro residuo su 30 giorni il vincolo non è più il tempo. Il tempo liberato **non va diluito**: va investito nella pratica di laboratorio (Step 2 di `study_method/STUDY_PLAN.md`), che nelle versioni precedenti del piano era la prima cosa a cadere, e nel parsing, che era l'argomento coperto peggio. Totale rivisto: **~32h**.
+Il lavoro residuo era stimato in ~21-26h e su 30 giorni il tempo non è più il vincolo. Il margine **non va diluito**: è stato investito in due cose che nelle versioni precedenti del piano erano le prime a cadere - la pratica di laboratorio (Step 2 di `study_method/STUDY_PLAN.md`) e il parsing, che era l'argomento coperto peggio e che dall'11/08 ha finalmente il materiale del corso. Totale rivisto: **~32h**.
 
 > **Piano giorno per giorno: [`study/00_CALENDARIO.md`](study/00_CALENDARIO.md).** È la fonte unica per "cosa apro oggi", con le checkbox da spuntare. Qui sotto solo la vista settimanale.
 
@@ -118,7 +123,7 @@ Con ~21-26h di lavoro residuo su 30 giorni il vincolo non è più il tempo. Il t
 11 - 17 ago  : intro + struttura + lexer + Flex, poi parsing I-II    ~8h
 18 - 24 ago  : parsing III, context-sensitive, IR, procedure abstraction, OOL, code shape, LVN/dominatori  ~11h
 25 - 31 ago  : dataflow, interpretazione astratta, laboratorio, cheatsheet a memoria   ~11h
-1 - 6 set    : 57 domande a voce (due passaggi) + domande incrocio + simulazione   ~10h
+1 - 6 set    : 62 domande a voce (due passaggi) + domande incrocio + simulazione   ~10h
 7 - 9 set    : ripasso intensivo (solo "Punti chiave" + glossario, niente cose nuove)   ~4.5h
 10 set (gio) : ORALE LIC
 ```
@@ -144,7 +149,8 @@ Con ~21-26h di lavoro residuo su 30 giorni il vincolo non è più il tempo. Il t
 - **Confronto LLM completo:** `Martin/1_clang-tidy_custom_check/comparison/COMPARISON.md` + `comparison/llm_responses/`
 - Programma corso e modalità d'esame: vedi cartelle `1_*` ... `9_*`
 - Metodo di studio: `study_method/STUDY_PLAN.md`
-- **Cheatsheet, glossario, parsing, dataflow, 57 domande:** `notes/` (indice in `notes/00_INDEX.md`)
+- **Cheatsheet, glossario, parsing, dataflow, 62 domande:** `notes/` (indice in `notes/00_INDEX.md`)
+- **Slide e esercitazione sull'analisi sintattica:** `5b_Analisi_sintattica/` e `5c_Esercitazione_su_analisi_sintattica/` (recuperate da Elly l'11/08/2026)
 
 ---
 

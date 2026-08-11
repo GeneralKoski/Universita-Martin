@@ -1,6 +1,8 @@
-# 01 - Studio orale 9 capitoli + parsing
+# 01 - Studio orale 11 capitoli
 
-Stima: **12-14h**, distribuite su 4-6 sessioni da 2-3h.
+Stima: **17-19h**, distribuite su 6-8 sessioni da 2-3h.
+
+Erano 9 capitoli per 12-14h finché il parsing era coperto solo da `notes/08_parsing.md`. Dall'11/08/2026 sono 11, con le due cartelle recuperate da Elly.
 
 ## Metodo (per ogni lezione)
 
@@ -54,4 +56,6 @@ Da `notes/01_esame.md`:
 Alla fine di questo blocco devi essere in grado di:
 - Descrivere a voce l'intera pipeline di compilazione di un piccolo programma C
 - Disegnare 2-3 esempi RE → NFA → DFA → DFA minimo
-- Rispondere alle "Punti chiave per l'orale" di tutti e 9 i RIASSUNTO senza esitare
+- Rispondere alle "Punti chiave per l'orale" di tutti e 11 i RIASSUNTO senza esitare
+- Calcolare FIRST/FOLLOW e riempire una tabella LL(1) su carta, senza guardare
+- Spiegare le due strade alla precedenza degli operatori citando `calc-2` e `calc-2-prec`

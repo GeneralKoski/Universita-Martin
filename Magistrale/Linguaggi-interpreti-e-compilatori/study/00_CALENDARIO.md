@@ -153,7 +153,8 @@ diff sq.ll sq.opt.ll
 - [ ] Rileggere `Martin/1_clang-tidy_custom_check/RESULTS.md`: il tuo check è un esempio concreto di front end di Clang + AST matcher da tirare fuori all'orale
 
 ### Domenica 30 - cheatsheet parte 1, a memoria (2h)
-- [ ] `notes/02_cheatsheet.md`: le 4 equazioni dataflow con tabella direzione/meet/init/fixpoint, Hopcroft, LVN, FIRST/FOLLOW
+- [ ] `notes/02_cheatsheet.md`: le 4 equazioni dataflow con tabella direzione/meet/init/fixpoint, Hopcroft, LVN
+- [ ] Blocco parsing del cheatsheet (aggiunto l'11/08): algoritmo FIRST/FOLLOW, regola di riempimento della tabella LL(1), item LR(1) con `closure`/`goto`, tabella dei conflitti, direttive di precedenza Bison
 
 ### Lunedì 31 - cheatsheet parte 2 (1.5h)
 - [ ] Formula GEP, Galois connection, Knaster-Tarski/Kleene, calling convention, activation record, vtable
@@ -163,7 +164,7 @@ diff sq.ll sq.opt.ll
 
 ## Settimana 4 (1-6 settembre) - domande a voce
 
-Le 57 domande stanno in `notes/04_domande_tipo.md`. Rispondere **a voce**, cronometrando 2-3 minuti ognuna. Le domande aggiunte nell'audit del 05/05 hanno la traccia di risposta: rispondi prima, confronta dopo.
+Le 62 domande stanno in `notes/04_domande_tipo.md`. Rispondere **a voce**, cronometrando 2-3 minuti ognuna. Le domande con traccia di risposta (quelle dell'audit del 05/05 e le 58-62 sull'esercitazione Bison) vanno usate come autovalutazione: rispondi prima, confronta dopo.
 
 ### Martedì 1 (1.5h)
 - [ ] Domande **1-19**: introduzione e struttura, front end, analisi sintattica
@@ -172,7 +173,7 @@ Le 57 domande stanno in `notes/04_domande_tipo.md`. Rispondere **a voce**, crono
 - [ ] Domande **20-41**: IR e back end, middle end
 
 ### Giovedì 3 (1.5h)
-- [ ] Domande **42-57**: interpretazione astratta, strumenti, domande trick
+- [ ] Domande **42-62**: interpretazione astratta, strumenti, domande trick, esercitazione Bison
 
 ### Venerdì 4 (1.5h)
 - [ ] Secondo passaggio **solo** sulle domande in cui hai esitato, a un giorno di distanza dal primo
@@ -189,7 +190,7 @@ Le 57 domande stanno in `notes/04_domande_tipo.md`. Rispondere **a voce**, crono
 ## Finale (7-10 settembre)
 
 ### Lunedì 7 (1.5h)
-- [ ] Solo le sezioni "Punti chiave per l'orale" dei 9 `RIASSUNTO.md`
+- [ ] Solo le sezioni "Punti chiave per l'orale" degli 11 `RIASSUNTO.md`
 - [ ] `notes/05_pipeline_compilatore.md` per il quadro d'insieme
 
 ### Martedì 8 (1h)

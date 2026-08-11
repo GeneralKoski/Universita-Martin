@@ -32,6 +32,80 @@ Forme di parsing:
 - **LR(k):** bottom-up shift-reduce, più potente (LR(1) ⊃ LL(1))
 - **LALR(1):** quello di Yacc/Bison; tabelle più piccole di LR(1) canonico
 
+**Inclusioni:** `LL(1) ⊊ LALR(1) ⊊ LR(1) ⊊ CFG non ambigue ⊊ CFG`
+
+## FIRST e FOLLOW (algoritmo)
+`FIRST(α)` = terminali che possono iniziare una derivazione di `α`, più `ε` se `α ⇒* ε`.
+
+```
+FIRST(a)     = {a}                          per a terminale
+FIRST(ε)     = {ε}
+FIRST(X₁…Xₙ) = FIRST(X₁) \ {ε}
+               ∪ FIRST(X₂) \ {ε}   se ε ∈ FIRST(X₁)
+               ∪ …                  finché ε ∈ FIRST(Xᵢ)
+               ∪ {ε}                se ε ∈ FIRST(Xᵢ) per ogni i
+```
+
+`FOLLOW(A)` = terminali che possono seguire `A` in una derivazione. Punto fisso su:
+```
+FOLLOW(S) ⊇ {$}                                     S = simbolo iniziale
+A → α B β  ⇒  FOLLOW(B) ⊇ FIRST(β) \ {ε}
+A → α B    ⇒  FOLLOW(B) ⊇ FOLLOW(A)
+A → α B β  con ε ∈ FIRST(β)  ⇒  FOLLOW(B) ⊇ FOLLOW(A)
+```
+⚠️ `ε` sta in FIRST, **mai** in FOLLOW. FOLLOW contiene `$`, FIRST no.
+
+## Tabella di parsing LL(1)
+Per ogni produzione `A → α`:
+- `M[A, a] = A → α` per ogni `a ∈ FIRST(α)`
+- se `ε ∈ FIRST(α)`, anche `M[A, b] = A → α` per ogni `b ∈ FOLLOW(A)`
+
+**È LL(1) ⇔ nessuna cella contiene due produzioni**, cioè per ogni `A → α | β`:
+`FIRST(α) ∩ FIRST(β) = ∅` e, se `ε ∈ FIRST(α)`, `FIRST(β) ∩ FOLLOW(A) = ∅`.
+
+Prerequisiti sulla grammatica: **eliminare la ricorsione sinistra**, **fattorizzare a sinistra**.
+
+## Item LR(1) e costruzione degli stati
+Item = `[A → α · β, a]`: ho già riconosciuto `α`, mi aspetto `β`, con lookahead `a`.
+
+```
+closure(I): finché cambia, per ogni [A → α·Bβ, a] ∈ I e ogni B → γ
+              aggiungi [B → ·γ, b] per ogni b ∈ FIRST(βa)
+goto(I, X) = closure({ [A → αX·β, a] | [A → α·Xβ, a] ∈ I })
+```
+Stato iniziale: `closure({[S' → ·S, $]})`. **ACTION**: shift su terminale, reduce quando il dot è in fondo e il lookahead corrisponde, accept su `[S' → S·, $]`. **GOTO**: transizioni su non-terminali.
+
+**Handle** = sottostringa riducibile nella derivazione rightmost al contrario. Il parser LR riconosce handle.
+
+## Conflitti
+| Conflitto | Significato | Rimedio |
+|---|---|---|
+| shift-reduce | lo stato ammette sia shift sia reduce sullo stesso lookahead | riscrivere la grammatica, o direttive di precedenza (convenzione: **vince lo shift**) |
+| reduce-reduce | due riduzioni possibili nello stesso stato | quasi sempre difetto strutturale: riscrivere |
+
+Esempio canonico di shift-reduce: **dangling else**. LALR(1) può introdurre nuovi reduce-reduce rispetto a LR(1), **mai** nuovi shift-reduce.
+
+## Bison: precedenza e associatività
+Dichiarate dopo `%token`, **precedenza crescente dall'alto in basso**:
+```
+%left  '+' '-'
+%left  '*' '/'
+%right '^'
+%nonassoc UMINUS       // token fittizio, mai prodotto dal lexer
+...
+expr: '-' expr %prec UMINUS   // forza qui la precedenza di UMINUS
+```
+Risoluzione: precedenza produzione > lookahead → **reduce**; minore → **shift**; uguale → decide l'associatività.
+
+**Due strade per la precedenza**, da saper confrontare:
+| | Grammatica stratificata (`expr`/`term`/`factor`) | Grammatica piatta + direttive |
+|---|---|---|
+| Ambiguità | non ambigua per costruzione | ambigua, conflitti risolti fuori dalla grammatica |
+| Conflitti Bison | zero | shift-reduce risolti da `%left`/`%right` |
+| Costo | un non-terminale per livello, albero più profondo | leggibile, facile da estendere |
+
+Esempi eseguibili: `5c_Esercitazione_su_analisi_sintattica/calc-2` (stratificata) vs `calc-2-prec` (piatta).
+
 ## Disambiguazione lessicale
 1. **Lessema più lungo**
 2. **Priorità per ordine** delle regole

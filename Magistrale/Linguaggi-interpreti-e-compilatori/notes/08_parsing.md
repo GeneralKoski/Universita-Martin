@@ -2,6 +2,12 @@
 
 L'analisi sintattica è la fase del compilatore che, a partire dal flusso di token prodotto dal lexer, costruisce un albero di derivazione (o direttamente un AST) verificando che la sequenza appartenga al linguaggio descritto da una grammatica context-free. È il secondo stadio della pipeline (vedi `05_pipeline_compilatore.md`) ed è strettamente legata all'analisi semantica che la segue (vedi `06_dataflow.md` per il post-processing su CFG).
 
+> **Materiale del corso.** Questo file è nato il 05/05/2026 come fonte unica, quando le due sezioni Elly sull'analisi sintattica non erano ancora state scaricate. Dall'11/08/2026 esistono nel repo:
+> - [`../5b_Analisi_sintattica/`](../5b_Analisi_sintattica/RIASSUNTO.md) - slide EaC 08-14 (pptx + pdf `-1up`)
+> - [`../5c_Esercitazione_su_analisi_sintattica/`](../5c_Esercitazione_su_analisi_sintattica/RIASSUNTO.md) - `Bison.pdf` + 6 parser compilabili
+>
+> **Ordine di lettura: questo file per primo**, è la sintesi in italiano che dà la struttura; le slide dopo, per il dettaglio. Il riassunto di `5b_` contiene la tabella di corrispondenza slide → sezioni di questo file.
+
 ---
 
 ## 1. CFG, derivazioni, alberi
@@ -669,5 +675,10 @@ Concettualmente è il meccanismo dietro `%left/%right` di Bison applicato a una 
 
 - **Pipeline (`05_pipeline_compilatore.md`):** parsing è la fase 2 (dopo lexing, prima di analisi semantica). Output: AST (o parse tree decorato).
 - **Bison (`07_strumenti.md`):** è la realizzazione concreta di un parser LALR(1); le azioni semantiche tipicamente costruiscono l'AST nodo per nodo.
+- **Esercitazione (`../5c_Esercitazione_su_analisi_sintattica/`):** i sei parser d'esempio rendono eseguibile quasi tutto questo file. Corrispondenze dirette:
+  - §3 e §7 (precedenza) → `calc-2` la codifica nella struttura della grammatica, `calc-2-prec` la ottiene con `%left`/`%right`/`%prec` su una grammatica piatta e ambigua. Il confronto fra i due è la domanda d'orale su Bison
+  - §4 e §5 (item LR, tabelle, conflitti) → `calc.output`, generato dai Makefile con `--report=all`: contiene stati, item set e l'elenco dei conflitti di quella grammatica specifica
+  - §2 (espressività LL vs LR) → `Wait/`, grammatica costruita perché la scelta fra due alternative richieda un prefisso di `(` arbitrariamente lungo: nessun LL(k), sì LR
+  - Capitolo 2 del corso (interprete vs compilatore) → `calc-3` traduce infissa → RPN, `calc-3-rpn` interpreta RPN
 - **Analisi semantica:** opera sull'AST prodotto qui (type checking, name resolution). Alcune ambiguità (es. `T * x` in C) vengono risolte solo in questa fase tramite la tabella dei simboli.
 - **Data-flow (`06_dataflow.md`):** opera sul CFG, derivato a sua volta dall'AST/IR.

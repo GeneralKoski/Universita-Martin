@@ -69,6 +69,9 @@ Esempio: se prendi 27 al seminario e 30 all'orale, il voto pesato è circa **29.
 ## Argomenti caldi (probabili all'orale)
 - Specifica vs implementazione del lexer (RE vs DFA), costruzione DFA da RE (Thompson + subset + Hopcroft)
 - CFG, parsing top-down/bottom-up, derivazione, ambiguità
+- FIRST/FOLLOW e tabella LL(1) da calcolare a mano; item LR(1), `closure`/`goto`, tabelle ACTION/GOTO
+- Conflitti shift-reduce e reduce-reduce, dangling else, LALR(1) vs LR(1) canonico
+- **Bison**: le due strade per la precedenza (grammatica stratificata vs `%left`/`%right`), token fittizi e `%prec`
 - Attribute grammars (sintetizzati vs ereditati) e perché in pratica vince l'ad-hoc SDT
 - Tipi di IR (strutturale/lineare/ibrida), 3-address code, SSA
 - Procedure abstraction: activation record, calling convention, run-time vs compile-time
@@ -76,7 +79,7 @@ Esempio: se prendi 27 al seminario e 30 all'orale, il voto pesato è circa **29.
 - Local Value Numbering, dominator trees, dataflow (Live Variables come caso canonico)
 - Punti fissi, monotonia, lattice → ponte con interpretazione astratta
 - Cosa è la Galois connection e perché serve (interpretazione astratta)
-- Esempi concreti di Flex (esercitazione lexer C++) e di interprete/AST (TinyP)
+- Esempi concreti di Flex (esercitazione lexer C++), di Bison (i sei parser `calc-*`) e di interprete/AST (TinyP)
 
 ## Argomenti su cui spesso ci si "incarta"
 - **Compile-time vs run-time:** sapere chiaramente cosa esiste solo in fase di compilazione (parse tree, symbol table compilatore, AST) e cosa solo a run-time (activation record, vtable, heap)

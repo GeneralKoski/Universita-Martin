@@ -84,6 +84,15 @@
 | Fattorizzazione sinistra | Left factoring | Per rendere una grammatica LL(1) |
 | Discesa ricorsiva | Recursive descent | Implementazione manuale di LL(k) |
 | Token fittizio | Pseudo-token / phony token | In Bison con `%prec` |
+| Fusione di stati con stesso core | State merging (LALR) | LALR(1) = LR(1) con core uguali fusi; può creare reduce-reduce, mai shift-reduce |
+| Nucleo di uno stato | Core / kernel | Item set ignorando i lookahead |
+| Else pendente | Dangling else | Shift-reduce canonico; per convenzione vince lo shift |
+| Associatività | Associativity | `%left` / `%right` / `%nonassoc` in Bison |
+| Grammatica stratificata | Layered / stratified grammar | Precedenza codificata nella struttura (`expr`/`term`/`factor`) |
+| Azione semantica | Semantic action | Il blocco `{ … }` di una produzione Bison |
+| Unione degli attributi | `%union` | Tipo degli attributi dei simboli (`$$`, `$1`) |
+| Recupero dall'errore | Error recovery | Token speciale `error` + `yyerrok` |
+| File diagnostico del parser | `parser.output` / `calc.output` | Con `--report=all`: stati, item, tabelle, conflitti |
 
 ## Middle end (analisi avanzate)
 | Italiano | English | Note |

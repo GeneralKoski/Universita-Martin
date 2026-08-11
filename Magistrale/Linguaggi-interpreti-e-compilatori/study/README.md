@@ -14,15 +14,15 @@ Tutto il lavoro del seminario (check `misc-no-printf`, run reali, confronto LLM,
 
 | # | Blocco | Ore | File |
 |---|---|---|---|
-| 1 | Studio orale 9 capitoli + parsing | 12-14h | [`01_studio_orale/`](01_studio_orale/README.md) |
-| 2 | Cheatsheet a memoria | 3h | [`02_cheatsheet.md`](02_cheatsheet.md) |
-| 3 | 57 domande tipo a voce (2-3 min ognuna) | 3-4h | [`03_domande_tipo.md`](03_domande_tipo.md) |
+| 1 | Studio orale 11 capitoli (parsing e Bison inclusi) | 17-19h | [`01_studio_orale/`](01_studio_orale/README.md) |
+| 2 | Cheatsheet a memoria | 3.5h | [`02_cheatsheet.md`](02_cheatsheet.md) |
+| 3 | 62 domande tipo a voce (2-3 min ognuna) | 4h | [`03_domande_tipo.md`](03_domande_tipo.md) |
 | 4 | Domande incrocio | 2-3h | [`04_domande_incrocio.md`](04_domande_incrocio.md) |
 | 5 | ✅ Demo cronometrata + video backup | - | [`05_demo_cronometrata.md`](05_demo_cronometrata.md) |
 | 6 | ✅ Pratica voce alta script | - | [`06_pratica_script.md`](06_pratica_script.md) |
 | 7 | ✅ Mail al prof - seminario **svolto 23 giu 2026** | - | [`07_mail_prof.md`](07_mail_prof.md) |
 | 8 | Ripasso intensivo sera prima orale | 2h | [`08_ripasso_intensivo.md`](08_ripasso_intensivo.md) |
-| | **Totale residuo** | **~21-26h** | |
+| | **Totale residuo** | **~32h** | |
 
 ---
 

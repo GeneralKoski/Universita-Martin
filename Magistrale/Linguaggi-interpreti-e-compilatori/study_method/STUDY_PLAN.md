@@ -32,12 +32,16 @@ Procedi in ordine, una cartella alla volta. Per ognuna:
 | 3 | `3_Struttura_del_compilatore/` | 1h | Overview front/middle/back end |
 | 4 | `4_Analisi_lessicale/` | 2h | RE, NFA, DFA, Hopcroft, Flex |
 | 5 | `5_Esercitazione_su_analisi_lessicale/` | 1h | **Apri il `lexer-cpp.ll` e leggilo** |
+| 5b | `5b_Analisi_sintattica/` | 4h | ⚠️ **Prima** `notes/08_parsing.md`, poi le slide. CFG, LL(1), LR(1), conflitti, LALR |
+| 5c | `5c_Esercitazione_su_analisi_sintattica/` | 1.5h | `Bison.pdf` + i sei parser `calc-*` |
 | 6 | `6_Analisi_dipendente_da_contesto/` | 2h | AG, ad-hoc SDT, type checking + TinyP |
 | 7 | `7_Rappresentazione_intermedia_(IR)/` | 2h | IR, LLVM, procedure abstraction, code shape |
 | 8 | `8_Il_middle_end_analisi_e_ottimizzazioni/` | 2h | LVN, dominators, dataflow |
 | 9 | `9_Cenni_su_interpretazione_astratta/` | 1.5h | Cousot, Galois, widening |
 
-**Totale primo passaggio:** ~12 ore. Distribuiscile su 4-6 sessioni di 2-3 ore.
+**Totale primo passaggio:** ~17 ore. Distribuiscile su 6-8 sessioni di 2-3 ore.
+
+Le cartelle `5b_` e `5c_` sono state aggiunte l'11/08/2026, recuperando da Elly le due sezioni sull'analisi sintattica che non erano mai state scaricate. Prima di allora il parsing era coperto solo da `notes/08_parsing.md`.
 
 ---
 
@@ -54,6 +58,18 @@ echo 'int main() { return 0; }' | ./lexer-cpp
 - Modifica una regola, ricompila, osserva il cambiamento
 - Aggiungi una keyword tua e prova
 - Spiegati a voce ogni sezione del `lexer-cpp.ll`
+
+### 2a-bis. Parser Bison (cartella 5c)
+```bash
+cd 5c_Esercitazione_su_analisi_sintattica/calc-2
+make
+echo "2+3*4" | ./calc        # eval: 14
+```
+- **Apri `calc.output`**: il Makefile passa `--report=all`, quindi trovi stati LR, item set, tabelle e conflitti di questa grammatica. È la teoria di `5b_` resa visibile
+- Fai un `diff` fra `calc-2/calc.yy` e `calc-2-prec/calc.yy`: stesso linguaggio, precedenza ottenuta in due modi opposti. È il confronto che vale la domanda d'orale su Bison
+- `cd ../Wait && make` e guarda se Bison segnala conflitti: grammatica costruita per mostrare che LR gestisce casi che nessun LL(k) gestisce
+
+⚠️ Serve **bison**, che sulla macchina Windows non è installato.
 
 ### 2b. TinyP (cartella 6)
 ```bash
@@ -98,7 +114,8 @@ Solo per gli argomenti su cui ti senti debole o vuoi padroneggiare meglio.
 |---|---|---|
 | Da RE a DFA | `4_Analisi_lessicale/05-Regular_Expressions_NFAs_DFAs.pptx` | EaC cap. 2 |
 | Hopcroft minimization | `07-DFA_Minimization.pptx` | Wikipedia |
-| Parsing LL/LR | EaC cap. 3 | (Dragon Book) |
+| Parsing LL/LR | `notes/08_parsing.md`, poi `5b_Analisi_sintattica/L10`-`L14` | EaC cap. 3, (Dragon Book) |
+| Bison in pratica | `5c_.../Bison.pdf` + i sei `calc-*` | `notes/07_strumenti.md` |
 | Attribute grammars | `L16ContextSensitive-1up.pdf` | EaC cap. 4 |
 | LLVM IR | `LLVM-IR.pdf` + LangRef ufficiale | https://llvm.org/docs/LangRef.html |
 | Procedure abstraction | EaC cap. 6, slide `18`/`20` | - |
@@ -114,17 +131,17 @@ Solo per gli argomenti su cui ti senti debole o vuoi padroneggiare meglio.
 ## 🔁 Step 4 - Ripasso (giorni prima dell'esame)
 
 ### Giorno -7
-- Rileggi tutti e 9 i `RIASSUNTO.md` saltando direttamente ai **"Punti chiave per l'orale"**
+- Rileggi tutti e 11 i `RIASSUNTO.md` saltando direttamente ai **"Punti chiave per l'orale"**
 - Tempo: 1.5h
 
 ### Giorno -5
 - Studia `notes/02_cheatsheet.md` riga per riga
 - Memorizza le **equazioni dataflow** (Live, Reaching, Available)
-- Memorizza l'**algoritmo Hopcroft** e il **LVN**
+- Memorizza l'**algoritmo Hopcroft**, il **LVN** e **FIRST/FOLLOW**
 - Tempo: 2h
 
 ### Giorno -3
-- `notes/04_domande_tipo.md`: prova a rispondere **a voce** alle 44 domande
+- `notes/04_domande_tipo.md`: prova a rispondere **a voce** alle 62 domande
 - Per ogni domanda su cui esiti, torna al `RIASSUNTO.md` corrispondente
 - Tempo: 3h
 
@@ -141,6 +158,8 @@ Solo per gli argomenti su cui ti senti debole o vuoi padroneggiare meglio.
 - Schema **front-end / middle-end / back-end** disegnabile a memoria
 - Pipeline **RE → NFA → DFA → DFA minimo** (con autori: Thompson, Rabin-Scott, Hopcroft)
 - Differenza **specifica vs implementazione** (RE vs DFA, CFG vs PDA)
+- **FIRST/FOLLOW** calcolati a mano e la regola di riempimento della tabella LL(1)
+- **Item LR(1)**, `closure`/`goto`, e perché LR accetta più grammatiche di LL
 - Equazioni **Live Variables** scritte correttamente
 - Definizione di **dominator** e algoritmo iterativo
 - Cos'è la **forma SSA** e a cosa serve la φ
@@ -148,6 +167,7 @@ Solo per gli argomenti su cui ti senti debole o vuoi padroneggiare meglio.
 
 ### Esempi concreti da citare
 - **Flex** (cartella 4-5): saper descrivere la struttura `.ll` e cosa fa `yylex`
+- **Bison** (cartella 5c): `calc-2` vs `calc-2-prec` per le due strade alla precedenza, `calc-3` + `calc-3-rpn` per la dualità compilatore/interprete, `calc.output` per aver visto item e conflitti veri
 - **TinyP** (cartella 6): visitor pattern, separazione lexer/parser/AST, collecting semantics
 - **Clang/LLVM**: pipeline reale, comandi (`clang -emit-llvm`, `opt`, `llc`)
 - **Astrée** (interpretazione astratta): caso d'uso industriale (Airbus)

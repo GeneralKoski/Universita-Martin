@@ -1,5 +1,7 @@
 # Possibili domande aperte all'orale
 
+**62 domande.** Le 1-57 sono l'insieme storico (44 iniziali + 13 dall'audit del 05/05/2026); le 58-62 sono state aggiunte l'11/08/2026 sull'esercitazione Bison, dopo il recupero del materiale mancante da Elly. Le domande con traccia di risposta fra parentesi vanno usate come autovalutazione: rispondi prima, confronta dopo.
+
 ## Introduzione & struttura
 1. Differenza tra **interprete** e **compilatore**. Esempi di linguaggi tipicamente interpretati, compilati e ad approccio misto.
 2. Cosa significa "**compilatore ottimizzante**"? È davvero ottimo?
@@ -65,6 +67,16 @@
 50. Cosa fa uno **start state** in Flex? Quando si usa? (Esempio: commenti multi-linea)
 51. Cosa fa **Bison** e in che relazione sta con Yacc? Cos'è `$$` e `$1`...`$n`?
 52. Pipeline di compilazione **Clang/LLVM**: dal `.c` al binario, passando per LLVM IR.
+
+## Esercitazione Bison (domande 58-62, aggiunte l'11/08/2026)
+
+Basate sui sei parser di `5c_Esercitazione_su_analisi_sintattica/`. Sono le domande più probabili se il prof parte dall'esercitazione invece che dalla teoria.
+
+58. La precedenza degli operatori si può ottenere in due modi: **stratificando la grammatica** o **con le direttive di Bison**. Illustrali entrambi e confrontane i costi. (Traccia: `calc-2` stratifica in `expr`/`term`/`factor` - la precedenza è strutturale, la grammatica è non ambigua per costruzione e Bison non segnala conflitti, ma serve un non-terminale per livello e l'albero è più profondo. `calc-2-prec` usa una grammatica piatta `expr: expr '+' expr | …`, che **è ambigua** e genera conflitti shift-reduce risolti da `%left '+' '-'`, `%left '*' '/'`, `%right '^'`: più leggibile ed estendibile, ma la disambiguazione vive fuori dalla grammatica.)
+59. Cos'è un **token fittizio** e perché il meno unario ne ha bisogno? (Traccia: `%prec UMINUS` su `'-' expr`. Senza, la produzione erediterebbe la precedenza del `-` binario, che è bassa, e `-x*y` verrebbe letto come `-(x*y)`. `UMINUS` è dichiarato ma il lexer non lo produce mai.)
+60. Se ti dessi una grammatica e un `parser.output` generato da Bison, cosa ci leggeresti dentro? (Traccia: stati LR con i loro item set, tabelle ACTION/GOTO, transizioni, ed **elenco dei conflitti** con lo stato in cui capitano. È il file da guardare per capire *perché* Bison si lamenta, invece di tirare a indovinare.)
+61. Costruiscimi un esempio di grammatica gestibile da un parser LR ma da nessun LL(k), e spiega perché. (Traccia: `S → A | B`, `A → a | ( A )`, `B → b | ( B >`. Per scegliere fra `A` e `B` bisogna superare un prefisso di `(` di lunghezza arbitraria e vedere se arriva `)` o `>`: nessun lookahead fisso basta. LR non deve scegliere in anticipo, rinvia la decisione al momento della riduzione. È l'esempio `Wait/` dell'esercitazione.)
+62. Con la stessa grammatica, come ottieni un interprete e come un compilatore? (Traccia: cambiano solo le **azioni semantiche**. `calc-2` valuta durante la riduzione (`$$ = $1 + $3`) ed è un interprete; `calc-3` emette la forma postfissa e è un compilatore infissa → RPN; `calc-3-rpn` è poi l'interprete del linguaggio target. La grammatica descrive la sintassi, la semantica sta nelle azioni.)
 
 ## Domande "trick"
 53. Si può scrivere un compilatore senza il middle end? (Sì, si chiama compilatore a 2 passi.)

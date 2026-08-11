@@ -48,12 +48,16 @@ int main() { while(yylex()); return 0; }
 
 ## Bison (parser generator)
 
+> **Materiale del corso:** `5c_Esercitazione_su_analisi_sintattica/Bison.pdf` (slide del docente) e sei parser compilabili nella stessa cartella. Tutto quello che segue si può vedere in esecuzione lì - vedi il [`RIASSUNTO.md`](../5c_Esercitazione_su_analisi_sintattica/RIASSUNTO.md).
+
 ### Comandi essenziali
 ```bash
 bison -d -o parser.c parser.yy    # genera parser.c + parser.h
-# Oppure (come in TinyP):
+# Oppure (come in TinyP e nei calc-*):
 bison --report=all --defines=parser.hh -o parser.cc parser.yy
 ```
+
+⚠️ **Bison non è installato sulla macchina Windows** (flex e g++ sì). Per il laboratorio serve installarlo o usare il Mac.
 
 ### Struttura file `.yy`
 ```
@@ -146,6 +150,8 @@ bison --report=all --defines=parser.hh -o parser.cc parser.yy
 - `parser.cc` (o `.c`) - la routine `yyparse()` con tabelle ACTION/GOTO compilate
 - `parser.hh` - dichiarazioni dei token, `yylval`, signature di `yylex`/`yyerror` (incluso da Flex)
 - `parser.output` (con `--report=all`) - **file diagnostico**: stati LR, item set, conflitti, transizioni. Indispensabile per debuggare i conflitti shift-reduce/reduce-reduce.
+
+Nei `calc-*` dell'esercitazione il file si chiama `calc.output` e viene prodotto a ogni `make`: è il modo più diretto per vedere in concreto gli item LR(1) e le tabelle di `08_parsing.md` §4-5 su una grammatica piccola. Da guardare almeno una volta prima dell'orale.
 
 ### Pseudo-pattern Flex `<<EOF>>`
 Permette di eseguire un'azione speciale a fine file. Utile per gestire file inclusi, validare uno stato non chiuso (es. commento aperto a EOF), o forzare un token finale.
