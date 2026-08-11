@@ -79,6 +79,7 @@ Esempio: se prendi 27 al seminario e 30 all'orale, il voto pesato è circa **29.
 - Local Value Numbering, dominator trees, dataflow (Live Variables come caso canonico)
 - Punti fissi, monotonia, lattice → ponte con interpretazione astratta
 - Cosa è la Galois connection e perché serve (interpretazione astratta)
+- **Domini astratti, con attenzione ai poliedri:** Zaffanella è co-autore della **Parma Polyhedra Library**, quindi l'interpretazione astratta non è per lui un capitolo di contorno. Parla di polyhedra in termini di trade-off precisione/costo, non come di una curiosità teorica impraticabile. Dettagli in `9_Cenni_su_interpretazione_astratta/RIASSUNTO.md`
 - Esempi concreti di Flex (esercitazione lexer C++), di Bison (i sei parser `calc-*`) e di interprete/AST (TinyP)
 
 ## Argomenti su cui spesso ci si "incarta"

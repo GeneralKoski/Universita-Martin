@@ -259,4 +259,17 @@ Astrazione = **polyhedral abstraction** (disuguaglianze affini). Teoria sottosta
 - Conoscere alcuni **domini astratti**: sign, intervals, octagons, polyhedra (e relativo trade-off)
 - **Punto fisso, widening e narrowing**: capire perché servono e cosa garantiscono
 - Esempio applicativo: Astrée, e perché l'industria critica li usa
+
+### ⚠️ Il dominio dei poliedri è il campo di ricerca del docente
+
+Zaffanella è **co-autore della Parma Polyhedra Library** (PPL), insieme a Roberto Bagnara - anche lui a Parma - e Patricia M. Hill. La PPL è l'implementazione di riferimento del dominio dei poliedri convessi (e di octagons, grids, box) usata dagli analizzatori statici basati su interpretazione astratta.
+
+Conseguenze pratiche per l'orale, ed è per questo che questo capitolo pesa più di quanto suggerisca il nome "Cenni su":
+
+- Quando parli di **polyhedra**, non liquidarlo come "potente ma troppo costoso, in pratica non si usa": lo stai dicendo a chi ha passato anni a renderlo utilizzabile. Il modo corretto è parlare del **trade-off** precisione/costo e del fatto che esistono implementazioni ingegnerizzate e domini intermedi (octagons) proprio per governarlo
+- Saper nominare la PPL come esempio di implementazione reale di un dominio astratto è un segnale forte, ed è gratis
+- **Widening sui poliedri** è il punto in cui la teoria incontra l'ingegneria: senza widening il calcolo su un dominio infinito non termina. Se ti chiede un approfondimento sul widening, è probabile che sia qui che vuole arrivare
+- Lo stesso vale per il **corso del secondo anno "Analisi Statica e Verifica del Software"** (9 CFU): è la continuazione naturale di questo capitolo
+
+Fonte: annotazione nel dossier personale su Zurigo (Notion), verificata l'11/08/2026. Nella stessa nota risulta che Zaffanella è **referente tirocini** - informazione utile se pensi alla tesi in quest'area.
 - Connessione con DFA del middle end: anche le analisi data-flow sono "interpretazione astratta semplificata" (lattice finito → no widening)
