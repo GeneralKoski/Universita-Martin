@@ -27,6 +27,7 @@ Tutto il lavoro del seminario (check `misc-no-printf`, run reali, confronto LLM,
 ## Logica dell'ordine
 
 - **1-4** = orale (70% del voto): è tutto il lavoro che resta, richiede il blocco di tempo più grande e va sedimentato.
+- **Fra il 2 e il 3 va infilata la pratica di laboratorio** (~6h): lexer C++ della cartella 5, i 4 binari di TinyP, LLVM playground. È lo Step 2 di [`../study_method/STUDY_PLAN.md`](../study_method/STUDY_PLAN.md), rientrata in piano dopo il rinvio di Metodi e Modelli alla sessione invernale. Serve ad avere esempi concreti da citare all'orale.
 - **5-7** = seminario (30% del voto): ✅ chiuso il 23 giugno 2026, vale per tutti gli appelli dell'a.a. Tenuti qui come storico.
 - **8** = ripasso: la sera prima dell'orale, **niente cose nuove**.
 

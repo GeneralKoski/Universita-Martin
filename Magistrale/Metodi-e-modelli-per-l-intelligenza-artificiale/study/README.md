@@ -1,6 +1,8 @@
 # Piano di studio - Metodi e Modelli per l'IA
 
-> **SCRITTO: giovedì 17 settembre 2026**, poi orale. Aggiornato al 2026-07-26.
+> ⚠️ **ESAME RINVIATO ALLA SESSIONE INVERNALE** (deciso l'11/08/2026). L'appello del 17 settembre 2026 non si sostiene: la priorità di agosto-settembre è l'orale di Linguaggi, Interpreti e Compilatori del 10 settembre. Il calendario qui sotto è quello vecchio, condiviso con LIC - va rifatto quando si conosce la data dell'appello invernale.
+>
+> Il materiale (teoria 01-14, pratica 01-12, anatomia esame) è completo e resta valido: cambia solo la pianificazione.
 
 Percorso ottimale per preparare l'esame, suddiviso in **teoria** e **pratica**. I file sono numerati: seguili in ordine.
 

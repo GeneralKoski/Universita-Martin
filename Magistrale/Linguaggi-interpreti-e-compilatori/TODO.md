@@ -1,10 +1,10 @@
 # TODO - esame Linguaggi, Interpreti e Compilatori
 
-Stato: 2026-07-26.
+Stato: 2026-08-11.
 
 > **ORALE FISSATO: giovedì 10 settembre 2026.** Seminario già svolto il 23 giugno 2026 (30% del voto, valido per tutti gli appelli dell'a.a.): resta solo l'orale (70%).
 >
-> Attenzione: il 17 settembre c'è lo scritto di Metodi e Modelli, quindi i 7 giorni dopo l'orale LIC non sono studio utile per LIC. Vedi la sezione "Pianificazione verso il 10 settembre" in fondo.
+> **Metodi e Modelli rinviato alla sessione invernale** (deciso l'11/08/2026): i 30 giorni fino all'orale sono tutti per LIC. Vedi la sezione "Pianificazione verso il 10 settembre" in fondo.
 
 > **Per studiare:** entry point unico in [`study/`](study/README.md). 8 blocchi numerati nell'ordine in cui vanno affrontati.
 
@@ -108,23 +108,25 @@ Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave pe
 
 ## 📅 Pianificazione verso il 10 settembre
 
-Aggiornato al 2026-07-26 (domenica). Il calendario è **condiviso con Metodi e Modelli** (scritto il 17 settembre), che ha un carico circa doppio (~40-50h fra teoria, pratica e simulazioni) e va quindi caricato prima. Vedi `../Metodi-e-modelli-per-l-intelligenza-artificiale/study/README.md`.
+Aggiornato al **2026-08-11** (martedì). **Metodi e Modelli è stato rinviato alla sessione invernale**: l'appello del 17 settembre non si sostiene, quindi i 30 giorni da qui all'orale sono **tutti per LIC**. Il calendario non è più condiviso.
+
+Con ~21-26h di lavoro residuo su 30 giorni il vincolo non è più il tempo. Il tempo liberato **non va diluito**: va investito nella pratica di laboratorio (Step 2 di `study_method/STUDY_PLAN.md`), che nelle versioni precedenti del piano era la prima cosa a cadere. È quella che dà gli esempi concreti da citare all'orale.
 
 ```
-27 lug - 16 ago  : METODI (blocco A grafi, poi blocco B PI) - LIC in pausa
-17 - 23 ago      : LIC studio orale lez 1-5 + parsing (notes/08_parsing.md)
-24 - 30 ago      : LIC studio orale lez 6-9 + cheatsheet a memoria
-31 ago - 6 set   : LIC 57 domande a voce + domande incrocio (+1 simulazione scritta Metodi)
-7 - 9 set        : LIC ripasso intensivo (solo "Punti chiave", niente cose nuove)
-10 set (gio)     : ORALE LIC
-11 - 16 set      : solo METODI - simulazioni scritte + dimostrazioni per l'orale
-17 set (gio)     : SCRITTO METODI
+11 - 17 ago  : studio orale step 1-6 (intro, interpreti, struttura, lexer, Flex, parsing)   ~6-7h
+18 - 24 ago  : studio orale step 7-10 (context-sensitive + TinyP, IR, middle end, astratta) ~8-9h
+25 - 31 ago  : PRATICA laboratorio (lexer C++, TinyP 4 binari, LLVM playground) + cheatsheet a memoria  ~6h
+1 - 6 set    : 57 domande a voce (due passaggi, il 2° a distanza di un giorno) + domande incrocio  ~6-7h
+7 - 9 set    : ripasso intensivo (solo "Punti chiave" + glossario, niente cose nuove)  ~2h
+10 set (gio) : ORALE LIC
 ```
 
 **Vincoli da tenere a mente:**
-- I 7 giorni fra i due esami servono a Metodi, non a LIC: il grosso di Metodi va chiuso **prima** del 10 settembre.
 - Il seminario è già in cassaforte e pesa il 30%: l'orale sposta il restante 70%, quindi non c'è nulla da recuperare, solo da difendere.
-- Buffer: se il blocco Metodi sfonda i tempi, la settimana 31 ago - 6 set è la prima da sacrificare (domande incrocio), **non** il ripasso 7-9 set.
+- LIC è da **9 CFU**: pesa il 50% in più di un esame da 6. Sulla media ponderata (28,00 su 5 esami votati) un **30** qui porta il voto di partenza da 102,66 a ~104,4, un **28** lo lascia invariato, un **26** lo fa scendere a ~101,0. È l'esame in cui conviene spingere.
+- Buffer: se una settimana sfonda, la prima da sacrificare è la pratica di laboratorio (25-31 ago), poi le domande incrocio. **Mai** il ripasso 7-9 set.
+
+**Esse3: tutto a posto.** Appello LIC del 10 settembre **prenotato l'11/08/2026**; Fondamenti dell'IA verbalizzato; Metodi del 17 settembre mai prenotato, quindi non serve disiscriversi.
 
 ---
 

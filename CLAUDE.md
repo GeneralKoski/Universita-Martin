@@ -25,13 +25,13 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 - Big Data e Data Mining - **28** (6 CFU, obbligatorio, 13/02/2026)
 - Constraint Programming - **30L** (6 CFU, obbligatorio, 12/06/2026; sia Martin sia l'amico Leopoldo hanno esposto)
 - English B2 for STEM - **idoneo** (3 CFU, a scelta, 26/06/2026)
-- Fondamenti dell'Intelligenza Artificiale - **28** (6 CFU, obbligatorio, sostenuto il 14/07/2026; al 18/07/2026 NON ancora verbalizzato su Esse3)
+- Fondamenti dell'Intelligenza Artificiale - **28** (6 CFU, obbligatorio, sostenuto il 14/07/2026, verbalizzato su Esse3)
 - Modellazione e Simulazioni Numeriche - **24** (6 CFU, a scelta, 22/04/2026)
 
 ### Da sostenere - Primo anno
 
-- **Linguaggi, Interpreti e Compilatori** (9 CFU) - **orale fissato il 10 settembre 2026**. Seminario (30% del voto) già svolto il 23 giugno 2026 e valido per tutti gli appelli dell'a.a.; resta solo l'orale (70%), domande aperte su tutto il programma
-- **Metodi e Modelli per l'Intelligenza Artificiale** (6 CFU) - **scritto fissato il 17 settembre 2026**, poi orale. Corso mutuato dai gestionali (9 CFU): programma 6 CFU fino a *Trasporto generalizzato e problemi facili* incluso, e allo scritto un esercizio in meno rispetto ai gestionali (da ricordare al prof Nicolodi). Da verificare su Esse3 se l'orale è in giornata o in data successiva
+- **Linguaggi, Interpreti e Compilatori** (9 CFU) - **orale fissato il 10 settembre 2026, prenotato su Esse3 l'11/08/2026**. Seminario (30% del voto) già svolto il 23 giugno 2026 e valido per tutti gli appelli dell'a.a.; resta solo l'orale (70%), domande aperte su tutto il programma
+- **Metodi e Modelli per l'Intelligenza Artificiale** (6 CFU) - **rinviato alla sessione invernale** (deciso l'11/08/2026): l'appello del 17 settembre 2026 non si sostiene. Corso mutuato dai gestionali (9 CFU): programma 6 CFU fino a *Trasporto generalizzato e problemi facili* incluso, e allo scritto un esercizio in meno rispetto ai gestionali (da ricordare al prof Nicolodi). Da verificare su Esse3 la data dell'appello invernale e se l'orale è in giornata o in data successiva
 - Development of Reliable, Safe and Secure Software (6 CFU)
 
 ### Da sostenere - Secondo anno (2026-27)
@@ -43,11 +43,11 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 ### Voto di laurea - proiezione
 
-Dati ufficiali Esse3 UniPR (matricola 397464, al 18/07/2026):
+Dati ufficiali Esse3 UniPR (matricola 397464, al 11/08/2026):
 
-- Media ponderata: **28,00** (da 4 esami votati da 6 CFU: 30, 28, 30, 24; 30L conta come 30)
+- Media ponderata: **28,00** (da 5 esami votati da 6 CFU: 30, 28, 30, 24, 28; 30L conta come 30)
 - Voto di partenza: **102,66** = (28/30)×110
-- CFU acquisiti: 27 - Esami superati: 5/9 (Fondamenti ancora da verbalizzare)
+- CFU acquisiti: 33 - Esami superati: 6/9 (tutti verbalizzati)
 
 Bonus: **+3** per essere in corso, **+7 max** per la tesi. Base 102,66 + 3 = 105,66, poi punti tesi:
 
@@ -56,3 +56,5 @@ Bonus: **+3** per essere in corso, **+7 max** per la tesi. Base 102,66 + 3 = 105
 - 7 punti tesi → 112,66 → **110 e lode**
 
 Nota: gli esami da 9 CFU (Linguaggi, Analisi Statica) pesano il 50% in più di quelli da 6, quindi lì un bel voto sposta molto la media. Modellazione (24) è l'unico voto che tira giù la media.
+
+Effetto di Linguaggi (9 CFU) sulla media, a parità di tutto il resto: **30** → 28,46 (partenza ~104,4); **28** → 28,00 (partenza invariata); **26** → 27,54 (partenza ~101,0).
