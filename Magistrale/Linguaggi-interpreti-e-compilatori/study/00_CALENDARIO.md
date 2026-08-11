@@ -124,9 +124,11 @@ La frase chiave del corso: le risposte dipendono da **valori**, non da parti del
 
 ### Giovedì 27 - interpretazione astratta, formale (1.5h)
 - [ ] `mine-tutorial.pdf`
-- [ ] Knaster-Tarski e Kleene, Galois connection, domini (segni, intervalli, congruenze), widening
+- [ ] Knaster-Tarski e Kleene, Galois connection, domini (segni, intervalli, congruenze, octagons, **polyhedra**), widening
 
 ⚠️ Non basta dire "esiste un punto fisso": va giustificato. Ed è qui che si chiude il cerchio col dataflow del giorno 25.
+
+⚠️ **Zaffanella è co-autore della Parma Polyhedra Library.** I poliedri sono il suo campo di ricerca, quindi questo capitolo pesa più di quanto suggerisca il titolo "Cenni su". Non liquidare polyhedra come "troppo costoso, in pratica non si usa": parlane come trade-off precisione/costo, con octagons come compromesso. Se ti chiede un approfondimento sul widening, probabilmente vuole arrivare al widening sui poliedri. Vedi la sezione dedicata nei punti chiave di `9_Cenni_su_interpretazione_astratta/RIASSUNTO.md`.
 
 ### Venerdì 28 - laboratorio front end (1.5h)
 ```bash
