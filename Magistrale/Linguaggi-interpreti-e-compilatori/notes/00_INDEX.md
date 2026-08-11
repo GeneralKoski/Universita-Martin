@@ -19,6 +19,8 @@ Cartella di appunti riassuntivi e materiale di preparazione per l'esame.
 - `3_Struttura_del_compilatore/RIASSUNTO.md`
 - `4_Analisi_lessicale/RIASSUNTO.md`
 - `5_Esercitazione_su_analisi_lessicale/RIASSUNTO.md`
+- `5b_Analisi_sintattica/RIASSUNTO.md` (guida alle slide EaC 08-14, scaricate l'11/08/2026)
+- `5c_Esercitazione_su_analisi_sintattica/RIASSUNTO.md` (Bison.pdf + 6 parser d'esempio)
 - `6_Analisi_dipendente_da_contesto/RIASSUNTO.md`
 - `7_Rappresentazione_intermedia_(IR)/RIASSUNTO.md`
 - `8_Il_middle_end_analisi_e_ottimizzazioni/RIASSUNTO.md`

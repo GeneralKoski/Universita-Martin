@@ -9,7 +9,7 @@
 *.swo
 *~
 
-# Build artifacts (TinyP, Lexer C++)
+# Build artifacts (TinyP, Lexer C++, parser Bison)
 *.o
 *.obj
 *.a
@@ -20,6 +20,9 @@ parser.cc
 parser.hh
 parser.output
 lexer-cpp.cc
+calc.lex.*
+calc.parse.*
+calc.output
 
 # Eseguibili dei mini-compilatori
 6_Analisi_dipendente_da_contesto/TinyP/tinyP-run
@@ -27,6 +30,8 @@ lexer-cpp.cc
 6_Analisi_dipendente_da_contesto/TinyP/tinyP-pp
 6_Analisi_dipendente_da_contesto/TinyP/tinyP-concrete
 5_Esercitazione_su_analisi_lessicale/lexer-cpp
+5c_Esercitazione_su_analisi_sintattica/calc-*/calc
+5c_Esercitazione_su_analisi_sintattica/Wait/parser
 
 # LLVM intermediates (se proverai a compilare esempi)
 *.bc

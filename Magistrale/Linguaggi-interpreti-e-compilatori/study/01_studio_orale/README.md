@@ -19,13 +19,14 @@ Stima: **12-14h**, distribuite su 4-6 sessioni da 2-3h.
 | 3 | Struttura del compilatore | [`../../3_Struttura_del_compilatore/RIASSUNTO.md`](../../3_Struttura_del_compilatore/RIASSUNTO.md) | 1h |
 | 4 | Analisi lessicale (RE, NFA, DFA, Hopcroft, Flex) | [`../../4_Analisi_lessicale/RIASSUNTO.md`](../../4_Analisi_lessicale/RIASSUNTO.md) | 2h |
 | 5 | Esercitazione lexer C++ | [`../../5_Esercitazione_su_analisi_lessicale/RIASSUNTO.md`](../../5_Esercitazione_su_analisi_lessicale/RIASSUNTO.md) | 1h |
-| 6 | **Parsing - analisi sintattica** (lacuna chiusa il 2026-05-05) | [`../../notes/08_parsing.md`](../../notes/08_parsing.md) | 2h |
+| 6 | **Parsing - analisi sintattica** | [`../../notes/08_parsing.md`](../../notes/08_parsing.md), poi [`../../5b_Analisi_sintattica/RIASSUNTO.md`](../../5b_Analisi_sintattica/RIASSUNTO.md) | 4h |
+| 6b | **Esercitazione Bison** (6 parser d'esempio) | [`../../5c_Esercitazione_su_analisi_sintattica/RIASSUNTO.md`](../../5c_Esercitazione_su_analisi_sintattica/RIASSUNTO.md) | 1.5h |
 | 7 | Analisi dipendente da contesto + TinyP | [`../../6_Analisi_dipendente_da_contesto/RIASSUNTO.md`](../../6_Analisi_dipendente_da_contesto/RIASSUNTO.md) | 2h |
 | 8 | IR, LLVM, GEP, code shape, invoke, access link | [`../../7_Rappresentazione_intermedia_(IR)/RIASSUNTO.md`](../../7_Rappresentazione_intermedia_(IR)/RIASSUNTO.md) | 2-3h |
 | 9 | Middle end: dataflow, Available/Very Busy, induction var, passes | [`../../8_Il_middle_end_analisi_e_ottimizzazioni/RIASSUNTO.md`](../../8_Il_middle_end_analisi_e_ottimizzazioni/RIASSUNTO.md) | 2-3h |
 | 10 | Interpretazione astratta: Knaster-Tarski, Kleene, soundness, widening | [`../../9_Cenni_su_interpretazione_astratta/RIASSUNTO.md`](../../9_Cenni_su_interpretazione_astratta/RIASSUNTO.md) | 1.5h |
 
-> **Nota:** il parsing non ha cartella di lezione dedicata - il file `notes/08_parsing.md` (~670 righe) è la fonte unica. Va inserito tra il lexer e l'analisi dipendente da contesto.
+> **Nota sul parsing:** l'11/08/2026 sono state scaricate da Elly le due sezioni mancanti, quindi ora esistono `5b_Analisi_sintattica/` (slide EaC 08-14, in pptx e pdf) e `5c_Esercitazione_su_analisi_sintattica/` (`Bison.pdf` + 6 parser compilabili). `notes/08_parsing.md` resta la fonte da leggere **per prima** - è la sintesi in italiano che dà la struttura - ma non è più la fonte unica.
 
 ## Argomenti caldi (alta probabilità all'orale)
 

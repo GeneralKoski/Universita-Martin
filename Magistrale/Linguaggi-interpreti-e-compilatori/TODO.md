@@ -123,7 +123,7 @@ Con ~21-26h di lavoro residuo su 30 giorni il vincolo non è più il tempo. Il t
 10 set (gio) : ORALE LIC
 ```
 
-⚠️ **Materiale mancante da scaricare da Elly entro sabato 15 agosto:** le due sezioni **Analisi sintattica** (slide EaC 08-14) ed **Esercitazione su analisi sintattica** (`Bison.pdf` + esempi di parser flex & bison) non sono mai state scaricate. Vanno in `5b_Analisi_sintattica/` e `5c_Esercitazione_su_analisi_sintattica/`. Dettagli in `study/00_CALENDARIO.md`. Verificato l'11/08: tutto il resto del materiale è integro (38 PDF/slide controllati, nessun file corrotto o troncato).
+✅ **Materiale allineato con Elly l'11/08/2026.** Le due sezioni **Analisi sintattica** ed **Esercitazione su analisi sintattica**, mai scaricate, sono state recuperate via API in `5b_Analisi_sintattica/` (slide EaC 08-14, 6 pptx + 5 pdf `-1up`) e `5c_Esercitazione_su_analisi_sintattica/` (`Bison.pdf` + 6 parser compilabili), entrambe con `RIASSUNTO.md`. Confronto con l'inventario completo di Elly: **nient'altro manca**; le slide EaC 13, 19, 21 e 28 su Elly non esistono. Integrità verificata su tutti i 50 PDF/slide: nessun file corrotto o troncato.
 
 **Vincoli da tenere a mente:**
 - Il seminario è già in cassaforte e pesa il 30%: l'orale sposta il restante 70%, quindi non c'è nulla da recuperare, solo da difendere.

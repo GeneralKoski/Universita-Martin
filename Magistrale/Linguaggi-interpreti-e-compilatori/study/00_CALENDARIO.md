@@ -10,17 +10,18 @@ Carico totale: **~32h su 30 giorni**, cioè 1.5-2h nei giorni lavorativi e 2-2.5
 
 ---
 
-## ⚠️ Prima di iniziare: materiale da scaricare da Elly
+## ✅ Materiale: allineamento con Elly completato l'11/08/2026
 
-Due sezioni intere del corso non sono mai state scaricate. Non è materiale accessorio: è **l'analisi sintattica**, cioè la metà più interrogabile del front end.
+Due sezioni intere del corso non erano mai state scaricate - **l'analisi sintattica**, cioè la metà più interrogabile del front end. Recuperate via API:
 
-- [ ] **Analisi sintattica** → entrambe le cartelle "Slide tratte dal libro di testo" (pptx e pdf). Sono le slide EaC **08-14**, quelle che nel repo mancano tra la `07-DFA_Minimization` e la `15-Context_sensitive_Analysis_I`. Salvare in `5b_Analisi_sintattica/`
-- [ ] **Esercitazione su analisi sintattica** → `Bison.pdf` + "Esempi di semplici parser generati con flex & bison". Salvare in `5c_Esercitazione_su_analisi_sintattica/`
-- [ ] Controllare nelle cartelle Elly di **IR** e **Middle end** se ci sono le slide EaC **19**, **21** e **28**: nel repo la sequenza salta quei tre numeri
+- `5b_Analisi_sintattica/` - slide EaC **08-14** in doppio formato: 6 pptx + 5 pdf `-1up`
+- `5c_Esercitazione_su_analisi_sintattica/` - `Bison.pdf` del docente + **6 parser compilabili** (`calc-1`, `calc-2`, `calc-2-prec`, `calc-3`, `calc-3-rpn`, `Wait`)
 
-Le cartelle `5b_` e `5c_` ordinano correttamente tra `5_` e `6_` e non rompono i link relativi esistenti in `notes/` e `study/`.
+Entrambe hanno il loro `RIASSUNTO.md` con la mappa del contenuto e i punti chiave per l'orale.
 
-Fino al 15 agosto il parsing non serve, quindi il download non blocca l'inizio dello studio: va fatto entro **sabato 15**.
+Verificato nello stesso passaggio, contro l'inventario completo di Elly: **il resto del materiale è completo e integro**. Le slide EaC 13, 19, 21 e 28 non sono file mancanti - su Elly non ci sono, il docente non le ha usate. Nient'altro da recuperare.
+
+Per il laboratorio del 28 agosto serve **bison**, che sulla macchina Windows non è installato (flex e g++ sì).
 
 ---
 
@@ -52,25 +53,30 @@ Fino al 15 agosto il parsing non serve, quindi il download non blocca l'inizio d
 ### Sabato 15 - Ferragosto
 Riposo, o recupero se sei in ritardo. **Scadenza download del materiale di parsing da Elly.**
 
-### Domenica 16 - parsing I (2h)
-- [ ] `notes/08_parsing.md` §1-4: CFG e derivazioni, gerarchia dei parser, LL(1) con FIRST/FOLLOW, LR(1) con item e handle
-- [ ] Slide EaC di parsing (parte top-down)
+### Domenica 16 - parsing I, top-down (2h)
+- [ ] `notes/08_parsing.md` §1-3: CFG e derivazioni, gerarchia dei parser, LL(1) con FIRST/FOLLOW
+- [ ] `5b_Analisi_sintattica/RIASSUNTO.md` per orientarti nella cartella
+- [ ] `5b_Analisi_sintattica/L10ParseIntro-1up.pdf` (26 pag), `L11TopDown-1up.pdf` (28 pag), `L12TopDownII-1up.pdf` (27 pag)
 
 ⚠️ Leggere `notes/08_parsing.md` **prima** delle slide EaC: è in italiano e sintetico, dà la struttura in cui incastrare le slide inglesi. Il contrario ti fa annegare nei dettagli delle tabelle.
 
-### Lunedì 17 - parsing II (2h)
-- [ ] `notes/08_parsing.md` §5-7: conflitti, LALR(1) e Bison, precedenza di operatori
-- [ ] Slide EaC su LR + costruzione tabelle
-- [ ] `Bison.pdf`
+### Lunedì 17 - parsing II, bottom-up (2h)
+- [ ] `notes/08_parsing.md` §4-7: LR(1) con item e handle, conflitti, LALR(1) e Bison, precedenza di operatori
+- [ ] `5b_Analisi_sintattica/L13Transition-1up.pdf` (29 pag), `L14LRParsers-1up.pdf` (55 pag - il più corposo della serie)
+- [ ] `5b_Analisi_sintattica/14-Parsing_Wrap_up.pptx` (esiste solo in pptx): il confronto finale LL vs LR
+
+Se ti perdi sulla costruzione della tabella LL(1) o sull'esecuzione shift-reduce, apri i pptx corrispondenti: lì l'animazione passo-passo **è** il contenuto.
 
 ---
 
 ## Settimana 2 (18-24 agosto) - semantica statica, IR, ottimizzazioni
 
-### Martedì 18 - parsing III, pratica (1.5h)
-- [ ] Esempi di parser flex & bison scaricati da Elly
-- [ ] `6_Analisi_dipendente_da_contesto/TinyP/parser.yy`: `%left`, `%prec`, azioni semantiche sul Bison vero
+### Martedì 18 - parsing III, Bison (1.5h)
+- [ ] `5c_Esercitazione_su_analisi_sintattica/RIASSUNTO.md` + `Bison.pdf`
+- [ ] Leggere i `calc.yy` della progressione: `calc-1` (solo riconoscitore) → `calc-2` (interprete, precedenza **strutturale** in expr/term/factor) → `calc-2-prec` (grammatica piatta ambigua + `%left`/`%right`/`%prec UMINUS`) → `calc-3` (compilatore verso RPN) → `calc-3-rpn` (interprete di RPN)
 - [ ] Su carta: FIRST/FOLLOW e tabella LL(1) della grammatica della domanda 14 di `notes/04_domande_tipo.md`
+
+Il confronto `calc-2` vs `calc-2-prec` è una domanda d'orale quasi obbligata: stesso linguaggio, precedenza ottenuta in due modi opposti, con costi opposti.
 
 ### Mercoledì 19 - context-sensitive I (1.5h)
 - [ ] `6_Analisi_dipendente_da_contesto/RIASSUNTO.md` + `L16ContextSensitive-1up.pdf` + EaC `15-...I.pptx`
@@ -128,7 +134,11 @@ cd 5_Esercitazione_su_analisi_lessicale && make
 echo 'int main() { return 0; }' | ./lexer-cpp
 ```
 - [ ] Modificare una regola, ricompilare, osservare il cambiamento
-- [ ] Buildare ed eseguire i parser flex & bison dell'esercitazione di analisi sintattica
+- [ ] `cd 5c_Esercitazione_su_analisi_sintattica/calc-2 && make` poi `echo "2+3*4" | ./calc`
+- [ ] **Aprire `calc.output`** (il Makefile passa `--report=all` a Bison): contiene stati LR, item, tabelle e conflitti. È la teoria di `5b_` resa visibile
+- [ ] `cd ../Wait && make`: verificare se Bison segnala conflitti su quella grammatica e di che tipo
+
+⚠️ Serve **bison**, che sulla macchina Windows non c'è. Installalo (`winget`/`choco`/MSYS2) oppure fai questo blocco sul Mac.
 
 ### Sabato 29 - laboratorio TinyP e LLVM (2.5h)
 ```bash
