@@ -1,10 +1,12 @@
 # TODO - esame Linguaggi, Interpreti e Compilatori
 
-Stato: 2026-08-11.
+Stato: 2026-08-25.
 
 > **ORALE FISSATO: giovedì 10 settembre 2026.** Seminario già svolto il 23 giugno 2026 (30% del voto, valido per tutti gli appelli dell'a.a.): resta solo l'orale (70%).
 >
-> **Metodi e Modelli rinviato alla sessione invernale** (deciso l'11/08/2026): i 30 giorni fino all'orale sono tutti per LIC. Vedi la sezione "Pianificazione verso il 10 settembre" in fondo.
+> **Metodi e Modelli rinviato alla sessione invernale** (deciso l'11/08/2026): i giorni fino all'orale sono tutti per LIC. Vedi la sezione "Pianificazione verso il 10 settembre" in fondo.
+>
+> ⚠️ **Ripianificato il 25/08/2026: lo studio non è ancora iniziato.** Le due settimane 11-24 agosto del piano precedente (front end, parsing, IR, middle end locale, ~19h) sono andate perse. Il calendario è stato riscritto su **16 giorni** con ~5h di margine totale.
 
 > **Per studiare:** entry point unico in [`study/`](study/README.md). 8 blocchi numerati nell'ordine in cui vanno affrontati.
 
@@ -105,26 +107,29 @@ Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave pe
 | Demo cronometrata + slide + script | ✅ consumato al seminario | - |
 | Seminario (30% del voto) | ✅ svolto 23/06/2026 | - |
 | Recupero materiale mancante da Elly | ✅ fatto 11/08/2026 | - |
-| Studio orale 11 capitoli (parsing e Bison inclusi) | ⏳ | 17-19h |
-| Laboratorio (lexer, Bison, TinyP, LLVM) | ⏳ | 4h |
-| Cheatsheet + 62 domande + incrocio + simulazione | ⏳ | 11.5h |
+| Studio orale 11 capitoli (parsing e Bison inclusi) | ⏳ | 19h |
+| Laboratorio (Bison + `calc.output`; TinyP e LLVM opzionali) | ⏳ | 1.5h |
+| Cheatsheet + 62 domande + incrocio + simulazione | ⏳ | 10h |
 | Ripasso intensivo | ⏳ | 4.5h |
-| **Totale residuo (solo orale)** | | **~32h** |
+| **Totale residuo (solo orale)** | | **~35h in 16 giorni** |
 
 ## 📅 Pianificazione verso il 10 settembre
 
-Aggiornato al **2026-08-11** (martedì). **Metodi e Modelli è stato rinviato alla sessione invernale**: l'appello del 17 settembre non si sostiene, quindi i 30 giorni da qui all'orale sono **tutti per LIC**. Il calendario non è più condiviso.
+Aggiornato al **2026-08-25** (martedì). **Metodi e Modelli è stato rinviato alla sessione invernale**: l'appello del 17 settembre non si sostiene, quindi i giorni da qui all'orale sono **tutti per LIC**. Il calendario non è più condiviso.
 
-Il lavoro residuo era stimato in ~21-26h e su 30 giorni il tempo non è più il vincolo. Il margine **non va diluito**: è stato investito in due cose che nelle versioni precedenti del piano erano le prime a cadere - la pratica di laboratorio (Step 2 di `study_method/STUDY_PLAN.md`) e il parsing, che era l'argomento coperto peggio e che dall'11/08 ha finalmente il materiale del corso. Totale rivisto: **~32h**.
+**Il piano dell'11 agosto non è stato eseguito: lo studio parte oggi.** Restano **16 giorni** per ~35h di lavoro, contro una capienza pianificata di 40h (2h nei giorni lavorativi, 4h nei weekend). Il margine è scivolato da "una settimana intera" a **~5h in tutto**: un giorno saltato va recuperato nel weekend successivo, non rimandato.
+
+Per far entrare tutto è stato tagliato il laboratorio da 4h a 1.5h (sopravvive solo `calc-2` vs `calc-2-prec` con `calc.output`, che è la parte interrogabile; TinyP e il `diff` LLVM `-O0`/`-O2` diventano opzionali) e le 62 domande passano da due giri completi a uno completo + uno selettivo. **Non** sono stati toccati il parsing (5.5h: è l'argomento coperto peggio) e il ripasso del 7-9 settembre.
 
 > **Piano giorno per giorno: [`study/00_CALENDARIO.md`](study/00_CALENDARIO.md).** È la fonte unica per "cosa apro oggi", con le checkbox da spuntare. Qui sotto solo la vista settimanale.
 
 ```
-11 - 17 ago  : intro + struttura + lexer + Flex, poi parsing I-II    ~8h
-18 - 24 ago  : parsing III, context-sensitive, IR, procedure abstraction, OOL, code shape, LVN/dominatori  ~11h
-25 - 31 ago  : dataflow, interpretazione astratta, laboratorio, cheatsheet a memoria   ~11h
-1 - 6 set    : 62 domande a voce (due passaggi) + domande incrocio + simulazione   ~10h
-7 - 9 set    : ripasso intensivo (solo "Punti chiave" + glossario, niente cose nuove)   ~4.5h
+25 - 28 ago  : intro + struttura + lexer/Flex/Hopcroft, poi parsing I-II (LL(1) su carta)   ~8h
+29 - 30 ago  : parsing III bottom-up + Bison/laboratorio, context-sensitive, IR   ~8h
+31 ago - 4 set : procedure abstraction, OOL + code shape, LVN/dominatori, dataflow, interpretazione astratta   ~10h
+5 - 6 set    : cheatsheet a memoria + 62 domande a voce (giro completo)   ~8h
+7 - 8 set    : domande esitate + domande incrocio + simulazione orale   ~4h
+9 set (mer)  : ripasso intensivo (solo "Punti chiave" + glossario, niente cose nuove)   ~2h
 10 set (gio) : ORALE LIC
 ```
 
@@ -133,7 +138,7 @@ Il lavoro residuo era stimato in ~21-26h e su 30 giorni il tempo non è più il 
 **Vincoli da tenere a mente:**
 - Il seminario è già in cassaforte e pesa il 30%: l'orale sposta il restante 70%, quindi non c'è nulla da recuperare, solo da difendere.
 - LIC è da **9 CFU**: pesa il 50% in più di un esame da 6. Sulla media ponderata (28,00 su 5 esami votati) un **30** qui porta il voto di partenza da 102,66 a ~104,4, un **28** lo lascia invariato, un **26** lo fa scendere a ~101,0. È l'esame in cui conviene spingere.
-- Buffer: se una settimana sfonda, la prima da sacrificare è la pratica di laboratorio (25-31 ago), poi le domande incrocio. **Mai** il ripasso 7-9 set.
+- Buffer: quasi inesistente (~5h su 16 giorni). Se un blocco sfonda si sacrificano nell'ordine il laboratorio opzionale (TinyP, `diff` LLVM), poi le domande incrocio D2/D3, poi il secondo passaggio sulle domande. **Mai** il ripasso 7-9 set, **mai** il parsing.
 
 **Esse3: tutto a posto.** Appello LIC del 10 settembre **prenotato l'11/08/2026**; Fondamenti dell'IA verbalizzato; Metodi del 17 settembre mai prenotato, quindi non serve disiscriversi.
 
