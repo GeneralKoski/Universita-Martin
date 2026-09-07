@@ -2,7 +2,7 @@
 
 Appunti, esercizi e materiale di studio per il corso **Metodi e modelli per l'intelligenza artificiale** - Laurea Magistrale in Scienze Informatiche, Università di Parma.
 
-> **SCRITTO: giovedì 17 settembre 2026**, poi orale. Da verificare su Esse3 se l'orale è nella stessa giornata o in data successiva. Sette giorni prima (10 settembre) c'è l'orale di LIC, quindi il grosso di questo esame va chiuso **prima** di quella data: piano in [`study/README.md`](study/README.md).
+> 🛑 **ESAME RINVIATO ALLA SESSIONE INVERNALE** (deciso l'11/08/2026): lo scritto del **17 settembre 2026 non si sostiene**. Da verificare su Esse3 la data dell'appello invernale e se l'orale è nella stessa giornata o in data successiva. ⚠️ **Anche LIC è stato rinviato alla stessa sessione** (deciso il 07/09/2026, orale del 10 settembre non sostenuto): il calendario invernale va condiviso fra i due esami e Metodi è il più pesante dei due. Piano in [`study/README.md`](study/README.md).
 
 ## Informazioni corso (A.A. 2025/2026)
 

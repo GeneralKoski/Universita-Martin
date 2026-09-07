@@ -1,13 +1,15 @@
 # Modalità d'esame
 
-## 📍 Stato attuale (2026-07-26)
+## 📍 Stato attuale (2026-09-07)
 
 | Parte | Peso | Stato |
 |---|---|---|
-| Seminario (`misc-no-printf`) | 30% | ✅ svolto **23 giugno 2026**, valido per tutti gli appelli dell'a.a. 2025/26 |
-| Orale | 70% | ⏳ **giovedì 10 settembre 2026** |
+| Seminario (`misc-no-printf`) | 30% | ✅ svolto **23 giugno 2026**, valido per tutti gli appelli dell'a.a. **2025/26** - ⚠️ validità oltre quell'a.a. da accertare |
+| Orale | 70% | 🛑 appello del **10 settembre 2026 non sostenuto** (rinviato il 07/09). Prossimo: sessione invernale (gen-feb 2027), data da verificare su Esse3 |
 
-La timeline operativa più sotto è quindi già percorsa: resta solo l'orale. Calendario di studio in [`../TODO.md`](../TODO.md).
+**Il punto aperto è la validità del seminario.** La modalità ufficiale dice che il seminario dà accesso a "tutti gli appelli previsti per quell'anno accademico": l'appello di settembre 2026 è con ogni probabilità l'ultimo dell'a.a. 2025/26, quindi un orale in sessione invernale 2027 potrebbe richiedere di **rifare il seminario** (nuovo argomento da concordare **almeno 30 giorni prima**, nuove slide, nuovo Q&A). Va chiesto al docente: bozza di mail in [`../study/07_mail_prof.md`](../study/07_mail_prof.md).
+
+Per questo la timeline operativa più sotto **non è più solo storia**: se il seminario decade, va ripercorsa da capo. Stato e prossime azioni in [`../TODO.md`](../TODO.md).
 
 ## ⚠️ Modalità ufficiale (sito UniPR + mail del docente)
 

@@ -30,9 +30,11 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 ### Da sostenere - Primo anno
 
-- **Linguaggi, Interpreti e Compilatori** (9 CFU) - **orale fissato il 10 settembre 2026, prenotato su Esse3 l'11/08/2026**. Seminario (30% del voto) già svolto il 23 giugno 2026 e valido per tutti gli appelli dell'a.a.; resta solo l'orale (70%), domande aperte su tutto il programma
+- **Linguaggi, Interpreti e Compilatori** (9 CFU) - **rinviato alla sessione invernale** (deciso il 07/09/2026): l'orale del 10 settembre 2026 **non si sostiene**, preparazione insufficiente (il calendario di studio del 25/08 non è mai partito). Iscrizione su Esse3 fatta l'11/08/2026 e non più cancellabile: **assenza da comunicare per mail al prof Zaffanella**. Seminario (30% del voto) svolto il 23 giugno 2026, resta solo l'orale (70%) con domande aperte su tutto il programma. ⚠️ **Rischio aperto: il seminario vale "per tutti gli appelli dell'a.a. 2025/26"** e l'appello di settembre è probabilmente l'ultimo di quell'a.a. - da chiedere al prof se resta valido in sessione invernale o se va rifatto
 - **Metodi e Modelli per l'Intelligenza Artificiale** (6 CFU) - **rinviato alla sessione invernale** (deciso l'11/08/2026): l'appello del 17 settembre 2026 non si sostiene. Corso mutuato dai gestionali (9 CFU): programma 6 CFU fino a *Trasporto generalizzato e problemi facili* incluso, e allo scritto un esercizio in meno rispetto ai gestionali (da ricordare al prof Nicolodi). Da verificare su Esse3 la data dell'appello invernale e se l'orale è in giornata o in data successiva
 - Development of Reliable, Safe and Secure Software (6 CFU)
+
+**Sessione invernale 2027 - priorità ancora da decidere.** LIC e Metodi sono entrambi rinviati a quella sessione, ma da ottobre 2026 partono i corsi del secondo anno e a gennaio arrivano i loro primi appelli. Fare prima i nuovi (materiale fresco, lezioni appena seguite) è un'opzione concreta, col rischio che LIC e Metodi slittino ancora. Da decidere a corsi avviati, viste le date su Esse3.
 
 ### Da sostenere - Secondo anno (2026-27)
 

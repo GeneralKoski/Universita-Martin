@@ -1,12 +1,14 @@
 # TODO - esame Linguaggi, Interpreti e Compilatori
 
-Stato: 2026-08-25.
+Stato: 2026-09-07.
 
-> **ORALE FISSATO: giovedì 10 settembre 2026.** Seminario già svolto il 23 giugno 2026 (30% del voto, valido per tutti gli appelli dell'a.a.): resta solo l'orale (70%).
+> 🛑 **ORALE DEL 10 SETTEMBRE 2026: NON SI SOSTIENE.** Deciso il 07/09/2026 per preparazione insufficiente. Anche il calendario del 25/08 non è mai partito: dei ~35h di lavoro residuo non è stata fatta nessuna ora, quindi presentarsi all'orale (70% del voto, domande aperte su tutto il programma) avrebbe significato buttare l'appello su un esame da 9 CFU.
 >
-> **Metodi e Modelli rinviato alla sessione invernale** (deciso l'11/08/2026): i giorni fino all'orale sono tutti per LIC. Vedi la sezione "Pianificazione verso il 10 settembre" in fondo.
+> **Nuovo bersaglio: appello della sessione invernale (gennaio-febbraio 2027)**, data da verificare su Esse3 quando esce il calendario. Metodi e Modelli è nella stessa sessione (rinviato l'11/08/2026): il calendario invernale andrà condiviso fra i due esami.
 >
-> ⚠️ **Ripianificato il 25/08/2026: lo studio non è ancora iniziato.** Le due settimane 11-24 agosto del piano precedente (front end, parsing, IR, middle end locale, ~19h) sono andate perse. Il calendario è stato riscritto su **16 giorni** con ~5h di margine totale.
+> ⚠️ **Due cose da chiudere subito, non appena possibile:**
+> 1. **Mail al prof Zaffanella** per comunicare l'assenza all'appello del 10 settembre: l'iscrizione su Esse3 è stata fatta l'11/08/2026 e ormai la finestra per disiscriversi è chiusa, quindi risulti prenotato. Bozza pronta in [`study/07_mail_prof.md`](study/07_mail_prof.md).
+> 2. **Chiedere nella stessa mail se il seminario resta valido.** Il seminario del 23 giugno 2026 vale "per tutti gli appelli dell'**a.a. 2025/26**" e l'appello di settembre 2026 è con ogni probabilità l'ultimo di quell'anno accademico. Se la sessione invernale 2027 conta come a.a. 2026/27, il 30% del voto va **rifatto** (nuovo argomento da concordare almeno 30 giorni prima, nuove slide, nuovo Q&A). È il vero costo del rinvio e va accertato prima di pianificare lo studio, non dopo.
 
 > **Per studiare:** entry point unico in [`study/`](study/README.md). 8 blocchi numerati nell'ordine in cui vanno affrontati.
 
@@ -40,21 +42,22 @@ Per il dettaglio del lavoro tecnico già fatto vedi `Martin/1_clang-tidy_custom_
 
 **Bonus**: LLM trova bug fuori scope (troncamento `2.5→2`, `nullptr` UB) → conferma complementarità.
 
-### ~~2. Mail al prof + seminario~~ ✅ FATTO
-Seminario **svolto martedì 23 giugno 2026** (30% del voto). Vale per **tutti gli appelli dell'a.a. 2025/26**: non va rifatto anche se ti ripresenti a un appello successivo.
-Orale LIC: **10 settembre 2026** (era in ballo anche il 26 agosto, scartato).
+### 2. Mail al prof - ⏳ RIAPERTO (seminario ✅, nuova mail da mandare)
+Seminario **svolto martedì 23 giugno 2026** (30% del voto). Vale per **tutti gli appelli dell'a.a. 2025/26**: non va rifatto se ti ripresenti a un appello *di quell'anno accademico*.
+⚠️ Con il rinvio alla sessione invernale 2027 questo diventa il punto aperto: se quell'appello appartiene all'a.a. 2026/27, il seminario va rifatto. Da chiedere al prof - vedi `study/07_mail_prof.md`.
+Orale LIC: era **10 settembre 2026** (il 26 agosto era l'altra opzione), **non sostenuto**. Prossimo bersaglio: appello invernale, data da verificare.
 
 ### ~~3. Slide vere~~ ✅ v1 FATTA 2026-05-05
 `SLIDES.md` con frontmatter Marp + tema custom (palette blu/rosso/verde, JetBrains Mono, gradient cover); diagramma architettura inline (HTML+CSS, 7 box colorati); export `SLIDES.pdf` 13 pagine. Resta solo un pass di review a freddo prima di mandarle al prof.
 
 ### ~~4. Demo cronometrata + pratica script~~ ✅ CONSUMATO nel seminario del 23/06
-Materiale del seminario (demo, slide, script verbale). Non serve più per l'orale del 10 settembre, ma il progetto `misc-no-printf` resta un **esempio concreto da citare all'orale** (front end di clang, AST matcher, diagnostica).
+Materiale del seminario (demo, slide, script verbale). Il progetto `misc-no-printf` resta un **esempio concreto da citare all'orale** (front end di clang, AST matcher, diagnostica) - e se il seminario va rifatto per l'a.a. 2026/27, slide, script e confronto LLM sono già in cassaforte: si riparte da lì, non da zero.
 
 ### ~~5. Script verbale~~ ✅ FATTO 2026-05-05
 `Martin/1_clang-tidy_custom_check/SCRIPT.md`: frasi pivot tecnico-fluide per ogni slide, apertura/chiusura forte, transizioni esplicite, Q&A con 6 domande probabili + risposte preparate, note operative. Usato al seminario.
 
 ### 6. Studio orale degli 11 capitoli (~17-19h)
-Seguire `study/00_CALENDARIO.md` (o `study_method/STUDY_PLAN.md` per il metodo):
+L'ordine dei blocchi resta valido ed è la parte riusabile del piano fallito - le date del calendario no. Vedi `study/00_CALENDARIO.md` per la sequenza (le date del 25 ago - 10 set sono da ignorare) o `study_method/STUDY_PLAN.md` per il metodo:
 - Lez 1-3 (Intro, Interpreti vs Compilatori, Struttura): 1.5h
 - Lez 4-5 (Analisi lessicale, Flex): 2h
 - **Parsing (analisi sintattica): 4h.** Ordine: prima `notes/08_parsing.md` (sintesi italiana, dà la struttura), poi `5b_Analisi_sintattica/` (slide EaC 08-14, recuperate da Elly l'11/08/2026)
@@ -111,36 +114,39 @@ Per ogni lezione: leggi `RIASSUNTO.md` → apri PDF docente → "Punti chiave pe
 | Laboratorio (Bison + `calc.output`; TinyP e LLVM opzionali) | ⏳ | 1.5h |
 | Cheatsheet + 62 domande + incrocio + simulazione | ⏳ | 10h |
 | Ripasso intensivo | ⏳ | 4.5h |
-| **Totale residuo (solo orale)** | | **~35h in 16 giorni** |
+| **Totale residuo (solo orale)** | | **~35h** |
 
-## 📅 Pianificazione verso il 10 settembre
+## 📅 Pianificazione - rinvio alla sessione invernale
 
-Aggiornato al **2026-08-25** (martedì). **Metodi e Modelli è stato rinviato alla sessione invernale**: l'appello del 17 settembre non si sostiene, quindi i giorni da qui all'orale sono **tutti per LIC**. Il calendario non è più condiviso.
+Aggiornato al **2026-09-07** (domenica). **L'orale del 10 settembre non si sostiene.** Il carico residuo è rimasto **~35h**, identico a quello stimato il 25 agosto: non è stata studiata nessuna ora, quindi il bilancio qui sopra vale ancora tutto.
 
-**Il piano dell'11 agosto non è stato eseguito: lo studio parte oggi.** Restano **16 giorni** per ~35h di lavoro, contro una capienza pianificata di 40h (2h nei giorni lavorativi, 4h nei weekend). Il margine è scivolato da "una settimana intera" a **~5h in tutto**: un giorno saltato va recuperato nel weekend successivo, non rimandato.
+### Cosa ha fatto fallire i due piani precedenti
 
-Per far entrare tutto è stato tagliato il laboratorio da 4h a 1.5h (sopravvive solo `calc-2` vs `calc-2-prec` con `calc.output`, che è la parte interrogabile; TinyP e il `diff` LLVM `-O0`/`-O2` diventano opzionali) e le 62 domande passano da due giri completi a uno completo + uno selettivo. **Non** sono stati toccati il parsing (5.5h: è l'argomento coperto peggio) e il ripasso del 7-9 settembre.
+Sono stati scritti due calendari giorno per giorno - uno l'11 agosto (30 giorni, 32h), uno il 25 agosto (16 giorni, 35h) - e **nessuno dei due è mai partito**. Il collo di bottiglia non è la pianificazione: pianificare è la parte che è stata fatta due volte. Per la sessione invernale, quindi, **niente terzo calendario dettagliato scritto in anticipo**: prima si accumulano ore di studio reali, poi si ancora un calendario alla data dell'appello quando esce.
 
-> **Piano giorno per giorno: [`study/00_CALENDARIO.md`](study/00_CALENDARIO.md).** È la fonte unica per "cosa apro oggi", con le checkbox da spuntare. Qui sotto solo la vista settimanale.
+Il vincolo strutturale da tenere presente: 2h nei giorni lavorativi sono un'ipotesi che non ha mai retto. Il piano invernale deve reggere su ore che sono già state messe, non su ore promesse.
 
-```
-25 - 28 ago  : intro + struttura + lexer/Flex/Hopcroft, poi parsing I-II (LL(1) su carta)   ~8h
-29 - 30 ago  : parsing III bottom-up + Bison/laboratorio, context-sensitive, IR   ~8h
-31 ago - 4 set : procedure abstraction, OOL + code shape, LVN/dominatori, dataflow, interpretazione astratta   ~10h
-5 - 6 set    : cheatsheet a memoria + 62 domande a voce (giro completo)   ~8h
-7 - 8 set    : domande esitate + domande incrocio + simulazione orale   ~4h
-9 set (mer)  : ripasso intensivo (solo "Punti chiave" + glossario, niente cose nuove)   ~2h
-10 set (gio) : ORALE LIC
-```
+### Da chiudere subito (settembre)
 
-✅ **Materiale allineato con Elly l'11/08/2026.** Le due sezioni **Analisi sintattica** ed **Esercitazione su analisi sintattica**, mai scaricate, sono state recuperate via API in `5b_Analisi_sintattica/` (slide EaC 08-14, 6 pptx + 5 pdf `-1up`) e `5c_Esercitazione_su_analisi_sintattica/` (`Bison.pdf` + 6 parser compilabili), entrambe con `RIASSUNTO.md`. Confronto con l'inventario completo di Elly: **nient'altro manca**; le slide EaC 13, 19, 21 e 28 su Elly non esistono. Integrità verificata su tutti i 50 PDF/slide: nessun file corrotto o troncato.
+- [ ] **Mail al prof Zaffanella** - comunicare l'assenza all'appello del 10 settembre (risulti prenotato dall'11/08 e la finestra per disiscriversi è chiusa). Bozza in [`study/07_mail_prof.md`](study/07_mail_prof.md)
+- [ ] **Nella stessa mail: chiedere se il seminario del 23 giugno resta valido** per l'appello invernale. Vale "per tutti gli appelli dell'a.a. 2025/26" e settembre 2026 è probabilmente l'ultimo appello di quell'a.a.
+- [ ] **Verificare su Esse3** la data dell'appello invernale di LIC appena esce il calendario (e quella di Metodi e Modelli, che è nella stessa sessione)
 
-**Vincoli da tenere a mente:**
-- Il seminario è già in cassaforte e pesa il 30%: l'orale sposta il restante 70%, quindi non c'è nulla da recuperare, solo da difendere.
-- LIC è da **9 CFU**: pesa il 50% in più di un esame da 6. Sulla media ponderata (28,00 su 5 esami votati) un **30** qui porta il voto di partenza da 102,66 a ~104,4, un **28** lo lascia invariato, un **26** lo fa scendere a ~101,0. È l'esame in cui conviene spingere.
-- Buffer: quasi inesistente (~5h su 16 giorni). Se un blocco sfonda si sacrificano nell'ordine il laboratorio opzionale (TinyP, `diff` LLVM), poi le domande incrocio D2/D3, poi il secondo passaggio sulle domande. **Mai** il ripasso 7-9 set, **mai** il parsing.
+### Se il seminario va rifatto
 
-**Esse3: tutto a posto.** Appello LIC del 10 settembre **prenotato l'11/08/2026**; Fondamenti dell'IA verbalizzato; Metodi del 17 settembre mai prenotato, quindi non serve disiscriversi.
+Costo aggiuntivo non banale, ma non si riparte da zero: argomento + materiale vanno riconcordati col docente **almeno 30 giorni prima**, quindi la mail va mandata con largo margine sull'appello invernale. Slide (`SLIDES.pdf`, 13 pagine), script verbale, check `misc-no-printf` e confronto LLM sono tutti pronti in `Martin/1_clang-tidy_custom_check/`: nel caso peggiore si ripresenta lo stesso lavoro con un pass di aggiornamento.
+
+### Vincoli da tenere a mente
+
+- **La sessione invernale non ospita solo questi due esami.** LIC (~35h residue) e Metodi e Modelli (~23h teoria + ~23h pratica + 6-8h simulazioni, stimate ad agosto) ci finiscono entrambi, ma da ottobre 2026 partono anche i **corsi del secondo anno** (Algoritmi per l'IA, Analisi Statica, Laboratorio di IA, Programmazione Dichiarativa): a gennaio arrivano i loro primi appelli, con il materiale fresco e le lezioni appena seguite.
+- **Priorità invernale: aperta.** Non è affatto detto che LIC e Metodi vengano prima. Dare la precedenza ai nuovi esami del secondo anno è un'opzione concreta e in molti casi la più efficiente (il materiale è fresco, il corso appena finito), col rischio opposto che LIC e Metodi slittino ancora. Da decidere a corsi avviati, viste le date su Esse3 e il carico reale del semestre - non ora.
+- Il seminario pesa il **30%** e - se resta valido - è già in cassaforte: l'orale sposta il restante 70%.
+- LIC è da **9 CFU**: pesa il 50% in più di un esame da 6. Sulla media ponderata (28,00 su 5 esami votati) un **30** qui porta il voto di partenza da 102,66 a ~104,4, un **28** lo lascia invariato, un **26** lo fa scendere a ~101,0. È l'esame in cui conviene spingere - ed è anche il motivo per cui non valeva la pena presentarsi impreparato il 10 settembre.
+- L'appello invernale ricade nel **secondo anno**: essere ancora *in corso* (bonus +3 sul voto di laurea) non è a rischio, ma i due esami del primo anno rinviati si sommano ai quattro del secondo.
+
+✅ **Materiale allineato con Elly l'11/08/2026.** Le due sezioni **Analisi sintattica** ed **Esercitazione su analisi sintattica**, mai scaricate, sono state recuperate via API in `5b_Analisi_sintattica/` (slide EaC 08-14, 6 pptx + 5 pdf `-1up`) e `5c_Esercitazione_su_analisi_sintattica/` (`Bison.pdf` + 6 parser compilabili), entrambe con `RIASSUNTO.md`. Confronto con l'inventario completo di Elly: **nient'altro manca**; le slide EaC 13, 19, 21 e 28 su Elly non esistono. Integrità verificata su tutti i 50 PDF/slide: nessun file corrotto o troncato. Da riverificare solo se il docente carica materiale nuovo per l'a.a. 2026/27.
+
+**Esse3:** appello LIC del 10 settembre **prenotato l'11/08/2026 e non annullabile** - ci si presenta come assenti, con la mail al prof a spiegare. Fondamenti dell'IA verbalizzato. Metodi del 17 settembre mai prenotato, quindi non serve disiscriversi.
 
 ---
 

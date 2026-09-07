@@ -1,6 +1,8 @@
 # Piano di studio - Metodi e Modelli per l'IA
 
-> ⚠️ **ESAME RINVIATO ALLA SESSIONE INVERNALE** (deciso l'11/08/2026). L'appello del 17 settembre 2026 non si sostiene: la priorità di agosto-settembre è l'orale di Linguaggi, Interpreti e Compilatori del 10 settembre. Il calendario qui sotto è quello vecchio, condiviso con LIC - va rifatto quando si conosce la data dell'appello invernale.
+> ⚠️ **ESAME RINVIATO ALLA SESSIONE INVERNALE** (deciso l'11/08/2026). L'appello del 17 settembre 2026 non si sostiene. Il calendario qui sotto è quello vecchio, condiviso con LIC - va rifatto quando si conosce la data dell'appello invernale.
+>
+> **Aggiornamento 07/09/2026: anche LIC è finito nella stessa sessione invernale** (l'orale del 10 settembre non è stato sostenuto, preparazione insufficiente). Quindi la motivazione originale del rinvio - "la priorità di agosto-settembre è LIC" - è decaduta: di fatto in agosto-settembre non è stato studiato nessuno dei due. Il calendario invernale deve reggere **due esami arretrati** più i primi appelli dei corsi del secondo anno, che partono a ottobre 2026. Metodi resta il più pesante degli arretrati (~50h contro le ~35h residue di LIC), ma la priorità fra arretrati e nuovi esami è aperta: fare prima i nuovi, col materiale fresco, è un'opzione concreta. Da decidere a corsi avviati, viste le date su Esse3 - e la stima delle ore disponibili va rifatta sulle ore realmente messe, non su quelle promesse.
 >
 > Il materiale (teoria 01-14, pratica 01-12, anatomia esame) è completo e resta valido: cambia solo la pianificazione.
 
@@ -8,9 +10,9 @@ Percorso ottimale per preparare l'esame, suddiviso in **teoria** e **pratica**. 
 
 **Leggi prima di tutto [`pratica/00_ANATOMIA_ESAME.md`](pratica/00_ANATOMIA_ESAME.md):** censimento di 12 appelli risolti, dell'esonero 2022, dei quiz Elly e dei fogli di esercizi 2026, con la frequenza di ogni tipo di esercizio e l'ordine di priorità su cui fare pratica. In sintesi, il 60% di uno scritto tipo sta in tre esercizi: Floyd-Warshall da matrici parziali (6/12 appelli), duale lagrangiano (7/12), Dijkstra tabellare (4/12).
 
-## Calendario verso il 17 settembre
+## Calendario verso il 17 settembre (scaduto - vale solo come sequenza)
 
-Carico stimato: **~23h di teoria + ~23h di pratica + 6-8h di simulazioni**, cioè il doppio di LIC (orale il 10 settembre, ~21-26h). Per questo Metodi va caricato **prima**: i 7 giorni fra i due esami bastano solo per le simulazioni, non per teoria nuova.
+Carico stimato: **~23h di teoria + ~23h di pratica + 6-8h di simulazioni**, cioè circa il doppio di LIC (~35h residue). Il ragionamento originale era "Metodi va caricato prima, i 7 giorni fra i due esami bastano solo per le simulazioni": resta valido come principio, ma va riapplicato alle date invernali quando escono.
 
 ```
 27 lug - 2 ago   : Blocco A completo - teoria 01-06 + pratica 01-06 (grafi)
