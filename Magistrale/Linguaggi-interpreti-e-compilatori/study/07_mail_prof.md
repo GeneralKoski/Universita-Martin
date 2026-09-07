@@ -13,7 +13,7 @@
 >
 > Purtroppo non potrò presentarmi per motivi familiari: è venuto a mancare un parente e sarò assente per alcune settimane. Mi scuso per il preavviso ridotto - la finestra per annullare l'iscrizione su Esse3 è già chiusa, quindi risulterò prenotato pur essendo assente.
 >
-> Le chiederei inoltre una conferma sul seminario. L'ho svolto il 23 giugno 2026 e, da quanto indicato nelle modalità d'esame, dà accesso a tutti gli appelli dell'anno accademico. Se sostenessi l'orale nella sessione invernale, il seminario resterebbe valido, oppure dovrei ripresentarlo per il nuovo anno accademico? Nel secondo caso mi organizzerei per concordare argomento e materiale con il margine di 30 giorni richiesto.
+> Le chiederei inoltre una conferma sul seminario. L'ho svolto il 23 giugno 2026 e, da quanto indicato nelle modalità d'esame, dà accesso a tutti gli appelli dell'anno accademico. Se sostenessi l'orale nella sessione invernale, il seminario resterebbe valido, oppure dovrei ripresentarlo per il nuovo anno accademico?
 >
 > La ringrazio e mi scuso per il disagio.
 >
