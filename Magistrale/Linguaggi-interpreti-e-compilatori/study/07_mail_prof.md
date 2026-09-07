@@ -1,6 +1,6 @@
 # 07 - Mail al prof
 
-> ⏳ **DA MANDARE (aggiornato 07/09/2026).** L'orale del 10 settembre non si sostiene ma l'iscrizione su Esse3 (fatta l'11/08) non è più annullabile: risulti prenotato. La mail va mandata **subito**, oggi o domani - non il giorno dell'appello.
+> ⏳ **DA MANDARE (aggiornato 07/09/2026).** L'orale del 10 settembre non si sostiene ma l'iscrizione su Esse3 (fatta l'11/08) non è più annullabile: risulti prenotato. La mail va mandata **subito**, oggi o domani - non il giorno dell'appello, e comunque prima di partire.
 
 ## Bozza da mandare
 
@@ -11,11 +11,11 @@
 >
 > le scrivo in merito all'appello di Linguaggi, Interpreti e Compilatori di giovedì 10 settembre, per il quale risulto iscritto su Esse3.
 >
-> Purtroppo non riuscirò a presentarmi: la preparazione sull'orale non è al livello che ritengo necessario e preferisco rinviare a un appello successivo piuttosto che sostenerlo in queste condizioni. Mi scuso per il preavviso ridotto - la finestra per annullare l'iscrizione su Esse3 è già chiusa, quindi risulterò prenotato pur essendo assente.
+> Purtroppo non potrò presentarmi per motivi familiari: è venuto a mancare un parente e sarò assente per alcune settimane. Mi scuso per il preavviso ridotto - la finestra per annullare l'iscrizione su Esse3 è già chiusa, quindi risulterò prenotato pur essendo assente.
 >
-> Approfitto per una domanda sul seminario. L'ho svolto il 23 giugno 2026 e, da quanto indicato nelle modalità d'esame, dà accesso a tutti gli appelli dell'anno accademico. Se sostenessi l'orale nella sessione invernale, il seminario resterebbe valido, oppure dovrei ripresentarlo per il nuovo anno accademico? Nel secondo caso mi organizzerei per concordare argomento e materiale con il margine di 30 giorni richiesto.
+> Le chiederei inoltre una conferma sul seminario. L'ho svolto il 23 giugno 2026 e, da quanto indicato nelle modalità d'esame, dà accesso a tutti gli appelli dell'anno accademico. Se sostenessi l'orale nella sessione invernale, il seminario resterebbe valido, oppure dovrei ripresentarlo per il nuovo anno accademico? Nel secondo caso mi organizzerei per concordare argomento e materiale con il margine di 30 giorni richiesto.
 >
-> La ringrazio e mi scuso ancora.
+> La ringrazio e mi scuso per il disagio.
 >
 > Cordiali saluti,
 > Martin Trajkovski
@@ -39,7 +39,7 @@
 - 2026-05-15 - prof propone 12:30 dopo Metodologie + chiede promemoria 2 gg prima
 - 2026-05-15 - confermato definitivo
 - 2026-06-23 - seminario svolto
-- 2026-09-07 - *(da mandare)* assenza all'appello del 10 settembre + domanda sulla validità del seminario
+- 2026-09-07 - *(da mandare)* assenza all'appello del 10 settembre per motivi familiari + domanda sulla validità del seminario
 
 ## Contatto
 

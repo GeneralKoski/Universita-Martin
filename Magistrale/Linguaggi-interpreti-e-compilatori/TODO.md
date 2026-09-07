@@ -7,7 +7,7 @@ Stato: 2026-09-07.
 > **Nuovo bersaglio: appello della sessione invernale (gennaio-febbraio 2027)**, data da verificare su Esse3 quando esce il calendario. Metodi e Modelli è nella stessa sessione (rinviato l'11/08/2026): il calendario invernale andrà condiviso fra i due esami.
 >
 > ⚠️ **Due cose da chiudere subito, non appena possibile:**
-> 1. **Mail al prof Zaffanella** per comunicare l'assenza all'appello del 10 settembre: l'iscrizione su Esse3 è stata fatta l'11/08/2026 e ormai la finestra per disiscriversi è chiusa, quindi risulti prenotato. Bozza pronta in [`study/07_mail_prof.md`](study/07_mail_prof.md).
+> 1. **Mail al prof Zaffanella** per comunicare l'assenza all'appello del 10 settembre: l'iscrizione su Esse3 è stata fatta l'11/08/2026 e ormai la finestra per disiscriversi è chiusa, quindi risulti prenotato. Motivazione comunicata: **motivi familiari** (lutto in famiglia, assenza di alcune settimane). Bozza pronta in [`study/07_mail_prof.md`](study/07_mail_prof.md) - **da mandare prima di partire**.
 > 2. **Chiedere nella stessa mail se il seminario resta valido.** Il seminario del 23 giugno 2026 vale "per tutti gli appelli dell'**a.a. 2025/26**" e l'appello di settembre 2026 è con ogni probabilità l'ultimo di quell'anno accademico. Se la sessione invernale 2027 conta come a.a. 2026/27, il 30% del voto va **rifatto** (nuovo argomento da concordare almeno 30 giorni prima, nuove slide, nuovo Q&A). È il vero costo del rinvio e va accertato prima di pianificare lo studio, non dopo.
 
 > **Per studiare:** entry point unico in [`study/`](study/README.md). 8 blocchi numerati nell'ordine in cui vanno affrontati.
@@ -125,6 +125,10 @@ Aggiornato al **2026-09-07** (domenica). **L'orale del 10 settembre non si sosti
 Sono stati scritti due calendari giorno per giorno - uno l'11 agosto (30 giorni, 32h), uno il 25 agosto (16 giorni, 35h) - e **nessuno dei due è mai partito**. Il collo di bottiglia non è la pianificazione: pianificare è la parte che è stata fatta due volte. Per la sessione invernale, quindi, **niente terzo calendario dettagliato scritto in anticipo**: prima si accumulano ore di studio reali, poi si ancora un calendario alla data dell'appello quando esce.
 
 Il vincolo strutturale da tenere presente: 2h nei giorni lavorativi sono un'ipotesi che non ha mai retto. Il piano invernale deve reggere su ore che sono già state messe, non su ore promesse.
+
+### Assenza di alcune settimane (da settembre)
+
+Lutto in famiglia: alcune settimane fuori, a partire da settembre 2026. È un'assenza da mettere nel conto quando si pianifica la sessione invernale - il tempo di studio riparte al rientro, non ora, e i corsi del secondo anno partono a ottobre. Prima di partire va mandata la mail al prof.
 
 ### Da chiudere subito (settembre)
 
