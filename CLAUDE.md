@@ -38,10 +38,12 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 ### Da sostenere - Secondo anno (2026-27)
 
-- Algoritmi per l'Intelligenza Artificiale (6 CFU)
-- Analisi Statica e Verifica del Software (9 CFU)
-- Laboratorio di Intelligenza Artificiale (6 CFU)
-- Programmazione Dichiarativa (6 CFU)
+Tutti e quattro al primo semestre, tutti caratterizzanti e monodisciplinari:
+
+- Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici
+- Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, prof. Vincenzo Arceri
+- Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici
+- Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù
 
 ### Voto di laurea - proiezione
 
