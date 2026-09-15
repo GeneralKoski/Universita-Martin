@@ -1,0 +1,99 @@
+\documentclass{theme/uniprthesis}
+
+\usepackage[italian]{babel}
+\usepackage{todonotes}
+\usepackage{ifdraft}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbold}
+\usepackage{footmisc}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{booktabs}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+}
+
+\title{TITOLO DA DEFINIRE}
+\author{Martin Trajkovski}
+\advisor{Prof. DA DEFINIRE}
+\college{Dipartimento di Scienze Matematiche, Fisiche e Informatiche}
+\degree{Corso di Laurea Magistrale in Scienze Informatiche}
+\degreeyears{2026--2027}
+\serialNumber{397464}
+
+\newcommand{\coadvisor}{}
+
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage
+}
+
+\begin{document}
+
+\maketitle
+\blankpage
+
+\newpage
+\thispagestyle{empty}
+\null\vspace{\stretch{1}}
+\begin{flushright}
+	\textit{Citazione da scegliere.}
+\end{flushright}
+\vspace{\stretch{3}}\null
+\newpage
+\blankpage
+
+\newpage
+\thispagestyle{empty}
+\null\vspace{\stretch{1}}
+\begin{flushright}
+	\textit{Dedica da scrivere.}
+\end{flushright}
+\vspace{\stretch{3}}\null
+\newpage
+\blankpage
+
+\pagenumbering{arabic}
+\tableofcontents
+
+\include{capitoli/introduzione}
+
+\pagestyle{fancy}
+% Aggiungere qui i capitoli centrali, uno \include per file in capitoli/
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conclusioni
+\pagestyle{plain}
+\include{capitoli/conclusione}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliografia
+\pagestyle{plain}
+\include{capitoli/bibliografia}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ringraziamenti
+\include{capitoli/ringraziamenti}
+\newpage
+\thispagestyle{empty}
+\null\vspace{\stretch{1}}
+\vspace{\stretch{3}}\null
+\newpage
+
+\blankpage
+\end{document}
