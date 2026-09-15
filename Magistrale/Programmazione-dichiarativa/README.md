@@ -9,13 +9,23 @@ Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329459
 
 | Edizione | Elly | Corso | Stato |
 |---|---|---|---|
-| 2026/27 | elly2026 | [id 4403](https://elly2026.didattica.unipr.it/course/view.php?id=4403) | in corso, indice da leggere |
+| 2026/27 | elly2026 | [id 4403](https://elly2026.didattica.unipr.it/course/view.php?id=4403) | aperto ma vuoto |
 | 2025/26 | - | - | non pubblicata |
 
 > Il corso su elly2026 **esiste** (id 4403). Il README diceva "nessun corso Elly
 > disponibile": era vero solo per l'edizione 2025/26, che non è mai stata
 > pubblicata, e restava falso per quella nuova. Non c'è quindi materiale
 > d'archivio: tutto quello che arriva è dell'edizione che seguo.
+
+## Materiale Elly 2026/27 - corso 4403
+
+Letto il 16/09/2026: il corso è aperto ma **non contiene ancora nulla**, solo la
+sezione Introduzione con il forum.
+
+- [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=5755
+
+Da ricontrollare all'inizio delle lezioni. Essendo l'unico corso senza edizione
+precedente, qui non c'è proprio niente da studiare finché Dal Palù non carica.
 
 ## Contenuti
 

@@ -16,14 +16,23 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 
 | Edizione | Elly | Corso | Stato |
 |---|---|---|---|
-| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, indice da leggere |
+| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | aperto ma vuoto |
 | 2025/26 | elly2025 | [id 741](https://elly2025.didattica.unipr.it/course/view.php?id=741) | archiviata, materiale completo |
 
 ---
 
 ## Edizione 2026/27 - Elly 5198
 
-Indice non ancora letto. Da recuperare da Elly.
+Letto il 16/09/2026: il corso è aperto ma **non contiene ancora nulla**, solo la
+sezione Introduzione con il forum. Nessuna slide, nessun calendario.
+
+### Introduzione
+
+- [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6550
+
+Finché non arriva materiale nuovo, il riferimento è l'edizione 2025/26 qui
+sotto. Da ricontrollare all'inizio delle lezioni, insieme alla scheda ufficiale
+che è ancora priva di programma ed esame.
 
 ---
 
