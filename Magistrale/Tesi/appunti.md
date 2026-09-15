@@ -27,7 +27,8 @@ Passati in rassegna tutti i repo personali sull'account GitHub `GeneralKoski`.
 
 ### Traccia aperta: Koskidex
 
-Motore di ricerca full-text self-hosted scritto in Go (~130k righe), binario
+Motore di ricerca full-text self-hosted scritto in Go (2.850 righe di codice
+più 2.060 di test), binario
 singolo senza dipendenze a runtime. Ha già tolleranza ai refusi, faccette e
 ricerca vettoriale.
 
