@@ -5,6 +5,7 @@ Scheletro ripreso da `Triennale/Tirocinio/template-tesi-main` (la tesi triennale
 - `theme/uniprthesis.cls` + `theme/logo_unipr.pdf` - classe ufficiale, invariata
 - `tesi.tex` - preambolo, metadati del frontespizio e ordine dei capitoli
 - `capitoli/` - un file per capitolo, inclusi da `tesi.tex` con `\include`
+- `bibliografia.bib` - le fonti, in BibTeX
 - `immagini/` - figure
 
 ## Da compilare prima di scrivere
@@ -13,14 +14,24 @@ In `tesi.tex`: `\title`, `\advisor`, e le due pagine di citazione e dedica. `\de
 
 ## Compilazione
 
-La classe usa `pdfx` con profilo PDF/A-1b, quindi va compilata con **pdflatex** (Overleaf va bene, come per la triennale). Due passate per indice e riferimenti:
+Toolchain installata via Homebrew: `brew install texlive biber` (`biber` è a parte, la formula texlive non lo include). La classe usa `pdfx` con profilo PDF/A-1b: serve **pdflatex**, non tectonic.
+
+I binari stanno in `/opt/homebrew/opt/texlive/bin`: se `pdflatex` non si trova, aggiungilo al PATH.
 
 ```
-pdflatex tesi.tex && pdflatex tesi.tex
+latexmk -pdf tesi.tex
 ```
 
-Con `tectonic` il pacchetto `pdfx` si ferma su `CreationDate is not properly supported`: si compila solo con `tectonic -X compile tesi.tex -Z continue-on-errors`, e il PDF che ne esce non è PDF/A valido. Va bene per un'anteprima veloce, non per la consegna.
+`latexmk` gestisce da solo le passate e la chiamata a `biber`. A mano sarebbe:
+
+```
+pdflatex tesi.tex && biber tesi && pdflatex tesi.tex && pdflatex tesi.tex
+```
+
+Per ripulire gli ausiliari: `latexmk -C`.
 
 ## Bibliografia
 
-Come nella triennale è una `thebibliography` scritta a mano in `capitoli/bibliografia.tex`. Per una tesi con parecchi articoli conviene passare a BibTeX (`\bibliography{bibliografia}` + un `.bib`), ma è una scelta da fare una volta, prima di avere 40 voci scritte a mano.
+`biblatex` con backend `biber`, stile numerico. Le fonti stanno in `bibliografia.bib`, si citano con `\cite{chiave}` e compaiono in bibliografia **solo se citate** (per forzarne una non citata: `\nocite{chiave}`).
+
+Lo stile si cambia in un punto solo, nell'opzione `style=` di `\usepackage{biblatex}` in `tesi.tex`: `numeric-comp` (attuale, `[1,3-5]`), `alphabetic` (`[Rob09]`), `authoryear`. Se il relatore chiede un formato preciso, si decide lì.
