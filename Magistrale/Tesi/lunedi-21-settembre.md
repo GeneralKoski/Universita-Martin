@@ -19,7 +19,9 @@ Prima del metodo, prima dell'argomento, sempre questa:
 
 > **Quanti dati ci sono, in che stato sono, e sono già disponibili oggi o devono ancora arrivare?**
 
-Se la risposta è vaga, la traccia è da evitare qualunque sia l'argomento. Una tesi su dati che arrivano a marzo quando mi laureo a luglio non si finisce.
+Se la risposta è vaga, la traccia è da evitare qualunque sia l'argomento: dati che non esistono ancora sono dati che non arrivano mai.
+
+**Obiettivo laurea: settembre 2027.** Consegna intorno a luglio o agosto 2027. Il vincolo vero però non è quella data, sono i **sette esami che mancano** (i quattro del secondo anno più LIC, Metodi e Development of Reliable Safe and Secure Software), concentrati fra gennaio e la sessione estiva. La tesi entra nel vivo da febbraio o marzo 2027, dopo la sessione invernale, quindi ho circa cinque o sei mesi di lavoro serale effettivo. Dati che arrivano a marzo sono ancora recuperabili; dati che arrivano a maggio no.
 
 Corollario da chiedere subito dopo, se i dati sono di un altro gruppo: **chi è il referente e quanto è reattivo.**
 
