@@ -67,11 +67,47 @@ l'angolo più facile da difendere.
 | MelaGolfo | Scartato. |
 | KalTrack, unidesk, unidesk-mobile, Hydran, PiacenzAdvisor, PizzaGigante, Klipski, Chesso, Automarket, metin, Personal-website | Scartati: product engineering, integrazione o esercizi, nessuna domanda di ricerca. |
 
+## Decisione presa (15 settembre 2026)
+
+**Tesi su Koskidex innestato in Documentale.** Il piano operativo sta in
+[piano-implementazione.md](piano-implementazione.md).
+
+La domanda non è "integro il mio motore nel gestionale", che sarebbe lavoro di
+integrazione senza contributo. È che il ranking di Koskidex ha tre difetti
+precisi, verificati leggendo il codice:
+
+1. **Nessun IDF.** Il punteggio è `(10 - refusi + 2*esatti) * peso_campo`. Il
+   campo `Posting.TF` esiste in `internal/engine/inverted.go:12` con scritto
+   `// term frequency (calculated later)` e non è usato da nessuna parte. Un
+   termine rarissimo e uno comunissimo pesano identico.
+2. **L'ibrido non è ibrido.** In `ranker.go:203-222` il punteggio vettoriale si
+   somma solo ai documenti già trovati dal lessicale: è re-ranking. Un documento
+   semanticamente pertinente che il lessicale non pesca non entra mai.
+3. **La fusione somma scale incomparabili.** `m.Score += sim * 20.0`, dove il
+   lessicale cresce senza limite con la lunghezza della query e il vettoriale è
+   fisso a 20. Su una parola il vettore domina, su cinque è rumore.
+
+Ognuno è un capitolo con un risultato numerico, e il baseline è il codice di
+oggi. Documentale fornisce il corpus e il carico di query reale.
+
+Tre cose in una tesi sola: progetto personale (Koskidex), progetto aziendale
+(Documentale), e il contributo di Martin documentato dai commit.
+
+**Fuori dal perimetro:** `rustann` e gli indici approssimati. La forza bruta
+regge il volume di un documentale aziendale, quindi sarebbe una domanda di
+ricerca senza un bisogno reale.
+
+**Il vincolo che decide tutto:** non esistono dati di produzione, solo uno
+staging. Quindi i giudizi di rilevanza si scrivono a mano *prima* di guardare
+cosa risponde il motore. Seedare va bene per misurare latenza e memoria, mai
+per misurare la rilevanza: sarebbe circolare.
+
 ## Prossimi passi
 
-- [ ] Approfondire la traccia Koskidex e decidere la domanda precisa
-- [ ] Individuare il relatore adatto (area IR / sistemi)
-- [ ] Verificare che l'argomento non si sovrapponga a tesi già assegnate
+- [ ] Scegliere la collezione pubblica per validare BM25
+- [ ] Costruire il corpus di dominio e annotare le query (settimane, non giorni)
+- [ ] Sentire il relatore prima di iniziare ad annotare
+- [ ] Chiedere all'azienda cosa è pubblicabile
 
 ## Nota organizzativa
 
