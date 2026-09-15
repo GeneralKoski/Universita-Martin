@@ -29,21 +29,36 @@ Corollario da chiedere subito dopo, se i dati sono di un altro gruppo: **chi è 
 
 Mi conosce, mi ha dato 30L con esposizione. È la conversazione a basso rischio: le domande scomode le posso fare a lui.
 
-### Come aprire
+### Come aprire, parola per parola
 
-> "Professore, sto iniziando a guardarmi intorno per la tesi. Ho visto le sue proposte e ce ne sono due che mi interessano. Le posso rubare due minuti?"
+Quaranta secondi. Chiude su una domanda a cui è facile dire sì.
 
-### Le tre domande strutturali
+> "Buongiorno professore, le rubo due minuti. Sto cominciando a guardarmi intorno per la tesi. Constraint Programming è stato l'esame che mi è piaciuto di più del primo anno, e fra le sue proposte ce ne sono due che mi interessano molto: quella sulle metriche di similarità per le impronte digitali e quella sui dati della Stazione Spaziale. Sono ancora disponibili per quest'anno? E se sì, posso passare a ricevimento per parlarne meglio?"
 
-Queste valgono per tutto il resto dell'anno, e me le risponde sinceramente proprio perché mi conosce.
+Tre cose da rispettare, sono quelle che fanno la differenza:
 
-1. **Quelle proposte sono di dimensione tirocinio o tesi?** La pagina si intitola "Tirocini interni/esterni", e ho bisogno di sapere se il tirocinio confluisce nella tesi o se sono due cose separate.
-2. **Che cosa considera un contributo sufficiente per una tesi magistrale?** Chiederlo esplicitamente evita di scoprirlo a giugno.
-3. **Accetta tesi costruite su un sistema aziendale?** Nella sua lista c'è già la proposta ESG con tirocinio esterno, quindi il precedente c'è.
+- **Niente complimenti.** Non "lei è un prof che mi piace": suona come piaggeria e non porta informazione. Il fatto che Constraint Programming mi sia piaciuto dice la stessa cosa ed è verificabile. Il 30L se lo ricorda lui, non lo dico io.
+- **In corridoio chiedo il colloquio, non il sì da relatore.** Messo sul posto davanti agli studenti che escono, la risposta prudente è un forse, e un forse me lo porto dietro per settimane.
+- **"Sono ancora disponibili per quest'anno?"** va chiesto davvero: quella pagina è del 2025 e potrebbe essere vecchia.
 
-### Le tracce che mi interessano, in ordine
+**Se chiede su due piedi quale delle due:** impronte digitali. Motivo in una riga: *"mi interessa la parte di definire una misura di somiglianza e capire come si valuta"*.
 
-**1. Impronte digitali - metriche di similarità selettiva su grafi.** È la prima da chiedere.
+### Se si ferma e ha voglia di parlarne
+
+Solo in quel caso. Se ha fretta, queste diventano le domande del ricevimento.
+
+1. **Quanti dati ci sono e sono già disponibili?** Vedi la sezione in cima: è la domanda che decide tutto.
+2. **Quelle proposte sono di dimensione tirocinio o tesi?** La pagina si intitola "Tirocini interni/esterni", e devo sapere se il tirocinio confluisce nella tesi o se sono due cose separate.
+3. **Che cosa considera un contributo sufficiente per una tesi magistrale?** Chiederlo esplicitamente evita di scoprirlo a giugno.
+4. **Accetta tesi costruite su un sistema aziendale?** Serve solo se apro sul mio progetto. Nella sua lista c'è già la proposta ESG con tirocinio esterno, quindi il precedente c'è.
+
+### Da non chiedere in corridoio
+
+Dataset nel dettaglio e dimensione dello studio. In due minuti la risposta è per forza approssimativa, e una risposta approssimativa su cui poi costruisco è peggio di nessuna risposta. Sono domande da ricevimento.
+
+### Le due tracce, per il ricevimento
+
+**1. Impronte digitali - metriche di similarità selettiva su grafi.** È quella su cui punto.
 
 - Esistono collezioni pubbliche utilizzabili, o servono dati suoi?
 - Che cosa intende per "similarità selettiva": è già definita o è parte del lavoro definirla?
@@ -69,13 +84,15 @@ L'aggancio giusto per lui non è il motore di ricerca, è **Documentale**: estra
 
 Non mi conosce. Qui serve essere più precisi in meno parole, e ho il vantaggio di sapere già le risposte strutturali.
 
-### Come aprire
+### Come aprire, parola per parola
 
-> "Professore, mi interessa la tesi su temi di recupero dell'informazione. Ho visto la sua proposta sul RAG chatbot e ho anche un progetto mio che va in quella direzione. Le posso mandare due pagine o passare a ricevimento?"
+Stessa regola di prima: chiedo il colloquio, non il sì.
 
-Essere trasparente: **"ne sto parlando anche con il professor Dal Palù"**. L'ambiente è piccolo, scoprirlo dopo è peggio.
+> "Buongiorno professore, le rubo due minuti. Sto cominciando a guardarmi intorno per la tesi e mi interessano i temi di recupero dell'informazione. Ho visto la sua proposta sul RAG chatbot per Telegram, e ho anche un progetto mio che va in quella direzione. È una traccia ancora disponibile? Posso passare a ricevimento per parlarne?"
 
-### Cosa chiedere
+Essere trasparente: **"ne sto parlando anche con il professor Dal Palù"**. L'ambiente è piccolo, scoprirlo dopo è peggio. Se Dal Palù alle 8:30 ha aperto alla co-relazione sulle impronte, dirlo qui è un vantaggio, non un imbarazzo.
+
+### Cosa chiedere, al ricevimento
 
 **Sul RAG chatbot per Telegram:**
 
