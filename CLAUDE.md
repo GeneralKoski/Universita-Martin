@@ -41,11 +41,30 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 Tutti e quattro al primo semestre, tutti caratterizzanti e monodisciplinari:
 
 - Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici
-- Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, **docente NON ASSEGNATO** sulla scheda 2026/27 (verificato il 15/09/2026): Arceri risulta "non più in servizio presso l'Università di Parma" e la scheda è priva di obiettivi, programma ed esame. Da chiarire a inizio corso
+- Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, prof. **Vincenzo Arceri**. La scheda 2026/27 lo dà come "NON ASSEGNATO" e Arceri come "non più in servizio": è un buco della scheda, il corso lo tiene ancora lui (confermato il 16/09/2026). La scheda resta priva di obiettivi, programma ed esame
 - Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici
-- Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù - unico senza corso Elly 2025/26, nessun materiale scaricabile
+- Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù - senza edizione Elly 2025/26 (mai pubblicata), quindi nessun materiale d'archivio
 
-Materiale Elly 2025/26 scaricato il 15/09/2026 nelle rispettive cartelle sotto `Magistrale/` (una sottocartella per sezione Elly + `README.md` con scheda ufficiale e indice completo, registrazioni incluse).
+### Elly: un'istanza per anno accademico
+
+Unipr pubblica un Moodle per anno (`elly2025`, `elly2026`, ...) e **le iscrizioni non migrano**. I quattro esami del primo anno vivono ancora su elly2025; i quattro del secondo anno sono su elly2026. Cercare un corso del secondo anno su elly2025 dà risultati vecchi o vuoti - è l'errore che ha prodotto le informazioni sbagliate su Analisi Statica e Programmazione Dichiarativa.
+
+Corrispondenza corso → istanza → id (letta il 16/09/2026):
+
+| Corso | Istanza | id |
+|---|---|---|
+| Algoritmi per l'IA | elly2026 | 5196 |
+| Laboratorio di IA | elly2026 | 5197 |
+| Analisi Statica | elly2026 | 5198 |
+| Programmazione Dichiarativa | elly2026 | 4403 |
+| Development of Reliable, Safe and Secure Software | elly2025 | 1136 |
+| Linguaggi, Interpreti e Compilatori | elly2025 | 666 |
+| Metodi e Modelli per l'IA | elly2025 | 4351 |
+| Metodi e Modelli per le Decisioni | elly2025 | 416 |
+
+### Materiale nelle cartelle
+
+Ogni corso ha un `README.md` con scheda ufficiale e indice completo. Per i corsi del secondo anno il materiale è **diviso per edizione**: `2025-26/` (edizione precedente, scaricata il 15/09/2026 da elly2025, tenuta come riferimento) e `2026-27/` (l'edizione che seguo, da elly2026). Dentro ciascuna, una sottocartella per sezione Elly.
 
 ### Voto di laurea - proiezione
 

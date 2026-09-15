@@ -7,7 +7,15 @@
 
 Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329459
 
-> Nessun corso Elly disponibile: l'edizione 2025/26 non è pubblicata su Unidesk, quindi qui non c'è materiale da scaricare. Da ricontrollare all'avvio dei corsi (ottobre 2026).
+| Edizione | Elly | Corso | Stato |
+|---|---|---|---|
+| 2026/27 | elly2026 | [id 4403](https://elly2026.didattica.unipr.it/course/view.php?id=4403) | in corso, indice da leggere |
+| 2025/26 | - | - | non pubblicata |
+
+> Il corso su elly2026 **esiste** (id 4403). Il README diceva "nessun corso Elly
+> disponibile": era vero solo per l'edizione 2025/26, che non è mai stata
+> pubblicata, e restava falso per quella nuova. Non c'è quindi materiale
+> d'archivio: tutto quello che arriva è dell'edizione che seguo.
 
 ## Contenuti
 
