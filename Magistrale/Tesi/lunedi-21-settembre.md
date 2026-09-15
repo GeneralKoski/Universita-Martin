@@ -31,7 +31,7 @@ Mi conosce, mi ha dato 30L con esposizione. È la conversazione a basso rischio:
 
 ### Come aprire
 
-> "Professore, sto iniziando a guardarmi intorno per la tesi. Ho visto le sue proposte e ce ne sono tre che mi interessano. Le posso rubare due minuti?"
+> "Professore, sto iniziando a guardarmi intorno per la tesi. Ho visto le sue proposte e ce ne sono due che mi interessano. Le posso rubare due minuti?"
 
 ### Le tre domande strutturali
 
@@ -51,13 +51,7 @@ Queste valgono per tutto il resto dell'anno, e me le risponde sinceramente propr
 
 Perché la metto per prima: dati pubblici quindi nessun corpus da costruire, protocolli di valutazione già codificati quindi riproducibile, ed è metodologicamente quello che voglio fare, cioè definire una misura e costruire il modo di valutarla.
 
-**2. Cardioidi - predizione di patologie cardiache.**
-
-- Quanti campioni ci sono, già acquisiti o da acquisire?
-- "Parametri nascosti predittivi" è esplorativo: se non si trova niente di significativo, la tesi regge lo stesso?
-- Quanto pesa la teoria delle reti rispetto al machine learning?
-
-**3. Stazione Spaziale - pattern su immagini DWS.**
+**2. Stazione Spaziale - pattern su immagini DWS.**
 
 - Quante immagini, e la campagna è conclusa?
 - Chi è il referente di Fisica e quanto è disponibile?
