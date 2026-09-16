@@ -27,30 +27,31 @@ Basi teoriche per modellare e risolvere problemi di IA: apprendimento automatico
 
 ## Edizione 2026/27 - Elly 5196
 
-Indice letto da Elly il 16/09/2026. I file non sono ancora scaricati: le voci
-qui sotto sono i link ai moduli Elly.
+Scaricato il 16/09/2026 in `2026-27/`. I nomi originali del docente portano il
+prefisso `AIALGO_2627_`, che conferma che sono file rifatti per questa edizione
+e non copie della precedente.
 
-### Introduzione
+### 0 - Introduzione
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6548
-- Calendario provvisorio - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=24809
-- Esempio compito scritto - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=24810
+- `2026-27/0_Introduzione/Calendario provvisorio.pdf` (calendario-v0.pdf)
+- `2026-27/0_Introduzione/Esempio compito scritto.pdf` (esempio-compito.pdf)
 
-### Materiale lezioni
+### 1 - Materiale lezioni
 
-- Introduzione al corso - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=24811
-- Introduzione al machine learning - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25052
-- Introduzione alla classificazione - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25053
-- Distribuzioni e teoria dell'informazione - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25054
-- Validazione dei modelli di classificazione - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25055
-- Modelli per la classificazione - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25056
-- Regressione - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25504
-- Algoritmi di clustering - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25505
-- Valutazione del clustering - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25506
-- Algoritmi di ricerca - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25508
-- Casualità - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25509
-- Metaeuristiche - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25510
-- Teoria dei giochi - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25511
+- `2026-27/1_Materiale_lezioni/Introduzione al corso.pdf` (AIALGO_2627_0-intro.pdf)
+- `2026-27/1_Materiale_lezioni/Introduzione al machine learning.pdf` (AIALGO_2627_1-intoML.pdf)
+- `2026-27/1_Materiale_lezioni/Introduzione alla classificazione.pdf` (AIALGO_2627_2-introClassificazione.pdf)
+- `2026-27/1_Materiale_lezioni/Distribuzioni e teoria dell'informazione.pdf` (AILAGO_2627_3-distribuzioni.pdf)
+- `2026-27/1_Materiale_lezioni/Validazione dei modelli di classificazione.pdf` (AILAGO_2627_4-classificazione-validazione.pdf)
+- `2026-27/1_Materiale_lezioni/Modelli per la classificazione.pdf` (AIALGO_2627_5-classificazione-modelli.pdf)
+- `2026-27/1_Materiale_lezioni/Regressione.pdf` (AIALGO_2627_5-regressione.pdf)
+- `2026-27/1_Materiale_lezioni/Algoritmi di clustering.pdf` (AIALGO_2627_6-clustering-algoritmi.pdf)
+- `2026-27/1_Materiale_lezioni/Valutazione del clustering.pdf` (AIALGO_2627_8-clustering-valutazione.pdf)
+- `2026-27/1_Materiale_lezioni/Algoritmi di ricerca.pdf` (AIALGO_2627_9-ricerca.pdf)
+- `2026-27/1_Materiale_lezioni/Casualità.pdf` (AIALGO_2627_10-casualita.pdf)
+- `2026-27/1_Materiale_lezioni/Metaeuristiche.pdf` (AIALGO_2627_11-metaeuristiche.pdf)
+- `2026-27/1_Materiale_lezioni/Teoria dei giochi.pdf` (AIALGO_2627_12-giochi.pdf)
 
 ### Cosa cambia rispetto al 2025/26
 
@@ -71,6 +72,9 @@ qui sotto sono i link ai moduli Elly.
 
 **Non ancora pubblicato:** registrazioni delle lezioni e choice per la modalità
 d'esame (nel 2025/26 c'erano entrambe). Normale: il corso non è ancora iniziato.
+Manca anche il numero 7 nella numerazione del docente (si passa da
+`6-clustering-algoritmi` a `8-clustering-valutazione`): probabile che arrivi una
+slide in mezzo.
 
 ---
 

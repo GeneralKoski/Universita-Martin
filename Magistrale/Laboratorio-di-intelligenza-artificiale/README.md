@@ -27,30 +27,31 @@ Basi per modellare, implementare e applicare algoritmi di IA, con taglio pratico
 
 ## Edizione 2026/27 - Elly 5197
 
-Indice letto da Elly il 16/09/2026. I file non sono ancora scaricati: le voci
-qui sotto sono i link ai moduli Elly.
+Scaricato il 16/09/2026 in `2026-27/`. I nomi originali del docente portano il
+prefisso `AILAB_2627_`, che conferma che sono file rifatti per questa edizione
+e non copie della precedente.
 
-### Introduzione
+### 0 - Introduzione
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6549
-- Calendario provvisorio - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=24812
+- `2026-27/0_Introduzione/Calendario provvisorio.pdf` (calendario-v0.pdf)
 
-### Materiale lezioni
+### 1 - Materiale lezioni
 
-- Introduzione al corso - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=24813
-- Python 3 - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25057
-- Esempio Python 3 OOP - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25058
-- Librerie python - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25059
-- Riduzione della dimensionalità - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25298
-- Notebook - riduzione della dimensionalità - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25060
-- Sbilanciamento del dataset - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25299
-- Benchmarking - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25302
-- Serie temporali - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25303
-- Programmazione dinamica - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25304
-- Teoria dei grafi e algoritmi su grafi - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25499
-- Subgraph isomorphism - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25500
-- Notebook - Classificazione - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25501
-- Notebook - Clustering - https://elly2026.didattica.unipr.it/mod/resource/view.php?id=25502
+- `2026-27/1_Materiale_lezioni/Introduzione al corso.pdf` (AILAB_2627_0-intro.pdf)
+- `2026-27/1_Materiale_lezioni/Python 3.pdf` (AILAB_2627_1-python.pdf)
+- `2026-27/1_Materiale_lezioni/Esempio Python 3 OOP.py` (Student.py)
+- `2026-27/1_Materiale_lezioni/Librerie python.zip` (python-libs.zip)
+- `2026-27/1_Materiale_lezioni/Riduzione della dimensionalità.pdf` (AILAB_2627_3-dim-red.pdf)
+- `2026-27/1_Materiale_lezioni/Notebook - riduzione della dimensionalità.ipynb` (dimred.ipynb)
+- `2026-27/1_Materiale_lezioni/Sbilanciamento del dataset.pdf` (AILAB_2627_4-sbilanciamento.pdf)
+- `2026-27/1_Materiale_lezioni/Benchmarking.pdf` (AILAB_2627_5-benchmark.pdf)
+- `2026-27/1_Materiale_lezioni/Serie temporali.pdf` (AILAB_2627_6-serie-temporali.pdf)
+- `2026-27/1_Materiale_lezioni/Programmazione dinamica.pdf` (AILAB_2627_7-programmazione-dinamica.pdf)
+- `2026-27/1_Materiale_lezioni/Teoria dei grafi e algoritmi su grafi.pdf` (AILAB_2627_8-grafi.pdf)
+- `2026-27/1_Materiale_lezioni/Subgraph isomorphism.pdf` (SubGI.pdf)
+- `2026-27/1_Materiale_lezioni/Notebook - Classificazione.ipynb` (lab-classificazione.ipynb)
+- `2026-27/1_Materiale_lezioni/Notebook - Clustering.ipynb` (lab-clustering.ipynb)
 
 ### Cosa cambia rispetto al 2025/26
 
