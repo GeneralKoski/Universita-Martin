@@ -12,7 +12,7 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 
 | Edizione | Elly | Corso | Stato |
 |---|---|---|---|
-| 2026/27 | elly2026 | [id 5196](https://elly2026.didattica.unipr.it/course/view.php?id=5196) | in corso, inizio 22/09/2026 |
+| 2026/27 | elly2026 | [id 5196](https://elly2026.didattica.unipr.it/course/view.php?id=5196) | in corso, inizio 21/09/2026 |
 | 2025/26 | elly2025 | [id 1468](https://elly2025.didattica.unipr.it/course/view.php?id=1468) | archiviata, materiale completo |
 
 ## Contenuti
@@ -27,8 +27,9 @@ Basi teoriche per modellare e risolvere problemi di IA: apprendimento automatico
 
 ## Edizione 2026/27 - Elly 5196
 
-Scaricato il 16/09/2026 in `2026-27/`. I nomi originali del docente portano il
-prefisso `AIALGO_2627_`, che conferma che sono file rifatti per questa edizione
+Scaricato il 16/09/2026 in `2026-27/`, ricontrollato il 21/09/2026 dopo la
+prima lezione: nessun file nuovo o modificato. I nomi originali del docente
+portano il prefisso `AIALGO_2627_`, che conferma che sono file rifatti per questa edizione
 e non copie della precedente.
 
 ### 0 - Introduzione

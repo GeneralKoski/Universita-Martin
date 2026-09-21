@@ -43,7 +43,7 @@ Tutti e quattro al primo semestre, tutti caratterizzanti e monodisciplinari:
 - Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici. **Esame: solo scritto, crocette + domande aperte** (confermato dal docente il 21/09/2026). Niente orale, la scheda ufficiale che parla di "integrazione del voto tramite orale" è superata
 - Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, prof. **Vincenzo Arceri**. La scheda 2026/27 lo dà come "NON ASSEGNATO" e Arceri come "non più in servizio": è un buco della scheda, il corso lo tiene ancora lui (confermato il 16/09/2026). La scheda resta priva di obiettivi, programma ed esame
 - Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici. **Esame: progetto da presentare** (confermato dal docente il 21/09/2026), che deve applicare bene tutti i concetti del laboratorio **più qualcosa dal corso teorico di Algoritmi per l'IA**. La teoria di Algoritmi serve quindi per entrambi gli esami: studiarla una volta sola, non due
-- Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù - senza edizione Elly 2025/26 (mai pubblicata), quindi nessun materiale d'archivio
+- Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù - senza edizione Elly 2025/26 (mai pubblicata), quindi nessun materiale d'archivio: c'è solo quello che carica lui a lezione. Iniziato il 21/09/2026; su Elly pubblica una sezione per lezione con le slide annotate a mano, più la dispensa Dovier-Formisano come testo di riferimento
 
 ### Elly: un'istanza per anno accademico
 

@@ -12,7 +12,7 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 
 | Edizione | Elly | Corso | Stato |
 |---|---|---|---|
-| 2026/27 | elly2026 | [id 5197](https://elly2026.didattica.unipr.it/course/view.php?id=5197) | in corso, inizio 22/09/2026 |
+| 2026/27 | elly2026 | [id 5197](https://elly2026.didattica.unipr.it/course/view.php?id=5197) | in corso, inizio 23/09/2026 |
 | 2025/26 | elly2025 | [id 667](https://elly2025.didattica.unipr.it/course/view.php?id=667) | archiviata, materiale completo |
 
 ## Contenuti
@@ -27,14 +27,30 @@ Basi per modellare, implementare e applicare algoritmi di IA, con taglio pratico
 
 ## Edizione 2026/27 - Elly 5197
 
-Scaricato il 16/09/2026 in `2026-27/`. I nomi originali del docente portano il
-prefisso `AILAB_2627_`, che conferma che sono file rifatti per questa edizione
-e non copie della precedente.
+Scaricato il 16/09/2026 in `2026-27/`, ricontrollato il 21/09/2026. I nomi
+originali del docente portano il prefisso `AILAB_2627_`, che conferma che sono
+file rifatti per questa edizione e non copie della precedente.
 
 ### 0 - Introduzione
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6549
 - `2026-27/0_Introduzione/Calendario provvisorio.pdf` (calendario-v0.pdf)
+- `2026-27/0_Introduzione/Calendario provvisorio v1.pdf` (calendario-v1.pdf) - **il calendario valido**
+
+#### Calendario v1: cosa cambia rispetto a v0
+
+Il docente ha **aggiunto due lezioni di recupero** a inizio ottobre, in un
+giorno e un'aula diversi dal solito:
+
+- lunedì 05-10-2026, 08:30-10:30, **Aula G** - Python 3
+- martedì 06-10-2026, 08:30-10:30, **Aula G** - numpy, PLS
+
+Tutto il resto scala indietro di due lezioni: *Pandas e librerie grafiche* passa
+dal 14/10 al 07/10, la *programmazione dinamica* dal 18/11 al 05/11, *subgraph
+isomorphism* dal 02-03/12 al 25-26/11, i *progetti* dal 09/12 al 02/12 e i tre
+laboratori (classificazione, regressione, clustering) dal 16-23/12 al
+03-09-16/12. Il corso finisce quindi il **16/12** invece del 23/12, con le
+ultime due date (17/12 e 23/12) rimaste libere.
 
 ### 1 - Materiale lezioni
 
