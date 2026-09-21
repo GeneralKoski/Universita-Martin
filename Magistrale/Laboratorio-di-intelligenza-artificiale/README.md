@@ -15,6 +15,21 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 | 2026/27 | elly2026 | [id 5197](https://elly2026.didattica.unipr.it/course/view.php?id=5197) | in corso, inizio 23/09/2026 |
 | 2025/26 | elly2025 | [id 667](https://elly2025.didattica.unipr.it/course/view.php?id=667) | archiviata, materiale completo |
 
+## Struttura della cartella
+
+- `2026-27/`, `2025-26/` - materiale Elly, un'edizione per cartella
+- `project/` - il progetto d'esame, una sottocartella per progetto
+- `study/` - preparazione della presentazione
+
+Il progetto deve applicare i concetti del laboratorio **più qualcosa dal corso
+teorico di Algoritmi per l'IA**: quella teoria sta in
+`../Algoritmi-per-l-intelligenza-artificiale/study/`, va linkata da qui, non
+ricopiata.
+
+Il `.gitignore` del corso tiene fuori da git dataset grezzi, file generati,
+risultati, `.venv` e zip di consegna: sono tutti rigenerabili e il repository
+pesa già parecchio di PDF.
+
 ## Contenuti
 
 Basi per modellare, implementare e applicare algoritmi di IA, con taglio pratico su Python e librerie. Complementare ad Algoritmi per l'IA (stesso docente): lì la teoria, qui l'implementazione.

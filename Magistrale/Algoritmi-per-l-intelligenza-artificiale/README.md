@@ -15,6 +15,15 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 | 2026/27 | elly2026 | [id 5196](https://elly2026.didattica.unipr.it/course/view.php?id=5196) | in corso, inizio 21/09/2026 |
 | 2025/26 | elly2025 | [id 1468](https://elly2025.didattica.unipr.it/course/view.php?id=1468) | archiviata, materiale completo |
 
+## Struttura della cartella
+
+- `2026-27/`, `2025-26/` - materiale Elly, un'edizione per cartella
+- `study/` - preparazione dello scritto
+
+Niente `project/`: qui l'esame è solo scritto. La teoria studiata in `study/`
+serve però **anche per il progetto di Laboratorio di IA**: sta qui una volta
+sola, il progetto del Lab la linka invece di duplicarla.
+
 ## Contenuti
 
 Basi teoriche per modellare e risolvere problemi di IA: apprendimento automatico e ricerca di soluzioni dal punto di vista algoritmico.

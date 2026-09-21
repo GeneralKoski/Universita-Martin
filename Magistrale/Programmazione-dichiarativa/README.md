@@ -17,6 +17,20 @@ Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329459
 > pubblicata, e restava falso per quella nuova. Non c'è quindi materiale
 > d'archivio: tutto quello che arriva è dell'edizione che seguo.
 
+## Struttura della cartella
+
+- `2026-27/` - materiale Elly, una sottocartella per lezione
+- `project/` - il progetto d'esame, una sottocartella per progetto
+- `study/` - preparazione dell'orale
+
+Il progetto si può fare in gruppo (max 2 studenti, è una facoltà non un
+obbligo). Per ora si sviluppa qui: se servirà condividerlo con un collega si
+sposta in un repository a sé, così non gli si passa tutto il percorso
+universitario.
+
+Il `.gitignore` del corso tiene fuori da git dataset grezzi, file generati,
+risultati, `.venv` e zip di consegna.
+
 ## Materiale Elly 2026/27 - corso 4403
 
 Al 16/09/2026 il corso era aperto ma vuoto. Con la prima lezione (21/09/2026)
