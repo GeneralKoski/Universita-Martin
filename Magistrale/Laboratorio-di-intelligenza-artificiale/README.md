@@ -2,7 +2,7 @@
 
 **cod. 1009073** - 6 CFU, 48 ore - caratterizzante, monodisciplinare - 2° anno, primo semestre (a.a. 2026/27) - insegnamento in italiano.
 **Docente:** Vincenzo Bonnici (vincenzo.bonnici@unipr.it)
-**Esame:** orale + progetto (singolo o in gruppo), con esposizione dei risultati al docente.
+**Esame:** **progetto da presentare** (confermato dal docente il 21/09/2026). Il progetto deve applicare bene tutti i concetti del laboratorio **più qualcosa dal corso teorico di Algoritmi per l'IA**: la teoria va studiata comunque, anche per questo esame.
 **Metodi didattici:** lezioni frontali, laboratorio in aula, progetto.
 
 Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329454

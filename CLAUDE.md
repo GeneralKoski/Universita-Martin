@@ -40,9 +40,9 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 Tutti e quattro al primo semestre, tutti caratterizzanti e monodisciplinari:
 
-- Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici
+- Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici. **Esame: solo scritto, crocette + domande aperte** (confermato dal docente il 21/09/2026). Niente orale, la scheda ufficiale che parla di "integrazione del voto tramite orale" è superata
 - Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, prof. **Vincenzo Arceri**. La scheda 2026/27 lo dà come "NON ASSEGNATO" e Arceri come "non più in servizio": è un buco della scheda, il corso lo tiene ancora lui (confermato il 16/09/2026). La scheda resta priva di obiettivi, programma ed esame
-- Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici
+- Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici. **Esame: progetto da presentare** (confermato dal docente il 21/09/2026), che deve applicare bene tutti i concetti del laboratorio **più qualcosa dal corso teorico di Algoritmi per l'IA**. La teoria di Algoritmi serve quindi per entrambi gli esami: studiarla una volta sola, non due
 - Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù - senza edizione Elly 2025/26 (mai pubblicata), quindi nessun materiale d'archivio
 
 ### Elly: un'istanza per anno accademico
