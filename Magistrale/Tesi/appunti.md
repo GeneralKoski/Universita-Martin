@@ -120,6 +120,20 @@ ranking era la scelta giusta: la tesi stava per essere scritta su tre capitoli
 di ottimizzazione del punteggio, su un motore che nel 97% dei casi non
 restituiva niente da ottimizzare.
 
+**Il 23/09/2026, guardando Documentale per tutt'altro motivo, il difetto 0 è
+saltato fuori una seconda volta.** `ElasticsearchService::fuzzySearch()` ha
+`'operator' => 'and'` con accanto il commento *"tutte le parole devono
+comparire"*: il motore di produzione è congiuntivo esattamente come lo era
+Koskidex. Non è più un difetto del mio progetto personale, è un difetto condiviso
+con il sistema che i colleghi usano tutti i giorni, arrivato per la stessa strada
+ragionevole in due basi di codice indipendenti. La tesi ne guadagna: la domanda
+non è "il mio motore era tarato male", è "il recupero congiuntivo è una scelta
+sensata che si rompe quando le query si allungano". Ed è misurabile sul sistema
+vero, perché il log delle query di ricerca è stato acceso lo stesso giorno e
+registra il numero di risultati: appena avrà raccolto abbastanza, si conta quante
+ricerche reali tornano vuote e con quante parole. **Da non correggere prima di
+averlo misurato:** è il baseline di produzione.
+
 Lo stesso impianto, poche ore dopo, ha fatto scattare una guardia sulla misura di
 BM25. Andando a vedere è venuto fuori che a essere sbagliata era la guardia, non
 il risultato: `recall@k` non misura il recupero quando i candidati sono molti più

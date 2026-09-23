@@ -133,7 +133,7 @@ Atteso: tutti i package `ok`. Se qualcosa fallisce, **fermarsi e capire perché 
 
 Scrivere in `eval/BASELINE.md` (crearlo) la data, l'output di `go version` e l'esito dei test. Serve a sapere, fra sei mesi, con quale toolchain sono stati prodotti i primi numeri.
 
-- [ ] **Passo 4: commit**
+- [x] **Passo 4: commit** (`244207f`)
 
 ```bash
 git add eval/BASELINE.md
@@ -449,7 +449,9 @@ Arrivare a febbraio con A0-A3, B1, B2 e magari la Fase 1 fatti significa partire
 
 ## Dove si lavora
 
-Branch **`martin/tesi-magistrale`**, creato il 23 settembre 2026 da `fix/various-fixes` (commit `5c31647`), che conteneva già dei fix miei in corso. Esiste solo in locale: non è su `origin` e non ci va finché non serve davvero.
+Branch **`martin/tesi-magistrale`**, creato il 23 settembre 2026 da `fix/various-fixes` (commit `5c31647`), che conteneva già dei fix miei in corso.
+
+**Correzione del 23/09/2026, seconda parte della giornata:** questa riga diceva "esiste solo in locale, non è su `origin`". È falso: il ramo è su `origin` a `5c31647`, spinto da GitHub Desktop pochi minuti dopo la creazione, non da me. È la seconda volta nella stessa giornata (era già successo con due commit di questo repo). **Su questa macchina un commit o un ramo esce in rete da solo nel giro di un minuto**, quindi qualunque frase del tipo "resta in locale" va verificata con `git ls-remote`, non data per scontata. Conseguenza pratica: niente dati di clienti in nessun commit di questo ramo, nemmeno temporaneo, perché non c'è una finestra in cui il commit è solo mio.
 
 Il senso è tenere separato quello che nasce per la tesi da quello che nasce per il prodotto, anche se in pratica questo ramo non verrà probabilmente mai integrato. Se una singola modifica si rivelasse utile all'azienda - il caso più probabile è la persistenza del testo integrale del Task C0 - si porta di là con un cherry-pick, come una cosa sua, non trascinando il ramo della tesi.
 
@@ -486,10 +488,42 @@ Non è codice, è la decisione che tiene in piedi o fa cadere il corpus C2.
 - Contro: è una modifica al prodotto, quindi va concordata, e conservare il testo integrale di documenti di clienti ha implicazioni di spazio e di riservatezza che non decido io.
 - Costo: una migration, un punto nella pipeline di estrazione, la reindicizzazione.
 
-- [ ] Verificare se il testo integrale sia già disponibile da qualche parte nella pipeline Python senza doverlo riestrarre
+- [x] Verificare se il testo integrale sia già disponibile da qualche parte nella pipeline Python senza doverlo riestrarre - **verificato il 23/09/2026, la risposta è no, e cambia il costo dell'Opzione B**
 - [ ] Chiedere in azienda se il testo integrale si può conservare, e con quali vincoli
 - [ ] Se la risposta è sì, l'Opzione B diventa un task vero di Documentale e il corpus lo aspetta; se è no, si va con l'Opzione A e lo si scrive in `appunti.md` come vincolo della tesi, non come ripiego
 - [ ] Portare la domanda al relatore a dicembre: è il tipo di vincolo su cui un relatore ha un'opinione, e scoprirlo a marzo sarebbe tardi
+
+### Cosa ho trovato guardando la pipeline (23/09/2026)
+
+**Il testo integrale non esiste in nessun punto del processo, nemmeno di
+passaggio.** Non è che venga estratto e poi buttato via: non viene mai estratto.
+`apps/python/app/api/documents/routes.py` manda al modello il **base64 del file
+intero** (`document_base64`, come `input_file` o `image_url`) e riceve indietro
+solo il JSON strutturato. In `requirements.txt` non c'è nessuna libreria di
+estrazione: niente pypdf, niente pdfplumber, niente OCR. La pipeline è
+multimodale dall'inizio alla fine.
+
+Quindi l'Opzione B non è "salviamo quello che già estraiamo", è **"aggiungiamo
+una capacità di estrazione che oggi non c'è"**: una dipendenza nuova, un passo
+nuovo nella pipeline, e la sua manutenzione. Il costo stimato nel task qui sopra
+(una migration e un punto nella pipeline) era sottostimato, e va corretto prima
+di portare la domanda in azienda.
+
+**La buona notizia che compensa:** i file originali sono conservati
+(`spatie/laravel-medialibrary`, tabella `media`, `document_versions.media_id`).
+Quindi l'estrazione si può fare **a posteriori sui documenti già caricati**, in
+un comando che gira una volta, senza aspettare nuovi upload. Per il calendario
+di febbraio è la differenza fra avere un corpus e non averlo.
+
+**L'opzione C, quella da rifiutare esplicitamente prima che qualcuno la
+proponga.** Visto che il modello il documento lo legge già, verrebbe naturale
+chiedergli in più anche la trascrizione integrale: nessuna dipendenza nuova, una
+riga di prompt. **Non si fa.** Un testo prodotto da un LLM non è il documento: è
+una parafrasi con dentro normalizzazioni, omissioni e, sui numeri e sui nomi
+propri, invenzioni. Costruirci sopra un corpus di recupero vuol dire misurare
+quanto bene il motore trova cose in un testo che nessuno ha mai scritto, e il
+risultato sarebbe indifendibile in discussione. Se si fa l'Opzione B, si fa con
+un estrattore deterministico.
 
 Finché C0 non è chiuso, il Task C1 si fa comunque, perché il grosso dell'export è identico nelle due opzioni: cambia solo il campo `text`.
 
@@ -618,7 +652,7 @@ git add app/Console/Commands/ExportEvalCorpus.php tests/Feature/ExportEvalCorpus
 git commit -m "feat: add eval corpus export command for thesis evaluation"
 ```
 
-## Task C2: Registrare le query di ricerca
+## Task C2: Registrare le query di ricerca - FATTO il 23/09/2026
 
 Oggi le ricerche passano da `ElasticsearchService::fuzzySearch()` (riga 97) e non lasciano traccia. Registrarle costa poco e a febbraio fa la differenza fra scrivere sessanta query inventate e partire da quelle che la gente digita davvero.
 
@@ -632,7 +666,7 @@ Non risolve il problema di fondo, che resta scritto in `appunti.md`: c'e' solo s
 **Interfacce:**
 - Produce: la tabella `search_logs`, letta a febbraio per estrarre le query del corpus C2.
 
-- [ ] **Passo 1: migration**
+- [x] **Passo 1: migration**
 
 ```php
 Schema::create('search_logs', function (Blueprint $table) {
@@ -647,7 +681,7 @@ Schema::create('search_logs', function (Blueprint $table) {
 });
 ```
 
-- [ ] **Passo 2: registrare dentro fuzzySearch**
+- [x] **Passo 2: registrare dentro fuzzySearch**
 
 In `fuzzySearch`, cronometrare la chiamata e scrivere il log prima del return. Il log **non deve mai far fallire la ricerca**: e' uno dei pochi punti in cui ingoiare l'eccezione e' giustificato, perche' e' telemetria e non fa parte del flusso.
 
@@ -670,7 +704,7 @@ try {
 return $risultati;
 ```
 
-- [ ] **Passo 3: verificare a mano**
+- [x] **Passo 3: verificare** (non a mano: vedi sotto)
 
 Fare tre ricerche dall'interfaccia, poi:
 
@@ -680,12 +714,82 @@ php artisan tinker --execute="dump(\App\Models\SearchLog::latest()->take(3)->get
 
 Atteso: le tre query appena fatte, con numero di risultati e durata.
 
-- [ ] **Passo 4: commit**
+- [x] **Passo 4: commit** (`244207f`)
 
 ```bash
 git add database/migrations app/Models/SearchLog.php app/Services/ElasticsearchService.php
 git commit -m "feat: log search queries to build the thesis query set"
 ```
+
+### Com'è andata, e due correzioni al task qui sopra
+
+Non c'era nessun container di Documentale acceso, quindi il Passo 3 come scritto
+- tre ricerche dall'interfaccia e poi `tinker` - non era eseguibile. Invece di
+saltare la verifica ho tirato su un MySQL 8 usa-e-getta, fatto girare **tutte**
+le migration, e verificato quattro cose: che la migration si applichi, che la
+tabella e il vincolo vengano come previsto, che il modello scriva e rilegga, e
+che il `down()` la tolga pulita. Poi container buttato. Senza quel giro, due
+errori sarebbero entrati in un commit:
+
+**1. `constrained('users')` non esiste.** In Documentale non c'è nessuna tabella
+`users` e nessun modello `User`. L'utente autenticato è `UserAdmin` su
+`user_admins`, ed è il provider del guard di default (`config/auth.php`, guard
+`admin`). La colonna giusta è `user_admin_id`. Lo snippet nel task qui sopra è
+sbagliato ed è stato corretto nel codice, non nel piano: resta scritto così per
+memoria di cosa avevo dato per scontato.
+
+**2. `strict => false` in `config/database.php`.** Avevo commentato il taglio del
+termine a 512 caratteri dicendo che senza sarebbe fallito l'insert. Non è vero
+qui: MySQL lo taglia da solo, in silenzio, **a byte**, il che su un accento
+spezza il carattere. Il taglio in PHP resta, ma per la ragione giusta - a
+caratteri, e senza dipendere da un flag di configurazione che qualcuno potrebbe
+rimettere a `true`.
+
+**Una nota sul volume:** in alcuni flussi `DocumentController` chiama
+`fuzzySearch` due volte per una sola ricerca dell'utente, una su `documents` e
+una su `folders`. Il log avrà quindi due righe con lo stesso `term` nello stesso
+istante. Non è un bug e non va deduplicato in scrittura: la colonna `type` le
+distingue, e a febbraio si raggruppa in lettura.
+
+### La scoperta che vale più del task
+
+Guardando `fuzzySearch` per capire dove agganciare il log è saltato fuori questo,
+alla riga 113:
+
+```php
+'operator' => 'and',  // tutte le parole devono comparire
+```
+
+**Elasticsearch, in produzione, è configurato congiuntivo.** È lo stesso
+identico difetto 0 che stamattina ho trovato in Koskidex misurando su SciFact,
+dove costava 290 query vuote su 300 - e qui è scritto a chiare lettere in un
+commento, come una scelta deliberata, sul sistema vero che i colleghi usano
+tutti i giorni.
+
+Questo cambia il peso del capitolo. Fino a stamattina il difetto 0 era un difetto
+del mio progetto personale, e correggerlo era un esercizio. Ora è **un difetto
+condiviso con il sistema di produzione**, e la domanda di tesi diventa più
+interessante di quella che avevo scritto: non "il mio motore ha un modello di
+recupero tarato male", ma "il modello di recupero congiuntivo è una scelta
+ragionevole che diventa sbagliata quando le query si allungano, e questo capita
+in due sistemi indipendenti scritti da persone diverse".
+
+E soprattutto: diventa **misurabile sul sistema vero**, e il metro è già
+costruito. Appena il log del C2 ha raccolto abbastanza query, si può contare
+quante ricerche reali tornano vuote su Documentale e quante parole hanno. Su
+NFCorpus le query che tornavano qualcosa avevano in media 2,0 parole e quelle a
+vuoto 4,7: se sul carico vero si vede la stessa forma, il capitolo ha un
+riscontro in produzione invece che solo su collezioni pubbliche.
+
+Il campo `results_count` del log è già quello che serve per contarlo. Non
+l'avevo messo per questo, ma è quello che lo rende possibile.
+
+- [ ] A febbraio: contare le ricerche a risultato zero e incrociarle con la
+      lunghezza in parole del termine, come fatto su NFCorpus
+- [ ] **Non toccare** l'`operator => and` di Elasticsearch prima di aver
+      misurato: è il baseline di produzione, e cambiarlo adesso vuol dire
+      perdere il termine di paragone. Vale la stessa regola del baseline
+      congelato di Koskidex
 
 ## Il TODO.md di Documentale
 
