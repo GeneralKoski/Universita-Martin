@@ -1173,7 +1173,26 @@ Il piano A-D è chiuso. Questa parte raccoglie i quattro filoni rimasti, nell'or
 
 E4 dopo E1 ma prima dell'annotazione: rifare i giudizi perché il pool era incompleto è lavoro buttato, e l'annotazione è la cosa più cara di tutte.
 
-## Task E1: Analisi lessicale - stemmer e stopword
+## Task E1: Analisi lessicale - stemmer e stopword - FATTO il 23/09/2026
+
+### Risultato
+
+| | nessuna | solo stopword | solo stemmer | entrambi | riferimento |
+|---|---|---|---|---|---|
+| SciFact nDCG@10 | 0,6197 | **0,6641** | 0,6243 | 0,6585 | 0,6789 |
+| NFCorpus nDCG@10 | 0,2810 | 0,2900 | 0,2861 | **0,2941** | 0,3218 |
+
+**Dal 91% al 97% del riferimento su SciFact, dall'87% al 91% su NFCorpus.** Su NFCorpus le query che tornano a vuoto scendono da 24 a 15.
+
+**Tre previsioni su sei smentite**, e quella che conta è la terza. Avevo scritto che lo stemmer avrebbe portato molto più delle stopword, perché con BM25 l'IDF schiaccia già i termini frequentissimi. È il contrario: su SciFact le stopword danno +0,0444 e lo stemmer +0,0046. Il ragionamento era giusto sul punteggio e irrilevante, perché il guadagno non viene dal punteggio: viene dal recupero. In modalità disgiuntiva ogni documento che contiene «the» è un candidato, e i candidati medi passano da 4833 a 2522. Le 25 query che non contengono nessuna stopword guadagnano +0,0035, contro +0,0523 di quelle sopra la mediana del taglio.
+
+**Lo schema da portare in tesi.** Due volte in una giornata ho ragionato sul punteggio dimenticando il recupero: stamattina con la guardia sul recall, stasera con le stopword. È lo stesso punto cieco, e adesso è una domanda scritta nel diario da farsi prima di ogni ipotesi: *questa modifica tocca chi entra, o solo in che ordine?*
+
+Dettagli, indagini e le altre previsioni sbagliate in `Koskidex/eval/DIARIO.md`.
+
+### Come era stato pianificato
+
+
 
 **Il numero da battere.** SciFact 0,6197 contro 0,6789 di riferimento, NFCorpus 0,2810 contro 0,3218. Manca il 9% e il 13%.
 
@@ -1194,14 +1213,18 @@ Un riscontro già in mano, dall'indagine sulle 24 query vuote di NFCorpus: su di
 
 **Il costo da mettere in conto.** Koskidex ha zero dipendenze esterne oltre `golang.org/x/text`, ed è una proprietà che vale la pena difendere. Porter è ~200 righe implementabili a mano; Snowball italiano è più grosso. Se serve una dipendenza, la decisione va scritta nel diario con la sua ragione, non presa di straforo.
 
-- [ ] `Settings.Analyzer` (o `Language`), vuoto = comportamento di oggi. Stessa ragione di `RetrievalMode` e `ScoringMode`: le settings sono persistite
-- [ ] Interfaccia `Analyzer` con `Normalize(term string) string`, chiamata da `Tokenize` **sia in indicizzazione sia in query** - se le due divergono, l'indice non trova più niente e il sintomo sembra un altro bug
-- [ ] Lista di stopword inglesi, quella di Lucene, come dato e non come codice
-- [ ] Stemmer Porter, con i casi di prova presi dalla suite ufficiale di Porter: è l'unico modo di sapere che è giusto invece che plausibile
-- [ ] `TestBaselineRankingIsFrozen` verde a default, senza toccare il test
-- [ ] Voce nel diario **prima** di misurare, con la fascia dichiarata. Attenzione a non promettere troppo: lo stemmer sposta l'ordinamento, non riempie le query vuote
-- [ ] Misurare separatamente **solo stopword**, **solo stemmer**, **tutti e due**: sapere quale dei due porta cosa vale più del totale
-- [ ] La guardia giusta, quella imparata oggi: `candidates` **cambierà**, ed è normale - lo stemming cambia il recupero, non solo l'ordine. Quindi qui la guardia è un'altra: il numero di query a vuoto non deve salire
+- [x] `Settings.Stemmer`, vuoto = comportamento di oggi. Stessa ragione di `RetrievalMode` e `ScoringMode`: le settings sono persistite
+- [x] Interfaccia `Analyzer` con `Normalize(term string) string`, chiamata da `Tokenize` **sia in indicizzazione sia in query** - se le due divergono, l'indice non trova più niente e il sintomo sembra un altro bug
+- [x] Lista di stopword inglesi, quella di Lucene, come dato e non come codice
+- [x] Stemmer Porter, con i casi di prova presi dalla suite ufficiale di Porter: è l'unico modo di sapere che è giusto invece che plausibile
+- [x] `TestBaselineRankingIsFrozen` verde a default, senza toccare il test
+- [x] Voce nel diario **prima** di misurare (commit `1c30ad0`), con la fascia dichiarata. Attenzione a non promettere troppo: lo stemmer sposta l'ordinamento, non riempie le query vuote
+- [x] Misurare separatamente **solo stopword**, **solo stemmer**, **tutti e due**: sapere quale dei due porta cosa vale più del totale
+- [x] La guardia giusta, quella imparata oggi: `candidates` **cambierà**, ed è normale - lo stemming cambia il recupero, non solo l'ordine. Quindi qui la guardia è un'altra: il numero di query a vuoto non deve salire
+
+**Cosa resta aperto di E1.** Lo stemmer italiano non è fatto: l'interfaccia c'è, l'implementazione no. E c'è una differenza nota e non corretta, `removeAccents` in Koskidex contro `EnglishAnalyzer` di Lucene che non toglie gli accenti. Non l'ho toccata perché per l'italiano toglierli è probabilmente giusto, ed è una decisione che va presa con l'analizzatore italiano, non di straforo adesso.
+
+**Una cosa che non si spiega e resta aperta:** su SciFact la configurazione migliore è solo stopword (0,6641), non tutte e due (0,6585). Lo stemmer, aggiunto alle stopword, peggiora il nDCG@10 e alza il Recall@100 da 0,8792 a 0,9103. Lettura plausibile: porta dentro più rilevanti in profondità e più rumore in testa. Ma il riferimento usa entrambi e arriva più in alto di tutte e quattro le configurazioni, quindi la spiegazione non è completa e non la forzo.
 
 ## Task E2: La proposta all'azienda sul testo integrale
 
