@@ -418,7 +418,7 @@ La Fase 0 di [piano-implementazione.md](piano-implementazione.md) è l'impianto 
 
 I task non li riscrivo qui: stanno già scritti per intero in quel documento. Qui dico **quali e in che ordine**.
 
-## Task B1: Chiudere la scelta di C1 (entro ottobre)
+## Task B1: Chiudere la scelta di C1 - FATTO il 23/09/2026
 
 È il punto aperto numero 1 di `piano-implementazione.md`. È una decisione, non del codice, e blocca tutto il resto della Fase 0.
 
@@ -427,7 +427,7 @@ I task non li riscrivo qui: stanno già scritti per intero in quel documento. Qu
 - [ ] Verificare che ci sia un valore di riferimento noto in letteratura per BM25 su quella collezione: senza, C1 non serve a niente, perché il suo unico scopo è dire se la mia implementazione di BM25 ha un bug
 - [ ] Commit
 
-## Task B2: Task 0.2, 0.3 e 0.4 del piano di tesi (novembre)
+## Task B2: Task 0.2, 0.3 e 0.4 del piano di tesi - FATTO il 23/09/2026
 
 Lettura di qrels e query, le metriche, e l'esecutore che le mette insieme. Sono codice puro, senza dipendenze esterne, testabile con numeri calcolati a mano. È il pezzo che meglio si presta alle sere spezzate, perché ogni metrica è un test a sé.
 
@@ -697,33 +697,73 @@ git commit -m "feat: log search queries to build the thesis query set"
 
 Sono le Fasi 1, 2 e 3 di [piano-implementazione.md](piano-implementazione.md), già scritte task per task lì dentro. Qui dico solo quali si possono fare adesso e a quali condizioni.
 
-## Cosa si può fare in autunno: la Fase 1, BM25
+## Prima di tutto: il recupero disgiuntivo (difetto 0)
 
-È l'unica delle tre che si misura senza corpus annotato. La collezione pubblica C1 ha giudizi già pubblicati e un valore di riferimento noto in letteratura per BM25: se la tua implementazione dà un numero vicino, è corretta; se dà un numero lontano, ha un bug. Questa verifica non richiede di annotare niente, e da sola giustifica un capitolo.
+**Questo non era nel piano.** È emerso misurando il baseline il 23/09/2026, e
+scavalca la Fase 1.
 
-**Precondizioni, tutte e tre obbligatorie:**
+Il recupero di Koskidex è congiuntivo: `ParseQuery` mette ogni parola della
+query in `MustTerms`, quindi un documento deve contenerle tutte. Misurato:
 
-- [ ] A0-A3 fatti, con `TestBaselineRankingIsFrozen` verde
-- [ ] B1 fatto: C1 scaricata, con il valore di riferimento di BM25 annotato in `SOURCE.md`
-- [ ] B2 fatto: metriche ed esecutore esistono e girano su C1
+| | SciFact | NFCorpus |
+|---|---|---|
+| nDCG@10 legacy | 0,0246 | 0,1659 |
+| **Query a vuoto** | **290 su 300 (97%)** | **160 su 323 (50%)** |
+| Riferimento BM25 | 0,6789 | 0,3218 |
 
-Senza la terza non si parte: scrivere BM25 e non poterlo valutare è esattamente lo scenario che rende inutile farlo adesso.
+Su NFCorpus le query che tornano qualcosa hanno in media 2,0 parole, quelle a
+vuoto 4,7: stessa collezione, stesso indice, cambia solo la lunghezza.
+
+**Perché viene prima di BM25.** Applicare BM25 a un recupero congiuntivo
+riordinerebbe il nulla: la Fase 1 misurerebbe zero su SciFact. E questo è il
+difetto che conta di più per il documentale, dove le query sono in lingua
+naturale e sempre più spesso riscritte da un LLM, cioè lunghe.
+
+**Non è un bug.** L'AND è una scelta ragionevole per la barra di ricerca di un
+e-commerce, che è il caso d'uso per cui Koskidex era nato. Va raccontato così in
+tesi: non "avevo sbagliato", ma "il modello di recupero era tarato su un regime
+di query diverso da quello del documentale", che è una tesi più interessante.
+
+- [ ] Recupero disgiuntivo dietro un campo di `Settings`, default sul
+      comportamento attuale
+- [ ] `TestBaselineRankingIsFrozen` deve continuare a passare a default, senza
+      modifiche al test. Il caso `entita` in particolare: oggi `d2` sparisce
+      proprio perché ha "Rossi" ma non "SpA", e in disgiuntivo deve comparire
+- [ ] Voce di diario con l'ipotesi, committata prima di misurare
+- [ ] Misura su SciFact e NFCorpus, confronto con il legacy
+
+Fatto questo, il numero di partenza per la Fase 1 non è più 0,0246 ma quello
+nuovo, ed è quello il baseline contro cui BM25 va confrontato.
+
+## Poi la Fase 1, BM25
+
+Si misura sulla collezione pubblica C1, che ha i giudizi già pubblicati e non
+richiede nessuna annotazione a mano. Questo resta vero.
+
+**Precondizioni:**
+
+- [x] A0-A3 fatti, con `TestBaselineRankingIsFrozen` verde
+- [x] B1 fatto: SciFact e NFCorpus scaricate, con i riferimenti in `SOURCE.md`
+- [x] B2 fatto: metriche ed esecutore girano su dati veri
+- [ ] Difetto 0 chiuso, altrimenti su SciFact non c'è niente da riordinare
 
 **Come si esegue:**
 
 - [ ] Task 1.1 - statistiche dell'indice (`piano-implementazione.md`, riga 516)
-- [ ] Task 1.2 - punteggio BM25 dietro interruttore (riga 652). Il flag va aggiunto a `Settings` con default sul comportamento attuale, e `TestBaselineRankingIsFrozen` deve continuare a passare **senza modifiche al test**
-- [ ] Scrivere la sezione *Prima di misurare* in `eval/DIARIO.md` e committarla, prima di lanciare la valutazione
-- [ ] Task 1.3 - misura di BM25 contro il baseline (riga 809)
-- [ ] Completare la voce di diario con i risultati, incluse le sorprese
+- [ ] Task 1.2 - punteggio BM25 dietro interruttore (riga 652)
+- [ ] Sezione *Prima di misurare* nel diario, committata prima di lanciare
+- [ ] Task 1.3 - misura contro il baseline (riga 809)
+- [ ] Completare la voce di diario, sorprese comprese
 
 ## Cosa resta a febbraio, e perché
 
-**Fase 2, recupero ibrido vero.** Serve un corpus con embedding e giudizi, perché la domanda è di richiamo: quanti documenti pertinenti il lessicale non pescava. Su C1 si può misurare in parte, ma la domanda interessante è sul dominio.
+**Fase 2, recupero ibrido vero.** Serve un corpus con embedding e giudizi.
+Attenzione: il difetto 0 e la Fase 2 si assomigliano ma non sono la stessa cosa.
+Il difetto 0 è il lessicale che non fa OR fra i suoi termini; la Fase 2 è il
+vettoriale che non porta candidati propri. Vanno tenuti distinti, anche in tesi.
 
-**Fase 3, fusione dei punteggi.** Ha bisogno del C2 annotato per classe di query (`identifier`, `entity`, `concept`, `mixed`): l'ipotesi della tesi è proprio che il peso ottimo dipenda dalla classe, e senza quelle etichette non c'è niente da verificare.
-
-Restano lì non per cautela ma perché il collo di bottiglia è l'annotazione, che è lavoro continuativo e non da sere spezzate.
+**Fase 3, fusione dei punteggi.** Ha bisogno del C2 annotato per classe di
+query. Il collo di bottiglia è l'annotazione, non la difficoltà.
 
 ## Cosa cambia nel racconto della tesi
 

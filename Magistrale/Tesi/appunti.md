@@ -74,9 +74,20 @@ l'angolo più facile da difendere.
 [piano-implementazione.md](piano-implementazione.md).
 
 La domanda non è "integro il mio motore nel gestionale", che sarebbe lavoro di
-integrazione senza contributo. È che il ranking di Koskidex ha tre difetti
-precisi, verificati leggendo il codice:
+integrazione senza contributo. È che il recupero di Koskidex ha quattro difetti
+precisi, verificati leggendo il codice e poi **misurati** (23/09/2026):
 
+0. **Il recupero è congiuntivo.** `ParseQuery` in `ranker.go:33` mette ogni
+   parola in `MustTerms`: un documento deve contenere **tutti** i termini della
+   query. Lucene è disgiuntivo con punteggio, e un documento che ne prende 8 su
+   12 si piazza bene. Misurato sulla collezione pubblica SciFact: **290 query su
+   300 tornano completamente vuote**, nDCG@10 a 0,0246 contro un riferimento
+   BM25 di 0,6789. Non è un bug: l'AND è ragionevole per la barra di ricerca di
+   un e-commerce, per cui Koskidex era nato. Ma è il difetto che **viene prima
+   degli altri tre**, perché su query vuote nessun miglioramento del punteggio
+   può fare niente, ed è il più rilevante per un documentale, dove le query sono
+   in lingua naturale e sempre più spesso riscritte da un LLM. Dettagli e prove
+   in `Koskidex/eval/DIARIO.md`.
 1. **Nessun IDF.** Il punteggio è `(10 - refusi + 2*esatti) * peso_campo`. Il
    campo `Posting.TF` esiste in `internal/engine/inverted.go:12` con scritto
    `// term frequency (calculated later)` e non è usato da nessuna parte. Un
@@ -89,7 +100,14 @@ precisi, verificati leggendo il codice:
    fisso a 20. Su una parola il vettore domina, su cinque è rumore.
 
 Ognuno è un capitolo con un risultato numerico, e il baseline è il codice di
-oggi. Documentale fornisce il corpus e il carico di query reale.
+oggi, congelato in un test e misurato: SciFact 0,0246 e NFCorpus 0,1659 di
+nDCG@10. Documentale fornisce il corpus e il carico di query reale.
+
+**Il difetto 0 è stato trovato misurando, non leggendo il codice**, ed è la
+dimostrazione che costruire l'impianto di valutazione prima di toccare il
+ranking era la scelta giusta: la tesi stava per essere scritta su tre capitoli
+di ottimizzazione del punteggio, su un motore che nel 97% dei casi non
+restituiva niente da ottimizzare.
 
 Tre cose in una tesi sola: progetto personale (Koskidex), progetto aziendale
 (Documentale), e il contributo di Martin documentato dai commit.
