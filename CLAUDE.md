@@ -66,6 +66,14 @@ Corrispondenza corso → istanza → id (letta il 16/09/2026):
 
 Ogni corso ha un `README.md` con scheda ufficiale e indice completo. Per i corsi del secondo anno il materiale è **diviso per edizione**: `2025-26/` (edizione precedente, scaricata il 15/09/2026 da elly2025, tenuta come riferimento) e `2026-27/` (l'edizione che seguo, da elly2026). Dentro ciascuna, una sottocartella per sezione Elly.
 
+### Tesi
+
+**Argomento deciso il 15/09/2026, confermato il 23/09/2026: Koskidex innestato in Documentale.** Non l'integrazione in sé, ma tre difetti del ranking di Koskidex (niente IDF, ibrido che è solo re-ranking, fusione di scale incomparabili), ognuno un capitolo con un risultato numerico misurato contro il codice attuale come baseline. Tutto il materiale sta in `Magistrale/Tesi/`: `appunti.md` (decisione e stato), `piano-implementazione.md` (piano operativo in fasi), `latex/` (template UniPR).
+
+**Relatore ancora aperto.** Il 21/09/2026 primo aggancio in aula con **Dal Palù** e **Bonnici**, senza chiudere. La riproposta vera è a **dicembre 2026**, a progetti d'esame consegnati e prima che escano le tracce di gennaio 2027. Leva da sfruttare: il progetto di Laboratorio di IA, se scelto vicino al recupero dell'informazione, fa da esame e da dimostrazione per Bonnici.
+
+**Tempi.** La tesi entra nel vivo da febbraio o marzo 2027, dopo la sessione invernale: prima ci sono sette esami da chiudere. Laurea a settembre 2027, consegna fra luglio e agosto.
+
 ### Voto di laurea - proiezione
 
 Dati ufficiali Esse3 UniPR (matricola 397464, al 11/08/2026):

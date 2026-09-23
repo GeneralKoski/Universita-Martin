@@ -1,5 +1,16 @@
 # Lunedì 21 settembre - Aula G
 
+> **Fatto.** Il 21 settembre 2026 ho parlato con tutti e due. L'argomento non si
+> è chiuso lì, che era l'esito previsto: serviva aprire un canale, non ottenere
+> un sì. La riproposta vera va a **dicembre 2026**, a progetti d'esame
+> consegnati e prima che escano le tracce di gennaio. Il piano aggiornato sta in
+> [appunti.md](appunti.md), sezione *Relatore: stato e tempi*.
+>
+> Questo foglio resta come traccia di cosa ho chiesto e cosa no, e soprattutto
+> come lista delle domande da ricevimento che allora ho tenuto da parte: la
+> disponibilità dei dati, la dimensione attesa del lavoro e cosa considerano un
+> contributo sufficiente valgono anche a dicembre.
+
 Due potenziali relatori di fila, stessa aula.
 
 | Ora | Corso | Docente |

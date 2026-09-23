@@ -68,7 +68,7 @@ l'angolo più facile da difendere.
 | MelaGolfo | Scartato. |
 | KalTrack, unidesk, unidesk-mobile, Hydran, PiacenzAdvisor, PizzaGigante, Klipski, Chesso, Automarket, metin, Personal-website | Scartati: product engineering, integrazione o esercizi, nessuna domanda di ricerca. |
 
-## Decisione presa (15 settembre 2026)
+## Decisione presa (15 settembre 2026), confermata il 23 settembre
 
 **Tesi su Koskidex innestato in Documentale.** Il piano operativo sta in
 [piano-implementazione.md](piano-implementazione.md).
@@ -103,12 +103,59 @@ staging. Quindi i giudizi di rilevanza si scrivono a mano *prima* di guardare
 cosa risponde il motore. Seedare va bene per misurare latenza e memoria, mai
 per misurare la rilevanza: sarebbe circolare.
 
+## Relatore: stato e tempi
+
+Il 21 settembre 2026 ho agganciato entrambi i potenziali relatori a fine
+lezione, come da [lunedi-21-settembre.md](lunedi-21-settembre.md): **Dal Palù**
+(Programmazione Dichiarativa) e **Bonnici** (Algoritmi per l'IA e Laboratorio
+di IA). Nessuno dei due discorsi ha chiuso l'argomento, ed era previsto così:
+l'obiettivo di quel giorno era aprire un canale, non ottenere un sì.
+
+**La riproposta vera va a dicembre 2026**, per due motivi che si incastrano:
+
+1. **A dicembre ho i progetti dei loro esami.** Laboratorio di IA si esamina con
+   un progetto da presentare, Programmazione Dichiarativa con un progetto più
+   orale. Arrivare con un lavoro consegnato e valutato da loro vale molto più di
+   un discorso in corridoio: è la differenza fra dire "so fare questa cosa" e
+   averla già fatta sotto il loro giudizio.
+2. **Le tracce di tesi escono verso gennaio.** Presentarsi a dicembre significa
+   essere già nella loro testa quando decidono a chi assegnare cosa, invece di
+   arrivare quando la lista è già distribuita.
+
+**La leva da non sprecare:** il progetto di Laboratorio di IA deve applicare i
+concetti del laboratorio più qualcosa dalla teoria di Algoritmi. Se lo si sceglie
+su un terreno vicino al recupero dell'informazione e alla valutazione del
+ranking, diventa allo stesso tempo l'esame e la dimostrazione da portare a
+Bonnici. Un progetto solo, due scopi. Da valutare quando Bonnici assegna i temi,
+senza forzare: se il tema è lontano, si fa il progetto e basta.
+
+Nel frattempo la tesi non parte comunque. Il vincolo resta quello scritto nel
+foglio del 21: sette esami da chiudere, la tesi entra nel vivo da febbraio o
+marzo 2027 per arrivare a settembre 2027.
+
 ## Prossimi passi
 
+**Entro dicembre 2026**
+
+- [ ] Scegliere il progetto di Laboratorio di IA guardando anche se può fare da
+      dimostrazione per Bonnici
+- [ ] Riproporre la tesi a Bonnici e Dal Palù a progetti consegnati
+- [ ] Chiedere all'azienda cosa è pubblicabile di Documentale (non dipende dai
+      professori, si può fare prima)
+
+**Da gennaio 2027, quando escono le tracce**
+
+- [ ] Verificare se fra le tracce ufficiali c'è qualcosa che assorbe o sostituisce
+      la proposta su Koskidex
+- [ ] Chiudere sul relatore
+
+**Prima di annotare qualsiasi cosa**
+
 - [ ] Scegliere la collezione pubblica per validare BM25
-- [ ] Costruire il corpus di dominio e annotare le query (settimane, non giorni)
-- [ ] Sentire il relatore prima di iniziare ad annotare
-- [ ] Chiedere all'azienda cosa è pubblicabile
+- [ ] Sentire il relatore prima di iniziare ad annotare il corpus di dominio
+- [ ] Chiedere se si può usare in gran parte una collezione pubblica e costruire
+      a mano solo una piccola parte di dominio: è il costo nascosto del piano
+      Koskidex, settimane di sere che non sono codice
 
 ## Nota organizzativa
 
