@@ -1152,4 +1152,98 @@ Quello che resta in calendario **non è più lavoro mio**, sono tre cose che dip
 
 E una cosa che dipende dal calendario e basta: le Fasi 2 e 3, che vogliono il corpus C2 annotato e restano a febbraio.
 
+**Il lavoro che invece dipende solo da me sta nella [Parte E](#parte-e---quello-che-viene-dopo-aperta-il-23092026)**, aperta lo stesso giorno: analisi lessicale, proposta sul testo integrale, difetto 2 e le due falle del metro. Senza date, uno alla volta.
+
 A dicembre c'è anche la riproposta della tesi a Bonnici e Dal Palù descritta in [appunti.md](appunti.md). Il Task A3 e il diario servono anche lì: far vedere un baseline congelato, un flag e un diario con ipotesi datate è la differenza, in trenta secondi, fra "ho un motore di ricerca" e "ho un esperimento in corso".
+
+---
+
+# Parte E - Quello che viene dopo (aperta il 23/09/2026)
+
+Il piano A-D è chiuso. Questa parte raccoglie i quattro filoni rimasti, nell'ordine in cui conviene prenderli. Non hanno date: si fanno man mano, uno alla volta, con le stesse tre regole di sopra - flag, baseline congelato, voce nel diario prima di misurare.
+
+**L'ordine è ragionato, non arbitrario:**
+
+| | Perché lì |
+|---|---|
+| **E1** Analisi lessicale | È l'unico misurabile oggi, senza dipendere da nessuno, ed è la leva più grossa rimasta sui numeri |
+| **E2** Proposta sul testo integrale | Va fatta partire presto perché la risposta non dipende da me: prima si chiede, prima si sa |
+| **E3** Difetto 2, l'ibrido | Bloccato su un corpus con embedding. Si può scrivere, non si può misurare |
+| **E4** Rendere il metro difendibile | Non urgente finché non ci sono giudizi veri, ma va fatto **prima** dell'annotazione vera, non dopo |
+
+E4 dopo E1 ma prima dell'annotazione: rifare i giudizi perché il pool era incompleto è lavoro buttato, e l'annotazione è la cosa più cara di tutte.
+
+## Task E1: Analisi lessicale - stemmer e stopword
+
+**Il numero da battere.** SciFact 0,6197 contro 0,6789 di riferimento, NFCorpus 0,2810 contro 0,3218. Manca il 9% e il 13%.
+
+**Dove sta il divario, guardato nel codice.** `Tokenize` in `internal/engine/tokenizer.go:27` fa tre cose: minuscolo, rimozione degli accenti, e spezza su tutto ciò che non è lettera o numero. Punto. Nessuno stemmer, e `DefaultSettings` (`inverted.go:281`) inizializza `StopWords` a una mappa **vuota**.
+
+I riferimenti pubblicati girano su Lucene con `EnglishAnalyzer`, che fa stemming Porter e ha la sua lista di stopword. Non è un'ipotesi: è scritto in `SOURCE.md` come causa prevista **prima** di misurare, ed è il motivo per cui il criterio era "una fascia plausibile più un distacco netto sul legacy" e non "riprodurre il numero".
+
+Un riscontro già in mano, dall'indagine sulle 24 query vuote di NFCorpus: su dieci termini assenti dal corpus, **nove non ci sono in nessuna forma** e uno solo, `leeks` → `leek`, è una mancanza di stemming. Quindi lo stemmer non è la soluzione delle query vuote: è una spinta sull'ordinamento, e l'ipotesi va scritta in quei termini, senza gonfiarla.
+
+### La decisione che viene prima del codice
+
+**Lo stemmer di quale lingua?** Le collezioni pubbliche sono inglesi, Documentale è italiano. Sono due strade e non si sovrappongono:
+
+- **Porter inglese** chiude il divario coi riferimenti, che è l'unico modo di dimostrare che l'implementazione di BM25 è corretta. Ma a Documentale non serve a niente.
+- **Snowball italiano** è quello che il prodotto userebbe davvero. Ma non c'è nessun riferimento pubblicato su cui validarlo, quindi il numero che produce non si può confrontare con niente.
+
+**Non è un aut-aut, è un ordine.** Si fa prima l'inglese, perché serve a validare; poi l'italiano, perché serve al prodotto. E il pezzo che conta è che vadano dietro un'**interfaccia**, non un `if` sulla lingua: l'analizzatore è un parametro dell'indice, non una proprietà del motore. Detto in tesi: la lingua è una configurazione, e un motore che non la tratta come tale non è portabile fuori dal caso per cui è nato.
+
+**Il costo da mettere in conto.** Koskidex ha zero dipendenze esterne oltre `golang.org/x/text`, ed è una proprietà che vale la pena difendere. Porter è ~200 righe implementabili a mano; Snowball italiano è più grosso. Se serve una dipendenza, la decisione va scritta nel diario con la sua ragione, non presa di straforo.
+
+- [ ] `Settings.Analyzer` (o `Language`), vuoto = comportamento di oggi. Stessa ragione di `RetrievalMode` e `ScoringMode`: le settings sono persistite
+- [ ] Interfaccia `Analyzer` con `Normalize(term string) string`, chiamata da `Tokenize` **sia in indicizzazione sia in query** - se le due divergono, l'indice non trova più niente e il sintomo sembra un altro bug
+- [ ] Lista di stopword inglesi, quella di Lucene, come dato e non come codice
+- [ ] Stemmer Porter, con i casi di prova presi dalla suite ufficiale di Porter: è l'unico modo di sapere che è giusto invece che plausibile
+- [ ] `TestBaselineRankingIsFrozen` verde a default, senza toccare il test
+- [ ] Voce nel diario **prima** di misurare, con la fascia dichiarata. Attenzione a non promettere troppo: lo stemmer sposta l'ordinamento, non riempie le query vuote
+- [ ] Misurare separatamente **solo stopword**, **solo stemmer**, **tutti e due**: sapere quale dei due porta cosa vale più del totale
+- [ ] La guardia giusta, quella imparata oggi: `candidates` **cambierà**, ed è normale - lo stemming cambia il recupero, non solo l'ordine. Quindi qui la guardia è un'altra: il numero di query a vuoto non deve salire
+
+## Task E2: La proposta all'azienda sul testo integrale
+
+Il C0 è fermo su una domanda che devo fare io in azienda, e oggi la farei a mani vuote. Questo task serve a trasformarla da domanda in proposta con dei conti sotto.
+
+Quello che già so, verificato il 23/09: il testo integrale **non esiste in nessun punto della pipeline**, nemmeno di passaggio - `apps/python` manda al modello il base64 del file e riceve solo JSON, e in `requirements.txt` non c'è nessuna libreria di estrazione. Però i file originali sono conservati (`spatie/laravel-medialibrary`, tabella `media`), quindi l'estrazione si può fare a posteriori su tutto l'archivio già caricato.
+
+- [ ] Scegliere l'estrattore e provarlo davvero su una decina di PDF di forma realistica: quanti ne legge, quanto ci mette, cosa fa con gli scansionati che richiedono OCR
+- [ ] Misurare l'occupazione: quanto testo produce un documento medio, moltiplicato per quanti ce ne sono in archivio. Un numero, non una sensazione
+- [ ] Scrivere cosa cambia per chi cerca: oggi un documento non si trova cercando una parola del suo corpo, solo del riassunto. È la funzionalità che manca, e va presentata come valore per l'azienda, non come favore alla tesi
+- [ ] Mettere nero su bianco le implicazioni di riservatezza: conservare il testo integrale di documenti di clienti è una decisione che non prendo io, e la proposta deve dire esplicitamente che è una decisione loro
+- [ ] **Ribadire il rifiuto dell'opzione C.** Chiedere la trascrizione al modello, che il documento lo legge già, costa una riga di prompt e sembra gratis. Non si fa: un testo prodotto da un LLM è una parafrasi, e un corpus di recupero costruito sopra misura quanto bene il motore trova cose in un testo che nessuno ha mai scritto
+- [ ] Portare la stessa domanda al relatore a dicembre: è il tipo di vincolo su cui un relatore ha un'opinione, e scoprirlo a marzo sarebbe tardi
+
+## Task E3: Difetto 2 - l'ibrido che non è ibrido
+
+**Il difetto, alla riga esatta.** In `ranker.go:228-250` il punteggio vettoriale entra in due modi diversi. Se la query non ha nessun termine lessicale, scorre tutti i documenti e li punteggia col coseno. Se invece ha dei termini - cioè sempre, nell'uso reale - il ramo `else` itera su `docMatches`, che contiene **solo quello che il lessicale ha già trovato**. Un documento semanticamente pertinente che il lessicale non pesca non entra mai. Non è recupero ibrido, è re-ranking.
+
+Da tenere distinto dal difetto 0, anche in tesi: il difetto 0 era il lessicale che non fa OR fra i suoi termini, questo è il vettoriale che non porta candidati propri. Si assomigliano e non sono la stessa cosa.
+
+**Perché è l'ultimo della fila.** Per misurarlo serve un corpus con embedding e giudizi, e Koskidex non ha un modello né dipendenze esterne. Si può scrivere la correzione dietro flag adesso, ma senza un numero resta un'opinione, e la regola che ci siamo dati dice il contrario.
+
+- [ ] Decidere **prima** da dove vengono gli embedding: un modello locale è una dipendenza nuova, un servizio esterno è una chiamata in rete dentro un motore che oggi non ne fa. È la stessa decisione del C0: si scrive, non si subisce
+- [ ] `Settings.HybridMode`, vuoto = re-ranking di oggi
+- [ ] Nel ramo ibrido, il vettoriale deve poter **aggiungere** documenti a `docMatches`, non solo sommare punteggio a quelli che ci sono
+- [ ] Un test che fallisce col comportamento di oggi: un documento pertinente solo semanticamente, che il lessicale non pesca, deve comparire fra i risultati
+- [ ] Attenzione al costo: scorrere tutti i vettori a ogni query è O(n) sul corpus. Sul volume di un documentale aziendale regge - è la ragione per cui `rustann` e gli indici approssimati sono fuori perimetro - ma il numero va misurato, non dato per buono
+- [ ] Il difetto 3, la fusione che somma scale incomparabili (`sim * 20.0` contro un lessicale che cresce con la lunghezza della query), viene subito dopo e sullo stesso corpus
+
+## Task E4: Rendere il metro difendibile
+
+Due buchi noti nell'impianto di valutazione. Nessuno dei due è urgente adesso, tutti e due vanno chiusi **prima** dell'annotazione vera: rifare i giudizi perché il pool era incompleto è l'unico lavoro davvero buttato di tutto il piano.
+
+**Buco 1: Elasticsearch non è nel pool.** `scripts/pool` costruisce il pool da tre configurazioni, tutte di Koskidex. Sul corpus di prova non cambia niente, perché in modalità disgiuntiva il pool copre quasi tutto. Su un archivio vero no: i documenti che solo Elasticsearch pesca non verrebbero mai giudicati, conterebbero zero, e il confronto partirebbe **svantaggiato per lui**. Un confronto truccato a proprio favore è la cosa peggiore che possa esserci in una tesi, anche involontariamente.
+
+- [ ] `scripts/pool` accetta ranking esterni da file e li unisce al pool
+- [ ] Il file va scritto con gli **id del corpus**, non con quelli di Elasticsearch: oggi ES indicizza per `Document::id` e il corpus usa `doc-0001`, e l'export porta già `document_id` apposta
+- [ ] Un comando in Documentale che produce quel file eseguendo `fuzzySearch` sulle query del log
+- [ ] Verificare che il pool cresca davvero: se aggiungere ES non aggiunge nessun documento, o va bene o il convertitore non funziona, e le due cose vanno distinte
+
+**Buco 2: un solo annotatore, che è anche chi scrive il motore.** In discussione è un'obiezione che arriva, e ha ragione di arrivare.
+
+- [ ] Far annotare **le stesse** trenta o quaranta coppie a qualcun altro - Leopoldo è la persona ovvia, ha già lavorato con me su Constraint Programming
+- [ ] Calcolare l'accordo (Cohen's kappa) e **riportarlo comunque**, anche se viene basso: un kappa mediocre dichiarato vale più di un kappa assente, e se viene basso dice che le istruzioni di annotazione sono ambigue, il che è un risultato
+- [ ] Scrivere le istruzioni di annotazione **prima** di darle a qualcun altro, e metterle nel repo. Sono quelle che rendono i giudizi ripetibili, ed è anche l'unico modo di misurare se il disaccordo è sulle istruzioni o sui documenti
