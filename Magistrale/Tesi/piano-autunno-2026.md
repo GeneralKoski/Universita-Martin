@@ -63,7 +63,7 @@ La sezione "Prima di misurare" **si committa prima di lanciare la valutazione**.
 - Ogni modifica che cambia l'ordine dei risultati sta **dietro un campo di `Settings`**, con il comportamento attuale come default, e ha la sua voce in `eval/DIARIO.md`. Nessuna eccezione: una modifica al ranking senza flag e senza voce di diario va annullata, non sanata dopo.
 - I Task A0-A3 vanno fatti **prima** di qualunque modifica al ranking. Sono la rete: senza il baseline congelato, il flag non serve a niente perché nessuno si accorge se si è mosso.
 - Ogni task finisce con un commit. Messaggio in inglese, come da convenzione del repo.
-- Su Documentale si lavora su branch dal `main` aziendale e non si committa niente che contenga dati reali di clienti.
+- Su Documentale **tutto il lavoro di tesi sta sul branch `martin/tesi-magistrale`**, creato il 23/09/2026 da `fix/various-fixes` (commit `5c31647`). Non si committa niente su altri branch e non si committa niente che contenga dati reali di clienti.
 
 ## Capacità realistica, e cosa salta
 
@@ -446,6 +446,19 @@ Arrivare a febbraio con A0-A3, B1, B2 e magari la Fase 1 fatti significa partire
 ---
 
 # Parte C - Documentale
+
+## Dove si lavora
+
+Branch **`martin/tesi-magistrale`**, creato il 23 settembre 2026 da `fix/various-fixes` (commit `5c31647`), che conteneva già dei fix miei in corso. Esiste solo in locale: non è su `origin` e non ci va finché non serve davvero.
+
+Il senso è tenere separato quello che nasce per la tesi da quello che nasce per il prodotto, anche se in pratica questo ramo non verrà probabilmente mai integrato. Se una singola modifica si rivelasse utile all'azienda - il caso più probabile è la persistenza del testo integrale del Task C0 - si porta di là con un cherry-pick, come una cosa sua, non trascinando il ramo della tesi.
+
+```bash
+cd ~/Desktop/Dieffetech/Documentale
+git switch martin/tesi-magistrale
+```
+
+Attenzione a una cosa: il ramo parte da `fix/various-fixes`, non da `main`. Quindi porta dentro anche quei fix, e se a un certo punto `fix/various-fixes` viene integrato o riscritto, questo ramo va allineato prima di fare confronti. Il branch di partenza al momento della creazione era allineato a `origin/fix/various-fixes`.
 
 ## Quello che ho scoperto guardando il database, e che cambia le carte
 
