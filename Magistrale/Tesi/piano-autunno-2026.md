@@ -12,30 +12,78 @@
 
 ---
 
-## La regola che decide tutto
+## Le tre regole che rendono sicuro toccare il ranking
 
-**Non si tocca il ranking.** I tre difetti - niente IDF, ibrido che è solo re-ranking, fusione di scale incomparabili - sono i tre capitoli della tesi. Correggerli adesso, di sera, senza il metro per misurarli, costa tre volte:
+Le correzioni al ranking **si fanno adesso**, non a febbraio. Decisione del 23 settembre 2026, e il motivo è il tempo: da febbraio a luglio 2027 ci sono cinque mesi di sere per implementare, misurare e scrivere. Se a febbraio il codice esiste già e resta solo da misurare e raccontare, il rischio di non arrivare in fondo crolla.
 
-1. si perde il baseline, perché il "codice di partenza" contro cui la tesi misura diventa un codice già modificato a intuito;
-2. si perde il contributo, perché in discussione il lavoro risulta fatto prima e fuori dal percorso;
-3. non si impara niente lo stesso, perché senza giudizi di rilevanza non si può dire se la modifica ha migliorato o peggiorato.
+Questo è sicuro solo se valgono tutte e tre queste regole. Se ne salta una, tornano i problemi veri.
 
-Quindi la domanda da farsi prima di ogni commit su Koskidex in questi mesi è una sola: **questa modifica cambia l'ordine dei risultati?** Se sì, non va fatta adesso.
+**1. Il baseline resta eseguibile per sempre.** Ogni modifica al ranking sta dietro un campo di `Settings`, con il comportamento di oggi come valore di default. È già un vincolo di `piano-implementazione.md`, qui diventa la condizione che rende legittimo tutto il resto. Il Task A3 congela l'ordine attuale in un test: finché quel test passa a default, il baseline non si è mosso.
+
+**2. Niente si misura a occhio.** Una modifica al ranking senza un numero accanto non è un capitolo di tesi, è un'opinione. Vale però una precisazione che cambia il calendario: **BM25 si valida sulla collezione pubblica C1, che ha giudizi già pubblicati e non richiede nessuna annotazione a mano.** Il corpus C2 annotato serve solo alla Fase 3, quella sulla fusione consapevole del tipo di query. Quindi la Fase 1 si può fare e misurare per intero in autunno, e le Fasi 2 e 3 no.
+
+**3. Si scrive tutto sul diario, prima e dopo.** Ogni modifica al ranking ha una voce in `eval/DIARIO.md`, scritta in due tempi: cosa ti aspetti **prima** di misurare, e cosa è successo dopo. Non è burocrazia. È la cosa che a giugno ti permette di scrivere perché hai scelto un parametro invece di un altro, ed è anche la risposta alla domanda scomoda in discussione, cioè se le metriche siano state scelte dopo aver visto i risultati. Un'ipotesi scritta prima e smentita dai numeri vale più di un risultato pulito senza storia.
+
+### Formato del diario
+
+`eval/DIARIO.md` nel repo Koskidex, una voce per modifica, la più recente in cima:
+
+```markdown
+## 2026-11-08 - BM25 al posto del punteggio euristico
+
+**Flag:** `Settings.RankingMode = "bm25"` (default resta `"legacy"`)
+**Commit:** abc1234
+
+### Prima di misurare
+
+Mi aspetto che nDCG@10 su C1 salga rispetto al legacy, perche' il legacy non
+ha IDF e su una collezione con termini molto comuni questo deve costare.
+Mi aspetto che sulle query di un solo termine cambi poco.
+Valore di riferimento in letteratura per BM25 su questa collezione: 0.42.
+
+### Dopo
+
+nDCG@10: legacy 0.28 -> bm25 0.41. In linea con il riferimento, quindi
+l'implementazione non ha bug grossolani.
+Sulle query di un termine: 0.31 -> 0.33, praticamente invariato come previsto.
+Sorpresa: su tre query e' peggiorato, tutte con un nome proprio ripetuto.
+Da guardare, forse e' saturazione del TF.
+
+### Parametri
+
+k1=1.2, b=0.75, i default della letteratura. Non calibrati: la calibrazione
+e' la Fase 3.
+```
+
+La sezione "Prima di misurare" **si committa prima di lanciare la valutazione**. È l'unico modo perché valga qualcosa.
 
 ## Vincoli globali
 
 - Koskidex resta a **zero dipendenze esterne** oltre `golang.org/x/text`, che è già in `go.mod`. Vale anche per i test e per l'impianto di valutazione.
-- Nessun task di questo piano modifica `Search`, `findDocsForToken`, `cosineSimilarity` o l'ordinamento finale in `internal/engine/ranker.go`. Si può **aggiungere** codice accanto, mai cambiare quello che decide l'ordine.
+- Ogni modifica che cambia l'ordine dei risultati sta **dietro un campo di `Settings`**, con il comportamento attuale come default, e ha la sua voce in `eval/DIARIO.md`. Nessuna eccezione: una modifica al ranking senza flag e senza voce di diario va annullata, non sanata dopo.
+- I Task A0-A3 vanno fatti **prima** di qualunque modifica al ranking. Sono la rete: senza il baseline congelato, il flag non serve a niente perché nessuno si accorge se si è mosso.
 - Ogni task finisce con un commit. Messaggio in inglese, come da convenzione del repo.
 - Su Documentale si lavora su branch dal `main` aziendale e non si committa niente che contenga dati reali di clienti.
 
-## Capacità realistica
+## Capacità realistica, e cosa salta
 
-Da oggi (23 settembre 2026) a metà dicembre sono circa tredici settimane, ma sono le tredici settimane in cui seguo quattro corsi e a dicembre consegno due progetti d'esame. Le sere davvero disponibili sono poche: **contare su tre o quattro ore a settimana, non di più**, cioè quaranta o cinquanta ore in totale.
+Da oggi (23 settembre 2026) a metà dicembre sono tredici settimane, ma sono le tredici settimane in cui seguo quattro corsi e a dicembre consegno due progetti d'esame. **Contare su tre o quattro ore a settimana**, cioè quaranta o cinquanta ore in tutto.
 
-Questo piano è dimensionato su quel numero. La Parte A e la Parte C ci stanno. La Parte B ci sta solo in parte, ed è scritto sotto dove ci si ferma senza danno.
+Messo tutto insieme, questo piano ne chiede di più. Vale la pena dirlo prima invece di scoprirlo a novembre:
 
-Se a novembre il tempo non c'è, si sacrifica nell'ordine: prima la Parte B (recuperabile a febbraio), poi la Parte C (recuperabile ma allunga i tempi), mai la Parte A (è quella che protegge il baseline, e va fatta prima che venga voglia di mettere le mani al ranking).
+| Blocco | Stima | Ci sta in autunno? |
+|---|---|---|
+| A0-A3, sicurezza Koskidex | ~8 h | Sì, ed è la precondizione di tutto |
+| B1, scelta e download di C1 | ~3 h | Sì |
+| C0, decisione sul testo integrale | ~2 h | Sì, ed è una domanda da fare presto perché la risposta arriva dall'azienda |
+| C2, log delle query | ~3 h | Sì, e prima si fa più dati raccoglie |
+| B2, metriche ed esecutore | ~14 h | Sì, è il blocco grosso di novembre |
+| Fase 1, BM25 misurato | ~12 h | **Forse.** Solo se ottobre e novembre filano |
+| C1, export del corpus | ~6 h | **No.** Slitta, e va bene così |
+
+**Il criterio con cui si taglia:** l'export del corpus (C1) produce il C2, che serve alle Fasi 2 e 3, che sono comunque lavoro di febbraio. Quindi è la cosa giusta da far slittare, anche se è la più concreta da guardare. Il logging delle query (C2) invece va fatto subito proprio perché è cumulativo: ogni settimana in cui non gira è dato perso per sempre.
+
+Se a novembre il tempo non c'è, si sacrifica in quest'ordine: prima C1, poi la Fase 1, poi B2. Mai A0-A3: sono la rete che rende sicuro tutto il resto, e vanno fatti prima che venga voglia di mettere le mani al ranking.
 
 ## Cosa può mordere
 
@@ -46,6 +94,8 @@ Le cose che questo piano deve reggere e che è facile scoprire tardi:
 - **Documenti senza `_vector`.** Il corpus esportato da Documentale non ha embedding: metà del codice ibrido non viene mai esercitato dai test. Coperto dal Task A3, che include un caso con e uno senza vettore.
 - **Il corpus esportato contiene dati di clienti.** Se l'export finisce in un repo universitario pubblico è un problema serio, non una svista. Il Task C1 lo limita tenendo il file fuori da ogni repo finché l'azienda non si è espressa, ma **non anonimizza niente**: se serve, l'anonimizzazione è un task in più da scrivere, e la decisione sta nel Task C0.
 - **Annotare richiede più tempo di quanto sembra.** Sessanta query con giudizi su trecento documenti sono settimane di sere. Non è un rischio tecnico ed è già scritto in `appunti.md`, ma è il motivo per cui il Task B1 va chiuso adesso e non a febbraio.
+- **Una modifica al ranking entra senza flag.** Basta una volta e il baseline non è più riproducibile: da lì in poi ogni numero della tesi è contestabile e non c'è modo di rimediare a posteriori. Coperto dai Vincoli globali e dal Task A3, che si rompe rumorosamente.
+- **Il diario si scrive dopo aver visto i numeri.** È la versione silenziosa dello stesso problema: la voce viene compilata a cose fatte, l'ipotesi diventa la conclusione e il diario perde l'unico valore che aveva. L'unica difesa è committare la sezione *Prima di misurare* prima di lanciare la valutazione, come commit separato.
 
 ---
 
@@ -377,18 +427,21 @@ I task non li riscrivo qui: stanno già scritti per intero in quel documento. Qu
 - [ ] Verificare che ci sia un valore di riferimento noto in letteratura per BM25 su quella collezione: senza, C1 non serve a niente, perché il suo unico scopo è dire se la mia implementazione di BM25 ha un bug
 - [ ] Commit
 
-## Task B2: Task 0.2 e 0.3 del piano di tesi (novembre)
+## Task B2: Task 0.2, 0.3 e 0.4 del piano di tesi (novembre)
 
-Lettura di qrels e query, poi le metriche. Sono codice puro, senza dipendenze esterne, testabile con numeri calcolati a mano. È il pezzo che meglio si presta alle sere spezzate, perché ogni metrica è un test a sé.
+Lettura di qrels e query, le metriche, e l'esecutore che le mette insieme. Sono codice puro, senza dipendenze esterne, testabile con numeri calcolati a mano. È il pezzo che meglio si presta alle sere spezzate, perché ogni metrica è un test a sé.
 
 - [ ] Task 0.2 - lettura di qrels e query (`piano-implementazione.md`, riga 92)
 - [ ] Task 0.3 - metriche (`piano-implementazione.md`, riga 211)
+- [ ] Task 0.4 - esecutore della valutazione (`piano-implementazione.md`, riga 390)
+
+Il Task 0.4 sta qui e non a febbraio perché **serve già per la Fase 1**: senza esecutore non si misura BM25 su C1. Nel piano di tesi è descritto pensando al C2, ma non ha niente di specifico del dominio: legge un corpus, delle query, dei qrels, e produce numeri. C1 gli va bene esattamente come C2.
 
 ## Dove ci si ferma senza danno
 
-**Il Task 0.4 (esecutore della valutazione) e il Task 0.5 (misura del baseline) restano a febbraio.** Non perché siano difficili, ma perché richiedono il corpus C2 annotato, e annotare è la cosa che non si riesce a fare a pezzetti di sera fra un esame e l'altro.
+**Resta a febbraio solo il Task 0.5, la misura del baseline sul corpus di dominio**, e con lui tutta l'annotazione del C2. Non perché sia difficile, ma perché annotare sessanta query su trecento documenti è lavoro continuativo e non si fa a pezzetti di sera fra un esame e l'altro.
 
-Arrivare a febbraio con A0-A3, B1 e B2 fatti significa partire con il metro già scritto e testato, e dover fare solo la parte di annotazione. È un buon punto di arrivo per l'autunno.
+Arrivare a febbraio con A0-A3, B1, B2 e magari la Fase 1 fatti significa partire con il metro scritto, testato e già usato almeno una volta su dati veri. È un ottimo punto di arrivo per l'autunno.
 
 ---
 
@@ -627,9 +680,45 @@ git commit -m "feat: log search queries to build the thesis query set"
 
 **Sono lavoro aziendale e vanno fatte con le priorita' dell'azienda, non con quelle di questo piano.** Le cito solo per dire che non le ho incluse. Una pero' si incrocia: la voce sulla chiave combinata dei `document_version_fields` tocca proprio la tabella da cui l'export legge, quindi **va fatta prima del Task C1**, altrimenti l'export va riscritto.
 
+# Parte D - Le correzioni al ranking
+
+Sono le Fasi 1, 2 e 3 di [piano-implementazione.md](piano-implementazione.md), già scritte task per task lì dentro. Qui dico solo quali si possono fare adesso e a quali condizioni.
+
+## Cosa si può fare in autunno: la Fase 1, BM25
+
+È l'unica delle tre che si misura senza corpus annotato. La collezione pubblica C1 ha giudizi già pubblicati e un valore di riferimento noto in letteratura per BM25: se la tua implementazione dà un numero vicino, è corretta; se dà un numero lontano, ha un bug. Questa verifica non richiede di annotare niente, e da sola giustifica un capitolo.
+
+**Precondizioni, tutte e tre obbligatorie:**
+
+- [ ] A0-A3 fatti, con `TestBaselineRankingIsFrozen` verde
+- [ ] B1 fatto: C1 scaricata, con il valore di riferimento di BM25 annotato in `SOURCE.md`
+- [ ] B2 fatto: metriche ed esecutore esistono e girano su C1
+
+Senza la terza non si parte: scrivere BM25 e non poterlo valutare è esattamente lo scenario che rende inutile farlo adesso.
+
+**Come si esegue:**
+
+- [ ] Task 1.1 - statistiche dell'indice (`piano-implementazione.md`, riga 516)
+- [ ] Task 1.2 - punteggio BM25 dietro interruttore (riga 652). Il flag va aggiunto a `Settings` con default sul comportamento attuale, e `TestBaselineRankingIsFrozen` deve continuare a passare **senza modifiche al test**
+- [ ] Scrivere la sezione *Prima di misurare* in `eval/DIARIO.md` e committarla, prima di lanciare la valutazione
+- [ ] Task 1.3 - misura di BM25 contro il baseline (riga 809)
+- [ ] Completare la voce di diario con i risultati, incluse le sorprese
+
+## Cosa resta a febbraio, e perché
+
+**Fase 2, recupero ibrido vero.** Serve un corpus con embedding e giudizi, perché la domanda è di richiamo: quanti documenti pertinenti il lessicale non pescava. Su C1 si può misurare in parte, ma la domanda interessante è sul dominio.
+
+**Fase 3, fusione dei punteggi.** Ha bisogno del C2 annotato per classe di query (`identifier`, `entity`, `concept`, `mixed`): l'ipotesi della tesi è proprio che il peso ottimo dipenda dalla classe, e senza quelle etichette non c'è niente da verificare.
+
+Restano lì non per cautela ma perché il collo di bottiglia è l'annotazione, che è lavoro continuativo e non da sere spezzate.
+
+## Cosa cambia nel racconto della tesi
+
+Facendo le correzioni prima della tesi, la narrazione non è più "ho misurato, poi ho corretto" ma "ho corretto, poi ho misurato". È più debole, e il diario è esattamente quello che la rimette in piedi: se la sezione *Prima di misurare* è committata prima della valutazione, l'ipotesi è verificabilmente antecedente al risultato. Senza diario questo argomento non ce l'hai, e in discussione è una domanda che arriva.
+
 ## Fuori perimetro
 
-- **Qualunque modifica al ranking.** È il punto di tutto il documento.
+- **Le Fasi 2 e 3 del piano di tesi.** Non per prudenza: gli serve il corpus C2 annotato, che è lavoro da settimane continuative e non da sere spezzate. Restano a febbraio.
 - **`rustann` e gli indici approssimati.** Già fuori dal perimetro della tesi, decisione del 15 settembre 2026.
 - **La Fase 4 del piano di tesi** (innesto vero in Documentale accanto a Elasticsearch). Va fatta quando c'è qualcosa che vale la pena innestare, cioè dopo le Fasi 1-3.
 - **Rimettere le GitHub Actions.** Sono state tolte di proposito, il Task A1 dà lo stesso servizio in locale.
@@ -639,10 +728,11 @@ git commit -m "feat: log search queries to build the thesis query set"
 | Quando | Cosa | Perché lì |
 |---|---|---|
 | Fine settembre | A0, A1 | Senza Go non si fa niente, e sono due sere |
-| Ottobre | A2, A3, B1, **C0** | A3 protegge tutto il resto; B1 e C0 sono decisioni che bloccano il lavoro di novembre |
-| Novembre | C1, B2 | C1 va fatto quando c'è accesso a staging con calma, B2 sono metriche testabili a pezzetti |
-| Dicembre | C2, e basta | Il mese dei progetti d'esame: mettere altro qui è illudersi |
+| Ottobre | A2, A3, B1, C0, C2 | A3 è la rete; B1 e C0 sono decisioni che sbloccano il resto; C2 prima si accende più raccoglie |
+| Novembre | B2 | Metriche ed esecutore: il blocco grosso, ma testabile a pezzetti |
+| Dicembre | Fase 1, se ottobre e novembre sono filati | È il mese dei progetti d'esame e della riproposta ai relatori: non prometterle |
+| Febbraio | C1, Task 0.5, Fasi 2 e 3 | Vogliono il corpus C2 annotato, che è lavoro continuativo |
 
-C0 e B1 sono le due decisioni, e vanno chiuse entro ottobre: se slittano, novembre si blocca e l'autunno si perde.
+**La Fase 1 non ha una data, ha una condizione:** si parte il giorno in cui B2 è verde e non un giorno prima. Se capita a dicembre bene, se capita a gennaio fra un esame e l'altro va bene uguale. L'errore da non fare è iniziarla senza il metro, perché è l'unico modo per rendere inutile tutto l'anticipo.
 
-A dicembre, oltre a questo, c'è la riproposta della tesi a Bonnici e Dal Palù descritta in [appunti.md](appunti.md). Il Task A3 serve anche lì: fa vedere in trenta secondi che il baseline è congelato e misurabile, che è esattamente la differenza fra "ho un motore di ricerca" e "ho un esperimento".
+A dicembre c'è anche la riproposta della tesi a Bonnici e Dal Palù descritta in [appunti.md](appunti.md). Il Task A3 e il diario servono anche lì: far vedere un baseline congelato, un flag e un diario con ipotesi datate è la differenza, in trenta secondi, fra "ho un motore di ricerca" e "ho un esperimento in corso".

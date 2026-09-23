@@ -135,9 +135,13 @@ marzo 2027 per arrivare a settembre 2027.
 
 ## Prossimi passi
 
-Il lavoro tecnico di questi mesi sta in [piano-autunno-2026.md](piano-autunno-2026.md):
-mette in sicurezza il baseline di Koskidex, anticipa la Fase 0 e prepara l'export
-da Documentale, senza toccare il ranking, che è il contributo della tesi.
+Il lavoro tecnico di questi mesi sta in [piano-autunno-2026.md](piano-autunno-2026.md).
+**Le correzioni al ranking si fanno prima della tesi** (deciso il 23/09/2026), a tre
+condizioni: baseline congelato in un test, ogni modifica dietro un flag di `Settings`
+con default sul comportamento attuale, e ogni modifica annotata in `eval/DIARIO.md`
+con l'ipotesi scritta *prima* di misurare. Il motivo è il tempo: da febbraio a luglio
+2027 ci sono cinque mesi di sere, e arrivarci con il codice già scritto lascia liberi
+misurazione e scrittura, che sono le parti che non si comprimono.
 
 **Entro dicembre 2026**
 
