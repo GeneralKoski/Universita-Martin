@@ -7,7 +7,7 @@ Stato: 2026-09-07.
 > **Nuovo bersaglio: appello della sessione invernale (gennaio-febbraio 2027)**, data da verificare su Esse3 quando esce il calendario. Metodi e Modelli è nella stessa sessione (rinviato l'11/08/2026): il calendario invernale andrà condiviso fra i due esami.
 >
 > ⚠️ **Due cose da chiudere subito, non appena possibile:**
-> 1. **Mail al prof Zaffanella** per comunicare l'assenza all'appello del 10 settembre: l'iscrizione su Esse3 è stata fatta l'11/08/2026 e ormai la finestra per disiscriversi è chiusa, quindi risulti prenotato. Motivazione comunicata: **motivi familiari** (lutto in famiglia, assenza di alcune settimane). Bozza pronta in [`study/07_mail_prof.md`](study/07_mail_prof.md) - **da mandare prima di partire**.
+> 1. **Mail al prof Zaffanella** per comunicare l'assenza all'appello del 10 settembre: l'iscrizione su Esse3 è stata fatta l'11/08/2026 e ormai la finestra per disiscriversi è chiusa, quindi risulti prenotato. Motivazione comunicata: **motivi familiari**, con alcune settimane di assenza. La bozza sta in `study/07_mail_prof.md`, che non e' piu' tracciata da git: le bozze di mail restano in locale.
 > 2. **Chiedere nella stessa mail se il seminario resta valido.** Il seminario del 23 giugno 2026 vale "per tutti gli appelli dell'**a.a. 2025/26**" e l'appello di settembre 2026 è con ogni probabilità l'ultimo di quell'anno accademico. Se la sessione invernale 2027 conta come a.a. 2026/27, il 30% del voto va **rifatto** (nuovo argomento da concordare almeno 30 giorni prima, nuove slide, nuovo Q&A). È il vero costo del rinvio e va accertato prima di pianificare lo studio, non dopo.
 
 > **Per studiare:** entry point unico in [`study/`](study/README.md). 8 blocchi numerati nell'ordine in cui vanno affrontati.
