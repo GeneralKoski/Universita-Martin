@@ -1375,16 +1375,64 @@ agli id. In tesi, gli esempi si citano anonimizzati.
 
 ### I passi
 
-- [ ] Uno script che scarica il feed di Crispiano, ne prende i PDF e li passa a
-      `pdftotext`, tenendo il conto di quanti falliscono invece di ignorarli
-- [ ] Verificare i `.p7m`: sono PDF dentro una busta di firma, o si aprono o si
-      scartano dichiarandolo, non si perdono per strada
-- [ ] Uno script che scarica il FVG dall'API Socrata in un colpo solo
-- [ ] Caricare tutti e due dentro Documentale in locale, passando dal suo
-      modello vero (`Document` + `currentVersion` + campi), non da un file a
-      lato: è l'unico modo perché il confronto con Elasticsearch valga qualcosa
-- [ ] Riusare l'export del C1 senza toccarlo. Se serve toccarlo, quello è un
-      difetto del C1 e va corretto lì
+- [x] **`eval/corpora/fetch-albo.py`** in Koskidex, sola libreria standard: scarica
+      tutte e due le fonti, estrae il testo con `pdftotext` e scrive
+      `falliti.tsv` **sempre, anche vuoto** - un file assente non si distingue
+      da un file che nessuno ha guardato
+- [x] I `.p7m` si aprono: sono PDF dentro una busta PKCS#7, e
+      `openssl smime -verify -noverify -inform DER` li tira fuori. La firma non
+      si verifica, interessa il contenuto e non chi l'ha firmato
+- [x] FVG scaricato: 9.457 atti. **E il controllo sugli id ha trovato un
+      difetto vero** - il 9% degli atti ha un `numero_atto` che non è un numero
+      (`-`, `.`, `///`), e 37 atti diversi finivano sullo stesso id. La chiave
+      porta ora in coda l'impronta SHA-1 dell'oggetto, che è deterministica e
+      viene uguale a ogni riscaricamento. Restano 2 id ripetuti, e sono atti
+      pubblicati due volte con lo stesso oggetto: quelli è giusto che collassino
+- [x] **L'Opzione B è nel modello:** `full_text` longText nullable su
+      `document_versions`, vuoto per tutto quello che c'era prima, così un
+      documento senza testo estratto si comporta esattamente come prima
+- [x] **`app:import-albo-corpus`**, che passa dal modello vero. Idempotente sul
+      `path`, che è già indicizzato: un import che raddoppia l'archivio a ogni
+      esecuzione falserebbe ogni misura fatta dopo, e in silenzio. 8 test
+- [x] L'export del C1 non è stato toccato nel comportamento: ha una nuova
+      opzione `--text-source=metadata|full`, e **il default resta `metadata`**.
+      È il punto che conta - se bastasse dimenticare un'opzione per misurare i
+      due motori su basi diverse, il confronto sarebbe truccato di default. 4
+      test nuovi, 12 in tutto
+- [x] Mutation testing su tutto: cinque mutazioni, cinque uccise. **Una era
+      sopravvissuta** - il test sul troncamento del nome passava anche con un
+      taglio secco a 255 caratteri, perché controllavo solo che non finisse con
+      uno spazio. Rifatto verificando che il taglio cada su un confine di parola
+- [x] **Fatto girare sui dati veri, ed e' li' che sono usciti i difetti.**
+      10.018 documenti importati (563 Crispiano col testo, 9.455 FVG a sola
+      scheda), esportati nelle due varianti, e i due file differiscono in
+      esattamente 563 testi e in nient'altro. Tre difetti trovati solo
+      eseguendo: Telescope teneva in memoria ogni query e il processo moriva a
+      meta' import senza stampare niente (due volte prima di accorgersene); una
+      transazione per atto sono novanta minuti; `--limit=0` scriveva un corpus
+      vuoto, perche' `limit(0)` in SQL vuol dire zero righe e non "nessun limite"
+- [x] **`scripts/compare` leggeva la chiave sbagliata.** Dichiarava `json:"id"`
+      mentre l'export scrive `_id` dal passaggio a BEIR: tutti i documenti
+      arrivavano con id vuoto, si sovrascrivevano, e l'indice si riduceva a **un
+      documento solo** senza un errore. Il confronto ES/Koskidex di stamattina
+      **non e' invalidato** - verificato nella storia, allora l'export scriveva
+      ancora `id` - ma chiunque l'avesse rilanciato dopo avrebbe avuto numeri
+      falsi senza un segnale. Ora `compare` si rifiuta di partire se il corpus
+      ha id vuoti o ripetuti
+- [x] **E i due corpora non si possono mischiare in un indice solo.** Contando
+      quanti dei primi 10 risultati hanno il testo integrale (il 5,4% del
+      corpus): l'euristico ne mette 9, 2 e 10 su tre query; BM25 ne mette **0,
+      0 e 0**. Non e' pertinenza, e' la normalizzazione della lunghezza: 9.455
+      schede da 200 caratteri tirano giu' la lunghezza media e `b = 0,75`
+      penalizza tutto cio' che e' lungo. Se avessi misurato prima e guardato
+      dopo, la risposta sarebbe stata *"il testo integrale peggiora il
+      recupero"*, che e' falsa. La domanda del C0 va posta come due misure sugli
+      **stessi 563 documenti**, una con la sola scheda e una col testo
+- [ ] Indicizzare su Elasticsearch **locale** e rifare il confronto testa a testa
+      sul corpus vero. Attenzione: il `.env` del repo punta a un cluster in
+      cloud aziendale, non a `localhost:9201`
+- [ ] Rimisurare `b` sul corpus dei soli documenti lunghi: 0,75 e' un default
+      tarato su collezioni di articoli
 - [ ] `eval/corpora/` continua a stare fuori dal git, come già è
 - [ ] Generare le query known-item automatiche da `numero_atto` + `ente`
 - [ ] Raccogliere le known-item umane: trenta o quaranta, chiedendole a persone
