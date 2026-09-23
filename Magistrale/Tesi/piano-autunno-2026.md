@@ -697,7 +697,7 @@ git commit -m "feat: log search queries to build the thesis query set"
 
 Sono le Fasi 1, 2 e 3 di [piano-implementazione.md](piano-implementazione.md), già scritte task per task lì dentro. Qui dico solo quali si possono fare adesso e a quali condizioni.
 
-## Prima di tutto: il recupero disgiuntivo (difetto 0)
+## Prima di tutto: il recupero disgiuntivo (difetto 0) - FATTO il 23/09/2026
 
 **Questo non era nel piano.** È emerso misurando il baseline il 23/09/2026, e
 scavalca la Fase 1.
@@ -724,16 +724,34 @@ e-commerce, che è il caso d'uso per cui Koskidex era nato. Va raccontato così 
 tesi: non "avevo sbagliato", ma "il modello di recupero era tarato su un regime
 di query diverso da quello del documentale", che è una tesi più interessante.
 
-- [ ] Recupero disgiuntivo dietro un campo di `Settings`, default sul
-      comportamento attuale
-- [ ] `TestBaselineRankingIsFrozen` deve continuare a passare a default, senza
-      modifiche al test. Il caso `entita` in particolare: oggi `d2` sparisce
-      proprio perché ha "Rossi" ma non "SpA", e in disgiuntivo deve comparire
-- [ ] Voce di diario con l'ipotesi, committata prima di misurare
-- [ ] Misura su SciFact e NFCorpus, confronto con il legacy
+- [x] `Settings.RetrievalMode`, `"all"` di default, `"any"` disgiuntivo. Stringa
+      vuota trattata come `"all"`: le settings sono persistite e un indice
+      salvato prima non deve cambiare comportamento da solo
+- [x] `TestBaselineRankingIsFrozen` verde a default, senza modifiche al test
+- [x] Ipotesi nel diario, committata prima di misurare
+- [x] Misurato su entrambe le collezioni
 
-Fatto questo, il numero di partenza per la Fase 1 non è più 0,0246 ma quello
-nuovo, ed è quello il baseline contro cui BM25 va confrontato.
+### Risultato
+
+| | SciFact `all` → `any` | NFCorpus `all` → `any` |
+|---|---|---|
+| nDCG@10 | 0,0246 → **0,4936** | 0,1659 → **0,2246** |
+| Recall@100 | 0,0242 → **0,7571** | 0,0967 → **0,1898** |
+| Query a vuoto | 290/300 → **0** | 160/323 → **24** |
+| Riferimento BM25 | 0,6789 | 0,3218 |
+
+Entrambe arrivano intorno al **70% del riferimento**, partendo dal 4% e dal 52%.
+
+**La sorpresa, ed è quella da mettere in tesi:** avevo previsto che su NFCorpus,
+con query da due parole, togliere l'AND avrebbe alzato il recall ma peggiorato
+l'ordinamento, perché l'AND faceva da filtro di precisione. È migliorato tutto.
+Il motivo è che il filtro congiuntivo **era ridondante rispetto al punteggio che
+c'era già**: chi trova più termini prende più punti, quindi i documenti completi
+restano in testa da soli. Il filtro non li promuoveva, cancellava tutto il resto.
+L'AND non aggiungeva precisione, toglieva recall.
+
+Il divario che resta su SciFact, 0,4936 contro 0,6789, è dove dovrebbe esserci
+l'IDF. Ora la Fase 1 ha un baseline sensato contro cui misurarsi.
 
 ## Poi la Fase 1, BM25
 
