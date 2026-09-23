@@ -914,6 +914,83 @@ la barra come separatore di cartelle. `Fattura 2026/0173.pdf` viene indicizzata
 con nome `0173`, e la numerazione italiana delle fatture usa la barra sempre.
 Cercare "Fattura 2026" non trova quei documenti per nome. È una riga.
 
+## Il C2 chiuso davvero: dalle query vere ai numeri (23/09/2026)
+
+Il confronto qui sopra conta i risultati ma non sa dire se sono buoni: mancavano
+i giudizi di rilevanza. Questo è il pezzo che collega le due metà, e con questo
+la catena è completa senza interventi a mano in mezzo.
+
+```
+search_logs                                   (il log acceso oggi)
+  -> app:export-eval-queries   -> queries.jsonl
+document_versions
+  -> app:export-eval-corpus    -> corpus.jsonl      (formato BEIR)
+  -> scripts/pool              -> giudizi.tsv       <- qui si annota
+  -> scripts/pool -sheet       -> qrels/test.tsv
+  -> scripts/evaluate          -> nDCG@10, Recall@100, MRR@10
+```
+
+**La scelta che fa risparmiare più lavoro:** l'export scrive `_id`, `title` e
+`text`, cioè le chiavi di BEIR, tenendosi i campi della tesi accanto dove un
+lettore BEIR li ignora. Quindi la collezione di Documentale passa dallo stesso
+`LoadCorpus` e dallo stesso esecutore già usati su SciFact e NFCorpus: **zero
+righe di Go in più**, e le due collezioni restano confrontabili invece di avere
+ognuna il suo lettore che diverge col tempo.
+
+### Due decisioni sul pooling che contano più del codice
+
+**Il foglio è ordinato per id del documento, mai per posizione e mai raggruppato
+per configurazione.** Se chi annota vede i risultati in ordine di ranking, legge
+la posizione come un suggerimento e finisce per confermarla: i giudizi
+concordano col sistema che li ha prodotti per costruzione, e la valutazione non
+misura più niente. È lo stesso motivo per cui TREC mescola i pool.
+
+**Un grado vuoto è un errore, non uno zero.** «L'ho guardato e non c'entra» e
+«non ci sono ancora arrivato» sono due fatti diversi, e leggere il secondo come
+il primo gonfia ogni numero che esce dal file. La conversione si rifiuta di
+procedere e dice quale riga manca.
+
+Il bias che resta non si toglie: un documento che nessuna configurazione ha
+pescato non viene mai giudicato e vale zero, quindi il recall misurato così è un
+limite superiore. È il compromesso standard, ed è la ragione per cui il pool si
+costruisce da tutte e tre le configurazioni e non da quella che si vuole
+promuovere.
+
+### Il collaudo, e perché i suoi numeri non valgono niente
+
+Ho fatto girare la catena intera: 14 documenti, le 7 query che il log aveva
+registrato, 47 giudizi.
+
+| configurazione | nDCG@10 | Recall@100 | MRR@10 | a vuoto |
+|---|---|---|---|---|
+| oggi (and + euristico) | 0,4604 | 0,3929 | 0,5714 | 3/7 |
+| or + euristico | 0,9721 | 1,0000 | 1,0000 | 0/7 |
+| or + BM25 | 0,9737 | 1,0000 | 1,0000 | 0/7 |
+
+**Questi numeri non vanno in tesi e non vanno mostrati a nessuno.** I documenti
+me li sono inventati io, i giudizi li ho scritti io, e il recall fa 1,0 solo
+perché il taglio è a 100 su un corpus di 14. Con quattordici documenti ordinare
+bene è quasi impossibile da sbagliare: 0,97 non dice che il motore è buono, dice
+che il compito era banale.
+
+Quello che il collaudo dimostra è un'altra cosa, ed è quella che serviva: **la
+catena funziona dal database al numero, senza passaggi manuali.** Il giorno in
+cui il log avrà query vere e ci sarà un pomeriggio per annotare, i numeri escono.
+Non c'è più codice da scrivere prima.
+
+### Cosa manca ancora, per onestà
+
+- **Elasticsearch non è nel pool.** Le tre configurazioni sono tutte di
+  Koskidex. Sul corpus di prova non cambia niente, perché in modalità
+  disgiuntiva il pool copre praticamente tutto, ma su un archivio vero i
+  risultati di Elasticsearch vanno aggiunti al pool, altrimenti il confronto
+  parte svantaggiato per lui.
+- **Una sola persona che annota.** Senza un secondo annotatore non c'è modo di
+  misurare l'accordo, e su un lavoro fatto dalla stessa persona che scrive il
+  motore è un'obiezione che in discussione arriva. Vale la pena farne annotare
+  un pezzo a qualcun altro, anche solo trenta coppie, per avere un numero da
+  citare.
+
 # Parte D - Le correzioni al ranking
 
 Sono le Fasi 1, 2 e 3 di [piano-implementazione.md](piano-implementazione.md), già scritte task per task lì dentro. Qui dico solo quali si possono fare adesso e a quali condizioni.
