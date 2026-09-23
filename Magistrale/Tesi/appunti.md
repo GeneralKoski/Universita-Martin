@@ -87,11 +87,15 @@ precisi, verificati leggendo il codice e poi **misurati** (23/09/2026):
    degli altri tre**, perché su query vuote nessun miglioramento del punteggio
    può fare niente, ed è il più rilevante per un documentale, dove le query sono
    in lingua naturale e sempre più spesso riscritte da un LLM. Dettagli e prove
-   in `Koskidex/eval/DIARIO.md`.
-1. **Nessun IDF.** Il punteggio è `(10 - refusi + 2*esatti) * peso_campo`. Il
-   campo `Posting.TF` esiste in `internal/engine/inverted.go:12` con scritto
-   `// term frequency (calculated later)` e non è usato da nessuna parte. Un
-   termine rarissimo e uno comunissimo pesano identico.
+   in `Koskidex/eval/DIARIO.md`. **Corretto il 23/09/2026** dietro
+   `Settings.RetrievalMode`: SciFact da 0,0246 a 0,4936.
+1. **Nessun IDF.** Il punteggio era `(10 - refusi + 2*esatti) * peso_campo`. Il
+   campo `Posting.TF` esisteva in `internal/engine/inverted.go:12` con scritto
+   `// term frequency (calculated later)` e non era usato da nessuna parte. Un
+   termine rarissimo e uno comunissimo pesavano identico. **Corretto il
+   23/09/2026** dietro `Settings.ScoringMode`: BM25 con `k1=1,2` e `b=0,75`,
+   SciFact a **0,6197** e NFCorpus a **0,2810**, cioè il 91% e l'87% dei
+   riferimenti pubblicati.
 2. **L'ibrido non è ibrido.** In `ranker.go:203-222` il punteggio vettoriale si
    somma solo ai documenti già trovati dal lessicale: è re-ranking. Un documento
    semanticamente pertinente che il lessicale non pesca non entra mai.
@@ -99,15 +103,29 @@ precisi, verificati leggendo il codice e poi **misurati** (23/09/2026):
    lessicale cresce senza limite con la lunghezza della query e il vettoriale è
    fisso a 20. Su una parola il vettore domina, su cinque è rumore.
 
-Ognuno è un capitolo con un risultato numerico, e il baseline è il codice di
-oggi, congelato in un test e misurato: SciFact 0,0246 e NFCorpus 0,1659 di
-nDCG@10. Documentale fornisce il corpus e il carico di query reale.
+Ognuno è un capitolo con un risultato numerico, e il baseline è il codice del
+23 settembre 2026, congelato in un test e misurato: SciFact 0,0246 e NFCorpus
+0,1659 di nDCG@10. Documentale fornisce il corpus e il carico di query reale.
+
+**Stato al 23/09/2026: i difetti 0 e 1 sono chiusi e misurati**, entrambi dietro
+un campo di `Settings` con il comportamento vecchio come default, entrambi con
+l'ipotesi committata nel diario prima della misura. Restano il 2 e il 3, che
+hanno bisogno di un corpus con embedding e giudizi e quindi aspettano febbraio.
+Il percorso completo del lessicale, da 0,0246 a 0,6197 su SciFact, è già un
+capitolo con dentro tre numeri e due sorprese.
 
 **Il difetto 0 è stato trovato misurando, non leggendo il codice**, ed è la
 dimostrazione che costruire l'impianto di valutazione prima di toccare il
 ranking era la scelta giusta: la tesi stava per essere scritta su tre capitoli
 di ottimizzazione del punteggio, su un motore che nel 97% dei casi non
 restituiva niente da ottimizzare.
+
+Lo stesso impianto, poche ore dopo, ha fatto scattare una guardia sulla misura di
+BM25. Andando a vedere è venuto fuori che a essere sbagliata era la guardia, non
+il risultato: `recall@k` non misura il recupero quando i candidati sono molti più
+di `k`. Anche questo va in tesi. Un controllo che scatta e costringe a capire
+perché vale più di una tabella senza incidenti, e la versione corretta della
+guardia è ora un numero registrato in ogni file di risultati.
 
 Tre cose in una tesi sola: progetto personale (Koskidex), progetto aziendale
 (Documentale), e il contributo di Martin documentato dai commit.

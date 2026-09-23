@@ -753,7 +753,7 @@ L'AND non aggiungeva precisione, toglieva recall.
 Il divario che resta su SciFact, 0,4936 contro 0,6789, è dove dovrebbe esserci
 l'IDF. Ora la Fase 1 ha un baseline sensato contro cui misurarsi.
 
-## Poi la Fase 1, BM25
+## Poi la Fase 1, BM25 - FATTA il 23/09/2026
 
 Si misura sulla collezione pubblica C1, che ha i giudizi già pubblicati e non
 richiede nessuna annotazione a mano. Questo resta vero.
@@ -763,15 +763,50 @@ richiede nessuna annotazione a mano. Questo resta vero.
 - [x] A0-A3 fatti, con `TestBaselineRankingIsFrozen` verde
 - [x] B1 fatto: SciFact e NFCorpus scaricate, con i riferimenti in `SOURCE.md`
 - [x] B2 fatto: metriche ed esecutore girano su dati veri
-- [ ] Difetto 0 chiuso, altrimenti su SciFact non c'è niente da riordinare
+- [x] Difetto 0 chiuso, altrimenti su SciFact non c'è niente da riordinare
 
-**Come si esegue:**
+**Come si è eseguita:**
 
-- [ ] Task 1.1 - statistiche dell'indice (`piano-implementazione.md`, riga 516)
-- [ ] Task 1.2 - punteggio BM25 dietro interruttore (riga 652)
-- [ ] Sezione *Prima di misurare* nel diario, committata prima di lanciare
-- [ ] Task 1.3 - misura contro il baseline (riga 809)
-- [ ] Completare la voce di diario, sorprese comprese
+- [x] Task 1.1 - statistiche dell'indice: `df(t)`, `|D|` e `tf(t,D)` mantenute
+      in inserimento, cancellazione, aggiornamento e reindicizzazione
+- [x] Task 1.2 - punteggio BM25 dietro `Settings.ScoringMode`, `k1=1.2`,
+      `b=0.75` letti dalle settings e non cablati
+- [x] Sezione *Prima di misurare* nel diario, committata prima di lanciare
+      (commit `998e11c`)
+- [x] Task 1.3 - misura contro il baseline
+- [x] Voce di diario completata, sorprese comprese
+
+### Risultato
+
+| | legacy | `any` | **bm25** | riferimento |
+|---|---|---|---|---|
+| SciFact nDCG@10 | 0,0246 | 0,4936 | **0,6197** | 0,6789 |
+| SciFact Recall@100 | 0,0242 | 0,7571 | **0,8746** | - |
+| NFCorpus nDCG@10 | 0,1659 | 0,2246 | **0,2810** | 0,3218 |
+| NFCorpus Recall@100 | 0,0967 | 0,1898 | **0,2280** | - |
+
+**91% e 87% del riferimento pubblicato**, partendo dal 4% e dal 52% di
+stamattina. Il 9-13% che manca ha due cause già scritte in `SOURCE.md` prima di
+misurare, nessuno stemmer e un tokenizer diverso, ed è materia della Fase 2.
+
+**La sorpresa di questa fase è un mio errore di metodo, e va in tesi come tale.**
+Avevo scritto nel diario una *guardia*: se il recall si muove di più di ±0,02 ho
+cambiato il recupero per sbaglio e il nDCG non vale niente. Il recall si è mosso
+di +0,117 su SciFact. Non era il risultato a essere falso, era la guardia a
+essere scritta male: `recall@k` non dice quanto hai recuperato, dice quanti
+rilevanti sono entrati nei primi `k`, e quando i candidati sono molti più di `k`
+è una metrica di ordinamento esattamente come il nDCG. In modalità disgiuntiva
+la query mediana di SciFact pesca 5182 documenti su 5183: dentro il taglio ci
+entra l'1,9% dei candidati.
+
+Il recupero è invariato, e ora è dimostrato invece che argomentato: il runner
+registra quanti documenti corrispondono **prima** del taglio, e quel numero non
+cambia per nessuna delle 623 query. La guardia corretta, d'ora in avanti, è
+quella - non il recall.
+
+È il tipo di episodio che una tesi sperimentale dovrebbe raccontare e quasi
+sempre nasconde: un controllo scritto in buona fede, scattato, e la disciplina
+di andare a vedere se aveva ragione il controllo o il risultato.
 
 ## Cosa resta a febbraio, e perché
 
@@ -801,9 +836,11 @@ Facendo le correzioni prima della tesi, la narrazione non è più "ho misurato, 
 | Fine settembre | A0, A1 | Senza Go non si fa niente, e sono due sere |
 | Ottobre | A2, A3, B1, C0, C2 | A3 è la rete; B1 e C0 sono decisioni che sbloccano il resto; C2 prima si accende più raccoglie |
 | Novembre | B2 | Metriche ed esecutore: il blocco grosso, ma testabile a pezzetti |
-| Dicembre | Fase 1, se ottobre e novembre sono filati | È il mese dei progetti d'esame e della riproposta ai relatori: non prometterle |
+| Dicembre | Progetti d'esame e riproposta ai relatori | La Fase 1 era prevista qui e si è chiusa il 23/09: dicembre resta libero per gli esami |
 | Febbraio | C1, Task 0.5, Fasi 2 e 3 | Vogliono il corpus C2 annotato, che è lavoro continuativo |
 
-**La Fase 1 non ha una data, ha una condizione:** si parte il giorno in cui B2 è verde e non un giorno prima. Se capita a dicembre bene, se capita a gennaio fra un esame e l'altro va bene uguale. L'errore da non fare è iniziarla senza il metro, perché è l'unico modo per rendere inutile tutto l'anticipo.
+**La Fase 1 non aveva una data, aveva una condizione:** partire il giorno in cui B2 è verde e non un giorno prima. La condizione si è avverata il 23 settembre, cioè con quasi tre mesi di anticipo sulla casella di dicembre, e la fase è chiusa. L'anticipo non si è preso saltando il metro, si è preso costruendolo per primo: è esattamente il motivo per cui la regola era scritta così.
+
+Quello che resta in calendario da qui a febbraio è la Parte C, il lato Documentale: C0 (decidere cosa è un documento nel corpus), C1 (comando di export) e C2 (log delle query, che più presto si accende più raccoglie).
 
 A dicembre c'è anche la riproposta della tesi a Bonnici e Dal Palù descritta in [appunti.md](appunti.md). Il Task A3 e il diario servono anche lì: far vedere un baseline congelato, un flag e un diario con ipotesi datate è la differenza, in trenta secondi, fra "ho un motore di ricerca" e "ho un esperimento in corso".
