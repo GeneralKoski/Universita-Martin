@@ -172,6 +172,52 @@ staging. Quindi i giudizi di rilevanza si scrivono a mano *prima* di guardare
 cosa risponde il motore. Seedare va bene per misurare latenza e memoria, mai
 per misurare la rilevanza: sarebbe circolare.
 
+## Il corpus: l'azienda esce di scena (23/09/2026)
+
+**Dieffetech ha abbandonato Documentale.** Cambia una cosa sola, ma grossa: i
+documenti. Non c'è più un archivio di clienti da cui prendere il corpus, né
+qualcuno a cui chiedere il permesso di conservare il testo integrale.
+
+Il caso applicativo **resta Documentale**. Il software gira in locale, il
+comando di export funziona, il log delle query c'è, il confronto con
+Elasticsearch è già stato fatto e dice che Koskidex restituisce lo stesso
+insieme di risultati. Quello che si sostituisce è il contenuto, non il sistema.
+
+**Il corpus diventa pubblico: albi pretori comunali.** Determine, delibere,
+ordinanze, avvisi, liquidazioni - documenti amministrativi italiani della stessa
+famiglia di quelli che un documentale aziendale custodisce, pubblicati per
+obbligo di legge e riusabili. Due fonti, verificate scaricandole il 23/09/2026:
+
+- **Comune di Crispiano (TA)**, feed RSS, CC BY 4.0: 563 atti da novembre 2025 a
+  settembre 2026, 551 col link diretto al PDF, testo nativo estraibile con
+  `pdftotext` (2-6 pagine, 5-13 mila caratteri). È il corpus **col testo intero**.
+- **Regione Friuli Venezia Giulia**, API Socrata, IODL 2.0: 9.457 atti dal 2011 a
+  oggi, 171 enti, 46 tipologie, con `ente`, `tipologia_atto`,
+  `ufficio_competente` e `oggetto`. È il corpus **a soli metadati**, e i suoi
+  campi sono un `meta_true` già scritto da chi ha pubblicato il dato.
+
+Averle tutte e due trasforma la domanda che era rimasta aperta - *il corpus è
+fatto di schede o di documenti?* - da decisione al buio in **esperimento
+misurabile**: stesso archivio, stesse query, cambia solo cosa è indicizzato.
+
+Tre conseguenze buone e una scomoda.
+
+- I risultati diventano **riproducibili da un lettore**: le fonti le riscarica chiunque.
+- Cade la dipendenza dalle credenziali OpenAI (`gpt-4.1` in `apps/python`, chiave
+  che non ho più): il testo lo produce `pdftotext`, e i campi da indovinare nel
+  FVG ci sono già.
+- Il problema delle query resta, anzi si aggrava: **nessun log si riempirà mai**.
+  Vanno fabbricate, e in tesi va scritto con questa parola. La strada è la
+  valutazione known-item - si mostra un atto a una persona e le si chiede la
+  ricerca che farebbe per ritrovarlo, così il giudizio di rilevanza arriva gratis.
+- Gli atti contengono **nomi di persone** (67 su 9.457 oggetti del FVG hanno
+  marcatori espliciti, e a Crispiano ci sono le pubblicazioni di matrimonio).
+  Sono pubblici per legge, ma il corpus **non si committa**: nel repo vanno gli
+  script che lo riscaricano, e in tesi gli esempi si citano anonimizzati.
+
+Il dettaglio, con i numeri e le fonti scartate, sta nel Task E2 di
+[piano-autunno-2026.md](piano-autunno-2026.md).
+
 ## Relatore: stato e tempi
 
 Il 21 settembre 2026 ho agganciato entrambi i potenziali relatori a fine
@@ -217,8 +263,9 @@ misurazione e scrittura, che sono le parti che non si comprimono.
 - [ ] Scegliere il progetto di Laboratorio di IA guardando anche se può fare da
       dimostrazione per Bonnici
 - [ ] Riproporre la tesi a Bonnici e Dal Palù a progetti consegnati
-- [ ] Chiedere all'azienda cosa è pubblicabile di Documentale (non dipende dai
-      professori, si può fare prima)
+- [x] ~~Chiedere all'azienda cosa è pubblicabile di Documentale~~ - decaduta il
+      23/09/2026, l'azienda ha abbandonato il progetto. Al suo posto: costruire il
+      corpus dagli albi pretori pubblici (Task E2 del piano)
 
 **Da gennaio 2027, quando escono le tracce**
 
@@ -230,9 +277,10 @@ misurazione e scrittura, che sono le parti che non si comprimono.
 
 - [ ] Scegliere la collezione pubblica per validare BM25
 - [ ] Sentire il relatore prima di iniziare ad annotare il corpus di dominio
-- [ ] Chiedere se si può usare in gran parte una collezione pubblica e costruire
-      a mano solo una piccola parte di dominio: è il costo nascosto del piano
-      Koskidex, settimane di sere che non sono codice
+- [x] ~~Chiedere se si può usare in gran parte una collezione pubblica~~ - risolto
+      il 23/09/2026, ma dal verso opposto a come era posto: **anche il corpus di
+      dominio è pubblico**. Resta intatto il costo nascosto, cioè le query e i
+      giudizi, che vanno prodotti a mano perché nessun log si riempirà
 
 ## Nota organizzativa
 

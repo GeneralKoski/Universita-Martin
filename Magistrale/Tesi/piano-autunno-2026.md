@@ -489,9 +489,10 @@ Non è codice, è la decisione che tiene in piedi o fa cadere il corpus C2.
 - Costo: una migration, un punto nella pipeline di estrazione, la reindicizzazione.
 
 - [x] Verificare se il testo integrale sia già disponibile da qualche parte nella pipeline Python senza doverlo riestrarre - **verificato il 23/09/2026, la risposta è no, e cambia il costo dell'Opzione B**
-- [ ] Chiedere in azienda se il testo integrale si può conservare, e con quali vincoli
-- [ ] Se la risposta è sì, l'Opzione B diventa un task vero di Documentale e il corpus lo aspetta; se è no, si va con l'Opzione A e lo si scrive in `appunti.md` come vincolo della tesi, non come ripiego
-- [ ] Portare la domanda al relatore a dicembre: è il tipo di vincolo su cui un relatore ha un'opinione, e scoprirlo a marzo sarebbe tardi
+- [x] ~~Chiedere in azienda se il testo integrale si può conservare~~ - **decaduta il 23/09/2026: l'azienda ha abbandonato Documentale**, non c'è più nessuno a cui chiedere né alcun archivio di clienti da usare
+- [x] **Il C0 si chiude in favore dell'Opzione B**, e senza chiedere il permesso a nessuno. Il corpus viene da albi pretori pubblici (vedi Task E2): su documenti pubblicati per obbligo di legge non c'è riservatezza di clienti da tutelare, e conservare il testo integrale è una scelta dentro la tesi, non una modifica al prodotto di qualcun altro
+- [x] E l'Opzione A non viene buttata: le due fonti trovate sono l'una il caso a soli metadati e l'altra il caso col testo intero, quindi **la domanda del C0 diventa un esperimento** invece di una decisione al buio - quanto guadagna il recupero quando al posto della scheda c'è il documento
+- [ ] Portare comunque la scelta al relatore a dicembre: cambia il perimetro della tesi, e scoprirlo a marzo sarebbe tardi
 
 ### Cosa ho trovato guardando la pipeline (23/09/2026)
 
@@ -1226,18 +1227,170 @@ Un riscontro già in mano, dall'indagine sulle 24 query vuote di NFCorpus: su di
 
 **Una cosa che non si spiega e resta aperta:** su SciFact la configurazione migliore è solo stopword (0,6641), non tutte e due (0,6585). Lo stemmer, aggiunto alle stopword, peggiora il nDCG@10 e alza il Recall@100 da 0,8792 a 0,9103. Lettura plausibile: porta dentro più rilevanti in profondità e più rumore in testa. Ma il riferimento usa entrambi e arriva più in alto di tutte e quattro le configurazioni, quindi la spiegazione non è completa e non la forzo.
 
-## Task E2: La proposta all'azienda sul testo integrale
+## Task E2: Il corpus pubblico - il documentale senza l'azienda
 
-Il C0 è fermo su una domanda che devo fare io in azienda, e oggi la farei a mani vuote. Questo task serve a trasformarla da domanda in proposta con dei conti sotto.
+**Il task di prima non esiste più.** Era "portare all'azienda la proposta di
+conservare il testo integrale". L'azienda ha abbandonato Documentale: non c'è
+più nessuno a cui chiedere il permesso, e soprattutto non c'è più nessun
+archivio di clienti da cui prendere i documenti. Il C0 non si decide più
+chiedendo, e il corpus non può venire da lì.
 
-Quello che già so, verificato il 23/09: il testo integrale **non esiste in nessun punto della pipeline**, nemmeno di passaggio - `apps/python` manda al modello il base64 del file e riceve solo JSON, e in `requirements.txt` non c'è nessuna libreria di estrazione. Però i file originali sono conservati (`spatie/laravel-medialibrary`, tabella `media`), quindi l'estrazione si può fare a posteriori su tutto l'archivio già caricato.
+Quello che resta in piedi è tutto il resto, ed è parecchio: il software gira in
+locale, il comando di export del C1 funziona, il log delle query del C2 c'è, il
+confronto con Elasticsearch è stato fatto. Manca una cosa sola, i documenti da
+metterci dentro. Quindi il task diventa: **trovare un archivio pubblico che
+abbia la forma di un documentale, e caricarlo in Documentale.**
 
-- [ ] Scegliere l'estrattore e provarlo davvero su una decina di PDF di forma realistica: quanti ne legge, quanto ci mette, cosa fa con gli scansionati che richiedono OCR
-- [ ] Misurare l'occupazione: quanto testo produce un documento medio, moltiplicato per quanti ce ne sono in archivio. Un numero, non una sensazione
-- [ ] Scrivere cosa cambia per chi cerca: oggi un documento non si trova cercando una parola del suo corpo, solo del riassunto. È la funzionalità che manca, e va presentata come valore per l'azienda, non come favore alla tesi
-- [ ] Mettere nero su bianco le implicazioni di riservatezza: conservare il testo integrale di documenti di clienti è una decisione che non prendo io, e la proposta deve dire esplicitamente che è una decisione loro
-- [ ] **Ribadire il rifiuto dell'opzione C.** Chiedere la trascrizione al modello, che il documento lo legge già, costa una riga di prompt e sembra gratis. Non si fa: un testo prodotto da un LLM è una parafrasi, e un corpus di recupero costruito sopra misura quanto bene il motore trova cose in un testo che nessuno ha mai scritto
-- [ ] Portare la stessa domanda al relatore a dicembre: è il tipo di vincolo su cui un relatore ha un'opinione, e scoprirlo a marzo sarebbe tardi
+Il caso applicativo non cambia. Documentale resta il sistema di cui si misura
+il recupero; cambia solo da dove arrivano i documenti, e diventano dati che
+chiunque può riscaricare - che per una tesi è meglio, non peggio, perché il
+risultato diventa riproducibile da un lettore.
+
+### Cosa serve davvero
+
+Non "tanti documenti". Un archivio di **una organizzazione sola**, che copra un
+periodo continuo, con generi ricorrenti e un vocabolario suo. È quello che
+rende un documentale diverso da una collezione di articoli: chi cerca sa già
+cosa c'è dentro, e cerca un atto che sa esistere. Devono esserci il testo, dei
+metadati veri e una licenza che ne consenta il riuso.
+
+L'albo pretorio è questo. Ogni comune pubblica per obbligo di legge determine,
+delibere, ordinanze, avvisi e liquidazioni; sono documenti amministrativi
+italiani, della stessa famiglia di quelli che un documentale aziendale
+custodisce, e sono pubblici all'origine.
+
+### Le fonti, provate davvero il 23/09/2026
+
+Tre strade cercate, due tenute. I numeri qui sotto vengono tutti da download
+eseguiti, non da pagine di descrizione.
+
+**Tenuta - Albo pretorio del Comune di Crispiano (TA).** Feed RSS su
+`https://www.trasparenzacrispiano.it/rss.xml`, censito su dati.gov.it e sul
+CKAN della Regione Puglia, licenza CC BY 4.0.
+
+- 563 atti, dal 03/11/2025 al 22/09/2026
+- 551 item con il **link diretto al PDF**, 12 in `.p7m` (firmati), 1 altro
+- generi: 390 determine, 82 delibere, 58 ordinanze, il resto avvisi e pubblicazioni
+- cinque PDF scaricati a campione: da 2 a 6 pagine, da 5.472 a 13.311 caratteri
+  estratti con `pdftotext`. **Testo nativo, non scansioni.** Nessun OCR da mettere in mezzo
+
+Una precisazione che conta: la scheda del dataset sul CKAN dice che i PDF non
+ci sono e che il feed rimanda alla piattaforma dell'ente. È sbagliata.
+Scaricando il feed, il `<link>` di ogni item **è** il PDF. Se mi fossi fermato
+alla descrizione avrei scartato l'unica fonte buona.
+
+**Tenuta - Albo pretorio della Regione Friuli Venezia Giulia.** Dataset Socrata
+`vny3-2fkg`, API JSON senza chiave, licenza IODL 2.0, attribuzione Regione
+autonoma Friuli Venezia Giulia.
+
+- 9.457 atti, dal 14/04/2011 al 23/09/2026, **aggiornato lo stesso giorno in cui l'ho scaricato**
+- 171 enti distinti, 46 tipologie di atto
+- campi: `ente`, `tipologia_atto`, `ufficio_competente`, `oggetto`,
+  `numero_atto`, `data_inizio_pubblicazione`, `data_fine_pubblicazione`,
+  `link_albo_comunale`
+- l'`oggetto` è lungo in media 201 caratteri: è un titolo lungo, non un testo
+
+**Scartata - AlboPOP.** È il progetto che converte gli albi pretori in feed di
+formato comune, ed è la strada che sembrava giusta: 253 comuni schedati, 215
+con un feed dichiarato. Verificati tutti e 215, uno per uno:
+
+- 105 feed rispondono ancora e hanno almeno un item
+- 71 dichiarano allegati, per 9.564 allegati in totale
+- scaricandone 14 a campione, **3 arrivano davvero.** Gli altri rispondono
+  HTTP 200 con 944 byte di HTML, una pagina di errore travestita da successo
+
+I feed vivi sono quasi tutti fermi al 2021 - venivano dagli scraper del
+progetto sulla ricostruzione post-terremoto, che non girano più. AlboPOP resta
+un ottimo catalogo per sapere chi pubblica cosa; come sorgente di documenti a
+volume non regge, e il modo in cui non regge (200 OK su un errore) è la ragione
+per cui andava provato scaricando invece che contando le righe del catalogo.
+
+Per completezza: su dati.gov.it ci sono 297 dataset che parlano di albo
+pretorio, ma solo 2 espongono un feed o un XML, e sono i due qui sopra.
+
+### La decisione
+
+**Si usano tutte e due, e non è un compromesso: sono le due opzioni del C0,
+diventate misurabili invece che da decidere.**
+
+- Il **FVG** è il corpus grande, con 9.457 schede di metadati e nessun testo
+  integrale. È l'**Opzione A** del C0, in scala, con 171 enti che si comportano
+  come 171 clienti di un documentale multi-tenant.
+- **Crispiano** è il corpus piccolo con il testo intero dietro ogni scheda. È
+  l'**Opzione B**.
+
+E così la domanda del C0 smette di essere una decisione da prendere al buio e
+diventa un esperimento: *quanto guadagna il recupero quando al posto della
+scheda c'è il documento?* Si misura sullo stesso archivio, con le stesse query,
+cambiando solo cosa è stato indicizzato. Era il capitolo che mancava.
+
+**Il C0 quindi si chiude qui, in favore dell'Opzione B**, senza chiedere niente
+a nessuno: su documenti pubblici per legge non c'è nessuna riservatezza di
+clienti da tutelare, e conservare il testo integrale non è più una modifica al
+prodotto di qualcun altro - è una scelta mia dentro una tesi.
+
+Cade anche il problema delle credenziali. La pipeline di scansione usa OpenAI
+`gpt-4.1` (`apps/python/app/services/ai.py`, via `init_chat_model`) e io non ho
+più la chiave. Non serve: il testo del corpus lo produce `pdftotext`, che è
+deterministico e non chiama nessuno. E i campi che l'IA dovrebbe indovinare, nel
+FVG **ci sono già scritti** - `tipologia_atto` e `ufficio_competente` sono
+esattamente un `meta_true` regalato da chi ha pubblicato il dato. Il `meta_pred`
+diventa un secondo esperimento, facoltativo e rimandabile, con qualunque modello.
+
+### Le query, che restano il problema vero
+
+Il log del C2 non si riempirà mai: non c'è più un'azienda che usa il sistema.
+Le query bisogna fabbricarle, e va detto in tesi con questa parola.
+
+Due strade, entrambe praticabili su queste fonti:
+
+- **Known-item.** Si prende un atto, lo si mostra a una persona senza dirle
+  niente, le si chiede di scrivere la ricerca che farebbe per ritrovarlo. Il
+  giudizio di rilevanza arriva gratis - il documento giusto è quello di
+  partenza - e la query è realistica perché l'ha scritta un umano che voleva
+  quel documento. Costa solo tempo di persone.
+- **Known-item automatico**, per avere volume. `numero_atto` + `ente`
+  identificano un atto in modo univoco, e "determina 1223 Crispiano" è
+  letteralmente come si cerca in un documentale. Si generano a centinaia, a
+  costo zero, e servono a misurare il caso identificativo - che è poi quello su
+  cui BM25 ha già mostrato di fare la differenza nel test del pareggio.
+
+Le due misurano cose diverse e vanno tenute separate: la seconda dice se il
+motore trova un atto di cui sai il numero, la prima se lo trova chi il numero
+non se lo ricorda.
+
+### Una cosa da non fare finta di non vedere
+
+Gli atti dell'albo pretorio contengono nomi di persone. Cercando marcatori
+espliciti (`sig.`, `nato a`, `codice fiscale`, `residente in`) negli oggetti del
+FVG ne vengono fuori 67 su 9.457, lo 0,7%, e nel feed di Crispiano ci sono le
+pubblicazioni di matrimonio, che sono nomi e cognomi nel titolo.
+
+Sono dati pubblicati per obbligo di legge, quindi usarli per una ricerca è
+legittimo. Ma **il corpus non va committato nel repo della tesi**, per la stessa
+ragione per cui si è tolta la mail del professore: una cosa è un dato pubblico
+sul sito di un comune, un'altra è ripubblicarlo in un archivio su GitHub. Nel
+repo ci vanno gli script che lo riscaricano e il file dei giudizi, che rimanda
+agli id. In tesi, gli esempi si citano anonimizzati.
+
+### I passi
+
+- [ ] Uno script che scarica il feed di Crispiano, ne prende i PDF e li passa a
+      `pdftotext`, tenendo il conto di quanti falliscono invece di ignorarli
+- [ ] Verificare i `.p7m`: sono PDF dentro una busta di firma, o si aprono o si
+      scartano dichiarandolo, non si perdono per strada
+- [ ] Uno script che scarica il FVG dall'API Socrata in un colpo solo
+- [ ] Caricare tutti e due dentro Documentale in locale, passando dal suo
+      modello vero (`Document` + `currentVersion` + campi), non da un file a
+      lato: è l'unico modo perché il confronto con Elasticsearch valga qualcosa
+- [ ] Riusare l'export del C1 senza toccarlo. Se serve toccarlo, quello è un
+      difetto del C1 e va corretto lì
+- [ ] `eval/corpora/` continua a stare fuori dal git, come già è
+- [ ] Generare le query known-item automatiche da `numero_atto` + `ente`
+- [ ] Raccogliere le known-item umane: trenta o quaranta, chiedendole a persone
+      diverse, con le istruzioni scritte prima (vedi E4)
+- [ ] Scrivere in `appunti.md` che il corpus è pubblico e perché, con le fonti e
+      le licenze. È una domanda che arriva in discussione di sicuro
 
 ## Task E3: Difetto 2 - l'ibrido che non è ibrido
 
