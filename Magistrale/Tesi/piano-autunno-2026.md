@@ -196,7 +196,7 @@ Il cambiamento è **additivo**: si estrae il corpo in un nuovo metodo che ritorn
 - Consuma: `SearchMatch` (già esistente in `ranker.go:9-15`, campi `DocID`, `Score`, `WordsMatched`, `Typos`, `ExactMatches`).
 - Produce: `func (idx *InvertedIndex) SearchScored(query string, settings Settings, fuzziness string, queryVector []float64) ([]SearchMatch, map[string][]string)`. La Fase 0 della tesi (esecutore della valutazione) legge da qui.
 
-- [ ] **Passo 1: scrivere il test che fallisce**
+- [x] **Passo 1: scrivere il test che fallisce**
 
 ```go
 package engine
@@ -229,7 +229,7 @@ func TestSearchScoredMatchesSearchOrder(t *testing.T) {
 }
 ```
 
-- [ ] **Passo 2: lanciarlo e vederlo fallire**
+- [x] **Passo 2: lanciarlo e vederlo fallire**
 
 ```bash
 go test ./internal/engine/ -run TestSearchScoredMatchesSearchOrder -v
@@ -257,7 +257,7 @@ func (idx *InvertedIndex) Search(query string, settings Settings, fuzziness stri
 
 Non spostare, non semplificare e non riordinare nient'altro dentro `SearchScored`. L'unico obiettivo è che il punteggio esca.
 
-- [ ] **Passo 4: verificare**
+- [x] **Passo 4: verificare**
 
 ```bash
 make check
@@ -403,7 +403,7 @@ make check
 
 Atteso: tutto verde, con i due nuovi test che passano.
 
-- [ ] **Passo 6: commit**
+- [x] **Passo 6: commit** (`ca4b7c4`)
 
 ```bash
 git add internal/engine/baseline_test.go
@@ -527,7 +527,7 @@ un estrattore deterministico.
 
 Finché C0 non è chiuso, il Task C1 si fa comunque, perché il grosso dell'export è identico nelle due opzioni: cambia solo il campo `text`.
 
-## Task C1: Comando di export del corpus di valutazione
+## Task C1: Comando di export del corpus di valutazione - FATTO il 23/09/2026
 
 Genera il corpus nel formato del Task 0.1 del piano di tesi, con quello che in Documentale esiste davvero. `meta_true` resta vuoto: per definizione si scrive a mano.
 
@@ -539,7 +539,7 @@ Genera il corpus nel formato del Task 0.1 del piano di tesi, con quello che in D
 - Consuma: `DocumentVersion` con la relazione `fields()` verso `DocumentField` (`app/Models/DocumentVersion.php:150`) e l'accessor `getFieldsFlatAttribute()` (riga 113). `DocumentField` espone `name`, `string_value`, `boolean_value`, `number_value`, `date_value`.
 - Produce: un file JSON Lines, un documento per riga, letto dal Task 0.2 del piano di tesi.
 
-- [ ] **Passo 1: scrivere il test che fallisce**
+- [x] **Passo 1: scrivere il test che fallisce**
 
 ```php
 public function test_export_produces_one_json_line_per_document(): void
@@ -571,7 +571,7 @@ public function test_export_produces_one_json_line_per_document(): void
 
 `text_source` è il campo che rende esplicito cosa c'è dentro `text`: vale `metadata` con l'Opzione A e `full` con la B. Senza, fra sei mesi non si sa più su cosa sono stati calcolati i numeri.
 
-- [ ] **Passo 2: lanciarlo e vederlo fallire**
+- [x] **Passo 2: lanciarlo e vederlo fallire**
 
 ```bash
 cd apps/laravel && php artisan test --filter=ExportEvalCorpusTest
@@ -579,7 +579,7 @@ cd apps/laravel && php artisan test --filter=ExportEvalCorpusTest
 
 Atteso: FAIL, il comando `app:export-eval-corpus` non esiste.
 
-- [ ] **Passo 3: scrivere il comando**
+- [x] **Passo 3: scrivere il comando**
 
 ```php
 protected $signature = 'app:export-eval-corpus {--out=} {--limit=300}';
@@ -627,7 +627,7 @@ public function handle(): int
 
 Nota su `meta_pred_confirmed`: **non c'e' e non si inventa.** In Documentale la conferma e' per documento sull'entita' (`document_suggestions.status`), non per campo. Se la Fase 3 della tesi ne ha bisogno per campo, o lo si aggiunge come funzionalita' vera oppure si riscrive quel pezzo del piano di tesi usando la conferma per documento. Da decidere insieme al C0, non qui.
 
-- [ ] **Passo 4: verificare**
+- [x] **Passo 4: verificare**
 
 ```bash
 php artisan test --filter=ExportEvalCorpusTest
@@ -635,7 +635,7 @@ php artisan test --filter=ExportEvalCorpusTest
 
 Atteso: PASS.
 
-- [ ] **Passo 5: girarlo su staging e guardare l'output**
+- [ ] **Passo 5: girarlo su staging e guardare l'output** - da fare quando l'ambiente è su
 
 ```bash
 php artisan app:export-eval-corpus --limit=20 --out=/tmp/corpus-prova.jsonl
@@ -645,12 +645,54 @@ awk '{ print length($0) }' /tmp/corpus-prova.jsonl | sort -n | tail -3
 
 Tre cose da guardare a occhio prima di fidarsi: che `text` non sia quasi vuoto (se lo e', l'Opzione A non regge e il C0 si decide da solo), che i campi estratti abbiano senso, e **che non ci sia dentro niente di un cliente reale**. Il file resta in `/tmp` e non entra in nessun repo finche' l'azienda non ha detto cosa e' pubblicabile.
 
-- [ ] **Passo 6: commit**
+- [x] **Passo 6: commit** (`ca4b7c4`)
 
 ```bash
 git add app/Console/Commands/ExportEvalCorpus.php tests/Feature/ExportEvalCorpusTest.php
 git commit -m "feat: add eval corpus export command for thesis evaluation"
 ```
+
+### Com'è andata
+
+Tre test, ognuno provato con una mutazione per essere sicuro che sappia
+fallire: tolto il limite il conteggio va a 5 invece di 2, tolto il cast a
+oggetto un `meta_pred` vuoto esce come `[]` invece che `{}` e il lettore Go
+non lo parserebbe.
+
+**Il blocco del `TODO.md` non c'era.** In fondo a questa parte avevo scritto che
+la voce sulla chiave combinata di `document_version_fields` andava fatta prima
+del C1, altrimenti l'export sarebbe da riscrivere. Guardando il codice:
+`getFieldsFlatAttribute()` indicizza per `$f->name`, cioè per il `path`, non per
+l'`id`. Cambiare la chiave primaria da progressiva a combinata
+(`document_version_id` + `path`) produrrebbe **lo stesso identico output**. I due
+lavori sono indipendenti.
+
+**Non ci sono factory** per questi modelli - in tutto il progetto ce n'è una,
+`UserAdminFactory` - quindi la catena si costruisce a mano nel test, e lì sono
+uscite due trappole: `document_id` non è fra i `$fillable` di `DocumentVersion`,
+e il modello `Media` ha la chiave primaria su `uuid` con `incrementing = false`,
+quindi `create()` non popola `id` e la foreign key esce nulla.
+
+**Una correzione a me stesso, che è il motivo per cui questa sezione esiste.**
+Ero convinto che `limit()` prima di `chunk()` venisse ignorato da Laravel, e
+avevo scritto una guardia contro un export che avrebbe tirato fuori tutti i
+documenti dei clienti invece di trecento. Poi ho fatto la mutazione per
+verificare che la guardia servisse: il test è rimasto verde. In Laravel 12
+`chunk()` legge `getLimit()` e lo scala chunk per chunk
+(`BuildsQueries.php:43`), e `enforceOrderBy()` aggiunge l'ordinamento da sé. Il
+frammento del piano era giusto dove dicevo che era sbagliato. La guardia è stata
+tolta, il test è rimasto - `limit()` è l'unica cosa fra un export distratto e i
+documenti dei clienti, e un dettaglio interno al framework merita un test che se
+ne accorga se cambia.
+
+Vale la pena notare come è emerso: **non leggendo meglio, ma facendo la
+mutazione**. È la stessa disciplina che in mattinata su Koskidex aveva fatto
+cadere tre previsioni su cinque. Un test che non si è mai visto fallire non è un
+test, è una decorazione.
+
+**Cosa resta:** il Passo 5, girarlo su staging e guardare l'output, che vuole
+l'ambiente acceso. Con le tre cose da guardare a occhio già scritte lì sopra,
+inclusa la più importante: che nel file non finisca niente di un cliente reale.
 
 ## Task C2: Registrare le query di ricerca - FATTO il 23/09/2026
 
@@ -795,7 +837,9 @@ l'avevo messo per questo, ma è quello che lo rende possibile.
 
 `TODO.md` ha una decina di voci aperte che non c'entrano con la tesi: notifiche via websocket, rinomina di cartelle e file, il fix dell'upload di cartelle con molti file, la questione dei `document_version_fields` da ricreare con chiave combinata.
 
-**Sono lavoro aziendale e vanno fatte con le priorita' dell'azienda, non con quelle di questo piano.** Le cito solo per dire che non le ho incluse. Una pero' si incrocia: la voce sulla chiave combinata dei `document_version_fields` tocca proprio la tabella da cui l'export legge, quindi **va fatta prima del Task C1**, altrimenti l'export va riscritto.
+**Sono lavoro aziendale e vanno fatte con le priorita' dell'azienda, non con quelle di questo piano.** Le cito solo per dire che non le ho incluse.
+
+~~Una pero' si incrocia: la voce sulla chiave combinata dei `document_version_fields` tocca proprio la tabella da cui l'export legge, quindi va fatta prima del Task C1, altrimenti l'export va riscritto.~~ **Falso, verificato il 23/09/2026:** l'export passa da `getFieldsFlatAttribute()`, che indicizza per `name` (il `path`) e non per `id`, quindi un cambio di chiave primaria non cambia una virgola dell'output. I due lavori sono indipendenti e il C1 non aspettava niente.
 
 # Parte D - Le correzioni al ranking
 
@@ -945,6 +989,17 @@ Facendo le correzioni prima della tesi, la narrazione non è più "ho misurato, 
 
 **La Fase 1 non aveva una data, aveva una condizione:** partire il giorno in cui B2 è verde e non un giorno prima. La condizione si è avverata il 23 settembre, cioè con quasi tre mesi di anticipo sulla casella di dicembre, e la fase è chiusa. L'anticipo non si è preso saltando il metro, si è preso costruendolo per primo: è esattamente il motivo per cui la regola era scritta così.
 
-Quello che resta in calendario da qui a febbraio è la Parte C, il lato Documentale: C0 (decidere cosa è un documento nel corpus), C1 (comando di export) e C2 (log delle query, che più presto si accende più raccoglie).
+**Aggiornamento di fine giornata, 23/09/2026: è finito anche il resto.** C1 e C2 sono fatti, e del C0 è chiusa la parte che dipendeva da me. Il piano copriva da fine settembre a febbraio ed è esaurito in un giorno, il che dice soprattutto che era sovradimensionato nei tempi, non che il lavoro fosse poco.
+
+Quello che resta in calendario **non è più lavoro mio**, sono tre cose che dipendono da altri:
+
+| Cosa | Da chi | Quando |
+|---|---|---|
+| C0: si può conservare il testo integrale dei documenti, e con quali vincoli? | Azienda | Prima possibile: se la risposta è sì, va messo in conto un estrattore |
+| C1 passo 5: girare l'export su staging e guardare cosa esce | Ambiente acceso | Quando c'è |
+| C2: aspettare che il log raccolga query vere | Tempo | Più sta acceso più vale |
+| Riproposta della tesi | Bonnici e Dal Palù | Dicembre, con i progetti d'esame consegnati |
+
+E una cosa che dipende dal calendario e basta: le Fasi 2 e 3, che vogliono il corpus C2 annotato e restano a febbraio.
 
 A dicembre c'è anche la riproposta della tesi a Bonnici e Dal Palù descritta in [appunti.md](appunti.md). Il Task A3 e il diario servono anche lì: far vedere un baseline congelato, un flag e un diario con ipotesi datate è la differenza, in trenta secondi, fra "ho un motore di ricerca" e "ho un esperimento in corso".
