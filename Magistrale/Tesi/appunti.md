@@ -135,6 +135,10 @@ marzo 2027 per arrivare a settembre 2027.
 
 ## Prossimi passi
 
+Il lavoro tecnico di questi mesi sta in [piano-autunno-2026.md](piano-autunno-2026.md):
+mette in sicurezza il baseline di Koskidex, anticipa la Fase 0 e prepara l'export
+da Documentale, senza toccare il ranking, che è il contributo della tesi.
+
 **Entro dicembre 2026**
 
 - [ ] Scegliere il progetto di Laboratorio di IA guardando anche se può fare da
