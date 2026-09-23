@@ -134,6 +134,25 @@ registra il numero di risultati: appena avrà raccolto abbastanza, si conta quan
 ricerche reali tornano vuote e con quante parole. **Da non correggere prima di
 averlo misurato:** è il baseline di produzione.
 
+**E la sera del 23/09/2026 i due motori sono stati messi uno accanto all'altro
+sullo stesso archivio.** Quattordici documenti con la forma vera dei dati di
+Documentale, indicizzati in Elasticsearch dal codice dell'app e in Koskidex dal
+corpus esportato, stesse query, impostazioni allineate alla produzione. Due
+risultati:
+
+- **Falliscono sulle stesse identiche query.** Tre su sette, tutte in lingua
+  naturale, entrambe le volte zero risultati. Compresa una ricerca sulla
+  sicurezza del cantiere di Piacenza a cui corrisponde in archivio un verbale di
+  sopralluogo sulla sicurezza del cantiere di Piacenza.
+- **Koskidex recupera lo stesso insieme di Elasticsearch su tutte le query che
+  Elasticsearch risponde.** È il punto che regge tutto il resto: senza, ogni
+  miglioramento misurato su Koskidex si liquida con "stai migliorando il tuo, non
+  il nostro". Con, il passaggio da tre query a vuoto a zero è un risultato che
+  parla anche di Documentale.
+
+Con `or + BM25` tutte e sette le query rispondono, e il documento giusto è primo
+in tutte e sette.
+
 Lo stesso impianto, poche ore dopo, ha fatto scattare una guardia sulla misura di
 BM25. Andando a vedere è venuto fuori che a essere sbagliata era la guardia, non
 il risultato: `recall@k` non misura il recupero quando i candidati sono molti più

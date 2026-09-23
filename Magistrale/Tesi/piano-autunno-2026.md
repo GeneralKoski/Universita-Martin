@@ -841,6 +841,79 @@ l'avevo messo per questo, ma è quello che lo rende possibile.
 
 ~~Una pero' si incrocia: la voce sulla chiave combinata dei `document_version_fields` tocca proprio la tabella da cui l'export legge, quindi va fatta prima del Task C1, altrimenti l'export va riscritto.~~ **Falso, verificato il 23/09/2026:** l'export passa da `getFieldsFlatAttribute()`, che indicizza per `name` (il `path`) e non per `id`, quindi un cambio di chiave primaria non cambia una virgola dell'output. I due lavori sono indipendenti e il C1 non aspettava niente.
 
+## Il confronto vero: Elasticsearch contro Koskidex sullo stesso archivio (23/09/2026)
+
+Fatti C1 e C2, l'ambiente serviva comunque per chiudere l'ultima verifica in
+sospeso. Tanto valeva usarlo per la cosa che interessa davvero: **le stesse
+query sui due motori, sullo stesso archivio.**
+
+**Come è montato.** MySQL 8 ed Elasticsearch 9.1 in locale, usa-e-getta, mai
+toccato l'Elasticsearch in cloud dell'azienda che sta nel `.env`. Quattordici
+documenti inventati, con la forma vera dei dati di Documentale (fatture,
+contratti, DDT, verbali, offerte, polizze). Indicizzati con
+`app:export-to-elastic-search`, cioè il codice dell'app, non una strada mia.
+Poi `app:export-eval-corpus` produce il corpus, e `scripts/compare` di Koskidex
+lo rilegge e fa le stesse identiche query.
+
+Un dettaglio che cambia il risultato: Documentale cerca con `fuzziness: AUTO`.
+Alla prima passata avevo confrontato con la tolleranza ai refusi **spenta** in
+Koskidex, e due query su quattro sembravano dare insiemi diversi. Era mio, non
+dei motori. Con le impostazioni allineate alla produzione i due recuperano lo
+stesso identico insieme ovunque. Il default di `scripts/compare` è ora `auto`
+proprio per questo.
+
+### Il risultato
+
+| Query | parole | Elasticsearch | Koskidex oggi | Koskidex or+BM25 |
+|---|---|---|---|---|
+| `manutenzione` | 1 | 4 | 4 | 4 |
+| `manutenzione impianto` | 2 | 2 | 2 | 6 |
+| `manutenzione impianto climatizzazione` | 3 | 2 | 2 | 6 |
+| `fattura per la manutenzione dell'impianto di climatizzazione della sede` | 9 | **0** | **0** | 14 |
+| `documenti sulla sicurezza del cantiere di Piacenza` | 7 | **0** | **0** | 14 |
+| `quanto costa il noleggio della piattaforma aerea` | 7 | **0** | **0** | 7 |
+| `contratto fornitura energia elettrica` | 4 | 1 | 1 | 2 |
+| **Query a vuoto** | | **3 su 7** | **3 su 7** | **0 su 7** |
+
+Due cose, e la seconda è quella che vale.
+
+**Uno. I due motori falliscono sulle stesse identiche query.** Non una in più,
+non una in meno. Ed è la conferma sul campo di quello che stamattina era solo
+una riga di codice letta: `operator => and` in Elasticsearch e `MustTerms` in
+Koskidex sono la stessa scelta, presa da persone diverse in progetti diversi,
+con lo stesso identico effetto. La più eloquente è
+`documenti sulla sicurezza del cantiere di Piacenza`: in archivio c'è un
+*Verbale sopralluogo sicurezza cantiere Piacenza*, e nessuno dei due lo trova,
+perché la query contiene anche "documenti", "sulla", "del" e "di".
+
+**Due. Koskidex di oggi recupera lo stesso insieme di Elasticsearch su tutte e
+quattro le query che Elasticsearch risponde.** Questo non era scontato ed è il
+risultato metodologicamente più importante della giornata: vuol dire che
+Koskidex non è un giocattolo che assomiglia a un motore di ricerca, è
+**un'implementazione fedele dello stesso modello di recupero**, difetto
+compreso. Senza questo, ogni miglioramento misurato su Koskidex sarebbe
+contestabile con "sì, ma tu stai migliorando il tuo, non il nostro". Con
+questo, il salto da 3 query a vuoto a 0 è un salto che vale anche per
+Documentale.
+
+Sull'ordinamento BM25 concorda con Elasticsearch su 3 query su 4, il punteggio
+euristico su 2 su 4. Con quattordici documenti è un indizio, non un numero: va
+rifatto sul corpus vero.
+
+### Cosa serve per farne un numero da tesi
+
+Oggi è una tabella di conteggi su documenti inventati. Per diventare un
+capitolo servono i giudizi di rilevanza, che è esattamente il C2 (le query
+vere) più l'annotazione a mano. Ma l'impianto che li legge esiste già ed è lo
+stesso usato su SciFact e NFCorpus, quindi il lavoro che resta è
+l'annotazione, non il codice.
+
+**Da segnalare in azienda, separatamente dalla tesi:** `ElasticsearchService`
+toglie l'estensione dal nome con `pathinfo(..., PATHINFO_FILENAME)`, che legge
+la barra come separatore di cartelle. `Fattura 2026/0173.pdf` viene indicizzata
+con nome `0173`, e la numerazione italiana delle fatture usa la barra sempre.
+Cercare "Fattura 2026" non trova quei documenti per nome. È una riga.
+
 # Parte D - Le correzioni al ranking
 
 Sono le Fasi 1, 2 e 3 di [piano-implementazione.md](piano-implementazione.md), già scritte task per task lì dentro. Qui dico solo quali si possono fare adesso e a quali condizioni.
