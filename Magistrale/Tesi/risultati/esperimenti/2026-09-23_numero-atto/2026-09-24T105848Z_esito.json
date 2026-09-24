@@ -1,0 +1,118 @@
+{
+  "ran_at": "2026-09-24T10:58:48Z",
+  "config": {
+    "elasticsearch_versione": "9.1.0",
+    "indice": "search-documents-local",
+    "rapporto_koskidex": "/Users/martintrajkovski/Desktop/Università-Martin/Magistrale/Tesi/risultati/confronto/2026-09-24T105811Z_beir-metadata-koskidex.json"
+  },
+  "righe": [
+    {
+      "motore": "elasticsearch",
+      "variante": "produzione",
+      "query": "ordinanza 187",
+      "atto_giusto": "doc-0001",
+      "posizione": 12,
+      "risultati": 85,
+      "ms": 32.776083
+    },
+    {
+      "motore": "elasticsearch",
+      "variante": "produzione",
+      "query": "determina 1223",
+      "atto_giusto": "doc-0002",
+      "posizione": 5,
+      "risultati": 8,
+      "ms": 13.870292
+    },
+    {
+      "motore": "elasticsearch",
+      "variante": "senza_refusi",
+      "query": "ordinanza 187",
+      "atto_giusto": "doc-0001",
+      "posizione": 1,
+      "risultati": 1,
+      "ms": 4.068958
+    },
+    {
+      "motore": "elasticsearch",
+      "variante": "senza_refusi",
+      "query": "determina 1223",
+      "atto_giusto": "doc-0002",
+      "posizione": 1,
+      "risultati": 1,
+      "ms": 3.088958
+    },
+    {
+      "motore": "elasticsearch",
+      "variante": "senza_campo_name",
+      "query": "ordinanza 187",
+      "atto_giusto": "doc-0001",
+      "posizione": 1,
+      "risultati": 84,
+      "ms": 9.692708
+    },
+    {
+      "motore": "elasticsearch",
+      "variante": "senza_campo_name",
+      "query": "determina 1223",
+      "atto_giusto": "doc-0002",
+      "posizione": 5,
+      "risultati": 8,
+      "ms": 8.466292
+    },
+    {
+      "motore": "koskidex",
+      "variante": "oggi (and + euristico)",
+      "query": "determina 1223",
+      "atto_giusto": "doc-0002",
+      "posizione": 1,
+      "risultati": 52,
+      "ms": 6.036875
+    },
+    {
+      "motore": "koskidex",
+      "variante": "or + BM25",
+      "query": "determina 1223",
+      "atto_giusto": "doc-0002",
+      "posizione": 5,
+      "risultati": 6051,
+      "ms": 7.092292
+    },
+    {
+      "motore": "koskidex",
+      "variante": "or + euristico",
+      "query": "determina 1223",
+      "atto_giusto": "doc-0002",
+      "posizione": 1,
+      "risultati": 6051,
+      "ms": 7.239083
+    },
+    {
+      "motore": "koskidex",
+      "variante": "oggi (and + euristico)",
+      "query": "ordinanza 187",
+      "atto_giusto": "doc-0001",
+      "posizione": 1,
+      "risultati": 1,
+      "ms": 3.43025
+    },
+    {
+      "motore": "koskidex",
+      "variante": "or + BM25",
+      "query": "ordinanza 187",
+      "atto_giusto": "doc-0001",
+      "posizione": 3,
+      "risultati": 1150,
+      "ms": 3.734042
+    },
+    {
+      "motore": "koskidex",
+      "variante": "or + euristico",
+      "query": "ordinanza 187",
+      "atto_giusto": "doc-0001",
+      "posizione": 1,
+      "risultati": 1150,
+      "ms": 3.658541
+    }
+  ]
+}

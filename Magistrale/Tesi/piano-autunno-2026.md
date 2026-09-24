@@ -887,6 +887,14 @@ con lo stesso identico effetto. La più eloquente è
 *Verbale sopralluogo sicurezza cantiere Piacenza*, e nessuno dei due lo trova,
 perché la query contiene anche "documenti", "sulla", "del" e "di".
 
+> **Corretto la sera stessa (23/09/2026).** Sul corpus vero di 10.018 atti gli
+> insiemi coincidono solo su 8 query su 24: i due motori condividono il modello
+> di recupero ma differiscono in quattro dettagli di matching, misurati uno per
+> uno nella sezione *Il confronto sul corpus vero* più sotto. Su 14 documenti
+> quelle differenze semplicemente non avevano occasione di manifestarsi. Il
+> paragrafo qui sotto resta com'era, perché è la cosa che credevo e il motivo
+> per cui va sempre rifatto tutto su dati veri.
+
 **Due. Koskidex di oggi recupera lo stesso insieme di Elasticsearch su tutte e
 quattro le query che Elasticsearch risponde.** Questo non era scontato ed è il
 risultato metodologicamente più importante della giornata: vuol dire che
@@ -914,6 +922,140 @@ toglie l'estensione dal nome con `pathinfo(..., PATHINFO_FILENAME)`, che legge
 la barra come separatore di cartelle. `Fattura 2026/0173.pdf` viene indicizzata
 con nome `0173`, e la numerazione italiana delle fatture usa la barra sempre.
 Cercare "Fattura 2026" non trova quei documenti per nome. È una riga.
+
+## L'archivio dei risultati (dal 24/09/2026)
+
+**Ogni numero e ogni grafico della tesi viene da un file di `risultati/`.** Gli
+strumenti ci scrivono da soli a ogni esecuzione (`TESI_RISULTATI` è nel
+`~/.zshrc`), un file nuovo per volta e mai sovrascritto, con commit, stato
+dell'albero, corpus, impostazioni e tempi in millisecondi. Regole, formati,
+comandi e le cautele per leggere i tempi stanno nel `README.md` della cartella;
+la macchina delle misure in `macchina.md`.
+
+## Il confronto sul corpus vero: Elasticsearch contro Koskidex su 10.018 atti (23/09/2026)
+
+Lo stesso confronto di stamattina, rifatto sul corpus degli albi pretori.
+Elasticsearch **locale** (licenza basic gratuita, un solo shard; il cluster in
+cloud aziendale non esiste più, il nome host risponde NXDOMAIN), indicizzato con
+`app:export-to-elastic-search` cioè col codice dell'app, e interrogato con
+`ElasticsearchService::fuzzySearch`, cioè con la query di produzione. Koskidex
+sulle stesse 24 query, costruite a mano in quattro famiglie: corte, medie, in
+linguaggio naturale, per numero d'atto e con refusi. Le query servono a
+confrontare i motori, non a misurare la pertinenza, quindi non hanno giudizi.
+Le 24 righe finite nel log delle ricerche sono state cancellate: il log serve
+per le query vere.
+
+Due difetti di Documentale trovati solo facendo girare le cose:
+
+- **`bulkIndex` non crea l'indice.** Su un database nuovo Elasticsearch
+  userebbe il mapping dinamico invece di quello dell'app; in produzione l'indice
+  nasceva col mapping giusto alla prima ricerca. Qui creato prima con
+  `createDocumentsIndex`, per essere fedeli alla produzione.
+- **`app:export-to-elastic-search` muore in silenzio intorno ai 10.000
+  documenti.** Carica tutto con `->get()`, supera i 128 MB e termina con exit
+  255 **senza stampare niente**, dopo la sola riga "Inizio esportazione". Con 1 GB
+  passa. Non toccato: Elasticsearch va indicizzato dal codice dell'app così com'è.
+
+### Il risultato: il modello è lo stesso, il matching no
+
+**Gli insiemi coincidono su 8 query su 24.** Nella maggior parte dei casi
+Koskidex trova di più; in due casi è Elasticsearch a trovare cose che Koskidex
+non vede.
+
+Invece di fermarmi a un elenco di cause probabili, ho dato a Koskidex
+**esattamente ciò che Elasticsearch ha indicizzato** (copiato dall'indice, nome
+troncato compreso) e l'ho corretto **temporaneamente** una causa alla volta,
+contando le divergenze a ogni passo. Modifiche annullate subito dopo.
+
+| Passo | query identiche | documenti solo ES | documenti solo Koskidex |
+|---|---|---|---|
+| 0. Koskidex com'è | 8 / 24 | 124 | 447 |
+| 1. + tutte le parole **nello stesso campo** | 10 / 24 | 124 | 121 |
+| 2. + soglie dei refusi di Elasticsearch | 12 / 24 | 42 | 150 |
+| 3. + niente ricerca per prefisso | 13 / 24 | 42 | 112 |
+| 4. + prima lettera esatta | **15 / 24** | 42 | 80 |
+
+Le quattro cause, in ordine di peso:
+
+1. **Congiunzione per campo contro congiunzione per documento.** Documentale usa
+   `multi_match` di tipo `best_fields` con `operator: and`: tutte le parole
+   devono stare **nello stesso campo**. Koskidex le accetta sparse fra campi
+   diversi. Esempio: un'ordinanza di Gemona ha *"Ordinanze dirigenziali"* nei tag
+   e *"circolazione stradale"* nell'oggetto; Koskidex la trova per
+   `ordinanza circolazione stradale`, Elasticsearch no. Da sola spiega 326 dei
+   447 documenti in più.
+2. **Soglie dei refusi diverse.** `fuzziness: AUTO` di Elasticsearch ammette 1
+   refuso da 3 caratteri e 2 da 6; l'`auto` di Koskidex 1 da 4 e 2 da 8. Per
+   questo Elasticsearch trova `stradale` cercando `strade` e Koskidex no.
+3. **Koskidex cerca per prefisso su ogni parola** (`fuzzy.go:94`): un termine che
+   *inizia* con la parola cercata passa a qualunque distanza, e `determina` pesca
+   `determinazioni`. È il comportamento da barra di ricerca di un e-commerce, da
+   cui Koskidex viene. Documentale non fa niente di simile.
+4. **`prefix_length: 1`**: in Documentale la prima lettera deve essere esatta.
+   Koskidex non ha il vincolo, e `concorso` pesca `soccorso` e `diConcorso`,
+   `1223` pesca `223`.
+
+Restano 9 query diverse. I 42 documenti "solo ES" vengono tutti da
+`ordinanza 187`, dove Elasticsearch fa match su `18` e `17` e Koskidex no:
+probabilmente una differenza di tokenizzazione dei numeri, **non verificata**.
+Gli 80 "solo Koskidex" non li ho diagnosticati; un'ipotesi da controllare è il
+tetto di 50 espansioni per termine (`max_expansions`) delle query fuzzy di
+Elasticsearch, che Koskidex non ha.
+
+### La scoperta che vale di più: la ricerca per numero d'atto in produzione è rotta
+
+In un documentale si cerca spesso un atto di cui si sa il numero. Posizione
+dell'atto giusto:
+
+| Configurazione | `ordinanza 187` | `determina 1223` |
+|---|---|---|
+| **Documentale in produzione** | **12° su 85** | **5° su 8** |
+| Elasticsearch senza refusi (`fuzziness: 0`) | 1° su 1 | 1° su 1 |
+| Elasticsearch con refusi ma senza il campo `name` | 1° su 84 | 5° su 8 |
+| Koskidex di oggi | 1° su 1 | 1° su 52 |
+
+**La causa principale è la tolleranza ai refusi applicata ai numeri.** Per
+Elasticsearch `187` è una parola di tre caratteri e ammette un refuso, quindi
+combacia con `18`, `17`, `137`, `186`: con l'API `_explain`, sui primi 40
+risultati l'atto 187 vero fa match una volta sola. Spenti i refusi, torna primo e
+unico.
+
+**`pathinfo()` la aggrava.** Il nome dell'atto giusto, dentro Elasticsearch,
+diventa *"2026 per lavori d'urgenza..."*: il numero sparisce dal campo che pesa
+di più. E l'atto che arriva primo si chiama *"ORDINANZA N. 18.2026"*, che
+`pathinfo()` riduce a *"ORDINANZA N. 18"* prendendo `.2026` per un'estensione di
+file: nel campo `name^5` combacia con `187` per un refuso e vince con 44,7 contro
+22,4. Togliendo `name` dalla query, per l'ordinanza l'atto giusto torna primo.
+
+Onestà sul confronto: Koskidex ha avuto il nome intero, non quello troncato, e le
+sue soglie non ammettono refusi su `187`. Su `determina 1223`, però, le soglie
+coincidono (un refuso per 4 caratteri) e Koskidex mette comunque l'atto giusto
+primo, fra 52 risultati.
+
+**Da spiegare: con BM25 anche Koskidex sbaglia la ricerca per numero.** Nella
+stessa prova `or + BM25` mette l'atto giusto al 3° posto (`ordinanza 187`) e al
+5° (`determina 1223`), dove l'euristico lo mette primo. Sospetto l'IDF dei
+numeri corti, che in un archivio di atti numerati compaiono ovunque. Non ancora
+indagato.
+
+**I dati stanno nell'archivio** `risultati/`: le esecuzioni in `confronto/`, i
+due esperimenti in `esperimenti/2026-09-23_cause-divergenza/` e
+`esperimenti/2026-09-23_numero-atto/`, ciascuno col codice per rifarlo. Tutti e
+due rifatti il 24/09 dai file salvati, con numeri identici.
+
+### Cosa cambia per la tesi
+
+- **L'argomento "Koskidex è fedele, quindi i miglioramenti valgono anche per
+  Documentale" non regge più così com'era.** Due strade, non si escludono: dare
+  a Koskidex le impostazioni per riprodurre il matching di Elasticsearch (le
+  quattro cause, dietro flag) e mostrare insiemi identici; oppure misurare
+  Elasticsearch **direttamente**, ora che gira in locale sullo stesso corpus e
+  può stare nello stesso pool di valutazione (Task E4).
+- **La ricerca per numero d'atto è un caso di prova pronto**, con la causa già
+  isolata: tolleranza ai refusi sui token numerici. Una regola semplice, niente
+  refusi sui numeri, andrebbe provata su tutti e due i motori.
+- **Due difetti di Documentale da mettere in tesi come contesto:** `pathinfo()`
+  sul nome e la reindicizzazione che muore in silenzio sopra i 10.000 documenti.
 
 ## Il C2 chiuso davvero: dalle query vere ai numeri (23/09/2026)
 

@@ -1,0 +1,26 @@
+diff --git a/internal/engine/fuzzy.go b/internal/engine/fuzzy.go
+index 958ca59..c42a2a1 100644
+--- a/internal/engine/fuzzy.go
++++ b/internal/engine/fuzzy.go
+@@ -69,6 +69,9 @@ func (idx *InvertedIndex) FuzzySearchTerms(queryTerm string, maxDistance int, ex
+ 
+ // fuzzySearchTermsLocked is the lock-free body of FuzzySearchTerms. Caller must
+ // hold idx.mu (read or write).
++// ESPERIMENTO: interruttori per imitare il matching di Elasticsearch.
++var ExperimentNoPrefix, ExperimentPrefixLength1 bool
++
+ func (idx *InvertedIndex) fuzzySearchTermsLocked(queryTerm string, maxDistance int, exactness bool) []string {
+ 	var matchedTerms []string
+ 
+@@ -92,7 +95,10 @@ func (idx *InvertedIndex) fuzzySearchTermsLocked(queryTerm string, maxDistance i
+ 		}
+ 
+ 		// Prefix matching: if candidate starts with queryTerm, it's a match regardless of distance
+-		if len(queryTerm) >= 2 && len(candidate) > len(queryTerm) {
++		if ExperimentPrefixLength1 && []rune(candidate)[0] != []rune(queryTerm)[0] {
++			continue
++		}
++		if !ExperimentNoPrefix && len(queryTerm) >= 2 && len(candidate) > len(queryTerm) {
+ 			if candidate[:len(queryTerm)] == queryTerm {
+ 				matchedTerms = append(matchedTerms, candidate)
+ 				continue

@@ -150,6 +150,24 @@ risultati:
   il nostro". Con, il passaggio da tre query a vuoto a zero è un risultato che
   parla anche di Documentale.
 
+  **Corretto la sera stessa.** Sul corpus vero di 10.018 atti gli insiemi
+  coincidono solo su 8 query su 24. Il modello di recupero è lo stesso, ma il
+  matching differisce in quattro punti, misurati uno per uno: tutte le parole
+  nello stesso campo (Elasticsearch) o sparse sul documento (Koskidex), soglie
+  dei refusi diverse, ricerca per prefisso che solo Koskidex fa, prima lettera
+  esatta che solo Elasticsearch richiede. Corrette in via sperimentale, le
+  query identiche salgono a 15. Su 14 documenti le differenze non avevano
+  occasione di vedersi. L'argomento "i miglioramenti valgono anche per
+  Documentale" va quindi ricostruito: o Koskidex impara a riprodurre il
+  matching di Elasticsearch, o si misura Elasticsearch direttamente, che ora
+  gira in locale sullo stesso corpus.
+
+  E il confronto ha trovato una cosa grossa: **in produzione la ricerca per
+  numero d'atto è rotta.** `ordinanza 187` mette l'atto giusto al 12° posto su
+  85, perché per Elasticsearch `187` ammette un refuso e combacia con `18` e
+  `17`. Spenti i refusi, è primo e unico. Dettagli nel piano, sezione *Il
+  confronto sul corpus vero*.
+
 Con `or + BM25` tutte e sette le query rispondono, e il documento giusto è primo
 in tutte e sette.
 
