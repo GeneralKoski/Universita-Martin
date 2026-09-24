@@ -1613,3 +1613,85 @@ Due buchi noti nell'impianto di valutazione. Nessuno dei due è urgente adesso, 
 - [ ] Far annotare **le stesse** trenta o quaranta coppie a qualcun altro - Leopoldo è la persona ovvia, ha già lavorato con me su Constraint Programming
 - [ ] Calcolare l'accordo (Cohen's kappa) e **riportarlo comunque**, anche se viene basso: un kappa mediocre dichiarato vale più di un kappa assente, e se viene basso dice che le istruzioni di annotazione sono ambigue, il che è un risultato
 - [ ] Scrivere le istruzioni di annotazione **prima** di darle a qualcun altro, e metterle nel repo. Sono quelle che rendono i giudizi ripetibili, ed è anche l'unico modo di misurare se il disaccordo è sulle istruzioni o sui documenti
+
+---
+
+# Parte F - Koskidex pronto per l'innesto (dal 24/09/2026)
+
+**La regola, decisa il 23/09/2026: non si innesta una cosa incompleta.** Prima
+Koskidex deve saper fare tutto quello che Documentale chiede al suo motore di
+ricerca; poi si installa in Documentale, per i test futuri e per il capitolo
+finale.
+
+## La verifica del 24/09/2026
+
+Due metà messe a confronto. Da una parte il contratto, ricostruito da ogni
+chiamata a `ElasticsearchService` nel codice di Documentale. Dall'altra Koskidex
+**provato dal vivo**: compilato, avviato su una porta isolata con una cartella
+dati usa-e-getta, e usato con richieste della stessa forma di quelle che manda
+Documentale.
+
+| Documentale chiede | Koskidex oggi | |
+|---|---|---|
+| due indici, creati con i campi giusti | `POST /indexes` + `PUT /settings`, campi e pesi persistiti | c'è |
+| inserire o sostituire un documento; sapere se esiste | `POST /documents` (anche in blocco), `GET /documents/{id}` | c'è |
+| cancellare un documento | `DELETE /documents/{id}` | c'è |
+| sopravvivere a un riavvio | WAL + snapshot: dopo un `kill -9` documenti e impostazioni ci sono tutti | c'è |
+| autenticazione | `Authorization: Bearer`, più TLS, CORS e rate limit | c'è |
+| **id interi** (`Document::id`) | **scartati in silenzio**: risposta "Documents added" con `skipped: 1` | manca |
+| **campi che sono liste** (`tags`, `subjects`, `additional_data`) | **salvati ma non indicizzati, in silenzio**: una parola che sta solo in `subjects` dà zero risultati | manca |
+| **fino a 10.000 risultati**, tutti usati per filtrare | limite fisso a 1.000: oltre, i risultati spariscono | manca |
+| **cancellare molti documenti per id** (`bulkDeleteElement`) | nessun endpoint (HTTP 405) | manca |
+| **cercare le cartelle per sottostringa** (`*term*`) | solo prefisso: "ACM" trova *ACME*, "ienti" non trova *Clienti* | manca |
+| **il punteggio di ogni risultato**, per il confronto finale | la risposta ha documento ed evidenziazioni, non il punteggio | manca |
+
+**I primi tre sono i peggiori, perché non fanno rumore.** Innestato così,
+Koskidex avrebbe accettato ogni documento di Documentale senza un errore, e non
+ne avrebbe trovato nessuno per id numerico, né per una parola dei tag o dei
+soggetti. È lo stesso genere di difetto di `scripts/compare` con la chiave `_id`:
+un dato perso in silenzio è peggio di un errore.
+
+## I task, in ordine
+
+Le correzioni di ingestione (F1-F4) sono difetti, non scelte di ranking: vanno
+corrette e basta. Quelle che cambiano **cosa viene trovato** (F6, F7) vanno
+dietro un'impostazione con il default sul comportamento di oggi, come tutte le
+modifiche al ranking, perché il baseline del 23/09 deve restare misurabile.
+
+- [ ] **F1 - id numerici.** Un id intero va accettato e trasformato in stringa
+      in modo canonico (`7`, non `7.0`: JSON decodifica i numeri come float).
+      Un id non valido va rifiutato con un errore, non contato come `skipped`
+      dentro una risposta 202
+- [ ] **F2 - campi lista.** Una lista di stringhe (o di numeri) va indicizzata
+      come i suoi elementi; oggi finisce nel documento salvato ma non
+      nell'indice. Con un test che fallisce col codice di oggi: la parola che
+      sta solo in `subjects` deve essere trovata
+- [ ] **F3 - risultati oltre i 1.000.** Documentale usa l'intero insieme di id
+      per filtrare con `whereIn`. Serve un limite più alto e, per non costruire
+      10.000 documenti con evidenziazioni a ogni ricerca, una risposta con i soli
+      id (come `_source: false` di Elasticsearch)
+- [ ] **F4 - cancellazione multipla per id**, con un solo passaggio nel WAL
+- [ ] **F5 - il punteggio nei risultati.** Serve al capitolo finale (`fuzzySearchScored`
+      del piano di implementazione) e costa poco: il punteggio è già calcolato da
+      `SearchScored`, si butta via nella risposta
+- [ ] **F6 - ricerca per sottostringa** per le cartelle. Da decidere il come:
+      un vero `*term*` su tutti i termini è una scansione del vocabolario, gli
+      n-grammi sono un indice in più. Per i percorsi delle cartelle, che sono
+      poche migliaia, la scansione probabilmente basta: va misurata
+- [ ] **F7 - matching compatibile con Elasticsearch, dietro impostazioni.** Le
+      quattro differenze misurate il 23/09: congiunzione dentro un campo solo,
+      soglie dei refusi (le soglie sono già configurabili, basta documentarle),
+      ricerca per prefisso disattivabile, prima lettera esatta. Serve a
+      ricostruire l'argomento *"i miglioramenti valgono anche per Documentale"*:
+      con queste impostazioni, gli insiemi devono tornare identici a quelli di
+      Elasticsearch sulle 24 query del confronto, e l'esperimento in
+      `risultati/esperimenti/2026-09-23_cause-divergenza/` diventa un test
+- [ ] **Poi l'innesto**, secondo il piano di implementazione: `KoskidexService`
+      accanto a `ElasticsearchService`, dietro la stessa interfaccia, scelto da
+      configurazione
+
+**Cosa non è un prerequisito dell'innesto.** Il difetto 2 (l'ibrido che è solo
+re-ranking, Task E3) e il difetto 3 (la fusione di scale incomparabili)
+riguardano i vettori, che Documentale non usa: sono capitoli della tesi, non
+buchi del motore rispetto a questo contratto. Stesso discorso per il calo di
+BM25 sulla ricerca per numero d'atto, da indagare a parte.
