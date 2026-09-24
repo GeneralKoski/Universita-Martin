@@ -55,6 +55,10 @@ DB_HOST=127.0.0.1 DB_PORT=33061 DB_DATABASE=albo DB_USERNAME=root DB_PASSWORD=ro
   TELESCOPE_ENABLED=false php -d memory_limit=1G artisan app:eval-run-queries \
   "$TESI_RISULTATI/query/confronto-24.txt" --label=albo-metadata
 
+# Costo della ricerca per sottostringa: aggiunge la configurazione con substring_match
+go run ./scripts/compare -corpus eval/corpora/c3-albo/beir-metadata/corpus.jsonl \
+  -queries "$TESI_RISULTATI/query/sottostringhe-20.txt" -sottostringa
+
 # Indicizzazione di Elasticsearch da indice vuoto, cronometrata
 "$TESI_RISULTATI/strumenti/indicizza-elasticsearch.sh" albo albo-metadata
 ```
@@ -67,7 +71,9 @@ DB_HOST=127.0.0.1 DB_PORT=33061 DB_DATABASE=albo DB_USERNAME=root DB_PASSWORD=ro
 per id di query), `config`.
 
 **`confronto/*_koskidex.json`** - JSON compatto. `configurazioni` (etichetta,
-modalità di recupero, punteggio, `index_ms`), `query` (per ogni query e ogni
+modalità di recupero, punteggio, `sottostringa`, `termini` cioè la dimensione
+del vocabolario, `index_ms`; `sottostringa` e `termini` ci sono dai rapporti
+del 24/09 ore 11:22 UTC in poi), `query` (per ogni query e ogni
 configurazione: `ids` e `punteggi` dei primi risultati, al massimo 1.000,
 `trovati` cioè il totale, `ms`), `config`. Il limite sta in
 `config.risultati_conservati_per_query`: nessuna metrica guarda oltre le prime
@@ -86,6 +92,12 @@ confronto fra i due motori, in quattro famiglie: corte (1-2 parole), medie (3-4)
 in linguaggio naturale (6-9), per numero d'atto e con refusi. Servono a vedere se
 i motori trovano le stesse cose, **non** a misurare la pertinenza: non hanno
 giudizi di rilevanza, e nessun nDCG va calcolato su di loro.
+
+`query/sottostringhe-20.txt` - 20 frammenti di parola scritti a mano il
+24/09/2026 per misurare il costo della ricerca per sottostringa (Task F6):
+radici di parole frequenti negli albi (`delib`, `determ`, `manut`...), un
+numero (`2024`) e un frammento comunissimo (`zione`) come caso peggiore. Si
+usano con `scripts/compare -sottostringa`.
 
 ## Leggere i tempi senza farsi ingannare
 

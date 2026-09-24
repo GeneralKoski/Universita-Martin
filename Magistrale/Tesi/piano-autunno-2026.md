@@ -1658,23 +1658,23 @@ corrette e basta. Quelle che cambiano **cosa viene trovato** (F6, F7) vanno
 dietro un'impostazione con il default sul comportamento di oggi, come tutte le
 modifiche al ranking, perché il baseline del 23/09 deve restare misurabile.
 
-- [ ] **F1 - id numerici.** Un id intero va accettato e trasformato in stringa
+- [x] **F1 - id numerici.** Un id intero va accettato e trasformato in stringa
       in modo canonico (`7`, non `7.0`: JSON decodifica i numeri come float).
       Un id non valido va rifiutato con un errore, non contato come `skipped`
       dentro una risposta 202
-- [ ] **F2 - campi lista.** Una lista di stringhe (o di numeri) va indicizzata
+- [x] **F2 - campi lista.** Una lista di stringhe (o di numeri) va indicizzata
       come i suoi elementi; oggi finisce nel documento salvato ma non
       nell'indice. Con un test che fallisce col codice di oggi: la parola che
       sta solo in `subjects` deve essere trovata
-- [ ] **F3 - risultati oltre i 1.000.** Documentale usa l'intero insieme di id
+- [x] **F3 - risultati oltre i 1.000.** Documentale usa l'intero insieme di id
       per filtrare con `whereIn`. Serve un limite più alto e, per non costruire
       10.000 documenti con evidenziazioni a ogni ricerca, una risposta con i soli
       id (come `_source: false` di Elasticsearch)
-- [ ] **F4 - cancellazione multipla per id**, con un solo passaggio nel WAL
-- [ ] **F5 - il punteggio nei risultati.** Serve al capitolo finale (`fuzzySearchScored`
+- [x] **F4 - cancellazione multipla per id**, con un solo passaggio nel WAL
+- [x] **F5 - il punteggio nei risultati.** Serve al capitolo finale (`fuzzySearchScored`
       del piano di implementazione) e costa poco: il punteggio è già calcolato da
       `SearchScored`, si butta via nella risposta
-- [ ] **F6 - ricerca per sottostringa** per le cartelle. Da decidere il come:
+- [x] **F6 - ricerca per sottostringa** per le cartelle. Da decidere il come:
       un vero `*term*` su tutti i termini è una scansione del vocabolario, gli
       n-grammi sono un indice in più. Per i percorsi delle cartelle, che sono
       poche migliaia, la scansione probabilmente basta: va misurata
@@ -1688,7 +1688,29 @@ modifiche al ranking, perché il baseline del 23/09 deve restare misurabile.
       `risultati/esperimenti/2026-09-23_cause-divergenza/` diventa un test
 - [ ] **Poi l'innesto**, secondo il piano di implementazione: `KoskidexService`
       accanto a `ElasticsearchService`, dietro la stessa interfaccia, scelto da
-      configurazione
+      configurazione. Attenzione a `updateDocument`: su Elasticsearch è un
+      aggiornamento **parziale** (`update` con `doc`, oppure un inserimento se
+      il documento non c'è), mentre `POST /documents` di Koskidex sostituisce
+      il documento intero. Il servizio deve leggere il documento, unire i campi
+      e riscriverlo; non serve un endpoint nuovo
+
+**Com'è andata (24/09/2026).** F1-F6 sono in Koskidex, ciascuno con test scritti
+prima e visti fallire, e mutazioni per controllare che i test mordano:
+
+| Task | Commit | Cosa |
+|---|---|---|
+| F1 | `7385613` | id interi accettati in forma canonica; un id inutilizzabile rifiuta tutta la richiesta con 400 |
+| F2 | `e00040f` | liste indicizzate elemento per elemento, con 100 posizioni fra un elemento e l'altro |
+| F3 + F5 | `bb9c968` | `limit` fino a 10.000, `ids_only` (solo id e punteggio), `score` in ogni risultato |
+| F4 | `c702dd6` | `POST /documents/delete-batch`: un solo record `DELETE_DOCS` nel WAL e una sola sincronizzazione |
+| F6 | `ff465b6` | `substring_match`, spenta per default: la query intera come sottostringa di un termine, come il wildcard di Elasticsearch |
+
+F6 si è deciso con una misura, non a occhio: la scansione del vocabolario costa
+meno di un millisecondo a query su 23-33 mila termini, quindi niente n-grammi
+(`risultati/esperimenti/2026-09-24_costo-sottostringa/`). Nel farlo è venuto
+fuori un dettaglio del wildcard di Elasticsearch: su un campo `text` confronta
+la query con un termine alla volta, quindi una query con uno spazio non trova
+niente per quella via. Koskidex fa lo stesso.
 
 **Cosa non è un prerequisito dell'innesto.** Il difetto 2 (l'ibrido che è solo
 re-ranking, Task E3) e il difetto 3 (la fusione di scale incomparabili)
