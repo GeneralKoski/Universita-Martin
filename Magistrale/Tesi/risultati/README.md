@@ -23,7 +23,9 @@ Se un numero non ha un file qui, non esiste.
    pretori possono contenere nomi di persone, e questa cartella sta in un
    repository pubblico. Per vedere un titolo si risale dal `doc-NNNN` al corpus,
    che resta fuori da git.
-5. **Si archivia da solo.** Gli strumenti scrivono qui se è impostata
+5. **Solo esecuzioni vere.** I controlli fatti mentre si scrive codice si lanciano
+   con `TESI_RISULTATI=` vuota: non sono misure, e non devono finire qui.
+6. **Si archivia da solo.** Gli strumenti scrivono qui se è impostata
    `TESI_RISULTATI` (è nel `~/.zshrc`); se non lo è, stampano
    `RISULTATO NON ARCHIVIATO` invece di tacere.
 
@@ -123,6 +125,11 @@ Quello che è stato tolto o toccato, perché la regola 1 non valga a metà.
   UTC): puntava a uno dei rapporti qui sopra. Rifatto sul rapporto nuovo; un
   primo rifacimento (10:58:31 UTC) riportava come totale gli id conservati invece
   di `trovati`, ed è stato rifatto a sua volta. Stesse posizioni: `2026-09-24T105848Z_esito.json`.
+- **24/09/2026, 1 file** in `koskidex-beir/` (`2026-09-24T110812Z_scifact-bm25.json`):
+  un controllo di regressione fatto durante lo sviluppo del Task F2, da codice
+  non committato. Metriche identiche a quelle committate. Da qui in poi i
+  controlli di sviluppo si lanciano con `TESI_RISULTATI=` vuota, e l'archivio
+  riceve solo esecuzioni da codice committato.
 - **I 12 file più vecchi di `koskidex-beir/`** (ore 11:5x e 14:0x UTC del
   23/09) vengono da prima degli strumenti di misura: hanno le metriche ma non
   hanno né `timings` né `config`. Le stesse configurazioni rifatte dopo hanno
