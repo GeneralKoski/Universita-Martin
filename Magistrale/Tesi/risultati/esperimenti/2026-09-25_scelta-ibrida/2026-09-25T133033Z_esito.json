@@ -1,0 +1,7704 @@
+{
+  "ran_at": "2026-09-25T13:30:33Z",
+  "config": {
+    "commit": "9799277",
+    "modifiche_non_committate": "false",
+    "valutazioni": {
+      "known-item-auto/test/A": "2026-09-25T132625Z_known-item-auto-scelta-ibrida-A-test.json",
+      "known-item-auto/test/B": "2026-09-25T132633Z_known-item-auto-scelta-ibrida-B-test.json",
+      "known-item-auto/test/L": "2026-09-25T132127Z_known-item-auto-all-L.json",
+      "known-item-auto/test/U": "2026-09-25T132139Z_known-item-auto-all-U.json",
+      "known-item-auto-train/train/A": "2026-09-25T133006Z_known-item-auto-train-scelta-ibrida-A-train.json",
+      "known-item-auto-train/train/B": "2026-09-25T133015Z_known-item-auto-train-scelta-ibrida-B-train.json",
+      "known-item-auto-train/train/L": "2026-09-25T133017Z_known-item-auto-train-scelta-ibrida-L-train.json",
+      "nfcorpus/test/A": "2026-09-25T132609Z_nfcorpus-scelta-ibrida-A-test.json",
+      "nfcorpus/test/B": "2026-09-25T132615Z_nfcorpus-scelta-ibrida-B-test.json",
+      "nfcorpus/test/L": "2026-09-25T132114Z_nfcorpus-all-L.json",
+      "nfcorpus/test/U": "2026-09-25T132125Z_nfcorpus-all-U.json",
+      "nfcorpus/train/A": "2026-09-25T132919Z_nfcorpus-scelta-ibrida-A-train.json",
+      "nfcorpus/train/B": "2026-09-25T132945Z_nfcorpus-scelta-ibrida-B-train.json",
+      "nfcorpus/train/L": "2026-09-25T132956Z_nfcorpus-scelta-ibrida-L-train.json",
+      "scifact/test/A": "2026-09-25T132548Z_scifact-scelta-ibrida-A-test.json",
+      "scifact/test/B": "2026-09-25T132602Z_scifact-scelta-ibrida-B-test.json",
+      "scifact/test/L": "2026-09-25T132046Z_scifact-all-L.json",
+      "scifact/test/U": "2026-09-25T132112Z_scifact-all-U.json",
+      "scifact/train/A": "2026-09-25T132710Z_scifact-scelta-ibrida-A-train.json",
+      "scifact/train/B": "2026-09-25T132741Z_scifact-scelta-ibrida-B-train.json",
+      "scifact/train/L": "2026-09-25T132804Z_scifact-scelta-ibrida-L-train.json"
+    },
+    "koskidex": [
+      "f16b4c9"
+    ],
+    "embedder_digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+    "scelta_senza_vettori": "2026-09-25T100505Z_esito.json"
+  },
+  "risultati": {
+    "test": {
+      "known-item": {
+        "sempre A": {
+          "ndcg@10": 0.5589,
+          "query_a_b": 0
+        },
+        "sempre B": {
+          "ndcg@10": 0.968,
+          "query_a_b": 300
+        },
+        "oracolo": {
+          "ndcg@10": 0.9731,
+          "query_a_b": 169
+        },
+        "regola della cifra": {
+          "ndcg@10": 0.968,
+          "query_a_b": 300
+        },
+        "ripiego (B, se L vuoto A)": {
+          "ndcg@10": 0.968,
+          "query_a_b": 300
+        },
+        "cifra e L non vuoto": {
+          "ndcg@10": 0.968,
+          "query_a_b": 300
+        },
+        "classificatore": {
+          "ndcg@10": 0.968,
+          "query_a_b": 300
+        },
+        "query": 300,
+        "sempre U a 20": {
+          "ndcg@10": 0.9675
+        }
+      },
+      "scifact": {
+        "sempre A": {
+          "ndcg@10": 0.7067,
+          "query_a_b": 0
+        },
+        "sempre B": {
+          "ndcg@10": 0.6483,
+          "query_a_b": 300
+        },
+        "oracolo": {
+          "ndcg@10": 0.728,
+          "query_a_b": 29
+        },
+        "regola della cifra": {
+          "ndcg@10": 0.6881,
+          "query_a_b": 114
+        },
+        "ripiego (B, se L vuoto A)": {
+          "ndcg@10": 0.7072,
+          "query_a_b": 10
+        },
+        "cifra e L non vuoto": {
+          "ndcg@10": 0.7067,
+          "query_a_b": 2
+        },
+        "classificatore": {
+          "ndcg@10": 0.7036,
+          "query_a_b": 21
+        },
+        "query": 300,
+        "sempre U a 20": {
+          "ndcg@10": 0.6483
+        }
+      },
+      "nfcorpus": {
+        "sempre A": {
+          "ndcg@10": 0.3441,
+          "query_a_b": 0
+        },
+        "sempre B": {
+          "ndcg@10": 0.3325,
+          "query_a_b": 323
+        },
+        "oracolo": {
+          "ndcg@10": 0.3655,
+          "query_a_b": 82
+        },
+        "regola della cifra": {
+          "ndcg@10": 0.3438,
+          "query_a_b": 6
+        },
+        "ripiego (B, se L vuoto A)": {
+          "ndcg@10": 0.3433,
+          "query_a_b": 163
+        },
+        "cifra e L non vuoto": {
+          "ndcg@10": 0.3438,
+          "query_a_b": 3
+        },
+        "classificatore": {
+          "ndcg@10": 0.3432,
+          "query_a_b": 156
+        },
+        "query": 323,
+        "sempre U a 20": {
+          "ndcg@10": 0.3333
+        }
+      },
+      "media delle tre": {
+        "sempre A": 0.5366,
+        "sempre B": 0.6496,
+        "oracolo": 0.6889,
+        "regola della cifra": 0.6666,
+        "ripiego (B, se L vuoto A)": 0.6728,
+        "cifra e L non vuoto": 0.6728,
+        "classificatore": 0.6716,
+        "sempre U a 20": 0.6497
+      },
+      "riferimento_scelta_senza_vettori": {
+        "sempre A": 0.6124,
+        "sempre B": 0.3957,
+        "oracolo": 0.6479,
+        "regola della cifra": 0.56,
+        "ripiego (B, se vuoto A)": 0.6409,
+        "classificatore": 0.6473,
+        "cifra e B non vuoto (aggiunta dopo)": 0.6473
+      }
+    },
+    "train": {
+      "known-item": {
+        "sempre A": {
+          "ndcg@10": 0.5582,
+          "query_a_b": 0
+        },
+        "sempre B": {
+          "ndcg@10": 0.9734,
+          "query_a_b": 300
+        },
+        "oracolo": {
+          "ndcg@10": 0.9767,
+          "query_a_b": 173
+        },
+        "regola della cifra": {
+          "ndcg@10": 0.9734,
+          "query_a_b": 300
+        },
+        "ripiego (B, se L vuoto A)": {
+          "ndcg@10": 0.9734,
+          "query_a_b": 300
+        },
+        "cifra e L non vuoto": {
+          "ndcg@10": 0.9734,
+          "query_a_b": 300
+        },
+        "classificatore": {
+          "ndcg@10": 0.9734,
+          "query_a_b": 300
+        },
+        "query": 300
+      },
+      "scifact": {
+        "sempre A": {
+          "ndcg@10": 0.7527,
+          "query_a_b": 0
+        },
+        "sempre B": {
+          "ndcg@10": 0.7145,
+          "query_a_b": 809
+        },
+        "oracolo": {
+          "ndcg@10": 0.7751,
+          "query_a_b": 82
+        },
+        "regola della cifra": {
+          "ndcg@10": 0.7299,
+          "query_a_b": 342
+        },
+        "ripiego (B, se L vuoto A)": {
+          "ndcg@10": 0.7525,
+          "query_a_b": 26
+        },
+        "cifra e L non vuoto": {
+          "ndcg@10": 0.7522,
+          "query_a_b": 13
+        },
+        "classificatore": {
+          "ndcg@10": 0.7477,
+          "query_a_b": 65
+        },
+        "query": 809
+      },
+      "nfcorpus": {
+        "sempre A": {
+          "ndcg@10": 0.339,
+          "query_a_b": 0
+        },
+        "sempre B": {
+          "ndcg@10": 0.3274,
+          "query_a_b": 2590
+        },
+        "oracolo": {
+          "ndcg@10": 0.359,
+          "query_a_b": 598
+        },
+        "regola della cifra": {
+          "ndcg@10": 0.3388,
+          "query_a_b": 35
+        },
+        "ripiego (B, se L vuoto A)": {
+          "ndcg@10": 0.3363,
+          "query_a_b": 1345
+        },
+        "cifra e L non vuoto": {
+          "ndcg@10": 0.3389,
+          "query_a_b": 11
+        },
+        "classificatore": {
+          "ndcg@10": 0.3372,
+          "query_a_b": 1263
+        },
+        "query": 2590
+      },
+      "media delle tre": {
+        "sempre A": 0.55,
+        "sempre B": 0.6718,
+        "oracolo": 0.7036,
+        "regola della cifra": 0.6807,
+        "ripiego (B, se L vuoto A)": 0.6874,
+        "cifra e L non vuoto": 0.6882,
+        "classificatore": 0.6861
+      }
+    }
+  },
+  "modello": {
+    "caratteristiche": [
+      "log_termini",
+      "ha_cifra",
+      "quota_cifre",
+      "idf_medio",
+      "idf_max",
+      "idf_min",
+      "quota_fuori_vocabolario",
+      "l_vuoto"
+    ],
+    "pesi_standardizzati": {
+      "log_termini": -0.0904,
+      "ha_cifra": -0.132,
+      "quota_cifre": 0.9793,
+      "idf_medio": -0.0111,
+      "idf_max": 0.1433,
+      "idf_min": 0.0058,
+      "quota_fuori_vocabolario": -0.1665,
+      "l_vuoto": -0.642
+    },
+    "intercetta": -0.1123,
+    "media": {
+      "log_termini": 1.5236,
+      "ha_cifra": 0.1599,
+      "quota_cifre": 0.0501,
+      "idf_medio": 0.4584,
+      "idf_max": 0.6802,
+      "idf_min": 0.2528,
+      "quota_fuori_vocabolario": 0.017,
+      "l_vuoto": 0.4481
+    },
+    "deviazione": {
+      "log_termini": 0.6268,
+      "ha_cifra": 0.3665,
+      "quota_cifre": 0.1368,
+      "idf_medio": 0.1499,
+      "idf_max": 0.1706,
+      "idf_min": 0.2553,
+      "quota_fuori_vocabolario": 0.066,
+      "l_vuoto": 0.4973
+    },
+    "passo": 0.5,
+    "iterazioni": 3000,
+    "l2": 0.01,
+    "soglia": 0.5,
+    "esempi_di_addestramento": 1839,
+    "per_collezione": {
+      "known-item": 175,
+      "nfcorpus": 1438,
+      "scifact": 226
+    },
+    "pari_escluse": 1860
+  },
+  "scelte_sul_test": [
+    {
+      "collezione": "known-item",
+      "query": "ki-001",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-002",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-003",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-004",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-005",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-006",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-007",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-008",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-009",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-010",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-011",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-012",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-013",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-014",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-015",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-016",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-017",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-018",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-019",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-020",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.3154648767857287,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-021",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-022",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-023",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-024",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-025",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-026",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-027",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-028",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-029",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-030",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-031",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-032",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-033",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-034",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-035",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-036",
+      "classificatore": "B",
+      "ndcg_a": 0.3010299956639812,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-037",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-038",
+      "classificatore": "B",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-039",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-040",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-041",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-042",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-043",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-044",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-045",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-046",
+      "classificatore": "B",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-047",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-048",
+      "classificatore": "B",
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-049",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-050",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-051",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-052",
+      "classificatore": "B",
+      "ndcg_a": 0.3010299956639812,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-053",
+      "classificatore": "B",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-054",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-055",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-056",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-057",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-058",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-059",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-060",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-061",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-062",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-063",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-064",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-065",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-066",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-067",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-068",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-069",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-070",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-071",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-072",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-073",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-074",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-075",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-076",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-077",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-078",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-079",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-080",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-081",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-082",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-083",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-084",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-085",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-086",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-087",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-088",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-089",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-090",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-091",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-092",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-093",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-094",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-095",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-096",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-097",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-098",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-099",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-100",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-101",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-102",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-103",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-104",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-105",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-106",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-107",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-108",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-109",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-110",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-111",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-112",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-113",
+      "classificatore": "B",
+      "ndcg_a": 0.3154648767857287,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-114",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-115",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-116",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-117",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-118",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-119",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-120",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-121",
+      "classificatore": "B",
+      "ndcg_a": 0.3010299956639812,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-122",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-123",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-124",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-125",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-126",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-127",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-128",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-129",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-130",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-131",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-132",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-133",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-134",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-135",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-136",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-137",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-138",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-139",
+      "classificatore": "B",
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-140",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-141",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-142",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-143",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-144",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-145",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-146",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-147",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-148",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-149",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-150",
+      "classificatore": "B",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-151",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-152",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-153",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-154",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-155",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-156",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-157",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-158",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-159",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-160",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-161",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-162",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-163",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-164",
+      "classificatore": "B",
+      "ndcg_a": 0.3154648767857287,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-165",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-166",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-167",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-168",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-169",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-170",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-171",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-172",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.3333333333333333,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-173",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-174",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-175",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-176",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-177",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-178",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-179",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-180",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-181",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-182",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-183",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-184",
+      "classificatore": "B",
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-185",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-186",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-187",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 0.43067655807339306,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-188",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-189",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-190",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-191",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-192",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-193",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-194",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-195",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-196",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-197",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-198",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-199",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-200",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-201",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-202",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-203",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-204",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-205",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-206",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-207",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-208",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-209",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-210",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-211",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-212",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-213",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-214",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-215",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-216",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-217",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-218",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-219",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-220",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-221",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-222",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-223",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-224",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-225",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-226",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-227",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-228",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-229",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-230",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-231",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-232",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.5,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-233",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-234",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-235",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-236",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-237",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-238",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-239",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-240",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-241",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-242",
+      "classificatore": "B",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-243",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-244",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-245",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-246",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-247",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-248",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-249",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-250",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-251",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-252",
+      "classificatore": "B",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0.5,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-253",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-254",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-255",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-256",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-257",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-258",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-259",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-260",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-261",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-262",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.3562071871080222,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-263",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-264",
+      "classificatore": "B",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-265",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-266",
+      "classificatore": "B",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-267",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-268",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-269",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-270",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-271",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-272",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-273",
+      "classificatore": "B",
+      "ndcg_a": 0.3154648767857287,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-274",
+      "classificatore": "B",
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-275",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-276",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-277",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-278",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-279",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.38685280723454163,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-280",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-281",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-282",
+      "classificatore": "B",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-283",
+      "classificatore": "B",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-284",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-285",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-286",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-287",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-288",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-289",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-290",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-291",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-292",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-293",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-294",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-295",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-296",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-297",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-298",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-299",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "known-item",
+      "query": "ki-300",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1008",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1018",
+      "classificatore": "B",
+      "ndcg_a": 0.3101713436465379,
+      "ndcg_b": 0.4896484487323553,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-102",
+      "classificatore": "A",
+      "ndcg_a": 0.25835219996273967,
+      "ndcg_b": 0.19969097468564356,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1028",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1039",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1050",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1066",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1088",
+      "classificatore": "B",
+      "ndcg_a": 0.5531464700081437,
+      "ndcg_b": 0.5531464700081437,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1098",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1109",
+      "classificatore": "B",
+      "ndcg_a": 0.7314470771099789,
+      "ndcg_b": 0.5894280199323518,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1119",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-112",
+      "classificatore": "B",
+      "ndcg_a": 0.5980151142545069,
+      "ndcg_b": 0.6604400652351456,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1130",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1141",
+      "classificatore": "A",
+      "ndcg_a": 0.3597099118518293,
+      "ndcg_b": 0.2200917662980802,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1151",
+      "classificatore": "A",
+      "ndcg_a": 0.20483424751859092,
+      "ndcg_b": 0.35659643859662626,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1161",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1172",
+      "classificatore": "B",
+      "ndcg_a": 0.2200917662980802,
+      "ndcg_b": 0.2200917662980802,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1183",
+      "classificatore": "B",
+      "ndcg_a": 0.29849003527675555,
+      "ndcg_b": 0.29849003527675555,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1193",
+      "classificatore": "B",
+      "ndcg_a": 0.07839826897867534,
+      "ndcg_b": 0.07336392209936006,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-12",
+      "classificatore": "A",
+      "ndcg_a": 0.2764582536639236,
+      "ndcg_b": 0.1222260944107594,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1203",
+      "classificatore": "B",
+      "ndcg_a": 0.3589542101716347,
+      "ndcg_b": 0.3589542101716347,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1214",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1225",
+      "classificatore": "B",
+      "ndcg_a": 0.5587148206871072,
+      "ndcg_b": 0.5014276442746162,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-123",
+      "classificatore": "A",
+      "ndcg_a": 0.06370866775185363,
+      "ndcg_b": 0.08039138809008574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1236",
+      "classificatore": "B",
+      "ndcg_a": 0.3391602052736162,
+      "ndcg_b": 0.3391602052736162,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1249",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1262",
+      "classificatore": "A",
+      "ndcg_a": 0.31252911522154636,
+      "ndcg_b": 0.4690000933206748,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1275",
+      "classificatore": "B",
+      "ndcg_a": 0.5861163849908828,
+      "ndcg_b": 0.5352543167750639,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1288",
+      "classificatore": "B",
+      "ndcg_a": 0.694765116060299,
+      "ndcg_b": 0.7471589728148226,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1299",
+      "classificatore": "B",
+      "ndcg_a": 0.29345568839744024,
+      "ndcg_b": 0.2200917662980802,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1309",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1320",
+      "classificatore": "A",
+      "ndcg_a": 0.4935232796777481,
+      "ndcg_b": 0.19092086617893464,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-133",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1331",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1342",
+      "classificatore": "B",
+      "ndcg_a": 0.5396413938630011,
+      "ndcg_b": 0.3340514446642156,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1353",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1363",
+      "classificatore": "B",
+      "ndcg_a": 0.1100458831490401,
+      "ndcg_b": 0.2200917662980802,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1374",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1387",
+      "classificatore": "B",
+      "ndcg_a": 0.6961622681399229,
+      "ndcg_b": 0.6235744328990731,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1398",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1409",
+      "classificatore": "A",
+      "ndcg_a": 0.2200917662980802,
+      "ndcg_b": 0.5716349530699038,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1419",
+      "classificatore": "B",
+      "ndcg_a": 0.5423640154200349,
+      "ndcg_b": 0.46627747176364104,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1429",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-143",
+      "classificatore": "A",
+      "ndcg_a": 0.6092584262921852,
+      "ndcg_b": 0.5880534728737216,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1441",
+      "classificatore": "B",
+      "ndcg_a": 0.40067051810063,
+      "ndcg_b": 0.40067051810063,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1453",
+      "classificatore": "B",
+      "ndcg_a": 0.33217371108897287,
+      "ndcg_b": 0.35707647659639197,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1463",
+      "classificatore": "B",
+      "ndcg_a": 0.43735247915031006,
+      "ndcg_b": 0.42257499837058643,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1473",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1485",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1496",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1506",
+      "classificatore": "B",
+      "ndcg_a": 0.13886244387355454,
+      "ndcg_b": 0.29849003527675555,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1516",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1527",
+      "classificatore": "B",
+      "ndcg_a": 0.8669479898642711,
+      "ndcg_b": 0.92663607790064,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-153",
+      "classificatore": "A",
+      "ndcg_a": 0.943093442760096,
+      "ndcg_b": 0.9357439570168185,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1537",
+      "classificatore": "B",
+      "ndcg_a": 0.7411902110103873,
+      "ndcg_b": 0.5907272848394972,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1547",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1557",
+      "classificatore": "B",
+      "ndcg_a": 0.2489083270225946,
+      "ndcg_b": 0.2832325164972662,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1568",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1579",
+      "classificatore": "B",
+      "ndcg_a": 0.12081130269949421,
+      "ndcg_b": 0.3391602052736162,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1590",
+      "classificatore": "B",
+      "ndcg_a": 0.13886244387355454,
+      "ndcg_b": 0.2200917662980802,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1601",
+      "classificatore": "B",
+      "ndcg_a": 0.7788065869851875,
+      "ndcg_b": 0.6618313225363276,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1611",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1621",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1635",
+      "classificatore": "B",
+      "ndcg_a": 0.7728378251807521,
+      "ndcg_b": 0.747935059673333,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1645",
+      "classificatore": "B",
+      "ndcg_a": 0.3026024134988135,
+      "ndcg_b": 0.3026024134988135,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-165",
+      "classificatore": "A",
+      "ndcg_a": 0.524614511840224,
+      "ndcg_b": 0.5055053205690359,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1656",
+      "classificatore": "B",
+      "ndcg_a": 0.09478836436955079,
+      "ndcg_b": 0.1100458831490401,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1667",
+      "classificatore": "B",
+      "ndcg_a": 0.7917063341896683,
+      "ndcg_b": 0.841492960259019,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1679",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1690",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1700",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1710",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1721",
+      "classificatore": "B",
+      "ndcg_a": 0.6749359875559983,
+      "ndcg_b": 0.6652907408280685,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1731",
+      "classificatore": "B",
+      "ndcg_a": 0.7653606369886218,
+      "ndcg_b": 0.7653606369886218,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1741",
+      "classificatore": "B",
+      "ndcg_a": 0.9216017310213247,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-175",
+      "classificatore": "A",
+      "ndcg_a": 0.39327113878329767,
+      "ndcg_b": 0.2181472641030832,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1752",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1762",
+      "classificatore": "B",
+      "ndcg_a": 0.41253177989255346,
+      "ndcg_b": 0.2860604285087249,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1772",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1784",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1794",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1805",
+      "classificatore": "B",
+      "ndcg_a": 0.9305687780632229,
+      "ndcg_b": 0.9363792118010483,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1817",
+      "classificatore": "B",
+      "ndcg_a": 0.5541432109622958,
+      "ndcg_b": 0.608618238874424,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1827",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1837",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1847",
+      "classificatore": "B",
+      "ndcg_a": 0.20829366581033182,
+      "ndcg_b": 0.2489083270225946,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1857",
+      "classificatore": "B",
+      "ndcg_a": 0.5637884576902256,
+      "ndcg_b": 0.6274092458891773,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-186",
+      "classificatore": "B",
+      "ndcg_a": 0.13886244387355454,
+      "ndcg_b": 0.1100458831490401,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1867",
+      "classificatore": "A",
+      "ndcg_a": 0.09162544430476362,
+      "ndcg_b": 0.09162544430476362,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1877",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1887",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1897",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1909",
+      "classificatore": "B",
+      "ndcg_a": 0.643121141594021,
+      "ndcg_b": 0.8630152897016883,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1919",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 0.9363792118010483,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1929",
+      "classificatore": "A",
+      "ndcg_a": 0.13886244387355454,
+      "ndcg_b": 0.3301376494471203,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1940",
+      "classificatore": "B",
+      "ndcg_a": 0.3589542101716347,
+      "ndcg_b": 0.3589542101716347,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1950",
+      "classificatore": "B",
+      "ndcg_a": 0.2489083270225946,
+      "ndcg_b": 0.2489083270225946,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-196",
+      "classificatore": "A",
+      "ndcg_a": 0.5739723394665965,
+      "ndcg_b": 0.314880130667631,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1962",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1972",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1983",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-1995",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2",
+      "classificatore": "A",
+      "ndcg_a": 0.8189691481112957,
+      "ndcg_b": 0.6982022778687454,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2009",
+      "classificatore": "B",
+      "ndcg_a": 0.1089364926177559,
+      "ndcg_b": 0.12647135138382856,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2019",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.46927872602275655,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2030",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.15130120674940675,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2040",
+      "classificatore": "B",
+      "ndcg_a": 0.6177639991612476,
+      "ndcg_b": 0.3529461582433962,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2051",
+      "classificatore": "B",
+      "ndcg_a": 0.6473362615659566,
+      "ndcg_b": 0.6530488081313036,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2061",
+      "classificatore": "B",
+      "ndcg_a": 0.9052116356304495,
+      "ndcg_b": 0.9216017310213247,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-207",
+      "classificatore": "A",
+      "ndcg_a": 0.5926825204089029,
+      "ndcg_b": 0.45953262310069537,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2071",
+      "classificatore": "B",
+      "ndcg_a": 0.5330752584449809,
+      "ndcg_b": 0.5810820381115674,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2081",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2092",
+      "classificatore": "B",
+      "ndcg_a": 0.6489315753318465,
+      "ndcg_b": 0.6489315753318465,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2102",
+      "classificatore": "B",
+      "ndcg_a": 0.6804503724350792,
+      "ndcg_b": 0.6754160255557639,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2113",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2124",
+      "classificatore": "B",
+      "ndcg_a": 0.7624164915943119,
+      "ndcg_b": 0.7624164915943119,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2134",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2145",
+      "classificatore": "B",
+      "ndcg_a": 0.1175227747072427,
+      "ndcg_b": 0.1482972305701491,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2156",
+      "classificatore": "B",
+      "ndcg_a": 0.6448244864271548,
+      "ndcg_b": 0.6448244864271548,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2167",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-217",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2177",
+      "classificatore": "B",
+      "ndcg_a": 0.4886446891881014,
+      "ndcg_b": 0.3183395489593719,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2187",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.38334277998463445,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2197",
+      "classificatore": "B",
+      "ndcg_a": 0.8669479898642711,
+      "ndcg_b": 0.857980942822373,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2209",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2220",
+      "classificatore": "B",
+      "ndcg_a": 0.38334277998463445,
+      "ndcg_b": 0.38334277998463445,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2230",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2240",
+      "classificatore": "B",
+      "ndcg_a": 0.5423640154200349,
+      "ndcg_b": 0.5884674004369674,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2250",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2261",
+      "classificatore": "B",
+      "ndcg_a": 0.5637884576902256,
+      "ndcg_b": 0.2172607128522299,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-227",
+      "classificatore": "A",
+      "ndcg_a": 0.08514311764162101,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2271",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2281",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2291",
+      "classificatore": "A",
+      "ndcg_a": 0.2716774977597198,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-23",
+      "classificatore": "A",
+      "ndcg_a": 0.32776097292662437,
+      "ndcg_b": 0.05502294157452005,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2301",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2311",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2321",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2332",
+      "classificatore": "B",
+      "ndcg_a": 0.2837125544970319,
+      "ndcg_b": 0.47842151728792737,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2343",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2354",
+      "classificatore": "B",
+      "ndcg_a": 0.5531464700081437,
+      "ndcg_b": 0.5531464700081437,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2364",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2375",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-238",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2386",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2396",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2408",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2430",
+      "classificatore": "A",
+      "ndcg_a": 0.5355260983885393,
+      "ndcg_b": 0.5800640072906411,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2440",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2450",
+      "classificatore": "B",
+      "ndcg_a": 0.3621108234757073,
+      "ndcg_b": 0.3628869103342175,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2460",
+      "classificatore": "A",
+      "ndcg_a": 0.2682869517739663,
+      "ndcg_b": 0.22245896432844892,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2470",
+      "classificatore": "A",
+      "ndcg_a": 0.46736126194103034,
+      "ndcg_b": 0.5297996136729176,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-248",
+      "classificatore": "A",
+      "ndcg_a": 0.39327839964630634,
+      "ndcg_b": 0.3628869103342175,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2480",
+      "classificatore": "A",
+      "ndcg_a": 0.32464079395852535,
+      "ndcg_b": 0.3202446147056888,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2490",
+      "classificatore": "A",
+      "ndcg_a": 0.26695075719413874,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2500",
+      "classificatore": "A",
+      "ndcg_a": 0.24947655729022203,
+      "ndcg_b": 0.10972431200457416,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2510",
+      "classificatore": "A",
+      "ndcg_a": 0.77523873680463,
+      "ndcg_b": 0.7682269253321375,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2520",
+      "classificatore": "A",
+      "ndcg_a": 0.03668196104968003,
+      "ndcg_b": 0.07839826897867534,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2530",
+      "classificatore": "A",
+      "ndcg_a": 0.9286024279819315,
+      "ndcg_b": 0.932157277304417,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2540",
+      "classificatore": "A",
+      "ndcg_a": 0.2948769017920755,
+      "ndcg_b": 0.2810972600010621,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2550",
+      "classificatore": "A",
+      "ndcg_a": 0.09077394133714937,
+      "ndcg_b": 0.14410005584193936,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2560",
+      "classificatore": "B",
+      "ndcg_a": 0.9363792118010483,
+      "ndcg_b": 0.9363792118010483,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2570",
+      "classificatore": "A",
+      "ndcg_a": 0.3601149875256312,
+      "ndcg_b": 0.46373438534405886,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2580",
+      "classificatore": "A",
+      "ndcg_a": 0.263969194188132,
+      "ndcg_b": 0.2788757447326815,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-259",
+      "classificatore": "A",
+      "ndcg_a": 0.3589542101716347,
+      "ndcg_b": 0.2489083270225946,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2590",
+      "classificatore": "A",
+      "ndcg_a": 0.23814276159606287,
+      "ndcg_b": 0.22586096591252056,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2600",
+      "classificatore": "A",
+      "ndcg_a": 0.6421932615995007,
+      "ndcg_b": 0.6542721934360558,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2610",
+      "classificatore": "A",
+      "ndcg_a": 0.3182305472750076,
+      "ndcg_b": 0.2297956100746854,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2620",
+      "classificatore": "A",
+      "ndcg_a": 0.11200278075758777,
+      "ndcg_b": 0.03919913448933767,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2630",
+      "classificatore": "A",
+      "ndcg_a": 0.6870165078530993,
+      "ndcg_b": 0.494639655562801,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2640",
+      "classificatore": "A",
+      "ndcg_a": 0.6272672574640242,
+      "ndcg_b": 0.5640696871924561,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2650",
+      "classificatore": "B",
+      "ndcg_a": 0.6489315753318465,
+      "ndcg_b": 0.5958595188912912,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2660",
+      "classificatore": "A",
+      "ndcg_a": 0.3995688713838976,
+      "ndcg_b": 0.40350157154648036,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2670",
+      "classificatore": "A",
+      "ndcg_a": 0.3941769500918012,
+      "ndcg_b": 0.4286999464456731,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2680",
+      "classificatore": "A",
+      "ndcg_a": 0.2593662840400806,
+      "ndcg_b": 0.12741733550370726,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2690",
+      "classificatore": "A",
+      "ndcg_a": 0.40647649997595436,
+      "ndcg_b": 0.38431135260440824,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-270",
+      "classificatore": "A",
+      "ndcg_a": 0.13886244387355454,
+      "ndcg_b": 0.13886244387355454,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2700",
+      "classificatore": "A",
+      "ndcg_a": 0.2323660001780183,
+      "ndcg_b": 0.24242555078452582,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2710",
+      "classificatore": "B",
+      "ndcg_a": 0.6263380278851488,
+      "ndcg_b": 0.617085055228343,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2720",
+      "classificatore": "A",
+      "ndcg_a": 0.16421958630632805,
+      "ndcg_b": 0.03668196104968003,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2730",
+      "classificatore": "A",
+      "ndcg_a": 0.606223068533399,
+      "ndcg_b": 0.5382787631112566,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2740",
+      "classificatore": "B",
+      "ndcg_a": 0.676445585350243,
+      "ndcg_b": 0.5865454040590476,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2750",
+      "classificatore": "A",
+      "ndcg_a": 0.6599189112669639,
+      "ndcg_b": 0.5637540281237199,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2760",
+      "classificatore": "A",
+      "ndcg_a": 0.15424289091186655,
+      "ndcg_b": 0.35353411417937386,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2770",
+      "classificatore": "A",
+      "ndcg_a": 0.2611482561310985,
+      "ndcg_b": 0.33381010173835773,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2780",
+      "classificatore": "A",
+      "ndcg_a": 0.44962452025207844,
+      "ndcg_b": 0.4610806755377909,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2790",
+      "classificatore": "B",
+      "ndcg_a": 0.6371523797895857,
+      "ndcg_b": 0.43735247915031006,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-280",
+      "classificatore": "A",
+      "ndcg_a": 0.3589542101716347,
+      "ndcg_b": 0.29345568839744024,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2800",
+      "classificatore": "A",
+      "ndcg_a": 0.0945285466658181,
+      "ndcg_b": 0.0945285466658181,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2810",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2820",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2830",
+      "classificatore": "A",
+      "ndcg_a": 0.638787886479598,
+      "ndcg_b": 0.2751109682880106,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2840",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2850",
+      "classificatore": "A",
+      "ndcg_a": 0.1841655101481095,
+      "ndcg_b": 0.24014860122439105,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2860",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2870",
+      "classificatore": "A",
+      "ndcg_a": 0.07623986638854101,
+      "ndcg_b": 0.07623986638854101,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2880",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2890",
+      "classificatore": "B",
+      "ndcg_a": 0.22762622895961598,
+      "ndcg_b": 0.10860531196831714,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2900",
+      "classificatore": "A",
+      "ndcg_a": 0.10026710274415575,
+      "ndcg_b": 0.09382844813642037,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-291",
+      "classificatore": "A",
+      "ndcg_a": 0.3589542101716347,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2910",
+      "classificatore": "A",
+      "ndcg_a": 0.20436662668128655,
+      "ndcg_b": 0.16195671984435944,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2920",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2930",
+      "classificatore": "B",
+      "ndcg_a": 0.41292330192811727,
+      "ndcg_b": 0.43056322872474745,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2940",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2950",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2960",
+      "classificatore": "A",
+      "ndcg_a": 0.32739495038873956,
+      "ndcg_b": 0.2707842629583515,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2970",
+      "classificatore": "A",
+      "ndcg_a": 0.19031326377064928,
+      "ndcg_b": 0.38062652754129855,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2981",
+      "classificatore": "A",
+      "ndcg_a": 0.43122038713502525,
+      "ndcg_b": 0.43122038713502525,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-2991",
+      "classificatore": "B",
+      "ndcg_a": 0.23719771276929624,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3001",
+      "classificatore": "B",
+      "ndcg_a": 0.20438239758848614,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3014",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3026",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3037",
+      "classificatore": "A",
+      "ndcg_a": 0.123151194370365,
+      "ndcg_b": 0.123151194370365,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3053",
+      "classificatore": "B",
+      "ndcg_a": 0.7653606369886218,
+      "ndcg_b": 0.7653606369886218,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3063",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0.3253167083267514,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-307",
+      "classificatore": "A",
+      "ndcg_a": 0.9674679834891693,
+      "ndcg_b": 0.7328286204777911,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3074",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3085",
+      "classificatore": "A",
+      "ndcg_a": 0.30657359638272924,
+      "ndcg_b": 0.30657359638272924,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3097",
+      "classificatore": "B",
+      "ndcg_a": 0.4770382338730849,
+      "ndcg_b": 0.4770382338730849,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3116",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3131",
+      "classificatore": "A",
+      "ndcg_a": 0.28111356437650004,
+      "ndcg_b": 0.15846525509047663,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3141",
+      "classificatore": "A",
+      "ndcg_a": 0.1890570933316362,
+      "ndcg_b": 0.1890570933316362,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3151",
+      "classificatore": "A",
+      "ndcg_a": 0.6708529944658256,
+      "ndcg_b": 0.7184217112494151,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3161",
+      "classificatore": "A",
+      "ndcg_a": 0.6660780950930211,
+      "ndcg_b": 0.6377943847486346,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3171",
+      "classificatore": "A",
+      "ndcg_a": 0.3248869337953281,
+      "ndcg_b": 0.16811577046396656,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3181",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3191",
+      "classificatore": "A",
+      "ndcg_a": 0.3571648615920873,
+      "ndcg_b": 0.316418509322967,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-320",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0.07336392209936006,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3201",
+      "classificatore": "A",
+      "ndcg_a": 0.3053157659172755,
+      "ndcg_b": 0.43056322872474745,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3211",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3221",
+      "classificatore": "A",
+      "ndcg_a": 0.060129839513593235,
+      "ndcg_b": 0.05430265598415857,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3231",
+      "classificatore": "B",
+      "ndcg_a": 0.19650174607090312,
+      "ndcg_b": 0.2585993857551725,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3241",
+      "classificatore": "A",
+      "ndcg_a": 0.3607790370815594,
+      "ndcg_b": 0.28192888494377455,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3251",
+      "classificatore": "B",
+      "ndcg_a": 0.16441836920670902,
+      "ndcg_b": 0.056906557239903996,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3261",
+      "classificatore": "A",
+      "ndcg_a": 0.14982420171299157,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3271",
+      "classificatore": "A",
+      "ndcg_a": 0.06362078819895173,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3281",
+      "classificatore": "A",
+      "ndcg_a": 0.37266727036121905,
+      "ndcg_b": 0.20436662668128655,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3292",
+      "classificatore": "A",
+      "ndcg_a": 0.5583194834025179,
+      "ndcg_b": 0.5350584485809999,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-33",
+      "classificatore": "A",
+      "ndcg_a": 0.2668173149303454,
+      "ndcg_b": 0.34502688587893954,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3302",
+      "classificatore": "A",
+      "ndcg_a": 0.056906557239903996,
+      "ndcg_b": 0.060129839513593235,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3312",
+      "classificatore": "B",
+      "ndcg_a": 0.1782735800233828,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-332",
+      "classificatore": "A",
+      "ndcg_a": 0.6131471927654585,
+      "ndcg_b": 0.6131471927654585,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3322",
+      "classificatore": "A",
+      "ndcg_a": 0.20511666732794356,
+      "ndcg_b": 0.29345568839744024,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3332",
+      "classificatore": "A",
+      "ndcg_a": 0.5890246470591193,
+      "ndcg_b": 0.6328066009683491,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3342",
+      "classificatore": "A",
+      "ndcg_a": 0.6713860725233042,
+      "ndcg_b": 0.46927872602275655,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3352",
+      "classificatore": "A",
+      "ndcg_a": 0.09363198218564918,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3362",
+      "classificatore": "A",
+      "ndcg_a": 0.4260967530293622,
+      "ndcg_b": 0.3239134396887189,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3372",
+      "classificatore": "A",
+      "ndcg_a": 0.15537907391531905,
+      "ndcg_b": 0.15537907391531905,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3382",
+      "classificatore": "A",
+      "ndcg_a": 0.5644967820648775,
+      "ndcg_b": 0.5878167394129855,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3392",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3402",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3412",
+      "classificatore": "A",
+      "ndcg_a": 0.16195671984435944,
+      "ndcg_b": 0.08097835992217972,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3422",
+      "classificatore": "A",
+      "ndcg_a": 0.03712651420061503,
+      "ndcg_b": 0.06944723612733537,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3432",
+      "classificatore": "A",
+      "ndcg_a": 0.3282410109263901,
+      "ndcg_b": 0.3421013776262554,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-344",
+      "classificatore": "A",
+      "ndcg_a": 0.16457377300675402,
+      "ndcg_b": 0.21053396931526489,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3442",
+      "classificatore": "A",
+      "ndcg_a": 0.04068375609634696,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3452",
+      "classificatore": "B",
+      "ndcg_a": 0.5372961739926128,
+      "ndcg_b": 0.5070751129515418,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3462",
+      "classificatore": "B",
+      "ndcg_a": 0.6611748755580589,
+      "ndcg_b": 0.6695034046582701,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-3472",
+      "classificatore": "A",
+      "ndcg_a": 0.08036018528064807,
+      "ndcg_b": 0.13347537859706937,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-358",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-371",
+      "classificatore": "A",
+      "ndcg_a": 0.3800937667159343,
+      "ndcg_b": 0.3800937667159343,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-383",
+      "classificatore": "A",
+      "ndcg_a": 0.1695801026368081,
+      "ndcg_b": 0.21398626473452756,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-395",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-407",
+      "classificatore": "A",
+      "ndcg_a": 0.638787886479598,
+      "ndcg_b": 0.638787886479598,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-418",
+      "classificatore": "A",
+      "ndcg_a": 0.8670870086853021,
+      "ndcg_b": 0.8670870086853021,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-430",
+      "classificatore": "A",
+      "ndcg_a": 0.5974004989549763,
+      "ndcg_b": 0.5378811140995253,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-44",
+      "classificatore": "A",
+      "ndcg_a": 0.2244914439320251,
+      "ndcg_b": 0.2981551838465595,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-441",
+      "classificatore": "A",
+      "ndcg_a": 0.9248707594020266,
+      "ndcg_b": 0.7367772953748501,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-457",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-468",
+      "classificatore": "B",
+      "ndcg_a": 0.3197469218992891,
+      "ndcg_b": 0.29799860886693574,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-478",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-488",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 0.9305687780632229,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-499",
+      "classificatore": "B",
+      "ndcg_a": 0.30240383049385083,
+      "ndcg_b": 0.27358726976933645,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-510",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-520",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-531",
+      "classificatore": "B",
+      "ndcg_a": 0.3814802991585579,
+      "ndcg_b": 0.39842793454336195,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-541",
+      "classificatore": "B",
+      "ndcg_a": 0.4167050651787726,
+      "ndcg_b": 0.24239360997286483,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-551",
+      "classificatore": "A",
+      "ndcg_a": 0.30657359638272924,
+      "ndcg_b": 0.30657359638272924,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-56",
+      "classificatore": "A",
+      "ndcg_a": 0.8125320713342793,
+      "ndcg_b": 0.7750676425418,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-561",
+      "classificatore": "B",
+      "ndcg_a": 0.3589542101716347,
+      "ndcg_b": 0.3589542101716347,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-571",
+      "classificatore": "B",
+      "ndcg_a": 0.29181044994360233,
+      "ndcg_b": 0.2437748474873753,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-583",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-593",
+      "classificatore": "B",
+      "ndcg_a": 0.46927872602275655,
+      "ndcg_b": 0.46927872602275655,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-603",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-613",
+      "classificatore": "B",
+      "ndcg_a": 0.13886244387355454,
+      "ndcg_b": 0.06943122193677727,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-623",
+      "classificatore": "B",
+      "ndcg_a": 0.2489083270225946,
+      "ndcg_b": 0.2489083270225946,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-634",
+      "classificatore": "B",
+      "ndcg_a": 0.4537425745411855,
+      "ndcg_b": 0.4152807670887413,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-645",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-660",
+      "classificatore": "B",
+      "ndcg_a": 0.9305687780632229,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-671",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-68",
+      "classificatore": "A",
+      "ndcg_a": 0.6197610137758978,
+      "ndcg_b": 0.481941637304645,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-681",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-691",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-701",
+      "classificatore": "B",
+      "ndcg_a": 0.5026317885449211,
+      "ndcg_b": 0.44619342964129877,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-711",
+      "classificatore": "B",
+      "ndcg_a": 0.2863459897524693,
+      "ndcg_b": 0.3301376494471203,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-721",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-731",
+      "classificatore": "B",
+      "ndcg_a": 0.7728378251807521,
+      "ndcg_b": 0.8006937664098821,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-741",
+      "classificatore": "B",
+      "ndcg_a": 0.715550648768261,
+      "ndcg_b": 0.857980942822373,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-751",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-761",
+      "classificatore": "B",
+      "ndcg_a": 0.15130120674940675,
+      "ndcg_b": 0.15130120674940675,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-771",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-78",
+      "classificatore": "A",
+      "ndcg_a": 0.12741733550370726,
+      "ndcg_b": 0.17280430617228193,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-782",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-792",
+      "classificatore": "B",
+      "ndcg_a": 0.6238470455881187,
+      "ndcg_b": 0.6448244864271548,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-806",
+      "classificatore": "B",
+      "ndcg_a": 0.9337457765456111,
+      "ndcg_b": 0.9216017310213247,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-817",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-827",
+      "classificatore": "B",
+      "ndcg_a": 0.6936634693435664,
+      "ndcg_b": 0.6659485553357845,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-838",
+      "classificatore": "B",
+      "ndcg_a": 0.7767471075223498,
+      "ndcg_b": 0.8550956239938449,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-850",
+      "classificatore": "B",
+      "ndcg_a": 0.7125523635307983,
+      "ndcg_b": 0.6489315753318465,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-872",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-882",
+      "classificatore": "B",
+      "ndcg_a": 0.7183627972686238,
+      "ndcg_b": 0.7183627972686238,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-892",
+      "classificatore": "B",
+      "ndcg_a": 0.8006937664098821,
+      "ndcg_b": 0.8701249883466594,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-902",
+      "classificatore": "B",
+      "ndcg_a": 0.6366824387328317,
+      "ndcg_b": 0.6366824387328317,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-91",
+      "classificatore": "A",
+      "ndcg_a": 0.4305988858401221,
+      "ndcg_b": 0.484144002651486,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-913",
+      "classificatore": "B",
+      "ndcg_a": 0.8630152897016883,
+      "ndcg_b": 0.8701249883466594,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-924",
+      "classificatore": "B",
+      "ndcg_a": 0.2200917662980802,
+      "ndcg_b": 0.2200917662980802,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-934",
+      "classificatore": "B",
+      "ndcg_a": 0.6987957033953602,
+      "ndcg_b": 0.6652907408280685,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-946",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.17318663334822615,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-956",
+      "classificatore": "B",
+      "ndcg_a": 0.6563033086078547,
+      "ndcg_b": 0.3132848169017409,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-966",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.1356519734324478,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-977",
+      "classificatore": "A",
+      "ndcg_a": 0.46927872602275655,
+      "ndcg_b": 0.46927872602275655,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-987",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0.20210734650054762,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "nfcorpus",
+      "query": "PLAIN-997",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "100",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1012",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1014",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1019",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1020",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1021",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1024",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1029",
+      "classificatore": "A",
+      "ndcg_a": 0.9010126104210695,
+      "ndcg_b": 0.7653606369886218,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1041",
+      "classificatore": "A",
+      "ndcg_a": 0.39780880120575696,
+      "ndcg_b": 0.23719771276929624,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1049",
+      "classificatore": "A",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 0.43067655807339306,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1062",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1086",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1088",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1089",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1099",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.2890648263178879,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1100",
+      "classificatore": "B",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.3562071871080222,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "1104",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1107",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1110",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1121",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "113",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1130",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1132",
+      "classificatore": "A",
+      "ndcg_a": 0.30657359638272924,
+      "ndcg_b": 0.6131471927654585,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1137",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "1140",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1144",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1146",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "115",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1150",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1163",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1175",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1179",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "118",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1180",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1185",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1187",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1191",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1194",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1196",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1197",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1199",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1200",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1202",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1204",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1207",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1213",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1216",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1221",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1225",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1226",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1232",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "124",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1241",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1245",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.38685280723454163,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1259",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1262",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "1266",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "127",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1270",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1271",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1272",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1273",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1274",
+      "classificatore": "A",
+      "ndcg_a": 0.6978817289434458,
+      "ndcg_b": 0.8385465274895064,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1278",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1279",
+      "classificatore": "A",
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "128",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1280",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1281",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1282",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "129",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1290",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1292",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1298",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "13",
+      "classificatore": "A",
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 0.3333333333333333,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "130",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1303",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1316",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1319",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "132",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1320",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "133",
+      "classificatore": "A",
+      "ndcg_a": 0.6601396023754075,
+      "ndcg_b": 0.6217937096682963,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1332",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1335",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1336",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1337",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1339",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1344",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1352",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1359",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1362",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1363",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1368",
+      "classificatore": "A",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "137",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1370",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.38685280723454163,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1379",
+      "classificatore": "A",
+      "ndcg_a": 0.9058653015743079,
+      "ndcg_b": 0.9058653015743079,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1382",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1385",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1389",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "1395",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "141",
+      "classificatore": "A",
+      "ndcg_a": 0.9197207891481877,
+      "ndcg_b": 0.9197207891481877,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "142",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "143",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "146",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "148",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "163",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "171",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "179",
+      "classificatore": "A",
+      "ndcg_a": 0.9619991470595832,
+      "ndcg_b": 0.8838242945899707,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "180",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "183",
+      "classificatore": "A",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 0.2890648263178879,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "185",
+      "classificatore": "A",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "198",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "208",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "212",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "213",
+      "classificatore": "A",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0.3562071871080222,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "216",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "217",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "218",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "219",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "230",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "232",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "233",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "236",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "237",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "238",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "239",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0.3154648767857287,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "248",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "249",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "261",
+      "classificatore": "A",
+      "ndcg_a": 0.2184074368181642,
+      "ndcg_b": 0.3956467236022119,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "268",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "269",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "274",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "275",
+      "classificatore": "A",
+      "ndcg_a": 0.625704968030342,
+      "ndcg_b": 0.6364391809889588,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "279",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "294",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.2890648263178879,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "295",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.3154648767857287,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "298",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "3",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.38685280723454163,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "300",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "303",
+      "classificatore": "A",
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "312",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "314",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "324",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "327",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "338",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "343",
+      "classificatore": "A",
+      "ndcg_a": 0.9197207891481877,
+      "ndcg_b": 0.9197207891481877,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "350",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "354",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "36",
+      "classificatore": "A",
+      "ndcg_a": 0.2184074368181642,
+      "ndcg_b": 0.2184074368181642,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "362",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "380",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "384",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "385",
+      "classificatore": "A",
+      "ndcg_a": 0.4824755593907551,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "386",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "388",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.38685280723454163,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "399",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "410",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "411",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "415",
+      "classificatore": "A",
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 0.3154648767857287,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "42",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "421",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "431",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "436",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "437",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "439",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "440",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "443",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "452",
+      "classificatore": "A",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 0.23719771276929624,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "475",
+      "classificatore": "A",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "478",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.2890648263178879,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "48",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "49",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "491",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "5",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "50",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "501",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "502",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "507",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "508",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "51",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "513",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "514",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "516",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "517",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "521",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.43067655807339306,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "525",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "527",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "528",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "53",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "532",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "533",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "535",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0.3010299956639812,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "536",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "539",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "54",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.43067655807339306,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "540",
+      "classificatore": "A",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 0.6131471927654585,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "544",
+      "classificatore": "A",
+      "ndcg_a": 0.3154648767857287,
+      "ndcg_b": 0.3562071871080222,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "549",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.43067655807339306,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "551",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.38685280723454163,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "552",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "554",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "56",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "560",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "569",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "57",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "575",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "577",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "578",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "587",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "589",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "593",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "597",
+      "classificatore": "A",
+      "ndcg_a": 0.9060254355346824,
+      "ndcg_b": 0.9060254355346824,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "598",
+      "classificatore": "A",
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0.3562071871080222,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "613",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "619",
+      "classificatore": "A",
+      "ndcg_a": 0.1845756967795682,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "623",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0.3010299956639812,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "628",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "636",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "637",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.38685280723454163,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "641",
+      "classificatore": "A",
+      "ndcg_a": 0.8772153153380494,
+      "ndcg_b": 0.9197207891481877,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "644",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "649",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "659",
+      "classificatore": "A",
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "660",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "674",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "684",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "690",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "691",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "692",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "693",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "70",
+      "classificatore": "B",
+      "ndcg_a": 0.8772153153380494,
+      "ndcg_b": 0.20438239758848614,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "700",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "702",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "715",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "716",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "718",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "72",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "721",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "723",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "727",
+      "classificatore": "A",
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "728",
+      "classificatore": "A",
+      "ndcg_a": 0.8772153153380494,
+      "ndcg_b": 0.6131471927654585,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "729",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "742",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "743",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "744",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "75",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "756",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "759",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "768",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "770",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "775",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "781",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "783",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "784",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "785",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "793",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "800",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.5,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "805",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "808",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "811",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "814",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "820",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "821",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "823",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "830",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "831",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "832",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "834",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "837",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "839",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "845",
+      "classificatore": "B",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "847",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "852",
+      "classificatore": "A",
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.43067655807339306,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "859",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "870",
+      "classificatore": "B",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "873",
+      "classificatore": "A",
+      "ndcg_a": 0.4808659172767282,
+      "ndcg_b": 0.49661976912920763,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "879",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "880",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "882",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "887",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "903",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "904",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": false
+    },
+    {
+      "collezione": "scifact",
+      "query": "907",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "911",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "913",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "914",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "921",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "922",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "936",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "94",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "956",
+      "classificatore": "A",
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "957",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "960",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "967",
+      "classificatore": "B",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "971",
+      "classificatore": "A",
+      "ndcg_a": 0.7315682114753617,
+      "ndcg_b": 0.7327711443782633,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "975",
+      "classificatore": "A",
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "982",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "985",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "99",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 0.3010299956639812,
+      "l_vuoto": true
+    },
+    {
+      "collezione": "scifact",
+      "query": "993",
+      "classificatore": "A",
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "l_vuoto": true
+    }
+  ]
+}

@@ -273,11 +273,13 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       RRF dimezza le known-item. Nessun parametro unico regge i due tipi di
       query. 3 previsioni e mezza su 7
       (`risultati/esperimenti/2026-09-25_fusione/`)
-- [ ] **Il peso del vettore per tipo di query**: aggiungerlo alla scelta di
-      `2026-09-25_scelta-per-query/` (oggi sceglie fra `any` e `all`, senza
-      vettori) e rifarla con l'unione dentro: se `all` più unione regge anche
-      sulle known-item umane, la scelta fra `any` e `all` potrebbe non servire
-      più
+- [x] **Il peso del vettore per tipo di query** (25/09/2026): scelta fra A
+      (`any`, unione, peso 160) e B (`all`, unione, peso 10). La regola "cifra
+      e `all` lessicale non vuoto" fa 0,6728 di nDCG@10 medio, +0,023 sulla
+      migliore configurazione fissa e +0,026 sulla scelta senza vettori; il
+      classificatore non fa meglio. L'oracolo ha 0,016 di spazio oltre la
+      regola, sulle frasi, che nessuna caratteristica della query prende. 4
+      previsioni su 5 (`risultati/esperimenti/2026-09-25_scelta-ibrida/`)
 - [x] **Scelta della configurazione per query** (25/09/2026): una regressione
       logistica sceglie fra BM25 `any` e `all` e arriva a 0,0006 dall'oracolo
       (0,6473 contro 0,6479 di media su known-item, SciFact e NFCorpus), mentre
@@ -285,9 +287,10 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       scelta per collezione, e una regola a due condizioni (cifra e `all` non
       vuoto) fa quanto il classificatore
       (`risultati/esperimenti/2026-09-25_scelta-per-query/`)
-- [ ] **Rifare la scelta per query sulle known-item umane**, con lo stesso
-      script: è lì che le cifre non bastano a riconoscere il tipo di query. Nel
-      motore entra solo se il classificatore batte la regola
+- [ ] **Rifare la scelta per query sulle known-item umane**, con lo script di
+      `2026-09-25_scelta-ibrida/` (A e B ibride): è lì che le cifre non
+      bastano a riconoscere il tipo di query. Nel motore entra solo se il
+      classificatore batte la regola
 
 ### 6. Confronto finale in Documentale
 

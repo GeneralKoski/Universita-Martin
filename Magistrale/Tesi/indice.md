@@ -110,10 +110,12 @@ l'unione conta solo dove il lessicale lascia buchi) e `_ibrido-congiuntivo/`
 unione tiene le known-item a 0,96); 7.3 ha
 `2026-09-25_fusione/` (il 20 era otto volte troppo basso per la lingua
 naturale e giusto per gli identificativi: nessuna fusione con un parametro
-unico regge i due tipi); 7.5 ha già
+unico regge i due tipi); 7.5 ha
 `2026-09-25_scelta-per-query/` (il classificatore a
-0,0006 dall'oracolo, e una regola a due condizioni che fa lo stesso). *Manca:*
-la scelta per query rifatta con unione e peso del vettore, sulle known-item
+0,0006 dall'oracolo, e una regola a due condizioni che fa lo stesso) e
+`_scelta-ibrida/` (con unione e peso del vettore per tipo la stessa regola vale
++0,023 sulla migliore configurazione fissa; l'oracolo ha 0,016 di spazio che la
+forma della query non coglie). *Manca:* la scelta rifatta sulle known-item
 umane; la suddivisione dei documenti lunghi (7.1); il costo (7.4). Gli
 embedding vengono da `bge-m3` in locale (deciso il 25/09/2026).
 

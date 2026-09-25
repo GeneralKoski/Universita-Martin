@@ -86,3 +86,67 @@ difetto 3, e la regola va messa alla prova sulle known-item umane. Se tiene la
 risolve, e va scritto come limite.
 
 ## Esito
+
+`2026-09-25T133033Z_esito.json`, da `analizza.py` al commit `9799277` (albero
+pulito), sulle quindici valutazioni delle 13:25-13:30 UTC più le tre L e le tre
+U del difetto 2 congiuntivo, tutte Koskidex `f16b4c9`. Il classificatore ha
+imparato da 1.839 query di addestramento in cui A e B differiscono (1.438
+NFCorpus, 226 SciFact, 175 known-item); 1.860 pari escluse.
+
+nDCG@10 sul test:
+
+| strategia | known-item | SciFact | NFCorpus | media |
+|---|---|---|---|---|
+| sempre A (`any`, 160) | 0,5589 | **0,7067** | **0,3441** | 0,5366 |
+| sempre B (`all`, 10) | **0,9680** | 0,6483 | 0,3325 | 0,6496 |
+| sempre U (`all`, 20), riferimento | 0,9675 | 0,6483 | 0,3333 | 0,6497 |
+| oracolo | 0,9731 | 0,7280 | 0,3655 | 0,6889 |
+| regola della cifra | 0,9680 | 0,6881 | 0,3438 | 0,6666 |
+| ripiego (B, se L vuoto A) | 0,9680 | 0,7072 | 0,3433 | **0,6728** |
+| **cifra e L non vuoto** | **0,9680** | 0,7067 | 0,3438 | **0,6728** |
+| classificatore | 0,9680 | 0,7036 | 0,3432 | 0,6716 |
+| classificatore senza vettori (`scelta-per-query`) | 0,9687 | 0,6694 | 0,3038 | 0,6473 |
+
+**Il peso del vettore scelto per tipo di query vale +0,023 di nDCG@10 medio
+sulla migliore configurazione fissa**, e +0,026 sulla scelta per query senza
+vettori. Per prenderlo basta ancora la regola a due condizioni: la query ha una
+cifra e il recupero lessicale congiuntivo trova qualcosa. Anche il ripiego fa
+lo stesso in media.
+
+**E adesso l'oracolo ha spazio oltre il tipo di query**: 0,016 sopra la regola,
+quasi tutto sulle frasi (+0,021 su SciFact, +0,021 su NFCorpus), dove nella
+scelta per query senza vettori faceva zero. A e B sono ormai due ordinamenti
+diversi della stessa frase, lessicale con vettore forte contro quasi solo
+vettore, e B vince su 29 query di SciFact su 300 e su 82 di NFCorpus su 323. Ma
+nessuno lo sa riconoscere dalla forma della query: il classificatore manda a B
+21 query di SciFact e ci perde (0,7036 contro 0,7067 di sempre A), e su NFCorpus
+ne manda 156 e perde 0,001. I pesi dicono che ha imparato la stessa regola di prima
+(quota di cifre +0,98, L vuoto -0,64) e poco altro.
+
+### Le previsioni
+
+1. La regola a due condizioni almeno 0,665 di media, almeno 0,015 sopra U a 20
+   e sopra il classificatore senza vettori: **0,6728, +0,023 e +0,026,
+   confermata.**
+2. Sempre A sulle known-item sotto 0,65: **0,5589, confermata.**
+3. Sempre B su SciFact entro 0,02 dal solo vettore, su NFCorpus fra 0,30 e
+   0,34: **0,6483 (+0,005) e 0,3325, confermata.** Su SciFact B e U a 20
+   coincidono: quando il lessicale è vuoto il peso non cambia l'ordine.
+4. L'oracolo almeno 0,03 sopra sempre A su SciFact: **+0,021, smentita** nella
+   misura, non nel verso: lo spazio c'è, più piccolo di come lo davo.
+5. Il classificatore entro 0,005 dalla regola: **-0,0012, confermata.**
+
+### Cosa vuol dire per la tesi
+
+La correzione del difetto 3 ha una forma precisa: due configurazioni, una per
+le frasi (`any`, peso 160) e una per gli identificativi (`all`, peso 10), e una
+regola di una riga per scegliere. Vale +0,023 sulla migliore configurazione
+fissa, e resta il rischio già dichiarato nella scelta per query: qui ogni tipo
+di query sta in una collezione diversa, e la regola può riconoscere la
+collezione più che il tipo. La prova sono le known-item umane.
+
+Resta un limite da scrivere: 0,016 di nDCG@10 medio che un oracolo prende e
+nessuna caratteristica della query sa prendere. Sono query in cui il vettore da
+solo ordina meglio del lessicale col vettore, e per saperlo bisognerebbe
+guardare i risultati, non la query.
+
