@@ -240,18 +240,23 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       vettore della query con `hybrid=true`; cache dei vettori per modello e
       testo in `<data-dir>/embeddings.jsonl`. Dal vivo: 1.000 schede degli albi
       in 51 secondi la prima volta, 0,15 dalla cache
-- [ ] `scripts/evaluate` con l'embedder e la stessa cache, per le collezioni
-      pubbliche e le known-item
+- [x] `scripts/evaluate` con l'embedder e la stessa cache (Koskidex
+      `4b7b97b`): `-embedder bge-m3`, cache in `eval/cache/`. Prima volta: 11
+      minuti SciFact, 8 NFCorpus, 9 gli albi
 - [ ] Prima di indicizzare da Documentale con i vettori: il timeout del client
       (15 s) e quello di scrittura di Koskidex (60 s) sono troppo corti per un
       blocco da 1.000 atti calcolato per la prima volta
 - [ ] Suddivisione dei documenti lunghi in parti: decisa, scritta e misurata
-- [ ] `Settings.HybridMode`, vuoto = re-ranking di oggi; nel ramo ibrido il
-      vettoriale aggiunge documenti ai candidati
-- [ ] Test che fallisce oggi: un documento pertinente solo semanticamente deve
-      comparire
-- [ ] Costo della scansione di tutti i vettori (O(n)): misurato, non dato per
-      buono
+- [x] **Difetto 2** (25/09/2026, Koskidex `f5ce77f`): `Settings.HybridMode`
+      (`union`, `vector`), `VectorTopK` 100, re-ranking di default. Il
+      re-ranking vale +0,022 su SciFact, +0,024 su NFCorpus, +0,013 sulle
+      known-item; l'unione non cambia niente su SciFact (il lessicale `any`
+      trova già quasi tutto), su NFCorpus +0,031 di Recall@100 e zero query a
+      vuoto. Costo 5-15 ms per query, lineare. 4 previsioni e mezza su 6
+      (`risultati/esperimenti/2026-09-25_ibrido-unione/`)
+- [ ] **Difetto 2 sulla ricerca congiuntiva di Documentale**: l'unione
+      dovrebbe pesare di più dove il lessicale trova poco. Serve l'embedder
+      dall'app (vedi i timeout sopra)
 - [ ] Fusione: RRF contro pesatura normalizzata, calibrazione, e fusione che
       dipende dal tipo di query (identificativa o in lingua naturale)
 - [x] **Scelta della configurazione per query** (25/09/2026): una regressione
