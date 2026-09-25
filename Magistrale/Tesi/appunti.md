@@ -258,6 +258,24 @@ Due scoperte fatte per strada, tutte e due materiale di tesi:
 Il prossimo passo è l'innesto: `KoskidexService` accanto a
 `ElasticsearchService`, scelto da configurazione.
 
+## Termine di paragone: le tesi dei colleghi (24/09/2026)
+
+Il 24 settembre 2026 ho visto le tesi esposte dai colleghi. In confronto,
+quello che sto facendo è su un altro piano. Per dare la misura: una tesi
+considerata **molto buona** era *"parlo con il chatbot, fa la query al database
+e mi estrae l'oggetto che sto cercando"*.
+
+Cosa ne segue, per come lavoro da qui a settembre 2027:
+
+- **il livello c'è già.** Il materiale per una buona tesi esiste (motore,
+  confronto con Elasticsearch, difetti misurati in produzione);
+- **i tempi non preoccupano.** Il lavoro è in anticipo sul calendario: la
+  previsione è di chiudere la parte tecnica prima della sessione invernale
+  2027, invece che fra febbraio e luglio come previsto all'inizio;
+- **all'esposizione conta farsi capire.** Una commissione abituata a tesi come
+  quella del chatbot va portata per mano: prima il problema (chi cerca
+  "illuminazione" non trova "dell'illuminazione"), poi i numeri.
+
 ## Relatore: stato e tempi
 
 Il 21 settembre 2026 ho agganciato entrambi i potenziali relatori a fine

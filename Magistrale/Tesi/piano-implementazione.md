@@ -1317,7 +1317,7 @@ I due backend devono convivere dietro la stessa interfaccia, selezionabili da co
 
 Il repo ha già in `examples/laravel/` un `KoskidexClient.php` e un trait `Searchable.php`: sono il punto di partenza, non vanno riscritti da zero.
 
-- [ ] **Passo 1: definire `SearchBackend` sulle firme reali di `ElasticsearchService`**
+- [x] **Passo 1: definire `SearchBackend` sulle firme reali di `ElasticsearchService`**
 
 Le firme sono queste, verificate nel file:
 
@@ -1348,11 +1348,16 @@ interface SearchBackend
 
 Due cose da notare, perché condizionano il resto. `fuzzySearch` oggi fa `collect($hits)->pluck('_id')->toArray()`: **restituisce solo gli id e butta via i punteggi**. Per il confronto finale servono anche quelli, quindi va aggiunto un metodo `fuzzySearchScored(string $term, string $type): array` che ritorna coppie id/punteggio, implementato da entrambi i backend e usato solo dall'impianto di valutazione. E ci sono due indici distinti, `documents` e `folders`: Koskidex li mappa su due indici con lo stesso nome, quindi `getIndexName` resta identico.
 
-- [ ] **Passo 2: far implementare l'interfaccia a `ElasticsearchService` senza cambiarne il corpo**
+- [x] **Passo 2: far implementare l'interfaccia a `ElasticsearchService` senza cambiarne il corpo**
 
 È una modifica di sola dichiarazione. Se PHP si lamenta di una firma, l'interfaccia è sbagliata e va allineata al codice esistente, mai il contrario: il backend che funziona in produzione è la verità.
 
-- [ ] **Passo 3: test di parità fra i due backend**
+- [x] **Passo 3: test di parità fra i due backend** - fatto dal vivo invece che
+      come test PHPUnit (25/09/2026): 24 query sul corpus vero, passando
+      dall'app, 24 insiemi identici su 24 (`risultati/esperimenti/2026-09-25_innesto-parita/`).
+      Un test su 20 documenti di prova non avrebbe visto le cinque cause di
+      divergenza, che su 14 documenti erano rimaste invisibili. I test PHPUnit
+      di `KoskidexServiceTest` coprono il contratto con un Koskidex finto
 
 ```php
 public function test_i_due_backend_trovano_gli_stessi_documenti(): void
@@ -1378,11 +1383,11 @@ public function test_i_due_backend_trovano_gli_stessi_documenti(): void
 
 Nota che l'asserzione è su **insieme**, non su ordine: l'ordine è precisamente ciò che la tesi confronta, quindi imporlo qui come test renderebbe impossibile misurarne la differenza.
 
-- [ ] **Passo 4: implementare `KoskidexService`**
+- [x] **Passo 4: implementare `KoskidexService`**
 
 Parti da `examples/laravel/app/Services/KoskidexClient.php` nel repo di Koskidex, che parla già con l'API REST, e avvolgilo per soddisfare `SearchBackend`.
 
-- [ ] **Passo 5: `config/search.php` e registrazione nel container**
+- [x] **Passo 5: `config/search.php` e registrazione nel container**
 
 ```php
 // config/search.php
@@ -1400,13 +1405,18 @@ $this->app->bind(SearchBackend::class, fn () => match (config('search.backend'))
 
 Poi sostituisci le iniezioni dirette di `ElasticsearchService` con `SearchBackend` nei punti che lo usano.
 
-- [ ] **Passo 6: eseguire i test e commit**
+- [x] **Passo 6: eseguire i test e commit**
 
 ```bash
 cd apps/laravel && php artisan test --filter SearchBackend
 git add apps/laravel/app/Contracts apps/laravel/app/Services apps/laravel/config/search.php apps/laravel/tests/Feature/SearchBackendTest.php
 git commit -m "search: introduce SearchBackend contract with Elasticsearch and Koskidex implementations"
 ```
+
+**Nota (25/09/2026).** `fuzzySearchScored` non è ancora stato aggiunto: serve
+al Task 4.3, e si aggiunge lì. Il resto del Task 4.1 è in Documentale `67cf954`
+(contratto, servizio, configurazione, 18 test) e `2a03310` (valutazione col
+motore configurato).
 
 ### Task 4.2: Indicizzazione e vettori
 

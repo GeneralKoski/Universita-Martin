@@ -1686,7 +1686,7 @@ modifiche al ranking, perché il baseline del 23/09 deve restare misurabile.
       con queste impostazioni, gli insiemi devono tornare identici a quelli di
       Elasticsearch sulle 24 query del confronto, e l'esperimento in
       `risultati/esperimenti/2026-09-23_cause-divergenza/` diventa un test
-- [ ] **Poi l'innesto**, secondo il piano di implementazione: `KoskidexService`
+- [x] **Poi l'innesto**, secondo il piano di implementazione: `KoskidexService`
       accanto a `ElasticsearchService`, dietro la stessa interfaccia, scelto da
       configurazione. Attenzione a `updateDocument`: su Elasticsearch è un
       aggiornamento **parziale** (`update` con `doc`, oppure un inserimento se
@@ -1734,6 +1734,18 @@ ipotesi sui residui erano sbagliate (dettagli in
 
 Resta aperto: contare quanti documenti Documentale perde per le elisioni, sul
 corpus intero e non solo sulle 24 query.
+
+**L'innesto è fatto (25/09/2026).** Documentale `67cf954` e `2a03310`:
+`SearchBackend` con `ElasticsearchService` e `KoskidexService`, scelto da
+`SEARCH_BACKEND`, e `app:eval-run-queries` che interroga il motore configurato.
+Dal vivo, passando dall'app sui 10.018 atti: **24 insiemi su 24 identici**,
+ricerca a 2,7 ms di mediana contro 22 di Elasticsearch, indicizzazione 1,9
+secondi contro 1,7. La prima misura ha trovato un altro difetto di Koskidex, un
+`fsync` per documento (31,8 secondi), corretto in `f583d03`. Dettagli in
+`risultati/esperimenti/2026-09-25_innesto-parita/`.
+
+Prossimo: il confronto finale della Fase 4 (Task 4.3 del piano di
+implementazione) e il metodo `fuzzySearchScored` che gli serve.
 
 **Cosa non è un prerequisito dell'innesto.** Il difetto 2 (l'ibrido che è solo
 re-ranking, Task E3) e il difetto 3 (la fusione di scale incomparabili)

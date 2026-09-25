@@ -34,7 +34,7 @@ Se un numero non ha un file qui, non esiste.
 | Cartella | Cosa contiene | Da dove viene |
 |---|---|---|
 | `koskidex-beir/` | valutazioni di Koskidex sulle collezioni pubbliche SciFact e NFCorpus: nDCG@10, Recall@100, MRR@10 per query, query a vuoto, tempi | `scripts/evaluate` di Koskidex |
-| `confronto/` | le stesse query su Elasticsearch (il codice di produzione di Documentale) e su Koskidex, sullo stesso corpus: ranking, latenza per query, tempi di indicizzazione | `app:eval-run-queries` di Documentale, `scripts/compare` di Koskidex, `strumenti/indicizza-elasticsearch.sh` |
+| `confronto/` | le stesse query su Elasticsearch (il codice di produzione di Documentale) e su Koskidex, sullo stesso corpus: ranking, latenza per query, tempi di indicizzazione | `app:eval-run-queries` di Documentale (col motore scelto da `SEARCH_BACKEND`), `scripts/compare` di Koskidex, `strumenti/indicizza-elasticsearch.sh`, `strumenti/indicizza-koskidex.sh` |
 | `query/` | i file di query usati, così ogni esecuzione si rifà con le stesse | scritti a mano, vedi sotto |
 | `esperimenti/` | esperimenti una tantum, con dati, codice per rifarli e spiegazione | una sottocartella per esperimento |
 | `strumenti/` | script che non stanno in nessuno dei due progetti | |
@@ -59,8 +59,14 @@ DB_HOST=127.0.0.1 DB_PORT=33061 DB_DATABASE=albo DB_USERNAME=root DB_PASSWORD=ro
 go run ./scripts/compare -corpus eval/corpora/c3-albo/beir-metadata/corpus.jsonl \
   -queries "$TESI_RISULTATI/query/sottostringhe-20.txt" -sottostringa
 
-# Indicizzazione di Elasticsearch da indice vuoto, cronometrata
+# Le stesse query dall'app, su Koskidex innestato (serve un Koskidex in ascolto)
+SEARCH_BACKEND=koskidex KOSKIDEX_HOST=http://localhost:7711 DB_HOST=127.0.0.1 DB_PORT=33061 \
+  DB_DATABASE=albo DB_USERNAME=root DB_PASSWORD=root TELESCOPE_ENABLED=false \
+  php -d memory_limit=1G artisan app:eval-run-queries "$TESI_RISULTATI/query/confronto-24.txt" --label=albo-metadata
+
+# Indicizzazione da indice vuoto, cronometrata, col comando dell'app
 "$TESI_RISULTATI/strumenti/indicizza-elasticsearch.sh" albo albo-metadata
+"$TESI_RISULTATI/strumenti/indicizza-koskidex.sh" albo albo-metadata http://localhost:7711
 ```
 
 ### I formati
@@ -79,10 +85,13 @@ configurazione: `ids` e `punteggi` dei primi risultati, al massimo 1.000,
 `config.risultati_conservati_per_query`: nessuna metrica guarda oltre le prime
 100 posizioni, e gli insiemi congiuntivi del corpus albo restano sotto i 500.
 
-**`confronto/*_elasticsearch.json`** - `query` (per ogni query: `ids`, `ms`),
-`config` (versione di Elasticsearch, indice, documenti indicizzati).
+**`confronto/*_elasticsearch.json`** e **`confronto/*_albo-metadata-koskidex.json`**
+(prodotti da `app:eval-run-queries`) - `query` (per ogni query: `ids`, `ms`),
+`config` (`motore`, versione del motore, indice, documenti indicizzati). Da non
+confondere con `*_beir-metadata-koskidex.json`, che sono di `scripts/compare` e
+interrogano Koskidex in memoria, senza l'app.
 
-**`confronto/*_indicizzazione-elasticsearch.json`** - `timings.index_ms`,
+**`confronto/*_indicizzazione-{elasticsearch,koskidex}.json`** - `timings.index_ms`,
 `documenti_indicizzati`, `config` (comando esatto, database, indice).
 
 ### Le query
