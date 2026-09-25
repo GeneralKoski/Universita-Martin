@@ -275,6 +275,22 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
 - [ ] Obiettivo: parte tecnica chiusa prima della sessione invernale 2027,
       scrittura dopo, laurea a settembre 2027
 
+## Opzionale, se avanza tempo
+
+Serve alla tesi ma non è necessario. Si fa solo a capitolo 7 chiuso,
+altrimenti va fra gli sviluppi futuri.
+
+- [ ] **Reranker neurale, offline** (discusso il 25/09/2026). Un cross-encoder
+      multilingue (per esempio `bge-reranker-v2-m3`) riordina i primi 100
+      candidati dei ranking già archiviati, e `scripts/evaluate -rankings`
+      rivaluta. Dà il tetto di quanto vale riordinare, dato il recall del
+      primo passaggio, e contrasta il difetto 2: il re-ranking funziona se è
+      progettato come stadio (pochi candidati, modello preciso). Circa un
+      giorno, con un ambiente Python fuori da Koskidex. Sezione del confronto
+      finale (capitolo 8). Niente dentro Koskidex o Documentale: servirebbe un
+      servizio a parte e centinaia di millisecondi per ricerca. Sulle
+      known-item per numero e comune non si aspetta guadagno
+
 ## Parcheggiato
 
 Non serve alla tesi. Si riprende solo se Koskidex va in produzione.
