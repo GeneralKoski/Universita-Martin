@@ -48,7 +48,7 @@ rapporto = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
                        "elasticsearch_versione": chiama("GET", "/")["version"]["number"], "indice": INDICE,
                        "documenti_indicizzati": chiama("GET", f"/{INDICE}/_count")["count"],
                        "query_file": sys.argv[1], "commit": git("rev-parse", "--short", "HEAD"),
-                       "modifiche_non_committate": "true" if git("status", "--porcelain", "--", QUI) else "false"},
+                       "modifiche_non_committate": "true" if git("status", "--porcelain", "--", "*.py") else "false"},
             "query": esiti}
 vuote = sum(1 for e in esiti if not e["ids"])
 print(f"{len(esiti)} query, {vuote} a vuoto")

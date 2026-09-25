@@ -151,6 +151,12 @@ Quello che è stato tolto o toccato, perché la regola 1 non valga a metà.
   non committato. Metriche identiche a quelle committate. Da qui in poi i
   controlli di sviluppo si lanciano con `TESI_RISULTATI=` vuota, e l'archivio
   riceve solo esecuzioni da codice committato.
+- **25/09/2026, 1 file** in `esperimenti/2026-09-25_known-item-auto/`
+  (`2026-09-25T084137Z_esito.json`): marcato `modifiche_non_committate: true`
+  perché `analizza.py` guardava tutta la cartella, e dentro c'era il rapporto
+  del controllo appena archiviato e non ancora committato. Il codice era quello
+  committato. Il controllo ora guarda solo gli script; analisi rifatta, stessi
+  numeri.
 - **I 12 file più vecchi di `koskidex-beir/`** (ore 11:5x e 14:0x UTC del
   23/09) vengono da prima degli strumenti di misura: hanno le metriche ma non
   hanno né `timings` né `config`. Le stesse configurazioni rifatte dopo hanno

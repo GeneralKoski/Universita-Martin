@@ -52,7 +52,7 @@ ora = datetime.datetime.now(datetime.timezone.utc)
 git = lambda *a: subprocess.run(["git", "-C", QUI, *a], capture_output=True, text=True, check=True).stdout.strip()
 esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
          "config": {"commit": git("rev-parse", "--short", "HEAD"),
-                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--", QUI) else "false",
+                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--", "*.py") else "false",
                     "rapporto_elasticsearch": os.path.basename(rap_es), "rapporto_koskidex": os.path.basename(rap_kx),
                     "elasticsearch_versione": es["config"].get("elasticsearch_versione"),
                     "koskidex_versione": kx["config"].get("koskidex_versione"),
