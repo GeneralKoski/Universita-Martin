@@ -1,27 +1,126 @@
 \chapter{Introduzione}\label{chapter:introduzione}
 
-Da scrivere. Esempio di citazione, da togliere: \cite{robertson2009bm25}.
+\section{Ritrovare un atto in un documentale}\label{sec:ritrovare}
 
-\section{Ritrovare un atto in un documentale}
+Un sistema documentale è l'archivio di un'organizzazione: determine, delibere,
+contratti, verbali, archiviati con un nome, qualche etichetta e un riassunto. Chi
+lo usa di rado sfoglia: cerca. E cerca quasi sempre qualcosa che sa esistere,
+l'ordinanza di cui ricorda il numero, la determina che affidava un lavoro di cui
+ricorda l'argomento. Se la ricerca non la trova, per quella persona l'atto non
+c'è.
 
-Da scrivere.
+Le ricerche di un documentale sono di due specie. Alcune sono identificative:
+\emph{ordinanza 187}, \emph{determina 1223 Crispiano}, dove conta un numero e
+sbagliarlo di una cifra vuol dire un altro atto. Altre sono in lingua naturale:
+\emph{manutenzione strade}, \emph{contributi alle famiglie per l'infanzia}, dove
+non c'è una sola risposta giusta e le parole della query possono non stare
+nell'atto. Un motore di ricerca che va bene per le une non va bene, per forza,
+per le altre, e questa tesi misura quanto.
 
-\section{Koskidex e Documentale}
+\section{Koskidex e Documentale}\label{sec:due-sistemi}
 
-Da scrivere.
+\textbf{Documentale} è un sistema documentale sviluppato da Dieffetech, con un
+backend Laravel, MySQL ed Elasticsearch per la ricerca. \textbf{Koskidex} è un
+motore di ricerca full-text scritto in Go dall'autore di questa tesi, nato per la
+barra di ricerca di un piccolo negozio online: un binario solo, senza servizi
+esterni, con una dipendenza di codice. La tesi mette Koskidex al posto di
+Elasticsearch dentro Documentale, e chiede cosa costa.
 
-\section{La domanda di ricerca}
+L'innesto in sé non è il contributo, e sarebbe solo lavoro di integrazione. Il
+contributo è quello che l'innesto obbliga a guardare. Per sostituire
+Elasticsearch bisogna prima restituire gli stessi risultati, e arrivarci ha
+richiesto di trovare e riprodurre ogni differenza di matching fra i due motori.
+Da lì, ogni correzione si misura contro due riferimenti: il codice di Koskidex
+com'era il 23 settembre 2026, congelato in un test, ed Elasticsearch come lo
+interroga Documentale in produzione.
 
-Da scrivere.
+\section{La domanda di ricerca}\label{sec:domanda}
 
-\section{Contributi}
+\begin{quote}
+  \emph{Quali difetti di recupero ha un motore di ricerca piccolo e senza
+  dipendenze quando prende il posto di Elasticsearch in un sistema documentale,
+  quanto costa ciascuno in pertinenza e in tempo, e quanto se ne recupera
+  correggendoli uno alla volta?}
+\end{quote}
 
-Da scrivere.
+La domanda si articola in quattro:
+\begin{enumerate}
+  \item quanto pesano, misurati, i difetti del recupero di Koskidex che la lettura
+        del codice fa sospettare: il recupero congiuntivo, l'assenza di IDF, un
+        vettore che riordina senza recuperare, e una fusione che somma scale
+        incomparabili (capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido});
+  \item quali difetti ha la ricerca di Documentale in produzione, che l'innesto
+        porta alla luce (capitolo~\ref{chapter:produzione});
+  \item se esiste una configurazione che vada bene per le ricerche identificative
+        e per quelle in lingua naturale, o se vada scelta per tipo di query
+        (sezioni~\ref{sec:nessuna-unica} e~\ref{sec:scelta});
+  \item come si confrontano, alla fine, Koskidex corretto ed Elasticsearch di
+        produzione, sullo stesso corpus e con le stesse query
+        (capitolo~\ref{chapter:confronto}).
+\end{enumerate}
 
-\section{Il metodo: ipotesi prima della misura}
+\section{Contributi}\label{sec:contributi}
 
-Da scrivere.
+\begin{itemize}
+  \item \textbf{Un impianto di valutazione riproducibile}: le stesse metriche,
+        calcolate dallo stesso codice, per Koskidex in memoria e per i due motori
+        interrogati attraverso Documentale; un archivio in cui ogni numero ha un
+        file, un commit e un albero pulito; e le previsioni di ogni misura
+        committate prima della misura (capitolo~\ref{chapter:valutazione},
+        appendici~\ref{chapter:appendice-riproducibilita}
+        e~\ref{chapter:appendice-ipotesi}).
+  \item \textbf{Quattro difetti di Koskidex, più uno trovato strada facendo,
+        misurati e corretti}, ciascuno dietro un'impostazione che lascia il
+        comportamento di partenza come default. Il più grande, il recupero
+        congiuntivo, non era fra quelli sospettati: è stato trovato misurando.
+        Su SciFact il recupero lessicale passa da 0,0246 a 0,6757 di nDCG@10,
+        il 99,5\% del riferimento BM25 di Lucene.
+  \item \textbf{Tre difetti della ricerca di Documentale in produzione}: il
+        numero d'atto, le elisioni e la combinazione di numero e comune. Su 300
+        ricerche \texttt{<numero> <comune>} l'atto giusto passa dall'1,3\% al
+        91,7\% dei casi al primo posto, con due impostazioni.
+  \item \textbf{Un innesto con gli stessi risultati}: Koskidex dentro
+        Documentale, scelto da una variabile d'ambiente, che restituisce gli
+        stessi insiemi di Elasticsearch su tutte le query del confronto
+        (capitolo~\ref{chapter:sistemi}), con una mediana di 2,7~ms per ricerca
+        contro 22, su due motori che non girano alla pari.
+  \item \textbf{Un corpus pubblico di dominio}: 10.018 atti degli albi pretori
+        comunali, riscaricabili da chiunque, con 300 query known-item generate e
+        un protocollo per quelle scritte da persone.
+  \item \textbf{Una misura di come usare il vettore}: con il recupero
+        congiuntivo di Documentale l'unione dei candidati vale +0,62 di nDCG@10
+        su SciFact, e il peso giusto del vettore dipende dal tipo di query, tanto
+        che sceglierlo con una regola di una riga vale +0,023 sulla migliore
+        configurazione fissa.
+\end{itemize}
 
-\section{Struttura della tesi}
+\section{Il metodo: ipotesi prima della misura}\label{sec:metodo}
 
-Da scrivere.
+Ogni esperimento di questa tesi segue lo stesso ordine. Prima una domanda e un
+metodo; poi le previsioni, con una soglia numerica, committate prima di lanciare
+la misura e spesso prima di scrivere il codice; poi la misura, da codice
+committato, in un file che non si sovrascrive; poi l'esito, previsione per
+previsione. Quello che si aggiunge dopo aver visto un numero lo si dichiara.
+
+Serve a una cosa: che un risultato non sia stato scelto dopo averlo visto. E ha un
+effetto collaterale che non avevo previsto: le previsioni sbagliate sono state le
+più utili. Che le stopword valessero più dello stemmer, che quel guadagno venisse
+in realtà dalle espansioni per prefisso, che la costante della fusione non
+dipendesse dalla lunghezza delle query ma dal tipo: ognuna di queste è una
+previsione smentita, ed è scritta come tale.
+
+\section{Struttura della tesi}\label{sec:struttura}
+
+Il capitolo~\ref{chapter:fondamenti} richiama le nozioni di recupero e di
+valutazione che servono. Il capitolo~\ref{chapter:sistemi} descrive Koskidex e
+Documentale com'erano, e l'innesto che restituisce gli stessi risultati di
+Elasticsearch. Il capitolo~\ref{chapter:valutazione} descrive l'impianto di
+valutazione: regole, collezioni, corpus, query e strumenti. I
+capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido} misurano e correggono i
+difetti di Koskidex, lessicali e vettoriali. Il capitolo~\ref{chapter:produzione}
+misura i difetti della ricerca di Documentale in produzione. Il
+capitolo~\ref{chapter:confronto} confronta Koskidex corretto ed Elasticsearch, e
+il capitolo~\ref{chapter:conclusione} chiude con le risposte, i limiti e gli
+sviluppi. Le appendici dicono come rifare ogni numero, riportano le istruzioni di
+annotazione, il registro di tutte le previsioni e le impostazioni aggiunte a
+Koskidex.

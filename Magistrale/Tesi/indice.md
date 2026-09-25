@@ -6,7 +6,7 @@ Accanto a ogni sezione: a che punto è e dove sta il materiale.
 
 **Stato:** ✅ misurato, il materiale c'è · 🔶 in corso o in parte · ⬜ da fare.
 *Bozza scritta* vuol dire che il capitolo è in `latex/capitoli/` per intero, da
-rileggere (capitoli 3 e 6, il 25/09/2026).
+rileggere (al 25/09/2026 i capitoli 1-7; restano l'8, che aspetta i giudizi, e il 9).
 
 ## Titolo, tre proposte
 
@@ -27,7 +27,7 @@ codice di partenza e contro Elasticsearch di produzione.
 
 ## Capitoli
 
-### 1. Introduzione ⬜
+### 1. Introduzione 🔶 · bozza scritta
 1.1 Ritrovare un atto in un documentale
 1.2 Koskidex e Documentale
 1.3 La domanda di ricerca
@@ -38,7 +38,8 @@ codice di partenza e contro Elasticsearch di produzione.
 *Contributi da elencare:* un impianto di valutazione riproducibile; quattro
 difetti del motore e tre della ricerca in produzione, ciascuno misurato; un
 corpus pubblico di dominio con query known-item; la scelta della configurazione
-per tipo di query.
+per tipo di query. *Bozza* (25/09/2026): scritta per intero; i contributi e la
+struttura vanno ripresi quando il capitolo 8 avrà i suoi numeri.
 
 ### 2. Fondamenti e lavori correlati ✅ · bozza scritta
 2.1 Indice invertito e recupero booleano, congiuntivo e disgiuntivo
