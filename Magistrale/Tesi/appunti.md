@@ -265,7 +265,10 @@ Due scoperte fatte per strada, tutte e due materiale di tesi:
   quella parola non trova; chi cerca "infanzia" perde tre atti su quattro,
   scritti *scuola dell'infanzia*. Il filtro `elision` degli articoli italiani
   recupera il 99,4% delle coppie perse, quindi la causa è quella
-  (`risultati/esperimenti/2026-09-25_elisioni/`).
+  (`risultati/esperimenti/2026-09-25_elisioni/`). La stessa correzione in
+  Koskidex innestato (`KOSKIDEX_ELISION`) recupera le stesse coppie, il
+  99,4%, senza togliere atti alle altre query
+  (`risultati/esperimenti/2026-09-25_elisioni-koskidex/`).
 
 **L'innesto è fatto lo stesso giorno** (Documentale `67cf954` e `2a03310`):
 `KoskidexService` accanto a `ElasticsearchService`, dietro lo stesso contratto

@@ -69,7 +69,7 @@ parola, in locale e senza archiviare niente. Due cause, nessuna di matching:
 
 - in 20 parole Koskidex trova solo **di più**, mai di meno: toglie gli accenti
   ed Elasticsearch no, quindi *identita* trova anche *identità* e *unità* anche
-  *unita'*, e un'apostrofo rovinato dalla codifica (*allâ*) diventa *alla*, a
+  *unita'*, e un apostrofo rovinato dalla codifica (*allâ*) diventa *alla*, a
   un refuso da *ala*;
 - in una, *comunale*, entrambi trovano tutti i 10.018 atti e restituiscono i
   primi 10.000: il tetto ne taglia 18 diversi perché l'ordine è diverso. In
@@ -111,6 +111,80 @@ Scritto e committato prima di costruire gli indici e lanciare le query.
 
 Se la 1 cade, prima di leggere il resto va capita la causa: vorrebbe dire che
 la parità misurata su 324 query non vale sulle parole singole.
+
+## Esito
+
+`2026-09-25T105111Z_esito.json`, da `analizza.py` al commit `cfccf06` (albero
+pulito). Koskidex compilato da `69035bb`, che rispetto a `76162dc` aggiunge
+solo la voce del diario; Documentale `9998939`; Elasticsearch 9.1.0. Rapporti:
+`confronto/2026-09-25T104804Z` e `104805Z` (le 24 su `elis0` ed `elis1`),
+`104807Z` e `104809Z` (le known-item su `lib0` e `lib1`), valutazioni
+`valutazioni-albo/2026-09-25T104815Z_*-lib0` e `-lib1`; indicizzazioni
+`confronto/2026-09-25T104750Z`, `104752Z`, `104755Z`, `104757Z` (1,8-2,0 secondi
+ciascuna). Undici secondi l'analisi intera.
+
+**Con `KOSKIDEX_ELISION` acceso Koskidex innestato recupera le stesse coppie del
+filtro di Elasticsearch, il 99,4%, e non toglie niente alle altre query.**
+
+| 507 parole, 5.913 coppie a rischio | coppie perse | atti con una coppia persa |
+|---|---|---|
+| Elasticsearch di produzione | 5.775 | 4.033 |
+| Koskidex `elis0` (come oggi) | **5.775, le stesse** | 4.033 |
+| Elasticsearch col filtro `elision` | 36 | 36 |
+| **Koskidex `elis1` (`KOSKIDEX_ELISION=true`)** | **36, le stesse** | **36** |
+
+Le coppie perse non sono solo lo stesso numero: sono le stesse coppie, in
+tutti e due i confronti. Le 36 che restano sono le forme fuori elenco già viste
+con Elasticsearch: 13 *sant'*, 2 *cinquant'*, *quest'*, *tutt'*, parole
+attaccate per uno spazio mancante (*scuoladell'*, *controllodell'*...), accenti
+scritti come apostrofo (*conformita'*, *societa'*) e pochi prefissi strani.
+
+Le ricerche costano 1,2 ms di mediana su Koskidex e 6,1 su Elasticsearch, con
+o senza elisione (dallo script, senza PHP di mezzo: i tempi dall'app sono in
+`2026-09-25_innesto-parita/`).
+
+### Le previsioni
+
+1. `elis0` e la produzione con lo stesso insieme per almeno 500 parole:
+   **486, smentita.** Le cause sono quelle trovate nella prova di sviluppo e
+   ora contate dallo script: in 20 parole Koskidex trova solo di più, mai di
+   meno, perché toglie gli accenti (213 documenti in più, 67 per *unità*); in
+   una, *comunale*, il tetto dei 10.000 risultati taglia 18 atti diversi.
+   Nessuna parola in cui Elasticsearch trovi qualcosa che Koskidex non trova.
+   La parità misurata sulle 324 query vale per il matching; sugli accenti i due
+   motori sono diversi, e la differenza è a favore di chi cerca (*identita*
+   scritto senza accento trova *identità*).
+2. Le coppie perse da `elis0` quelle di Elasticsearch, entro l'1%: **le stesse
+   5.775, confermata.**
+3. `elis1` ne recupera almeno il 99%, con residui dalle stesse forme: **99,4%,
+   le stesse 36 residue di Elasticsearch, confermata.**
+4. `elis1` e il controllo con lo stesso insieme per almeno 480 parole: **485,
+   confermata**, con le stesse due cause della 1 (21 parole con di più in
+   Koskidex, una col tetto).
+5. Documenti in più fra 4.600 e 5.700: **5.200, confermata** (5.141 per
+   Elasticsearch).
+6. Nessuna delle 24 query perde un documento, almeno una ne guadagna: **0 persi,
+   65 guadagnati in 8 query, confermata.** *illuminazione pubblica* passa da 62 a
+   73 atti, *contributo associazioni* da 17 a 48. I primi dieci cambiano in
+   tre query, e solo perché vi entrano atti nuovi: gli altri restano nello
+   stesso ordine (controllato a mano sui due rapporti, non dallo script).
+7. Sulle known-item con le parole libere l'MRR@10 cambia di meno di 0,01:
+   **0,9498 in entrambe, confermata.** Tutte le 300 query hanno gli stessi
+   primi dieci, anche le 14 con l'apostrofo nel nome del comune, e l'atto resta
+   primo in 275 ed entro dieci in 299.
+
+### Cosa vuol dire per la tesi
+
+Il difetto delle elisioni di Documentale (capitolo 6.2) ha ora una correzione
+misurata in tutti e due i motori, con lo stesso effetto: nell'Elasticsearch di
+produzione è un filtro nel mapping e una reindicizzazione, in Koskidex innestato
+una variabile d'ambiente e una reindicizzazione. Non costa niente alle query
+che non ne hanno bisogno.
+
+Resta spenta per default, come tutte: i default si decidono alla fine, con il
+relatore (`da-fare-a-mano.md`). Stopword e stemmer italiani sono pronti ma non
+misurati: le known-item automatiche, un numero e un comune, non li mettono alla
+prova, e aspettano quelle scritte da persone.
 
 ## Come si rifà
 

@@ -1,0 +1,768 @@
+{
+  "ran_at": "2026-09-25T10:51:11Z",
+  "config": {
+    "elasticsearch_versione": "9.1.0",
+    "koskidex_versione": "69035bb",
+    "indice": "search-documents-local",
+    "indici_koskidex": {
+      "elis0": "search-documents-elis0",
+      "elis1": "search-documents-elis1",
+      "lib0": "search-documents-lib0",
+      "lib1": "search-documents-lib1"
+    },
+    "impostazioni_koskidex": {
+      "elis0": {
+        "elision_articles": 0,
+        "all_terms_in_one_field": true,
+        "disable_on_numbers": false,
+        "tokenizer": "standard",
+        "retrieval_mode": "all",
+        "documenti": 10018
+      },
+      "elis1": {
+        "elision_articles": 21,
+        "all_terms_in_one_field": true,
+        "disable_on_numbers": false,
+        "tokenizer": "standard",
+        "retrieval_mode": "all",
+        "documenti": 10018
+      },
+      "lib0": {
+        "elision_articles": 0,
+        "all_terms_in_one_field": false,
+        "disable_on_numbers": true,
+        "tokenizer": "standard",
+        "retrieval_mode": "all",
+        "documenti": 10018
+      },
+      "lib1": {
+        "elision_articles": 21,
+        "all_terms_in_one_field": false,
+        "disable_on_numbers": true,
+        "tokenizer": "standard",
+        "retrieval_mode": "all",
+        "documenti": 10018
+      }
+    },
+    "campi": [
+      "name",
+      "tags",
+      "summary",
+      "subjects",
+      "notes",
+      "additional_data"
+    ],
+    "articoli_del_filtro": [
+      "c",
+      "l",
+      "all",
+      "dall",
+      "dell",
+      "nell",
+      "sull",
+      "coll",
+      "pell",
+      "gl",
+      "agl",
+      "dagl",
+      "degl",
+      "negl",
+      "sugl",
+      "un",
+      "m",
+      "t",
+      "s",
+      "v",
+      "d"
+    ],
+    "min_lettere_parola": 3,
+    "min_atti_per_elencare_una_parola": 20,
+    "query_elasticsearch": "multi_match best_fields, fuzziness AUTO, prefix_length 1, operator and, tie_breaker 0.3, pesi di ElasticsearchService::fuzzySearch, size 10000",
+    "query_koskidex": "GET /indexes/{indice}/search q, limit 10000, ids_only true, fuzziness AUTO (KoskidexClient::searchIds)",
+    "rapporti": [
+      "2026-09-25T104804Z_albo-metadata-elis0-koskidex.json",
+      "2026-09-25T104805Z_albo-metadata-elis1-koskidex.json",
+      "2026-09-25T104807Z_known-item-auto-lib0-koskidex.json",
+      "2026-09-25T104809Z_known-item-auto-lib1-koskidex.json",
+      "2026-09-25T104815Z_known-item-auto-app-koskidex-lib0.json",
+      "2026-09-25T104815Z_known-item-auto-app-koskidex-lib1.json"
+    ],
+    "commit_documentale_rapporti": [
+      "9998939"
+    ],
+    "commit": "cfccf06",
+    "modifiche_non_committate": "false"
+  },
+  "atti": 10018,
+  "parole": 507,
+  "coppie_a_rischio": 5913,
+  "perse": {
+    "produzione": 5775,
+    "controllo": 36,
+    "elis0": 5775,
+    "elis1": 36
+  },
+  "perse_da_elis0_non_da_produzione": 0,
+  "perse_da_produzione_non_da_elis0": 0,
+  "recuperate": {
+    "controllo_su_produzione": 5739,
+    "quota_controllo": 0.9938,
+    "elis1_su_elis0": 5739,
+    "quota_elis1": 0.9938
+  },
+  "residue": {
+    "elis1": 36,
+    "controllo": 36,
+    "in_comune": 36,
+    "prefissi_residui_elis1": [
+      {
+        "prefisso": "sant",
+        "coppie": 13,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "cinquant",
+        "coppie": 2,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "sa",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "tutt",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "b",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "quest",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "viad",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "viadell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "conformita",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "aisensieperglieffettidell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "cancellazionedall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "controllodell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "scuoladell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "rinnovodell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "societa",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "sensieperglieffettidell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "alcolicheall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "pubblicazioneall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "del",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "app",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "statalidell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "relativoall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "pressol",
+        "coppie": 1,
+        "nell_elenco": false
+      }
+    ],
+    "prefissi_residui_controllo": [
+      {
+        "prefisso": "sant",
+        "coppie": 13,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "cinquant",
+        "coppie": 2,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "sa",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "tutt",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "b",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "quest",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "viad",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "viadell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "conformita",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "aisensieperglieffettidell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "cancellazionedall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "controllodell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "scuoladell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "rinnovodell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "societa",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "sensieperglieffettidell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "alcolicheall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "pubblicazioneall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "del",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "app",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "statalidell",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "relativoall",
+        "coppie": 1,
+        "nell_elenco": false
+      },
+      {
+        "prefisso": "pressol",
+        "coppie": 1,
+        "nell_elenco": false
+      }
+    ]
+  },
+  "elis0_contro_produzione": {
+    "parole_con_lo_stesso_insieme": 486,
+    "parole_diverse": 21,
+    "documenti_solo_elis0": 213,
+    "documenti_solo_produzione": 18,
+    "parole_col_tetto_dei_10000": 1,
+    "parole_dove_elis0_trova_solo_di_piu": 20,
+    "parole_dove_produzione_trova_solo_di_piu": 0,
+    "parole_diverse_elencabili": [
+      {
+        "parola": "alta",
+        "solo_elis0": 5,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "annualità",
+        "solo_elis0": 3,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "asd",
+        "solo_elis0": 1,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "asta",
+        "solo_elis0": 1,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "attività",
+        "solo_elis0": 6,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "comunale",
+        "solo_elis0": 18,
+        "solo_produzione": 18
+      },
+      {
+        "parola": "identita",
+        "solo_elis0": 27,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "identità",
+        "solo_elis0": 12,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "indennità",
+        "solo_elis0": 17,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "unità",
+        "solo_elis0": 67,
+        "solo_produzione": 0
+      },
+      {
+        "parola": "università",
+        "solo_elis0": 1,
+        "solo_produzione": 0
+      }
+    ]
+  },
+  "elis1_contro_controllo": {
+    "parole_con_lo_stesso_insieme": 485,
+    "parole_diverse": 22,
+    "documenti_solo_elis1": 272,
+    "documenti_solo_controllo": 18,
+    "parole_col_tetto_dei_10000": 1,
+    "parole_dove_elis1_trova_solo_di_piu": 21,
+    "parole_dove_controllo_trova_solo_di_piu": 0,
+    "parole_diverse_elencabili": [
+      {
+        "parola": "alta",
+        "solo_elis1": 5,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "annualità",
+        "solo_elis1": 3,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "asd",
+        "solo_elis1": 1,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "asta",
+        "solo_elis1": 1,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "attività",
+        "solo_elis1": 6,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "comunale",
+        "solo_elis1": 18,
+        "solo_controllo": 18
+      },
+      {
+        "parola": "identita",
+        "solo_elis1": 34,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "identità",
+        "solo_elis1": 14,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "indennità",
+        "solo_elis1": 43,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "unità",
+        "solo_elis1": 67,
+        "solo_controllo": 0
+      },
+      {
+        "parola": "università",
+        "solo_elis1": 1,
+        "solo_controllo": 0
+      }
+    ]
+  },
+  "in_piu": {
+    "controllo": 5141,
+    "elis1": 5200
+  },
+  "atti_persi": {
+    "produzione": 4033,
+    "controllo": 36,
+    "elis0": 4033,
+    "elis1": 36
+  },
+  "confronto_24": [
+    {
+      "query": "noleggio",
+      "trovati_elis0": 68,
+      "trovati_elis1": 68,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "manutenzione strade",
+      "trovati_elis0": 99,
+      "trovati_elis1": 99,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "concorso",
+      "trovati_elis0": 236,
+      "trovati_elis1": 236,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "rifiuti",
+      "trovati_elis0": 104,
+      "trovati_elis1": 104,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "illuminazione pubblica",
+      "trovati_elis0": 62,
+      "trovati_elis1": 73,
+      "persi": 0,
+      "guadagnati": 11,
+      "top10_uguali": true
+    },
+    {
+      "query": "contributo associazioni",
+      "trovati_elis0": 17,
+      "trovati_elis1": 48,
+      "persi": 0,
+      "guadagnati": 31,
+      "top10_uguali": false
+    },
+    {
+      "query": "determina noleggio veicolo",
+      "trovati_elis0": 2,
+      "trovati_elis1": 2,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "ordinanza circolazione stradale",
+      "trovati_elis0": 123,
+      "trovati_elis1": 126,
+      "persi": 0,
+      "guadagnati": 3,
+      "top10_uguali": true
+    },
+    {
+      "query": "fornitura libri di testo",
+      "trovati_elis0": 19,
+      "trovati_elis1": 19,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "affidamento servizio mensa scolastica",
+      "trovati_elis0": 3,
+      "trovati_elis1": 4,
+      "persi": 0,
+      "guadagnati": 1,
+      "top10_uguali": false
+    },
+    {
+      "query": "lavori di manutenzione straordinaria",
+      "trovati_elis0": 152,
+      "trovati_elis1": 152,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "impegno di spesa energia elettrica",
+      "trovati_elis0": 24,
+      "trovati_elis1": 25,
+      "persi": 0,
+      "guadagnati": 1,
+      "top10_uguali": false
+    },
+    {
+      "query": "chi ha vinto la gara per la mensa della scuola",
+      "trovati_elis0": 0,
+      "trovati_elis1": 0,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "quanto abbiamo speso per il noleggio delle auto di servizio",
+      "trovati_elis0": 0,
+      "trovati_elis1": 0,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "ordinanze sul traffico per i lavori alla rete idrica",
+      "trovati_elis0": 0,
+      "trovati_elis1": 0,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "delibera di giunta sul bilancio di previsione 2026",
+      "trovati_elis0": 0,
+      "trovati_elis1": 0,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "contributi alle associazioni sportive del comune",
+      "trovati_elis0": 0,
+      "trovati_elis1": 0,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "avviso pubblico per la selezione di personale",
+      "trovati_elis0": 0,
+      "trovati_elis1": 0,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "determina 1223",
+      "trovati_elis0": 8,
+      "trovati_elis1": 8,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "ordinanza 187",
+      "trovati_elis0": 85,
+      "trovati_elis1": 88,
+      "persi": 0,
+      "guadagnati": 3,
+      "top10_uguali": true
+    },
+    {
+      "query": "manutenzone strade",
+      "trovati_elis0": 99,
+      "trovati_elis1": 99,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    },
+    {
+      "query": "ordinaza circolazione",
+      "trovati_elis0": 264,
+      "trovati_elis1": 268,
+      "persi": 0,
+      "guadagnati": 4,
+      "top10_uguali": true
+    },
+    {
+      "query": "illuminazone pubblica",
+      "trovati_elis0": 62,
+      "trovati_elis1": 73,
+      "persi": 0,
+      "guadagnati": 11,
+      "top10_uguali": true
+    },
+    {
+      "query": "servizio di trasporto scolastico",
+      "trovati_elis0": 55,
+      "trovati_elis1": 55,
+      "persi": 0,
+      "guadagnati": 0,
+      "top10_uguali": true
+    }
+  ],
+  "known_item": {
+    "lib0": {
+      "valutazione": "2026-09-25T104815Z_known-item-auto-app-koskidex-lib0.json",
+      "mrr@10": 0.9498,
+      "atto_primo": 275,
+      "atto_entro_10": 299,
+      "a_vuoto": 0,
+      "ms_mediana": 4.14
+    },
+    "lib1": {
+      "valutazione": "2026-09-25T104815Z_known-item-auto-app-koskidex-lib1.json",
+      "mrr@10": 0.9498,
+      "atto_primo": 275,
+      "atto_entro_10": 299,
+      "a_vuoto": 0,
+      "ms_mediana": 4.29
+    },
+    "differenza_mrr@10": 0.0,
+    "query_senza_apostrofo": 286,
+    "query_senza_apostrofo_top10_uguali": 286,
+    "query_con_apostrofo": 14,
+    "query_con_apostrofo_top10_uguali": 14
+  },
+  "id_atti_persi_elis1": [
+    "302",
+    "589",
+    "590",
+    "867",
+    "1253",
+    "1430",
+    "1500",
+    "1531",
+    "1738",
+    "1845",
+    "2228",
+    "2542",
+    "3856",
+    "4327",
+    "4356",
+    "4455",
+    "4657",
+    "4817",
+    "5058",
+    "5137",
+    "5140",
+    "5496",
+    "5497",
+    "5585",
+    "5794",
+    "5806",
+    "5966",
+    "6375",
+    "6408",
+    "6972",
+    "7557",
+    "7774",
+    "8357",
+    "8797",
+    "9440",
+    "9877"
+  ],
+  "timings": {
+    "produzione": {
+      "ms_mediana": 6.145,
+      "ms_totale": 3525.5
+    },
+    "controllo": {
+      "ms_mediana": 6.297,
+      "ms_totale": 3634.1
+    },
+    "elis0": {
+      "ms_mediana": 1.217,
+      "ms_totale": 777.7
+    },
+    "elis1": {
+      "ms_mediana": 1.109,
+      "ms_totale": 681.0
+    },
+    "totale_ms": 10654.9
+  }
+}

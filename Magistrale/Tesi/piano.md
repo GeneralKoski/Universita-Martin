@@ -140,6 +140,14 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       nell'atto compare solo elisa. La ricerca ne salva il 2,3%, il filtro
       `elision` di Elasticsearch ne recupera il 99,4%
       (`risultati/esperimenti/2026-09-25_elisioni/`)
+- [x] **Elisioni con Koskidex innestato** (25/09/2026, Koskidex `ddf344f`,
+      Documentale `9998939`): con `KOSKIDEX_ELISION=true` (spento per default)
+      Koskidex recupera **le stesse coppie** del filtro di Elasticsearch, il
+      99,4%, e restano le stesse 36. Senza, perde le stesse 5.775 della
+      produzione. Nessuna delle 24 query del confronto perde un atto, 8 ne
+      guadagnano; le 300 known-item restano identiche. Sugli accenti la parità
+      non vale: in 20 parole Koskidex trova di più, perché li toglie
+      (`risultati/esperimenti/2026-09-25_elisioni-koskidex/`)
 - [x] **BM25 e la ricerca per numero d'atto** (25/09/2026): sulle 300
       known-item BM25 fa MRR@10 0,709 contro 0,975 dell'euristico. In 61 dei
       115 fallimenti vince un atto che combacia solo per prefisso (`190` con
@@ -198,12 +206,19 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
 
 ### 4. Analisi lessicale italiana
 
-Oggi Koskidex ha solo lo stemmer Porter inglese.
-
-- [ ] Stopword e stemmer italiani dietro `Settings.Stemmer`, con voce di diario
-      e ipotesi prima di misurare
-- [ ] Decidere come trattare elisioni, date (`14.01.2026`) e decimali (`3,5`)
-      fuori dalla modalità compatibile con Elasticsearch, e misurarlo
+- [x] **I tre stadi dell'analizzatore `italian` di Elasticsearch** (25/09/2026,
+      Koskidex `ddf344f`): `Settings.ElisionArticles` con gli articoli di
+      Lucene, `ItalianStopWords()` (Snowball), `Settings.Stemmer =
+      "italian_light"` (`ItalianLightStemmer`, uguale a Lucene sulle 35.494
+      parole del suo vocabolario di prova). Tutti spenti per default; in
+      `scripts/evaluate` `-analyzer italian-stopwords|italian-stemmer|italian`,
+      `-tokenizer standard`, `-elisione` (`76162dc`)
+- [x] Elisioni misurate (sezione 3)
+- [ ] **Stopword e stemmer italiani da misurare** sulle known-item umane: quelle
+      automatiche sono un numero e un comune e non li mettono alla prova. Voce
+      di diario e ipotesi prima, come sempre
+- [ ] Decidere come trattare date (`14.01.2026`) e decimali (`3,5`) fuori dalla
+      modalità compatibile con Elasticsearch, e misurarlo
 
 ### 5. Difetti 2 e 3: l'ibrido e la fusione
 

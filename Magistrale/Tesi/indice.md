@@ -76,12 +76,15 @@ giudizi del pool e il kappa (`da-fare-a-mano.md`).
 5.3 Le espansioni pesate con il termine trovato ✅
 5.4 Le stopword: un guadagno che veniva da altrove ✅
 5.5 Identificativi e lingua naturale: nessuna impostazione unica ✅
-5.6 Analisi lessicale italiana ⬜
+5.6 Analisi lessicale italiana 🔶
 5.7 Scheda contro testo intero, e la lunghezza dei documenti ⬜
 
 *Materiale:* `eval/DIARIO.md` di Koskidex; `risultati/esperimenti/`
 `2026-09-25_bm25-numeri/`, `_stopword-espansioni/`, `_known-item-divario/`,
-`_recupero-intermedio/`. *Manca:* 5.6 e 5.7 aspettano le known-item umane.
+`_recupero-intermedio/`. *Manca:* 5.6 ha il codice (stopword, stemmer leggero
+ed elisioni come Lucene, lo stemmer controllato sul vocabolario di Lucene) e
+le elisioni misurate; stopword e stemmer, come 5.7, aspettano le known-item
+umane.
 
 ### 6. La ricerca in produzione: tre difetti di Documentale ✅
 6.1 Il numero d'atto
@@ -90,7 +93,8 @@ giudizi del pool e il kappa (`da-fare-a-mano.md`).
 6.4 Cosa cambia per chi cerca
 
 *Materiale:* `2026-09-23_numero-atto/` (`ordinanza 187` al 12° posto),
-`2026-09-25_elisioni/` (40,3% degli atti), `_known-item-auto/`,
+`2026-09-25_elisioni/` (40,3% degli atti), `_elisioni-koskidex/` (la stessa
+correzione in Koskidex innestato: le stesse coppie recuperate), `_known-item-auto/`,
 `_koskidex-campi-liberi/`, `_refusi-numeri/` (dal 2% entro dieci al 92% primo).
 
 ### 7. Recupero ibrido e fusione ⬜
