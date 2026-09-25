@@ -61,6 +61,24 @@ opzioni nuove lascino identica la run di base, e una prova di funzionamento
 delle opzioni italiane sulle known-item di cui ho letto solo la configurazione
 registrata, non le metriche.
 
+**Aggiunto dopo la prova di sviluppo, prima dell'esecuzione archiviata.** La
+prova ha dato 486 parole su 507 con lo stesso insieme fra `elis0` e la
+produzione, sotto le 500 della previsione 1, con le stesse coppie perse. Come
+scritto qui sotto, prima di leggere il resto ho cercato la causa, parola per
+parola, in locale e senza archiviare niente. Due cause, nessuna di matching:
+
+- in 20 parole Koskidex trova solo **di più**, mai di meno: toglie gli accenti
+  ed Elasticsearch no, quindi *identita* trova anche *identità* e *unità* anche
+  *unita'*, e un'apostrofo rovinato dalla codifica (*allâ*) diventa *alla*, a
+  un refuso da *ala*;
+- in una, *comunale*, entrambi trovano tutti i 10.018 atti e restituiscono i
+  primi 10.000: il tetto ne taglia 18 diversi perché l'ordine è diverso. In
+  produzione l'app riceve gli stessi 10.000.
+
+`analizza.py` conta queste due cause per ogni confronto fra motori (parole col
+tetto, parole in cui un motore trova solo di più). La previsione 1 resta
+com'era, e cade.
+
 ## Prima di misurare
 
 Scritto e committato prima di costruire gli indici e lanciare le query.
