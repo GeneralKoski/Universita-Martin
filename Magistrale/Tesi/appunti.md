@@ -297,6 +297,15 @@ difetto, distinto dal vincolo del campo unico, e lo stesso che mette
 `ordinanza 187` al 12° posto in produzione
 (`risultati/esperimenti/2026-09-25_koskidex-campi-liberi/`).
 
+Spenti anche i refusi sui termini fatti di sole cifre
+(`KOSKIDEX_TYPOS_ON_NUMBERS=false`, l'impostazione `disableOnNumbers` di
+Meilisearch), l'atto è **primo in 275 query su 300**, contro le 5 di
+Elasticsearch in produzione. Nessuna delle due correzioni basta da sola: il
+campo unico decide se l'atto si trova, i refusi sui numeri se è primo. E con il
+solo vincolo del campo unico, togliere i refusi porta le query a vuoto dal 70%
+al 95%: quel 30% che rispondeva, rispondeva soprattutto con numeri sbagliati
+(`risultati/esperimenti/2026-09-25_refusi-numeri/`).
+
 ## Termine di paragone: le tesi dei colleghi (24/09/2026)
 
 Il 24 settembre 2026 ho visto le tesi esposte dai colleghi. In confronto,

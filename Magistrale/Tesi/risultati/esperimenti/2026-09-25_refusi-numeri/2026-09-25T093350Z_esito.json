@@ -1,0 +1,492 @@
+{
+  "ran_at": "2026-09-25T09:33:50Z",
+  "config": {
+    "commit": "757163e",
+    "modifiche_non_committate": "false",
+    "rapporti_confronto": [
+      "2026-09-25T072328Z_albo-metadata-koskidex.json",
+      "2026-09-25T091903Z_albo-metadata-campi-liberi-koskidex.json",
+      "2026-09-25T093213Z_albo-metadata-campo-unico-numeri-esatti-koskidex.json",
+      "2026-09-25T093156Z_albo-metadata-campi-liberi-numeri-esatti-koskidex.json"
+    ],
+    "rapporto_elasticsearch": "2026-09-25T072340Z_albo-metadata-elasticsearch.json"
+  },
+  "known_item": {
+    "campo unico, refusi sui numeri": {
+      "valutazione": "2026-09-25T084000Z_known-item-auto-app-koskidex.json",
+      "koskidex": "f6810d0",
+      "mrr@10": 0.0183,
+      "atto_primo": 5,
+      "atto_entro_10": 6,
+      "recall@100": 0.02,
+      "a_vuoto": 211,
+      "ms_mediana": 5.37,
+      "ms_media": 8.21
+    },
+    "parole libere, refusi sui numeri": {
+      "valutazione": "2026-09-25T091911Z_known-item-auto-app-koskidex-campi-liberi.json",
+      "koskidex": "9d95eb6",
+      "mrr@10": 0.5483,
+      "atto_primo": 115,
+      "atto_entro_10": 280,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "ms_mediana": 5.01,
+      "ms_media": 7.05
+    },
+    "campo unico, numeri esatti": {
+      "valutazione": "2026-09-25T093219Z_known-item-auto-app-koskidex-campo-unico-numeri-esatti.json",
+      "koskidex": "ae1c4b9",
+      "mrr@10": 0.02,
+      "atto_primo": 6,
+      "atto_entro_10": 6,
+      "recall@100": 0.02,
+      "a_vuoto": 285,
+      "ms_mediana": 4.62,
+      "ms_media": 7.52
+    },
+    "parole libere, numeri esatti": {
+      "valutazione": "2026-09-25T093219Z_known-item-auto-app-koskidex-campi-liberi-numeri-esatti.json",
+      "koskidex": "ae1c4b9",
+      "mrr@10": 0.9498,
+      "atto_primo": 275,
+      "atto_entro_10": 299,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "ms_mediana": 4.27,
+      "ms_media": 6.66
+    }
+  },
+  "parole_libere_numeri_esatti_non_primi": {
+    "per_motivo": {
+      "primo ha il numero esatto, in un campo che pesa di più": 21,
+      "primo senza il numero esatto": 1,
+      "primo ha il numero esatto, in un campo che non pesa di più": 3
+    },
+    "query": [
+      {
+        "query": "ki-013",
+        "numero_solo_cifre": true,
+        "posizione": 6,
+        "primo": "doc-4910",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-014",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-5945",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-015",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-2239",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-019",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-3302",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-020",
+        "numero_solo_cifre": true,
+        "posizione": 10,
+        "primo": "doc-8513",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-027",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-1420",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-037",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-9184",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-062",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-1531",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-100",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-6713",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-102",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-1292",
+        "campi_numero_primo": [
+          "name",
+          "summary",
+          "additional_data"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-110",
+        "numero_solo_cifre": true,
+        "posizione": 3,
+        "primo": "doc-3531",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-144",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-8488",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-151",
+        "numero_solo_cifre": false,
+        "posizione": 4,
+        "primo": "doc-5750",
+        "campi_numero_primo": [],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo senza il numero esatto"
+      },
+      {
+        "query": "ki-187",
+        "numero_solo_cifre": true,
+        "posizione": 4,
+        "primo": "doc-10036",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-192",
+        "numero_solo_cifre": true,
+        "posizione": 3,
+        "primo": "doc-0176",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-198",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-2324",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-226",
+        "numero_solo_cifre": true,
+        "posizione": 3,
+        "primo": "doc-0036",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-233",
+        "numero_solo_cifre": true,
+        "posizione": 3,
+        "primo": "doc-4089",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-244",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-5680",
+        "campi_numero_primo": [
+          "additional_data"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che non pesa di più"
+      },
+      {
+        "query": "ki-252",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-5992",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "name",
+          "summary",
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che non pesa di più"
+      },
+      {
+        "query": "ki-258",
+        "numero_solo_cifre": true,
+        "posizione": null,
+        "primo": "doc-2778",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-262",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-9034",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-268",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-7947",
+        "campi_numero_primo": [
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      },
+      {
+        "query": "ki-288",
+        "numero_solo_cifre": true,
+        "posizione": 3,
+        "primo": "doc-2536",
+        "campi_numero_primo": [
+          "additional_data"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che non pesa di più"
+      },
+      {
+        "query": "ki-293",
+        "numero_solo_cifre": true,
+        "posizione": 2,
+        "primo": "doc-9793",
+        "campi_numero_primo": [
+          "name",
+          "summary"
+        ],
+        "campi_numero_atto": [
+          "additional_data"
+        ],
+        "motivo": "primo ha il numero esatto, in un campo che pesa di più"
+      }
+    ]
+  },
+  "confronto_24": {
+    "campo unico": {
+      "query": 24,
+      "insiemi_cambiati": [
+        {
+          "query": "determina 1223",
+          "prima": 8,
+          "dopo": 1,
+          "persi": 7,
+          "nuovi": 0
+        },
+        {
+          "query": "ordinanza 187",
+          "prima": 85,
+          "dopo": 1,
+          "persi": 84,
+          "nuovi": 0
+        }
+      ]
+    },
+    "parole libere": {
+      "query": 24,
+      "insiemi_cambiati": [
+        {
+          "query": "determina 1223",
+          "prima": 10,
+          "dopo": 1,
+          "persi": 9,
+          "nuovi": 0
+        },
+        {
+          "query": "ordinanza 187",
+          "prima": 124,
+          "dopo": 1,
+          "persi": 123,
+          "nuovi": 0
+        }
+      ]
+    }
+  },
+  "posizioni_numero_atto": {
+    "ordinanza 187": {
+      "elasticsearch, produzione": {
+        "posizione": 12,
+        "risultati": 85
+      },
+      "campo unico, refusi sui numeri": {
+        "posizione": 47,
+        "risultati": 85
+      },
+      "parole libere, refusi sui numeri": {
+        "posizione": 63,
+        "risultati": 124
+      },
+      "campo unico, numeri esatti": {
+        "posizione": 1,
+        "risultati": 1
+      },
+      "parole libere, numeri esatti": {
+        "posizione": 1,
+        "risultati": 1
+      }
+    },
+    "determina 1223": {
+      "elasticsearch, produzione": {
+        "posizione": 5,
+        "risultati": 8
+      },
+      "campo unico, refusi sui numeri": {
+        "posizione": 1,
+        "risultati": 8
+      },
+      "parole libere, refusi sui numeri": {
+        "posizione": 1,
+        "risultati": 10
+      },
+      "campo unico, numeri esatti": {
+        "posizione": 1,
+        "risultati": 1
+      },
+      "parole libere, numeri esatti": {
+        "posizione": 1,
+        "risultati": 1
+      }
+    }
+  }
+}

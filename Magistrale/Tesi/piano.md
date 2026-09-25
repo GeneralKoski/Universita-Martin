@@ -25,6 +25,7 @@ La domanda di tesi, le scelte e il perché stanno in [appunti.md](appunti.md).
 | Corpus pubblico degli albi pretori, 10.018 atti | importato in Documentale ed esportabile | Koskidex `eval/corpora/c3-albo/SOURCE.md` |
 | Koskidex completo rispetto al contratto di Documentale (F1-F7) | fatto: 24 insiemi su 24 uguali a Elasticsearch | `risultati/esperimenti/2026-09-23_cause-divergenza/` |
 | Innesto in Documentale, motore scelto da `SEARCH_BACKEND` | fatto: dall'app 24/24 insiemi uguali, ricerca 2,7 ms contro 22 | Documentale `67cf954`, `2a03310`; `risultati/esperimenti/2026-09-25_innesto-parita/` |
+| Ricerca per numero e comune in Documentale | dal 2% entro 10 in produzione al 92% primo, con due impostazioni di Koskidex | `risultati/esperimenti/2026-09-25_refusi-numeri/` |
 | Difetti 2 e 3 (ibrido e fusione) | aperti | qui sotto, sezione 5 |
 | Query e giudizi sul corpus di dominio | assenti | qui sotto, sezioni 1 e 2 |
 
@@ -150,10 +151,14 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       delle query invece del 2%, ma primo solo nel 38%: in 154 casi su 185 lo
       scavalca un atto con **il numero a un refuso** (`1109` per `1209`)
       (`risultati/esperimenti/2026-09-25_koskidex-campi-liberi/`)
-- [ ] **Niente refusi sui termini numerici** in Koskidex, dietro
-      un'impostazione e con la voce nel diario prima: un numero con una cifra
-      sbagliata è un altro atto. Misurarlo sulle known-item dall'app e sulle
-      collezioni pubbliche
+- [x] **Niente refusi sui termini numerici** (25/09/2026, Koskidex
+      `ae1c4b9`, Documentale `ab52f4f`): `TypoTolerance.DisableOnNumbers`, come
+      `disableOnNumbers` di Meilisearch. Con le parole libere e i numeri
+      esatti l'atto è **primo in 275 known-item su 300** (erano 5 in
+      produzione), entro 10 in 299; `ordinanza 187` e `determina 1223` danno
+      solo l'atto giusto. Con il campo unico le query a vuoto salgono dal 70% al
+      95% (`risultati/esperimenti/2026-09-25_refusi-numeri/`). Le collezioni
+      pubbliche non si misurano: la valutazione piatta spegne i refusi
 - [ ] **`b` sui documenti lunghi**: rimisurarlo sui soli 563 atti di Crispiano
       col testo intero. 0,75 è tarato su collezioni di articoli, e nel corpus
       misto le schede corte schiacciano la lunghezza media
@@ -239,6 +244,9 @@ esteso. Quelle segnate con `5f9b080` stanno nei piani rimossi.
   la stessa strada in due basi di codice indipendenti (appunti)
 - La ricerca per numero d'atto rotta in produzione: `ordinanza 187` al 12° posto
   su 85 (`risultati/esperimenti/2026-09-23_numero-atto/`)
+- La ricerca per numero e comune: due difetti distinti copiati da
+  Elasticsearch, il campo unico e i refusi sui numeri, misurati nel quadrato
+  due per due. Dal 2% al 92% (`risultati/esperimenti/2026-09-25_refusi-numeri/`)
 - La guardia su `recall@k` che scattava, e a essere sbagliata era la guardia
   (`eval/DIARIO.md`)
 - Il corpus misto che fa dire a BM25 "il testo integrale peggiora il recupero",
