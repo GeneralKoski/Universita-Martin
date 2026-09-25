@@ -139,14 +139,15 @@ known-item umane.
 8.3 Latenza, memoria, dimensione dell'indice
 8.4 Dove un motore piccolo è competitivo, e dove no
 
-### 9. Conclusioni ⬜
+### 9. Conclusioni 🔶 · bozza scritta
 9.1 Le risposte alla domanda
 9.2 Limiti
 9.3 Sviluppi futuri
 
 *Limiti già noti da scrivere:* query fabbricate, un solo corpus di dominio, pochi
 annotatori, tipi di query separati per collezione, recall del pool come limite
-superiore.
+superiore. *Bozza* (25/09/2026): 9.2 e 9.3 scritte; 9.1 risponde alle
+prime tre sottodomande, la quarta aspetta il capitolo 8.
 
 ### Appendici
 A. Come rifare ogni numero: comandi, commit, archivio ✅ · bozza scritta

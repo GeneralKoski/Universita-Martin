@@ -1,13 +1,96 @@
 \chapter{Conclusioni}\label{chapter:conclusione}
 
-\section{Le risposte alla domanda}
+\section{Le risposte alla domanda}\label{sec:risposte}
 
-Da scrivere.
+La domanda (sezione~\ref{sec:domanda}) si articolava in quattro parti. Le prime
+tre hanno una risposta misurata; la quarta aspetta i giudizi del
+capitolo~\ref{chapter:confronto}.
 
-\section{Limiti}
+\paragraph{I difetti di Koskidex.} Dei quattro difetti sospettati leggendo il
+codice, il più grande non era fra quelli sospettati. Il recupero congiuntivo
+lasciava a vuoto 290 query di SciFact su 300: correggerlo porta il nDCG@10 da
+0,0246 a 0,4936, e solo dopo ha senso parlare di punteggio. BM25 lo porta a
+0,6197, e la correzione di un difetto dentro BM25, le espansioni pesate con la
+frequenza del termine trovato, a 0,6694; con le stopword Koskidex arriva a
+0,6757, il 99,5\% del riferimento di Lucene, e su NFCorpus al 95\%. Sui vettori, il
+re-ranking vale due punti con il recupero disgiuntivo; con quello congiuntivo di
+Documentale non vale niente, e l'unione dei candidati vale +0,62 su SciFact. La
+costante della fusione era otto volte troppo bassa per le query in lingua naturale
+e giusta, per caso, per quelle identificative.
 
-Da scrivere.
+\paragraph{I difetti di Documentale.} La ricerca di produzione ha tre difetti che
+colpiscono le ricerche più ordinarie: un numero d'atto trova gli atti con un numero
+a un refuso, un articolo eliso rende introvabile una parola in quattro atti su
+dieci, e numero e comune insieme non trovano quasi mai l'atto, perché devono stare
+nello stesso campo. Con Koskidex innestato e tre impostazioni, raccolte in un
+profilo, l'atto giusto passa dall'1,3\% al 91,7\% di prime posizioni sulle
+ricerche per numero e comune, e le parole introvabili dal 40,3\% allo 0,4\% degli
+atti. Nessuno dei tre è un errore di programmazione: sono impostazioni
+ragionevoli di un motore generico, che si rompono su proprietà precise dei
+documenti amministrativi italiani.
 
-\section{Sviluppi futuri}
+\paragraph{Una configurazione per tutto.} Non c'è. Il recupero congiuntivo è giusto
+per le ricerche identificative e disastroso per le frasi; le vie di mezzo di
+Lucene ed Elasticsearch non reggono tutte e due; il peso giusto del vettore
+dipende dal tipo di query. Sceglierlo con una regola di una riga, \emph{recupero
+congiuntivo e vettore leggero se la query ha una cifra e il congiuntivo trova
+qualcosa}, vale +0,023 di nDCG@10 medio sulla migliore configurazione fissa. Se la
+regola riconosca il tipo di query o la collezione, su questi dati non si può dire.
 
-Da scrivere.
+\paragraph{Il confronto con Elasticsearch.} Sugli stessi insiemi di risultati,
+Koskidex risponde in una mediana di 2,7~ms contro 22, su due motori che non girano
+alla pari. Quanto valgano in pertinenza, Koskidex corretto ed Elasticsearch di
+produzione, sulle ricerche in lingua naturale, lo dirà il
+capitolo~\ref{chapter:confronto}.
+
+\section{Limiti}\label{sec:limiti}
+
+\begin{itemize}
+  \item \textbf{Query fabbricate.} Le known-item automatiche hanno una sola forma,
+        \texttt{<numero> <comune>}, e le 24 query del confronto le ha scritte
+        l'autore. Misurano bene quello che misurano, e niente di più. Le query
+        scritte da persone servono proprio a questo, e al momento di scrivere non
+        ci sono ancora.
+  \item \textbf{Un solo corpus di dominio.} Gli albi pretori hanno la forma di un
+        documentale, ma sono gli atti di comuni: altri archivi, con contratti o
+        corrispondenza, hanno altri vocabolari e altre ricerche. Il testo intero
+        c'è solo per 563 atti su 10.018.
+  \item \textbf{Tipi di query separati per collezione.} Le query identificative
+        stanno tutte sugli albi, quelle in lingua naturale sulle collezioni
+        pubbliche: una regola che riconosce la collezione e una che riconosce il
+        tipo di query danno gli stessi numeri. È il limite più serio della scelta
+        per tipo di query, e la ragione per cui resta fuori dal motore.
+  \item \textbf{Pochi annotatori.} I giudizi del pool vengono da un annotatore, con
+        un secondo su una parte; il kappa dirà quanto dipendono dalla persona.
+  \item \textbf{Il richiamo del pool è un limite superiore.} I documenti pertinenti
+        che nessuna delle dodici configurazioni ha messo fra i primi dieci non
+        sono giudicati, e contano come non pertinenti.
+  \item \textbf{I tempi.} Koskidex ed Elasticsearch non girano alla pari: uno
+        nativo, l'altro in una macchina virtuale e misurato attraverso una
+        chiamata HTTP. I tempi dicono l'ordine di grandezza, non un rapporto.
+  \item \textbf{Un solo modello di embedding.} \texttt{bge-m3} in locale è una
+        scelta, non un confronto: con un altro modello i pesi calibrati del
+        capitolo~\ref{chapter:ibrido} potrebbero cambiare.
+\end{itemize}
+
+\section{Sviluppi futuri}\label{sec:sviluppi}
+
+\begin{itemize}
+  \item \textbf{Le known-item umane}, e con loro tre misure che le aspettano: la
+        scelta per tipo di query su query dei due tipi nella stessa collezione,
+        stopword e stemmer italiani, e la scheda contro il testo intero.
+  \item \textbf{Un secondo stadio di riordino.} Un modello neurale che riordina i
+        primi cento candidati (\emph{cross-encoder}) direbbe quanto vale
+        riordinare, dato il richiamo del primo stadio: il re-ranking funziona se è
+        progettato come stadio, con pochi candidati e un modello preciso. Non
+        dentro Koskidex, che resterebbe senza dipendenze, ma come servizio a parte.
+  \item \textbf{La scansione dei vettori.} A 10.000 documenti una scansione esatta
+        costa 12-15~ms per passata; più accumulatori nel prodotto scalare la
+        accorcerebbero, a prezzo di punteggi diversi nelle ultime cifre, e oltre
+        qualche centinaio di migliaia di documenti servirebbe un indice
+        approssimato.
+  \item \textbf{Koskidex in produzione.} La tesi misura il recupero; un motore in
+        produzione chiede anche un'istantanea che non riscriva l'indice intero,
+        l'aggiornamento parziale di un documento, e un indice che non stia tutto
+        in memoria.
+\end{itemize}
