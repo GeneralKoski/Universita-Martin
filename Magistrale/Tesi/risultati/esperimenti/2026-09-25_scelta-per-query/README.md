@@ -84,3 +84,12 @@ Scritto e committato prima di lanciare le valutazioni.
 Se la 4 tiene, la scelta per query funziona almeno fra collezioni diverse, e va
 messa alla prova sulle known-item umane prima di portarla nel motore. Se non
 tiene, si scrive perché.
+
+## Aggiunto dopo una prova
+
+Lo script, prima di archiviare, è stato provato una volta senza scrivere
+nell'archivio. I pesi del modello dicevano: B se ci sono cifre e la query è
+corta, ma non se B torna vuoto. Da lì una sesta strategia, scelta **dopo** aver
+visto quella prova e quindi senza previsione: **B se la query contiene una
+cifra e B trova qualcosa, altrimenti A**. Serve a una domanda sola: il
+classificatore fa più di questa regola scritta a mano?
