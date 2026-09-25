@@ -1,25 +1,246 @@
 \chapter{L'impianto di valutazione}\label{chapter:valutazione}
 
-\section{Principi: ipotesi prima, interruttori, baseline congelato, archivio con provenienza}
+Ogni numero di questa tesi viene da un file di un archivio, prodotto da codice
+committato, e ogni misura che conta ha le sue previsioni scritte prima. Questo
+capitolo descrive le regole, le collezioni, le query e gli strumenti; le regole
+vengono prima, perché sono loro a dire quanto ci si può fidare del resto.
 
-Da scrivere.
+\section{Principi: ipotesi prima, interruttori, baseline congelato, archivio con provenienza}\label{sec:principi}
 
-\section{Le collezioni pubbliche: SciFact e NFCorpus}
+\paragraph{Le ipotesi prima della misura.} Ogni modifica che cambia l'ordine dei
+risultati ha una voce nel diario di Koskidex, e ogni esperimento un README, con
+una sezione \emph{Prima di misurare} committata prima di lanciare la
+valutazione, spesso prima di scrivere il codice. Le previsioni sono numeriche,
+con una soglia, e dicono cosa vorrebbe dire sbagliarle. A misura fatta si
+aggiunge l'esito, previsione per previsione, senza toccare quello che era scritto
+prima. Quello che si decide dopo aver visto un numero, un'analisi in più o una
+strategia nuova, sta in una sezione che lo dichiara. È la risposta alla domanda
+che in una valutazione arriva sempre: le metriche e le soglie sono state scelte
+dopo aver visto i risultati? L'appendice~\ref{chapter:appendice-ipotesi} le raccoglie
+tutte, e molte sono state smentite.
 
-Da scrivere.
+\paragraph{Gli interruttori.} Ogni correzione sta dietro un'impostazione, con il
+comportamento di partenza come valore predefinito. Le impostazioni si salvano con
+l'indice, e un indice salvato prima di una correzione non cambia comportamento da
+solo. Così ogni misura confronta due configurazioni dello stesso codice, e i
+default si decidono alla fine, tutti insieme.
 
-\section{Il corpus di dominio: gli albi pretori}
+\paragraph{Il baseline congelato.} Il comportamento di Koskidex del 23 settembre
+2026 è fissato in un test, \texttt{TestBaselineRankingIsFrozen}, che confronta gli
+ordinamenti di un corpus di prova con quelli registrati. Deve passare a ogni
+commit, con le impostazioni predefinite e senza che il test venga toccato: è la
+prova che nessuna correzione ha cambiato il punto di partenza di nascosto.
 
-Da scrivere.
+\paragraph{L'archivio.} Le esecuzioni vanno in un archivio, nel repository della
+tesi, con regole scritte prima di riempirlo:
+\begin{itemize}
+  \item un file per esecuzione, con l'ora UTC nel nome, mai sovrascritto né
+        modificato a mano;
+  \item ogni file registra da dove viene: il commit del codice, se l'albero aveva
+        modifiche non committate, il corpus con la sua impronta, ogni
+        impostazione. Per la tesi valgono solo i file da alberi puliti;
+  \item i tempi stanno separati dalle metriche, perché cambiano a ogni esecuzione
+        e le metriche no;
+  \item solo identificativi, mai titoli: gli atti contengono nomi di persone, e
+        il corpus resta fuori dal repository;
+  \item solo esecuzioni vere: le prove fatte mentre si scrive codice si lanciano
+        con l'archivio spento, e gli strumenti, se l'archivio non è impostato,
+        lo dicono invece di tacere.
+\end{itemize}
+Le eccezioni stanno in un registro: dodici file del primo giorno prodotti da
+codice non ancora committato e rifatti, un file rinominato, tre ridotti da 12 MB a
+1 MB conservando i primi mille risultati, e così via. Nessuno è stato tolto in
+silenzio.
 
-\section{Le query: known-item automatiche, known-item umane, bisogni aperti}
+\paragraph{Le guardie.} Una previsione può essere una guardia: una quantità che la
+modifica non deve muovere. La prima scritta, «BM25 non cambia il Recall@100», è
+scattata perché era posta male (sezione~\ref{sec:difetto1}); da lì il valutatore
+registra per ogni query il numero dei candidati prima del taglio, che una modifica
+al punteggio non può cambiare e una al recupero sì.
 
-Da scrivere.
+\section{Le collezioni pubbliche: SciFact e NFCorpus}\label{sec:collezioni}
 
-\section{Giudizi e accordo fra annotatori}
+Due collezioni di BEIR~\cite{thakur2021beir}, scaricate con un controllo
+dell'impronta degli archivi (tabella~\ref{tab:collezioni}). Servono a una cosa
+sola: dire se il recupero lessicale di Koskidex ha un difetto, contro un
+riferimento noto, BM25 di Lucene nella configurazione \emph{flat} di BEIR
+(0,6789 e 0,3218 di nDCG@10~\cite{pyserini2cr}). Non rispondono alla domanda
+della tesi, che vive sul corpus di dominio.
 
-Da scrivere.
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    & SciFact & NFCorpus \\
+    \midrule
+    documenti & 5.183 & 3.633 \\
+    query di test & 300 & 323 \\
+    giudizi di test & 339 (1,1 per query) & 12.334 (38,2 per query) \\
+    rilevanza & binaria & graduata (1 e 2) \\
+    termini per query, mediana & 12 & 2 \\
+    split di addestramento & train, 809 query & train 2.590, dev 324 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Le collezioni pubbliche.}
+  \label{tab:collezioni}
+\end{table}
 
-\section{Gli strumenti}
+\textbf{SciFact} è la prova di fumo: il riferimento è alto, e con un solo
+documento pertinente per query una query si verifica a mano in un minuto.
+\textbf{NFCorpus} è la prova vera: con 38 giudizi graduati per query il nDCG è
+stabile, e la struttura somiglia più a un documentale, dove molti documenti sono
+pertinenti in parte. Una trappola: il file
+delle query contiene tutti gli split, e le query da valutare si ricavano dai
+giudizi, altrimenti si misura su query che non ne hanno.
 
-Da scrivere.
+Sulle collezioni pubbliche Koskidex gira \emph{piatto}: in memoria, titolo e testo
+in un campo solo, refusi spenti come nei riferimenti. La calibrazione, quando
+c'è, usa gli split di addestramento e sviluppo, mai quello di test.
+
+\section{Il corpus di dominio: gli albi pretori}\label{sec:corpus}
+
+\paragraph{Perché gli albi.} Il corpus doveva venire dall'archivio di Documentale,
+ma il progetto è stato abbandonato e non c'è nessun cliente a cui chiedere il
+permesso di usarne i documenti. L'albo pretorio ha la forma di un documentale:
+l'archivio di una sola organizzazione, con generi ricorrenti (determine, delibere,
+ordinanze, avvisi, liquidazioni), un vocabolario suo e persone che cercano un atto
+che sanno esistere. Ed è pubblico per obbligo di legge, quindi riscaricabile da
+chiunque legga la tesi. Due fonti, verificate scaricandole il 23 settembre 2026:
+\begin{itemize}
+  \item \textbf{Comune di Crispiano} (TA), feed RSS, licenza CC BY 4.0: 563 atti
+        da novembre 2025 a settembre 2026, 390 determine, 82 delibere, 58
+        ordinanze. Il testo è nativo nei PDF, estraibile senza riconoscimento
+        ottico: da due a sei pagine, fra 5 e 13 mila caratteri;
+  \item \textbf{Regione Friuli Venezia Giulia}, API Socrata, licenza IODL 2.0:
+        9.455 atti dal 2011, di 171 enti e 46 tipologie, con ente, tipologia,
+        ufficio, oggetto e numero, ma senza testo integrale. I 171 enti si
+        comportano come i clienti di un documentale condiviso.
+\end{itemize}
+Scartato AlboPOP, il progetto che converte gli albi in feed comuni: dei 215 feed
+schedati ne rispondono 105, e scaricando a campione gli allegati ne arrivano 3 su
+14. Gli altri rispondono \emph{200 OK} con una pagina d'errore: andava provato
+scaricando, non contando le righe del catalogo.
+
+\paragraph{Dentro Documentale.} Gli atti entrano in Documentale dal suo comando di
+importazione, con il suo modello dei documenti, e in Elasticsearch dal suo comando
+di indicizzazione, come in produzione. Il corpus per le valutazioni piatte esce
+dall'esportazione di Documentale, non da una ricostruzione: un corpus costruito
+scavalcando il sistema non direbbe niente sul sistema. L'indice ha 10.018 atti.
+
+\paragraph{Dati personali.} Gli atti contengono nomi di persone: 79 oggetti del
+Friuli Venezia Giulia hanno marcatori espliciti come \emph{nato a} o
+\emph{codice fiscale}, e le pubblicazioni di
+matrimonio di Crispiano riportano nomi, date e luoghi di nascita. Usarli per
+misurare un motore è legittimo, ripubblicarli no: il corpus non entra nel
+repository, che ne conserva solo gli script per riscaricarlo, e in questa tesi gli
+esempi sono anonimi.
+
+\section{Le query: known-item e bisogni aperti}\label{sec:query}
+
+\paragraph{Known-item automatiche.} Chi sa il numero di un atto e il comune che
+l'ha emesso lo ritrova? È la ricerca identificativa più comune in un documentale,
+e si può fabbricare senza nessuno che annoti: la query nasce da un atto, e
+quell'atto è l'unica risposta giusta. La forma è \texttt{<numero> <comune>}, per
+esempio \texttt{13605 Fiume Veneto}. Degli atti con un numero che contiene una
+cifra si tengono solo quelli la cui coppia (comune, numero) è unica: la
+numerazione riparte ogni anno, e una query che descrive due atti non ha una sola
+risposta. Su 9.806 candidati ne restano 9.425, e se ne estraggono 300 con un seme
+fisso; altre 300, con un altro seme e nessun atto in comune, servono solo ad
+addestrare e calibrare. Misurano una forma di query sola, e fabbricata: dicono se
+il motore trova un atto di cui si sa il numero, non come lo cercherebbe una
+persona.
+
+\paragraph{Known-item umane.} Per le ricerche di un atto di cui si ricorda il
+contenuto servono query scritte da persone. Il protocollo
+(appendice~\ref{chapter:appendice-annotazione}) è fissato prima della raccolta: 160 atti
+estratti con un seme, metà per fonte e dentro ogni fonte per genere, nessuno già
+usato dalle known-item automatiche, divisi in quattro lotti da quaranta. A ogni
+persona si mostra un atto come lo vedrebbe un impiegato, lo si nasconde, e le si
+chiede cosa scriverebbe fra qualche settimana per ritrovarlo. L'atto si nasconde
+prima che la persona scriva, altrimenti la query copia il titolo e la trova
+qualunque motore. Scrivono persone che non conoscono i motori; l'autore di questa
+tesi no, perché le sue query misurerebbero lui. Al momento di scrivere la raccolta
+non è ancora fatta.
+
+\paragraph{Bisogni aperti.} Per una query come \emph{manutenzione strade} non
+esiste un atto giusto solo. Le 24 query del confronto, scritte a mano il 23
+settembre 2026 in quattro famiglie (corte, medie, in lingua naturale, per numero
+d'atto e con refusi), sono nate per vedere se i due motori trovano le stesse
+cose, e sono servite a questo nel capitolo~\ref{chapter:sistemi}. Per misurarne la
+pertinenza servono i giudizi della sezione seguente.
+
+\section{Giudizi e accordo fra annotatori}\label{sec:giudizi}
+
+\paragraph{Il pool.} Per le 24 query il pool è l'unione dei primi dieci risultati
+di dodici configurazioni: le nove di Koskidex piatto misurate nei
+capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido}, dal baseline al solo
+vettore, e tre passate dall'app, Elasticsearch di produzione e Koskidex innestato
+con e senza vettori. Ne escono 905 righe da giudicare.
+
+\paragraph{Il protocollo.} Prima di vedere un solo risultato, per ogni query si
+scrive in una o due frasi cosa cerca chi la digita nel documentale di un comune,
+e si committa: è l'unica difesa contro un bisogno che diventa «quello che i motori
+hanno trovato». Poi si giudica ogni atto su tre gradi: 2 se risponde al bisogno
+per intero, 1 se è pertinente ma parziale, 0 se non risponde, anche quando
+contiene le parole della query. Le righe sono ordinate per identificativo, non per
+posizione, e non dicono quale motore ha trovato l'atto; nel dubbio fra due gradi
+vale il più basso, con una nota. Un giudizio non si cambia dopo aver visto le
+metriche.
+
+\paragraph{Il secondo annotatore.} Un solo annotatore misura anche il suo modo di
+giudicare. Un secondo annotatore giudica, senza vedere i giudizi del primo,
+query intere estratte con un seme dal foglio già annotato, almeno 150 righe. Si
+riportano il kappa di Cohen sui tre gradi, il kappa pesato linearmente, perché
+fra 1 e 2 si sbaglia meno che fra 0 e 2, e l'accordo semplice, comunque vengano.
+Le metriche della tesi usano i giudizi del primo annotatore, e si dice di quanto
+cambiano con quelli del secondo.
+
+Anche i giudizi, come le known-item umane, sono da fare. Il
+capitolo~\ref{chapter:confronto} li aspetta.
+
+\paragraph{Le metriche.} Tre, calcolate dallo stesso codice per ogni motore:
+\begin{itemize}
+  \item \textbf{nDCG@10}, la metrica principale di BEIR, che pesa i gradi e la
+        posizione nei primi dieci;
+  \item \textbf{MRR@10}, il reciproco della posizione del primo documento
+        pertinente, zero oltre il decimo: con un solo atto giusto, come nelle
+        known-item, è la misura naturale;
+  \item \textbf{Recall@100}, la quota dei pertinenti nei primi cento.
+\end{itemize}
+Accanto, sempre, le query a vuoto e il numero di candidati: una media non
+distingue un motore che ordina male da uno che non trova, e i due chiedono
+correzioni opposte.
+
+\section{Gli strumenti}\label{sec:strumenti}
+
+\paragraph{Koskidex piatto.} \texttt{scripts/evaluate} carica una collezione in
+formato BEIR in memoria, la indicizza con le impostazioni date da riga di comando,
+esegue le query e scrive metriche, candidati e tempi per query. Con i vettori
+calcola gli embedding una volta e li tiene in una cache.
+
+\paragraph{Dall'app.} \texttt{app:eval-run-queries}, un comando aggiunto a
+Documentale, esegue un file di query con la ricerca di produzione, sul motore
+scelto dalla configurazione, e scrive per ogni query gli identificativi trovati e
+il tempo della chiamata. Lo stesso \texttt{scripts/evaluate}, con un'opzione, ne
+calcola le metriche: i motori passati dall'app e Koskidex piatto si contano con lo
+stesso codice.
+
+\paragraph{Confronto e pool.} \texttt{scripts/compare} esegue le stesse query su
+più configurazioni di Koskidex in memoria; \texttt{scripts/pool} costruisce il
+foglio dei giudizi dalle configurazioni di Koskidex e dai rapporti dell'app.
+
+\paragraph{Raccolta e giudizi.} Le query umane e i giudizi non passano da un
+foglio di calcolo. Due pagine HTML, da aprire nel browser senza rete, fanno da
+sole i passi dei protocolli: mostrano un atto alla volta, lo nascondono quando
+serve, applicano l'ordine e nascondono il motore, registrano i tempi e le
+sessioni, e alla fine scaricano un file da rimandare. La pagina dei giudizi si
+rifiuta di esistere finché i bisogni non sono tutti scritti e committati. Due
+script importano i file ricevuti, controllano che corrispondano alla pagina da cui
+vengono, e scrivono le query e i giudizi in formato BEIR. Le pagine contengono il
+testo degli atti e non entrano nel repository.
+
+\paragraph{La macchina.} Tutti i tempi sono misurati su un Apple M2 con 8 core e
+16 GB. Koskidex gira nativo su tutti i core; Elasticsearch 9.1.0 e MySQL in una
+macchina virtuale Docker con 4 CPU, Elasticsearch con 1 GB di heap, e il suo
+tempo include la chiamata HTTP da PHP. I tempi dei due motori non si confrontano
+alla pari, e dove stanno fianco a fianco lo si scrive.

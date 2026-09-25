@@ -60,17 +60,19 @@ per tipo di query.
 `2026-09-25_innesto-parita/` (24/24 e 300/300 insiemi uguali, ricerca 2,7 ms
 contro 22, il `fsync` per documento).
 
-### 4. L'impianto di valutazione 🔶
+### 4. L'impianto di valutazione 🔶 · bozza scritta
 4.1 Principi: ipotesi prima, interruttori, baseline congelato, archivio con provenienza
 4.2 Le collezioni pubbliche: SciFact e NFCorpus
 4.3 Il corpus di dominio: gli albi pretori
-4.4 Le query: known-item automatiche, known-item umane, bisogni aperti
+4.4 Le query: known-item e bisogni aperti
 4.5 Giudizi e accordo fra annotatori
 4.6 Gli strumenti
 
 *Materiale:* `risultati/README.md`, `istruzioni-annotazione.md`,
 `eval/corpora/c3-albo/SOURCE.md` di Koskidex. *Manca:* le known-item umane, i
-giudizi del pool e il kappa (`da-fare-a-mano.md`).
+giudizi del pool e il kappa (`da-fare-a-mano.md`). *Bozza* (25/09/2026): tutte
+le sezioni scritte; 4.4 e 4.5 descrivono protocolli e strumenti, e vanno
+completate con i numeri della raccolta e dei giudizi quando ci sono.
 
 ### 5. Il recupero lessicale 🔶 · bozza scritta
 5.1 Difetto 0: il recupero congiuntivo ✅
