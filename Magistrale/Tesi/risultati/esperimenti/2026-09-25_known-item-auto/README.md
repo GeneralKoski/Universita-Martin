@@ -35,6 +35,15 @@ dominio, e la prima che mette Elasticsearch e Koskidex sotto le stesse metriche.
 I ranking dei due motori passati dall'app si valutano con `scripts/evaluate
 -rankings`, cioè **con lo stesso codice delle metriche** di Koskidex.
 
+**Aggiunto dopo la misura: il controllo della causa.** Visto il risultato di
+Elasticsearch, `controllo-campi.py` rifà le stesse query sull'Elasticsearch
+locale con un'unica differenza: ogni parola è un `multi_match` `best_fields` a
+sé, con gli stessi refusi, lo stesso `prefix_length` e gli stessi pesi, e tutte
+restano obbligatorie. Cade solo il vincolo che tutte le parole stiano nello
+stesso campo. Il rapporto ha il formato dell'app e si valuta con lo stesso
+codice. `analizza.py` riassume tutti i run e controlla la parità dei due
+motori passati dall'app.
+
 **Le metriche.** Con un solo atto giusto per query: MRR@10 come misura
 principale, la quota di query con l'atto al primo posto, Recall@100 (cioè
 l'atto trovato entro i primi cento) e le query a vuoto.
