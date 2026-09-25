@@ -255,8 +255,12 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
 
 ### 6. Confronto finale in Documentale
 
-- [ ] `fuzzySearchScored` nel contratto `SearchBackend`, per avere i punteggi di
-      entrambi i motori
+- [x] `fuzzySearchScored` nel contratto `SearchBackend` (25/09/2026,
+      Documentale `5dd4460`): la stessa ricerca di `fuzzySearch`, con il
+      punteggio del motore accanto a ogni id. `app:eval-run-queries
+      --punteggi` lo registra nel rapporto; senza l'opzione il rapporto è
+      quello di sempre. Provato dal vivo sulle 24 query: stessi id di
+      `fuzzySearch` su Elasticsearch e su Koskidex
 - [ ] Vettori nell'indicizzazione di Documentale, se la sezione 5 li porta
 - [ ] Stesse query su Elasticsearch e su Koskidex nella configurazione migliore:
       qualità, latenza, memoria, dimensione dell'indice
