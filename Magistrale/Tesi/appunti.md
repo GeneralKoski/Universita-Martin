@@ -253,8 +253,12 @@ Due scoperte fatte per strada, tutte e due materiale di tesi:
   parola cercata (`atre` contro `arte`) non venivano mai valutati. Corretto;
 - **un difetto di Documentale in produzione**: il tokenizer standard di
   Elasticsearch tiene insieme *dell'illuminazione*, quindi chi cerca
-  "illuminazione" non trova gli atti con l'elisione. In un corpus italiano non è
-  un caso raro. Da contare sul corpus intero.
+  "illuminazione" non trova gli atti con l'elisione. **Contato il 25/09/2026:
+  4 atti su 10 (4.033 su 10.018)** hanno almeno una parola che la ricerca di
+  quella parola non trova; chi cerca "infanzia" perde tre atti su quattro,
+  scritti *scuola dell'infanzia*. Il filtro `elision` degli articoli italiani
+  recupera il 99,4% delle coppie perse, quindi la causa è quella
+  (`risultati/esperimenti/2026-09-25_elisioni/`).
 
 **L'innesto è fatto lo stesso giorno** (Documentale `67cf954` e `2a03310`):
 `KoskidexService` accanto a `ElasticsearchService`, dietro lo stesso contratto

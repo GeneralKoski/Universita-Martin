@@ -111,11 +111,11 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
 
 ### 3. Misure che mancano sul lessicale già fatto
 
-- [ ] **Elisioni in produzione**: contare sul corpus intero quanti atti
-      Documentale non trova per il tokenizer standard di Elasticsearch
-      (*dell'illuminazione* non combacia con "illuminazione"). Sulle 24 query
-      del confronto il tokenizer spiega 84 documenti su 9 query, ma 16 sono
-      date: quante siano elisioni non è ancora contato
+- [x] **Elisioni in produzione** (25/09/2026): **4.033 atti su 10.018 (40,3%)**
+      hanno almeno una parola che la ricerca di quella parola non trova, perché
+      nell'atto compare solo elisa. La ricerca ne salva il 2,3%, il filtro
+      `elision` di Elasticsearch ne recupera il 99,4%
+      (`risultati/esperimenti/2026-09-25_elisioni/`)
 - [ ] **BM25 e la ricerca per numero d'atto**: con BM25 l'atto giusto scende al
       3° e al 5° posto, contro il 1° dell'euristico, a parità di recupero
       disgiuntivo. Da capire (`risultati/esperimenti/2026-09-23_numero-atto/`)

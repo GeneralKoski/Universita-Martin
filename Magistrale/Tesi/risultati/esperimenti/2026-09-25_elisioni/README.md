@@ -72,6 +72,109 @@ Scritto e committato prima di lanciare `conta.py`.
 5. **Più di un atto su dieci ha almeno una coppia persa.** Se è così, il difetto
    non è un caso raro ma una proprietà del sistema su testi italiani.
 
+## Esito
+
+`2026-09-25T082835Z_esito.json`, da `conta.py` al commit `8fdfe61` (albero
+pulito), Elasticsearch 9.1.0, indice costruito dall'app a Documentale
+`2a03310`. Nove secondi in tutto: 507 parole, una query ciascuna, 6,4 ms di
+mediana. `id_atti_persi` sono gli id di Documentale, cioè `_id` di
+Elasticsearch: `1` è `doc-0001` del corpus.
+
+**Quattro atti su dieci hanno almeno una parola che la ricerca di quella parola
+non trova.**
+
+| | atti | % |
+|---|---|---|
+| atti nell'indice | 10.018 | |
+| con almeno un termine eliso | 4.280 | 42,7% |
+| con almeno una parola solo elisa (a rischio) | 4.103 | 41,0% |
+| **con almeno una coppia persa** | **4.033** | **40,3%** |
+| con almeno una coppia persa, escluso il solo nome dell'ente | 3.826 | 38,2% |
+
+| | coppie (atto, parola) |
+|---|---|
+| a rischio | 5.913 |
+| salvate dalla ricerca (refusi, forme vicine) | 138 (2,3%) |
+| **perse** | **5.775** |
+| perse, escluso il solo nome dell'ente | 5.464 |
+| perse che il filtro `elision` recupera | 5.739 (99,4%) |
+
+Per fonte: a Crispiano 195 atti persi su 563 (34,6%), nel Friuli Venezia Giulia
+3.838 su 9.455 (40,6%), 3.631 escluso il nome dell'ente. Il difetto non dipende
+da una fonte: è la lingua.
+
+Le parole con più atti persi, su quante ne contengono la parola in qualche
+forma:
+
+| parola | atti con la parola | persi | quota persa |
+|---|---|---|---|
+| *art* | 1.406 | 595 | 42% |
+| *ambito* | 399 | 228 | 57% |
+| *anno* | 916 | 218 | 24% |
+| *isonzo* | 230 | 215 | 93% |
+| *asio* | 180 | 179 | 99% |
+| *area* | 2.731 | 171 | 6% |
+| *associazione* | 230 | 170 | 74% |
+| *infanzia* | 220 | 168 | 76% |
+| *affidamento* | 1.492 | 160 | 11% |
+| *intervento* | 353 | 87 | 25% |
+| *operatore* | 159 | 83 | 52% |
+| *articolo* | 155 | 80 | 52% |
+| *atto* | 229 | 80 | 35% |
+| *impianto* | 254 | 80 | 32% |
+| *interno* | 100 | 80 | 80% |
+
+Chi cerca "infanzia" perde tre atti su quattro di quelli che la nominano,
+perché si scrive quasi sempre *scuola dell'infanzia* o *nido d'infanzia*. E
+*illuminazione*, l'esempio da cui è partito tutto, è fra le meno colpite: 12
+atti su 99.
+
+### Le previsioni
+
+1. Atti con un termine eliso fra il 30% e il 60%: **42,7%, confermata.**
+2. La ricerca salva meno del 30% delle coppie: **2,3%, confermata**, e molto
+   sotto il limite. I refusi non salvano quasi niente, e le forme vicine (un
+   plurale nello stesso atto) sono rare.
+3. Il filtro recupera più del 90% delle coppie perse: **99,4%, confermata.** Delle
+   36 che restano, 17 sono elisioni fuori dall'elenco degli articoli (13
+   *sant'*, 2 *cinquant'*, *quest'*, *tutt'*), 13 sono parole attaccate per
+   uno spazio mancante (*...effettidell'art*, *scuoladell'...*), dove il
+   prefisso non è più un articolo, 2 sono accenti scritti come apostrofo
+   (*conformita'*, *societa'*) davanti alla parola dopo, e 4 sono prefissi
+   strani fuori elenco (*del'*, *sa'*, *app'*, *b'*).
+4. Almeno cinque parole previste fra le prime venti: **sei, confermata**
+   (*anno*, *area*, *intervento*, *impianto*, *ufficio*, *acquisto*). Non
+   previste: *art* (i rinvii normativi, *dell'art. 36*), *ambito*,
+   *associazione*, *infanzia*, e i due toponimi degli enti. *impegno* e
+   *incarico*, previste, perdono poco: 46 atti su 1.697 e 60 su 327, perché
+   compaiono spesso anche a sé (*impegno di spesa*).
+5. Più di un atto su dieci con una coppia persa: **quattro su dieci,
+   confermata**, e il margine è tale che il difetto va descritto come una
+   proprietà del sistema su testo italiano, non come un caso limite.
+
+### Da non leggere come perdita
+
+`coppie_in_piu_nel_controllo_fuori_dalle_coppie_a_rischio` vale 5.141, ma non
+sono atti persi. Sono atti che l'indice di controllo trova per una parola che
+non vi compare: il filtro rende raggiungibile una forma vicina, e i refusi fanno
+il resto. Il caso più grosso è *arte*, 575 coppie: dopo il filtro *dell'art.*
+diventa *art*, che dista un refuso da *arte*. Sono in buona parte rumore della
+ricerca con refusi, e nessuna cifra di perdita li conta.
+
+### Cosa vuol dire per la tesi
+
+È un difetto di recupero di Documentale in produzione, misurato sul codice di
+produzione e con la causa confermata: aggiungere il filtro `elision` con gli
+articoli italiani recupera il 99,4% delle coppie perse. In Elasticsearch la
+correzione è una riga di mapping più una reindicizzazione. In Koskidex, con
+`tokenizer: "standard"` il comportamento è lo stesso di Elasticsearch per
+costruzione; col tokenizer predefinito l'apostrofo spezza il termine e il
+difetto non c'è.
+
+Un limite da scrivere accanto al numero: una coppia persa è una ricerca di una
+parola sola che non trova un atto. Quanto conti per gli utenti dipende da
+quanto spesso quelle parole si cercano, e query vere non ce ne sono.
+
 ## Come si rifà
 
 ```
