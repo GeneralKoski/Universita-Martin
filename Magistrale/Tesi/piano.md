@@ -144,11 +144,16 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
 - [ ] **Decidere i default** di `BM25Expansion` e degli altri interruttori
       misurati: cambiarli cambia il baseline, e va deciso a parte, con il
       relatore
-- [ ] **Documentale e la ricerca per numero e comune**: provare la correzione
-      (le parole libere di stare in campi diversi, o un campo che le raccoglie
-      tutte) e misurarla sulle stesse 300 query. Il controllo trova l'atto in
-      tutte, ma primo solo nel 36%: da capire anche l'ordine, probabilmente i
-      refusi sui numeri
+- [x] **Documentale e la ricerca per numero e comune** (25/09/2026): Koskidex
+      innestato con `KOSKIDEX_ALL_TERMS_IN_ONE_FIELD=false` (Documentale
+      `0c6cacf`, acceso per default) trova l'atto entro i primi 10 nel 93%
+      delle query invece del 2%, ma primo solo nel 38%: in 154 casi su 185 lo
+      scavalca un atto con **il numero a un refuso** (`1109` per `1209`)
+      (`risultati/esperimenti/2026-09-25_koskidex-campi-liberi/`)
+- [ ] **Niente refusi sui termini numerici** in Koskidex, dietro
+      un'impostazione e con la voce nel diario prima: un numero con una cifra
+      sbagliata è un altro atto. Misurarlo sulle known-item dall'app e sulle
+      collezioni pubbliche
 - [ ] **`b` sui documenti lunghi**: rimisurarlo sui soli 563 atti di Crispiano
       col testo intero. 0,75 è tarato su collezioni di articoli, e nel corpus
       misto le schede corte schiacciano la lunghezza media
