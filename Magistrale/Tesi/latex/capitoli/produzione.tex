@@ -190,16 +190,16 @@ la accende \texttt{KOSKIDEX\_TYPOS\_ON\_NUMBERS=false}.
     \midrule
     Elasticsearch, produzione & 0,017 & 1,3\% & 2,0\% & 70\% \\
     Koskidex, campo unico & 0,018 & 1,7\% & 2,0\% & 70\% \\
-    Koskidex, campo unico, numeri esatti & 0,020 & 2,0\% & 2,0\% & 95\% \\
+    Koskidex, campo unico, n.\ esatti & 0,020 & 2,0\% & 2,0\% & 95\% \\
     Koskidex, parole libere & 0,548 & 38,3\% & 93,3\% & 0 \\
-    \textbf{Koskidex, parole libere, numeri esatti} & \textbf{0,950} & \textbf{91,7\%} & \textbf{99,7\%} & \textbf{0} \\
+    \textbf{Koskidex, parole libere, n.\ esatti} & \textbf{0,950} & \textbf{91,7\%} & \textbf{99,7\%} & \textbf{0} \\
     \midrule
     Elasticsearch, parole libere (controllo) & 0,534 & 36,3\% & 96,0\% & 0 \\
     \bottomrule
   \end{tabular}
   \caption{Le 300 query \texttt{<numero> <comune>}. \emph{Campo unico}: tutte le
   parole nello stesso campo, come in produzione; \emph{parole libere}: ciascuna in
-  un campo qualsiasi; senza \emph{numeri esatti} i numeri ammettono refusi. Le
+  un campo qualsiasi; senza \emph{numeri esatti} (n.\ esatti) i numeri ammettono refusi. Le
   prime cinque righe passano dall'app; il controllo interroga Elasticsearch con la
   query riscritta parola per parola.}
   \label{tab:numero-comune}

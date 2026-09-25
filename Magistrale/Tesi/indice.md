@@ -99,12 +99,12 @@ umane.
 correzione in Koskidex innestato: le stesse coppie recuperate), `_known-item-auto/`,
 `_koskidex-campi-liberi/`, `_refusi-numeri/` (dal 2% entro dieci al 92% primo).
 
-### 7. Recupero ibrido e fusione ⬜
-7.1 Gli embedding e la suddivisione dei documenti lunghi
+### 7. Recupero ibrido e fusione 🔶 · bozza scritta
+7.1 Gli embedding e la suddivisione dei documenti lunghi 🔶
 7.2 Difetto 2: dal re-ranking al recupero ibrido ✅
 7.3 Difetto 3: fondere scale incomparabili ✅
-7.4 Il costo: scansione dei vettori, latenza, memoria 🔶
-7.5 Scegliere la configurazione per tipo di query 🔶
+7.4 Il costo: scansione, latenza, memoria ✅
+7.5 Scegliere per tipo di query 🔶
 
 *Materiale:* 7.2 ha `2026-09-25_ibrido-unione/` (re-ranking +0,022 e +0,024,
 l'unione conta solo dove il lessicale lascia buchi) e `_ibrido-congiuntivo/`
@@ -121,8 +121,11 @@ forma della query non coglie). 7.4 ha `_costo-vettori/` (convertire i
 vettori una volta sola dimezza la ricerca e toglie due terzi della memoria; il
 resto è il prodotto scalare; in Documentale il costo del re-ranking è il
 vettore della query, circa 24 ms, non la ricerca). *Manca:* la scelta rifatta sulle known-item
-umane; la suddivisione dei documenti lunghi (7.1). Gli
-embedding vengono da `bge-m3` in locale (deciso il 25/09/2026).
+umane; la suddivisione dei documenti lunghi (7.1), che aspetta la misura
+della scheda contro il testo intero (5.7). Gli embedding vengono da `bge-m3` in
+locale (deciso il 25/09/2026). *Bozza* (25/09/2026): tutte e cinque le sezioni
+scritte con il materiale di oggi; 7.1 e 7.5 vanno riprese quando arrivano le
+known-item umane.
 
 ### 8. Il confronto finale con Elasticsearch ⬜
 8.1 Le configurazioni a confronto

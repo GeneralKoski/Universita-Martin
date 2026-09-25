@@ -183,12 +183,13 @@ motore solo (tabella~\ref{tab:divergenza}).
 
 \begin{table}[ht]
   \centering
+  \small
   \begin{tabular}{lrrr}
     \toprule
-    Passo & query identiche & solo Elasticsearch & solo Koskidex \\
+    Passo & identiche & solo ES & solo Koskidex \\
     \midrule
     0. Koskidex com'era & 8 / 24 & 124 & 447 \\
-    1. tutte le parole nello stesso campo & 10 / 24 & 124 & 121 \\
+    1. parole nello stesso campo & 10 / 24 & 124 & 121 \\
     2. soglie dei refusi di Elasticsearch & 12 / 24 & 0 & 154 \\
     3. niente ricerca per prefisso & 13 / 24 & 0 & 116 \\
     4. prima lettera esatta & 15 / 24 & 0 & 84 \\
@@ -196,7 +197,8 @@ motore solo (tabella~\ref{tab:divergenza}).
     \bottomrule
   \end{tabular}
   \caption{Le differenze fra i due motori sulle 24 query del confronto,
-  aggiungendo a Koskidex una correzione alla volta. I passi 2-5 sono misurati
+  aggiungendo a Koskidex una correzione alla volta: query con gli stessi risultati,
+  e risultati trovati da uno solo dei due motori (ES: Elasticsearch). I passi 2-5 sono misurati
   dopo la correzione del difetto dei bigrammi descritta nel testo.}
   \label{tab:divergenza}
 \end{table}

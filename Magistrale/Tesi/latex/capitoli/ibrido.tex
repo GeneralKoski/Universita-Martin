@@ -1,21 +1,363 @@
 \chapter{Recupero ibrido e fusione}\label{chapter:ibrido}
 
-\section{Gli embedding e la suddivisione dei documenti lunghi}
+Il capitolo~\ref{chapter:lessicale} ha portato il recupero lessicale di Koskidex
+vicino ai riferimenti pubblicati. Restano i due difetti che riguardano i vettori.
+Il difetto 2: il vettore della query riordina i documenti che il lessicale ha già
+trovato, ma non ne porta di nuovi. Il difetto 3: il punteggio lessicale e la
+similarità si sommano con una costante, 20, messa a occhio, su due scale che non
+hanno niente in comune. Questo capitolo li misura tutti e due, ne misura il costo,
+e arriva a una conclusione che nessuno dei due, da solo, faceva prevedere: il modo
+giusto di usare il vettore dipende dal tipo di query.
 
-Da scrivere.
+\section{Gli embedding e la suddivisione dei documenti lunghi}\label{sec:embedding}
 
-\section{Difetto 2: dal re-ranking al recupero ibrido}
+\paragraph{Il modello.} Gli embedding vengono da un modello locale, \texttt{bge-m3}
+\cite{chen2024bgem3}, servito da Ollama sulla stessa macchina. La scelta di un
+modello locale invece di un servizio esterno ha tre ragioni: i pesi e la versione
+sono fissi, e ogni esito registra il nome e l'impronta del modello
+(\texttt{790764642607}); i documenti non escono dalla macchina; e un motore che si
+vanta di non avere dipendenze non guadagnerebbe niente a dipendere da un servizio
+a pagamento. \texttt{bge-m3} è multilingue, dà vettori di 1.024 dimensioni già
+normalizzati, ha un contesto di 8.192 token e non chiede prefissi diversi per
+query e documenti.
 
-Da scrivere.
+\paragraph{Nel motore.} Koskidex ha un'impostazione, \texttt{Embedder}, spenta per
+default: accesa, il server calcola il vettore di ogni documento quando lo aggiunge
+e quello della query quando la ricerca lo chiede, e li tiene in una cache indicizzata
+dal modello e dal testo, così che uno stesso testo si calcoli una volta sola. Il
+motore vede solo i vettori.
+Documentale la accende con una variabile d'ambiente,
+\texttt{KOSKIDEX\_EMBEDDER\_MODEL}. Il testo di cui si calcola il vettore è quello
+indicizzato: nelle valutazioni piatte titolo e testo in un campo solo, in
+Documentale i sei campi della scheda. Calcolare la prima volta i vettori ha
+richiesto 11 minuti per i 5.183 documenti di SciFact, 8 per i 3.633 di NFCorpus e 9
+per i 10.018 atti; dalla cache, frazioni di secondo.
 
-\section{Difetto 3: fondere scale incomparabili}
+\paragraph{La suddivisione dei documenti lunghi.} Un modello di embedding ha un
+contesto limitato, e i documenti più lunghi di quel contesto vanno spezzati in
+parti, con un vettore per parte. Per questa tesi la questione, oggi, non si pone:
+Documentale indicizza le schede, che sono brevi, e anche il testo integrale degli
+atti di Crispiano, fra i 5 e i 13 mila caratteri, sta secondo una stima nell'ordine
+di qualche migliaio di token, sotto il contesto di \texttt{bge-m3}. Se spezzare
+convenga comunque, per la pertinenza e non per il limite del modello, lo dirà la
+misura della scheda contro il testo intero (sezione~\ref{sec:scheda-testo}), che
+aspetta le query known-item scritte da persone.
 
-Da scrivere.
+\section{Difetto 2: dal re-ranking al recupero ibrido}\label{sec:difetto2}
 
-\section{Il costo: scansione dei vettori, latenza, memoria}
+\paragraph{Il difetto.} Con il vettore della query, Koskidex aggiunge
+$20 \cdot \text{sim}$ al punteggio di ogni documento già trovato dal lessicale. Un
+documento pertinente che non condivide parole con la query non entra mai: dal vivo,
+con l'embedder acceso, \emph{traffico} non trova l'ordinanza di chiusura di una
+strada, né da sola né in ibrido.
 
-Da scrivere.
+\paragraph{La correzione.} Un'impostazione, \texttt{HybridMode}, con il
+comportamento di partenza come default:
+\begin{itemize}
+  \item vuota (\textbf{R}, re-ranking): il vettore riordina i candidati lessicali;
+  \item \texttt{union} (\textbf{U}): i \texttt{VectorTopK} documenti più vicini per
+        similarità del coseno entrano fra i candidati, accanto a quelli lessicali;
+  \item \texttt{vector} (\textbf{V}): solo i più vicini, il lessicale ignorato. È il
+        riferimento: quanto vale il modello da solo.
+\end{itemize}
+\texttt{VectorTopK} vale 100, fissato prima di misurare perché è la profondità di
+Recall@100. La fusione non cambia: un documento portato solo dal vettore vale
+$20 \cdot \text{sim}$, come nella ricerca solo vettoriale; qui cambia solo chi
+entra fra i candidati. La scansione dei vettori è esaustiva, senza indice
+approssimato: il suo costo si misura nella sezione~\ref{sec:costo}.
 
-\section{Scegliere la configurazione per tipo di query}
+\paragraph{Con il recupero disgiuntivo.} La base lessicale (\textbf{L}) è quella
+corretta del capitolo~\ref{chapter:lessicale}: BM25, recupero disgiuntivo,
+frequenza mescolata. La tabella~\ref{tab:difetto2-any} dà le quattro configurazioni.
 
-Da scrivere.
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+    & L & R & U & V \\
+    \midrule
+    SciFact nDCG@10 & 0,6694 & \textbf{0,6913} & 0,6913 & 0,6436 \\
+    SciFact Recall@100 & 0,8859 & 0,9116 & 0,9116 & 0,9037 \\
+    NFCorpus nDCG@10 & 0,3049 & 0,3284 & \textbf{0,3340} & 0,3149 \\
+    NFCorpus Recall@100 & 0,2391 & 0,2499 & \textbf{0,2809} & 0,2830 \\
+    NFCorpus, query a vuoto & 24 & 24 & \textbf{0} & 0 \\
+    known-item MRR@10 & 0,8331 & \textbf{0,8464} & 0,8464 & 0,1837 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Il difetto 2 con il recupero disgiuntivo: lessicale (L), re-ranking
+  (R, il comportamento di partenza), unione (U) e solo vettore (V).}
+  \label{tab:difetto2-any}
+\end{table}
+
+Il re-ranking vale più di due punti su tutte e due le collezioni pubbliche,
+\emph{con} la fusione a occhio del difetto 3. L'unione aggiunge qualcosa solo dove
+il lessicale lascia buchi. Su SciFact non cambia niente, e la ragione è istruttiva:
+con il recupero disgiuntivo il lessicale trova in mediana 5.182 documenti su 5.183,
+i cento più vicini sono già fra i candidati, e il vettore non ne porta nessuno. Il
+difetto 2 lì non si vede perché il difetto 0 è stato corretto dalla parte
+opposta: quando il lessicale prende tutto, non c'è niente da recuperare. Su
+NFCorpus, dove le query sono corte, il lessicale trova in mediana 560 documenti e
+lascia 24 query senza risultati; il vettore porta in mediana 44 candidati nuovi, il
+richiamo sale di 0,031 e le query a vuoto spariscono. Il modello da solo fa meglio
+del lessicale su NFCorpus e peggio su SciFact, e sulle known-item, dove tutto sta in
+un numero, non sa quasi niente (0,18).
+
+\paragraph{Con il recupero congiuntivo.} Documentale cerca in modo congiuntivo, e lì
+il lessicale lascia a vuoto la maggior parte delle query lunghe. La stessa misura,
+cambiando solo il recupero, dà la tabella~\ref{tab:difetto2-all}.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+    Recupero congiuntivo & L & R & U & U disgiuntivo \\
+    \midrule
+    SciFact nDCG@10 & 0,0246 & 0,0246 & \textbf{0,6483} & 0,6913 \\
+    SciFact, query a vuoto & 290 & 290 & \textbf{0} & 0 \\
+    NFCorpus nDCG@10 & 0,1939 & 0,1973 & \textbf{0,3333} & 0,3340 \\
+    NFCorpus, query a vuoto & 160 & 160 & \textbf{0} & 0 \\
+    known-item MRR@10 & 0,9596 & 0,9579 & 0,9579 & 0,8464 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Il difetto 2 con il recupero congiuntivo di Documentale. L'ultima colonna
+  è l'unione della tabella~\ref{tab:difetto2-any}, per confronto.}
+  \label{tab:difetto2-all}
+\end{table}
+
+\textbf{Con il recupero congiuntivo il difetto 2 è il più grande misurato in questa
+tesi}: l'unione vale +0,62 di nDCG@10 su SciFact e +0,14 su NFCorpus, e porta a
+zero le query a vuoto. Il re-ranking non può niente: riordina i pochi documenti che
+il lessicale ha trovato. E c'è un risultato che non avevo previsto, nell'ultima
+riga. Il recupero congiuntivo con l'unione tiene le known-item a 0,958, dove quello
+disgiuntivo con l'unione faceva 0,846, e sulle collezioni pubbliche resta vicino al
+disgiuntivo (-0,043 su SciFact, -0,001 su NFCorpus). Il motivo per cui il recupero
+disgiuntivo serviva alle query in lingua naturale era che il congiuntivo le
+lasciava vuote; l'unione toglie quel motivo, perché i documenti li porta il
+vettore. È anche la configurazione più vicina a Documentale, che cerca già in modo
+congiuntivo: alla ricerca di produzione, per correggere il difetto 2, basta
+aggiungere i vettori.
+
+\section{Difetto 3: fondere scale incomparabili}\label{sec:difetto3}
+
+\paragraph{Il difetto.} La somma $\text{BM25} + 20 \cdot \text{sim}$ mette insieme un
+punteggio che cresce con la lunghezza della query e una similarità fra $-1$ e $1$,
+con una costante scelta a occhio. Su una query di una parola il vettore pesa molto,
+su una di dodici quasi niente.
+
+\paragraph{Tre fusioni.} Dietro un'impostazione, \texttt{FusionMode}, con la somma
+di partenza come default:
+\begin{itemize}
+  \item la \textbf{somma}, con la costante in un'impostazione, \texttt{VectorWeight},
+        che vuota vale 20;
+  \item la \textbf{Reciprocal Rank Fusion}~\cite{cormack2009rrf}, che somma
+        $1/(60 + r)$ per ciascuna delle due liste, dove $r$ è la posizione del
+        documento in quella lista: non guarda i punteggi, solo le posizioni. La
+        costante 60 è quella dell'articolo, predefinita anche in Elasticsearch;
+  \item la \textbf{combinazione convessa}: ciascuna lista normalizzata min-max sui
+        propri candidati, poi $\alpha \cdot \text{lessicale} + (1-\alpha) \cdot
+        \text{vettore}$, con $\alpha$ in un'impostazione che vuota vale 0,5.
+\end{itemize}
+Le due fusioni nuove lavorano sull'unione dei candidati, e un documento assente da
+una lista prende zero da quella lista.
+
+\paragraph{Calibrare senza guardare il test.} La costante della somma e $\alpha$
+si scelgono su split separati da quelli di test: SciFact train (809 query), NFCorpus
+dev (324) e 300 known-item generate da atti diversi da quelli del test. Le griglie
+sono fissate prima: la costante in $\{0, 5, 10, 20, 40, 80, 160, 320\}$, $\alpha$ da
+0 a 1 a passi di 0,1. A parità di metrica vince il valore più vicino al predefinito,
+per non spostare il comportamento di partenza senza un guadagno
+(tabella~\ref{tab:calibrazione}).
+
+\begin{table}[ht]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{lrrrrrrrr}
+    \toprule
+    costante & 0 & 5 & 10 & 20 & 40 & 80 & 160 & 320 \\
+    \midrule
+    SciFact train & 0,678 & 0,686 & 0,696 & 0,708 & 0,723 & 0,742 & \textbf{0,753} & 0,750 \\
+    NFCorpus dev & 0,276 & 0,297 & 0,303 & 0,313 & 0,321 & 0,326 & \textbf{0,326} & 0,320 \\
+    known-item train & 0,861 & 0,867 & \textbf{0,872} & 0,868 & 0,814 & 0,690 & 0,505 & 0,353 \\
+    \midrule
+    $\alpha$ & 0 & 0,2 & 0,4 & 0,5 & 0,6 & 0,8 & 0,9 & 1 \\
+    \midrule
+    SciFact train & 0,712 & 0,731 & 0,743 & \textbf{0,748} & 0,745 & 0,720 & 0,703 & 0,678 \\
+    NFCorpus dev & 0,303 & 0,317 & 0,320 & \textbf{0,323} & 0,320 & 0,307 & 0,299 & 0,276 \\
+    known-item train & 0,195 & 0,283 & 0,444 & 0,579 & 0,719 & 0,850 & \textbf{0,863} & 0,861 \\
+    \bottomrule
+  \end{tabular}
+  \caption{La calibrazione della somma e della combinazione convessa: nDCG@10, MRR@10
+  per le known-item. La griglia di $\alpha$ è completa nei dati, qui ridotta.}
+  \label{tab:calibrazione}
+\end{table}
+
+\paragraph{Sul test.} I valori calibrati, misurati una volta sola sul test, danno la
+tabella~\ref{tab:difetto3}.
+
+\begin{table}[ht]
+  \centering
+  \small
+  \begin{tabular}{lrrrrr}
+    \toprule
+    & \multicolumn{2}{c}{somma} & RRF & \multicolumn{2}{c}{convessa} \\
+    \cmidrule(lr){2-3} \cmidrule(lr){5-6}
+    & 20 & calibrata & & 0,5 & calibrata \\
+    \midrule
+    SciFact & 0,6913 & \textbf{0,7067} (160) & 0,6866 & 0,7025 & 0,7025 (0,5) \\
+    NFCorpus & 0,3340 & 0,3441 (160) & \textbf{0,3447} & 0,3416 & 0,3416 (0,5) \\
+    known-item & 0,8464 & \textbf{0,8499} (10) & 0,4623 & 0,5723 & 0,8466 (0,9) \\
+    \bottomrule
+  \end{tabular}
+  \caption{Il difetto 3 sul test, con il recupero disgiuntivo e l'unione: nDCG@10,
+  MRR@10 per le known-item. Fra parentesi il valore calibrato.}
+  \label{tab:difetto3}
+\end{table}
+
+\textbf{Il 20 era sbagliato di un fattore otto per le query in lingua naturale e
+giusto, per caso, per quelle identificative.} Calibrare la costante vale +0,015 su
+SciFact e +0,010 su NFCorpus; la stessa costante, 160, sulle known-item porta l'MRR
+da 0,87 a 0,50. RRF, che di parametri non ne ha, fa come la somma calibrata su
+NFCorpus, sotto la somma a occhio su SciFact, e dimezza le known-item: pesa la
+posizione vettoriale dell'atto giusto, pessima, quanto quella lessicale. La
+normalizzazione della combinazione convessa non risolve: $\alpha = 0{,}5$ va bene per
+le collezioni pubbliche e sulle known-item fa 0,57, ne serve 0,9.
+
+Avevo previsto il contrario sulla parte che conta. La mia ipotesi era che la
+costante dipendesse dalla lunghezza delle query, più alta su SciFact (dodici termini
+in mediana) che su NFCorpus (due), e che solo la normalizzazione rendesse il peso
+trasferibile fra le due. La prima è caduta: su SciFact e NFCorpus la costante
+migliore è la stessa, 160. La seconda ha tenuto ($\alpha = 0{,}5$ su tutte e due),
+ma senza il merito che le davo, perché anche le costanti coincidono. La scala che conta non è quella
+fra query lunghe e corte ma quella fra \emph{tipi} di query. Su una query
+identificativa il vettore non sa niente del numero e va tenuto basso; su una in
+lingua naturale va pesato otto volte più di quanto facesse il motore. Nessuna
+fusione con un parametro unico regge i due tipi, e la correzione del difetto 3 non
+è una formula ma una scelta: il peso del vettore per tipo di query, che è
+l'argomento della sezione~\ref{sec:scelta}.
+
+\section{Il costo: scansione, latenza, memoria}\label{sec:costo}
+
+\paragraph{La scansione.} Koskidex non ha un indice approssimato dei vettori: i più
+vicini si trovano calcolando la similarità con tutti i documenti, in $O(n \cdot d)$.
+È una scelta deliberata, per un archivio da decine di migliaia di documenti. Nelle
+misure del difetto 2 l'unione costa, rispetto al re-ranking, 6,5~ms di mediana in
+più su SciFact, 5,1 su NFCorpus e 15,3 sugli atti: una scansione, lineare nel
+numero di documenti. Le fusioni nuove costano meno della somma, da 1 a 7~ms, perché
+scandiscono i vettori una volta sola invece di calcolare prima la similarità dei
+candidati lessicali e poi quella di tutti.
+
+\paragraph{Un costo che le valutazioni non vedevano.} I vettori che arrivano al
+motore via HTTP, o dall'istantanea su disco, sono liste generiche
+(in Go \texttt{[]interface\{\}}), e il motore li ricopiava in un vettore di numeri
+\emph{per ogni documento a ogni ricerca}, due volte con l'unione. Nelle valutazioni
+piatte i vettori arrivano già come numeri, e il costo non si vedeva. Un benchmark
+con 10.000 documenti da 1.024 dimensioni, dati come li dà l'API, lo isola
+(tabella~\ref{tab:costo}).
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    & prima & dopo & \\
+    \midrule
+    re-ranking, ms per ricerca & 57,6 & 24,7 & 2,33$\times$ \\
+    unione, ms per ricerca & 102,6 & 42,7 & 2,40$\times$ \\
+    unione, MB allocati per ricerca & 177,3 & 13,5 & $-92\%$ \\
+    memoria viva dopo il caricamento, MB & 270,5 & 94,7 & $-65\%$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Convertire i vettori una volta sola, all'aggiunta del documento. Mediane
+  di cinque esecuzioni, Apple M2.}
+  \label{tab:costo}
+\end{table}
+
+Convertirli una volta sola, all'aggiunta, dimezza la ricerca e toglie due terzi
+della memoria, con punteggi identici al bit. Del tempo che resta, il 69\% è il
+calcolo della similarità. Calcolare le norme dei documenti una volta sola, invece
+che a ogni ricerca, sembrava il passo ovvio e non ha dato quasi niente: $-7\%$ con
+l'unione, niente col re-ranking. Una spiegazione che regge i numeri, ma che non ho
+misurato direttamente, è che il ciclo non è limitato dal numero di operazioni ma
+dalla latenza di una catena di 1.024 somme dipendenti: le tre somme di prima correvano in parallelo, e toglierne due
+lascia la stessa catena. Accorciarla vorrebbe più accumulatori, cioè sommare in un
+altro ordine, e punteggi diversi nelle ultime cifre. A 10.000 documenti da 1.024
+dimensioni una scansione esatta costa quindi 12-15~ms su un portatile.
+
+\paragraph{In Documentale.} Dal vivo, sulle 24 query del confronto, il re-ranking
+vettoriale sembrava portare la mediana da 8,7 a 33~ms. Rimisurato in A/B, con il
+motore di prima e quello di dopo sugli stessi dati, i due binari non differiscono
+in modo misurabile (le passate ballano di 2~ms nei due versi), e con i vettori
+delle query già calcolati la mediana è di 9,4-9,9~ms. I 24~ms in più erano il vettore della query, che Ollama
+calcola la prima volta che una query si vede. Con il re-ranking e il recupero
+congiuntivo i candidati lessicali sono pochi, e la conversione dei vettori non
+pesava. Il costo del vettore, in un documentale, è la query, non la ricerca.
+
+\section{Scegliere per tipo di query}\label{sec:scelta}
+
+\paragraph{Senza vettori.} Già il capitolo~\ref{chapter:lessicale} aveva trovato che
+nessuna impostazione lessicale unica va bene per le query identificative e per
+quelle in lingua naturale: il recupero congiuntivo è giusto per
+\texttt{1209 Crispiano} e disastroso per le frasi di SciFact. Scegliendo per ogni
+query fra il recupero disgiuntivo e il congiuntivo, una regressione logistica su
+otto caratteristiche della query (lunghezza, cifre, IDF dei termini, se il
+congiuntivo torna vuoto) arriva a 0,0006 dall'oracolo che sceglie a posteriori.
+Ma l'oracolo stesso non va oltre la scelta per collezione, e una regola scritta a
+mano, \emph{recupero congiuntivo se la query ha una cifra e il congiuntivo trova
+qualcosa}, fa esattamente quanto il classificatore.
+
+\paragraph{Con l'unione e il peso del vettore.} I due difetti di questo capitolo
+cambiano la domanda. Con l'unione il recupero congiuntivo non torna più vuoto, e il
+peso del vettore giusto dipende dal tipo di query. Le due configurazioni fra cui
+scegliere diventano: \textbf{A}, recupero disgiuntivo, unione, peso 160, per le
+frasi; \textbf{B}, recupero congiuntivo, unione, peso 10, per gli identificativi.
+I pesi vengono dalla calibrazione della sezione~\ref{sec:difetto3}, senza
+ricalibrare. Le strategie, il classificatore e i suoi parametri sono gli stessi di
+prima; la caratteristica \emph{il congiuntivo torna vuoto} si calcola sul solo lessicale,
+perché B con l'unione non è mai vuota (tabella~\ref{tab:scelta}).
+
+\begin{table}[ht]
+  \centering
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    strategia & known-item & SciFact & NFCorpus & media \\
+    \midrule
+    sempre A (disgiuntivo, 160) & 0,5589 & \textbf{0,7067} & \textbf{0,3441} & 0,5366 \\
+    sempre B (congiuntivo, 10) & \textbf{0,9680} & 0,6483 & 0,3325 & 0,6496 \\
+    sempre congiuntivo, peso 20 & 0,9675 & 0,6483 & 0,3333 & 0,6497 \\
+    oracolo & 0,9731 & 0,7280 & 0,3655 & 0,6889 \\
+    \textbf{la regola} & \textbf{0,9680} & 0,7067 & 0,3438 & \textbf{0,6728} \\
+    classificatore & 0,9680 & 0,7036 & 0,3432 & 0,6716 \\
+    \midrule
+    classificatore senza vettori & 0,9687 & 0,6694 & 0,3038 & 0,6473 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Scegliere per ogni query fra due configurazioni ibride: nDCG@10 sul
+  test. La regola sceglie B se la query ha una cifra e il recupero lessicale
+  congiuntivo trova qualcosa, altrimenti A.}
+  \label{tab:scelta}
+\end{table}
+
+\textbf{Scegliere il peso del vettore per tipo di query vale +0,023 di \mbox{nDCG@10} medio
+sulla migliore configurazione fissa}, e +0,026 sulla scelta senza vettori. Per
+prenderlo basta ancora la regola di una riga; il classificatore impara la stessa
+regola e fa appena peggio.
+
+E adesso l'oracolo ha spazio oltre il tipo di query: 0,016 sopra la regola, quasi
+tutto sulle frasi (+0,021 su SciFact e su NFCorpus), dove senza vettori non ne
+aveva. A e B sono ormai due ordinamenti diversi della stessa frase, il lessicale con
+un vettore forte contro quasi solo il vettore, e B vince su 29 query di SciFact su
+300 e su 82 di NFCorpus su 323. Nessuna caratteristica della query lo sa
+riconoscere: per saperlo bisognerebbe guardare i risultati, non la query. È un
+limite, e va scritto come tale.
+
+\paragraph{Il rischio che resta aperto.} Qui ogni tipo di query sta in una collezione
+diversa: le known-item hanno tutte una cifra e un recupero congiuntivo che trova
+l'atto, mentre le frasi di SciFact, anche quando hanno una cifra (114 query su
+300), col congiuntivo tornano quasi sempre vuote. Una regola che riconosce la collezione e una che riconosce il tipo
+di query danno gli stessi numeri, e su questi dati non si possono distinguere. La
+prova giusta sono query dei due tipi nella stessa collezione, cioè le known-item
+scritte da persone sul corpus degli albi, dove \emph{ordinanza chiusura via Roma
+luglio} non ha numeri e una frase può averne. Finché quella prova non c'è, la
+scelta per tipo di query resta fuori dal motore e fuori dal profilo consigliato del
+capitolo~\ref{chapter:produzione}.
