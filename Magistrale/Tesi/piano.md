@@ -114,8 +114,13 @@ Rifare i giudizi perché il pool era incompleto è l'unico lavoro davvero buttat
       foglio, grado, nota, tempi e sessioni; si rifiuta di esistere senza i
       bisogni committati. Provata con un browser automatico su una copia con
       bisogni finti
-- [ ] Lo strumento che calcola il kappa: da scrivere quando ci sono i giudizi
-      del pool, non prima
+- [x] Lo strumento che calcola il kappa (25/09/2026, `risultati/strumenti/kappa.py`):
+      il piano diceva di aspettare i giudizi, ma il formato dei fogli è fissato
+      da `importa-giudizi.py` e la formula non ha niente da tarare sui dati.
+      Accordo semplice, kappa di Cohen, kappa pesato linearmente, matrice di
+      confusione e accordo per query; si rifiuta di partire a campione del
+      secondo annotatore incompleto. Provato su dati inventati, con kappa 0,5
+      e pesato 0,4 calcolati a mano; archivia in `query/confronto-24/accordo/`
 - [x] `scripts/pool -run <rapporto>` unisce al pool i ranking di
       `app:eval-run-queries` (Koskidex `5e771dd`), e rifiuta query non eseguite,
       id fuori dal corpus e rapporti di altro formato
