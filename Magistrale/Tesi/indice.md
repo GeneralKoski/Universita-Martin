@@ -117,9 +117,9 @@ unico regge i due tipi); 7.5 ha
 +0,023 sulla migliore configurazione fissa; l'oracolo ha 0,016 di spazio che la
 forma della query non coglie). 7.4 ha `_costo-vettori/` (convertire i
 vettori una volta sola dimezza la ricerca e toglie due terzi della memoria; il
-resto è il prodotto scalare). *Manca:* la scelta rifatta sulle known-item
-umane; la suddivisione dei documenti lunghi (7.1); il costo misurato in
-Documentale (7.4). Gli
+resto è il prodotto scalare; in Documentale il costo del re-ranking è il
+vettore della query, circa 24 ms, non la ricerca). *Manca:* la scelta rifatta sulle known-item
+umane; la suddivisione dei documenti lunghi (7.1). Gli
 embedding vengono da `bge-m3` in locale (deciso il 25/09/2026).
 
 ### 8. Il confronto finale con Elasticsearch ⬜
