@@ -106,7 +106,8 @@ correzione in Koskidex innestato: le stesse coppie recuperate), `_known-item-aut
 
 *Materiale:* 7.5 ha già `2026-09-25_scelta-per-query/` (il classificatore a
 0,0006 dall'oracolo, e una regola a due condizioni che fa lo stesso). *Manca:*
-la decisione sugli embedding (`da-fare-a-mano.md`), poi tutto il resto.
+tutto il resto; gli embedding vengono da un modello locale (deciso il
+25/09/2026), da scegliere fra i multilingue.
 
 ### 8. Il confronto finale con Elasticsearch ⬜
 8.1 Le configurazioni a confronto

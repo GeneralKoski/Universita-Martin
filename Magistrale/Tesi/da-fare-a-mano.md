@@ -23,12 +23,11 @@ c'è solo quello che tocca a Martin, con quello che serve per farlo.
 
 ## Decisioni
 
-- [ ] **Da dove vengono gli embedding** per i difetti 2 e 3: modello locale o
-      servizio esterno (per esempio Gemini, con la chiave in una variabile
-      d'ambiente, mai nel repository).
-- [ ] **Se si usa Gemini**: creare la chiave su Google AI Studio e aggiungerla
-      a mano in `~/.zshrc` come `export GEMINI_API_KEY=...`, senza incollarla
-      in chat né in nessun file dei repository.
+- [x] **Da dove vengono gli embedding** per i difetti 2 e 3: **modello
+      locale**, deciso il 25/09/2026. Riproducibile (pesi e versione fissi), i
+      dati non escono dalla macchina, nessun costo, coerente con un motore
+      piccolo e autonomo. Niente chiave Gemini; un modello esterno, se mai,
+      solo come termine di confronto a capitolo 7 chiuso.
 - [ ] **I default** degli interruttori misurati (`BM25Expansion`,
       `DisableOnNumbers`, `Coordination`, `MinimumShouldMatch`...): cambiarli
       cambia il baseline, da decidere con il relatore.

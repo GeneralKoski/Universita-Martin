@@ -229,9 +229,10 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
 è in `5f9b080`, ma va riscritto contro il codice di oggi: le righe di
 `ranker.go` che citava sono cambiate.
 
-- [ ] Decidere **prima** da dove vengono gli embedding: un modello locale è una
-      dipendenza, un servizio esterno una chiamata in rete. La chiave OpenAI di
-      `apps/python` non c'è più. Koskidex non li genera, li riceve in `_vector`
+- [x] Da dove vengono gli embedding: **modello locale** (25/09/2026), via
+      Ollama. Koskidex oggi non li genera, li riceve in `_vector`
+- [ ] Scegliere il modello, multilingue perché il corpus è italiano (per esempio
+      `bge-m3` o `embeddinggemma`), e annotarne nome e versione in ogni esito
 - [ ] Suddivisione dei documenti lunghi in parti: decisa, scritta e misurata
 - [ ] `Settings.HybridMode`, vuoto = re-ranking di oggi; nel ramo ibrido il
       vettoriale aggiunge documenti ai candidati
