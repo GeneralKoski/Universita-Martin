@@ -95,17 +95,25 @@ basta mettere i file nelle cartelle indicate e dirlo.
 
 **Quando arrivano i file delle known-item umane:**
 
-- [ ] `importa-raccolta.py`, poi le misure, ciascuna con il suo README e le
-      previsioni prima:
-      - Koskidex ed Elasticsearch sulle query umane, per fonte (capitolo 8);
-      - la scelta per tipo di query rifatta con lo script di
-        `2026-09-25_scelta-ibrida/`: nel motore entra solo se il classificatore
-        batte la regola (sezione 7.5);
-      - stopword e stemmer italiani (sezione 5.6);
-      - scheda contro testo intero, e `b` sui documenti lunghi, sui soli 563
-        atti di Crispiano (sezione 5.7);
-      - la suddivisione dei documenti lunghi in parti, se la misura della
-        scheda la chiede (sezione 7.1).
+- [ ] Le misure sono già pronte, con README e previsioni committati prima dei
+      dati, e provate su risposte inventate. A raccolta chiusa, in ordine:
+      1. `strumenti/importa-raccolta.py` (collezione, giudizi per fonte,
+         `raccolta.json`);
+      2. `strumenti/collezioni-umane.py` (le tre collezioni in Koskidex);
+      3. `esperimenti/2026-09-25_known-item-umane/esegui.sh`, poi il suo
+         `analizza.py` sulle otto valutazioni: Koskidex ed Elasticsearch sulle
+         query umane, per fonte (capitolo 8);
+      4. `esperimenti/2026-09-25_scelta-umane/analizza.py` su A, B e LT del
+         punto 3: la scelta per tipo di query, nel motore entra solo se il
+         classificatore batte la regola (sezione 7.5);
+      5. `esperimenti/2026-09-25_italiano-umane/esegui.sh` e `analizza.py`:
+         stopword e stemmer italiani (sezione 5.6);
+      6. `esperimenti/2026-09-25_scheda-testo/esegui.sh` e `analizza.py`:
+         scheda contro testo intero, `b` e contesto dei vettori sui soli 563
+         atti di Crispiano (sezioni 5.7 e 7.1);
+      7. l'esito di ognuna nel suo README, previsione per previsione.
+- [ ] La suddivisione dei documenti lunghi in parti, se la previsione 4 di
+      `2026-09-25_scheda-testo` tiene (sezione 7.1).
 - [ ] Completare la sezione 4.4 con i numeri della raccolta.
 
 **Alla fine:**
