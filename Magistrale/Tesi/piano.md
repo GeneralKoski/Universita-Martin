@@ -14,6 +14,8 @@ Nell'archivio `risultati/` e nel diario di Koskidex ricorrono i loro nomi: i
 `piano-implementazione.md`.
 
 La domanda di tesi, le scelte e il perché stanno in [appunti.md](appunti.md).
+L'indice dei capitoli, con lo stato di ogni sezione e il materiale che la
+sostiene, sta in [indice.md](indice.md) e in `latex/capitoli/`.
 Quello che non è sviluppo (persone da trovare, test da far fare, decisioni,
 relatore) è raccolto anche in [da-fare-a-mano.md](da-fare-a-mano.md): per ora il
 lavoro va avanti sullo sviluppo.
