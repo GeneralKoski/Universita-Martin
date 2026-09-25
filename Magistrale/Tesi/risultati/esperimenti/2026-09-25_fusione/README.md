@@ -39,6 +39,14 @@ collezioni diverse?
 - **Sul test**, per collezione: S con la costante calibrata, RRF, C con α 0,5,
   C con α calibrato.
 
+**Aggiunto dopo le ipotesi, prima di vedere un solo numero della
+calibrazione.** A parità di metrica vince il valore più vicino al predefinito
+del motore (20 per la costante, 0,5 per α): la calibrazione non sposta il
+comportamento di oggi senza un guadagno. U sul test è quella già archiviata
+col difetto 2 (Koskidex `f5ce77f`): con il codice delle fusioni (`d3ffe17`)
+una prova di sviluppo su SciFact la riproduce identica, metriche e primi dieci.
+Script: `calibra.py` sceglie i valori, `analizza.py` confronta sul test.
+
 ## Prima di misurare
 
 Scritto e committato prima di scrivere il codice.
