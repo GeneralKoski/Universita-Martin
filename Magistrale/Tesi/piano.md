@@ -243,9 +243,15 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
 - [x] `scripts/evaluate` con l'embedder e la stessa cache (Koskidex
       `4b7b97b`): `-embedder bge-m3`, cache in `eval/cache/`. Prima volta: 11
       minuti SciFact, 8 NFCorpus, 9 gli albi
-- [ ] Prima di indicizzare da Documentale con i vettori: il timeout del client
-      (15 s) e quello di scrittura di Koskidex (60 s) sono troppo corti per un
-      blocco da 1.000 atti calcolato per la prima volta
+- [x] **Vettori dall'app** (25/09/2026, Documentale `2488dfd`):
+      `KOSKIDEX_EMBEDDER_MODEL`, `KOSKIDEX_HYBRID_MODE`, `KOSKIDEX_FUSION_MODE`,
+      `KOSKIDEX_FUSION_ALPHA`, tutti spenti per default. Provato dal vivo con
+      Koskidex `d3ffe17`: i 10.018 atti in 8 minuti con `KOSKIDEX_TIMEOUT=600`
+      (col timeout predefinito di 15 s fallirebbe). Il timeout di scrittura di
+      Koskidex (60 s) non è scattato, ma un blocco da 1.000 atti ci arriva
+      vicino (circa 50 s). Col re-ranking, sulle 24 query: stessi insiemi, ordine
+      diverso in 18, mediana da 8,7 a 33 ms (vettore della query più la
+      conversione dei vettori a ogni ricerca)
 - [ ] Suddivisione dei documenti lunghi in parti: decisa, scritta e misurata
 - [x] **Difetto 2** (25/09/2026, Koskidex `f5ce77f`): `Settings.HybridMode`
       (`union`, `vector`), `VectorTopK` 100, re-ranking di default. Il
