@@ -47,3 +47,26 @@ valutazioni.
 Se la 1 tiene, la correzione naturale è la penalità per i match non esatti; se
 tiene la 2, nessuna delle due correzioni previste tocca quella parte del
 divario, e va scritto.
+
+## Aggiunto dopo la prima analisi
+
+L'esito `2026-09-25T094141Z` (sotto) dice che la parte grossa del divario non
+viene dalle espansioni: vince un atto senza il numero, che ripete il nome del
+comune. È il recupero disgiuntivo: BM25 somma i contributi dei termini, e un
+atto che ha solo il comune, più volte, supera uno che ha numero e comune una
+volta sola. L'euristico non ci cade perché mette prima chi ha tutti i termini.
+
+Il controfattuale c'è già, senza codice nuovo: **recupero congiuntivo con BM25**
+(`-mode all`), con la frequenza mescolata e col prefisso spento. Previsioni,
+scritte dopo aver visto l'esito sopra ma prima di lanciare questi due:
+
+4. **Con `all` e la frequenza mescolata l'atto è primo in almeno 255 query su
+   300, MRR@10 almeno 0,90.** Spariscono i 36 casi senza numero; restano al più
+   i 33 con il numero esatto o per prefisso.
+5. **Con `all` e il prefisso spento, almeno 255 e MRR@10 almeno 0,90**, per la
+   stessa ragione sui 38 casi senza numero.
+
+Non è una correzione da adottare così: il recupero congiuntivo è il difetto 0,
+e su SciFact lascia a vuoto 290 query su 300. Se la 4 tiene, il risultato è che
+la configurazione giusta dipende dal tipo di query, identificativa o in lingua
+naturale: è l'argomento della fusione dipendente dalla query (piano, sezione 5).
