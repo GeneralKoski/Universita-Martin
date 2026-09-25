@@ -1,0 +1,8133 @@
+{
+  "run": "cal-convex-0.6",
+  "config": {
+    "alfa": "0.6",
+    "analisi": "none",
+    "bm25_b": "0.75",
+    "bm25_espansioni": "blended",
+    "bm25_k1": "1.2",
+    "collezione": "scifact",
+    "commit": "d3ffe172bf94ccce6216fcd7e3d8e76b3e979e91",
+    "corpus_sha256": "dec31c8182f3d744c7d2c09423756fd1d17cbef75808db13ba01cc0aab4d1ac6",
+    "documenti": "5183",
+    "embedder": "ollama/bge-m3",
+    "embedder_digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+    "fusione": "convex",
+    "ibrido": "rerank",
+    "modifiche_non_committate": "false",
+    "punteggio": "bm25",
+    "recupero": "any",
+    "refusi": "0",
+    "split": "train",
+    "vettori_ms": "9",
+    "vettori_nuovi": "0"
+  },
+  "collection": "scifact",
+  "ran_at": "2026-09-25T13:07:06Z",
+  "go_version": "go1.27.1",
+  "queries": 809,
+  "skipped_no_relevant": 0,
+  "zero_results": 0,
+  "mean_ndcg@10": 0.745274169575813,
+  "mean_recall@100": 0.9515863205603626,
+  "mean_mrr@10": 0.7156302117056139,
+  "elapsed": "32.085s",
+  "per_query": [
+    {
+      "query_id": "0",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 1557,
+      "relevant": 1
+    },
+    {
+      "query_id": "10",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1000",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1001",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1002",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1003",
+      "ndcg@10": 0.8126530453831332,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 3
+    },
+    {
+      "query_id": "1004",
+      "ndcg@10": 0.9674679834891693,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 3
+    },
+    {
+      "query_id": "1005",
+      "ndcg@10": 0.9674679834891693,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 3
+    },
+    {
+      "query_id": "1006",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5102,
+      "relevant": 1
+    },
+    {
+      "query_id": "1008",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1009",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1011",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "1015",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "1016",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1018",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 4864,
+      "relevant": 1
+    },
+    {
+      "query_id": "1023",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1025",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1026",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1027",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "1028",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1030",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5078,
+      "relevant": 1
+    },
+    {
+      "query_id": "1031",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1032",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1033",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1034",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1035",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1036",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1037",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1038",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "104",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5109,
+      "relevant": 1
+    },
+    {
+      "query_id": "1040",
+      "ndcg@10": 0.39780880120575696,
+      "recall@100": 1,
+      "mrr@10": 0.14285714285714285,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1042",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1043",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5165,
+      "relevant": 1
+    },
+    {
+      "query_id": "1044",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1045",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1046",
+      "ndcg@10": 0,
+      "recall@100": 0.6666666666666666,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 3
+    },
+    {
+      "query_id": "1047",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1048",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "105",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1050",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1052",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1053",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1054",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1055",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1056",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1058",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "106",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4590,
+      "relevant": 2
+    },
+    {
+      "query_id": "1065",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1067",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5090,
+      "relevant": 1
+    },
+    {
+      "query_id": "1068",
+      "ndcg@10": 0.3010299956639812,
+      "recall@100": 1,
+      "mrr@10": 0.1111111111111111,
+      "retrieved": 100,
+      "candidates": 5086,
+      "relevant": 1
+    },
+    {
+      "query_id": "1069",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1070",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4609,
+      "relevant": 1
+    },
+    {
+      "query_id": "1072",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 2984,
+      "relevant": 1
+    },
+    {
+      "query_id": "1073",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5086,
+      "relevant": 1
+    },
+    {
+      "query_id": "1074",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1075",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "108",
+      "ndcg@10": 0.9060254355346824,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 3
+    },
+    {
+      "query_id": "1081",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1084",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "1085",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "1087",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "109",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1090",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1091",
+      "ndcg@10": 0.3333333333333333,
+      "recall@100": 1,
+      "mrr@10": 0.14285714285714285,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1096",
+      "ndcg@10": 0.3010299956639812,
+      "recall@100": 1,
+      "mrr@10": 0.1111111111111111,
+      "retrieved": 100,
+      "candidates": 5047,
+      "relevant": 1
+    },
+    {
+      "query_id": "1097",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1098",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "11",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1101",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1102",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1103",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1105",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1106",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1109",
+      "ndcg@10": 0.17723928678404777,
+      "recall@100": 0.5,
+      "mrr@10": 0.1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 2
+    },
+    {
+      "query_id": "111",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1111",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1112",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1114",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1115",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1118",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1119",
+      "ndcg@10": 0.7328286204777911,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 4295,
+      "relevant": 3
+    },
+    {
+      "query_id": "112",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5106,
+      "relevant": 1
+    },
+    {
+      "query_id": "1120",
+      "ndcg@10": 0.7328286204777911,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 4346,
+      "relevant": 3
+    },
+    {
+      "query_id": "1125",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1126",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1127",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5158,
+      "relevant": 1
+    },
+    {
+      "query_id": "1128",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1133",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5156,
+      "relevant": 1
+    },
+    {
+      "query_id": "1134",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5064,
+      "relevant": 1
+    },
+    {
+      "query_id": "1135",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5063,
+      "relevant": 1
+    },
+    {
+      "query_id": "1136",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1138",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 1048,
+      "relevant": 1
+    },
+    {
+      "query_id": "1139",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "114",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5098,
+      "relevant": 1
+    },
+    {
+      "query_id": "1141",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1142",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1145",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1148",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1153",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1156",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1157",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1158",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1159",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "116",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3328,
+      "relevant": 1
+    },
+    {
+      "query_id": "1161",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1162",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1164",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1165",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1166",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1168",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1169",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1170",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1171",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1173",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1174",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1176",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1177",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1178",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1181",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 4
+    },
+    {
+      "query_id": "1182",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1183",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1184",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1186",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1188",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "119",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1190",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1193",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1195",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "12",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "120",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1205",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1206",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1208",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1209",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "121",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1210",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1211",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1212",
+      "ndcg@10": 0,
+      "recall@100": 0.5,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1214",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1215",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1218",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1219",
+      "ndcg@10": 0.8772153153380494,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "122",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1220",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1223",
+      "ndcg@10": 0.3154648767857287,
+      "recall@100": 1,
+      "mrr@10": 0.125,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1224",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1227",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1228",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1229",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "123",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1230",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1231",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1234",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1235",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1236",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1237",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1238",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1239",
+      "ndcg@10": 0.6131471927654585,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1244",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1246",
+      "ndcg@10": 0.3154648767857287,
+      "recall@100": 1,
+      "mrr@10": 0.125,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1247",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1248",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1249",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1253",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1254",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1255",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1257",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1258",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "126",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1260",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1261",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1263",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1265",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1268",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1269",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1275",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1276",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1284",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1288",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1289",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1291",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1293",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1294",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 2
+    },
+    {
+      "query_id": "1295",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1297",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1300",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1302",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4732,
+      "relevant": 1
+    },
+    {
+      "query_id": "1304",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 567,
+      "relevant": 1
+    },
+    {
+      "query_id": "1305",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 595,
+      "relevant": 1
+    },
+    {
+      "query_id": "1306",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1307",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1308",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1309",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1310",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1311",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 4555,
+      "relevant": 1
+    },
+    {
+      "query_id": "1312",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1314",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1315",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1322",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1323",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1324",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "1325",
+      "ndcg@10": 0.2890648263178879,
+      "recall@100": 1,
+      "mrr@10": 0.1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1327",
+      "ndcg@10": 0.9197207891481877,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1328",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "1330",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1331",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1333",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1334",
+      "ndcg@10": 0.6105456988825856,
+      "recall@100": 0.6666666666666666,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 3
+    },
+    {
+      "query_id": "134",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5147,
+      "relevant": 1
+    },
+    {
+      "query_id": "1340",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1341",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1342",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1345",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1346",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1347",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1348",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1349",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1350",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1351",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1353",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1355",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "1356",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1360",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1361",
+      "ndcg@10": 0.6934264036172708,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1364",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 3192,
+      "relevant": 1
+    },
+    {
+      "query_id": "1366",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1367",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 1228,
+      "relevant": 1
+    },
+    {
+      "query_id": "1371",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1372",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1373",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1374",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1375",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1376",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1378",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5122,
+      "relevant": 1
+    },
+    {
+      "query_id": "138",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1380",
+      "ndcg@10": 0.6132756769356658,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 3
+    },
+    {
+      "query_id": "1381",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1383",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 3773,
+      "relevant": 1
+    },
+    {
+      "query_id": "1386",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 847,
+      "relevant": 1
+    },
+    {
+      "query_id": "1387",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "139",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1390",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1391",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1392",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5059,
+      "relevant": 1
+    },
+    {
+      "query_id": "1393",
+      "ndcg@10": 0.8772153153380494,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4188,
+      "relevant": 2
+    },
+    {
+      "query_id": "1394",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1397",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1398",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 4738,
+      "relevant": 1
+    },
+    {
+      "query_id": "14",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 1081,
+      "relevant": 1
+    },
+    {
+      "query_id": "1400",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1401",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "1402",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "1403",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1404",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "1405",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "1406",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1671,
+      "relevant": 1
+    },
+    {
+      "query_id": "1407",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5127,
+      "relevant": 2
+    },
+    {
+      "query_id": "144",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "149",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "15",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "152",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "153",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "154",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "155",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "156",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "157",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 2664,
+      "relevant": 1
+    },
+    {
+      "query_id": "159",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "160",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "161",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "164",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "165",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "166",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "167",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "168",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 999,
+      "relevant": 1
+    },
+    {
+      "query_id": "169",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1018,
+      "relevant": 1
+    },
+    {
+      "query_id": "17",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "172",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "173",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5137,
+      "relevant": 1
+    },
+    {
+      "query_id": "174",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 4968,
+      "relevant": 1
+    },
+    {
+      "query_id": "175",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 4976,
+      "relevant": 1
+    },
+    {
+      "query_id": "176",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5071,
+      "relevant": 1
+    },
+    {
+      "query_id": "177",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "178",
+      "ndcg@10": 0.9550236580992476,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4984,
+      "relevant": 4
+    },
+    {
+      "query_id": "18",
+      "ndcg@10": 0.3010299956639812,
+      "recall@100": 1,
+      "mrr@10": 0.1111111111111111,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "181",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "182",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5146,
+      "relevant": 1
+    },
+    {
+      "query_id": "184",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5073,
+      "relevant": 1
+    },
+    {
+      "query_id": "186",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 3721,
+      "relevant": 1
+    },
+    {
+      "query_id": "187",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 3719,
+      "relevant": 1
+    },
+    {
+      "query_id": "189",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5028,
+      "relevant": 1
+    },
+    {
+      "query_id": "19",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "196",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "197",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5141,
+      "relevant": 1
+    },
+    {
+      "query_id": "199",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4267,
+      "relevant": 1
+    },
+    {
+      "query_id": "2",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "20",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "200",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "201",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "203",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "204",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "205",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "209",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5072,
+      "relevant": 1
+    },
+    {
+      "query_id": "21",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "210",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "211",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "214",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 4948,
+      "relevant": 1
+    },
+    {
+      "query_id": "22",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "220",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "221",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5086,
+      "relevant": 1
+    },
+    {
+      "query_id": "222",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5084,
+      "relevant": 1
+    },
+    {
+      "query_id": "223",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "224",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "225",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "226",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "227",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4958,
+      "relevant": 1
+    },
+    {
+      "query_id": "228",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5030,
+      "relevant": 1
+    },
+    {
+      "query_id": "229",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "235",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "24",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "241",
+      "ndcg@10": 0.6131471927654585,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 2
+    },
+    {
+      "query_id": "242",
+      "ndcg@10": 0.6131471927654585,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "243",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "244",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "245",
+      "ndcg@10": 0.6131471927654585,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 2
+    },
+    {
+      "query_id": "246",
+      "ndcg@10": 0.6131471927654585,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4883,
+      "relevant": 2
+    },
+    {
+      "query_id": "247",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 2296,
+      "relevant": 1
+    },
+    {
+      "query_id": "25",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "250",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 2310,
+      "relevant": 1
+    },
+    {
+      "query_id": "251",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 2387,
+      "relevant": 1
+    },
+    {
+      "query_id": "253",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "254",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "255",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "256",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "258",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "259",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "26",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "262",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "263",
+      "ndcg@10": 0.9060254355346824,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 3
+    },
+    {
+      "query_id": "264",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "265",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "266",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4803,
+      "relevant": 1
+    },
+    {
+      "query_id": "267",
+      "ndcg@10": 0.8772153153380494,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 2
+    },
+    {
+      "query_id": "27",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "272",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "277",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "278",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "28",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "280",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "281",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "283",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "285",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "286",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "287",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "290",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "292",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3884,
+      "relevant": 1
+    },
+    {
+      "query_id": "293",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "296",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "299",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "30",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5172,
+      "relevant": 1
+    },
+    {
+      "query_id": "301",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5164,
+      "relevant": 1
+    },
+    {
+      "query_id": "304",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "305",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "306",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 350,
+      "relevant": 1
+    },
+    {
+      "query_id": "308",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5177,
+      "relevant": 1
+    },
+    {
+      "query_id": "309",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 507,
+      "relevant": 1
+    },
+    {
+      "query_id": "310",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "313",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "315",
+      "ndcg@10": 0.2890648263178879,
+      "recall@100": 1,
+      "mrr@10": 0.1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "316",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "317",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4967,
+      "relevant": 1
+    },
+    {
+      "query_id": "32",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "323",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 1275,
+      "relevant": 1
+    },
+    {
+      "query_id": "325",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "326",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "330",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4910,
+      "relevant": 1
+    },
+    {
+      "query_id": "331",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "332",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "333",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "334",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "335",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "336",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "337",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "339",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "34",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "340",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "341",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "342",
+      "ndcg@10": 0.9197207891481877,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 2
+    },
+    {
+      "query_id": "345",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 3228,
+      "relevant": 1
+    },
+    {
+      "query_id": "346",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "347",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "349",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "35",
+      "ndcg@10": 0.23719771276929624,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 2
+    },
+    {
+      "query_id": "351",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4854,
+      "relevant": 1
+    },
+    {
+      "query_id": "352",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 3417,
+      "relevant": 1
+    },
+    {
+      "query_id": "355",
+      "ndcg@10": 0.6509209298071325,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 2
+    },
+    {
+      "query_id": "356",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "357",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "358",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "361",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "363",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "364",
+      "ndcg@10": 0.3154648767857287,
+      "recall@100": 1,
+      "mrr@10": 0.125,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "365",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "366",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5156,
+      "relevant": 1
+    },
+    {
+      "query_id": "367",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "368",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "369",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "37",
+      "ndcg@10": 0.23719771276929624,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 2
+    },
+    {
+      "query_id": "370",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "371",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "372",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "375",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5074,
+      "relevant": 1
+    },
+    {
+      "query_id": "376",
+      "ndcg@10": 0.2890648263178879,
+      "recall@100": 1,
+      "mrr@10": 0.1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "377",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "378",
+      "ndcg@10": 0.5531464700081437,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 525,
+      "relevant": 5
+    },
+    {
+      "query_id": "379",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "381",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "382",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "383",
+      "ndcg@10": 0.3333333333333333,
+      "recall@100": 1,
+      "mrr@10": 0.14285714285714285,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "389",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "39",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "390",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "391",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "392",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "393",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "394",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 4992,
+      "relevant": 1
+    },
+    {
+      "query_id": "396",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1786,
+      "relevant": 1
+    },
+    {
+      "query_id": "397",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1705,
+      "relevant": 1
+    },
+    {
+      "query_id": "398",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "4",
+      "ndcg@10": 0.3333333333333333,
+      "recall@100": 1,
+      "mrr@10": 0.14285714285714285,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "40",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "400",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5127,
+      "relevant": 1
+    },
+    {
+      "query_id": "401",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "403",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "404",
+      "ndcg@10": 0.2890648263178879,
+      "recall@100": 1,
+      "mrr@10": 0.1,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "406",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 1301,
+      "relevant": 1
+    },
+    {
+      "query_id": "407",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "41",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "413",
+      "ndcg@10": 0.3333333333333333,
+      "recall@100": 1,
+      "mrr@10": 0.14285714285714285,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "414",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "416",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "417",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "418",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5136,
+      "relevant": 1
+    },
+    {
+      "query_id": "420",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "422",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "423",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "425",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "426",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "428",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "429",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "43",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "430",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "432",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "434",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "435",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "44",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "441",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "444",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "445",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5177,
+      "relevant": 1
+    },
+    {
+      "query_id": "447",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "448",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "449",
+      "ndcg@10": 0.17723928678404777,
+      "recall@100": 1,
+      "mrr@10": 0.1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 2
+    },
+    {
+      "query_id": "45",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "453",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "454",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "455",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "456",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5167,
+      "relevant": 1
+    },
+    {
+      "query_id": "458",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "46",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "461",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "463",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "466",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "469",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 519,
+      "relevant": 1
+    },
+    {
+      "query_id": "47",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "470",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "472",
+      "ndcg@10": 0.8710785440003371,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 3
+    },
+    {
+      "query_id": "473",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 716,
+      "relevant": 1
+    },
+    {
+      "query_id": "474",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "479",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "480",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "481",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "482",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "483",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "484",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 3081,
+      "relevant": 1
+    },
+    {
+      "query_id": "485",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "486",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 2921,
+      "relevant": 1
+    },
+    {
+      "query_id": "487",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "488",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "489",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "490",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "492",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5107,
+      "relevant": 1
+    },
+    {
+      "query_id": "493",
+      "ndcg@10": 0.3154648767857287,
+      "recall@100": 1,
+      "mrr@10": 0.125,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "494",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "495",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4924,
+      "relevant": 1
+    },
+    {
+      "query_id": "498",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4922,
+      "relevant": 1
+    },
+    {
+      "query_id": "499",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "500",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4769,
+      "relevant": 1
+    },
+    {
+      "query_id": "504",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "505",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "506",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "509",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 3047,
+      "relevant": 1
+    },
+    {
+      "query_id": "515",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "52",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5146,
+      "relevant": 1
+    },
+    {
+      "query_id": "523",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "524",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "526",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "529",
+      "ndcg@10": 0.5847876649948585,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5152,
+      "relevant": 3
+    },
+    {
+      "query_id": "530",
+      "ndcg@10": 0.43666325925534993,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 4
+    },
+    {
+      "query_id": "531",
+      "ndcg@10": 0.4367467095119259,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 3
+    },
+    {
+      "query_id": "537",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "541",
+      "ndcg@10": 0.3826803184943109,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5127,
+      "relevant": 3
+    },
+    {
+      "query_id": "542",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "545",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "547",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4642,
+      "relevant": 1
+    },
+    {
+      "query_id": "548",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "55",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "550",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "553",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "555",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "557",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "559",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "562",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5177,
+      "relevant": 1
+    },
+    {
+      "query_id": "563",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "564",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "565",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "566",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "568",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "570",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "571",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "572",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "573",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "574",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "576",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "579",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "58",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "580",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "582",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "584",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "585",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "588",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "590",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "591",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "592",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "594",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "595",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "6",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "60",
+      "ndcg@10": 0.6240505200038378,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "600",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "601",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "602",
+      "ndcg@10": 0.3010299956639812,
+      "recall@100": 1,
+      "mrr@10": 0.1111111111111111,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "603",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "606",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "607",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4983,
+      "relevant": 1
+    },
+    {
+      "query_id": "609",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "61",
+      "ndcg@10": 0.5640920940185894,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 2
+    },
+    {
+      "query_id": "610",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "611",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "612",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 2793,
+      "relevant": 1
+    },
+    {
+      "query_id": "614",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "615",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "616",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "617",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "618",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "62",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5073,
+      "relevant": 1
+    },
+    {
+      "query_id": "620",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "621",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "622",
+      "ndcg@10": 0.3154648767857287,
+      "recall@100": 1,
+      "mrr@10": 0.125,
+      "retrieved": 100,
+      "candidates": 5177,
+      "relevant": 1
+    },
+    {
+      "query_id": "624",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "625",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "626",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "63",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "631",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5177,
+      "relevant": 1
+    },
+    {
+      "query_id": "632",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5087,
+      "relevant": 1
+    },
+    {
+      "query_id": "633",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "635",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3994,
+      "relevant": 1
+    },
+    {
+      "query_id": "638",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "64",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "640",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "642",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "643",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1376,
+      "relevant": 1
+    },
+    {
+      "query_id": "645",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "646",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "647",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4603,
+      "relevant": 1
+    },
+    {
+      "query_id": "648",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4613,
+      "relevant": 1
+    },
+    {
+      "query_id": "650",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "651",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "652",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "653",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "654",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "655",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "657",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "658",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "66",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4220,
+      "relevant": 1
+    },
+    {
+      "query_id": "661",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "662",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "663",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "665",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "666",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "667",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5093,
+      "relevant": 1
+    },
+    {
+      "query_id": "668",
+      "ndcg@10": 0.8503449055347547,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5064,
+      "relevant": 2
+    },
+    {
+      "query_id": "669",
+      "ndcg@10": 0.8503449055347547,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5103,
+      "relevant": 2
+    },
+    {
+      "query_id": "67",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "670",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "671",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "672",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5167,
+      "relevant": 1
+    },
+    {
+      "query_id": "673",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "676",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 1107,
+      "relevant": 1
+    },
+    {
+      "query_id": "677",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 1229,
+      "relevant": 1
+    },
+    {
+      "query_id": "679",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4853,
+      "relevant": 1
+    },
+    {
+      "query_id": "68",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 2121,
+      "relevant": 1
+    },
+    {
+      "query_id": "680",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "681",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "682",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "683",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "685",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4873,
+      "relevant": 1
+    },
+    {
+      "query_id": "686",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "687",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "688",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 4876,
+      "relevant": 1
+    },
+    {
+      "query_id": "689",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "69",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 2
+    },
+    {
+      "query_id": "694",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "696",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "698",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "703",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "704",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 2172,
+      "relevant": 1
+    },
+    {
+      "query_id": "705",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "709",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "71",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "710",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5162,
+      "relevant": 1
+    },
+    {
+      "query_id": "713",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "714",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "717",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4612,
+      "relevant": 1
+    },
+    {
+      "query_id": "724",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "726",
+      "ndcg@10": 0.8772153153380494,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5112,
+      "relevant": 2
+    },
+    {
+      "query_id": "73",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 4552,
+      "relevant": 1
+    },
+    {
+      "query_id": "730",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4178,
+      "relevant": 1
+    },
+    {
+      "query_id": "732",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 1
+    },
+    {
+      "query_id": "733",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "734",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "736",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "737",
+      "ndcg@10": 0.6052602440527058,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5178,
+      "relevant": 2
+    },
+    {
+      "query_id": "738",
+      "ndcg@10": 0.4632423659320676,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 1026,
+      "relevant": 3
+    },
+    {
+      "query_id": "739",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 1538,
+      "relevant": 1
+    },
+    {
+      "query_id": "74",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "740",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "745",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1262,
+      "relevant": 1
+    },
+    {
+      "query_id": "746",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1274,
+      "relevant": 1
+    },
+    {
+      "query_id": "747",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "748",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "749",
+      "ndcg@10": 0.2890648263178879,
+      "recall@100": 1,
+      "mrr@10": 0.1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "751",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "752",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 1
+    },
+    {
+      "query_id": "753",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4991,
+      "relevant": 1
+    },
+    {
+      "query_id": "755",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "757",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "758",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5173,
+      "relevant": 1
+    },
+    {
+      "query_id": "76",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 677,
+      "relevant": 1
+    },
+    {
+      "query_id": "760",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "761",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "762",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5147,
+      "relevant": 1
+    },
+    {
+      "query_id": "764",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5119,
+      "relevant": 1
+    },
+    {
+      "query_id": "765",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5120,
+      "relevant": 1
+    },
+    {
+      "query_id": "766",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5072,
+      "relevant": 1
+    },
+    {
+      "query_id": "767",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5122,
+      "relevant": 1
+    },
+    {
+      "query_id": "77",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 583,
+      "relevant": 1
+    },
+    {
+      "query_id": "771",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "772",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "774",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5155,
+      "relevant": 1
+    },
+    {
+      "query_id": "776",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5154,
+      "relevant": 1
+    },
+    {
+      "query_id": "777",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5154,
+      "relevant": 1
+    },
+    {
+      "query_id": "778",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "779",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "78",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "780",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5171,
+      "relevant": 2
+    },
+    {
+      "query_id": "782",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "787",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 636,
+      "relevant": 1
+    },
+    {
+      "query_id": "788",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 726,
+      "relevant": 1
+    },
+    {
+      "query_id": "789",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "79",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 2189,
+      "relevant": 1
+    },
+    {
+      "query_id": "790",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "791",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4951,
+      "relevant": 1
+    },
+    {
+      "query_id": "792",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "795",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "797",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "798",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "799",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "80",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "801",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "802",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "803",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "804",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "807",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "81",
+      "ndcg@10": 0.3010299956639812,
+      "recall@100": 1,
+      "mrr@10": 0.1111111111111111,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "810",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 4622,
+      "relevant": 1
+    },
+    {
+      "query_id": "812",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "813",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "815",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "816",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "817",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 3252,
+      "relevant": 1
+    },
+    {
+      "query_id": "818",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "82",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "822",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5003,
+      "relevant": 1
+    },
+    {
+      "query_id": "825",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5001,
+      "relevant": 1
+    },
+    {
+      "query_id": "826",
+      "ndcg@10": 0.43067655807339306,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "828",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "835",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "838",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "840",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5009,
+      "relevant": 1
+    },
+    {
+      "query_id": "841",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 764,
+      "relevant": 1
+    },
+    {
+      "query_id": "844",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "846",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "848",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "85",
+      "ndcg@10": 0.9197207891481877,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3573,
+      "relevant": 2
+    },
+    {
+      "query_id": "853",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "854",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "855",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5181,
+      "relevant": 1
+    },
+    {
+      "query_id": "856",
+      "ndcg@10": 0.3562071871080222,
+      "recall@100": 1,
+      "mrr@10": 0.16666666666666666,
+      "retrieved": 100,
+      "candidates": 4672,
+      "relevant": 1
+    },
+    {
+      "query_id": "857",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 2500,
+      "relevant": 1
+    },
+    {
+      "query_id": "858",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "86",
+      "ndcg@10": 0.9197207891481877,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3573,
+      "relevant": 2
+    },
+    {
+      "query_id": "860",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "861",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "863",
+      "ndcg@10": 0.8772153153380494,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5171,
+      "relevant": 2
+    },
+    {
+      "query_id": "866",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5136,
+      "relevant": 1
+    },
+    {
+      "query_id": "867",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "871",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 706,
+      "relevant": 1
+    },
+    {
+      "query_id": "876",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 664,
+      "relevant": 1
+    },
+    {
+      "query_id": "877",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "88",
+      "ndcg@10": 0.6934264036172708,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 4954,
+      "relevant": 2
+    },
+    {
+      "query_id": "881",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3501,
+      "relevant": 1
+    },
+    {
+      "query_id": "883",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3686,
+      "relevant": 1
+    },
+    {
+      "query_id": "884",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 3686,
+      "relevant": 1
+    },
+    {
+      "query_id": "885",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "886",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "89",
+      "ndcg@10": 0.5249810332008934,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 2
+    },
+    {
+      "query_id": "890",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "891",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "893",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "894",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "895",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "896",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "897",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "898",
+      "ndcg@10": 0.6131471927654585,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1013,
+      "relevant": 2
+    },
+    {
+      "query_id": "899",
+      "ndcg@10": 0.6131471927654585,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 1055,
+      "relevant": 2
+    },
+    {
+      "query_id": "9",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "90",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "900",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "901",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4948,
+      "relevant": 1
+    },
+    {
+      "query_id": "902",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4863,
+      "relevant": 1
+    },
+    {
+      "query_id": "908",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "909",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "91",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5112,
+      "relevant": 1
+    },
+    {
+      "query_id": "910",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "912",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "916",
+      "ndcg@10": 0.5,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "917",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "919",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4378,
+      "relevant": 1
+    },
+    {
+      "query_id": "92",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5123,
+      "relevant": 1
+    },
+    {
+      "query_id": "923",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "925",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "926",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "927",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "928",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "929",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "93",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4806,
+      "relevant": 1
+    },
+    {
+      "query_id": "930",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5177,
+      "relevant": 1
+    },
+    {
+      "query_id": "933",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5090,
+      "relevant": 1
+    },
+    {
+      "query_id": "934",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "935",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "938",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5177,
+      "relevant": 1
+    },
+    {
+      "query_id": "939",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "940",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "941",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "942",
+      "ndcg@10": 0.38685280723454163,
+      "recall@100": 1,
+      "mrr@10": 0.2,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "944",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "945",
+      "ndcg@10": 0.5023737407779441,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 4
+    },
+    {
+      "query_id": "946",
+      "ndcg@10": 0.5023737407779441,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 4
+    },
+    {
+      "query_id": "949",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 1091,
+      "relevant": 1
+    },
+    {
+      "query_id": "95",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5138,
+      "relevant": 1
+    },
+    {
+      "query_id": "951",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "952",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "953",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "954",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "955",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4595,
+      "relevant": 2
+    },
+    {
+      "query_id": "959",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 686,
+      "relevant": 1
+    },
+    {
+      "query_id": "96",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "962",
+      "ndcg@10": 0.9060254355346824,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 3
+    },
+    {
+      "query_id": "963",
+      "ndcg@10": 0.4824755593907551,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 4999,
+      "relevant": 2
+    },
+    {
+      "query_id": "964",
+      "ndcg@10": 0.4824755593907551,
+      "recall@100": 1,
+      "mrr@10": 0.25,
+      "retrieved": 100,
+      "candidates": 5021,
+      "relevant": 2
+    },
+    {
+      "query_id": "965",
+      "ndcg@10": 0.6309297535714574,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5174,
+      "relevant": 1
+    },
+    {
+      "query_id": "969",
+      "ndcg@10": 0.5437713091520254,
+      "recall@100": 1,
+      "mrr@10": 0.3333333333333333,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 2
+    },
+    {
+      "query_id": "970",
+      "ndcg@10": 0.5912352048230278,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5179,
+      "relevant": 2
+    },
+    {
+      "query_id": "972",
+      "ndcg@10": 0.7315682114753617,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5159,
+      "relevant": 4
+    },
+    {
+      "query_id": "973",
+      "ndcg@10": 0.7486761295186739,
+      "recall@100": 1,
+      "mrr@10": 0.5,
+      "retrieved": 100,
+      "candidates": 5148,
+      "relevant": 4
+    },
+    {
+      "query_id": "976",
+      "ndcg@10": 0,
+      "recall@100": 0,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5175,
+      "relevant": 1
+    },
+    {
+      "query_id": "977",
+      "ndcg@10": 0,
+      "recall@100": 0.5,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4962,
+      "relevant": 2
+    },
+    {
+      "query_id": "978",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 4960,
+      "relevant": 1
+    },
+    {
+      "query_id": "979",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "98",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 4949,
+      "relevant": 1
+    },
+    {
+      "query_id": "980",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5183,
+      "relevant": 1
+    },
+    {
+      "query_id": "984",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5119,
+      "relevant": 1
+    },
+    {
+      "query_id": "988",
+      "ndcg@10": 0,
+      "recall@100": 1,
+      "mrr@10": 0,
+      "retrieved": 100,
+      "candidates": 5180,
+      "relevant": 1
+    },
+    {
+      "query_id": "989",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5182,
+      "relevant": 1
+    },
+    {
+      "query_id": "990",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "992",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 500,
+      "relevant": 1
+    },
+    {
+      "query_id": "994",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    },
+    {
+      "query_id": "996",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 880,
+      "relevant": 1
+    },
+    {
+      "query_id": "997",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 664,
+      "relevant": 1
+    },
+    {
+      "query_id": "998",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 578,
+      "relevant": 1
+    },
+    {
+      "query_id": "999",
+      "ndcg@10": 1,
+      "recall@100": 1,
+      "mrr@10": 1,
+      "retrieved": 100,
+      "candidates": 5176,
+      "relevant": 1
+    }
+  ],
+  "timings": {
+    "index_ms": 1908.691417,
+    "elapsed_ms": 32085.414042,
+    "per_query_ms": {
+      "0": 20.070541,
+      "10": 43.423917,
+      "1000": 55.797333,
+      "1001": 35.77725,
+      "1002": 40.144416,
+      "1003": 29.752959,
+      "1004": 39.927916,
+      "1005": 44.252334,
+      "1006": 27.160292,
+      "1008": 26.43375,
+      "1009": 28.7205,
+      "1011": 29.142375,
+      "1015": 23.816375,
+      "1016": 41.218417,
+      "1018": 27.424709,
+      "1023": 39.78875,
+      "1025": 38.610875,
+      "1026": 31.244958,
+      "1027": 23.685833,
+      "1028": 48.673042,
+      "1030": 26.796458,
+      "1031": 77.913583,
+      "1032": 53.915042,
+      "1033": 52.952291,
+      "1034": 52.1645,
+      "1035": 48.711958,
+      "1036": 41.460916,
+      "1037": 42.826708,
+      "1038": 40.976959,
+      "104": 45.360833,
+      "1040": 44.62275,
+      "1042": 31.861459,
+      "1043": 37.947291,
+      "1044": 67.594375,
+      "1045": 51.630792,
+      "1046": 37.368375,
+      "1047": 31.432417,
+      "1048": 34.325667,
+      "105": 49.540375,
+      "1050": 34.17475,
+      "1052": 31.075042,
+      "1053": 35.894208,
+      "1054": 39.495333,
+      "1055": 57.501708,
+      "1056": 55.061625,
+      "1058": 29.186166,
+      "106": 26.573792,
+      "1065": 36.837333,
+      "1067": 40.091291,
+      "1068": 27.341083,
+      "1069": 58.411792,
+      "1070": 21.917792,
+      "1072": 17.872917,
+      "1073": 21.30325,
+      "1074": 64.097709,
+      "1075": 49.989417,
+      "108": 31.473625,
+      "1081": 34.295708,
+      "1084": 28.23525,
+      "1085": 32.910583,
+      "1087": 59.623125,
+      "109": 39.554208,
+      "1090": 33.977625,
+      "1091": 31.593083,
+      "1096": 34.297333,
+      "1097": 46.029833,
+      "1098": 43.262625,
+      "11": 41.530792,
+      "1101": 44.237125,
+      "1102": 64.438125,
+      "1103": 63.247292,
+      "1105": 62.277666,
+      "1106": 75.300041,
+      "1109": 30.328666,
+      "111": 44.088209,
+      "1111": 32.2445,
+      "1112": 38.596833,
+      "1114": 58.261458,
+      "1115": 57.154458,
+      "1118": 37.668666,
+      "1119": 22.086458,
+      "112": 44.311208,
+      "1120": 22.102625,
+      "1125": 56.20175,
+      "1126": 55.220959,
+      "1127": 28.226292,
+      "1128": 48.378,
+      "1133": 21.748833,
+      "1134": 20.21725,
+      "1135": 20.904291,
+      "1136": 28.559584,
+      "1138": 18.1585,
+      "1139": 26.057459,
+      "114": 23.99925,
+      "1141": 67.93125,
+      "1142": 66.196875,
+      "1145": 49.640292,
+      "1148": 46.866667,
+      "1153": 71.084583,
+      "1156": 35.783834,
+      "1157": 32.918125,
+      "1158": 32.880875,
+      "1159": 30.628291,
+      "116": 25.474375,
+      "1161": 52.136208,
+      "1162": 35.203792,
+      "1164": 38.149,
+      "1165": 37.025792,
+      "1166": 37.350625,
+      "1168": 36.452666,
+      "1169": 39.785417,
+      "1170": 51.910916,
+      "1171": 62.185083,
+      "1173": 35.143875,
+      "1174": 23.060125,
+      "1176": 39.062083,
+      "1177": 50.156375,
+      "1178": 24.368958,
+      "1181": 68.805542,
+      "1182": 43.704,
+      "1183": 32.659125,
+      "1184": 68.258291,
+      "1186": 46.027042,
+      "1188": 57.180125,
+      "119": 32.183583,
+      "1190": 29.518125,
+      "1193": 44.72175,
+      "1195": 83.214875,
+      "12": 38.936125,
+      "120": 29.760125,
+      "1205": 57.47675,
+      "1206": 71.338208,
+      "1208": 74.4365,
+      "1209": 69.684,
+      "121": 52.865,
+      "1210": 46.058959,
+      "1211": 48.254708,
+      "1212": 54.044584,
+      "1214": 51.269959,
+      "1215": 42.732916,
+      "1218": 103.600375,
+      "1219": 44.570458,
+      "122": 44.874167,
+      "1220": 60.589917,
+      "1223": 37.015625,
+      "1224": 61.776,
+      "1227": 48.132083,
+      "1228": 39.774375,
+      "1229": 67.174292,
+      "123": 39.284291,
+      "1230": 36.077958,
+      "1231": 56.193041,
+      "1234": 29.163458,
+      "1235": 62.68425,
+      "1236": 60.258458,
+      "1237": 40.31025,
+      "1238": 36.001666,
+      "1239": 39.716959,
+      "1244": 44.687375,
+      "1246": 33.025459,
+      "1247": 41.072875,
+      "1248": 47.539625,
+      "1249": 39.831208,
+      "1253": 46.66275,
+      "1254": 32.837458,
+      "1255": 36.855708,
+      "1257": 72.896208,
+      "1258": 34.562042,
+      "126": 45.7475,
+      "1260": 66.773167,
+      "1261": 75.529333,
+      "1263": 70.586,
+      "1265": 42.139292,
+      "1268": 37.264417,
+      "1269": 60.363167,
+      "1275": 76.49775,
+      "1276": 58.709166,
+      "1284": 32.703292,
+      "1288": 36.341375,
+      "1289": 33.90575,
+      "1291": 30.662292,
+      "1293": 31.30125,
+      "1294": 36.656833,
+      "1295": 32.955084,
+      "1297": 72.45875,
+      "1300": 33.94625,
+      "1302": 19.897625,
+      "1304": 12.650084,
+      "1305": 12.56725,
+      "1306": 44.445542,
+      "1307": 27.909333,
+      "1308": 27.141333,
+      "1309": 31.9945,
+      "1310": 30.208333,
+      "1311": 22.627167,
+      "1312": 49.245375,
+      "1314": 36.258875,
+      "1315": 35.175458,
+      "1322": 41.0705,
+      "1323": 32.804292,
+      "1324": 34.297,
+      "1325": 63.673708,
+      "1327": 45.760458,
+      "1328": 49.941917,
+      "1330": 41.953541,
+      "1331": 42.33625,
+      "1333": 47.510083,
+      "1334": 54.05975,
+      "134": 33.87025,
+      "1340": 42.822375,
+      "1341": 38.071166,
+      "1342": 67.047167,
+      "1345": 41.233792,
+      "1346": 47.964292,
+      "1347": 58.605834,
+      "1348": 69.001417,
+      "1349": 34.18725,
+      "1350": 35.120916,
+      "1351": 66.565708,
+      "1353": 65.315584,
+      "1355": 30.0295,
+      "1356": 40.417459,
+      "1360": 51.236917,
+      "1361": 58.420917,
+      "1364": 27.315042,
+      "1366": 43.286042,
+      "1367": 13.586916,
+      "1371": 51.572792,
+      "1372": 43.256292,
+      "1373": 57.560709,
+      "1374": 53.587958,
+      "1375": 49.936458,
+      "1376": 35.011167,
+      "1378": 31.8675,
+      "138": 40.626834,
+      "1380": 39.896625,
+      "1381": 47.380208,
+      "1383": 20.016708,
+      "1386": 15.2395,
+      "1387": 30.297667,
+      "139": 39.129416,
+      "1390": 52.023833,
+      "1391": 27.611084,
+      "1392": 21.847875,
+      "1393": 21.968792,
+      "1394": 40.215,
+      "1397": 56.967417,
+      "1398": 27.642167,
+      "14": 17.247875,
+      "1400": 31.070833,
+      "1401": 40.111917,
+      "1402": 35.765792,
+      "1403": 49.405167,
+      "1404": 67.095,
+      "1405": 34.394958,
+      "1406": 16.903292,
+      "1407": 20.885209,
+      "144": 43.300042,
+      "149": 42.215,
+      "15": 53.290333,
+      "152": 37.721792,
+      "153": 48.61075,
+      "154": 50.564834,
+      "155": 43.125708,
+      "156": 28.849583,
+      "157": 15.578875,
+      "159": 45.116667,
+      "160": 40.462,
+      "161": 33.950667,
+      "164": 33.720709,
+      "165": 38.403542,
+      "166": 30.842417,
+      "167": 31.388584,
+      "168": 16.195209,
+      "169": 16.499541,
+      "17": 28.6835,
+      "172": 34.37375,
+      "173": 24.214917,
+      "174": 35.121875,
+      "175": 24.387583,
+      "176": 23.06,
+      "177": 65.678458,
+      "178": 22.554,
+      "18": 43.072875,
+      "181": 54.211416,
+      "182": 24.977042,
+      "184": 23.726583,
+      "186": 20.129709,
+      "187": 19.977625,
+      "189": 27.489,
+      "19": 61.185958,
+      "196": 29.737708,
+      "197": 19.580333,
+      "199": 18.333375,
+      "2": 33.716583,
+      "20": 42.749708,
+      "200": 48.19975,
+      "201": 50.100834,
+      "203": 36.756416,
+      "204": 32.351166,
+      "205": 32.3535,
+      "209": 23.532375,
+      "21": 49.006209,
+      "210": 27.917625,
+      "211": 28.967917,
+      "214": 29.954,
+      "22": 46.791709,
+      "220": 27.502958,
+      "221": 22.513666,
+      "222": 33.562667,
+      "223": 53.651292,
+      "224": 27.919041,
+      "225": 59.361333,
+      "226": 57.509959,
+      "227": 34.906541,
+      "228": 26.358625,
+      "229": 29.54225,
+      "235": 38.756709,
+      "24": 78.808875,
+      "241": 32.089458,
+      "242": 35.179458,
+      "243": 54.329958,
+      "244": 38.427166,
+      "245": 39.667084,
+      "246": 21.072625,
+      "247": 16.847666,
+      "25": 34.7545,
+      "250": 18.671291,
+      "251": 19.304125,
+      "253": 57.068166,
+      "254": 72.644667,
+      "255": 49.970542,
+      "256": 44.810208,
+      "258": 64.740459,
+      "259": 42.282584,
+      "26": 46.83125,
+      "262": 62.820417,
+      "263": 66.0765,
+      "264": 60.379625,
+      "265": 28.054416,
+      "266": 20.913167,
+      "267": 31.960583,
+      "27": 50.505875,
+      "272": 50.290958,
+      "277": 32.142042,
+      "278": 22.628416,
+      "28": 41.693459,
+      "280": 61.092917,
+      "281": 71.7125,
+      "283": 37.114917,
+      "285": 36.6765,
+      "286": 55.115541,
+      "287": 51.708292,
+      "290": 42.594084,
+      "292": 22.057,
+      "293": 44.560667,
+      "296": 46.416583,
+      "299": 36.766042,
+      "30": 29.741291,
+      "301": 28.753459,
+      "304": 27.042167,
+      "305": 39.910958,
+      "306": 17.358375,
+      "308": 25.018791,
+      "309": 12.354709,
+      "310": 31.832625,
+      "313": 31.513833,
+      "315": 40.684167,
+      "316": 34.28925,
+      "317": 36.516833,
+      "32": 55.758125,
+      "323": 14.353792,
+      "325": 41.971541,
+      "326": 32.750167,
+      "330": 20.619459,
+      "331": 32.946,
+      "332": 68.908042,
+      "333": 48.47925,
+      "334": 28.356667,
+      "335": 48.889125,
+      "336": 51.74025,
+      "337": 41.484292,
+      "339": 25.856084,
+      "34": 32.739916,
+      "340": 51.436417,
+      "341": 61.210792,
+      "342": 37.43325,
+      "345": 37.966708,
+      "346": 43.160834,
+      "347": 50.310625,
+      "349": 56.666542,
+      "35": 32.760375,
+      "351": 25.031791,
+      "352": 17.576834,
+      "355": 34.386292,
+      "356": 42.026375,
+      "357": 72.304459,
+      "358": 65.3185,
+      "361": 72.050375,
+      "363": 37.199166,
+      "364": 37.458292,
+      "365": 42.823125,
+      "366": 27.166667,
+      "367": 31.122958,
+      "368": 50.012292,
+      "369": 48.255542,
+      "37": 31.834791,
+      "370": 33.785958,
+      "371": 33.542875,
+      "372": 60.138209,
+      "375": 26.981708,
+      "376": 34.474917,
+      "377": 31.776708,
+      "378": 17.385,
+      "379": 43.718791,
+      "381": 50.85825,
+      "382": 52.391625,
+      "383": 38.134125,
+      "389": 39.875208,
+      "39": 51.658167,
+      "390": 41.014917,
+      "391": 40.482041,
+      "392": 39.772791,
+      "393": 40.304625,
+      "394": 27.8705,
+      "396": 35.445959,
+      "397": 35.392667,
+      "398": 42.841833,
+      "4": 36.522209,
+      "40": 60.799458,
+      "400": 34.261708,
+      "401": 48.698542,
+      "403": 29.951875,
+      "404": 34.387958,
+      "406": 17.665875,
+      "407": 46.107917,
+      "41": 36.7655,
+      "413": 36.092917,
+      "414": 38.582167,
+      "416": 52.891417,
+      "417": 66.198333,
+      "418": 34.042417,
+      "420": 33.893334,
+      "422": 39.514917,
+      "423": 40.055875,
+      "425": 46.062625,
+      "426": 44.762625,
+      "428": 32.924125,
+      "429": 34.960625,
+      "43": 40.081291,
+      "430": 34.3165,
+      "432": 51.323333,
+      "434": 53.990875,
+      "435": 48.904625,
+      "44": 61.33125,
+      "441": 51.096875,
+      "444": 42.326208,
+      "445": 30.77875,
+      "447": 39.732625,
+      "448": 39.374208,
+      "449": 31.3595,
+      "45": 88.804667,
+      "453": 56.332292,
+      "454": 58.846666,
+      "455": 49.394958,
+      "456": 36.845208,
+      "458": 49.228584,
+      "46": 44.543542,
+      "461": 26.740334,
+      "463": 31.083958,
+      "466": 95.681208,
+      "469": 13.859167,
+      "47": 71.293,
+      "470": 34.633125,
+      "472": 45.907542,
+      "473": 17.449625,
+      "474": 37.650625,
+      "479": 31.770583,
+      "480": 31.73275,
+      "481": 32.113125,
+      "482": 48.731459,
+      "483": 49.403209,
+      "484": 21.175625,
+      "485": 27.690875,
+      "486": 20.784042,
+      "487": 28.599542,
+      "488": 51.483209,
+      "489": 44.077209,
+      "490": 30.829709,
+      "492": 24.39875,
+      "493": 36.6425,
+      "494": 39.5855,
+      "495": 29.683333,
+      "498": 23.703917,
+      "499": 36.881583,
+      "500": 21.357375,
+      "504": 38.178209,
+      "505": 56.949875,
+      "506": 45.102333,
+      "509": 20.42225,
+      "515": 49.468375,
+      "52": 30.423375,
+      "523": 51.525958,
+      "524": 68.801959,
+      "526": 41.55075,
+      "529": 28.056375,
+      "530": 42.939875,
+      "531": 50.9535,
+      "537": 29.278375,
+      "541": 27.170791,
+      "542": 45.1495,
+      "545": 38.933833,
+      "547": 22.296375,
+      "548": 37.014375,
+      "55": 57.438625,
+      "550": 77.582542,
+      "553": 63.399625,
+      "555": 40.20225,
+      "557": 37.115583,
+      "559": 30.083666,
+      "562": 31.587417,
+      "563": 33.787291,
+      "564": 35.790292,
+      "565": 60.645916,
+      "566": 56.191625,
+      "568": 57.125083,
+      "570": 69.141083,
+      "571": 85.771417,
+      "572": 53.849459,
+      "573": 40.587667,
+      "574": 43.015834,
+      "576": 39.202583,
+      "579": 37.979333,
+      "58": 39.156792,
+      "580": 41.6945,
+      "582": 54.792833,
+      "584": 43.629541,
+      "585": 35.57575,
+      "588": 82.508875,
+      "590": 72.161708,
+      "591": 40.517916,
+      "592": 38.065791,
+      "594": 34.313417,
+      "595": 28.137542,
+      "6": 44.230459,
+      "60": 39.494375,
+      "600": 44.934542,
+      "601": 42.6735,
+      "602": 41.79675,
+      "603": 58.125625,
+      "606": 35.246958,
+      "607": 27.038417,
+      "609": 24.33475,
+      "61": 25.477292,
+      "610": 25.061917,
+      "611": 32.032083,
+      "612": 40.537084,
+      "614": 37.404042,
+      "615": 35.7365,
+      "616": 38.293083,
+      "617": 40.745459,
+      "618": 62.002833,
+      "62": 23.773334,
+      "620": 50.875,
+      "621": 51.226542,
+      "622": 39.25825,
+      "624": 38.998708,
+      "625": 38.04875,
+      "626": 44.969291,
+      "63": 29.038,
+      "631": 31.501917,
+      "632": 41.761959,
+      "633": 45.062583,
+      "635": 24.950292,
+      "638": 33.392333,
+      "64": 37.967708,
+      "640": 39.245875,
+      "642": 25.49175,
+      "643": 16.990875,
+      "645": 36.838542,
+      "646": 35.294041,
+      "647": 25.061666,
+      "648": 23.469833,
+      "650": 50.18725,
+      "651": 40.153917,
+      "652": 40.013459,
+      "653": 48.18125,
+      "654": 67.15675,
+      "655": 54.353917,
+      "657": 54.070833,
+      "658": 53.579042,
+      "66": 20.545708,
+      "661": 41.295208,
+      "662": 28.734792,
+      "663": 40.098167,
+      "665": 51.637,
+      "666": 73.701416,
+      "667": 23.092083,
+      "668": 24.116458,
+      "669": 24.285167,
+      "67": 40.186583,
+      "670": 34.103583,
+      "671": 41.189542,
+      "672": 32.315459,
+      "673": 44.630667,
+      "676": 12.928625,
+      "677": 12.706792,
+      "679": 23.192292,
+      "68": 17.965666,
+      "680": 30.104042,
+      "681": 36.1685,
+      "682": 51.367166,
+      "683": 45.383708,
+      "685": 24.412917,
+      "686": 46.6815,
+      "687": 44.739875,
+      "688": 26.368209,
+      "689": 40.794292,
+      "69": 22.742833,
+      "694": 38.467625,
+      "696": 31.681958,
+      "698": 39.475083,
+      "703": 61.682542,
+      "704": 20.720875,
+      "705": 36.354458,
+      "709": 37.261208,
+      "71": 43.001791,
+      "710": 33.650334,
+      "713": 54.689167,
+      "714": 43.073,
+      "717": 23.814791,
+      "724": 37.904542,
+      "726": 25.894958,
+      "73": 26.428166,
+      "730": 30.818625,
+      "732": 28.91225,
+      "733": 27.921875,
+      "734": 37.771666,
+      "736": 30.075417,
+      "737": 28.665208,
+      "738": 14.620083,
+      "739": 18.46075,
+      "74": 31.757916,
+      "740": 32.257125,
+      "745": 15.645584,
+      "746": 15.192834,
+      "747": 33.63025,
+      "748": 34.789833,
+      "749": 59.588666,
+      "751": 46.73875,
+      "752": 28.288542,
+      "753": 21.048125,
+      "755": 35.090958,
+      "757": 63.8775,
+      "758": 38.547709,
+      "76": 19.853583,
+      "760": 48.7335,
+      "761": 31.076375,
+      "762": 35.146375,
+      "764": 23.382833,
+      "765": 26.1685,
+      "766": 24.28075,
+      "767": 31.842417,
+      "77": 14.819125,
+      "771": 72.718875,
+      "772": 75.780875,
+      "774": 37.453,
+      "776": 37.654583,
+      "777": 33.175208,
+      "778": 48.093541,
+      "779": 64.436167,
+      "78": 29.579875,
+      "780": 33.854208,
+      "782": 27.761125,
+      "787": 16.801792,
+      "788": 15.902917,
+      "789": 59.641542,
+      "79": 20.0385,
+      "790": 41.813792,
+      "791": 24.515333,
+      "792": 30.431458,
+      "795": 28.127334,
+      "797": 29.632625,
+      "798": 31.816083,
+      "799": 45.304,
+      "80": 24.236583,
+      "801": 31.027625,
+      "802": 27.69975,
+      "803": 30.08425,
+      "804": 26.065333,
+      "807": 47.379667,
+      "81": 62.717458,
+      "810": 23.118833,
+      "812": 37.053458,
+      "813": 79.308125,
+      "815": 31.331708,
+      "816": 29.246792,
+      "817": 17.278792,
+      "818": 30.36325,
+      "82": 48.610667,
+      "822": 20.638459,
+      "825": 29.509458,
+      "826": 51.088375,
+      "828": 35.095625,
+      "835": 36.684375,
+      "838": 37.583208,
+      "840": 23.2885,
+      "841": 17.050875,
+      "844": 48.479667,
+      "846": 31.50025,
+      "848": 53.051458,
+      "85": 18.240666,
+      "853": 59.151166,
+      "854": 42.802625,
+      "855": 38.267917,
+      "856": 25.758792,
+      "857": 23.15775,
+      "858": 24.67675,
+      "86": 17.88325,
+      "860": 66.028875,
+      "861": 45.154875,
+      "863": 24.3475,
+      "866": 35.67675,
+      "867": 34.802041,
+      "871": 12.634666,
+      "876": 11.717958,
+      "877": 65.248875,
+      "88": 22.774292,
+      "881": 21.545208,
+      "883": 21.988334,
+      "884": 23.338458,
+      "885": 33.077833,
+      "886": 37.307542,
+      "89": 44.3275,
+      "890": 39.392959,
+      "891": 39.076583,
+      "893": 36.621458,
+      "894": 47.82875,
+      "895": 55.084208,
+      "896": 35.355625,
+      "897": 33.766292,
+      "898": 16.449208,
+      "899": 15.334083,
+      "9": 43.717084,
+      "90": 45.991459,
+      "900": 43.550375,
+      "901": 18.9185,
+      "902": 24.217791,
+      "908": 45.12025,
+      "909": 47.038542,
+      "91": 38.349042,
+      "910": 45.297459,
+      "912": 55.280333,
+      "916": 40.20425,
+      "917": 48.630375,
+      "919": 24.14,
+      "92": 25.562375,
+      "923": 37.188125,
+      "925": 55.119833,
+      "926": 74.760958,
+      "927": 57.875792,
+      "928": 43.284208,
+      "929": 42.988583,
+      "93": 29.24225,
+      "930": 27.883417,
+      "933": 31.029209,
+      "934": 32.772459,
+      "935": 29.902417,
+      "938": 31.108917,
+      "939": 59.428792,
+      "940": 30.400292,
+      "941": 29.29675,
+      "942": 38.0145,
+      "944": 34.814,
+      "945": 65.294833,
+      "946": 51.345833,
+      "949": 16.098333,
+      "95": 24.748833,
+      "951": 33.395458,
+      "952": 51.730083,
+      "953": 48.154667,
+      "954": 40.779208,
+      "955": 24.278833,
+      "959": 17.156166,
+      "96": 57.406917,
+      "962": 39.399708,
+      "963": 32.481166,
+      "964": 32.637875,
+      "965": 24.472542,
+      "969": 43.293541,
+      "970": 66.311708,
+      "972": 46.030375,
+      "973": 76.859209,
+      "976": 59.168208,
+      "977": 42.321792,
+      "978": 39.268375,
+      "979": 27.233916,
+      "98": 23.694167,
+      "980": 61.000708,
+      "984": 26.202167,
+      "988": 41.101333,
+      "989": 52.309916,
+      "990": 30.797167,
+      "992": 15.791416,
+      "994": 31.456541,
+      "996": 17.423666,
+      "997": 17.3155,
+      "998": 29.055875,
+      "999": 42.319958
+    }
+  }
+}

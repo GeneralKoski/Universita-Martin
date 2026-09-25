@@ -76,3 +76,85 @@ Se cadono la 1 e la 2 insieme, le scale non sono il problema: il 20 andrebbe
 bene ovunque, e il difetto 3 si ridimensiona a una costante da scegliere.
 
 ## Esito
+
+Calibrazione `2026-09-25T131533Z_calibrazione.json`, da `calibra.py` al commit
+`f288962` (albero pulito), sulle 57 valutazioni di `calibrazione-fusione/`
+(Koskidex `d3ffe17`). Esito sul test `2026-09-25T131731Z_esito.json`, da
+`analizza.py` allo stesso commit, sulle dieci valutazioni delle 13:16-13:17 UTC
+più le tre U del difetto 2. Un primo lancio di `calibra.py` si è fermato sul proprio controllo
+prima di stampare un numero: le esecuzioni convesse non registrano
+`vettori_k` (`evaluate` lo scrive solo con `-ibrido`), corretto in un commit a
+parte.
+
+**La calibrazione**, nDCG@10 (MRR@10 per le known-item) sugli split separati:
+
+| costante della somma | 0 | 5 | 10 | 20 | 40 | 80 | 160 | 320 |
+|---|---|---|---|---|---|---|---|---|
+| SciFact train | 0,678 | 0,686 | 0,696 | 0,708 | 0,723 | 0,742 | **0,753** | 0,750 |
+| NFCorpus dev | 0,276 | 0,297 | 0,303 | 0,313 | 0,321 | 0,326 | **0,326** | 0,320 |
+| known-item train | 0,861 | 0,867 | **0,872** | 0,868 | 0,814 | 0,690 | 0,505 | 0,353 |
+
+| α (peso del lessicale) | 0 | 0,2 | 0,4 | 0,5 | 0,6 | 0,8 | 0,9 | 1 |
+|---|---|---|---|---|---|---|---|---|
+| SciFact train | 0,712 | 0,731 | 0,743 | **0,748** | 0,745 | 0,720 | 0,703 | 0,678 |
+| NFCorpus dev | 0,303 | 0,317 | 0,320 | **0,323** | 0,320 | 0,307 | 0,299 | 0,276 |
+| known-item train | 0,195 | 0,283 | 0,444 | 0,579 | 0,719 | 0,850 | **0,863** | 0,861 |
+
+**Sul test:**
+
+| | U (somma, 20) | somma calibrata | RRF | convessa 0,5 | convessa calibrata |
+|---|---|---|---|---|---|
+| SciFact nDCG@10 | 0,6913 | **0,7067** (160) | 0,6866 | 0,7025 | 0,7025 (0,5) |
+| NFCorpus nDCG@10 | 0,3340 | 0,3441 (160) | **0,3447** | 0,3416 | 0,3416 (0,5) |
+| known-item MRR@10 | 0,8464 | **0,8499** (10) | 0,4623 | 0,5723 | 0,8466 (0,9) |
+
+**Il 20 era sbagliato di un fattore otto per le query in lingua naturale e
+giusto, per caso, per quelle identificative. Nessuna fusione con un parametro
+unico va bene per tutte e due.** Calibrare la costante vale +0,015 su SciFact e
++0,010 su NFCorpus sul test; la stessa costante, 160, sulle known-item porta
+l'MRR da 0,87 a 0,50. RRF, che di parametri non ne ha, fa come la somma
+calibrata su NFCorpus e sotto U su SciFact, e dimezza le known-item. La
+normalizzazione della convessa non risolve: α 0,5 va bene per le collezioni
+pubbliche e sulle known-item fa 0,57, serve 0,9.
+
+La scala che conta non è quella fra SciFact e NFCorpus, query lunghe contro
+query corte: lì la costante migliore è la stessa. È quella fra i tipi di
+query. Su una query identificativa il vettore non sa niente del numero e va
+tenuto basso; su una in lingua naturale va pesato otto volte di più di oggi.
+È la stessa divisione di `2026-09-25_scelta-per-query/`, che sceglieva fra
+`any` e `all`: il peso del vettore è un secondo parametro da scegliere per tipo
+di query, con lo stesso classificatore.
+
+### Le previsioni
+
+1. Costante migliore diversa di almeno quattro volte fra SciFact e NFCorpus:
+   **160 su entrambe, smentita.** La lunghezza delle query non sposta la
+   costante; il tipo di query sì (10 sulle known-item).
+2. α migliori entro 0,2: **0,5 su entrambe, confermata**, ma senza il merito
+   che le davo: anche le costanti coincidono.
+3. Sulle known-item α almeno 0,8 e costante al più 10: **0,9 e 10,
+   confermata.**
+4. Trasferire la costante costa più che trasferire α: **nessuna delle due
+   costa niente, smentita**, per la stessa ragione della 1.
+5. RRF almeno 0,005 sopra U su SciFact e NFCorpus, almeno 0,05 sotto sulle
+   known-item: **smentita su SciFact** (-0,0047), confermata su NFCorpus
+   (+0,0107) e sulle known-item (-0,384, molto oltre).
+6. La convessa calibrata almeno 0,005 sopra U sulle pubbliche, non più di
+   0,005 sotto sulle known-item, almeno pari a RRF sulle pubbliche:
+   **+0,0112 e +0,0076, +0,0001, confermata; pari a RRF solo su SciFact**
+   (su NFCorpus 0,0031 sotto).
+7. Le fusioni nuove costano meno di 2 ms in più di U: **costano meno di U**,
+   da 1 a 7 ms, confermata. La somma calcola la similarità di ogni candidato
+   lessicale e poi scandisce tutti i vettori per i vicini; le fusioni nuove
+   scandiscono una volta sola.
+
+### Cosa vuol dire per la tesi
+
+Il difetto 3 c'è ed è misurato: la costante a occhio lasciava sul tavolo
++0,015 e +0,010 di nDCG@10 sulle collezioni pubbliche, e nessuna delle
+alternative della letteratura (RRF, somma normalizzata) è indipendente dal tipo
+di query. La correzione non è una formula ma una scelta: il peso del vettore
+per tipo di query, da aggiungere alla scelta di `2026-09-25_scelta-per-query/`
+e da rifare sulle known-item scritte da persone. Tutti i flag restano spenti
+per default: i default si decidono alla fine, con il relatore.
+

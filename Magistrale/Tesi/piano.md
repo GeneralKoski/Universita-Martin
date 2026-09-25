@@ -263,8 +263,16 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
 - [ ] **Difetto 2 sulla ricerca congiuntiva di Documentale**: l'unione
       dovrebbe pesare di più dove il lessicale trova poco. Serve l'embedder
       dall'app (vedi i timeout sopra)
-- [ ] Fusione: RRF contro pesatura normalizzata, calibrazione, e fusione che
-      dipende dal tipo di query (identificativa o in lingua naturale)
+- [x] **Difetto 3** (25/09/2026, Koskidex `d3ffe17`): `FusionMode` (`rrf`,
+      `convex`), `VectorWeight`, `FusionAlpha`. Calibrati su split separati:
+      costante migliore 160 su SciFact e NFCorpus, 10 sulle known-item; α 0,5 e
+      0,9. Sul test la somma calibrata fa 0,7067 e 0,3441 (da 0,6913 e 0,3340);
+      RRF dimezza le known-item. Nessun parametro unico regge i due tipi di
+      query. 3 previsioni e mezza su 7
+      (`risultati/esperimenti/2026-09-25_fusione/`)
+- [ ] **Il peso del vettore per tipo di query**: aggiungerlo alla scelta di
+      `2026-09-25_scelta-per-query/` (oggi sceglie fra `any` e `all`) e
+      rifarla sulle known-item umane
 - [x] **Scelta della configurazione per query** (25/09/2026): una regressione
       logistica sceglie fra BM25 `any` e `all` e arriva a 0,0006 dall'oracolo
       (0,6473 contro 0,6479 di media su known-item, SciFact e NFCorpus), mentre

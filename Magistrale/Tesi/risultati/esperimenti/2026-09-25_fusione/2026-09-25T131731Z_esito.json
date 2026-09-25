@@ -1,0 +1,201 @@
+{
+  "ran_at": "2026-09-25T13:17:31Z",
+  "config": {
+    "commit": "f288962",
+    "modifiche_non_committate": "true",
+    "koskidex": [
+      "d3ffe17",
+      "f5ce77f"
+    ],
+    "calibrazione": "2026-09-25T131533Z_calibrazione.json",
+    "valutazioni": [
+      "2026-09-25T124804Z_scifact-bm25-blended-union.json",
+      "2026-09-25T124832Z_nfcorpus-bm25-blended-union.json",
+      "2026-09-25T124856Z_known-item-auto-bm25-blended-union.json",
+      "2026-09-25T131601Z_scifact-fusione-somma-160.json",
+      "2026-09-25T131616Z_scifact-fusione-rrf.json",
+      "2026-09-25T131630Z_scifact-fusione-convex-0.5.json",
+      "2026-09-25T131637Z_nfcorpus-fusione-somma-160.json",
+      "2026-09-25T131643Z_nfcorpus-fusione-rrf.json",
+      "2026-09-25T131649Z_nfcorpus-fusione-convex-0.5.json",
+      "2026-09-25T131659Z_known-item-auto-fusione-somma-10.json",
+      "2026-09-25T131708Z_known-item-auto-fusione-rrf.json",
+      "2026-09-25T131716Z_known-item-auto-fusione-convex-0.5.json",
+      "2026-09-25T131725Z_known-item-auto-fusione-convex-0.9.json"
+    ]
+  },
+  "known-item-auto": {
+    "costante_calibrata": 10.0,
+    "alfa_calibrato": 0.9,
+    "configurazioni": {
+      "U": {
+        "valutazione": "2026-09-25T124856Z_known-item-auto-bm25-blended-union.json",
+        "metrica": "mrr@10",
+        "valore": 0.8464,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 17.185
+      },
+      "S*": {
+        "valutazione": "2026-09-25T131659Z_known-item-auto-fusione-somma-10.json",
+        "metrica": "mrr@10",
+        "valore": 0.8499,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 16.91
+      },
+      "RRF": {
+        "valutazione": "2026-09-25T131708Z_known-item-auto-fusione-rrf.json",
+        "metrica": "mrr@10",
+        "valore": 0.4623,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 16.169
+      },
+      "C": {
+        "valutazione": "2026-09-25T131716Z_known-item-auto-fusione-convex-0.5.json",
+        "metrica": "mrr@10",
+        "valore": 0.5723,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 16.15
+      },
+      "C*": {
+        "valutazione": "2026-09-25T131725Z_known-item-auto-fusione-convex-0.9.json",
+        "metrica": "mrr@10",
+        "valore": 0.8466,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 16.209
+      }
+    },
+    "differenze_da_U": {
+      "S*": 0.0035,
+      "RRF": -0.3841,
+      "C": -0.2741,
+      "C*": 0.0001
+    },
+    "C*_meno_RRF": 0.3842,
+    "ms_mediana_meno_U": {
+      "RRF": -1.016,
+      "C": -1.035,
+      "C*": -0.976
+    }
+  },
+  "nfcorpus": {
+    "costante_calibrata": 160.0,
+    "alfa_calibrato": 0.5,
+    "configurazioni": {
+      "U": {
+        "valutazione": "2026-09-25T124832Z_nfcorpus-bm25-blended-union.json",
+        "metrica": "ndcg@10",
+        "valore": 0.334,
+        "recall@100": 0.2809,
+        "a_vuoto": 0,
+        "ms_mediana": 8.291
+      },
+      "S*": {
+        "valutazione": "2026-09-25T131637Z_nfcorpus-fusione-somma-160.json",
+        "metrica": "ndcg@10",
+        "valore": 0.3441,
+        "recall@100": 0.2954,
+        "a_vuoto": 0,
+        "ms_mediana": 8.022
+      },
+      "RRF": {
+        "valutazione": "2026-09-25T131643Z_nfcorpus-fusione-rrf.json",
+        "metrica": "ndcg@10",
+        "valore": 0.3447,
+        "recall@100": 0.2948,
+        "a_vuoto": 0,
+        "ms_mediana": 7.188
+      },
+      "C": {
+        "valutazione": "2026-09-25T131649Z_nfcorpus-fusione-convex-0.5.json",
+        "metrica": "ndcg@10",
+        "valore": 0.3416,
+        "recall@100": 0.2846,
+        "a_vuoto": 0,
+        "ms_mediana": 7.131
+      },
+      "C*": {
+        "valutazione": "2026-09-25T131649Z_nfcorpus-fusione-convex-0.5.json",
+        "metrica": "ndcg@10",
+        "valore": 0.3416,
+        "recall@100": 0.2846,
+        "a_vuoto": 0,
+        "ms_mediana": 7.131
+      }
+    },
+    "differenze_da_U": {
+      "S*": 0.0101,
+      "RRF": 0.0107,
+      "C": 0.0076,
+      "C*": 0.0076
+    },
+    "C*_meno_RRF": -0.0031,
+    "ms_mediana_meno_U": {
+      "RRF": -1.103,
+      "C": -1.16,
+      "C*": -1.16
+    }
+  },
+  "scifact": {
+    "costante_calibrata": 160.0,
+    "alfa_calibrato": 0.5,
+    "configurazioni": {
+      "U": {
+        "valutazione": "2026-09-25T124804Z_scifact-bm25-blended-union.json",
+        "metrica": "ndcg@10",
+        "valore": 0.6913,
+        "recall@100": 0.9116,
+        "a_vuoto": 0,
+        "ms_mediana": 40.432
+      },
+      "S*": {
+        "valutazione": "2026-09-25T131601Z_scifact-fusione-somma-160.json",
+        "metrica": "ndcg@10",
+        "valore": 0.7067,
+        "recall@100": 0.9543,
+        "a_vuoto": 0,
+        "ms_mediana": 40.961
+      },
+      "RRF": {
+        "valutazione": "2026-09-25T131616Z_scifact-fusione-rrf.json",
+        "metrica": "ndcg@10",
+        "valore": 0.6866,
+        "recall@100": 0.947,
+        "a_vuoto": 0,
+        "ms_mediana": 33.658
+      },
+      "C": {
+        "valutazione": "2026-09-25T131630Z_scifact-fusione-convex-0.5.json",
+        "metrica": "ndcg@10",
+        "valore": 0.7025,
+        "recall@100": 0.9377,
+        "a_vuoto": 0,
+        "ms_mediana": 33.918
+      },
+      "C*": {
+        "valutazione": "2026-09-25T131630Z_scifact-fusione-convex-0.5.json",
+        "metrica": "ndcg@10",
+        "valore": 0.7025,
+        "recall@100": 0.9377,
+        "a_vuoto": 0,
+        "ms_mediana": 33.918
+      }
+    },
+    "differenze_da_U": {
+      "S*": 0.0154,
+      "RRF": -0.0047,
+      "C": 0.0112,
+      "C*": 0.0112
+    },
+    "C*_meno_RRF": 0.0159,
+    "ms_mediana_meno_U": {
+      "RRF": -6.774,
+      "C": -6.514,
+      "C*": -6.514
+    }
+  }
+}
