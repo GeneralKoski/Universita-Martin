@@ -236,6 +236,28 @@ Tre conseguenze buone e una scomoda.
 Il dettaglio, con i numeri e le fonti scartate, sta nel Task E2 di
 [piano-autunno-2026.md](piano-autunno-2026.md).
 
+## Koskidex pronto per l'innesto (25/09/2026)
+
+La regola era: si innesta solo un Koskidex completo. I sette buchi trovati
+provandolo contro il contratto di Documentale (Parte F del piano) sono chiusi,
+ognuno con test scritti prima e visti fallire. Il più importante per la tesi è
+F7: **con le impostazioni di compatibilità, Koskidex restituisce esattamente gli
+insiemi di Elasticsearch su tutte e 24 le query del confronto.** Ora l'argomento
+"i miglioramenti valgono anche per Documentale" regge: si parte dagli stessi
+insiemi, e ogni differenza misurata dopo viene dalla modifica.
+
+Due scoperte fatte per strada, tutte e due materiale di tesi:
+
+- **un difetto di Koskidex**: i refusi che non condividono bigrammi con la
+  parola cercata (`atre` contro `arte`) non venivano mai valutati. Corretto;
+- **un difetto di Documentale in produzione**: il tokenizer standard di
+  Elasticsearch tiene insieme *dell'illuminazione*, quindi chi cerca
+  "illuminazione" non trova gli atti con l'elisione. In un corpus italiano non è
+  un caso raro. Da contare sul corpus intero.
+
+Il prossimo passo è l'innesto: `KoskidexService` accanto a
+`ElasticsearchService`, scelto da configurazione.
+
 ## Relatore: stato e tempi
 
 Il 21 settembre 2026 ho agganciato entrambi i potenziali relatori a fine

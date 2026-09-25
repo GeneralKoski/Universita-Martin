@@ -1678,7 +1678,7 @@ modifiche al ranking, perché il baseline del 23/09 deve restare misurabile.
       un vero `*term*` su tutti i termini è una scansione del vocabolario, gli
       n-grammi sono un indice in più. Per i percorsi delle cartelle, che sono
       poche migliaia, la scansione probabilmente basta: va misurata
-- [ ] **F7 - matching compatibile con Elasticsearch, dietro impostazioni.** Le
+- [x] **F7 - matching compatibile con Elasticsearch, dietro impostazioni.** Le
       quattro differenze misurate il 23/09: congiunzione dentro un campo solo,
       soglie dei refusi (le soglie sono già configurabili, basta documentarle),
       ricerca per prefisso disattivabile, prima lettera esatta. Serve a
@@ -1704,6 +1704,9 @@ prima e visti fallire, e mutazioni per controllare che i test mordano:
 | F3 + F5 | `bb9c968` | `limit` fino a 10.000, `ids_only` (solo id e punteggio), `score` in ogni risultato |
 | F4 | `c702dd6` | `POST /documents/delete-batch`: un solo record `DELETE_DOCS` nel WAL e una sola sincronizzazione |
 | F6 | `ff465b6` | `substring_match`, spenta per default: la query intera come sottostringa di un termine, come il wildcard di Elasticsearch |
+| F7 | `1549de2` | `disable_prefix_search`, `prefix_length`, `all_terms_in_one_field`; `scripts/esmirror` nel repository, da codice committato |
+| difetto | `1902826` | i refusi senza bigrammi in comune (`187`/`17`, `atre`/`arte`) non venivano mai valutati |
+| F7 | `3642dec` | `tokenizer: "standard"`, le regole UAX#29 di Elasticsearch |
 
 F6 si è deciso con una misura, non a occhio: la scansione del vocabolario costa
 meno di un millisecondo a query su 23-33 mila termini, quindi niente n-grammi
@@ -1711,6 +1714,26 @@ meno di un millisecondo a query su 23-33 mila termini, quindi niente n-grammi
 fuori un dettaglio del wildcard di Elasticsearch: su un campo `text` confronta
 la query con un termine alla volta, quindi una query con uno spazio non trova
 niente per quella via. Koskidex fa lo stesso.
+
+**F7 è arrivato al traguardo (25/09/2026): 24 query su 24 con lo stesso insieme
+di Elasticsearch, zero documenti trovati da un motore solo.** Per arrivarci sono
+servite due cose che l'esperimento del 23/09 non aveva visto, e le sue due
+ipotesi sui residui erano sbagliate (dettagli in
+`risultati/esperimenti/2026-09-23_cause-divergenza/`):
+
+1. un **difetto di Koskidex**, non una differenza di configurazione: i candidati
+   fuzzy venivano solo dai bigrammi in comune, e una parola corta a un refuso
+   può non averne. Corretto per tutti, perché il motore prometteva la distanza
+   di Damerau e non la manteneva; sulle 24 query, con le soglie predefinite,
+   cambia un solo documento in un solo top 10;
+2. il **tokenizer**: quello standard di Elasticsearch tiene insieme
+   *dell'illuminazione*, `14.01.2026`, `3,5`. Per le elisioni è un **difetto di
+   Documentale in produzione**, che in un testo italiano non trova
+   "illuminazione" dentro "dell'illuminazione": materiale per la tesi, perché è
+   un difetto di recupero misurato sul codice di produzione.
+
+Resta aperto: contare quanti documenti Documentale perde per le elisioni, sul
+corpus intero e non solo sulle 24 query.
 
 **Cosa non è un prerequisito dell'innesto.** Il difetto 2 (l'ibrido che è solo
 re-ranking, Task E3) e il difetto 3 (la fusione di scale incomparabili)
