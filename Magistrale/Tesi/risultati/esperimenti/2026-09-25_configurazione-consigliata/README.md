@@ -65,3 +65,37 @@ Se la 2 non tiene, le correzioni interagiscono, e la configurazione consigliata
 va misurata come un tutto e non come somma di pezzi.
 
 ## Esito
+
+`2026-09-25T151321Z_esito.json`, da `analizza.py` al commit `7000944`, sui
+rapporti delle 15:12-15:13 UTC: Documentale `a613c7e` con
+`KOSKIDEX_PROFILO=consigliata`, Koskidex `0ad8cdc` (lo stesso motore di
+`10c48bd`: in mezzo cambiano solo `scripts/pool` e `scripts/evaluate`), alberi
+puliti. Indicizzazione dei 10.018 atti in 1,8 s. L'MRR delle known-item l'ho
+visto nell'output di `scripts/evaluate` prima di scrivere lo script di
+confronto; il resto dopo.
+
+1. **Impostazioni dell'indice**: `all_terms_in_one_field: false`,
+   `disable_on_numbers: true`, i 21 articoli elisi, il resto come l'indice di
+   produzione. **Confermata.**
+2. **Known-item**: MRR@10 0,9498, atto primo in 275, entro 10 in 299, nessuna
+   a vuoto, **identico al riferimento, e identici i primi dieci risultati di
+   tutte le 300 query.** Confermata, e più di come la davo: l'elisione non
+   sposta nemmeno un ordine.
+3. **Le 24 query**: nessuna perde un documento, 7 ne guadagnano, 17 identiche
+   anche nell'ordine; `ordinanza 187` e `determina 1223` danno ancora il solo
+   atto giusto, primo. **Confermata.**
+
+| query che guadagnano | riferimento | consigliata |
+|---|---|---|
+| `contributo associazioni` | 21 | 52 |
+| `illuminazione pubblica` e `illuminazone pubblica` | 69 | 80 |
+| `ordinanza circolazione stradale`, `ordinaza circolazione`, `affidamento servizio mensa scolastica`, `impegno di spesa energia elettrica` | | +1 ciascuna |
+
+**Le correzioni si sommano senza interferire**: la configurazione consigliata
+fa sulle known-item esattamente quello che facevano parole libere e numeri
+esatti, e sulle query in lingua naturale aggiunge quello che portava
+l'elisione. È la configurazione che il confronto finale mette contro
+Elasticsearch: `KOSKIDEX_PROFILO=consigliata`, nient'altro. Se i giudizi del
+pool promuovono i vettori o BM25, entrano nel profilo con una misura nuova come
+questa.
+

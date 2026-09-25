@@ -190,12 +190,15 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       coordinazione di Lucene porta le known-item a 0,944 ma costa 0,027 su
       SciFact. Spente tutte e due; resta la scelta per tipo di query della
       sezione 5 (`risultati/esperimenti/2026-09-25_recupero-intermedio/`)
-- [ ] **Decidere i default** di `BM25Expansion` e degli altri interruttori
-      misurati: cambiarli cambia il baseline. Proposta del 25/09/2026: nessun
-      default cambia, e si definisce una **configurazione consigliata** con
-      nome (documento più profilo in `scripts/evaluate` e in Documentale),
-      ogni flag col numero che lo giustifica; al relatore resta confermarla.
-      Prossimo passo di sviluppo, poi la scrittura dei capitoli 3 e 6
+- [x] **La configurazione consigliata** (25/09/2026, Documentale `a613c7e`):
+      nessun default cambia; `KOSKIDEX_PROFILO=consigliata` accende parole
+      libere, numeri esatti ed elisione, ognuna sovrascrivibile. Misurata
+      insieme: known-item identiche a parole libere e numeri esatti (0,9498,
+      275 prime, stessi primi dieci su 300), sulle 24 query nessun documento
+      perso e 7 query che guadagnano. Vettori e BM25 fuori finché non li
+      decidono i giudizi (`risultati/esperimenti/2026-09-25_configurazione-consigliata/`).
+      Nessun profilo in `scripts/evaluate`: la valutazione piatta resta a flag
+      espliciti. Al relatore resta confermarla
 - [x] **Documentale e la ricerca per numero e comune** (25/09/2026): Koskidex
       innestato con `KOSKIDEX_ALL_TERMS_IN_ONE_FIELD=false` (Documentale
       `0c6cacf`, acceso per default) trova l'atto entro i primi 10 nel 93%

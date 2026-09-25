@@ -46,10 +46,11 @@ fa Claude: basta mettere i file nelle cartelle indicate e dirlo.
       dati non escono dalla macchina, nessun costo, coerente con un motore
       piccolo e autonomo. Niente chiave Gemini; un modello esterno, se mai,
       solo come termine di confronto a capitolo 7 chiuso.
-- [ ] **I default** degli interruttori misurati: proposta del 25/09/2026 di non
-      cambiarne nessuno (il baseline resta intatto) e di definire una
-      **configurazione consigliata** con nome, che prepara Claude. A Martin e
-      al relatore resta solo confermarla.
+- [ ] **I default** degli interruttori misurati: nessuno cambia, e c'è una
+      **configurazione consigliata** con nome, `KOSKIDEX_PROFILO=consigliata`
+      (pronta e misurata il 25/09/2026, vedi
+      `risultati/esperimenti/2026-09-25_configurazione-consigliata/`). A
+      Martin e al relatore resta solo confermarla.
 
 ## Relatore
 
