@@ -32,7 +32,10 @@ for p in sys.argv[1:]:
     c = r["config"]
     assert c.get("modifiche_non_committate") == "false", f"{p}: codice non committato"
     assert c["recupero"] == "any" and c["punteggio"] == "bm25" and c.get("bm25_espansioni") == "blended", p
-    assert c["embedder"] == "ollama/bge-m3" and c["vettori_k"] == "100", p
+    # Con -fusione evaluate non registra vettori_k (lo scrive solo con
+    # -ibrido): il motore usa l'unione con VectorTopK predefinito, 100.
+    assert c["embedder"] == "ollama/bge-m3" and c.get("vettori_k", "100") == "100", p
+    assert c["fusione"] != "somma" or c["vettori_k"] == "100", p
     coll = c["collezione"]
     split, metrica = COLLEZIONI[coll]
     assert c.get("split", "test") == split, f"{p}: split {c.get('split', 'test')} invece di {split}"
