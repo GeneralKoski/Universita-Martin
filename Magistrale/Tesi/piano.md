@@ -142,9 +142,11 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       0,3049**: le espansioni per prefisso costavano fino a cinque punti anche
       sulle collezioni pubbliche. Insiemi identici. Dettagli nella voce del
       diario di Koskidex
-- [ ] **Quanto del guadagno delle stopword (voce E1) veniva dalle espansioni**:
-      una stopword corta è un prefisso larghissimo (`a`, `the` con `theory`).
-      Contarlo sulle query di SciFact
+- [x] **Quanto del guadagno delle stopword (voce E1) veniva dalle espansioni**
+      (25/09/2026): quasi tutto. Col prefisso spento le stopword portano
+      SciFact da 0,6634 a 0,6664, contro 0,6197 a 0,6641 col prefisso acceso;
+      `of` compare in 173 query su 300 e porta 26 espansioni di frequenza
+      mediana 2 (`risultati/esperimenti/2026-09-25_stopword-espansioni/`)
 - [ ] **Il divario che resta sulle known-item** (0,833 contro 0,975): una
       penalità per i match non esatti anche in BM25, o il prefisso solo oltre
       una lunghezza minima del termine. Ognuna con la sua voce nel diario prima
@@ -254,6 +256,9 @@ esteso. Quelle segnate con `5f9b080` stanno nei piani rimossi.
 - La ricerca per numero e comune: due difetti distinti copiati da
   Elasticsearch, il campo unico e i refusi sui numeri, misurati nel quadrato
   due per due. Dal 2% al 92% (`risultati/esperimenti/2026-09-25_refusi-numeri/`)
+- Le stopword che su SciFact "funzionavano" solo perché spegnevano la ricerca
+  per prefisso sulle parole che la usavano peggio: una spiegazione plausibile
+  smentita da un controfattuale (`risultati/esperimenti/2026-09-25_stopword-espansioni/`)
 - La guardia su `recall@k` che scattava, e a essere sbagliata era la guardia
   (`eval/DIARIO.md`)
 - Il corpus misto che fa dire a BM25 "il testo integrale peggiora il recupero",
