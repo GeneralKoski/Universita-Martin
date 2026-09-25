@@ -28,10 +28,25 @@ abbia visto i risultati di una ricerca sul corpus. Martin non scrive query: sa
 quali parole trovano cosa, e le sue query misurerebbero lui, non i motori.
 
 **Quali atti.** Un campione estratto a caso con un seme fissato e scritto nel
-file che lo produce, diviso per fonte (Crispiano col testo intero, Friuli
-Venezia Giulia coi soli metadati) e per genere (determina, delibera, ordinanza,
-avviso, altro), in proporzione al corpus. Nessuno sceglie gli atti a mano:
-sceglierli vuol dire sceglierli facili o difficili.
+file che lo produce (`risultati/strumenti/campione-atti.py`). **Metà degli atti
+da ciascuna fonte**, Crispiano col testo intero e Friuli Venezia Giulia coi
+soli metadati, e dentro ogni fonte per genere (determina, delibera, ordinanza,
+avviso, altro) in proporzione alla fonte. Nessun atto già usato dalle
+known-item automatiche. Nessuno sceglie gli atti a mano: sceglierli vuol dire
+sceglierli facili o difficili.
+
+*Cambiato il 25/09/2026, prima di qualunque raccolta:* la prima versione
+diceva "in proporzione al corpus". Crispiano è il 5,6% del corpus, e su 160
+atti ne sarebbero usciti 9: troppo pochi per le due misure che si fanno solo
+sui suoi atti (`b` sui documenti lunghi, scheda contro testo intero). Con metà
+per fonte, le metriche si riportano sempre per fonte, mai mescolate.
+
+**Come arriva l'atto alla persona.** `risultati/strumenti/prepara-raccolta.py`
+scrive una pagina HTML per ogni lotto di 40 atti, da aprire nel browser senza
+rete. La pagina fa da sola i passi qui sotto, registra i tempi e alla fine
+scarica un file da rimandare indietro; `importa-raccolta.py` costruisce la
+collezione dai file ricevuti. Le pagine contengono il testo degli atti e non si
+committano (regola 8 del piano): si danno solo di persona o in privato.
 
 **Come si fa, per ogni atto.**
 
