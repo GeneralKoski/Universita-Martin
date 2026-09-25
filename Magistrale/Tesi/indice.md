@@ -72,7 +72,7 @@ contro 22, il `fsync` per documento).
 `eval/corpora/c3-albo/SOURCE.md` di Koskidex. *Manca:* le known-item umane, i
 giudizi del pool e il kappa (`da-fare-a-mano.md`).
 
-### 5. Il recupero lessicale 🔶
+### 5. Il recupero lessicale 🔶 · bozza scritta
 5.1 Difetto 0: il recupero congiuntivo ✅
 5.2 Difetto 1: niente IDF, e BM25 ✅
 5.3 Le espansioni pesate con il termine trovato ✅
@@ -86,6 +86,9 @@ giudizi del pool e il kappa (`da-fare-a-mano.md`).
 `_recupero-intermedio/`. *Manca:* 5.6 ha il codice (stopword, stemmer leggero
 ed elisioni come Lucene, lo stemmer controllato sul vocabolario di Lucene) e
 le elisioni misurate; stopword e stemmer, come 5.7, aspettano le known-item
+umane.
+*Bozza* (25/09/2026): 5.1-5.5 scritte per intero; 5.6 dice cosa c'è e cosa è
+misurato (solo le elisioni); 5.7 pone le due domande e aspetta le known-item
 umane.
 
 ### 6. La ricerca in produzione: tre difetti di Documentale ✅ · bozza scritta

@@ -1,29 +1,354 @@
 \chapter{Il recupero lessicale}\label{chapter:lessicale}
 
-\section{Difetto 0: il recupero congiuntivo}
+Questo capitolo corregge la parte lessicale di Koskidex, misurandola sulle due
+collezioni pubbliche e sulle known-item del capitolo~\ref{chapter:valutazione}.
+Il riferimento per le collezioni pubbliche è BM25 di Lucene nella configurazione
+\emph{flat} di BEIR~\cite{thakur2021beir}, come la riportano le regressioni di
+Pyserini~\cite{pyserini2cr}: 0,6789 di nDCG@10 su SciFact e 0,3218 su NFCorpus.
+Koskidex non è tenuto a riprodurli: ha un tokenizer suo, e i riferimenti hanno lo
+stemmer e le stopword inglesi di Lucene. Servono a dire quanto manca, e a
+chiedersi perché.
 
-Da scrivere.
+Ogni correzione segue la stessa regola: sta dietro un'impostazione con il
+comportamento di partenza come default, e le previsioni sono scritte e
+committate nel diario di Koskidex prima della misura. Le previsioni sbagliate
+restano nel testo, perché qui sono state le più istruttive.
 
-\section{Difetto 1: niente IDF, e BM25}
+\section{Difetto 0: il recupero congiuntivo}\label{sec:difetto0}
 
-Da scrivere.
+\paragraph{La prima misura.} Il punto di partenza, misurato prima di toccare il
+motore, doveva solo collaudare l'impianto. Avevo previsto che SciFact stesse
+nettamente sotto il riferimento, fra 0,30 e 0,55, e soprattutto che il richiamo
+fosse molto più alto del nDCG: il motore senza IDF avrebbe trovato i documenti e
+li avrebbe ordinati male. Avevo anche scritto che, se il richiamo fosse stato
+basso, il problema non sarebbe stato l'ordinamento ma il recupero, e la tesi
+sarebbe cambiata. È andata così (tabella~\ref{tab:difetto0}): su SciFact
+Recall@100 e nDCG@10 sono lo stesso numero, 0,024. Il motore non ordinava male:
+non trovava.
 
-\section{Le espansioni pesate con il termine trovato}
+\paragraph{La causa.} Ogni termine della query è obbligatorio
+(sezione~\ref{sec:koskidex}). Una query di SciFact ha in media 12,5 termini, e
+nessun documento li contiene tutti: 290 query su 300 tornano vuote. La prova che
+è la lunghezza della query, e non altro, sta nella stessa collezione: su NFCorpus
+le 163 query con risultati hanno in media 2,0 parole, le 160 vuote 4,7; su
+SciFact le 10 con risultati 8,7, le 290 vuote 12,6. Non è un errore di
+programmazione: per la barra di ricerca di un negozio, due o tre parole,
+restituire chi le contiene tutte è giusto. È il tipo di query a rivelarlo, ed è
+il regime di un documentale, dove una persona scrive in lingua naturale.
 
-Da scrivere.
+Questo difetto non era fra i tre letti nel codice, e viene prima di tutti: con il
+97\% di query a vuoto nessun punteggio migliore può fare niente, perché BM25 su un
+recupero congiuntivo riordinerebbe il nulla.
 
-\section{Le stopword: un guadagno che veniva da altrove}
+\paragraph{La correzione.} Un'impostazione, \texttt{RetrievalMode}, con
+\texttt{all} come default e \texttt{any} per il recupero disgiuntivo: un documento
+entra se contiene almeno un termine, e il punteggio fa il resto.
 
-Da scrivere.
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+    & \multicolumn{2}{c}{SciFact} & \multicolumn{2}{c}{NFCorpus} \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    & \texttt{all} & \texttt{any} & \texttt{all} & \texttt{any} \\
+    \midrule
+    nDCG@10 & 0,0246 & \textbf{0,4936} & 0,1659 & \textbf{0,2246} \\
+    Recall@100 & 0,0242 & \textbf{0,7571} & 0,0967 & \textbf{0,1898} \\
+    MRR@10 & 0,0267 & \textbf{0,4641} & 0,2644 & \textbf{0,3774} \\
+    query a vuoto & 290 & \textbf{0} & 160 & \textbf{24} \\
+    \midrule
+    riferimento BM25 & \multicolumn{2}{c}{0,6789} & \multicolumn{2}{c}{0,3218} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Il difetto 0: recupero congiuntivo (\texttt{all}, il comportamento di
+  partenza) e disgiuntivo (\texttt{any}), con il punteggio euristico.}
+  \label{tab:difetto0}
+\end{table}
 
-\section{Identificativi e lingua naturale: nessuna impostazione unica}
+SciFact fa venti volte il nDCG di prima e trentuno volte il richiamo; tutte e due
+le collezioni arrivano al 70-73\% del riferimento, partendo dal 4\% e dal 52\%.
+Due previsioni su cinque sono cadute. SciFact è andato sopra la fascia che avevo
+dichiarato. E su NFCorpus avevo previsto che il nDCG potesse peggiorare: le query
+sono corte, e pensavo che l'AND facesse da filtro di precisione, con il 50\% di
+query a vuoto come prezzo di risposte buone. È migliorato su tutte e tre le
+metriche, e il motivo è che il filtro era ridondante con il punteggio che c'era
+già: chi trova più termini prende più punti, e i documenti con tutti i termini
+restano in testa da soli. L'AND non aggiungeva precisione, toglieva richiamo.
 
-Da scrivere.
+\paragraph{Il residuo.} Le 24 query di NFCorpus ancora vuote sono tutte di un
+termine solo e raro: \emph{eggnog}, \emph{halibut}, \emph{okra},
+\emph{Fosamax}. Da un campione di dieci avevo concluso che nove non compaiono nel
+corpus in nessuna forma e che solo \emph{leeks} sarebbe stata salvata da uno
+stemmer. Il campione era troppo piccolo: la sezione~\ref{sec:stopword} ne
+recupera nove.
 
-\section{Analisi lessicale italiana}
+\section{Difetto 1: niente IDF, e BM25}\label{sec:difetto1}
 
-Da scrivere.
+\paragraph{Cosa mancava.} Il punteggio euristico non ha frequenza documentale
+inversa, frequenza del termine o normalizzazione sulla lunghezza. BM25
+\cite{robertson2009bm25} le chiede tutte e tre, e l'indice non ne aveva nessuna:
+la frequenza documentale di un termine non era mantenuta, l'elenco dei termini di
+un documento era deduplicato e quindi non dava la lunghezza, e il campo della
+frequenza del termine, come detto, non era mai riempito. La correzione le
+mantiene durante l'indicizzazione e aggiunge un'impostazione,
+\texttt{ScoringMode}, con l'euristico come default. I parametri sono quelli
+predefiniti di Lucene, $k_1 = 1{,}2$ e $b = 0{,}75$, non calibrati: qui si misura
+la formula standard.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+    & \multicolumn{2}{c}{SciFact} & \multicolumn{2}{c}{NFCorpus} \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    & euristico & BM25 & euristico & BM25 \\
+    \midrule
+    nDCG@10 & 0,4936 & \textbf{0,6197} & 0,2246 & \textbf{0,2810} \\
+    Recall@100 & 0,7571 & \textbf{0,8746} & 0,1898 & \textbf{0,2280} \\
+    MRR@10 & 0,4641 & \textbf{0,5868} & 0,3774 & \textbf{0,4710} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Il difetto 1, con il recupero disgiuntivo: il punteggio euristico e
+  BM25 ($k_1 = 1{,}2$, $b = 0{,}75$).}
+  \label{tab:difetto1}
+\end{table}
+
+BM25 porta SciFact al 91\% del riferimento e NFCorpus all'87\%, dentro le fasce
+previste (tabella~\ref{tab:difetto1}). Su un piccolo caso di prova separa due
+documenti che l'euristico lasciava a pari merito sulla query \texttt{2026/0173}, e
+mette davanti il più corto, il cui titolo è quasi solo l'identificativo: la
+normalizzazione sulla lunghezza fa il suo mestiere.
+
+\paragraph{La guardia che è scattata.} Avevo scritto una guardia: BM25 cambia come
+si ordina, non cosa si recupera, quindi Recall@100 doveva restare entro $\pm0{,}02$.
+Si è mosso di +0,117 su SciFact e +0,038 su NFCorpus. Una guardia che scatta vuol
+dire che il risultato è falso o che la guardia era scritta male, e le due ipotesi
+producono lo stesso sintomo. Tre riscontri dicono la seconda:
+\begin{itemize}
+  \item il taglio morde: su SciFact tutte le 300 query arrivano a cento risultati,
+        su NFCorpus 202 su 323;
+  \item sotto il taglio non si muove niente: le 121 query di NFCorpus con meno di
+        cento risultati hanno lo stesso richiamo fino al dodicesimo decimale;
+  \item il codice non lo consente: il filtro che decide chi resta legge solo
+        quanti termini un documento contiene, e il punteggio non elimina nessuno.
+\end{itemize}
+Recall@100 non misura quanto si è recuperato ma quanti documenti pertinenti sono
+entrati nei primi cento, e quando i candidati sono molti più di cento è una
+metrica di ordinamento come il nDCG. Su SciFact in recupero disgiuntivo la query
+mediana trova 5.182 documenti su 5.183. Il +0,117, letto bene, è un secondo
+risultato: BM25 non trova più documenti pertinenti, li porta dentro i primi cento.
+
+Da qui la guardia giusta, che vale per tutto il resto della tesi: il valutatore
+registra per ogni query il numero dei candidati prima del taglio. Una modifica al
+punteggio non deve cambiarlo per nessuna query; una modifica al recupero lo
+cambia, ed è lì che va guardato. Fra il recupero disgiuntivo con l'euristico e
+con BM25 non cambia su nessuna delle 623 query.
+
+\section{Le espansioni pesate con il termine trovato}\label{sec:espansioni}
+
+\paragraph{Il sintomo.} Sulle 300 known-item \texttt{<numero> <comune>}, con
+Koskidex piatto e il recupero disgiuntivo, BM25 mette l'atto giusto primo nel
+61,7\% delle query e l'euristico nel 95,7\%: MRR@10 0,709 contro 0,975. Lo stesso
+segno era uscito su \emph{ordinanza 187}.
+
+\paragraph{La causa.} Nelle 115 query in cui BM25 non mette l'atto primo, in 61
+il primo classificato non contiene nessun termine della query tale e quale:
+combacia solo per prefisso. \texttt{190 Crispiano} è vinta da un atto che contiene
+\texttt{1900129}, \texttt{2 Pradamano} da uno che contiene \texttt{2026}.
+Koskidex fa la ricerca per prefisso anche con i refusi spenti, e attribuisce il
+match al termine trovato; BM25 usa poi la frequenza documentale di quel termine.
+Un codice lungo e raro che comincia con le cifre cercate ha un IDF altissimo, e
+batte l'atto che contiene il numero esatto, che è più comune. L'euristico non ci
+cade perché dà $+2$ ai match esatti.
+
+Tre controfattuali, misurati sulle stesse query e quindi non adottabili, dicono
+quanto pesano le alternative ovvie. Togliere la normalizzazione della lunghezza
+($b = 0$) porta l'MRR@10 da 0,709 a 0,731, e smentisce la mia previsione che
+fosse la causa principale. Spegnere la ricerca per prefisso lo porta a 0,854. Una
+saturazione forte della frequenza ($k_1 = 0{,}3$) a 0,900, per ragioni che non ho
+misurato.
+
+\paragraph{La correzione.} Lucene conosce lo stesso problema per le espansioni
+delle ricerche con refusi, e lo risolve mescolando le frequenze documentali dei
+termini espansi (\texttt{TopTermsBlendedFreqScoringRewrite}). Un'impostazione,
+\texttt{BM25Expansion}, fa lo stesso: con \texttt{blended}, tutte le espansioni
+di un termine della query, il termine esatto compreso, usano la frequenza
+documentale più alta fra quelle dei termini che ha trovato. Un codice raro che
+comincia con \texttt{190} pesa quanto \texttt{190}, non di più. Cambiano solo i
+punteggi: gli insiemi dei candidati restano identici, query per query, e la
+guardia lo conferma.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    & di serie & frequenza mescolata & differenza \\
+    \midrule
+    known-item, MRR@10 & 0,7094 & \textbf{0,8331} & +0,124 \\
+    SciFact, nDCG@10 & 0,6197 & \textbf{0,6694} & +0,050 \\
+    NFCorpus, nDCG@10 & 0,2810 & \textbf{0,3049} & +0,024 \\
+    \bottomrule
+  \end{tabular}
+  \caption{BM25 con le espansioni pesate col termine trovato (di serie) e con la
+  frequenza mescolata, senza analisi.}
+  \label{tab:espansioni}
+\end{table}
+
+Sulle known-item la correzione vale +0,124 ma resta sotto lo spegnimento del
+prefisso (0,854) e lontana dall'euristico (tabella~\ref{tab:espansioni}). La
+sorpresa è sulle collezioni pubbliche. Avevo previsto che cambiassero meno di
+0,01, perché sulle query in inglese le espansioni per prefisso mi sembravano rare;
+SciFact guadagna 0,050, cinque volte tanto. Le espansioni non sono rare: sono
+dappertutto, e costavano cinque punti di nDCG@10. Quanto, lo dice la sezione
+seguente.
+
+\section{Le stopword: un guadagno che veniva da altrove}\label{sec:stopword}
+
+\paragraph{La prima misura.} Per capire quanto del divario dai riferimenti fosse
+dell'analizzatore, Koskidex ha preso le stopword inglesi e uno stemmer, misurati
+separati e insieme. Avevo previsto che lo stemmer portasse molto più delle
+stopword, e le stopword quasi niente, sotto +0,01: con BM25 l'IDF schiaccia già i
+termini frequentissimi. È andata al contrario (tabella~\ref{tab:stopword}).
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+    & \multicolumn{2}{c}{SciFact} & \multicolumn{2}{c}{NFCorpus} \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+    analisi & nDCG@10 & candidati & nDCG@10 & a vuoto \\
+    \midrule
+    nessuna & 0,6197 & 4.833 & 0,2810 & 24 \\
+    solo stopword & \textbf{0,6641} & 2.522 & 0,2900 & 24 \\
+    solo stemmer & 0,6243 & 4.908 & 0,2861 & 15 \\
+    entrambi & 0,6585 & 3.086 & \textbf{0,2941} & 15 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Stopword e stemmer inglesi con BM25 di serie. \emph{Candidati}: media
+  dei documenti trovati per query.}
+  \label{tab:stopword}
+\end{table}
+
+Le stopword fanno dieci volte lo stemmer su SciFact. La spiegazione che ne avevo
+dato era di recupero, non di punteggio: i candidati medi passano da 4.833 a 2.522,
+perché in recupero disgiuntivo ogni documento che contiene \emph{the} è un
+candidato, e le 25 query senza stopword non guadagnano quasi niente. Lo stemmer
+invece salva nove delle 24 query vuote di NFCorpus, quasi tutte plurali il cui
+singolare nel corpus c'è: \emph{leeks}, \emph{pineapples}, \emph{turnips},
+\emph{bagels}.
+
+\paragraph{La misura che la corregge.} Due giorni dopo la frequenza mescolata ha
+mostrato che una stopword di due o tre lettere è anche un prefisso larghissimo:
+\emph{the} combacia con \emph{theory}, \emph{in} con \emph{insulin}. Con le
+espansioni corrette il guadagno delle stopword su SciFact scende da +0,044 a
++0,006. Era un indizio, non una prova, perché la frequenza mescolata cambia il peso
+di tutte le espansioni. La prova è il controfattuale diretto: con la ricerca per
+prefisso spenta le stopword portano SciFact da 0,6634 a 0,6664, cioè +0,003.
+
+Il meccanismo, contato: 271 query di test su 300 contengono una stopword di
+almeno due lettere, che Koskidex espande. \emph{of} compare in 173 query e in
+5.173 documenti su 5.183, ma porta 26 espansioni con frequenza mediana di due
+documenti; \emph{in} ne porta 933, di cui 332 in un documento solo. BM25 pesava
+ogni espansione con il suo IDF: chiedere \emph{of} voleva dire premiare chi
+contiene \emph{offspring}. Le query senza stopword espandibili portano lo 0,7\%
+del guadagno. \textbf{Le stopword su SciFact non correggevano un eccesso di peso
+delle parole funzionali, ma il difetto delle espansioni}, lo stesso che la
+frequenza mescolata corregge per tutti i termini. In questa tesi il loro guadagno
+non va letto come un effetto dell'analisi lessicale.
+
+\paragraph{Dove arriva.} Il confronto giusto con i riferimenti, che non fanno
+ricerca per prefisso, è con la frequenza mescolata: con le stopword SciFact fa
+0,6757, il 99,5\% di 0,6789, e NFCorpus 0,3062, il 95\% di 0,3218. Il difetto 1 è
+chiuso. Resta, e non la forzo, una cosa non spiegata: su SciFact aggiungere lo
+stemmer alle stopword abbassa il nDCG@10 di 0,006 e alza il Recall@100 da 0,879
+a 0,910, mentre su NFCorpus migliora tutti e due.
+
+\section{Identificativi e lingua naturale: nessuna impostazione unica}\label{sec:nessuna-unica}
+
+\paragraph{Il divario che resta.} Con la frequenza mescolata le known-item fanno
+0,833 contro lo 0,975 dell'euristico. Prima di scrivere una correzione ho guardato
+chi passa davanti all'atto giusto nei 69 fallimenti: in 36 vince un atto senza il
+numero, e 35 di questi ripetono il nome del comune più dell'atto giusto; solo in
+11 un numero trovato per prefisso. È il recupero disgiuntivo: BM25 somma i
+contributi, e un atto con il solo nome del comune, ripetuto, supera uno che ha
+numero e comune una volta sola. L'euristico non ci cade perché mette prima chi ha
+tutti i termini. Con il recupero congiuntivo BM25 fa 0,960, e col prefisso spento
+0,976, cioè quanto l'euristico: \textbf{sulle known-item BM25 non è peggio
+dell'euristico, lo è il recupero disgiuntivo}. Il confronto 0,709 contro 0,975
+era in realtà fra un recupero disgiuntivo e uno congiuntivo.
+
+\paragraph{Due vie di mezzo.} Il recupero congiuntivo però è il difetto 0. Fra i due
+estremi ci sono due impostazioni con un precedente, provate con un valore fissato
+prima di misurare (tabella~\ref{tab:intermedio}):
+\begin{itemize}
+  \item \texttt{MinimumShouldMatch}, con la sintassi di Elasticsearch e il valore
+        d'esempio della sua documentazione, \texttt{2<-25\% 9<-3}: fino a due
+        termini tutti, da tre a nove tutti meno il 25\%, oltre nove tutti meno tre;
+  \item \texttt{Coordination}, il fattore \emph{coord} della similarità classica
+        di Lucene, tolto con il passaggio a BM25: il punteggio moltiplicato per la
+        quota di termini della query che il documento contiene.
+\end{itemize}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    BM25, frequenza mescolata & known-item & SciFact & NFCorpus \\
+    \midrule
+    \texttt{any} & 0,833 & \textbf{0,6694} & \textbf{0,3049} \\
+    \texttt{all} & \textbf{0,960} & 0,0246 & 0,1939 \\
+    \texttt{any}, \texttt{2<-25\% 9<-3} & 0,889 & 0,2556 & 0,2268 \\
+    \texttt{any}, coordinazione & 0,944 & 0,6422 & 0,2935 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Fra il recupero disgiuntivo e il congiuntivo: MRR@10 per le known-item,
+  nDCG@10 per le collezioni pubbliche.}
+  \label{tab:intermedio}
+\end{table}
+
+Due previsioni su cinque hanno tenuto. \texttt{minimum\_should\_match} è
+inservibile su tutte e tre: lascia a vuoto 169 query di SciFact e 100 di NFCorpus,
+e sulle known-item da tre termini in su ne lascia cadere uno, spesso il numero. Un
+vincolo sul numero di termini che va bene per due parole è sbagliato per dodici.
+La coordinazione è il compromesso migliore, perché chiude quasi tutto il divario
+sulle known-item senza togliere documenti, ma costa 0,027 su SciFact e 0,011 su
+NFCorpus: premia chi ha più parole della query, e sulle frasi le parole meno
+importanti contano quanto le altre. È la ragione per cui Lucene l'ha tolta.
+
+\textbf{Nessuna impostazione unica va bene per le query identificative e per
+quelle in lingua naturale.} Restano tutte spente, e la domanda diventa come
+riconoscere il tipo di query e scegliere di conseguenza. Con il solo lessicale la
+risposta è una regola di una riga; con i vettori la scelta si allarga al peso del
+vettore, e se ne occupa la sezione~\ref{sec:scelta}.
+
+\section{Analisi lessicale italiana}\label{sec:italiana}
+
+Koskidex ha ora i tre stadi dell'analizzatore \texttt{italian} di Elasticsearch,
+uguali a quelli di Lucene e tutti spenti per default: il filtro delle elisioni con
+gli articoli di Lucene, le stopword italiane di Snowball, e lo stemmer leggero di
+Savoy~\cite{savoy2002light}, controllato sulle 35.494 parole del vocabolario di
+prova di Lucene.
+
+Delle tre, solo l'elisione è misurata. Con il tokenizer compatibile con
+Elasticsearch \emph{dell'infanzia} resta un termine solo, e chi cerca
+\emph{infanzia} non trova l'atto: il difetto di produzione della
+sezione~\ref{sec:elisioni}. Innestato in Documentale, Koskidex senza elisione
+perde le stesse 5.775 coppie di Elasticsearch, e con l'elisione ne perde le stesse
+36 di Elasticsearch col filtro. La parità vale per il matching, non per gli
+accenti: in 20 parole su 507 Koskidex trova solo di più, perché toglie gli accenti
+ed Elasticsearch no, e \emph{identita} trova \emph{identità}.
+
+Stopword e stemmer italiani non si possono misurare con le known-item
+automatiche, fatte di un numero e del nome di un comune, che non li mettono alla
+prova. Aspettano le known-item scritte da persone.
 
 \section{Scheda contro testo intero, e la lunghezza dei documenti}\label{sec:scheda-testo}
 
-Da scrivere.
+Il corpus degli albi mescola due fonti: 9.455 schede del Friuli Venezia Giulia a
+soli metadati, e 563 atti di Crispiano di cui c'è anche il testo intero, fra i 5 e
+i 13 mila caratteri. Due domande restano aperte, e si misurano sui soli atti di
+Crispiano, perché mescolare le due fonti in un indice solo darebbe una risposta
+falsa. La prima: quanto guadagna il recupero quando al posto della scheda c'è il
+documento. La seconda: se $b = 0{,}75$, tarato su collezioni di articoli, vada bene
+quando le schede corte schiacciano la lunghezza media. Tutte e due chiedono query
+scritte da persone su quegli atti, e aspettano le known-item umane.
