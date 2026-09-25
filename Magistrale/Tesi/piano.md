@@ -21,7 +21,7 @@ La domanda di tesi, le scelte e il perché stanno in [appunti.md](appunti.md).
 |---|---|---|
 | Impianto di valutazione (metriche, esecutore, pool, archivio) | fatto | Koskidex `internal/eval`, `scripts/`; `risultati/README.md` |
 | Difetto 0, recupero congiuntivo | chiuso e misurato | `Settings.RetrievalMode`; `eval/DIARIO.md` |
-| Difetto 1, niente IDF (BM25) | chiuso e misurato: SciFact 0,664 contro 0,665 di BEIR, NFCorpus 0,294 contro 0,325 | `Settings.ScoringMode`, `Settings.Stemmer` |
+| Difetto 1, niente IDF (BM25) | chiuso e misurato: con stopword e frequenza mescolata SciFact 0,6757 contro 0,6789 di BEIR (99,5%), NFCorpus 0,3062 contro 0,3218 (95%) | `Settings.ScoringMode`, `Settings.Stemmer`, `Settings.BM25Expansion` |
 | Corpus pubblico degli albi pretori, 10.018 atti | importato in Documentale ed esportabile | Koskidex `eval/corpora/c3-albo/SOURCE.md` |
 | Koskidex completo rispetto al contratto di Documentale (F1-F7) | fatto: 24 insiemi su 24 uguali a Elasticsearch | `risultati/esperimenti/2026-09-23_cause-divergenza/` |
 | Innesto in Documentale, motore scelto da `SEARCH_BACKEND` | fatto: dall'app 24/24 insiemi uguali, ricerca 2,7 ms contro 22 | Documentale `67cf954`, `2a03310`; `risultati/esperimenti/2026-09-25_innesto-parita/` |
@@ -127,12 +127,23 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       invece che con quello del termine cercato. Senza prefisso 0,854, con
       `k1 = 0,3` 0,900, con `b = 0` solo 0,731
       (`risultati/esperimenti/2026-09-25_bm25-numeri/`)
-- [ ] **Correggere il peso delle espansioni in BM25**, dietro un campo di
-      `Settings` e con la voce nel diario prima di misurare: pesare
-      un'espansione per prefisso o per refuso con l'IDF del termine cercato (o
-      mescolato, come Lucene per le fuzzy), o penalizzare i match non esatti.
-      Misurarla sulle known-item e su SciFact e NFCorpus, dove BM25 va già bene,
-      senza tarare niente sulle 300 query
+- [x] **Il peso delle espansioni in BM25** (25/09/2026, Koskidex `f449b02`):
+      `Settings.BM25Expansion = "blended"`, la frequenza documentale più alta
+      fra i termini trovati, come Lucene per le fuzzy. Known-item MRR@10 da
+      0,709 a 0,833; e **SciFact da 0,6197 a 0,6694, NFCorpus da 0,2810 a
+      0,3049**: le espansioni per prefisso costavano fino a cinque punti anche
+      sulle collezioni pubbliche. Insiemi identici. Dettagli nella voce del
+      diario di Koskidex
+- [ ] **Quanto del guadagno delle stopword (voce E1) veniva dalle espansioni**:
+      una stopword corta è un prefisso larghissimo (`a`, `the` con `theory`).
+      Contarlo sulle query di SciFact
+- [ ] **Il divario che resta sulle known-item** (0,833 contro 0,975): una
+      penalità per i match non esatti anche in BM25, o il prefisso solo oltre
+      una lunghezza minima del termine. Ognuna con la sua voce nel diario prima
+      di misurarla
+- [ ] **Decidere i default** di `BM25Expansion` e degli altri interruttori
+      misurati: cambiarli cambia il baseline, e va deciso a parte, con il
+      relatore
 - [ ] **Documentale e la ricerca per numero e comune**: provare la correzione
       (le parole libere di stare in campi diversi, o un campo che le raccoglie
       tutte) e misurarla sulle stesse 300 query. Il controllo trova l'atto in

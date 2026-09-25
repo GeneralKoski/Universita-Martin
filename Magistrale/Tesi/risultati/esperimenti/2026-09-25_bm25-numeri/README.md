@@ -109,9 +109,10 @@ senza IDF.
    classificati sono più corti dell'atto giusto.
 4. `k1` basso aiuta meno di `b = 0`: **smentita, al contrario.** `k1 = 0,3`
    porta MRR@10 a 0,900, la correzione più grande delle tre. Perché aiuti
-   tanto non è misurato; un'ipotesi da verificare è che le espansioni per
-   prefisso di un termine corto (`2` con `2026`, `2025`, `20`...) sommino le
-   loro frequenze nello stesso atto, e una saturazione forte lo limiti.
+   tanto non è misurato. (L'ipotesi scritta qui in un primo momento, che le
+   espansioni di un termine corto sommino le loro frequenze nello stesso atto,
+   è falsa: rileggendo `findDocsForToken`, il TF conta solo le occorrenze del
+   termine attribuito all'atto.)
 
 Spegnere la ricerca per prefisso chiude poco più di metà del divario (da 0,709
 a 0,854 su 0,975). Il resto non è spiegato da questa analisi.
@@ -125,3 +126,13 @@ campo di `Settings`, con la voce nel diario prima di misurare, e misurata anche
 dove BM25 funziona già (SciFact e NFCorpus), per vedere che non peggiori lì:
 per esempio pesare un'espansione con l'IDF del termine cercato, o penalizzare i
 match non esatti anche in BM25.
+
+## Dopo: la correzione
+
+Scritta in Koskidex `f449b02` dietro `Settings.BM25Expansion = "blended"`, con
+l'ipotesi nel diario prima della misura (`631b626`): ogni espansione di un
+termine della query usa la frequenza documentale più alta fra i termini che
+quel termine ha trovato nell'indice. Known-item MRR@10 da 0,709 a 0,833, e
+SciFact da 0,6197 a 0,6694: il difetto costava anche sulle collezioni
+pubbliche. Numeri e previsioni nella voce del 25/09/2026 di `eval/DIARIO.md`,
+file in `valutazioni-albo/` e `koskidex-beir/` (ore 09:10 UTC).

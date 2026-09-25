@@ -95,7 +95,14 @@ precisi, verificati leggendo il codice e poi **misurati** (23/09/2026):
    termine rarissimo e uno comunissimo pesavano identico. **Corretto il
    23/09/2026** dietro `Settings.ScoringMode`: BM25 con `k1=1,2` e `b=0,75`,
    SciFact a **0,6197** e NFCorpus a **0,2810**, cioè il 91% e l'87% dei
-   riferimenti pubblicati.
+   riferimenti pubblicati. **Il 25/09/2026 le known-item hanno trovato un
+   difetto dentro BM25**: una ricerca per prefisso porta termini diversi da
+   quello cercato, e BM25 li pesava con l'IDF del termine trovato, per cui un
+   codice raro che comincia con `190` batteva l'atto con il numero `190`.
+   Corretto con la frequenza mescolata di Lucene (`Settings.BM25Expansion`), e
+   la correzione ha pagato anche dove nessuno la cercava: con le stopword
+   SciFact arriva a **0,6757 (99,5% del riferimento)** e NFCorpus a **0,3062
+   (95%)**.
 2. **L'ibrido non è ibrido.** In `ranker.go:203-222` il punteggio vettoriale si
    somma solo ai documenti già trovati dal lessicale: è re-ranking. Un documento
    semanticamente pertinente che il lessicale non pesca non entra mai.
