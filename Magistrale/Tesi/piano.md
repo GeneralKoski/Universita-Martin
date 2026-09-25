@@ -147,10 +147,17 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       SciFact da 0,6634 a 0,6664, contro 0,6197 a 0,6641 col prefisso acceso;
       `of` compare in 173 query su 300 e porta 26 espansioni di frequenza
       mediana 2 (`risultati/esperimenti/2026-09-25_stopword-espansioni/`)
-- [ ] **Il divario che resta sulle known-item** (0,833 contro 0,975): una
-      penalità per i match non esatti anche in BM25, o il prefisso solo oltre
-      una lunghezza minima del termine. Ognuna con la sua voce nel diario prima
-      di misurarla
+- [x] **Il divario che resta sulle known-item** (25/09/2026): non viene dalle
+      espansioni ma dal recupero disgiuntivo. In 36 dei 69 fallimenti vince un
+      atto senza il numero che ripete il nome del comune; con `all` BM25 fa
+      0,976 contro 0,975 dell'euristico (288 atti primi contro 287). Le due
+      correzioni previste non servono
+      (`risultati/esperimenti/2026-09-25_known-item-divario/`)
+- [ ] **Recupero intermedio**: qualcosa come `minimum_should_match` di
+      Elasticsearch, fra `all` (giusto sulle query identificative, a vuoto su
+      SciFact) e `any`. Da confrontare con la scelta per tipo di query della
+      sezione 5; voce di diario e ipotesi prima di misurare, e misura su
+      known-item, SciFact e NFCorpus insieme
 - [ ] **Decidere i default** di `BM25Expansion` e degli altri interruttori
       misurati: cambiarli cambia il baseline, e va deciso a parte, con il
       relatore
@@ -256,6 +263,9 @@ esteso. Quelle segnate con `5f9b080` stanno nei piani rimossi.
 - La ricerca per numero e comune: due difetti distinti copiati da
   Elasticsearch, il campo unico e i refusi sui numeri, misurati nel quadrato
   due per due. Dal 2% al 92% (`risultati/esperimenti/2026-09-25_refusi-numeri/`)
+- "BM25 perde sulla ricerca per numero": falso, perdeva il recupero
+  disgiuntivo. A parità di recupero congiuntivo BM25 fa quanto l'euristico
+  (`risultati/esperimenti/2026-09-25_known-item-divario/`)
 - Le stopword che su SciFact "funzionavano" solo perché spegnevano la ricerca
   per prefisso sulle parole che la usavano peggio: una spiegazione plausibile
   smentita da un controfattuale (`risultati/esperimenti/2026-09-25_stopword-espansioni/`)

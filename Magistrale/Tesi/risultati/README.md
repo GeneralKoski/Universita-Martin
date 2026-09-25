@@ -180,6 +180,11 @@ Quello che è stato tolto o toccato, perché la regola 1 non valga a metà.
   del controllo appena archiviato e non ancora committato. Il codice era quello
   committato. Il controllo ora guarda solo gli script; analisi rifatta, stessi
   numeri.
+- **25/09/2026, 1 file** in `esperimenti/2026-09-25_known-item-divario/`
+  (`2026-09-25T094222Z_esito.json`, mai committato): registrava il commit
+  `143ef72`, il cui messaggio è stato corretto subito dopo con un amend, e che
+  quindi non esiste più nel ramo. Stesso albero; analisi rifatta dal commit
+  corretto `4e23f3d`, stessi numeri: `2026-09-25T094258Z_esito.json`.
 - **I 12 file più vecchi di `koskidex-beir/`** (ore 11:5x e 14:0x UTC del
   23/09) vengono da prima degli strumenti di misura: hanno le metriche ma non
   hanno né `timings` né `config`. Le stesse configurazioni rifatte dopo hanno
