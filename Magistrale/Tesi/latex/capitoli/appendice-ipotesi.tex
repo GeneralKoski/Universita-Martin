@@ -1,3 +1,324 @@
 \chapter{Registro delle ipotesi}\label{chapter:appendice-ipotesi}
 
-Da scrivere.
+Ogni esperimento di questa tesi ha scritto le sue previsioni prima della misura,
+con una soglia numerica, e le ha committate nel README dell'esperimento o nella
+voce del diario di Koskidex; a misura fatta ha aggiunto l'esito, previsione per
+previsione, senza toccare quello che era scritto prima. La
+tabella~\ref{tab:ipotesi} le raccoglie tutte: la prima colonna dice da dove
+viene la previsione (la cartella in \texttt{risultati/esperimenti/} senza la
+data, o la voce del diario), la seconda la riassume in una riga con la sua
+soglia, la terza riporta il numero misurato e il verdetto, confermata, smentita
+o a metà quando una previsione in più parti ha tenuto solo in alcune. Il testo
+completo di ogni previsione, con il ragionamento che la sosteneva, sta nella
+fonte citata, committato prima della misura; le poche aggiunte dopo una prima
+analisi, ma prima della misura che giudicano, sono segnate come tali. Dove la
+fonte registra il numero ma non il verdetto, il verdetto è mio, ottenuto
+confrontando il numero con la soglia, ed è segnato con un asterisco.
+
+{\small
+\begin{longtable}{@{}>{\RaggedRight\arraybackslash}p{3.1cm}>{\RaggedRight\arraybackslash}p{6.1cm}>{\RaggedRight\arraybackslash}p{3.6cm}@{}}
+  \caption{Le previsioni di ogni esperimento, scritte prima della misura, e il
+  loro esito.}\label{tab:ipotesi}\\
+  \toprule
+  esperimento o voce & previsione & esito \\
+  \midrule
+  \endfirsthead
+  \toprule
+  esperimento o voce & previsione & esito \\
+  \midrule
+  \endhead
+  Diario, pari merito
+    & 1. \texttt{d1} e \texttt{d3} si fermano su \texttt{[d1 d3]}
+    & 40 esecuzioni su 40: confermata \\
+    & 2. Nessun altro caso congelato cambia
+    & test congelati verdi 20 volte: confermata \\
+    & 3. Venti esecuzioni consecutive danno sempre lo stesso ordine
+    & confermata (le 40 esecuzioni della 1) \\
+  \addlinespace
+  Diario, baseline
+    & 1. SciFact nettamente sotto 0,6789, fra 0,30 e 0,55
+    & 0,0246, sotto la fascia: smentita$^{*}$ \\
+    & 2. NFCorpus sotto 0,3218, con un distacco assoluto minore
+    & 0,1659: confermata$^{*}$ \\
+    & 3. Recall@100 molto più alto di nDCG@10
+    & SciFact 0,0242 contro 0,0246: smentita \\
+    & 4. Nessuna query saltata su SciFact (339 giudizi a rilevanza 1)
+    & esito non registrato \\
+  \addlinespace
+  Diario, difetto 0
+    & 1. Le query a vuoto crollano quasi a zero
+    & 0 su SciFact, 24 su 323 su NFCorpus: confermata \\
+    & 2. SciFact nDCG@10 fra 0,10 e 0,45
+    & 0,4936: smentita \\
+    & 3. SciFact Recall@100 sopra 0,50
+    & 0,7571: confermata \\
+    & 4. NFCorpus: richiamo su, nDCG@10 può peggiorare
+    & migliora su tutte e tre le metriche: smentita \\
+    & 5. \texttt{TestBaselineRankingIsFrozen} verde a default
+    & confermata \\
+  \addlinespace
+  Diario, difetto 1
+    & 1. SciFact nDCG@10 fra 0,55 e 0,70
+    & 0,6197: confermata \\
+    & 2. NFCorpus nDCG@10 fra 0,25 e 0,33
+    & 0,2810: confermata \\
+    & 3. Guardia: Recall@100 fermo entro $\pm$0,02
+    & +0,117 e +0,038: smentita, guardia posta male \\
+    & 4. \texttt{TestBaselineIdentifier\allowbreak TieBreaksByDocID} fallisce
+    & mal posta: gira a default \texttt{legacy} e non poteva fallire; il
+      contenuto era giusto: a metà \\
+    & 5. \texttt{TestBaselineRankingIsFrozen} verde a default
+    & tre esecuzioni: confermata \\
+  \addlinespace
+  Diario, stopword e stemmer (E1)
+    & 1. SciFact fra 0,63 e 0,70
+    & 0,6585 con tutte e due (0,6641 con le sole stopword): confermata \\
+    & 2. NFCorpus fra 0,29 e 0,34
+    & 0,2941 con tutte e due: confermata \\
+    & 3. Lo stemmer porta molto più delle stopword, le stopword meno di +0,01
+    & SciFact: stopword +0,0444, stemmer +0,0046: smentita, ribaltata \\
+    & 4. I candidati aumentano
+    & su con lo stemmer, da 4833 a 2522 con le stopword: smentita \\
+    & 5. Guardia: le query a vuoto non aumentano
+    & 0 e 24 invariate, 15 con lo stemmer: confermata \\
+    & 6. Delle 24 query vuote di NFCorpus se ne recupera una
+    & nove: smentita \\
+    & 7. \texttt{TestBaselineRankingIsFrozen} verde a default
+    & esito non registrato \\
+  \addlinespace
+  \texttt{bm25-numeri}
+    & 1. In più di metà dei fallimenti il primo classificato non contiene il
+      numero
+    & 107 su 115: confermata nel numero, non nella spiegazione \\
+    & 2. I numeri delle query fallite hanno una df mediana più alta
+    & 17 contro 6: confermata \\
+    & 3. $b = 0$ porta MRR@10 da 0,709 a oltre 0,84
+    & 0,731: smentita \\
+    & 4. $k_1 = 0{,}3$ aiuta meno di $b = 0$
+    & 0,900: smentita \\
+  \addlinespace
+  Diario, frequenza mescolata
+    & 1. Known-item MRR@10 sopra 0,85
+    & 0,833: smentita di poco \\
+    & 2. Known-item sotto l'euristico
+    & 0,833 contro 0,975: confermata \\
+    & 3. SciFact e NFCorpus cambiano meno di 0,01 di nDCG@10
+    & SciFact +0,050: smentita, nel verso buono \\
+    & 4. Gli insiemi non cambiano
+    & candidati identici query per query: confermata \\
+  \addlinespace
+  \texttt{known-item-\allowbreak auto}
+    & 1. Elasticsearch: atto entro 10 in meno del 20\%, più di metà a vuoto
+    & 2,0\% e 70\%: confermata \\
+    & 2. Koskidex innestato: stessi insiemi di Elasticsearch su almeno il
+      95\%
+    & 300 su 300: confermata \\
+    & 3. Koskidex piatto: atto entro 10 in più del 70\%, tutte e tre le
+      configurazioni
+    & 99,7\%, 99,7\% e 90,3\%: confermata \\
+    & 4. BM25 ed euristico a meno di 0,05 di MRR@10
+    & 0,709 contro 0,975: smentita \\
+  \addlinespace
+  \texttt{known-item-\allowbreak divario}
+    & 1. Frequenza mescolata: in più di metà dei fallimenti vince un numero
+      trovato per prefisso
+    & 11 su 69: smentita \\
+    & 2. Prefisso spento: in più di due terzi dei fallimenti il primo non ha
+      il numero
+    & 38 su 60 (63\%): smentita di poco \\
+    & 3. In quei casi il primo ripete il comune più dell'atto, in più di due
+      terzi
+    & 37 su 38: confermata \\
+    & 4. (aggiunta dopo la prima analisi) \texttt{all} e frequenza mescolata:
+      atto primo in almeno 255, MRR@10 almeno 0,90
+    & 281 e 0,960: confermata \\
+    & 5. (aggiunta dopo la prima analisi) \texttt{all} e prefisso spento:
+      almeno 255 e 0,90
+    & 288 e 0,976: confermata \\
+  \addlinespace
+  \texttt{recupero-\allowbreak intermedio}
+    & 1. \texttt{minimum\_should\_match}: known-item MRR@10 almeno 0,93
+    & 0,889: smentita \\
+    & 2. \texttt{minimum\_should\_match}: SciFact giù di più di 0,02
+    & da 0,6694 a 0,2556: confermata \\
+    & 3. \texttt{minimum\_should\_match}: NFCorpus giù di meno di 0,02
+    & giù di 0,078: smentita \\
+    & 4. Coordinazione: known-item MRR@10 almeno 0,93
+    & 0,944: confermata \\
+    & 5. Coordinazione: SciFact e NFCorpus entro 0,01 dalla base
+    & $-$0,027 e $-$0,011: smentita \\
+  \addlinespace
+  \texttt{stopword-\allowbreak espansioni}
+    & 1. Senza prefisso, le stopword portano SciFact meno di 0,01
+    & +0,003: confermata \\
+    & 2. Più di metà delle query di SciFact ha una stopword espandibile
+    & 271 su 300: confermata \\
+    & 3. Le query senza portano meno del 10\% del guadagno
+    & 0,7\%: confermata \\
+  \addlinespace
+  \texttt{scelta-per-\allowbreak query}
+    & 1. Oracolo: known-item entro 0,02 da sempre B; SciFact e NFCorpus
+      almeno 0,01 sopra sempre A
+    & uguale a B; 0 e 0,0007: a metà \\
+    & 2. Regola della cifra: uguale a B sulle known-item, oltre 0,05 sotto A su
+      SciFact, entro 0,005 su NFCorpus
+    & $-$0,259 e $-$0,004: confermata \\
+    & 3. Ripiego: uguale a B sulle known-item, oltre 0,01 sotto A su SciFact e
+      NFCorpus
+    & NFCorpus $-$0,017, SciFact $-$0,003: a metà \\
+    & 4. Classificatore: entro 0,01 da B sulle known-item ed entro 0,005 da A
+      sulle altre, meglio della cifra su SciFact
+    & 0,9687, 0,6694, 0,3038: confermata \\
+  \addlinespace
+  \texttt{elisioni}
+    & 1. Atti con un termine eliso fra il 30\% e il 60\%
+    & 42,7\%: confermata \\
+    & 2. La ricerca salva meno del 30\% delle coppie a rischio
+    & 2,3\%: confermata \\
+    & 3. Il filtro \texttt{elision} recupera più del 90\% delle coppie perse
+    & 99,4\%: confermata \\
+    & 4. Almeno cinque delle dieci parole previste fra le prime venti
+    & sei: confermata \\
+    & 5. Più di un atto su dieci con una coppia persa
+    & 40,3\%: confermata \\
+  \addlinespace
+  \texttt{elisioni-\allowbreak koskidex}
+    & 1. \texttt{elis0} e produzione con lo stesso insieme per almeno 500
+      parole su 507
+    & 486: smentita \\
+    & 2. Coppie perse da \texttt{elis0} quelle di Elasticsearch, 5.775
+      $\pm$ 58
+    & le stesse 5.775: confermata \\
+    & 3. \texttt{elis1} recupera almeno il 99\% delle coppie perse
+    & 99,4\%, le stesse 36 residue: confermata \\
+    & 4. \texttt{elis1} e controllo con lo stesso insieme per almeno 480
+      parole
+    & 485: confermata \\
+    & 5. Documenti in più fra 4.600 e 5.700
+    & 5.200: confermata \\
+    & 6. Nessuna delle 24 query perde un documento, almeno una ne guadagna
+    & 0 persi, 65 guadagnati in 8 query: confermata \\
+    & 7. Known-item, parole libere: MRR@10 cambia di meno di 0,01
+    & 0,9498 in entrambe: confermata \\
+  \addlinespace
+  \texttt{koskidex-campi-\allowbreak liberi}
+    & 1. Atto entro 10 oltre il 90\%, query a vuoto sotto il 5\%
+    & 93,3\% e zero: confermata \\
+    & 2. Atto primo oltre il 60\%
+    & 38,3\%: smentita \\
+    & 3. Sulle 24 query gli insiemi solo crescono, almeno un terzo cambia
+    & nessun documento perso, 14 su 24: confermata \\
+  \addlinespace
+  \texttt{refusi-numeri}
+    & 1. Parole libere: atto primo oltre l'80\% e non oltre il 92\%, MRR@10
+      oltre 0,85
+    & 91,7\% e 0,950: confermata \\
+    & 2. Atto entro 10 non sotto il 93,3\%, nessuna query a vuoto,
+      Recall@100 almeno 0,99
+    & 99,7\%, zero, 1,0: confermata \\
+    & 3. Delle 24 cambiano solo le query con un numero, e si restringono;
+      \texttt{doc-0001} e \texttt{doc-0002} primi
+    & cambiano due, la terza è vuota comunque: confermata \\
+    & 4. Campo unico: atto entro 10 non oltre il 3\%, a vuoto almeno il 70\%
+    & 2\% e 95\%: confermata nei numeri \\
+  \addlinespace
+  \texttt{ibrido-unione}
+    & 1. Re-ranking almeno +0,02 su SciFact e +0,01 su NFCorpus
+    & +0,0219 e +0,0235: confermata \\
+    & 2. Re-ranking almeno 0,05 sotto sulle known-item
+    & +0,0133: smentita \\
+    & 3. Unione almeno +0,01 di Recall@100 su SciFact e NFCorpus, nDCG@10
+      entro 0,01
+    & SciFact invariato, NFCorpus +0,031: a metà \\
+    & 4. Known-item: unione entro 0,01 dal re-ranking
+    & identica: confermata \\
+    & 5. Solo vettori: SciFact fra 0,55 e 0,72, NFCorpus fra 0,28 e
+      0,37, known-item sotto 0,2
+    & 0,6436, 0,3149, 0,1837: confermata \\
+    & 6. Costo dell'unione: meno di 10 ms su SciFact e NFCorpus, 20 sulle
+      known-item
+    & +6,5, +5,1 e +15,3 ms: confermata \\
+  \addlinespace
+  \texttt{fusione}
+    & 1. Costante migliore diversa di almeno quattro volte fra SciFact e
+      NFCorpus
+    & 160 su entrambe: smentita \\
+    & 2. $\alpha$ migliori entro 0,2
+    & 0,5 su entrambe: confermata \\
+    & 3. Known-item: $\alpha$ almeno 0,8, costante al più 10
+    & 0,9 e 10: confermata \\
+    & 4. Trasferire la costante costa più che trasferire $\alpha$
+    & nessuna delle due costa: smentita \\
+    & 5. RRF almeno +0,005 su SciFact e NFCorpus, almeno 0,05 sotto sulle
+      known-item
+    & $-$0,0047, +0,0107, $-$0,384: a metà \\
+    & 6. Convessa calibrata almeno +0,005 sulle pubbliche, non oltre 0,005
+      sotto sulle known-item, almeno pari a RRF
+    & +0,0112, +0,0076, +0,0001; su NFCorpus 0,0031 sotto RRF: a metà \\
+    & 7. Le fusioni nuove costano meno di 2 ms in più dell'unione
+    & costano meno, da 1 a 7 ms: confermata \\
+  \addlinespace
+  \texttt{ibrido-\allowbreak congiuntivo}
+    & 1. SciFact: unione almeno 0,60, re-ranking entro 0,01 dal lessicale
+    & 0,6483 e +0,000: confermata \\
+    & 2. NFCorpus: unione almeno 0,30 senza query a vuoto, re-ranking meno di
+      +0,02
+    & 0,3333, zero, +0,0035: confermata \\
+    & 3. Known-item: re-ranking entro 0,01 dal lessicale, unione entro 0,01
+      dal re-ranking
+    & $-$0,0017 e +0,000: confermata \\
+    & 4. Unione almeno 0,5 sopra il re-ranking su SciFact
+    & +0,6236: confermata \\
+    & 5. Unione con \texttt{all} più veloce che con \texttt{any}
+    & 8, 1,2 e 1,2 ms in meno: confermata \\
+  \addlinespace
+  \texttt{scelta-ibrida}
+    & 1. Regola a due condizioni almeno 0,665 di media, almeno +0,015 sulle
+      due configurazioni di riferimento
+    & 0,6728, +0,023 e +0,026: confermata \\
+    & 2. Sempre A sulle known-item sotto 0,65
+    & 0,5589: confermata \\
+    & 3. Sempre B: SciFact entro 0,02 dal solo vettore, NFCorpus fra 0,30 e
+      0,34
+    & 0,6483 e 0,3325: confermata \\
+    & 4. Oracolo almeno 0,03 sopra sempre A su SciFact
+    & +0,021: smentita \\
+    & 5. Classificatore entro 0,005 dalla regola
+    & $-$0,0012: confermata \\
+  \addlinespace
+  \texttt{costo-vettori}
+    & 1. Allocazioni per ricerca giù di almeno il 90\%
+    & in numero $-$9\% e $-$17\%: smentita \\
+    & 2. Unione almeno tre volte più veloce, re-ranking almeno due
+    & 2,40$\times$ e 2,33$\times$: a metà \\
+    & 3. Memoria viva giù di almeno il 60\%
+    & $-$65\%: confermata \\
+    & 4. Documentale guadagna la parte del motore dei 24 ms in più
+    & non misurata nell'esperimento \\
+    & 5. (seconda modifica) Re-ranking non oltre 18 ms, unione non oltre 30
+    & 24,62 e 39,60: smentita \\
+    & 6. (seconda modifica) Heap vivo cresce di meno di 1 MB
+    & +0,4 MB: confermata \\
+  \addlinespace
+  \texttt{configurazione-\allowbreak consigliata}
+    & 1. Impostazioni dell'indice: campi liberi, numeri esatti, i 21 articoli
+      elisi
+    & confermata \\
+    & 2. Known-item: MRR@10 entro 0,005 da 0,950, atto primo in 275
+      $\pm$ 3, entro 10 in almeno 298
+    & 0,9498, 275, 299: confermata \\
+    & 3. Nessuna delle 24 query perde un documento, almeno una ne guadagna
+    & 0 perse, 7 guadagnano: confermata \\
+  \bottomrule
+\end{longtable}
+}
+
+In tutto le previsioni sono 104: 68 confermate, 26 smentite, 7 a metà, e 3 senza
+un esito registrato (la quarta della prima misura del baseline, la settima della
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 101 con un esito, una su
+tre non ha tenuto del tutto. Gli esperimenti \texttt{cause-divergenza},
+\texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non
+hanno previsioni numeriche: il primo registrava due ipotesi sulle cause della
+divergenza residua, scritte senza soglia e sbagliate tutte e due. Le quattro
+ipotesi scritte nel diario il 23 settembre sul confronto fra scheda e testo
+intero aspettano ancora la misura (sezione~\ref{sec:scheda-testo}).

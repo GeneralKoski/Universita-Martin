@@ -152,7 +152,7 @@ prime tre sottodomande, la quarta aspetta il capitolo 8.
 ### Appendici
 A. Come rifare ogni numero: comandi, commit, archivio ✅ · bozza scritta
 B. Istruzioni di annotazione ✅ · bozza scritta
-C. Registro delle ipotesi: ogni previsione scritta prima della misura, con l'esito 🔶
+C. Registro delle ipotesi: ogni previsione scritta prima della misura, con l'esito ✅ · bozza scritta (104 previsioni al 25/09/2026: 68 confermate, 26 smentite, 7 a metà, 3 senza esito)
 D. Le impostazioni aggiunte a Koskidex ✅ · bozza scritta
 
 L'appendice C è il punto di forza da mostrare al relatore: al 25/09/2026 ogni
