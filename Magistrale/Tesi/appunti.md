@@ -287,6 +287,16 @@ Koskidex innestato sbaglia esattamente come Elasticsearch, 300 insiemi su 300:
 la parità eredita anche i difetti, ed è il punto da cui misurare le correzioni
 (`risultati/esperimenti/2026-09-25_known-item-auto/`).
 
+Spegnendo quel solo vincolo in Koskidex innestato
+(`KOSKIDEX_ALL_TERMS_IN_ONE_FIELD=false`), dall'app l'atto torna entro i primi
+dieci nel 93% delle query e nessuna resta a vuoto, ma è primo solo nel 38%. In
+154 dei 185 casi in cui non è primo lo scavalca un atto con **il numero a un
+refuso** (`1109` per `1209`): la tolleranza ai refusi vale anche per le cifre,
+e un numero di protocollo con una cifra sbagliata è un altro atto. È un terzo
+difetto, distinto dal vincolo del campo unico, e lo stesso che mette
+`ordinanza 187` al 12° posto in produzione
+(`risultati/esperimenti/2026-09-25_koskidex-campi-liberi/`).
+
 ## Termine di paragone: le tesi dei colleghi (24/09/2026)
 
 Il 24 settembre 2026 ho visto le tesi esposte dai colleghi. In confronto,

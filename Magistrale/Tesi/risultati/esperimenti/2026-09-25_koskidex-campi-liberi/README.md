@@ -54,6 +54,9 @@ e tutte le altre impostazioni invariate.
 | **Koskidex innestato, campi liberi** | **0,548** | **38,3%** | **93,3%** | **0** |
 | Elasticsearch, parole in campi diversi (controllo diretto) | 0,534 | 36,3% | 96,0% | 0 |
 
+Le prime due righe e l'ultima vengono da `2026-09-25_known-item-auto/`
+(esito `2026-09-25T084208Z`), stesse 300 query e stesso indice.
+
 **Spegnere un solo vincolo porta l'atto giusto fra i primi dieci in 280 query
 su 300**, dove prima ce n'erano 6. Ma lo mette primo solo in 115.
 
