@@ -15,10 +15,17 @@ c'è solo quello che tocca a Martin, con quello che serve per farlo.
       `python3 risultati/strumenti/importa-raccolta.py` e committare. Martin
       non compila le pagine: le sue query misurerebbero lui. Istruzioni per
       chi raccoglie nella parte 1 di [istruzioni-annotazione.md](istruzioni-annotazione.md).
-- [ ] **Giudizi del pool** sulle query con un bisogno aperto: scrivere e
-      committare i bisogni prima di aprire il foglio, poi annotare (parte 2
-      delle istruzioni). Prima, sentire il relatore.
-- [ ] **Secondo annotatore** (Leopoldo) su query intere estratte dal foglio già
+- [ ] **Giudizi del pool** sulle 24 query del confronto (deciso il 25/09/2026
+      di non aspettare il relatore). Due passi, in quest'ordine:
+      1. scrivere i 24 bisogni in `risultati/query/confronto-24/bisogni.md`,
+         una o due frasi dopo ogni `Bisogno:`, **senza guardare risultati**, e
+         dirlo: si committa prima di preparare la pagina;
+      2. aprire `risultati/query/confronto-24/pagine/giudizi-primo.html` nel
+         browser e dare i 905 giudizi (0, 1, 2), in sessioni di un'ora al
+         massimo; alla fine scaricare il file e metterlo in
+         `risultati/query/confronto-24/risposte/`.
+- [ ] **Secondo annotatore** (Leopoldo, o un'altra persona fidata; la pagina
+      `giudizi-secondo.html` si prepara dopo il primo) su query intere estratte dal foglio già
       annotato, almeno 150 righe, senza vedere i giudizi del primo (parte 3).
 
 ## Decisioni

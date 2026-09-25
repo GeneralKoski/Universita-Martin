@@ -101,6 +101,18 @@ motori hanno trovato".
 `scripts/pool` produce `giudizi.tsv` con le colonne `query_id`, `query`,
 `doc_id`, `titolo`, `estratto`, `grado`. Si compila solo `grado`.
 
+*Aggiunto il 25/09/2026, prima di qualunque giudizio:* il foglio non si compila
+a mano. `risultati/strumenti/prepara-giudizi.py` ne fa una pagina HTML
+(`query/confronto-24/pagine/giudizi-primo.html`, con `--secondo` quella del
+secondo annotatore) che mostra il bisogno sopra ogni atto, un atto alla volta
+nell'ordine del foglio, col testo intero a richiesta; registra grado, nota,
+secondi per giudizio e sessioni, e scarica un file da copiare in
+`query/confronto-24/risposte/`. `importa-giudizi.py` ne scrive
+`giudizi-<ruolo>.tsv`, `sessioni-<ruolo>.tsv` e, a foglio completo, i qrels. Le
+regole qui sotto valgono uguali; la pagina le applica da sola dove può (ordine,
+motore nascosto, sessioni) e si rifiuta di esistere finché i bisogni non sono
+completi e committati.
+
 - **Le righe sono ordinate per id del documento**, non per posizione. Non si
   riordinano: chi annota in ordine di ranking finisce per confermarlo.
 - Il foglio non dice quale motore ha trovato quale documento, e non si va a

@@ -103,6 +103,17 @@ Rifare i giudizi perché il pool era incompleto è l'unico lavoro davvero buttat
       l'importatore che costruisce la collezione e rifiuta file che non
       corrispondono al lotto. Provati con un browser automatico su tutti i 160
       atti (`risultati/query/known-item-umane/`)
+- [x] **Il pool delle 24 query del confronto** (25/09/2026, Koskidex
+      `0ad8cdc`): tutte le configurazioni misurate (euristico e BM25, `any` e
+      `all`, frequenza mescolata, analisi italiana, le due ibride calibrate, il
+      solo vettore) più Elasticsearch e Koskidex dall'app: 905 giudizi, 135
+      documenti portati solo dall'app. Composizione in
+      `risultati/query/confronto-24/composizione.json`
+- [x] **La pagina di annotazione** (`strumenti/prepara-giudizi.py`,
+      `giudizi.html`, `importa-giudizi.py`): bisogno sopra ogni atto, ordine del
+      foglio, grado, nota, tempi e sessioni; si rifiuta di esistere senza i
+      bisogni committati. Provata con un browser automatico su una copia con
+      bisogni finti
 - [ ] Lo strumento che calcola il kappa: da scrivere quando ci sono i giudizi
       del pool, non prima
 - [x] `scripts/pool -run <rapporto>` unisce al pool i ranking di
