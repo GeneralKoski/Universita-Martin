@@ -4,8 +4,10 @@
 Ogni file scaricato dalla pagina di raccolta va copiato così com'è in
 query/known-item-umane/risposte/. Questo script li rilegge tutti, controlla che
 ognuno corrisponda al suo lotto del campione, e riscrive da zero, in modo
-deterministico: queries.jsonl e qrels/test.tsv in formato BEIR, queries.txt per
-app:eval-run-queries, raccolta.json con chi, quanto e come per ogni query.
+deterministico: queries.jsonl e qrels/test.tsv in formato BEIR, i giudizi per
+fonte (qrels/crispiano.tsv e qrels/fvg.tsv, per scripts/evaluate -split),
+queries.txt per app:eval-run-queries, raccolta.json con chi, quanto e come per
+ogni query.
 
 La collezione si ricostruisce a ogni file che arriva; si misura solo a raccolta
 chiusa. Le query vuote ("non saprei cosa scrivere") restano in raccolta.json e
@@ -66,6 +68,12 @@ with open(os.path.join(CARTELLA, "queries.jsonl"), "w", encoding="utf8") as q, \
         q.write(json.dumps({"_id": x["query"], "text": x["testo"]}, ensure_ascii=False) + "\n")
         t.write(x["testo"] + "\n")
         g.write(f"{x['query']}\t{x['atto']}\t2\n")
+for fonte in ("crispiano", "fvg"):
+    with open(os.path.join(CARTELLA, "qrels", f"{fonte}.tsv"), "w", encoding="utf8") as g:
+        g.write("query-id\tcorpus-id\tscore\n")
+        for x in piene:
+            if x["fonte"] == fonte:
+                g.write(f"{x['query']}\t{x['atto']}\t2\n")
 
 riassunto = {"file": len(sorgenti), "atti_mostrati": len(righe), "query": len(piene), "vuote": len(righe) - len(piene),
              "per_fonte": {f: sum(x["fonte"] == f for x in piene) for f in ("crispiano", "fvg")},
