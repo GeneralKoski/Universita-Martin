@@ -1,29 +1,223 @@
 \chapter{Fondamenti e lavori correlati}\label{chapter:fondamenti}
 
-\section{Indice invertito e recupero booleano, congiuntivo e disgiuntivo}
+Questo capitolo raccoglie le nozioni che i capitoli seguenti usano, nella forma in
+cui le usano. Per una trattazione completa si rimanda a~\cite{manning2008ir}.
 
-Da scrivere.
+\section{Indice invertito e recupero booleano, congiuntivo e disgiuntivo}\label{sec:indice}
 
-\section{Modelli di punteggio: dall'euristico a BM25}
+Un motore di ricerca testuale tiene un \textbf{indice invertito}: per ogni
+termine, la lista dei documenti che lo contengono, con le posizioni o almeno il
+numero delle occorrenze. Una query si spezza negli stessi termini, e i documenti
+candidati si ottengono combinando le liste.
 
-Da scrivere.
+Le due combinazioni elementari sono l'intersezione e l'unione. Nel
+\textbf{recupero congiuntivo} un documento è candidato solo se contiene tutti i
+termini della query, come in un AND booleano; nel \textbf{recupero disgiuntivo}
+basta che ne contenga uno, e l'ordine lo decide il punteggio. Il primo dà insiemi
+piccoli e precisi quando le query sono di due o tre parole, ed è la scelta
+naturale per la barra di ricerca di un negozio; il secondo è quello dei modelli
+probabilistici, che assumono che ogni termine della query porti un'evidenza
+parziale. Fra i due stanno le vie di mezzo: \texttt{minimum\_should\_match} di
+Elasticsearch chiede un numero minimo di termini, eventualmente in funzione della
+lunghezza della query; il fattore di \emph{coordinazione} della similarità
+classica di Lucene moltiplica il punteggio per la quota di termini presenti, ed è
+stato tolto in Lucene~7, dopo il passaggio a BM25.
 
-\section{Espansioni: prefisso, refusi e frequenza mescolata}
+Un dettaglio che conta nei documenti a più campi: in Elasticsearch un
+\texttt{multi\_match} di tipo \texttt{best\_fields}~\cite{es-multimatch} valuta la
+query campo per campo e tiene il campo migliore, e con \texttt{operator: and}
+chiede che tutti i termini stiano \emph{nello stesso campo}. È una forma di
+recupero congiuntivo più stretta di quella sul documento intero.
 
-Da scrivere.
+\section{Il punteggio: dall'euristico a BM25}\label{sec:bm25}
 
-\section{Analisi lessicale: tokenizzazione, stopword, stemming, elisioni}
+Un modello di punteggio assegna a ogni candidato un numero che ne stima la
+pertinenza. Tre ingredienti ricorrono nei modelli classici:
+\begin{itemize}
+  \item la \textbf{frequenza del termine} nel documento, $\text{tf}(t, D)$: un
+        documento che nomina un termine più volte ne parla di più, ma con un
+        guadagno che si satura;
+  \item la \textbf{frequenza documentale inversa}~\cite{sparckjones1972idf}: un
+        termine che compare in pochi documenti distingue di più di uno che
+        compare in tutti;
+  \item la \textbf{normalizzazione sulla lunghezza}: un documento lungo contiene
+        più termini per il solo fatto di essere lungo.
+\end{itemize}
 
-Da scrivere.
+BM25~\cite{robertson2009bm25} li combina così. Per una query $Q$ e un documento
+$D$,
+\[
+  \text{BM25}(D, Q) = \sum_{t \in Q} \text{idf}(t) \cdot
+  \frac{\text{tf}(t, D) \cdot (k_1 + 1)}
+       {\text{tf}(t, D) + k_1 \cdot \left(1 - b + b \cdot \frac{|D|}{\text{avgdl}}\right)},
+\]
+\[
+  \text{idf}(t) = \ln\left(1 + \frac{N - \text{df}(t) + 0{,}5}{\text{df}(t) + 0{,}5}\right),
+\]
+dove $N$ è il numero dei documenti, $\text{df}(t)$ quelli che contengono $t$,
+$|D|$ la lunghezza del documento in termini e avgdl la lunghezza media. $k_1$
+regola la saturazione della frequenza, $b$ quanto pesa la lunghezza; i valori
+predefiniti di Lucene sono $k_1 = 1{,}2$ e $b = 0{,}75$, e l'IDF qui sopra è la
+variante di Lucene, sempre positiva. BM25 è la similarità predefinita di Lucene dalla
+versione~6, e di Elasticsearch dalla~5.
 
-\section{Recupero denso e ibrido, fusione dei punteggi}
+Un punteggio \textbf{euristico}, come quello di Koskidex di partenza
+(sezione~\ref{sec:koskidex}), non ha nessuno dei tre ingredienti: somma un
+valore fisso per ogni termine trovato, con un premio per le corrispondenze esatte
+e il peso del campo. Con il recupero congiuntivo la differenza si sente poco,
+perché i candidati contengono tutti gli stessi termini; con il recupero
+disgiuntivo diventa il difetto principale, perché un documento con molti termini
+comuni batte quello con l'unico termine raro che decide la query.
 
-Da scrivere.
+\section{Prefisso, refusi e frequenza mescolata}\label{sec:espansioni-teoria}
 
-\section{Valutazione: paradigma di Cranfield, pooling, metriche, known-item, accordo fra annotatori}
+Chi cerca non sempre scrive la parola che sta nel documento. Due meccanismi
+allargano la corrispondenza, \emph{espandendo} un termine della query in più
+termini dell'indice:
+\begin{itemize}
+  \item la \textbf{ricerca per prefisso}: \texttt{manut} trova
+        \texttt{manutenzione}; utile mentre si scrive, o per parole lunghe
+        scritte a metà;
+  \item la \textbf{tolleranza ai refusi}: un termine trova quelli a distanza di
+        modifica limitata, di solito la distanza di Damerau~\cite{damerau1964},
+        che conta inserimenti, cancellazioni, sostituzioni e scambi di due
+        caratteri vicini. La distanza ammessa cresce con la lunghezza del
+        termine: in Elasticsearch, con \texttt{fuzziness: AUTO}, nessun refuso
+        fino a due caratteri, uno da tre, due da sei; in
+        Meilisearch~\cite{meili-typo} uno da cinque e due da nove.
+\end{itemize}
 
-Da scrivere.
+Un'espansione pone un problema di punteggio: con quale frequenza documentale si
+pesa un termine trovato per espansione? Se con la sua, un termine raro trovato per
+prefisso o per refuso ha un IDF altissimo e può battere il termine esatto, più
+comune. Lucene risolve il problema in due modi diversi. Le ricerche per prefisso
+le calcola, per default, a punteggio costante, senza IDF. Le ricerche con refusi
+le riscrive con \texttt{TopTermsBlendedFreqScoringRewrite}, che \emph{mescola} le
+frequenze documentali dei termini espansi, così che nessuna espansione pesi più
+del più comune dei suoi fratelli. Il capitolo~\ref{chapter:lessicale} ritrova
+esattamente questo difetto in Koskidex, e lo corregge allo stesso modo.
 
-\section{Lavori correlati}
+\section{Analisi lessicale}\label{sec:analisi}
 
-Da scrivere.
+Prima di entrare nell'indice un testo passa da un \textbf{analizzatore}: una
+catena di stadi che lo trasforma in termini. Gli stadi usati in questa tesi sono
+quattro.
+\begin{itemize}
+  \item La \textbf{tokenizzazione} spezza il testo in parole. La scelta più
+        semplice spezza su ogni carattere che non è una lettera o una cifra; il
+        tokenizer standard di Lucene segue le regole di segmentazione di
+        Unicode~\cite{uax29}, che tengono insieme alcune parole con punteggiatura
+        interna, fra cui \emph{dell'infanzia}.
+  \item Le \textbf{stopword} sono le parole funzionali (articoli, preposizioni,
+        congiunzioni) che si tolgono perché non distinguono i documenti.
+  \item Lo \textbf{stemming} riduce le varianti morfologiche di una parola a una
+        radice comune: in inglese l'algoritmo di Porter~\cite{porter1980}, in
+        italiano lo stemmer leggero di Savoy~\cite{savoy2002light}, che toglie
+        soprattutto le desinenze di genere e numero.
+  \item Il filtro delle \textbf{elisioni} toglie gli articoli elisi davanti a una
+        parola (\emph{l'}, \emph{dell'}, \emph{un'}): in italiano, con un
+        tokenizer che non spezza sull'apostrofo, senza questo filtro
+        \emph{dell'infanzia} resta un termine diverso da \emph{infanzia}.
+\end{itemize}
+L'analizzatore \texttt{italian} di Elasticsearch~\cite{es-italian} usa il
+tokenizer standard, il filtro delle elisioni, le stopword italiane di Snowball e
+lo stemmer leggero. L'analizzatore predefinito, che Documentale usa, ha il solo
+tokenizer standard e il minuscolo.
+
+\section{Recupero denso e ibrido, fusione dei punteggi}\label{sec:denso}
+
+Il recupero lessicale trova i documenti che condividono termini con la query. Il
+\textbf{recupero denso} rappresenta query e documenti come vettori in uno spazio
+di qualche centinaio o migliaio di dimensioni, calcolati da un modello neurale
+(\emph{embedding}), e trova i documenti più vicini per prodotto scalare o
+similarità del coseno~\cite{karpukhin2020dpr}. Trova documenti pertinenti che non condividono
+parole con la query; non sa niente degli identificativi, perché un numero di
+protocollo e uno che differisce di una cifra sono, per il modello, quasi lo stesso
+testo. Su archivi di milioni di documenti i vicini si cercano con un indice
+approssimato; su poche decine di migliaia basta una scansione esatta.
+
+Il \textbf{recupero ibrido} usa i due insieme, e pone due domande distinte. La
+prima è chi entra fra i candidati: solo i documenti trovati dal lessicale, che il
+vettore riordina (\emph{re-ranking}), o l'unione dei due insiemi. La seconda è
+come si fondono due punteggi su scale diverse. Tre famiglie di fusione:
+\begin{itemize}
+  \item la \textbf{somma pesata} dei punteggi grezzi, che dipende dalle scale e
+        quindi dalla collezione e dalla query;
+  \item la \textbf{combinazione convessa} di punteggi normalizzati, per esempio
+        min-max su ciascuna lista, $\alpha \cdot s_\text{lex} + (1 - \alpha)
+        \cdot s_\text{vec}$, che rende le scale confrontabili ma lascia un peso da
+        scegliere;
+  \item la \textbf{Reciprocal Rank Fusion}~\cite{cormack2009rrf}, che ignora i
+        punteggi e somma $1/(k + r)$ sulle posizioni $r$ del documento nelle
+        liste, con $k = 60$: senza parametri da calibrare, ma cieca alla distanza
+        fra un primo e un secondo classificato.
+\end{itemize}
+Bruch, Gai e Ingber~\cite{bruch2023fusion} confrontano le ultime due e trovano
+che una combinazione convessa ben calibrata batte RRF, e che RRF è sensibile ai
+suoi parametri più di quanto la sua fama di fusione senza parametri suggerisca. Il capitolo~\ref{chapter:ibrido}
+aggiunge un'osservazione che quel confronto non fa: il peso giusto dipende dal
+tipo di query, identificativa o in lingua naturale.
+
+\section{Valutazione: Cranfield, pooling, metriche, known-item, accordo}\label{sec:valutazione-teoria}
+
+\paragraph{Il paradigma di Cranfield.} Una collezione di valutazione ha tre
+parti: i documenti, le query e i giudizi di pertinenza che dicono quali documenti
+rispondono a quali query~\cite{cleverdon1967}. Con i giudizi fissati, due sistemi
+si confrontano sulle stesse query con la stessa metrica, e il confronto si rifà.
+
+\paragraph{Il pooling.} Giudicare ogni documento per ogni query non è possibile su
+una collezione vera. Il \emph{pool} di una query è l'unione dei primi $k$
+risultati di più sistemi, e si giudica solo quello; i documenti fuori dal pool si
+considerano non pertinenti. Zobel~\cite{zobel1998pooling} ha mostrato che i
+confronti fra sistemi restano affidabili, ma che il richiamo misurato è un limite
+superiore: i pertinenti che nessun sistema ha trovato non si contano.
+
+\paragraph{Le metriche.} Con $\text{rel}_i$ il grado del documento in posizione
+$i$, il guadagno cumulato scontato è
+$\text{DCG@}k = \sum_{i=1}^{k} (2^{\text{rel}_i} - 1)/\log_2(i + 1)$, e nDCG@$k$
+lo divide per il DCG dell'ordinamento ideale, così che stia fra 0 e
+1~\cite{jarvelin2002ndcg}; è la metrica principale di BEIR~\cite{thakur2021beir}.
+L'MRR@$k$ è il reciproco della posizione del primo documento pertinente, zero se
+oltre $k$: con un solo documento giusto per query è la misura più diretta.
+Recall@$k$ è la quota dei documenti pertinenti fra i primi $k$.
+
+\paragraph{Known-item.} Una query \emph{known-item} cerca un documento preciso,
+che chi cerca sa esistere: il giudizio arriva gratis, perché il documento di
+partenza è l'unica risposta giusta. Le query si possono raccogliere da persone o
+generare a partire dal documento; Azzopardi, de Rijke e
+Balog~\cite{azzopardi2007known} studiano come generare query simulate e le confrontano con
+query reali: le simulate non sempre riproducono i risultati ottenuti con quelle
+reali. È la ragione per cui questa
+tesi tiene separate le known-item automatiche, che misurano una sola forma di
+query, e quelle scritte da persone.
+
+\paragraph{Accordo fra annotatori.} Due annotatori non danno gli stessi giudizi.
+Il kappa di Cohen~\cite{cohen1960kappa} misura il loro accordo al netto di quello
+atteso per caso, e la versione pesata~\cite{cohen1968weighted} conta meno i
+disaccordi fra gradi vicini. Un kappa basso non invalida una collezione, ma dice
+quanto le differenze fra i sistemi sono più grandi della variabilità dei giudizi.
+
+\section{Lavori correlati}\label{sec:correlati}
+
+\paragraph{BEIR e le regressioni di Pyserini.} BEIR~\cite{thakur2021beir} raccoglie
+diciotto collezioni eterogenee per valutare il recupero senza addestramento
+specifico, e mostra che BM25 resta un riferimento difficile da battere fuori
+dominio. Le regressioni di Pyserini~\cite{pyserini2cr} ne danno i numeri di BM25
+di Lucene, riproducibili con un comando: sono il riferimento usato per SciFact e
+NFCorpus.
+
+\paragraph{Lucene, Elasticsearch, Meilisearch.} I motori di produzione con cui
+Koskidex si confronta hanno ciascuno le loro scelte documentate: Lucene ed
+Elasticsearch per BM25, le espansioni e gli analizzatori; Meilisearch, più
+vicino a Koskidex per destinazione, per la tolleranza ai refusi, compresa
+l'impostazione \texttt{disableOnNumbers} che la spegne sui numeri. Quando una correzione
+di questa tesi ha un precedente in uno di questi motori, lo segue, e lo dice: il
+contributo non è inventare una soluzione, ma trovare e misurare il difetto.
+
+\paragraph{Predizione della difficoltà e scelta per query.} Stimare prima di
+cercare quanto una query riuscirà è un campo di ricerca, la predizione della
+difficoltà delle query~\cite{cronentownsend2002,carmel2010qpp}, e una delle sue
+applicazioni è scegliere per ogni query una strategia di recupero diversa. Il
+capitolo~\ref{chapter:ibrido} ne fa una versione piccola, con otto
+caratteristiche della query e una regressione logistica, e trova che su questi
+dati basta una regola di una riga.

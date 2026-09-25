@@ -40,13 +40,13 @@ difetti del motore e tre della ricerca in produzione, ciascuno misurato; un
 corpus pubblico di dominio con query known-item; la scelta della configurazione
 per tipo di query.
 
-### 2. Fondamenti e lavori correlati ⬜
+### 2. Fondamenti e lavori correlati ✅ · bozza scritta
 2.1 Indice invertito e recupero booleano, congiuntivo e disgiuntivo
-2.2 Modelli di punteggio: dall'euristico a BM25
-2.3 Espansioni: prefisso, refusi e frequenza mescolata
-2.4 Analisi lessicale: tokenizzazione, stopword, stemming, elisioni
+2.2 Il punteggio: dall'euristico a BM25
+2.3 Prefisso, refusi e frequenza mescolata
+2.4 Analisi lessicale
 2.5 Recupero denso e ibrido, fusione dei punteggi
-2.6 Valutazione: paradigma di Cranfield, pooling, metriche, known-item, accordo fra annotatori
+2.6 Valutazione: Cranfield, pooling, metriche, known-item, accordo
 2.7 Lavori correlati: BEIR, Lucene ed Elasticsearch, Meilisearch, predizione e scelta per query
 
 ### 3. I sistemi e l'innesto ✅ · bozza scritta
