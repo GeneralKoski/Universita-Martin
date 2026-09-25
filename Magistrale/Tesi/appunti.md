@@ -269,6 +269,17 @@ trovato un altro difetto di Koskidex: un `fsync` per documento, 31,8 secondi di
 indicizzazione, corretto. Dettagli in
 `risultati/esperimenti/2026-09-25_innesto-parita/`.
 
+**Un secondo difetto di Documentale in produzione (25/09/2026).** Le prime
+query known-item, `<numero> <comune>` fabbricate da 300 atti, trovano l'atto
+giusto entro i primi dieci nel **2%** dei casi, e sette volte su dieci non
+trovano niente. Non è il numero: con `best_fields` e `operator and` tutte le
+parole devono stare nello stesso campo, e il numero sta in `additional_data`
+mentre il comune sta in `subjects`. Liberando le parole di stare in campi
+diversi, l'atto torna in tutte e 300. Koskidex piatto lo trova nel 99,7%.
+Koskidex innestato sbaglia esattamente come Elasticsearch, 300 insiemi su 300:
+la parità eredita anche i difetti, ed è il punto da cui misurare le correzioni
+(`risultati/esperimenti/2026-09-25_known-item-auto/`).
+
 ## Termine di paragone: le tesi dei colleghi (24/09/2026)
 
 Il 24 settembre 2026 ho visto le tesi esposte dai colleghi. In confronto,

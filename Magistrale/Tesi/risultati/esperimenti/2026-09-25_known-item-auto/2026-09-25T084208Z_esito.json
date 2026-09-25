@@ -1,0 +1,121 @@
+{
+  "ran_at": "2026-09-25T08:42:08Z",
+  "config": {
+    "commit": "936886a",
+    "modifiche_non_committate": "false",
+    "rapporto_elasticsearch": "2026-09-25T083930Z_known-item-auto-elasticsearch.json",
+    "rapporto_koskidex": "2026-09-25T083933Z_known-item-auto-koskidex.json",
+    "elasticsearch_versione": "9.1.0",
+    "koskidex_versione": "f6810d0",
+    "commit_documentale": "2a03310c96378a905e692747e3b74fa91f6dc357"
+  },
+  "run": {
+    "app-elasticsearch": {
+      "file": "2026-09-25T083946Z_known-item-auto-app-elasticsearch.json",
+      "query": 300,
+      "mrr@10": 0.0167,
+      "primo_posto": 0.0133,
+      "entro_10": 0.02,
+      "recall@100": 0.02,
+      "a_vuoto": 211,
+      "posizione_dell_atto": {
+        "1": 4,
+        "2": 2,
+        "oltre 10": 294
+      }
+    },
+    "app-koskidex": {
+      "file": "2026-09-25T084000Z_known-item-auto-app-koskidex.json",
+      "query": 300,
+      "mrr@10": 0.0183,
+      "primo_posto": 0.0167,
+      "entro_10": 0.02,
+      "recall@100": 0.02,
+      "a_vuoto": 211,
+      "posizione_dell_atto": {
+        "1": 5,
+        "2": 1,
+        "oltre 10": 294
+      }
+    },
+    "all-legacy": {
+      "file": "2026-09-25T084002Z_known-item-auto-all-legacy.json",
+      "query": 300,
+      "mrr@10": 0.975,
+      "primo_posto": 0.9567,
+      "entro_10": 0.9967,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "posizione_dell_atto": {
+        "1": 287,
+        "2": 9,
+        "3": 3,
+        "oltre 10": 1
+      }
+    },
+    "any-legacy": {
+      "file": "2026-09-25T084004Z_known-item-auto-any-legacy.json",
+      "query": 300,
+      "mrr@10": 0.975,
+      "primo_posto": 0.9567,
+      "entro_10": 0.9967,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "posizione_dell_atto": {
+        "1": 287,
+        "2": 9,
+        "3": 3,
+        "oltre 10": 1
+      }
+    },
+    "any-bm25": {
+      "file": "2026-09-25T084006Z_known-item-auto-any-bm25.json",
+      "query": 300,
+      "mrr@10": 0.7094,
+      "primo_posto": 0.6167,
+      "entro_10": 0.9033,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "posizione_dell_atto": {
+        "1": 185,
+        "2": 32,
+        "3": 16,
+        "4": 10,
+        "5": 6,
+        "6": 4,
+        "7": 4,
+        "8": 3,
+        "9": 6,
+        "10": 5,
+        "oltre 10": 29
+      }
+    },
+    "es-parole-in-campi-diversi": {
+      "file": "2026-09-25T084137Z_known-item-auto-es-parole-in-campi-diversi.json",
+      "query": 300,
+      "mrr@10": 0.5339,
+      "primo_posto": 0.3633,
+      "entro_10": 0.96,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "posizione_dell_atto": {
+        "1": 109,
+        "2": 43,
+        "3": 35,
+        "4": 27,
+        "5": 16,
+        "6": 20,
+        "7": 15,
+        "8": 8,
+        "9": 7,
+        "10": 8,
+        "oltre 10": 12
+      }
+    }
+  },
+  "parita_app": {
+    "insiemi_identici": 300,
+    "query": 300,
+    "diverse": []
+  }
+}

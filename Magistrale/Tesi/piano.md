@@ -88,21 +88,25 @@ Rifare i giudizi perché il pool era incompleto è l'unico lavoro davvero buttat
 
 - [ ] Scrivere le istruzioni di annotazione e metterle nel repo, prima di darle a
       chiunque
-- [ ] `scripts/pool` accetta ranking esterni da file e li unisce al pool: senza,
-      i documenti che solo Elasticsearch trova valgono zero e il confronto parte
-      truccato contro di lui. `app:eval-run-queries` scrive già i ranking con
-      gli id del corpus (`doc-0001`)
-- [ ] Verificare che aggiungere Elasticsearch faccia crescere il pool, e se non
-      cresce capire se è giusto così o se il convertitore non funziona
+- [x] `scripts/pool -run <rapporto>` unisce al pool i ranking di
+      `app:eval-run-queries` (Koskidex `5e771dd`), e rifiuta query non eseguite,
+      id fuori dal corpus e rapporti di altro formato
+- [x] Il pool cresce davvero: sulle 24 query del confronto, a profondità 10,
+      Elasticsearch porta 87 documenti che nessuna configurazione di Koskidex
+      aveva, da 428 a 515
 
 ### 2. Le query, che nessun log produrrà
 
 Documentale non ha più utenti: le query vanno fabbricate, e in tesi va scritto
 con questa parola. Le due famiglie misurano cose diverse e restano separate.
 
-- [ ] **Known-item automatiche** da `numero_atto` + `ente` ("determina 1223
-      Crispiano"): a centinaia, misurano se il motore trova un atto di cui si
-      conosce il numero
+- [x] **Known-item automatiche** (25/09/2026): 300 query `<numero> <comune>`
+      in `risultati/query/known-item-auto/`. Elasticsearch in produzione trova
+      l'atto entro i primi 10 nel **2%** delle query e torna vuoto nel 70%,
+      perché numero e comune stanno in campi diversi; Koskidex piatto lo trova
+      nel 99,7%. Koskidex innestato: stessi insiemi di Elasticsearch, 300 su 300
+      (`risultati/esperimenti/2026-09-25_known-item-auto/`). `scripts/evaluate
+      -rankings` valuta i rapporti dell'app con lo stesso codice delle metriche
 - [ ] **Known-item umane**, trenta o quaranta, da persone diverse: si mostra un
       atto e si chiede la ricerca che farebbero per ritrovarlo
 - [ ] Secondo annotatore (Leopoldo) sulle stesse trenta o quaranta coppie, e
@@ -118,7 +122,14 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       (`risultati/esperimenti/2026-09-25_elisioni/`)
 - [ ] **BM25 e la ricerca per numero d'atto**: con BM25 l'atto giusto scende al
       3° e al 5° posto, contro il 1° dell'euristico, a parità di recupero
-      disgiuntivo. Da capire (`risultati/esperimenti/2026-09-23_numero-atto/`)
+      disgiuntivo (`risultati/esperimenti/2026-09-23_numero-atto/`). Confermato
+      sulle 300 known-item: MRR@10 0,709 contro 0,975, atto primo nel 61,7% delle
+      query contro il 95,7%. Da capire
+- [ ] **Documentale e la ricerca per numero e comune**: provare la correzione
+      (le parole libere di stare in campi diversi, o un campo che le raccoglie
+      tutte) e misurarla sulle stesse 300 query. Il controllo trova l'atto in
+      tutte, ma primo solo nel 36%: da capire anche l'ordine, probabilmente i
+      refusi sui numeri
 - [ ] **`b` sui documenti lunghi**: rimisurarlo sui soli 563 atti di Crispiano
       col testo intero. 0,75 è tarato su collezioni di articoli, e nel corpus
       misto le schede corte schiacciano la lunghezza media

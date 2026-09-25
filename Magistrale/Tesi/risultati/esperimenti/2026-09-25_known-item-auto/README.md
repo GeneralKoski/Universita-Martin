@@ -78,3 +78,65 @@ motore.
 Se la 1 regge, è un secondo difetto di Documentale in produzione, dopo le
 elisioni: la ricerca di un atto per numero e comune non funziona, e non per il
 numero ma per come la query combina i campi.
+
+## Esito
+
+`2026-09-25T084208Z_esito.json`, da `analizza.py` al commit `936886a`, sulle
+valutazioni in `valutazioni-albo/` (Koskidex `f6810d0`, Documentale `2a03310`,
+Elasticsearch 9.1.0, tutto da codice committato).
+
+**Chi cerca un atto per numero e comune, in Documentale, non lo trova.**
+
+| run | MRR@10 | atto primo | atto entro 10 | Recall@100 | a vuoto |
+|---|---|---|---|---|---|
+| Elasticsearch, dall'app | 0,017 | 1,3% | 2,0% | 0,02 | 211 (70%) |
+| Koskidex innestato, dall'app | 0,018 | 1,7% | 2,0% | 0,02 | 211 (70%) |
+| Elasticsearch, parole in campi diversi (controllo) | 0,534 | 36,3% | 96,0% | 1,00 | 0 |
+| Koskidex piatto, `all` + euristico (baseline) | 0,975 | 95,7% | 99,7% | 1,00 | 0 |
+| Koskidex piatto, `any` + euristico | 0,975 | 95,7% | 99,7% | 1,00 | 0 |
+| Koskidex piatto, `any` + BM25 | 0,709 | 61,7% | 90,3% | 1,00 | 0 |
+
+Elasticsearch torna vuoto su sette query su dieci, e sulle 89 in cui risponde
+qualcosa l'atto giusto c'è solo in 6. Il controllo dice perché: con la stessa
+query, gli stessi refusi e le stesse parole obbligatorie, ma ciascuna libera di
+stare in un campo diverso, **l'atto giusto torna in tutte e 300** (Recall@100 da
+0,02 a 1,00). La causa è `best_fields` con `operator and`: il numero sta in
+`additional_data`, il comune in `subjects`, e nessun campo li ha tutti e due.
+
+### Le previsioni
+
+1. Elasticsearch entro i primi 10 in meno del 20% delle query, più della metà a
+   vuoto: **2,0% e 70%, confermata.**
+2. Koskidex innestato con gli stessi insiemi di Elasticsearch su almeno il 95%
+   delle query: **300 su 300, confermata.** La parità regge su una famiglia di
+   query che il confronto del 25/09 non conteneva, difetto compreso: Koskidex
+   con le impostazioni compatibili riproduce anche gli errori di
+   Elasticsearch, com'è giusto che sia.
+3. Koskidex piatto entro i primi 10 in più del 70% delle query: **99,7%, 99,7%
+   e 90,3%, confermata.**
+4. BM25 e l'euristico a meno di 0,05 di MRR@10: **smentita, e nel verso che il
+   README metteva in conto.** BM25 perde 0,27: mette l'atto primo nel 61,7%
+   delle query contro il 95,7%, e in 29 query lo lascia oltre il decimo posto,
+   contro una. È lo stesso segno di `ordinanza 187`
+   (`2026-09-23_numero-atto/`), ora su 300 query invece che su due, e il
+   perché resta da capire (sezione 3 del piano).
+
+### Cosa non dice
+
+Il controllo trova l'atto ma lo ordina male: primo solo nel 36% delle query.
+Non è misurato perché. Un indizio è che i refusi di Elasticsearch ammettono una
+modifica sui numeri di tre o quattro cifre, e `315` combacia con `316` e `305`,
+come `187` con `18` e `17` nel caso dell'ordinanza, ma resta un'ipotesi.
+
+Koskidex innestato con `all_terms_in_one_field` spento, cioè con le parole
+libere di stare in campi diversi come fa Koskidex di suo, non è stato misurato:
+la riga piatta ci si avvicina, ma ha un campo solo e i refusi spenti.
+
+### Cosa vuol dire per la tesi
+
+È il secondo difetto di recupero di Documentale in produzione, dopo le
+elisioni, e questa volta sulla ricerca più identificativa che un documentale
+abbia. Non dipende dal numero ma da come la query combina i campi. E dice una
+cosa sul lavoro di compatibilità: arrivare alla parità con Elasticsearch
+vuol dire ereditarne i difetti, e la parità è il punto di partenza da cui
+misurare le correzioni, non il traguardo.

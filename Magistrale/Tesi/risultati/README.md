@@ -34,6 +34,7 @@ Se un numero non ha un file qui, non esiste.
 | Cartella | Cosa contiene | Da dove viene |
 |---|---|---|
 | `koskidex-beir/` | valutazioni di Koskidex sulle collezioni pubbliche SciFact e NFCorpus: nDCG@10, Recall@100, MRR@10 per query, query a vuoto, tempi | `scripts/evaluate` di Koskidex |
+| `valutazioni-albo/` | valutazioni sul corpus degli albi, stesso formato di `koskidex-beir/`: Koskidex in memoria e, con `-rankings`, i rapporti dei motori passati dall'app, contati dallo stesso codice | `scripts/evaluate -archivio valutazioni-albo` di Koskidex |
 | `confronto/` | le stesse query su Elasticsearch (il codice di produzione di Documentale) e su Koskidex, sullo stesso corpus: ranking, latenza per query, tempi di indicizzazione | `app:eval-run-queries` di Documentale (col motore scelto da `SEARCH_BACKEND`), `scripts/compare` di Koskidex, `strumenti/indicizza-elasticsearch.sh`, `strumenti/indicizza-koskidex.sh` |
 | `query/` | i file di query usati, così ogni esecuzione si rifà con le stesse | scritti a mano, vedi sotto |
 | `esperimenti/` | esperimenti una tantum, con dati, codice per rifarli e spiegazione | una sottocartella per esperimento |
@@ -63,6 +64,18 @@ go run ./scripts/compare -corpus eval/corpora/c3-albo/beir-metadata/corpus.jsonl
 SEARCH_BACKEND=koskidex KOSKIDEX_HOST=http://localhost:7711 DB_HOST=127.0.0.1 DB_PORT=33061 \
   DB_DATABASE=albo DB_USERNAME=root DB_PASSWORD=root TELESCOPE_ENABLED=false \
   php -d memory_limit=1G artisan app:eval-run-queries "$TESI_RISULTATI/query/confronto-24.txt" --label=albo-metadata
+
+# Valutazione sul corpus degli albi (da Koskidex; la collezione in
+# eval/corpora/c3-albo/known-item-auto/ ha corpus, query e qrels come link):
+# Koskidex in memoria, oppure il rapporto di un motore passato dall'app
+go run ./scripts/evaluate -corpora eval/corpora/c3-albo -collection known-item-auto \
+  -archivio valutazioni-albo -run any-bm25 -mode any -scoring bm25
+go run ./scripts/evaluate -corpora eval/corpora/c3-albo -collection known-item-auto \
+  -archivio valutazioni-albo -run app-elasticsearch -rankings <rapporto di app:eval-run-queries>
+
+# Foglio di annotazione col pool di Koskidex più i ranking di Elasticsearch
+go run ./scripts/pool -corpus <corpus.jsonl> -queries <queries.jsonl> -out giudizi.tsv \
+  -run <rapporto di app:eval-run-queries>
 
 # Indicizzazione da indice vuoto, cronometrata, col comando dell'app
 "$TESI_RISULTATI/strumenti/indicizza-elasticsearch.sh" albo albo-metadata
@@ -107,6 +120,13 @@ giudizi di rilevanza, e nessun nDCG va calcolato su di loro.
 radici di parole frequenti negli albi (`delib`, `determ`, `manut`...), un
 numero (`2024`) e un frammento comunissimo (`zione`) come caso peggiore. Si
 usano con `scripts/compare -sottostringa`.
+
+`query/known-item-auto/` - 300 query `<numero> <comune>` generate il
+25/09/2026 da `strumenti/known-item-auto.py`, ciascuna da un atto con la coppia
+(comune, numero) unica nel corpus, con seme fisso. A differenza delle altre
+hanno i giudizi (`qrels/test.tsv`: l'atto di partenza, grado 2), in formato
+BEIR insieme a `queries.jsonl`; `queries.txt` è per `app:eval-run-queries`,
+`generazione.json` ha i conteggi degli atti esclusi.
 
 ## Leggere i tempi senza farsi ingannare
 
