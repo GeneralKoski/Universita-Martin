@@ -191,8 +191,11 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       SciFact. Spente tutte e due; resta la scelta per tipo di query della
       sezione 5 (`risultati/esperimenti/2026-09-25_recupero-intermedio/`)
 - [ ] **Decidere i default** di `BM25Expansion` e degli altri interruttori
-      misurati: cambiarli cambia il baseline, e va deciso a parte, con il
-      relatore
+      misurati: cambiarli cambia il baseline. Proposta del 25/09/2026: nessun
+      default cambia, e si definisce una **configurazione consigliata** con
+      nome (documento più profilo in `scripts/evaluate` e in Documentale),
+      ogni flag col numero che lo giustifica; al relatore resta confermarla.
+      Prossimo passo di sviluppo, poi la scrittura dei capitoli 3 e 6
 - [x] **Documentale e la ricerca per numero e comune** (25/09/2026): Koskidex
       innestato con `KOSKIDEX_ALL_TERMS_IN_ONE_FIELD=false` (Documentale
       `0c6cacf`, acceso per default) trova l'atto entro i primi 10 nel 93%
