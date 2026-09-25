@@ -30,7 +30,7 @@ ha il testo intero e per gli altri la scheda):
 2. **Quanti atti.** Per ciascuno dei 563 testi interi e per ogni scheda, i
    token letti da Ollama con `num_ctx` 8.192, una richiesta per testo: quanti
    superano 2.048 token, quanti arrivano a 8.192 (e quindi sono tagliati anche
-   così).
+   così). Lo stesso per i documenti di SciFact e NFCorpus (aggiunto sotto).
 
 Modello `bge-m3`, con l'impronta registrata nel file di esito.
 
@@ -48,3 +48,11 @@ Modello `bge-m3`, con l'impronta registrata nel file di esito.
    è stato tagliato. Per SciFact e NFCorpus la misura non si fa qui.
 
 Se la 5 cade, i numeri del capitolo 7 vanno rimisurati.
+
+**Aggiunto dopo le previsioni, prima di misurare.** La guardia della 5 vale
+solo se copre tutte le collezioni del capitolo 7: `misura.py` conta i token
+anche dei documenti di SciFact e NFCorpus, titolo e testo in un campo come in
+valutazione. Previsione, nello stesso spirito:
+
+6. **Meno dell'1% dei documenti di SciFact e di NFCorpus supera 2.048 token**,
+   e i numeri del capitolo 7 cambiano al più in modo trascurabile.
