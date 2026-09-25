@@ -87,8 +87,14 @@ In ordine. Le sezioni 1-4 non dipendono dai vettori e si fanno per prime.
 
 Rifare i giudizi perché il pool era incompleto è l'unico lavoro davvero buttato.
 
-- [ ] Scrivere le istruzioni di annotazione e metterle nel repo, prima di darle a
-      chiunque
+- [x] Istruzioni di annotazione (25/09/2026, [istruzioni-annotazione.md](istruzioni-annotazione.md)):
+      raccolta delle known-item umane con l'atto nascosto prima di scrivere,
+      bisogno informativo scritto e committato prima di aprire il pool, scala
+      0-2 con i casi dubbi, tempi per sessione, secondo annotatore su query
+      intere (almeno 150 righe) con kappa semplice e pesato
+- [ ] Lo strumento che estrae il campione di atti da mostrare (seme fissato,
+      per fonte e per genere) e quello che calcola il kappa: da scrivere quando
+      arrivano le persone, non prima
 - [x] `scripts/pool -run <rapporto>` unisce al pool i ranking di
       `app:eval-run-queries` (Koskidex `5e771dd`), e rifiuta query non eseguite,
       id fuori dal corpus e rapporti di altro formato
@@ -110,8 +116,9 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       -rankings` valuta i rapporti dell'app con lo stesso codice delle metriche
 - [ ] **Known-item umane**, trenta o quaranta, da persone diverse: si mostra un
       atto e si chiede la ricerca che farebbero per ritrovarlo
-- [ ] Secondo annotatore (Leopoldo) sulle stesse trenta o quaranta coppie, e
-      Cohen's kappa riportato comunque, anche se basso
+- [ ] Secondo annotatore (Leopoldo) su query intere estratte a caso dal foglio
+      annotato, almeno 150 righe, e Cohen's kappa riportato comunque, anche se
+      basso (parte 3 delle istruzioni)
 - [ ] Prima di annotare il corpus di dominio, sentire il relatore (sezione 7)
 
 ### 3. Misure che mancano sul lessicale già fatto

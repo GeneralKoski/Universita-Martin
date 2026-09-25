@@ -77,6 +77,9 @@ go run ./scripts/evaluate -corpora eval/corpora/c3-albo -collection known-item-a
 go run ./scripts/pool -corpus <corpus.jsonl> -queries <queries.jsonl> -out giudizi.tsv \
   -run <rapporto di app:eval-run-queries>
 
+# Un atto per intero, quando l'estratto del foglio non basta (vedi ../istruzioni-annotazione.md)
+python3 "$TESI_RISULTATI/strumenti/mostra-atto.py" <corpus.jsonl> doc-0123
+
 # Indicizzazione da indice vuoto, cronometrata, col comando dell'app
 "$TESI_RISULTATI/strumenti/indicizza-elasticsearch.sh" albo albo-metadata
 "$TESI_RISULTATI/strumenti/indicizza-koskidex.sh" albo albo-metadata http://localhost:7711
