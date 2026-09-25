@@ -131,3 +131,38 @@ Scritto e committato prima del codice.
    in una mappa).
 
 ### Esito della seconda modifica
+
+`2026-09-25T134933Z_norme-10c48bd.txt` (Koskidex `10c48bd`, albero pulito, stessa
+macchina, stesso benchmark), contro il dopo della prima modifica:
+
+| | prima modifica (`8260289`) | norme (`10c48bd`) |
+|---|---|---|
+| re-ranking, ms per ricerca | 24,70 | 24,62 |
+| unione, ms per ricerca | 42,72 | 39,60 |
+| heap vivo, MB | 94,7 | 95,1 |
+
+Punteggi identici: i test al bit passano, e un'esecuzione di prova di
+`scripts/evaluate` su SciFact con l'unione dà 0,691314874697279 come la
+valutazione archiviata, con lo stesso nDCG@10 su tutte le 300 query.
+
+5. Re-ranking a non più di 18 ms, unione a non più di 30: **smentita.** Il
+   re-ranking non si muove, l'unione guadagna il 7%.
+6. Heap cresciuto di meno di 1 MB: **+0,4 MB, confermata.**
+
+**Perché la 5 era sbagliata**, con una spiegazione che regge i numeri ma che
+non ho misurato direttamente. Contavo le operazioni, ma il ciclo non è
+limitato da quante sono: ogni somma è una catena di 1.024 moltiplicazioni e
+somme dipendenti l'una dalla precedente, e il processore aspetta la latenza di
+ognuna. Le tre somme di prima erano indipendenti e correvano in parallelo;
+toglierne due lascia la stessa catena, e lo stesso tempo. Né la memoria
+limitava, come pensavo: 80 MB per scansione sono meno di un millisecondo di
+banda. Per accorciare davvero la catena servono più accumulatori, cioè sommare
+in un altro ordine, e i punteggi cambierebbero nelle ultime cifre: una modifica
+dietro un flag, che per ora non vale la complessità. La modifica resta, perché
+costa una mappa e non cambia niente.
+
+Per 7.4 il numero da scrivere è quindi: a 10.000 documenti da 1.024 dimensioni
+la scansione esatta costa circa 12-15 ms per passata su un M2 (il re-ranking
+ne fa una, l'unione due: 24,6 contro 39,6 ms), e il limite sembra la latenza
+della somma, non la banda.
+

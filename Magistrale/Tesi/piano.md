@@ -261,9 +261,12 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       per strada una mia regressione (`_vector` indicizzato come testo senza
       campi dichiarati, `d3fe995`), che non toccava numeri misurati
       (`risultati/esperimenti/2026-09-25_costo-vettori/`)
-- [ ] **Norme dei documenti calcolate una volta**: due terzi della ricerca con
-      vettori sono `cosineSimilarity`, che ricalcola le norme a ogni documento.
-      Stessi punteggi al bit se l'ordine delle somme resta lo stesso
+- [x] **Norme dei documenti calcolate una volta** (Koskidex `10c48bd`): stessi
+      punteggi al bit, ma solo -7% con l'unione e niente col re-ranking. Il
+      ciclo è una catena di somme dipendenti: accorciarla vuole più
+      accumulatori, che cambiano l'ordine delle somme e le ultime cifre dei
+      punteggi. Non fatto: servirebbe un flag, e il costo non è il tema della
+      tesi
 - [x] **Difetto 2** (25/09/2026, Koskidex `f5ce77f`): `Settings.HybridMode`
       (`union`, `vector`), `VectorTopK` 100, re-ranking di default. Il
       re-ranking vale +0,022 su SciFact, +0,024 su NFCorpus, +0,013 sulle
