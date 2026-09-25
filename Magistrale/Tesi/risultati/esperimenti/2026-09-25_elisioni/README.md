@@ -33,10 +33,21 @@ Elasticsearch).
    copre (*quest'*, *sant'*, *quell'*) restano perse anche lì, e si contano a
    parte.
 
+**Aggiunto dopo la prova di sviluppo, prima dell'esecuzione archiviata.** Fra
+le parole più colpite sono uscite *isonzo* e *asio*, e vengono dal campo
+`subjects`, che l'import riempie con l'ente (*Comune di Vito d'Asio*,
+*Gradisca d'Isonzo*). Chi cerca un comune ne scrive probabilmente il nome con
+l'apostrofo, e così lo trova. Le coppie la cui forma elisa sta solo in
+`subjects` restano nel conteggio principale, e si riportano anche le cifre
+senza di loro.
+
 Si riportano: atti con almeno un termine eliso; coppie a rischio, salvate e
 perse; atti con almeno una coppia persa; le stesse cifre per Crispiano e per il
-Friuli Venezia Giulia; le parole con più atti persi (solo parole comuni, con
-almeno 20 atti: niente nomi di persona nell'archivio).
+Friuli Venezia Giulia; le parole con più atti persi, fra quelle presenti in
+almeno 20 atti. A quella soglia restano parole comuni e toponimi, più due nomi
+propri: *antonio*, da *Sant'Antonio*, e *andrea*, da *Sant'Andrea* e in due
+atti dal cognome *D'Andrea*. Il conteggio di una parola sola non identifica
+nessuno, e nell'archivio non finisce nessun titolo.
 
 Una coppia persa dice "la ricerca di questa parola da sola non trova l'atto".
 Non dice quanto spesso qualcuno la cercherebbe: le query reali non ci sono.
