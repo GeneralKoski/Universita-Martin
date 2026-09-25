@@ -153,11 +153,12 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       0,976 contro 0,975 dell'euristico (288 atti primi contro 287). Le due
       correzioni previste non servono
       (`risultati/esperimenti/2026-09-25_known-item-divario/`)
-- [ ] **Recupero intermedio**: qualcosa come `minimum_should_match` di
-      Elasticsearch, fra `all` (giusto sulle query identificative, a vuoto su
-      SciFact) e `any`. Da confrontare con la scelta per tipo di query della
-      sezione 5; voce di diario e ipotesi prima di misurare, e misura su
-      known-item, SciFact e NFCorpus insieme
+- [x] **Recupero intermedio** (25/09/2026, Koskidex `2fd4721`): nessuna
+      impostazione unica. `minimum_should_match` `2<-25% 9<-3` porta le
+      known-item a 0,889 ma SciFact a 0,2556 (169 query a vuoto); la
+      coordinazione di Lucene porta le known-item a 0,944 ma costa 0,027 su
+      SciFact. Spente tutte e due; resta la scelta per tipo di query della
+      sezione 5 (`risultati/esperimenti/2026-09-25_recupero-intermedio/`)
 - [ ] **Decidere i default** di `BM25Expansion` e degli altri interruttori
       misurati: cambiarli cambia il baseline, e va deciso a parte, con il
       relatore

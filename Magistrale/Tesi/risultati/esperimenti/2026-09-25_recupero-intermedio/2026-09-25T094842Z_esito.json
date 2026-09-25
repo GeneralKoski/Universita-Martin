@@ -1,0 +1,218 @@
+{
+  "ran_at": "2026-09-25T09:48:42Z",
+  "config": {
+    "commit": "8853d11",
+    "modifiche_non_committate": "false"
+  },
+  "valutazioni": {
+    "bm25-blended@known-item-auto": {
+      "file": "2026-09-25T091010Z_known-item-auto-bm25-blended.json",
+      "collezione": "known-item-auto",
+      "koskidex": "f449b02",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "",
+      "coordinazione": "spenta",
+      "ndcg@10": 0.8629,
+      "mrr@10": 0.8331,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "atto_primo": 231,
+      "atto_primo_per_lunghezza": {
+        "2 termini": {
+          "query": 150,
+          "primo": 123
+        },
+        "3-4 termini": {
+          "query": 106,
+          "primo": 76
+        },
+        "5 o più": {
+          "query": 44,
+          "primo": 32
+        }
+      },
+      "falliti_per_classe": {
+        "senza numero": 36,
+        "numero esatto": 22,
+        "numero solo per prefisso": 11
+      }
+    },
+    "all-bm25-blended@known-item-auto": {
+      "file": "2026-09-25T094211Z_known-item-auto-all-bm25-blended.json",
+      "collezione": "known-item-auto",
+      "koskidex": "4ee872c",
+      "recupero": "all",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "",
+      "coordinazione": "spenta",
+      "ndcg@10": 0.9687,
+      "mrr@10": 0.9596,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "atto_primo": 281,
+      "atto_primo_per_lunghezza": {
+        "2 termini": {
+          "query": 150,
+          "primo": 140
+        },
+        "3-4 termini": {
+          "query": 106,
+          "primo": 98
+        },
+        "5 o più": {
+          "query": 44,
+          "primo": 43
+        }
+      },
+      "falliti_per_classe": {
+        "numero esatto": 12,
+        "numero solo per prefisso": 7
+      }
+    },
+    "any-bm25-blended-msm@known-item-auto": {
+      "file": "2026-09-25T094746Z_known-item-auto-any-bm25-blended-msm.json",
+      "collezione": "known-item-auto",
+      "koskidex": "2fd4721",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "2<-25% 9<-3",
+      "coordinazione": "spenta",
+      "ndcg@10": 0.9085,
+      "mrr@10": 0.889,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "atto_primo": 255,
+      "atto_primo_per_lunghezza": {
+        "2 termini": {
+          "query": 150,
+          "primo": 140
+        },
+        "3-4 termini": {
+          "query": 106,
+          "primo": 83
+        },
+        "5 o più": {
+          "query": 44,
+          "primo": 32
+        }
+      },
+      "falliti_per_classe": {
+        "senza numero": 28,
+        "numero esatto": 10,
+        "numero solo per prefisso": 7
+      }
+    },
+    "any-bm25-blended-coord@known-item-auto": {
+      "file": "2026-09-25T094748Z_known-item-auto-any-bm25-blended-coord.json",
+      "collezione": "known-item-auto",
+      "koskidex": "2fd4721",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "",
+      "coordinazione": "accesa",
+      "ndcg@10": 0.9565,
+      "mrr@10": 0.9444,
+      "recall@100": 1,
+      "a_vuoto": 0,
+      "atto_primo": 275,
+      "atto_primo_per_lunghezza": {
+        "2 termini": {
+          "query": 150,
+          "primo": 140
+        },
+        "3-4 termini": {
+          "query": 106,
+          "primo": 97
+        },
+        "5 o più": {
+          "query": 44,
+          "primo": 38
+        }
+      },
+      "falliti_per_classe": {
+        "numero esatto": 11,
+        "senza numero": 7,
+        "numero solo per prefisso": 7
+      }
+    },
+    "bm25-blended@scifact": {
+      "file": "2026-09-25T091030Z_scifact-bm25-blended.json",
+      "collezione": "scifact",
+      "koskidex": "f449b02",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "",
+      "coordinazione": "spenta",
+      "ndcg@10": 0.6694,
+      "mrr@10": 0.641,
+      "recall@100": 0.8859,
+      "a_vuoto": 0
+    },
+    "bm25-blended-msm@scifact": {
+      "file": "2026-09-25T094758Z_scifact-bm25-blended-msm.json",
+      "collezione": "scifact",
+      "koskidex": "2fd4721",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "2<-25% 9<-3",
+      "coordinazione": "spenta",
+      "ndcg@10": 0.2556,
+      "mrr@10": 0.2587,
+      "recall@100": 0.2628,
+      "a_vuoto": 169
+    },
+    "bm25-blended-coord@scifact": {
+      "file": "2026-09-25T094809Z_scifact-bm25-blended-coord.json",
+      "collezione": "scifact",
+      "koskidex": "2fd4721",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "",
+      "coordinazione": "accesa",
+      "ndcg@10": 0.6422,
+      "mrr@10": 0.6095,
+      "recall@100": 0.8772,
+      "a_vuoto": 0
+    },
+    "bm25-blended@nfcorpus": {
+      "file": "2026-09-25T091047Z_nfcorpus-bm25-blended.json",
+      "collezione": "nfcorpus",
+      "koskidex": "f449b02",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "",
+      "coordinazione": "spenta",
+      "ndcg@10": 0.3049,
+      "mrr@10": 0.5062,
+      "recall@100": 0.2391,
+      "a_vuoto": 24
+    },
+    "bm25-blended-msm@nfcorpus": {
+      "file": "2026-09-25T094811Z_nfcorpus-bm25-blended-msm.json",
+      "collezione": "nfcorpus",
+      "koskidex": "2fd4721",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "2<-25% 9<-3",
+      "coordinazione": "spenta",
+      "ndcg@10": 0.2268,
+      "mrr@10": 0.3897,
+      "recall@100": 0.1138,
+      "a_vuoto": 100
+    },
+    "bm25-blended-coord@nfcorpus": {
+      "file": "2026-09-25T094814Z_nfcorpus-bm25-blended-coord.json",
+      "collezione": "nfcorpus",
+      "koskidex": "2fd4721",
+      "recupero": "any",
+      "bm25_espansioni": "blended",
+      "minimum_should_match": "",
+      "coordinazione": "accesa",
+      "ndcg@10": 0.2935,
+      "mrr@10": 0.4889,
+      "recall@100": 0.2338,
+      "a_vuoto": 24
+    }
+  }
+}
