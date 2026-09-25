@@ -14,6 +14,9 @@ Nell'archivio `risultati/` e nel diario di Koskidex ricorrono i loro nomi: i
 `piano-implementazione.md`.
 
 La domanda di tesi, le scelte e il perché stanno in [appunti.md](appunti.md).
+Quello che non è sviluppo (persone da trovare, test da far fare, decisioni,
+relatore) è raccolto anche in [da-fare-a-mano.md](da-fare-a-mano.md): per ora il
+lavoro va avanti sullo sviluppo.
 
 ## Dove siamo (25/09/2026)
 
