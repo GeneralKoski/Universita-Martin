@@ -105,3 +105,29 @@ terzi dei quali nel calcolo della similarità. Il prossimo passo ovvio sono le
 norme dei documenti calcolate una volta sola (`bge-m3` li dà già normalizzati,
 ma il motore non può saperlo), che lascerebbe il solo prodotto scalare.
 
+
+## Seconda modifica: le norme calcolate una volta
+
+`cosineSimilarity` calcola a ogni chiamata il prodotto scalare e le due norme:
+tre moltiplicazioni e somme per valore. La norma della query si può calcolare
+una volta per ricerca, quella di ogni documento una volta all'aggiunta; resta
+il solo prodotto scalare. Le tre somme sono indipendenti, e calcolando le norme
+con lo stesso ciclo, nello stesso ordine, il risultato è lo stesso al bit: lo
+controlla lo stesso test di prima (`TestVectorScoresDoNotDependOnTheVectorType`)
+più uno che confronta la similarità nuova con `cosineSimilarity` su vettori
+casuali, al bit.
+
+Stesso benchmark, stessa macchina, sul commit prima e dopo.
+
+### Prima di misurare
+
+Scritto e committato prima del codice.
+
+5. **Tempo**: col re-ranking da 24,7 ms a non più di 18, con l'unione da 42,7
+   a non più di 30. Il ciclo per documento passa da tre operazioni per valore
+   a una, ma legge gli stessi 8 KB di vettore: la memoria limita il guadagno,
+   che stimo intorno a 1,5× sulla parte vettoriale.
+6. **Memoria**: l'heap vivo cresce di meno di 1 MB (un float64 per documento
+   in una mappa).
+
+### Esito della seconda modifica
