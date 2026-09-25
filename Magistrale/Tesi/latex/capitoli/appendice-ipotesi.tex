@@ -309,14 +309,48 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & 0,9498, 275, 299: confermata \\
     & 3. Nessuna delle 24 query perde un documento, almeno una ne guadagna
     & 0 perse, 7 guadagnano: confermata \\
+  \addlinespace
+  Diario, contesto di Ollama
+    & 1. Con \texttt{context} a zero la richiesta resta identica e il nome del
+      modello non cambia
+    & test verde: confermata \\
+    & 2. Con \texttt{context} 8.192 un testo oltre 2.048 token ha un vettore
+      diverso
+    & vettori identici: smentita \\
+    & 3. \texttt{TestBaselineRankingIsFrozen} passa senza modifiche
+    & confermata \\
+    & 4. (dopo la 2) Con \texttt{num\_ctx} e \texttt{num\_batch} Ollama legge
+      8.192 token
+    & confermata \\
+    & 5. (dopo la 2) A zero la richiesta resta \texttt{model} e
+      \texttt{input}
+    & test verde: confermata \\
+  \addlinespace
+  \texttt{contesto-ollama}
+    & 1. Con il contesto predefinito Ollama legge al più 2.048 token$^{\dagger}$
+    & confermata \\
+    & 2. Con \texttt{num\_ctx} 8.192 legge fino a 8.192 token
+    & 2.048 come senza: smentita \\
+    & 3. Fra il 30\% e il 70\% dei testi integrali di Crispiano supera 2.048
+      token
+    & 334 su 563 (59\%): confermata \\
+    & 4. Meno del 5\% dei testi integrali arriva a 8.192 token
+    & 3 su 563: confermata \\
+    & 5. Nessuna scheda supera 2.048 token
+    & la più lunga 486: confermata \\
+    & 6. (aggiunta) Meno dell'1\% dei documenti di SciFact e NFCorpus supera
+      2.048 token
+    & 3 e 2 (0,06\%): confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 104: 68 confermate, 26 smentite, 7 a metà, e 3 senza
+In tutto le previsioni sono 115: 77 confermate, 28 smentite, 7 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 101 con un esito, una su
-tre non ha tenuto del tutto. Gli esperimenti \texttt{cause-divergenza},
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 112 con un esito, quasi
+una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
+già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non
 hanno previsioni numeriche: il primo registrava due ipotesi sulle cause della
 divergenza residua, scritte senza soglia e sbagliate tutte e due. Le quattro

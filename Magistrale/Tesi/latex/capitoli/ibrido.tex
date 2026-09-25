@@ -33,15 +33,30 @@ Documentale i sei campi della scheda. Calcolare la prima volta i vettori ha
 richiesto 11 minuti per i 5.183 documenti di SciFact, 8 per i 3.633 di NFCorpus e 9
 per i 10.018 atti; dalla cache, frazioni di secondo.
 
+\paragraph{Quanto testo arriva al vettore.} Il contesto di 8.192 token è quello
+del modello, non quello che Ollama usa: senza opzioni nella richiesta, Ollama
+legge i primi 2.048 token di un testo e scarta il resto. Chiedere un contesto più
+grande con \texttt{num\_ctx} non basta, perché Ollama taglia al minimo fra
+\texttt{num\_ctx} e la dimensione del batch, \texttt{num\_batch}, che vale anch'essa
+2.048. L'ho scoperto tardi, e per caso: una prova su dati inventati dava numeri
+identici con e senza il contesto più grande. L'esperimento che lo misura
+(\texttt{2026-09-25\_contesto-ollama}) conta i token letti documento per
+documento. Nessuna scheda arriva alla soglia (la più lunga ha 486 token), e in
+SciFact e NFCorpus la superano 5 documenti su 8.816, di poche centinaia di token:
+i vettori delle misure di questo capitolo hanno letto tutto il testo, o quasi. Dei 563 testi integrali
+degli atti di Crispiano, invece, il 59\% supera i 2.048 token (mediana 2.168), e
+solo 3 arrivano a 8.192. Koskidex ha ora un'impostazione, \texttt{embedder.context},
+che manda a Ollama \texttt{num\_ctx} e \texttt{num\_batch} con lo stesso valore;
+a zero la richiesta resta quella di sempre.
+
 \paragraph{La suddivisione dei documenti lunghi.} Un modello di embedding ha un
 contesto limitato, e i documenti più lunghi di quel contesto vanno spezzati in
-parti, con un vettore per parte. Per questa tesi la questione, oggi, non si pone:
-Documentale indicizza le schede, che sono brevi, e anche il testo integrale degli
-atti di Crispiano, fra i 5 e i 13 mila caratteri, sta secondo una stima nell'ordine
-di qualche migliaio di token, sotto il contesto di \texttt{bge-m3}. Se spezzare
-convenga comunque, per la pertinenza e non per il limite del modello, lo dirà la
-misura della scheda contro il testo intero (sezione~\ref{sec:scheda-testo}), che
-aspetta le query known-item scritte da persone.
+parti, con un vettore per parte. Per le schede, che Documentale indicizza oggi,
+la questione non si pone. Per il testo integrale, con il contesto portato a 8.192
+token, resterebbero tagliati 3 atti su 563. Se leggere tutto il testo, o
+spezzarlo, migliori la pertinenza lo dirà la misura della scheda contro il testo
+intero (sezione~\ref{sec:scheda-testo}), che confronta il vettore dei primi 2.048
+token con quello dei primi 8.192 e aspetta le query known-item scritte da persone.
 
 \section{Difetto 2: dal re-ranking al recupero ibrido}\label{sec:difetto2}
 

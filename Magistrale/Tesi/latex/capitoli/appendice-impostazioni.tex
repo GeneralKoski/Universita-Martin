@@ -72,6 +72,9 @@ controlla a ogni commit.
   \texttt{embedder} & vuoto, \texttt{ollama} con modello e campi & il server
   calcola i vettori dei documenti e delle query con un modello locale
   (sezione~\ref{sec:embedding}) \\
+  \texttt{embedder.} \texttt{context} & 0, intero & quanti token del testo legge
+  il modello; con 0 decide Ollama, che ne legge 2.048
+  (sezione~\ref{sec:embedding}) \\
   \texttt{hybrid\_mode} & vuoto, \texttt{union}, \texttt{vector} & chi entra fra i
   candidati: i lessicali, riordinati dal vettore; i lessicali più i più vicini;
   solo i più vicini (sezione~\ref{sec:difetto2}) \\
