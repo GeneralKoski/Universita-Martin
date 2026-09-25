@@ -343,12 +343,9 @@ l'obiettivo di quel giorno era aprire un canale, non ottenere un sì.
    essere già nella loro testa quando decidono a chi assegnare cosa, invece di
    arrivare quando la lista è già distribuita.
 
-**La leva da non sprecare:** il progetto di Laboratorio di IA deve applicare i
-concetti del laboratorio più qualcosa dalla teoria di Algoritmi. Se lo si sceglie
-su un terreno vicino al recupero dell'informazione e alla valutazione del
-ranking, diventa allo stesso tempo l'esame e la dimostrazione da portare a
-Bonnici. Un progetto solo, due scopi. Da valutare quando Bonnici assegna i temi,
-senza forzare: se il tema è lontano, si fa il progetto e basta.
+**Il progetto di Laboratorio di IA non si lega alla tesi** (precisato il
+25/09/2026): le tracce le dà Bonnici, e non si sceglie il tema per farne una
+dimostrazione. Conta come esame fatto bene, sotto il suo giudizio, e basta.
 
 **Da chiedere a ricevimento**, a chiunque dei due apra: cosa considera un
 contributo sufficiente per una magistrale, che dimensione si aspetta, se va bene

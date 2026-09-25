@@ -70,7 +70,7 @@ Ogni corso ha un `README.md` con scheda ufficiale e indice completo. Per i corsi
 
 **Argomento deciso il 15/09/2026, confermato il 23/09/2026: Koskidex innestato in Documentale.** Non l'integrazione in sé, ma i difetti del recupero di Koskidex (recupero congiuntivo, niente IDF, ibrido che è solo re-ranking, fusione di scale incomparabili), ognuno un capitolo con un risultato numerico misurato contro il codice di partenza come baseline. Al 25/09/2026 i primi due sono chiusi e misurati, e Koskidex è innestato in Documentale accanto a Elasticsearch con gli stessi insiemi di risultati. Tutto il materiale sta in `Magistrale/Tesi/`: `appunti.md` (decisioni e scoperte), `piano.md` (unico piano, con le regole e cosa resta da fare), `risultati/` (archivio di ogni misura), `latex/` (template UniPR).
 
-**Relatore ancora aperto.** Il 21/09/2026 primo aggancio in aula con **Dal Palù** e **Bonnici**, senza chiudere. La riproposta vera è a **dicembre 2026**, a progetti d'esame consegnati e prima che escano le tracce di gennaio 2027. Leva da sfruttare: il progetto di Laboratorio di IA, se scelto vicino al recupero dell'informazione, fa da esame e da dimostrazione per Bonnici.
+**Relatore ancora aperto.** Il 21/09/2026 primo aggancio in aula con **Dal Palù** e **Bonnici**, senza chiudere. La riproposta vera è a **dicembre 2026**, a progetti d'esame consegnati e prima che escano le tracce di gennaio 2027. Il progetto di Laboratorio di IA non c'entra con la tesi: le tracce le dà il prof (precisato il 25/09/2026).
 
 **Tempi.** Il lavoro tecnico è in anticipo: la previsione è di chiuderlo prima della sessione invernale 2027, nonostante i sette esami ancora da dare; dopo resta la scrittura. Laurea a settembre 2027, consegna fra luglio e agosto.
 

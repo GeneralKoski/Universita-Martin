@@ -227,8 +227,6 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
 
 ### 7. Relatore e calendario
 
-- [ ] Scegliere il progetto di Laboratorio di IA guardando se può fare da
-      dimostrazione per Bonnici
 - [ ] **Dicembre 2026**: riproporre la tesi a Bonnici e Dal Palù, a progetti
       consegnati. Domande da portare: cosa considerano un contributo sufficiente
       per una magistrale, che dimensione si aspettano, se va bene un corpus
