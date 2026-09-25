@@ -1,21 +1,292 @@
 \chapter{I sistemi e l'innesto}\label{chapter:sistemi}
 
-\section{Koskidex: com'era il 23 settembre 2026}
+Questa tesi misura i difetti di recupero di un motore di ricerca piccolo,
+Koskidex, dentro un sistema vero, Documentale. Prima di misurare qualsiasi
+difetto serve una condizione: che il motore piccolo, messo al posto di
+Elasticsearch, trovi gli stessi documenti. Senza quella condizione ogni
+miglioramento misurato su Koskidex si potrebbe liquidare con una frase sola:
+\emph{stai migliorando il tuo motore, non il nostro sistema}. Questo capitolo
+descrive i due sistemi com'erano all'inizio del lavoro, l'innesto dell'uno
+nell'altro e le differenze di matching che è stato necessario trovare e
+correggere per arrivare agli stessi risultati.
 
-Da scrivere.
+\section{Koskidex: com'era il 23 settembre 2026}\label{sec:koskidex}
 
-\section{Documentale: come cerca in produzione}
+Koskidex è un motore di ricerca full-text scritto in Go, nato come progetto
+personale per la barra di ricerca di un piccolo negozio online. Si distribuisce
+come un binario solo, senza servizi esterni, e l'unica dipendenza del codice è
+\texttt{golang.org/x/text}, per la normalizzazione Unicode. Quando è stato scelto
+come oggetto di questa tesi contava circa 2.850 righe di codice e 2.060 di test.
 
-Da scrivere.
+\paragraph{Struttura.} Il cuore è un indice invertito in memoria: per ogni
+termine la lista delle occorrenze (\emph{posting}), ciascuna con documento,
+campo e posizione. Accanto all'indice ci sono i documenti originali, l'elenco
+dei termini di ogni documento (per cancellarlo senza scorrere l'indice intero) e
+una mappa dai primi due caratteri ai termini che li hanno, usata per cercare i
+refusi. La persistenza è un registro delle operazioni (\emph{write-ahead log}) in
+JSON, scritto prima di toccare l'indice, più un'istantanea periodica di tutti i
+documenti; all'avvio il motore ricarica l'istantanea e riapplica il registro.
+Tutto si usa da un'API HTTP: indici, documenti, impostazioni, ricerca con
+filtri e faccette.
 
-\section{L'innesto: un contratto, due motori, gli stessi risultati}
+\paragraph{La ricerca.} Una query si spezza in termini su ogni carattere che non
+è una lettera o una cifra, in minuscolo e senza accenti. Ogni termine della
+query è \textbf{obbligatorio}: un documento entra fra i risultati solo se li
+contiene tutti. Per ogni termine valgono tre forme di corrispondenza:
+\begin{itemize}
+  \item la forma esatta;
+  \item la ricerca per prefisso, per cui \texttt{manut} trova
+        \texttt{manutenzione};
+  \item i refusi, con la distanza di Damerau~\cite{damerau1964}: uno da quattro
+        caratteri in su, due da otto.
+\end{itemize}
+Il punteggio di un documento è la somma, sui termini, di
+\[
+  (10 - \text{refusi} + 2 \cdot \text{esatto}) \cdot \text{peso del campo},
+\]
+dove \emph{esatto} vale 1 se la corrispondenza è esatta. Non c'è frequenza
+documentale inversa: un termine che compare in un documento su diecimila pesa
+quanto uno che compare in tutti. Un campo \texttt{TF} esisteva nella struttura
+delle occorrenze, con il commento \emph{calculated later}, e non era letto da
+nessuna parte.
 
-Da scrivere.
+\paragraph{I vettori.} Un documento può avere un vettore, e una ricerca può
+portare il vettore della query. In quel caso al punteggio di ogni documento
+\emph{già trovato} dalla parte lessicale si aggiunge la similarità del coseno
+moltiplicata per 20. È un riordino dei risultati lessicali, non una ricerca
+ibrida: un documento che non contiene le parole della query non entra mai.
 
-\section{Le differenze di matching trovate per arrivarci}
+\paragraph{Il punto di partenza, congelato.} Il comportamento di quel giorno è
+fissato in un test, \texttt{TestBaselineRankingIsFrozen}, che confronta gli
+ordinamenti di un corpus di prova con quelli registrati e che deve passare,
+senza modifiche al test, a ogni commit successivo. Ogni correzione descritta
+nei capitoli seguenti sta dietro un'impostazione, con il comportamento di
+partenza come valore predefinito. Misurato sulle collezioni pubbliche del
+capitolo~\ref{chapter:valutazione}, il punto di partenza fa 0,0246 di nDCG@10 su
+SciFact e 0,1659 su NFCorpus.
 
-Da scrivere.
+Letto il codice, quattro scelte sembravano i candidati a difetti di recupero:
+il recupero congiuntivo, l'assenza di IDF, il vettore che riordina senza
+recuperare e la costante 20 che somma due scale diverse. Sono i difetti dei
+capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido}. Il primo, come si vedrà,
+è stato trovato misurando e non leggendo: la tesi stava per essere scritta su
+tre capitoli di ottimizzazione del punteggio di un motore che su SciFact non
+restituiva niente in 290 query su 300.
 
-\section{Prestazioni dell'innesto}
+\section{Documentale: come cerca in produzione}\label{sec:documentale}
 
-Da scrivere.
+Documentale è un sistema di gestione documentale sviluppato da Dieffetech: un
+backend Laravel, un'interfaccia Next.js, MySQL per i dati ed Elasticsearch per la
+ricerca. Chi lo usa archivia atti e documenti in cartelle, con un nome, dei tag,
+un riassunto, dei soggetti (gli enti o le persone coinvolte), delle note e dei
+metadati liberi.
+
+\paragraph{Due indici.} La ricerca passa da un servizio,
+\texttt{ElasticsearchService}, che tiene due indici: uno per i documenti e uno
+per le cartelle. L'indice dei documenti ha sei campi di testo, \texttt{name},
+\texttt{tags}, \texttt{summary}, \texttt{subjects}, \texttt{notes} e
+\texttt{additional\_data}, con l'analizzatore predefinito di Elasticsearch, cioè
+il tokenizer standard senza filtri per l'italiano. Il testo integrale dei
+documenti non è indicizzato: si cerca sulla scheda.
+
+\paragraph{La query.} La ricerca dei documenti è un \texttt{multi\_match}
+di tipo \texttt{best\_fields}~\cite{es-multimatch} con quattro parametri, che il
+codice commenta uno per uno:
+\begin{itemize}
+  \item \texttt{operator: and}, \emph{tutte le parole devono comparire};
+  \item \texttt{fuzziness: AUTO}, un refuso da tre caratteri, due da sei;
+  \item \texttt{prefix\_length: 1}, la prima lettera non ammette refusi;
+  \item i pesi dei campi: \texttt{name} 5, \texttt{tags} 4, \texttt{summary} e
+        \texttt{subjects} 3, \texttt{notes} 2, \texttt{additional\_data} 1.
+\end{itemize}
+Con \texttt{best\_fields} e \texttt{operator: and} tutte le parole della query
+devono stare \emph{nello stesso campo}: è un dettaglio che il
+capitolo~\ref{chapter:produzione} ritroverà come difetto. La ricerca delle
+cartelle è diversa: un \texttt{match} con refusi sul percorso, in disgiunzione,
+unito a un \emph{wildcard} \texttt{*termine*}.
+
+\paragraph{Il recupero è congiuntivo anche qui.} Koskidex ed Elasticsearch, in
+due basi di codice indipendenti, arrivano alla stessa scelta per la stessa
+ragione: in una barra di ricerca, chi scrive due parole si aspetta documenti che
+le contengano tutte e due. È la scelta che il capitolo~\ref{chapter:lessicale}
+misura come difetto 0 quando le query si allungano.
+
+\paragraph{Il corpus.} Documentale non ha più un archivio di clienti: Dieffetech
+lo ha abbandonato nel settembre 2026, e con lui il progetto Elasticsearch in
+cloud. Il sistema però gira in locale, con i suoi comandi di importazione e di
+indicizzazione, e il contenuto è stato sostituito con un corpus pubblico della
+stessa famiglia: 10.018 atti degli albi pretori comunali, 563 del Comune di
+Crispiano con il testo integrale e 9.455 di 171 enti del Friuli Venezia Giulia
+con i soli metadati. Il corpus è descritto nel
+capitolo~\ref{chapter:valutazione}. Qui conta che gli atti entrano in
+Documentale dal suo codice di importazione e in Elasticsearch dal suo comando di
+indicizzazione, come in produzione: la ricerca misurata è quella dell'app, non
+una sua ricostruzione.
+
+\section{L'innesto: un contratto, due motori, gli stessi risultati}\label{sec:innesto}
+
+\paragraph{Il contratto.} L'app non parla con Elasticsearch direttamente ma con
+un'interfaccia, \texttt{SearchBackend}, estratta da \texttt{ElasticsearchService}
+con una regola sola: le firme sono quelle del servizio in produzione, e se una
+firma non torna si corregge l'interfaccia, non il servizio. I metodi sono quelli
+che l'app usa davvero: creare i due indici, indicizzare un elemento o un blocco
+nel formato \emph{bulk} di Elasticsearch, cancellare, aggiornare, controllare
+l'esistenza e cercare (\texttt{fuzzySearch}, che restituisce gli id in ordine di
+rilevanza). Accanto a \texttt{ElasticsearchService} c'è \texttt{KoskidexService},
+che implementa lo stesso contratto su un client HTTP di Koskidex, e quale dei due
+si usa lo decide una variabile d'ambiente, \texttt{SEARCH\_BACKEND}. Nient'altro
+dell'app cambia.
+
+\paragraph{Prima dell'innesto, un motore completo.} La regola era di non
+innestare un Koskidex che non sapesse fare tutto quello che l'app chiede.
+Provandolo contro il contratto sono venuti fuori sette buchi, chiusi uno per uno
+in Koskidex con test scritti prima e visti fallire: gli id interi, che venivano
+scartati in silenzio; i campi lista (i tag, i soggetti), che venivano salvati ma
+non indicizzati; un limite di risultati troppo basso e risposte senza punteggio;
+la cancellazione di molti documenti in una richiesta; la ricerca per
+sottostringa che serve alle cartelle; e le impostazioni per riprodurre il
+matching di Elasticsearch, descritte nella sezione seguente.
+
+\paragraph{Le impostazioni di compatibilità.} \texttt{KoskidexService} crea
+l'indice dei documenti con le impostazioni che riproducono la query di
+produzione: tutti i termini obbligatori, tutti nello stesso campo, le soglie dei
+refusi di \texttt{fuzziness: AUTO}, niente ricerca per prefisso, la prima lettera
+esatta, il tokenizer standard e gli stessi pesi dei campi. Il punteggio resta
+quello di Koskidex: la compatibilità riguarda \emph{quali} documenti si trovano,
+non in che ordine.
+
+\paragraph{Il risultato.} Dal vivo, passando dall'app sui 10.018 atti e cambiando
+solo \texttt{SEARCH\_BACKEND}, Koskidex restituisce \textbf{gli stessi insiemi di
+Elasticsearch su 24 query su 24} del confronto, e su 300 su 300 delle query
+\emph{known-item} del capitolo~\ref{chapter:produzione}, una famiglia di query
+che il confronto non conteneva. Gli ordinamenti invece coincidono nei primi dieci
+risultati solo su 7 query, quelle con al più due risultati: il punteggio
+euristico di Koskidex non è BM25. È esattamente la condizione che serve. Da qui
+in poi, ogni differenza misurata fra Koskidex e il suo punto di partenza viene
+dalla correzione che si sta misurando, non da un motore che trova altro.
+
+La parità ha un rovescio, e va detto subito: \textbf{riproducendo Elasticsearch,
+Koskidex ne eredita i difetti}. Sulle 300 query known-item trova gli stessi
+insiemi di Elasticsearch, query per query, e quindi manca gli stessi atti. La parità non è il traguardo ma il punto da
+cui misurare le correzioni del capitolo~\ref{chapter:produzione}.
+
+\section{Le differenze di matching trovate per arrivarci}\label{sec:differenze}
+
+La parità non era scontata. Su un primo campione di quattordici documenti con la
+forma dei dati di Documentale i due motori trovavano gli stessi insiemi; sul
+corpus vero di 10.018 atti coincidevano su 8 query su 24. Il modello di recupero
+era lo stesso, congiuntivo, ma il matching differiva. Per trovare in cosa, a
+Koskidex è stato dato esattamente il contenuto che Elasticsearch aveva
+indicizzato, copiato dall'indice, e si è aggiunta una correzione alla volta,
+contando a ogni passo le query con lo stesso insieme e i documenti trovati da un
+motore solo (tabella~\ref{tab:divergenza}).
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    Passo & query identiche & solo Elasticsearch & solo Koskidex \\
+    \midrule
+    0. Koskidex com'era & 8 / 24 & 124 & 447 \\
+    1. tutte le parole nello stesso campo & 10 / 24 & 124 & 121 \\
+    2. soglie dei refusi di Elasticsearch & 12 / 24 & 0 & 154 \\
+    3. niente ricerca per prefisso & 13 / 24 & 0 & 116 \\
+    4. prima lettera esatta & 15 / 24 & 0 & 84 \\
+    5. tokenizer standard & \textbf{24 / 24} & \textbf{0} & \textbf{0} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Le differenze fra i due motori sulle 24 query del confronto,
+  aggiungendo a Koskidex una correzione alla volta. I passi 2-5 sono misurati
+  dopo la correzione del difetto dei bigrammi descritta nel testo.}
+  \label{tab:divergenza}
+\end{table}
+
+\paragraph{Le cinque cause.}
+\begin{enumerate}
+  \item \textbf{La congiunzione per campo.} Con \texttt{best\_fields} e
+        \texttt{operator: and} tutte le parole devono stare nello stesso campo;
+        Koskidex le accettava sparse fra i campi. È la causa più grossa: 326
+        dei 447 documenti in più.
+  \item \textbf{Le soglie dei refusi.} Elasticsearch ammette un refuso da tre
+        caratteri e due da sei, Koskidex da quattro e da otto.
+  \item \textbf{La ricerca per prefisso}, che Koskidex fa e Elasticsearch, con
+        quella query, no.
+  \item \textbf{La prima lettera esatta}, per \texttt{prefix\_length: 1}.
+  \item \textbf{Il tokenizer.} Il tokenizer standard di Elasticsearch segue le
+        regole di segmentazione di Unicode~\cite{uax29}, che tengono dentro la
+        parola un apostrofo fra due lettere e uniscono date e decimali:
+        \emph{dell'illuminazione} è un termine solo, e \texttt{14.01.2026}
+        anche. Koskidex spezzava su ogni carattere che non è lettera o cifra.
+\end{enumerate}
+Ciascuna è diventata un'impostazione di Koskidex, spenta per default.
+
+\paragraph{Due ipotesi sbagliate, e un difetto di Koskidex.} Dopo il quarto passo
+restavano 9 query diverse, con 42 documenti trovati solo da Elasticsearch, quasi
+tutti sulla query \texttt{ordinanza 187}. Le due spiegazioni scritte allora
+erano plausibili e sbagliate tutte e due. La prima era la tokenizzazione dei
+numeri. La seconda era il limite di espansioni dei refusi di Elasticsearch
+(\texttt{max\_expansions}), smentita rilanciando la query di produzione con un
+limite di diecimila: stessi insiemi. La causa vera era un difetto di Koskidex.
+I candidati per i refusi venivano solo dai termini con almeno un bigramma in
+comune con la parola cercata, e \texttt{17} non ne ha nessuno con \texttt{187},
+pur distando un refuso. Una modifica rompe fino a due bigrammi, una
+trasposizione tre, e sotto una certa lunghezza non resta nessuna garanzia: con
+le soglie predefinite capitava anche ad \texttt{atre} contro \texttt{arte}. Il
+motore prometteva la distanza di Damerau e non la manteneva. La correzione non è
+un'impostazione: per le parole troppo corte perché i bigrammi garantiscano un
+candidato, ora si scorre il vocabolario intero, con un filtro sulla lunghezza
+prima della distanza.
+
+Il quinto passo è arrivato chiedendo a Elasticsearch, con \texttt{\_explain},
+perché non trovava un documento preciso: il nome diceva \emph{dell'illuminazione
+pubblica}. È la lezione di metodo di questa sezione, e torna nel resto della
+tesi: le ipotesi scritte senza verificarle erano ragionevoli, e l'unica che ha
+risolto è venuta da una domanda precisa a un documento preciso.
+
+\paragraph{Un difetto di Documentale, visto per la prima volta.} Il tokenizer
+standard è la scelta giusta per le date (\texttt{18} non deve combaciare dentro
+\texttt{18.01.2026}) e quella sbagliata per le elisioni: chi cerca
+\emph{illuminazione} non trova gli atti che dicono \emph{dell'illuminazione}. Il
+capitolo~\ref{chapter:produzione} conta quanti sono.
+
+\section{Prestazioni dell'innesto}\label{sec:prestazioni-innesto}
+
+Con l'innesto fatto, lo stesso confronto dà i costi dei due motori passando
+dall'app: indicizzazione dei 10.018 atti da indice vuoto con il comando di
+Documentale, e le 24 query tre volte per motore (tabella~\ref{tab:innesto}).
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    & Koskidex & Elasticsearch \\
+    \midrule
+    insiemi identici sulle 24 query & \multicolumn{2}{c}{24 / 24} \\
+    primi dieci identici & \multicolumn{2}{c}{7 / 24} \\
+    ricerca, mediana per query & 2,7 ms & 22,0 ms \\
+    indicizzazione di 10.018 atti & 1,9 s & 1,7 s \\
+    \bottomrule
+  \end{tabular}
+  \caption{L'innesto misurato dall'app, sugli stessi atti e sulle stesse query.
+  Koskidex compilato dal commit \texttt{f583d03}, Elasticsearch 9.1.0 locale.}
+  \label{tab:innesto}
+\end{table}
+
+I tempi vanno letti come ordini di grandezza, per due ragioni: Elasticsearch
+gira nella macchina virtuale di Docker e Koskidex nativo, e tutti e due i tempi
+comprendono il viaggio HTTP da PHP. Quello che dicono è che, su un archivio di
+diecimila atti, il motore piccolo non costa di più.
+
+\paragraph{La prima misura ha trovato un altro difetto.} La prima
+indicizzazione con Koskidex costava 31,8 secondi: 2,6 millisecondi per
+documento, costanti. Ogni documento sincronizzava il registro delle operazioni
+sul disco, e su macOS una sincronizzazione è un \texttt{F\_FULLFSYNC}, che
+attende il supporto fisico. Ora una richiesta scrive tutte le sue righe del
+registro con una sincronizzazione sola, e se la scrittura fallisce non entra
+niente nell'indice: da 31,8 a 1,9 secondi, con lo stesso formato del registro.
+
+È la seconda volta in questo capitolo, dopo i bigrammi, che la misura trova un
+difetto che nessuno stava cercando. Non sarà l'ultima, e non è un caso: un
+impianto che misura tutto dall'app, con il codice di produzione, passa dagli
+stessi percorsi che percorrerebbe un utente, compresi quelli che nessun test
+aveva previsto.
