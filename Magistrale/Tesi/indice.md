@@ -101,7 +101,7 @@ correzione in Koskidex innestato: le stesse coppie recuperate), `_known-item-aut
 7.1 Gli embedding e la suddivisione dei documenti lunghi
 7.2 Difetto 2: dal re-ranking al recupero ibrido ✅
 7.3 Difetto 3: fondere scale incomparabili ✅
-7.4 Il costo: scansione dei vettori, latenza, memoria
+7.4 Il costo: scansione dei vettori, latenza, memoria 🔶
 7.5 Scegliere la configurazione per tipo di query 🔶
 
 *Materiale:* 7.2 ha `2026-09-25_ibrido-unione/` (re-ranking +0,022 e +0,024,
@@ -115,8 +115,11 @@ unico regge i due tipi); 7.5 ha
 0,0006 dall'oracolo, e una regola a due condizioni che fa lo stesso) e
 `_scelta-ibrida/` (con unione e peso del vettore per tipo la stessa regola vale
 +0,023 sulla migliore configurazione fissa; l'oracolo ha 0,016 di spazio che la
-forma della query non coglie). *Manca:* la scelta rifatta sulle known-item
-umane; la suddivisione dei documenti lunghi (7.1); il costo (7.4). Gli
+forma della query non coglie). 7.4 ha `_costo-vettori/` (convertire i
+vettori una volta sola dimezza la ricerca e toglie due terzi della memoria; il
+resto è il prodotto scalare). *Manca:* la scelta rifatta sulle known-item
+umane; la suddivisione dei documenti lunghi (7.1); il costo misurato in
+Documentale (7.4). Gli
 embedding vengono da `bge-m3` in locale (deciso il 25/09/2026).
 
 ### 8. Il confronto finale con Elasticsearch ⬜

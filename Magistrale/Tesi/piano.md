@@ -253,6 +253,17 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       diverso in 18, mediana da 8,7 a 33 ms (vettore della query più la
       conversione dei vettori a ogni ricerca)
 - [ ] Suddivisione dei documenti lunghi in parti: decisa, scritta e misurata
+- [x] **Costo dei vettori** (25/09/2026, Koskidex `8260289`): i vettori
+      arrivati via HTTP o dallo snapshot si ricopiavano per ogni documento a
+      ogni ricerca; ora si convertono una volta all'aggiunta. Su 10.000
+      documenti da 1.024 dimensioni la ricerca passa da 57,6 a 24,7 ms col
+      re-ranking e da 102,6 a 42,7 con l'unione, l'heap da 270 a 95 MB. Trovata
+      per strada una mia regressione (`_vector` indicizzato come testo senza
+      campi dichiarati, `d3fe995`), che non toccava numeri misurati
+      (`risultati/esperimenti/2026-09-25_costo-vettori/`)
+- [ ] **Norme dei documenti calcolate una volta**: due terzi della ricerca con
+      vettori sono `cosineSimilarity`, che ricalcola le norme a ogni documento.
+      Stessi punteggi al bit se l'ordine delle somme resta lo stesso
 - [x] **Difetto 2** (25/09/2026, Koskidex `f5ce77f`): `Settings.HybridMode`
       (`union`, `vector`), `VectorTopK` 100, re-ranking di default. Il
       re-ranking vale +0,022 su SciFact, +0,024 su NFCorpus, +0,013 sulle
@@ -300,7 +311,8 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       --punteggi` lo registra nel rapporto; senza l'opzione il rapporto è
       quello di sempre. Provato dal vivo sulle 24 query: stessi id di
       `fuzzySearch` su Elasticsearch e su Koskidex
-- [ ] Vettori nell'indicizzazione di Documentale, se la sezione 5 li porta
+- [x] Vettori nell'indicizzazione di Documentale (Documentale `2488dfd`, vedi
+      sezione 5)
 - [ ] Stesse query su Elasticsearch e su Koskidex nella configurazione migliore:
       qualità, latenza, memoria, dimensione dell'indice
 - [ ] Scriverlo con onestà: dove un motore piccolo e senza dipendenze è

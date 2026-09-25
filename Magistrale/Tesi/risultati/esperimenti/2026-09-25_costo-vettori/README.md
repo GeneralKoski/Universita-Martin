@@ -52,3 +52,56 @@ Scritto e committato prima del codice.
    parte del motore dei 24 ms in più; il vettore della query resta.
 
 ## Esito
+
+Prima `2026-09-25T134455Z_prima-48d714b.txt` (Koskidex `48d714b`, il benchmark
+senza la modifica), dopo `2026-09-25T134620Z_dopo-8260289.txt` (`8260289`),
+tutti e due su albero pulito, Apple M2, Go 1.27.1, cinque esecuzioni da 20
+ricerche; mediane:
+
+| | prima | dopo | rapporto |
+|---|---|---|---|
+| re-ranking, ms per ricerca | 57,6 | 24,7 | 2,33× |
+| unione, ms per ricerca | 102,6 | 42,7 | 2,40× |
+| re-ranking, MB allocati per ricerca | 95,1 | 13,2 | -86% |
+| unione, MB allocati per ricerca | 177,3 | 13,5 | -92% |
+| re-ranking, allocazioni per ricerca | 110.515 | 100.515 | -9% |
+| unione, allocazioni per ricerca | 120.519 | 100.519 | -17% |
+| heap vivo dopo il caricamento, MB | 270,5 | 94,7 | -65% |
+
+**La ricerca con vettori costa meno della metà, e l'indice un terzo della
+memoria.** Le 10.000 e 20.000 allocazioni che spariscono sono esattamente i
+`[]float64` ricopiati, uno per documento per percorso; le altre 100.000 sono
+della parte lessicale, che trova tutti i 10.000 documenti. Il profilo della
+ricerca con l'unione dopo la modifica
+(`2026-09-25T134651Z_profilo-union-8260289.txt`) dice dove sta il resto: il 69%
+del tempo di ricerca è `cosineSimilarity`, che per ogni documento ricalcola
+anche le due norme.
+
+Preparando il benchmark è venuto fuori un difetto diverso: senza campi
+dichiarati Koskidex indicizzava `_vector` come testo, un termine per valore, e
+10.000 documenti non finivano di caricarsi in dieci minuti. Era una mia
+regressione del 24/09 (i campi lista); corretta a parte in `d3fe995`, non
+toccava nessun numero misurato, perché `scripts/evaluate` e Documentale
+dichiarano i campi.
+
+### Le previsioni
+
+1. Allocazioni per ricerca giù di almeno il 90%: **smentita.** In numero
+   scendono del 9% e del 17%, in byte dell'86% e del 92%. Contavo solo le
+   copie dei vettori e dimenticavo che la parte lessicale, su una query che
+   trova tutto, alloca da sola 100.000 oggetti piccoli.
+2. Unione almeno tre volte più veloce, re-ranking almeno due: **smentita a
+   metà**, 2,40× e 2,33×. Sottovalutavo il prodotto scalare: resta il grosso
+   del tempo.
+3. Memoria viva giù di almeno il 60%: **-65%, confermata.** Da 24 a 8 byte a
+   valore darebbe -67% sui soli vettori; il resto è l'indice lessicale.
+4. Documentale non rimisurato qui.
+
+### Cosa vuol dire per la tesi
+
+Per 7.4: la scansione esatta costa O(n·d), e a 10.000 documenti da 1.024
+dimensioni vale circa 25 ms col re-ranking e 43 con l'unione su un M2, due
+terzi dei quali nel calcolo della similarità. Il prossimo passo ovvio sono le
+norme dei documenti calcolate una volta sola (`bge-m3` li dà già normalizzati,
+ma il motore non può saperlo), che lascerebbe il solo prodotto scalare.
+

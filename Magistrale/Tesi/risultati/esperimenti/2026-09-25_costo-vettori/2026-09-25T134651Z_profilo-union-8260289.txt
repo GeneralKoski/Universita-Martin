@@ -1,0 +1,33 @@
+koskidex 8260289, albero pulito; go test -bench BenchmarkRicercaIbrida/union -benchtime 20x -cpuprofile (setup compreso)
+File: engine.test
+Type: cpu
+Time: 2026-09-25 15:46:51 CEST
+Duration: 1.51s, Total samples = 1420ms (93.87%)
+Showing nodes accounting for 1010ms, 71.13% of 1420ms total
+Showing top 25 nodes out of 144
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      890ms 62.68%  github.com/GeneralKoski/Koskidex/internal/engine.BenchmarkRicercaIbrida.func1
+         0     0%     0%      890ms 62.68%  testing.(*B).runN
+         0     0%     0%      670ms 47.18%  testing.(*B).launch
+         0     0%     0%      640ms 45.07%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).Search
+      20ms  1.41%  1.41%      640ms 45.07%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).SearchScored
+     440ms 30.99% 32.39%      440ms 30.99%  github.com/GeneralKoski/Koskidex/internal/engine.cosineSimilarity (inline)
+         0     0% 32.39%      380ms 26.76%  runtime.systemstack
+      20ms  1.41% 33.80%      270ms 19.01%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).viciniLocked
+         0     0% 33.80%      270ms 19.01%  runtime.(*mheap).alloc.func1
+         0     0% 33.80%      270ms 19.01%  runtime.(*mheap).allocSpan
+     260ms 18.31% 52.11%      260ms 18.31%  runtime.madvise
+         0     0% 52.11%      260ms 18.31%  runtime.mallocgc
+         0     0% 52.11%      260ms 18.31%  runtime.sysUsed (inline)
+         0     0% 52.11%      260ms 18.31%  runtime.sysUsedOS (inline)
+      20ms  1.41% 53.52%      250ms 17.61%  github.com/GeneralKoski/Koskidex/internal/engine.indiceConVettori
+         0     0% 53.52%      220ms 15.49%  testing.(*B).run1.func1
+     150ms 10.56% 64.08%      150ms 10.56%  runtime.memclrNoHeapPointers
+         0     0% 64.08%      130ms  9.15%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).AddDocument
+         0     0% 64.08%      130ms  9.15%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).addDocumentLocked
+         0     0% 64.08%      130ms  9.15%  runtime.makeslice
+         0     0% 64.08%      100ms  7.04%  runtime.gcBgMarkWorker.func2
+         0     0% 64.08%      100ms  7.04%  runtime.gcDrain
+     100ms  7.04% 71.13%      100ms  7.04%  runtime.pthread_cond_signal
+         0     0% 71.13%      100ms  7.04%  runtime.semawakeup
+         0     0% 71.13%      100ms  7.04%  runtime.wakep
