@@ -75,3 +75,59 @@ registrata. Due modifiche a `misura.py`, dichiarate qui:
 La prima esecuzione, partita con il codice di prima, è stata fermata a metà
 del conteggio senza archiviare niente. Koskidex manda `num_batch` insieme a
 `num_ctx` da `ffa38ab`.
+
+## Esito
+
+Da `2026-09-25T194540Z_esito.json` (commit `822c97e`, albero pulito, Ollama
+0.34.4, `bge-m3` con impronta `790764642607`).
+
+**Dove taglia.** Due richieste con lo stesso prefisso e due code diverse:
+
+| prefisso (caratteri) | predefinito | `num_ctx` 8.192 | `num_ctx` e `num_batch` 8.192 |
+|---|---|---|---|
+| 6.000 | 1.832 token, vettori diversi | uguale al predefinito | 1.832, diversi |
+| 8.000 | 2.048, diversi | uguale | 2.286, diversi |
+| 10.000 | 2.048, **identici** | uguale | 2.850, diversi |
+| 25.000 | 2.048, identici | uguale | 6.823, diversi |
+| 30.000 | 2.048, identici | uguale | 8.117, diversi |
+| 35.000 | 2.048, identici | uguale | 8.192, **identici** |
+
+A 8.000 caratteri i vettori differiscono ancora anche con 2.048 token letti:
+il prefisso da solo ne occupa circa 1.960, e i primi token delle code
+rientrano. Il taglio tiene l'inizio del testo.
+
+**Quanti documenti**, token letti con `num_ctx` e `num_batch` 8.192:
+
+| | documenti | oltre 2.048 | a 8.192 | mediana | massimo |
+|---|---|---|---|---|---|
+| testi interi di Crispiano | 563 | 334 (59%) | 3 | 2.168 | 8.192 |
+| schede (atti del Friuli Venezia Giulia) | 9.455 | 0 | 0 | 88 | 486 |
+| SciFact | 5.183 | 3 (0,06%) | 0 | 356 | 2.256 |
+| NFCorpus | 3.633 | 2 (0,06%) | 0 | 393 | 2.610 |
+
+Previsione per previsione:
+
+1. **Confermata.** Con il contesto predefinito Ollama legge al più 2.048
+   token; da 10.000 caratteri in su i vettori coincidono, sotto no.
+2. **Smentita**, come la prova dichiarata sopra aveva già mostrato: con il
+   solo `num_ctx` 8.192 ogni riga è identica al predefinito. Servono
+   `num_ctx` e `num_batch` insieme, e allora legge fino a 8.192 token.
+3. **Confermata.** Il 59% dei testi interi (334 su 563) supera 2.048 token:
+   più della metà del testo di un atto su due non arrivava al vettore.
+4. **Confermata.** Solo 3 testi interi (0,5%) arrivano a 8.192 token.
+5. **Confermata.** Nessuna scheda supera 2.048 token, la più lunga ne ha 486.
+   Le schede dei 563 atti di Crispiano non sono contate a parte (nel corpus
+   `beir-full` quegli atti hanno il testo intero), ma la più lunga delle
+   schede di `beir-metadata` ha 1.409 caratteri e resta lontana dalla soglia.
+   I vettori delle misure di Documentale e dell'albo nel capitolo 7 non sono
+   stati tagliati.
+6. **Confermata.** 3 documenti di SciFact e 2 di NFCorpus superano 2.048
+   token, di al più 208 e 562 token: lo 0,06% di ciascun corpus, troppo poco
+   per spostare i numeri del capitolo 7.
+
+**Cosa ne segue.** I numeri del capitolo 7 restano validi. La sezione 7.1,
+che dava il testo intero sotto il contesto di `bge-m3`, è sbagliata e va
+corretta: attraverso Ollama il limite era 2.048 token, e più della metà dei
+testi interi lo supera. `embedder.context` in Koskidex (con `num_batch`, da
+`ffa38ab`) lo alza fino agli 8.192 del modello; quanto questo conti per la
+pertinenza lo dice la previsione 4 di `2026-09-25_scheda-testo`.
