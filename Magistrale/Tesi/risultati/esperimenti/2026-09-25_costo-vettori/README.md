@@ -166,3 +166,39 @@ la scansione esatta costa circa 12-15 ms per passata su un M2 (il re-ranking
 ne fa una, l'unione due: 24,6 contro 39,6 ms), e il limite sembra la latenza
 della somma, non la banda.
 
+## Dal vivo in Documentale, e una diagnosi da correggere
+
+La domanda partiva dai 33 ms di mediana misurati in mattinata dall'app col
+re-ranking (`dal-vivo/2026-09-25T1310Z_mattino-d3ffe17-bge-m3.json`), che
+avevo attribuiti al vettore della query più la conversione dei vettori. Rifatto
+alle 13:51 UTC in A/B: Koskidex `d3ffe17` (prima) e `10c48bd` (dopo), compilati
+da alberi puliti, avviati a turno su due copie degli stessi dati (i 10.018 atti
+con i vettori e la cache dei vettori della mattina), le 24 query di
+`confronto-24.txt` da `app:eval-run-queries`, Documentale `2488dfd`. Per ogni
+binario tre passate: senza vettori, con `bge-m3`, e di nuovo con `bge-m3`. I
+file sono in `dal-vivo/`, `old-*` e `new-*` (nei file la versione di Koskidex
+risulta `dev`, perché compilati senza il commit dentro).
+
+| mediana, ms | prima (`d3ffe17`) | dopo (`10c48bd`) |
+|---|---|---|
+| senza vettori | 8,36 | 10,80 |
+| con `bge-m3` | 9,85 | 9,38 |
+| con `bge-m3`, seconda volta | 2,77 | 2,63 |
+
+- **Stessi risultati**: stesso ordine su 24 query su 24 fra prima e dopo, e
+  uguale alla misura della mattina.
+- **Nessuna differenza misurabile fra i due binari.** Le prime due passate
+  ballano di 2 ms in tutte e due le direzioni; la terza è la cache dei
+  risultati di Koskidex, che risponde senza cercare.
+- **La diagnosi era sbagliata a metà.** Col binario di prima e gli stessi dati
+  la mediana con i vettori è 9,85 ms, non 33: quello che è cambiato dalla
+  mattina è che i vettori delle 24 query ora stanno nella cache. I 24 ms in più
+  erano il vettore della query calcolato da Ollama. La conversione, in
+  Documentale, non pesava: il re-ranking tocca solo i candidati lessicali, che
+  con `operator and` sono pochi. Pesa dove i vettori si leggono tutti, cioè
+  con l'unione, e dove i candidati sono migliaia, come nel benchmark.
+
+Per 7.4 quindi, in Documentale: il costo del re-ranking è il vettore della
+query (circa 24 ms con `bge-m3` in locale su un M2, la prima volta che una
+query si vede), non la ricerca.
+

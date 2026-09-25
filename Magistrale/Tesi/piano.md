@@ -250,8 +250,10 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       (col timeout predefinito di 15 s fallirebbe). Il timeout di scrittura di
       Koskidex (60 s) non è scattato, ma un blocco da 1.000 atti ci arriva
       vicino (circa 50 s). Col re-ranking, sulle 24 query: stessi insiemi, ordine
-      diverso in 18, mediana da 8,7 a 33 ms (vettore della query più la
-      conversione dei vettori a ogni ricerca)
+      diverso in 18, mediana da 8,7 a 33 ms. I 24 ms in più erano il vettore
+      della query calcolato da Ollama, non la ricerca: con i vettori delle
+      query in cache la mediana è 9,4-9,9 ms (rimisurato,
+      `2026-09-25_costo-vettori/`)
 - [ ] Suddivisione dei documenti lunghi in parti: decisa, scritta e misurata
 - [x] **Costo dei vettori** (25/09/2026, Koskidex `8260289`): i vettori
       arrivati via HTTP o dallo snapshot si ricopiavano per ogni documento a
