@@ -25,6 +25,14 @@ BM25, sulle stesse 300 query e lo stesso corpus.
    `scripts/evaluate`: `b = 0` (niente normalizzazione della lunghezza) e
    `k1` basso (saturazione più forte della frequenza del termine).
 
+**Aggiunto dopo la prima analisi.** Nei fallimenti il primo classificato
+risultava non contenere né il numero né il comune. Guardando i termini, spesso
+combacia con la query solo per prefisso: `190` con `1900129`, `2` con `2026`.
+Koskidex fa ricerca per prefisso anche coi refusi spenti. Da qui due aggiunte:
+`analizza.py` conta i fallimenti in cui il primo classificato non ha nessun
+termine della query tale e quale, e un quarto controfattuale spegne la ricerca
+per prefisso (`-senza-prefisso`, cioè `Settings.DisablePrefixSearch`).
+
 La tokenizzazione in `analizza.py` replica quella predefinita di Koskidex
 (minuscolo, via gli accenti, si spezza su tutto ciò che non è lettera o cifra),
 e si controlla da sola: l'atto giusto deve contenere tutti i termini della sua
