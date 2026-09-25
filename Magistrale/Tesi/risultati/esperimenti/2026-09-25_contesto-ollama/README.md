@@ -56,3 +56,22 @@ valutazione. Previsione, nello stesso spirito:
 
 6. **Meno dell'1% dei documenti di SciFact e di NFCorpus supera 2.048 token**,
    e i numeri del capitolo 7 cambiano al più in modo trascurabile.
+
+**Cambiato prima della misura, dopo una prova su dati inventati.** Nella prova
+di `2026-09-25_scheda-testo` su query inventate, A con `-contesto 8192` e A
+con il contesto predefinito hanno dato gli stessi numeri query per query.
+Chiesto a Ollama 0.34.4 quanti token legge del testo più lungo: 2.048 senza
+opzioni, 2.048 con `num_ctx` 4.096 o 8.192, 8.192 con `num_ctx` e
+`num_batch` 8.192, 1.024 con `num_ctx` 1.024. Ollama taglia al minimo fra
+`num_ctx` e `num_batch`, che vale 2.048. La previsione 2 è quindi già
+smentita da quella prova; resta scritta com'era e si misura com'era
+registrata. Due modifiche a `misura.py`, dichiarate qui:
+
+- il punto 1 del metodo misura anche una terza variante, `num_ctx` e
+  `num_batch` 8.192;
+- il punto 2 conta i token con `num_ctx` e `num_batch` 8.192: con il solo
+  `num_ctx` ogni conteggio si fermerebbe a 2.048 e non direbbe niente.
+
+La prima esecuzione, partita con il codice di prima, è stata fermata a metà
+del conteggio senza archiviare niente. Koskidex manda `num_batch` insieme a
+`num_ctx` da `ffa38ab`.

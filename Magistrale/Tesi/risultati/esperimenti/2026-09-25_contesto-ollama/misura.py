@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Quanti token di un testo legge bge-m3 attraverso Ollama: dove taglia, con il
-contesto predefinito e con num_ctx 8192, e quanti documenti restano tagliati.
+contesto predefinito, con num_ctx 8192 e con num_ctx e num_batch 8192, e quanti
+documenti restano tagliati.
 Metodo e previsioni nel README.
 
     misura.py <koskidex>
@@ -21,10 +22,14 @@ def chiedi(percorso, dati=None):
     return json.load(urllib.request.urlopen(req))
 
 
-def vettore(testo, contesto=None):
+PIENO = {"num_ctx": GRANDE, "num_batch": GRANDE}
+VARIANTI = {"predefinito": None, "num_ctx 8192": {"num_ctx": GRANDE}, "num_ctx e num_batch 8192": PIENO}
+
+
+def vettore(testo, opzioni=None):
     corpo = {"model": MODELLO, "input": [testo]}
-    if contesto:
-        corpo["options"] = {"num_ctx": contesto}
+    if opzioni:
+        corpo["options"] = opzioni
     r = chiedi("/api/embed", corpo)
     return r["embeddings"][0], r["prompt_eval_count"]
 
@@ -39,13 +44,13 @@ assert len(interi) == 563
 lungo = " ".join(d["text"] for d in sorted(interi, key=lambda d: d["_id"]))
 
 taglio = []
-for contesto in (None, GRANDE):
+for variante, opzioni in VARIANTI.items():
     for n in (1000, 2000, 4000, 6000, 8000, 10000, 12000, 16000, 20000, 25000, 30000, 35000, 40000):
-        a, ta = vettore(lungo[:n] + " coda uno, del tutto diversa dall'altra." * 30, contesto)
-        b, tb = vettore(lungo[:n] + " ### seconda coda: parole che non c'entrano." * 30, contesto)
-        taglio.append({"contesto": contesto or "predefinito", "caratteri_prefisso": n, "token_letti": [ta, tb],
+        a, ta = vettore(lungo[:n] + " coda uno, del tutto diversa dall'altra." * 30, opzioni)
+        b, tb = vettore(lungo[:n] + " ### seconda coda: parole che non c'entrano." * 30, opzioni)
+        taglio.append({"opzioni": variante, "caratteri_prefisso": n, "token_letti": [ta, tb],
                        "differenza_massima": max(abs(x - y) for x, y in zip(a, b))})
-        print(taglio[-1])
+        print(taglio[-1], flush=True)
 
 conteggi = {}
 for nome, docs in (("albo_testi_interi", interi), ("albo_schede", [d for d in albo if d["_id"] > "doc-0563"]),
@@ -53,11 +58,11 @@ for nome, docs in (("albo_testi_interi", interi), ("albo_schede", [d for d in al
     token = []
     for d in docs:
         testo = (d.get("title", "") + " " + d.get("text", "")).strip() if nome in ("scifact", "nfcorpus") else d["text"]
-        token.append(vettore(testo, GRANDE)[1] if testo else 0)
+        token.append(vettore(testo, PIENO)[1] if testo else 0)
     token.sort()
     conteggi[nome] = {"documenti": len(token), "oltre_2048": sum(t > 2048 for t in token),
                       "a_8192": sum(t >= GRANDE for t in token), "mediana": token[len(token) // 2], "massimo": token[-1]}
-    print(nome, conteggi[nome])
+    print(nome, conteggi[nome], flush=True)
 
 digest = next(m["digest"] for m in chiedi("/api/tags")["models"] if m["name"] in (MODELLO, MODELLO + ":latest"))
 ora = datetime.datetime.now(datetime.timezone.utc)
@@ -66,7 +71,7 @@ impronta = lambda p: hashlib.sha256(open(os.path.join(kx, p), "rb").read()).hexd
 esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
          "config": {"commit": git("rev-parse", "--short", "HEAD"),
                     "modifiche_non_committate": "true" if git("status", "--porcelain", "--", QUI) else "false",
-                    "modello": MODELLO, "digest": digest, "corpora_sha256": {k: impronta(p) for k, p in CORPORA.items()}},
+                    "modello": MODELLO, "digest": digest, "opzioni_conteggio": PIENO, "corpora_sha256": {k: impronta(p) for k, p in CORPORA.items()}},
          "taglio": taglio, "conteggi": conteggi}
 if not os.environ.get("TESI_RISULTATI"):
     sys.exit("!!! RISULTATO NON ARCHIVIATO: TESI_RISULTATI non è impostata.")
