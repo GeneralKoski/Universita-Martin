@@ -1,3 +1,72 @@
 \chapter{Come rifare ogni numero}\label{chapter:appendice-riproducibilita}
+\sloppy
 
-Da scrivere.
+Ogni numero di questa tesi viene da un file dell'archivio \texttt{risultati/}, nel
+repository della tesi, e ogni file registra il commit del codice che l'ha prodotto
+e se l'albero era pulito (sezione~\ref{sec:principi}). Questa appendice dice come
+si rifà un file partendo da zero.
+
+\section*{I tre repository}
+
+\begin{itemize}
+  \item \textbf{Koskidex}: il motore, con \texttt{scripts/evaluate},
+        \texttt{scripts/compare} e \texttt{scripts/pool}, e il diario delle
+        modifiche al ranking in \texttt{eval/DIARIO.md}. Richiede Go e nessuna
+        dipendenza oltre \texttt{golang.org/x/text}.
+  \item \textbf{Documentale}, ramo \texttt{martin/tesi-magistrale}: i comandi di
+        importazione, esportazione e valutazione aggiunti per la tesi, e
+        l'innesto di Koskidex scelto da \texttt{SEARCH\_BACKEND}.
+  \item \textbf{Il repository della tesi}: l'archivio \texttt{risultati/}, un
+        README e uno script di analisi per ogni esperimento, gli strumenti di
+        raccolta e di annotazione, questo testo.
+\end{itemize}
+
+\section*{L'ambiente}
+
+La macchina delle misure è descritta in \texttt{risultati/macchina.md}: Apple M2,
+Go 1.27.1, PHP 8.5.5. MySQL 8.4 ed Elasticsearch 9.1.0 girano in Docker,
+Elasticsearch a nodo singolo con 1 GB di heap e la sicurezza spenta; gli embedding
+vengono da Ollama con il modello \texttt{bge-m3}, impronta \texttt{790764642607}.
+Gli strumenti scrivono nell'archivio solo se la variabile \texttt{TESI\_RISULTATI}
+indica la cartella \texttt{risultati/}; se manca, lo dicono.
+
+\section*{I dati}
+
+Nessun dato sta nei repository: si riscaricano.
+\begin{enumerate}
+  \item \textbf{SciFact e NFCorpus}: \texttt{eval/corpora/fetch.sh} di Koskidex
+        scarica gli archivi di BEIR e ne controlla l'impronta MD5.
+  \item \textbf{Gli albi pretori}: \texttt{eval/corpora/fetch-albo.py} scarica il
+        feed di Crispiano con i PDF e l'API del Friuli Venezia Giulia, ed estrae
+        il testo dei PDF con \texttt{pdftotext}. Le fonti si aggiornano, e un
+        nuovo scaricamento può dare atti in più: il corpus usato nelle misure ha
+        la sua impronta SHA-256 registrata nei file dell'archivio.
+  \item \textbf{Dentro Documentale}: \texttt{app:import-albo-corpus} importa gli
+        atti con il modello dei documenti dell'app;
+        \texttt{app:export-to-elastic-search} li indicizza in Elasticsearch, e lo
+        script \texttt{strumenti/indicizza-koskidex.sh} fa lo stesso su Koskidex
+        passando dall'app; \texttt{app:export-eval-corpus} esporta il corpus in
+        formato BEIR per le valutazioni piatte.
+\end{enumerate}
+
+\section*{Le misure}
+
+\begin{itemize}
+  \item \textbf{Koskidex piatto}, collezioni pubbliche e albi:
+        \texttt{go run ./scripts/evaluate} con le impostazioni da riga di comando
+        (recupero, punteggio, analisi, vettori, fusione). Ogni file dell'archivio
+        riporta nel blocco \texttt{config} le opzioni esatte.
+  \item \textbf{Dall'app}: \texttt{app:eval-run-queries} esegue un file di query
+        con la ricerca di produzione, su Elasticsearch o su Koskidex secondo
+        \texttt{SEARCH\_BACKEND}; \texttt{scripts/evaluate -rankings} ne calcola
+        le metriche con lo stesso codice di Koskidex piatto.
+  \item \textbf{Gli esperimenti}: ogni cartella di
+        \texttt{risultati/esperimenti/} ha un README con domanda, metodo,
+        previsioni ed esito, e uno script \texttt{analizza.py} che legge i file
+        dell'archivio e scrive un file di esito con il proprio commit. Il README
+        cita i file di partenza per nome, e rifare l'esito vuol dire rilanciare lo
+        script sullo stesso commit.
+\end{itemize}
+
+Il README di \texttt{risultati/} riporta i comandi esatti, i formati dei file e il
+registro di ogni file tolto, rifatto o rinominato.

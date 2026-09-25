@@ -149,10 +149,10 @@ annotatori, tipi di query separati per collezione, recall del pool come limite
 superiore.
 
 ### Appendici
-A. Come rifare ogni numero: comandi, commit, archivio ✅
-B. Istruzioni di annotazione ✅
+A. Come rifare ogni numero: comandi, commit, archivio ✅ · bozza scritta
+B. Istruzioni di annotazione ✅ · bozza scritta
 C. Registro delle ipotesi: ogni previsione scritta prima della misura, con l'esito 🔶
-D. Le impostazioni aggiunte a Koskidex ✅
+D. Le impostazioni aggiunte a Koskidex ✅ · bozza scritta
 
 L'appendice C è il punto di forza da mostrare al relatore: al 25/09/2026 ogni
 esperimento ha le sue previsioni committate prima dei numeri, e molte sono

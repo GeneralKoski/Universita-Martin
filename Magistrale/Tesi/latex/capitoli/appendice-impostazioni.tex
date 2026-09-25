@@ -1,3 +1,89 @@
 \chapter{Le impostazioni aggiunte a Koskidex}\label{chapter:appendice-impostazioni}
 
-Da scrivere.
+Il 23 settembre 2026 le impostazioni di un indice di Koskidex erano otto: i campi
+cercabili e mostrati, le regole di ordinamento, le stopword, i sinonimi, la
+tolleranza ai refusi, i pesi dei campi e la mappa del sito. La
+tabella~\ref{tab:impostazioni} elenca quelle aggiunte per questa tesi, con il
+nome con cui compaiono nell'API. Ognuna ha come valore predefinito il
+comportamento di partenza, che la tabella scrive per primo: un indice che non le
+imposta si comporta come quel giorno, e \texttt{TestBaselineRankingIsFrozen} lo
+controlla a ogni commit.
+
+{\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{4.4cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{5.6cm}}
+  \caption{Le impostazioni aggiunte a Koskidex, con il valore predefinito per
+  primo.}\label{tab:impostazioni}\\
+  \toprule
+  impostazione & valori & cosa fa \\
+  \midrule
+  \endfirsthead
+  \toprule
+  impostazione & valori & cosa fa \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  \multicolumn{3}{l}{\emph{Recupero e punteggio lessicale}
+  (capitolo~\ref{chapter:lessicale})} \\
+  \texttt{retrieval\_mode} & \texttt{all}, \texttt{any} & recupero congiuntivo
+  o disgiuntivo (sezione~\ref{sec:difetto0}) \\
+  \texttt{scoring\_mode} & \texttt{legacy}, \texttt{bm25} & punteggio euristico
+  o BM25 (sezione~\ref{sec:difetto1}) \\
+  \texttt{bm25\_k1}, \texttt{bm25\_b} & 1,2 e 0,75 & i parametri di BM25, quelli
+  predefiniti di Lucene \\
+  \texttt{bm25\_expansion} & vuoto, \texttt{blended} & frequenza documentale di
+  un'espansione: del termine trovato, o la più alta fra i termini trovati dallo
+  stesso termine della query (sezione~\ref{sec:espansioni}) \\
+  \texttt{minimum\_should\_match} & vuoto, specifica & in recupero disgiuntivo,
+  quanti termini deve contenere un documento, con la sintassi di Elasticsearch
+  (sezione~\ref{sec:nessuna-unica}) \\
+  \texttt{coordination} & \texttt{false}, \texttt{true} & moltiplica il
+  punteggio per la quota di termini della query presenti, come il \emph{coord} di
+  Lucene prima della versione~7 \\
+  \midrule
+  \multicolumn{3}{l}{\emph{Analisi lessicale}
+  (sezioni~\ref{sec:stopword} e~\ref{sec:italiana})} \\
+  \texttt{stemmer} & vuoto, \texttt{porter}, \texttt{italian\_light} & nessuno
+  stemmer, Porter per l'inglese, lo stemmer leggero di Savoy per l'italiano \\
+  \texttt{elision\_articles} & vuoto, lista & gli articoli elisi da togliere
+  davanti a un termine, come l'\texttt{ElisionFilter} di Lucene; la lista
+  italiana è quella di Lucene \\
+  \texttt{tokenizer} & vuoto, \texttt{standard} & spezzare su tutto ciò che non è
+  lettera o cifra, o tenere la punteggiatura interna alle parole come il
+  tokenizer standard di Elasticsearch \\
+  \midrule
+  \multicolumn{3}{l}{\emph{Compatibilità con Elasticsearch}
+  (sezioni~\ref{sec:innesto} e~\ref{sec:differenze})} \\
+  \texttt{all\_terms\_in\_one\_field} & \texttt{false}, \texttt{true} & con
+  tutti i termini obbligatori, un campo del documento deve contenerli tutti, come
+  \texttt{best\_fields} con \texttt{operator: and} \\
+  \texttt{disable\_prefix\_search} & \texttt{false}, \texttt{true} & toglie la
+  ricerca per prefisso: restano le corrispondenze esatte e con refusi \\
+  \texttt{prefix\_length} & 0, intero & quanti caratteri iniziali di una
+  corrispondenza con refusi devono essere esatti \\
+  \texttt{substring\_match} & \texttt{false}, \texttt{true} & aggiunge i
+  documenti con un termine che contiene l'intera query, come il
+  \emph{wildcard} \texttt{*termine*} della ricerca delle cartelle \\
+  \texttt{typo\_tolerance.} \texttt{disable\_on\_numbers} & \texttt{false},
+  \texttt{true} & nessun refuso sui termini della query fatti di sole cifre, come
+  in Meilisearch (sezione~\ref{sec:numero-comune}) \\
+  \midrule
+  \multicolumn{3}{l}{\emph{Vettori e fusione} (capitolo~\ref{chapter:ibrido})} \\
+  \texttt{embedder} & vuoto, \texttt{ollama} con modello e campi & il server
+  calcola i vettori dei documenti e delle query con un modello locale
+  (sezione~\ref{sec:embedding}) \\
+  \texttt{hybrid\_mode} & vuoto, \texttt{union}, \texttt{vector} & chi entra fra i
+  candidati: i lessicali, riordinati dal vettore; i lessicali più i più vicini;
+  solo i più vicini (sezione~\ref{sec:difetto2}) \\
+  \texttt{vector\_top\_k} & 100, intero & quanti documenti porta il vettore \\
+  \texttt{fusion\_mode} & vuoto, \texttt{rrf}, \texttt{convex} & somma,
+  Reciprocal Rank Fusion con $k = 60$, o combinazione convessa di punteggi
+  normalizzati (sezione~\ref{sec:difetto3}) \\
+  \texttt{vector\_weight} & 20, numero & la costante della somma \\
+  \texttt{fusion\_alpha} & 0,5, numero & il peso del lessicale nella
+  combinazione convessa \\
+\end{longtable}
+}
+
+Due aggiunte non sono impostazioni ma liste da passare a \texttt{stop\_words},
+che esisteva già: le stopword inglesi di Lucene e quelle italiane di Snowball.

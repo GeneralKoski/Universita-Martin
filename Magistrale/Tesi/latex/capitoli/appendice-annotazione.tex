@@ -1,3 +1,94 @@
 \chapter{Istruzioni di annotazione}\label{chapter:appendice-annotazione}
+\sloppy
 
-Da scrivere.
+Le istruzioni sono state scritte il 25 settembre 2026, prima di darle a chiunque e
+prima di annotare una riga, e stanno nel repository della tesi
+(\texttt{istruzioni-annotazione.md}). Qui sono riportate nella sostanza. Una
+regola che durante il lavoro si rivela sbagliata non si corregge a voce: si cambia
+il file, con un commit che dice cosa cambia e da quale riga dell'annotazione vale.
+
+\section*{Parte 1: raccogliere le query known-item}
+
+\paragraph{Chi.} Almeno tre persone che non conoscano i motori e non abbiano visto
+i risultati di una ricerca sul corpus. L'autore della tesi non scrive query: sa
+quali parole trovano cosa, e le sue query misurerebbero lui.
+
+\paragraph{Quali atti.} Un campione estratto a caso con un seme fissato: metà degli
+atti da ciascuna fonte, e dentro ogni fonte per genere in proporzione; nessun atto
+già usato dalle known-item automatiche; nessuno scelto a mano. La prima versione
+diceva «in proporzione al corpus», e avrebbe dato nove atti di Crispiano su 160:
+cambiata prima di qualunque raccolta.
+
+\paragraph{Come, per ogni atto.}
+\begin{enumerate}
+  \item Si mostra l'atto come lo vedrebbe un impiegato: titolo e testo per
+        Crispiano, la scheda per il Friuli Venezia Giulia. Senza identificativi,
+        punteggi, o il nome del motore.
+  \item La persona lo legge per il tempo che le serve, poi l'atto si nasconde.
+  \item Le si chiede: \emph{«Fra qualche settimana ti serve di nuovo questo atto.
+        Cosa scriveresti nella barra di ricerca per ritrovarlo?»}, e si registra la
+        query esattamente com'è, refusi compresi.
+  \item Si registra se la query contiene un numero.
+\end{enumerate}
+Non si suggerisce niente, non si chiede di riformulare, non si prova la query
+davanti alla persona, non si scarta una query perché sembra brutta. «Non saprei
+cosa scrivere» è un dato: si registra la query vuota con il motivo. Si registrano
+anche lo pseudonimo della persona, mai il nome, e i secondi di lettura.
+
+\section*{Parte 2: giudicare il pool}
+
+\paragraph{Prima, il bisogno.} Per ogni query, prima di vedere un solo risultato,
+si scrive in una o due frasi cosa cerca chi la digita nel documentale di un comune,
+e cosa non conta. Le descrizioni si committano prima di aprire il foglio: senza, il
+bisogno diventa «quello che i motori hanno trovato».
+
+\paragraph{Il foglio.} Un atto alla volta, con il bisogno sopra, nell'ordine
+dell'identificativo e non della posizione, senza dire quale motore l'ha trovato;
+il testo intero a richiesta, e nel dubbio si apre sempre. Sessioni di un'ora al
+massimo.
+
+\paragraph{La scala.}
+
+\begin{center}
+\small
+\begin{tabular}{p{1.2cm}p{4.4cm}p{5.8cm}}
+  \toprule
+  grado & significato & esempio, per \emph{manutenzione strade} \\
+  \midrule
+  2 & risponde al bisogno per intero & la determina che affida la manutenzione
+  ordinaria delle strade comunali \\
+  1 & pertinente ma parziale & la liquidazione di un singolo intervento;
+  l'ordinanza di chiusura di una via per quei lavori \\
+  0 & non risponde, anche se contiene le parole della query & un avviso di
+  concorso che nomina la manutenzione fra le mansioni \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Casi dubbi.} Si giudica l'atto, non le parole. Un atto e la sua
+rettifica si giudicano ciascuno per conto proprio. Un comune diverso da quello che
+si ha in mente non abbassa il grado, a meno che la query nomini un comune. Un
+grado vuoto vuol dire «non l'ho guardato», mai «non pertinente». Nel dubbio fra
+due gradi, il più basso, con una nota.
+
+\paragraph{Dopo.} Un giudizio non si cambia dopo aver visto le metriche: un errore
+trovato dopo si corregge in un file nuovo, con la riga e il motivo nel registro
+dell'archivio.
+
+\section*{Parte 3: il secondo annotatore e il kappa}
+
+Si estraggono con un seme alcune query intere dal foglio già annotato, almeno 150
+righe: query intere, perché ogni giudizio si dà rispetto a un bisogno. Il secondo
+annotatore riceve i bisogni, queste istruzioni e un foglio vuoto, e non vede i
+giudizi del primo né ne parla con lui finché non ha finito. Si calcolano il kappa
+di Cohen sui tre gradi, il kappa pesato linearmente e l'accordo semplice, e si
+riportano comunque. Solo dopo i due discutono i disaccordi; le metriche della tesi
+usano i giudizi del primo annotatore, e si dice di quanto cambiano con quelli del
+secondo e con quelli concordati.
+
+\section*{Cosa non si fa mai}
+
+Annotare dopo aver visto le metriche di quella collezione. Giudicare in ordine di
+ranking, o sapendo quale motore ha trovato il documento. Correggere un giudizio in
+silenzio. Scegliere a mano gli atti da mostrare o le query da tenere. Mettere in un
+file dell'archivio il nome di chi ha scritto una query.
