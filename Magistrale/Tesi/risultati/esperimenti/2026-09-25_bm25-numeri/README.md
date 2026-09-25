@@ -58,3 +58,70 @@ qualsiasi ranking.
 Le previsioni 3 e 4 sono le meno sicure: se la causa principale è l'IDF basso
 del numero (la 2), nessuno dei due parametri la tocca, e la correzione va
 cercata altrove.
+
+## Esito
+
+`2026-09-25T090303Z_esito.json`, da `analizza.py` al commit `e727022`, sulle
+valutazioni in `valutazioni-albo/` (Koskidex `8e301b0` e `2b3f446`, albero
+pulito). La tokenizzazione replicata passa il suo controllo su tutte le 300
+query.
+
+| BM25 | MRR@10 | atto primo | oltre il 10° |
+|---|---|---|---|
+| `k1` 1,2, `b` 0,75 (di serie) | 0,709 | 185 | 29 |
+| `b` = 0 | 0,731 | 191 | 20 |
+| `k1` = 0,3 | 0,900 | 256 | 6 |
+| ricerca per prefisso spenta | 0,854 | 240 | 12 |
+| euristico, per riferimento | 0,975 | 287 | 1 |
+
+**Chi passa davanti all'atto giusto**, nelle 115 query in cui BM25 non lo
+mette primo:
+
+- in **61** il primo classificato **non ha nessun termine della query** tale e
+  quale: combacia solo per prefisso. `190 Crispiano` è vinta da un atto che
+  contiene `1900129`, `2 Pradamano` da uno che contiene `2026`;
+- in 107 il primo classificato non contiene il numero, e la mediana di quante
+  volte ripete le parole del comune è zero;
+- il numero delle query fallite è più comune: compare in 17 atti di mediana,
+  contro 6 nelle riuscite.
+
+Il meccanismo: una ricerca per prefisso porta dentro termini diversi da quello
+cercato, e BM25 li pesa con **l'IDF del termine trovato**, non con quello del
+termine cercato. Un codice lungo e raro che comincia con le cifre cercate ha un
+IDF altissimo, e batte l'atto che contiene il numero esatto, che è più comune.
+L'euristico non ci cade perché premia i match esatti (`+2` per ogni termine
+esatto). Lucene conosce lo stesso problema per le espansioni delle ricerche
+fuzzy, e lo risolve mescolando le frequenze documentali dei termini espansi
+(`TopTermsBlendedFreqScoringRewrite`), così che un'espansione rara non superi
+il termine esatto; e le ricerche per prefisso le calcola a punteggio costante,
+senza IDF.
+
+### Le previsioni
+
+1. Nella maggior parte dei fallimenti il primo classificato non contiene il
+   numero: **107 su 115, confermata nel numero ma non nella spiegazione.** Non
+   vince un atto che ripete il nome del comune: più di metà delle volte vince
+   un atto che non contiene nessuna parola della query, trovato per prefisso.
+2. I numeri delle query fallite sono più frequenti: **17 contro 6 di mediana,
+   confermata.** Un numero comune pesa poco, e l'espansione rara pesa molto.
+3. `b = 0` recupera più di metà del divario: **smentita.** Da 0,709 a 0,731:
+   la lunghezza non è la causa principale, anche se 92 dei 115 primi
+   classificati sono più corti dell'atto giusto.
+4. `k1` basso aiuta meno di `b = 0`: **smentita, al contrario.** `k1 = 0,3`
+   porta MRR@10 a 0,900, la correzione più grande delle tre. Perché aiuti
+   tanto non è misurato; un'ipotesi da verificare è che le espansioni per
+   prefisso di un termine corto (`2` con `2026`, `2025`, `20`...) sommino le
+   loro frequenze nello stesso atto, e una saturazione forte lo limiti.
+
+Spegnere la ricerca per prefisso chiude poco più di metà del divario (da 0,709
+a 0,854 su 0,975). Il resto non è spiegato da questa analisi.
+
+### Cosa non si fa qui
+
+Nessuno di questi parametri è una correzione. Sono controfattuali misurati
+sulle stesse 300 query su cui si guarda il risultato, e sceglierne uno qui
+vorrebbe dire tarare il motore sul test. La correzione va scritta dietro un
+campo di `Settings`, con la voce nel diario prima di misurare, e misurata anche
+dove BM25 funziona già (SciFact e NFCorpus), per vedere che non peggiori lì:
+per esempio pesare un'espansione con l'IDF del termine cercato, o penalizzare i
+match non esatti anche in BM25.

@@ -1,0 +1,2755 @@
+{
+  "ran_at": "2026-09-25T09:03:03Z",
+  "config": {
+    "commit": "e727022",
+    "modifiche_non_committate": "false",
+    "valutazione_base": "2026-09-25T090102Z_known-item-auto-bm25-top.json",
+    "commit_koskidex": "8e301b0c49dc8019ae2c178e497081428ac4ec9b",
+    "corpus_sha256": "bcb5471c812625948059c2f4b7ef3905f6723cb3a6e655efd19bfc00197dae88"
+  },
+  "riassunto": {
+    "query": 300,
+    "atto_primo": 185,
+    "falliti": 115,
+    "controllo_tokenizzazione_fallito": 0,
+    "falliti_primo_senza_numero": 107,
+    "falliti_primo_con_il_numero": 8,
+    "falliti_primo_solo_per_prefisso": 61,
+    "mediana_df_numero_falliti": 17,
+    "mediana_df_numero_riusciti": 6,
+    "mediana_tf_comune_primo_nei_falliti": 0,
+    "mediana_tf_comune_atto_nei_falliti": 2,
+    "falliti_primo_ripete_il_comune_piu_dell_atto": 34,
+    "falliti_primo_piu_corto_dell_atto": 92,
+    "lunghezza_media_corpus": 68.3
+  },
+  "controfattuali": {
+    "bm25-top": {
+      "file": "2026-09-25T090102Z_known-item-auto-bm25-top.json",
+      "bm25_k1": "1.2",
+      "ricerca_per_prefisso": "accesa",
+      "bm25_b": "0.75",
+      "punteggio": "bm25",
+      "mrr@10": 0.7094,
+      "atto_primo": 185,
+      "oltre_10": 29
+    },
+    "bm25-b0": {
+      "file": "2026-09-25T090104Z_known-item-auto-bm25-b0.json",
+      "bm25_k1": "1.2",
+      "ricerca_per_prefisso": "accesa",
+      "bm25_b": "0",
+      "punteggio": "bm25",
+      "mrr@10": 0.7314,
+      "atto_primo": 191,
+      "oltre_10": 20
+    },
+    "bm25-k1-0.3": {
+      "file": "2026-09-25T090107Z_known-item-auto-bm25-k1-0.3.json",
+      "bm25_k1": "0.3",
+      "ricerca_per_prefisso": "accesa",
+      "bm25_b": "0.75",
+      "punteggio": "bm25",
+      "mrr@10": 0.8995,
+      "atto_primo": 256,
+      "oltre_10": 6
+    },
+    "bm25-senza-prefisso": {
+      "file": "2026-09-25T090302Z_known-item-auto-bm25-senza-prefisso.json",
+      "bm25_k1": "1.2",
+      "ricerca_per_prefisso": "spenta",
+      "bm25_b": "0.75",
+      "punteggio": "bm25",
+      "mrr@10": 0.8541,
+      "atto_primo": 240,
+      "oltre_10": 12
+    },
+    "legacy-top": {
+      "file": "2026-09-25T090109Z_known-item-auto-legacy-top.json",
+      "bm25_k1": null,
+      "ricerca_per_prefisso": "accesa",
+      "bm25_b": null,
+      "punteggio": "legacy",
+      "mrr@10": 0.975,
+      "atto_primo": 287,
+      "oltre_10": 1
+    }
+  },
+  "per_query": [
+    {
+      "query": "ki-001",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 85
+    },
+    {
+      "query": "ki-002",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 71
+    },
+    {
+      "query": "ki-003",
+      "posizione": 1,
+      "df_numero": 14,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 74
+    },
+    {
+      "query": "ki-004",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 86
+    },
+    {
+      "query": "ki-005",
+      "posizione": 3,
+      "df_numero": 26,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 79,
+      "primo": "doc-9363",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 71
+    },
+    {
+      "query": "ki-006",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 66
+    },
+    {
+      "query": "ki-007",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 93
+    },
+    {
+      "query": "ki-008",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 23
+    },
+    {
+      "query": "ki-009",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 23
+    },
+    {
+      "query": "ki-010",
+      "posizione": 1,
+      "df_numero": 215,
+      "tf_comune_atto": 33,
+      "lunghezza_atto": 70
+    },
+    {
+      "query": "ki-011",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 35
+    },
+    {
+      "query": "ki-012",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 30
+    },
+    {
+      "query": "ki-013",
+      "posizione": 1,
+      "df_numero": 1417,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 21
+    },
+    {
+      "query": "ki-014",
+      "posizione": 5,
+      "df_numero": 687,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 66,
+      "primo": "doc-5945",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 3,
+      "lunghezza_primo": 74
+    },
+    {
+      "query": "ki-015",
+      "posizione": 9,
+      "df_numero": 687,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 74,
+      "primo": "doc-2237",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 9,
+      "lunghezza_primo": 60
+    },
+    {
+      "query": "ki-016",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 84
+    },
+    {
+      "query": "ki-017",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 80
+    },
+    {
+      "query": "ki-018",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 36
+    },
+    {
+      "query": "ki-019",
+      "posizione": 1,
+      "df_numero": 214,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 62
+    },
+    {
+      "query": "ki-020",
+      "posizione": null,
+      "df_numero": 1417,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 69,
+      "primo": "doc-1980",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 12,
+      "lunghezza_primo": 38
+    },
+    {
+      "query": "ki-021",
+      "posizione": 1,
+      "df_numero": 28,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 82
+    },
+    {
+      "query": "ki-022",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 65
+    },
+    {
+      "query": "ki-023",
+      "posizione": 8,
+      "df_numero": 57,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 45,
+      "primo": "doc-7581",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 2,
+      "lunghezza_primo": 33
+    },
+    {
+      "query": "ki-024",
+      "posizione": 3,
+      "df_numero": 548,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 34,
+      "primo": "doc-5019",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 52
+    },
+    {
+      "query": "ki-025",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 40
+    },
+    {
+      "query": "ki-026",
+      "posizione": null,
+      "df_numero": 41,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 122,
+      "primo": "doc-4049",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 13,
+      "lunghezza_primo": 59
+    },
+    {
+      "query": "ki-027",
+      "posizione": null,
+      "df_numero": 575,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 117,
+      "primo": "doc-7884",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 89
+    },
+    {
+      "query": "ki-028",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 69
+    },
+    {
+      "query": "ki-029",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 60
+    },
+    {
+      "query": "ki-030",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 13,
+      "lunghezza_atto": 35
+    },
+    {
+      "query": "ki-031",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 63
+    },
+    {
+      "query": "ki-032",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 37
+    },
+    {
+      "query": "ki-033",
+      "posizione": 1,
+      "df_numero": 50,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 36
+    },
+    {
+      "query": "ki-034",
+      "posizione": 2,
+      "df_numero": 54,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 100,
+      "primo": "doc-6117",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 64
+    },
+    {
+      "query": "ki-035",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 31
+    },
+    {
+      "query": "ki-036",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 47
+    },
+    {
+      "query": "ki-037",
+      "posizione": 9,
+      "df_numero": 1417,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 62,
+      "primo": "doc-9182",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 12,
+      "lunghezza_primo": 59
+    },
+    {
+      "query": "ki-038",
+      "posizione": 4,
+      "df_numero": 34,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 70,
+      "primo": "doc-1372",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 40
+    },
+    {
+      "query": "ki-039",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 50
+    },
+    {
+      "query": "ki-040",
+      "posizione": 1,
+      "df_numero": 49,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 86
+    },
+    {
+      "query": "ki-041",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 93
+    },
+    {
+      "query": "ki-042",
+      "posizione": 1,
+      "df_numero": 18,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 107
+    },
+    {
+      "query": "ki-043",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 51
+    },
+    {
+      "query": "ki-044",
+      "posizione": 2,
+      "df_numero": 198,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 28,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-045",
+      "posizione": 1,
+      "df_numero": 31,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 33
+    },
+    {
+      "query": "ki-046",
+      "posizione": 1,
+      "df_numero": 10,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 56
+    },
+    {
+      "query": "ki-047",
+      "posizione": 1,
+      "df_numero": 23,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 69
+    },
+    {
+      "query": "ki-048",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 70
+    },
+    {
+      "query": "ki-049",
+      "posizione": 7,
+      "df_numero": 51,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 75,
+      "primo": "doc-4980",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 15,
+      "lunghezza_primo": 65
+    },
+    {
+      "query": "ki-050",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 41
+    },
+    {
+      "query": "ki-051",
+      "posizione": null,
+      "df_numero": 7,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 116,
+      "primo": "doc-4894",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 3,
+      "lunghezza_primo": 41
+    },
+    {
+      "query": "ki-052",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 90
+    },
+    {
+      "query": "ki-053",
+      "posizione": 10,
+      "df_numero": 27,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 47,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-054",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 32
+    },
+    {
+      "query": "ki-055",
+      "posizione": 5,
+      "df_numero": 15,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 64,
+      "primo": "doc-2493",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 37
+    },
+    {
+      "query": "ki-056",
+      "posizione": null,
+      "df_numero": 5,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 109,
+      "primo": "doc-6706",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 13,
+      "lunghezza_primo": 27
+    },
+    {
+      "query": "ki-057",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 41
+    },
+    {
+      "query": "ki-058",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 101
+    },
+    {
+      "query": "ki-059",
+      "posizione": 1,
+      "df_numero": 15,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 35
+    },
+    {
+      "query": "ki-060",
+      "posizione": null,
+      "df_numero": 19,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 100,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-061",
+      "posizione": 10,
+      "df_numero": 17,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 91,
+      "primo": "doc-0575",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 24
+    },
+    {
+      "query": "ki-062",
+      "posizione": null,
+      "df_numero": 198,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 62,
+      "primo": "doc-3987",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 34
+    },
+    {
+      "query": "ki-063",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 74
+    },
+    {
+      "query": "ki-064",
+      "posizione": 3,
+      "df_numero": 41,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 24,
+      "primo": "doc-1134",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 2,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-065",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 46
+    },
+    {
+      "query": "ki-066",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 75
+    },
+    {
+      "query": "ki-067",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 63
+    },
+    {
+      "query": "ki-068",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 46
+    },
+    {
+      "query": "ki-069",
+      "posizione": null,
+      "df_numero": 3,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 114,
+      "primo": "doc-5643",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 11,
+      "lunghezza_primo": 63
+    },
+    {
+      "query": "ki-070",
+      "posizione": 3,
+      "df_numero": 8,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 96,
+      "primo": "doc-6341",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 6,
+      "lunghezza_primo": 91
+    },
+    {
+      "query": "ki-071",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 60
+    },
+    {
+      "query": "ki-072",
+      "posizione": 1,
+      "df_numero": 17,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 101
+    },
+    {
+      "query": "ki-073",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 39
+    },
+    {
+      "query": "ki-074",
+      "posizione": 1,
+      "df_numero": 29,
+      "tf_comune_atto": 9,
+      "lunghezza_atto": 117
+    },
+    {
+      "query": "ki-075",
+      "posizione": 4,
+      "df_numero": 6,
+      "tf_comune_atto": 9,
+      "lunghezza_atto": 82,
+      "primo": "doc-0575",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 24
+    },
+    {
+      "query": "ki-076",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 82
+    },
+    {
+      "query": "ki-077",
+      "posizione": 2,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 74,
+      "primo": "doc-3691",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 46
+    },
+    {
+      "query": "ki-078",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 78
+    },
+    {
+      "query": "ki-079",
+      "posizione": 2,
+      "df_numero": 17,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 68,
+      "primo": "doc-5795",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 45
+    },
+    {
+      "query": "ki-080",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 9,
+      "lunghezza_atto": 81
+    },
+    {
+      "query": "ki-081",
+      "posizione": 8,
+      "df_numero": 6,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 74,
+      "primo": "doc-2404",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 12,
+      "lunghezza_primo": 67
+    },
+    {
+      "query": "ki-082",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 44
+    },
+    {
+      "query": "ki-083",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 81
+    },
+    {
+      "query": "ki-084",
+      "posizione": 3,
+      "df_numero": 6,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 98,
+      "primo": "doc-6423",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 37
+    },
+    {
+      "query": "ki-085",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 46
+    },
+    {
+      "query": "ki-086",
+      "posizione": 1,
+      "df_numero": 11,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 84
+    },
+    {
+      "query": "ki-087",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 85
+    },
+    {
+      "query": "ki-088",
+      "posizione": 2,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 74,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-089",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 49
+    },
+    {
+      "query": "ki-090",
+      "posizione": null,
+      "df_numero": 26,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 130,
+      "primo": "doc-0267",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 37
+    },
+    {
+      "query": "ki-091",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 43
+    },
+    {
+      "query": "ki-092",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 40
+    },
+    {
+      "query": "ki-093",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 11,
+      "lunghezza_atto": 70
+    },
+    {
+      "query": "ki-094",
+      "posizione": 5,
+      "df_numero": 8,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 82,
+      "primo": "doc-1427",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 6,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-095",
+      "posizione": 1,
+      "df_numero": 22,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 105
+    },
+    {
+      "query": "ki-096",
+      "posizione": 1,
+      "df_numero": 15,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 37
+    },
+    {
+      "query": "ki-097",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 64
+    },
+    {
+      "query": "ki-098",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 53
+    },
+    {
+      "query": "ki-099",
+      "posizione": 3,
+      "df_numero": 50,
+      "tf_comune_atto": 14,
+      "lunghezza_atto": 98,
+      "primo": "doc-8039",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 2,
+      "lunghezza_primo": 58
+    },
+    {
+      "query": "ki-100",
+      "posizione": 2,
+      "df_numero": 11,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 42,
+      "primo": "doc-6713",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 7,
+      "lunghezza_primo": 93
+    },
+    {
+      "query": "ki-101",
+      "posizione": 1,
+      "df_numero": 11,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 109
+    },
+    {
+      "query": "ki-102",
+      "posizione": 3,
+      "df_numero": 46,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 24,
+      "primo": "doc-6497",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 4,
+      "lunghezza_primo": 34
+    },
+    {
+      "query": "ki-103",
+      "posizione": 1,
+      "df_numero": 35,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 59
+    },
+    {
+      "query": "ki-104",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 63
+    },
+    {
+      "query": "ki-105",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 52
+    },
+    {
+      "query": "ki-106",
+      "posizione": 2,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 108,
+      "primo": "doc-0564",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 18
+    },
+    {
+      "query": "ki-107",
+      "posizione": null,
+      "df_numero": 4,
+      "tf_comune_atto": 11,
+      "lunghezza_atto": 109,
+      "primo": "doc-0575",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 24
+    },
+    {
+      "query": "ki-108",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 74
+    },
+    {
+      "query": "ki-109",
+      "posizione": 1,
+      "df_numero": 33,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 67
+    },
+    {
+      "query": "ki-110",
+      "posizione": 1,
+      "df_numero": 129,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 49
+    },
+    {
+      "query": "ki-111",
+      "posizione": 4,
+      "df_numero": 2,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 203,
+      "primo": "doc-3691",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 46
+    },
+    {
+      "query": "ki-112",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 42
+    },
+    {
+      "query": "ki-113",
+      "posizione": 2,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 59,
+      "primo": "doc-3691",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 46
+    },
+    {
+      "query": "ki-114",
+      "posizione": 1,
+      "df_numero": 48,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 69
+    },
+    {
+      "query": "ki-115",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 71
+    },
+    {
+      "query": "ki-116",
+      "posizione": null,
+      "df_numero": 50,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 127,
+      "primo": "doc-3687",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 44
+    },
+    {
+      "query": "ki-117",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 62
+    },
+    {
+      "query": "ki-118",
+      "posizione": 5,
+      "df_numero": 5,
+      "tf_comune_atto": 11,
+      "lunghezza_atto": 97,
+      "primo": "doc-9097",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 12,
+      "lunghezza_primo": 47
+    },
+    {
+      "query": "ki-119",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 12,
+      "lunghezza_atto": 62
+    },
+    {
+      "query": "ki-120",
+      "posizione": 3,
+      "df_numero": 28,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 68,
+      "primo": "doc-8387",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 9,
+      "lunghezza_primo": 59
+    },
+    {
+      "query": "ki-121",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 38
+    },
+    {
+      "query": "ki-122",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 68
+    },
+    {
+      "query": "ki-123",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 28
+    },
+    {
+      "query": "ki-124",
+      "posizione": 3,
+      "df_numero": 12,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 88,
+      "primo": "doc-7444",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 29
+    },
+    {
+      "query": "ki-125",
+      "posizione": 2,
+      "df_numero": 14,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 77,
+      "primo": "doc-2907",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 68
+    },
+    {
+      "query": "ki-126",
+      "posizione": null,
+      "df_numero": 27,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 99,
+      "primo": "doc-4224",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 48
+    },
+    {
+      "query": "ki-127",
+      "posizione": 3,
+      "df_numero": 6,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 69,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-128",
+      "posizione": 1,
+      "df_numero": 20,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 60
+    },
+    {
+      "query": "ki-129",
+      "posizione": 1,
+      "df_numero": 62,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 76
+    },
+    {
+      "query": "ki-130",
+      "posizione": 1,
+      "df_numero": 72,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 77
+    },
+    {
+      "query": "ki-131",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 37
+    },
+    {
+      "query": "ki-132",
+      "posizione": 9,
+      "df_numero": 57,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 42,
+      "primo": "doc-7581",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 33
+    },
+    {
+      "query": "ki-133",
+      "posizione": 2,
+      "df_numero": 12,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 59,
+      "primo": "doc-3597",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 59
+    },
+    {
+      "query": "ki-134",
+      "posizione": 1,
+      "df_numero": 31,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 88
+    },
+    {
+      "query": "ki-135",
+      "posizione": 7,
+      "df_numero": 1,
+      "tf_comune_atto": 16,
+      "lunghezza_atto": 170,
+      "primo": "doc-0575",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 24
+    },
+    {
+      "query": "ki-136",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 18
+    },
+    {
+      "query": "ki-137",
+      "posizione": 2,
+      "df_numero": 16,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 45,
+      "primo": "doc-1872",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 31
+    },
+    {
+      "query": "ki-138",
+      "posizione": 1,
+      "df_numero": 15,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 95
+    },
+    {
+      "query": "ki-139",
+      "posizione": 4,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 104,
+      "primo": "doc-9077",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 56
+    },
+    {
+      "query": "ki-140",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 81
+    },
+    {
+      "query": "ki-141",
+      "posizione": 1,
+      "df_numero": 31,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 43
+    },
+    {
+      "query": "ki-142",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 64
+    },
+    {
+      "query": "ki-143",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 9,
+      "lunghezza_atto": 62
+    },
+    {
+      "query": "ki-144",
+      "posizione": null,
+      "df_numero": 44,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 86,
+      "primo": "doc-8488",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 48
+    },
+    {
+      "query": "ki-145",
+      "posizione": null,
+      "df_numero": 22,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 129,
+      "primo": "doc-8274",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 59
+    },
+    {
+      "query": "ki-146",
+      "posizione": 1,
+      "df_numero": 50,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 77
+    },
+    {
+      "query": "ki-147",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 30
+    },
+    {
+      "query": "ki-148",
+      "posizione": 1,
+      "df_numero": 14,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 35
+    },
+    {
+      "query": "ki-149",
+      "posizione": 6,
+      "df_numero": 11,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 69,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-150",
+      "posizione": 1,
+      "df_numero": 11,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 72
+    },
+    {
+      "query": "ki-151",
+      "posizione": 4,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 80,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-152",
+      "posizione": 1,
+      "df_numero": 30,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 116
+    },
+    {
+      "query": "ki-153",
+      "posizione": 4,
+      "df_numero": 47,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 59,
+      "primo": "doc-8681",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 8,
+      "lunghezza_primo": 74
+    },
+    {
+      "query": "ki-154",
+      "posizione": 1,
+      "df_numero": 29,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 38
+    },
+    {
+      "query": "ki-155",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 30
+    },
+    {
+      "query": "ki-156",
+      "posizione": null,
+      "df_numero": 77,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 133,
+      "primo": "doc-4438",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 44
+    },
+    {
+      "query": "ki-157",
+      "posizione": 1,
+      "df_numero": 10,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 40
+    },
+    {
+      "query": "ki-158",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 40
+    },
+    {
+      "query": "ki-159",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 113
+    },
+    {
+      "query": "ki-160",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 109
+    },
+    {
+      "query": "ki-161",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 89
+    },
+    {
+      "query": "ki-162",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 93
+    },
+    {
+      "query": "ki-163",
+      "posizione": 2,
+      "df_numero": 17,
+      "tf_comune_atto": 14,
+      "lunghezza_atto": 126,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-164",
+      "posizione": 2,
+      "df_numero": 13,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 82,
+      "primo": "doc-6870",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 15,
+      "lunghezza_primo": 101
+    },
+    {
+      "query": "ki-165",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 67
+    },
+    {
+      "query": "ki-166",
+      "posizione": 1,
+      "df_numero": 26,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 39
+    },
+    {
+      "query": "ki-167",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 59
+    },
+    {
+      "query": "ki-168",
+      "posizione": 3,
+      "df_numero": 4,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 67,
+      "primo": "doc-0575",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 24
+    },
+    {
+      "query": "ki-169",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 57
+    },
+    {
+      "query": "ki-170",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 39
+    },
+    {
+      "query": "ki-171",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 64
+    },
+    {
+      "query": "ki-172",
+      "posizione": null,
+      "df_numero": 34,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 57,
+      "primo": "doc-3645",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 6,
+      "lunghezza_primo": 71
+    },
+    {
+      "query": "ki-173",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 106
+    },
+    {
+      "query": "ki-174",
+      "posizione": 2,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 48,
+      "primo": "doc-2550",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-175",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 105
+    },
+    {
+      "query": "ki-176",
+      "posizione": 1,
+      "df_numero": 11,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 74
+    },
+    {
+      "query": "ki-177",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 9,
+      "lunghezza_atto": 46
+    },
+    {
+      "query": "ki-178",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 62
+    },
+    {
+      "query": "ki-179",
+      "posizione": null,
+      "df_numero": 22,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 143,
+      "primo": "doc-9182",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 12,
+      "lunghezza_primo": 59
+    },
+    {
+      "query": "ki-180",
+      "posizione": 10,
+      "df_numero": 37,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 143,
+      "primo": "doc-9344",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 58
+    },
+    {
+      "query": "ki-181",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 94
+    },
+    {
+      "query": "ki-182",
+      "posizione": null,
+      "df_numero": 7,
+      "tf_comune_atto": 11,
+      "lunghezza_atto": 109,
+      "primo": "doc-1125",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 20,
+      "lunghezza_primo": 87
+    },
+    {
+      "query": "ki-183",
+      "posizione": 3,
+      "df_numero": 9,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 82,
+      "primo": "doc-1125",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 20,
+      "lunghezza_primo": 87
+    },
+    {
+      "query": "ki-184",
+      "posizione": 2,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 107,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-185",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 46
+    },
+    {
+      "query": "ki-186",
+      "posizione": 4,
+      "df_numero": 16,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 50,
+      "primo": "doc-2036",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 5,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-187",
+      "posizione": 5,
+      "df_numero": 34,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 78,
+      "primo": "doc-10036",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 3,
+      "lunghezza_primo": 53
+    },
+    {
+      "query": "ki-188",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 35
+    },
+    {
+      "query": "ki-189",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 57
+    },
+    {
+      "query": "ki-190",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 54
+    },
+    {
+      "query": "ki-191",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 55
+    },
+    {
+      "query": "ki-192",
+      "posizione": 7,
+      "df_numero": 593,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 24,
+      "primo": "doc-7723",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 50
+    },
+    {
+      "query": "ki-193",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 94
+    },
+    {
+      "query": "ki-194",
+      "posizione": 1,
+      "df_numero": 10,
+      "tf_comune_atto": 16,
+      "lunghezza_atto": 53
+    },
+    {
+      "query": "ki-195",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 49
+    },
+    {
+      "query": "ki-196",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 37
+    },
+    {
+      "query": "ki-197",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 50
+    },
+    {
+      "query": "ki-198",
+      "posizione": 1,
+      "df_numero": 255,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 58
+    },
+    {
+      "query": "ki-199",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 48
+    },
+    {
+      "query": "ki-200",
+      "posizione": 1,
+      "df_numero": 15,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 27
+    },
+    {
+      "query": "ki-201",
+      "posizione": 9,
+      "df_numero": 21,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 71,
+      "primo": "doc-6706",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 13,
+      "lunghezza_primo": 27
+    },
+    {
+      "query": "ki-202",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 55
+    },
+    {
+      "query": "ki-203",
+      "posizione": 4,
+      "df_numero": 24,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 63,
+      "primo": "doc-1176",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 85
+    },
+    {
+      "query": "ki-204",
+      "posizione": 10,
+      "df_numero": 129,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 85,
+      "primo": "doc-9607",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 33
+    },
+    {
+      "query": "ki-205",
+      "posizione": 9,
+      "df_numero": 28,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 80,
+      "primo": "doc-4340",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 31
+    },
+    {
+      "query": "ki-206",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 70
+    },
+    {
+      "query": "ki-207",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 54
+    },
+    {
+      "query": "ki-208",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 11,
+      "lunghezza_atto": 86
+    },
+    {
+      "query": "ki-209",
+      "posizione": 4,
+      "df_numero": 21,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 70,
+      "primo": "doc-4932",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 82
+    },
+    {
+      "query": "ki-210",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 53
+    },
+    {
+      "query": "ki-211",
+      "posizione": 9,
+      "df_numero": 14,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 84,
+      "primo": "doc-1427",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 6,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-212",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 72
+    },
+    {
+      "query": "ki-213",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 32
+    },
+    {
+      "query": "ki-214",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 80
+    },
+    {
+      "query": "ki-215",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 90
+    },
+    {
+      "query": "ki-216",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 9,
+      "lunghezza_atto": 95
+    },
+    {
+      "query": "ki-217",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 55
+    },
+    {
+      "query": "ki-218",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 36
+    },
+    {
+      "query": "ki-219",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 38
+    },
+    {
+      "query": "ki-220",
+      "posizione": 2,
+      "df_numero": 396,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 46,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-221",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 12,
+      "lunghezza_atto": 76
+    },
+    {
+      "query": "ki-222",
+      "posizione": 10,
+      "df_numero": 5,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 108,
+      "primo": "doc-6423",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 37
+    },
+    {
+      "query": "ki-223",
+      "posizione": null,
+      "df_numero": 8,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 91,
+      "primo": "doc-3589",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 22,
+      "lunghezza_primo": 93
+    },
+    {
+      "query": "ki-224",
+      "posizione": 2,
+      "df_numero": 13,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 48,
+      "primo": "doc-3589",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 22,
+      "lunghezza_primo": 93
+    },
+    {
+      "query": "ki-225",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 56
+    },
+    {
+      "query": "ki-226",
+      "posizione": null,
+      "df_numero": 28,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 121,
+      "primo": "doc-3163",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 61
+    },
+    {
+      "query": "ki-227",
+      "posizione": null,
+      "df_numero": 105,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 28,
+      "primo": "doc-2602",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 78
+    },
+    {
+      "query": "ki-228",
+      "posizione": 2,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 102,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-229",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 33
+    },
+    {
+      "query": "ki-230",
+      "posizione": 4,
+      "df_numero": 28,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 68,
+      "primo": "doc-3163",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 61
+    },
+    {
+      "query": "ki-231",
+      "posizione": null,
+      "df_numero": 330,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 35,
+      "primo": "doc-8149",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 94
+    },
+    {
+      "query": "ki-232",
+      "posizione": null,
+      "df_numero": 105,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 41,
+      "primo": "doc-6065",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 26
+    },
+    {
+      "query": "ki-233",
+      "posizione": 3,
+      "df_numero": 99,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 83,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-234",
+      "posizione": 2,
+      "df_numero": 7,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 133,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-235",
+      "posizione": 1,
+      "df_numero": 40,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 97
+    },
+    {
+      "query": "ki-236",
+      "posizione": null,
+      "df_numero": 34,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 86,
+      "primo": "doc-0189",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 31
+    },
+    {
+      "query": "ki-237",
+      "posizione": 1,
+      "df_numero": 12,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 55
+    },
+    {
+      "query": "ki-238",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 45
+    },
+    {
+      "query": "ki-239",
+      "posizione": 2,
+      "df_numero": 19,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 49,
+      "primo": "doc-8007",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 3,
+      "lunghezza_primo": 45
+    },
+    {
+      "query": "ki-240",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 34
+    },
+    {
+      "query": "ki-241",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 26
+    },
+    {
+      "query": "ki-242",
+      "posizione": 3,
+      "df_numero": 30,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 47,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-243",
+      "posizione": 2,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 64,
+      "primo": "doc-2290",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 40
+    },
+    {
+      "query": "ki-244",
+      "posizione": 2,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 80,
+      "primo": "doc-5680",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 2,
+      "lunghezza_primo": 82
+    },
+    {
+      "query": "ki-245",
+      "posizione": 2,
+      "df_numero": 9,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 68,
+      "primo": "doc-4452",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 14,
+      "lunghezza_primo": 48
+    },
+    {
+      "query": "ki-246",
+      "posizione": 2,
+      "df_numero": 3,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 88,
+      "primo": "doc-8968",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 6,
+      "lunghezza_primo": 49
+    },
+    {
+      "query": "ki-247",
+      "posizione": 1,
+      "df_numero": 8,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 44
+    },
+    {
+      "query": "ki-248",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 77
+    },
+    {
+      "query": "ki-249",
+      "posizione": null,
+      "df_numero": 28,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 84,
+      "primo": "doc-6553",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 10,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-250",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 106
+    },
+    {
+      "query": "ki-251",
+      "posizione": 1,
+      "df_numero": 12,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 51
+    },
+    {
+      "query": "ki-252",
+      "posizione": 6,
+      "df_numero": 200,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 76,
+      "primo": "doc-4592",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 2,
+      "lunghezza_primo": 64
+    },
+    {
+      "query": "ki-253",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 67
+    },
+    {
+      "query": "ki-254",
+      "posizione": 1,
+      "df_numero": 16,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 67
+    },
+    {
+      "query": "ki-255",
+      "posizione": 1,
+      "df_numero": 13,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 44
+    },
+    {
+      "query": "ki-256",
+      "posizione": 1,
+      "df_numero": 14,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 40
+    },
+    {
+      "query": "ki-257",
+      "posizione": 1,
+      "df_numero": 14,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 44
+    },
+    {
+      "query": "ki-258",
+      "posizione": null,
+      "df_numero": 487,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 63,
+      "primo": "doc-4527",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 60
+    },
+    {
+      "query": "ki-259",
+      "posizione": 1,
+      "df_numero": 6,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 56
+    },
+    {
+      "query": "ki-260",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 110
+    },
+    {
+      "query": "ki-261",
+      "posizione": 1,
+      "df_numero": 21,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 23
+    },
+    {
+      "query": "ki-262",
+      "posizione": null,
+      "df_numero": 267,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 46,
+      "primo": "doc-10036",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 3,
+      "lunghezza_primo": 53
+    },
+    {
+      "query": "ki-263",
+      "posizione": 1,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 59
+    },
+    {
+      "query": "ki-264",
+      "posizione": 2,
+      "df_numero": 4,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 73,
+      "primo": "doc-1069",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 28
+    },
+    {
+      "query": "ki-265",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 34
+    },
+    {
+      "query": "ki-266",
+      "posizione": 2,
+      "df_numero": 1,
+      "tf_comune_atto": 7,
+      "lunghezza_atto": 78,
+      "primo": "doc-0575",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 24
+    },
+    {
+      "query": "ki-267",
+      "posizione": 1,
+      "df_numero": 9,
+      "tf_comune_atto": 15,
+      "lunghezza_atto": 65
+    },
+    {
+      "query": "ki-268",
+      "posizione": 1,
+      "df_numero": 309,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 25
+    },
+    {
+      "query": "ki-269",
+      "posizione": 1,
+      "df_numero": 17,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 49
+    },
+    {
+      "query": "ki-270",
+      "posizione": 1,
+      "df_numero": 72,
+      "tf_comune_atto": 4,
+      "lunghezza_atto": 18
+    },
+    {
+      "query": "ki-271",
+      "posizione": 2,
+      "df_numero": 3,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 61,
+      "primo": "doc-3691",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 46
+    },
+    {
+      "query": "ki-272",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 59
+    },
+    {
+      "query": "ki-273",
+      "posizione": 1,
+      "df_numero": 10,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 82
+    },
+    {
+      "query": "ki-274",
+      "posizione": 1,
+      "df_numero": 11,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 104
+    },
+    {
+      "query": "ki-275",
+      "posizione": 1,
+      "df_numero": 5,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 70
+    },
+    {
+      "query": "ki-276",
+      "posizione": 1,
+      "df_numero": 3,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 82
+    },
+    {
+      "query": "ki-277",
+      "posizione": 6,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 84,
+      "primo": "doc-7713",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 68
+    },
+    {
+      "query": "ki-278",
+      "posizione": 1,
+      "df_numero": 11,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 65
+    },
+    {
+      "query": "ki-279",
+      "posizione": 2,
+      "df_numero": 20,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 28,
+      "primo": "doc-6679",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 1,
+      "lunghezza_primo": 76
+    },
+    {
+      "query": "ki-280",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 49
+    },
+    {
+      "query": "ki-281",
+      "posizione": null,
+      "df_numero": 276,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 89,
+      "primo": "doc-9253",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 17,
+      "lunghezza_primo": 70
+    },
+    {
+      "query": "ki-282",
+      "posizione": 1,
+      "df_numero": 14,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 60
+    },
+    {
+      "query": "ki-283",
+      "posizione": 2,
+      "df_numero": 2,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 97,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-284",
+      "posizione": 3,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 114,
+      "primo": "doc-8196",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 43
+    },
+    {
+      "query": "ki-285",
+      "posizione": 2,
+      "df_numero": 2,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 73,
+      "primo": "doc-7558",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 90
+    },
+    {
+      "query": "ki-286",
+      "posizione": 2,
+      "df_numero": 14,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 77,
+      "primo": "doc-6870",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 15,
+      "lunghezza_primo": 101
+    },
+    {
+      "query": "ki-287",
+      "posizione": 1,
+      "df_numero": 10,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 56
+    },
+    {
+      "query": "ki-288",
+      "posizione": 1,
+      "df_numero": 41,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 27
+    },
+    {
+      "query": "ki-289",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 51
+    },
+    {
+      "query": "ki-290",
+      "posizione": 3,
+      "df_numero": 3,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 75,
+      "primo": "doc-3691",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 46
+    },
+    {
+      "query": "ki-291",
+      "posizione": 1,
+      "df_numero": 1,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 38
+    },
+    {
+      "query": "ki-292",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 8,
+      "lunghezza_atto": 65
+    },
+    {
+      "query": "ki-293",
+      "posizione": null,
+      "df_numero": 129,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 102,
+      "primo": "doc-9607",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 33
+    },
+    {
+      "query": "ki-294",
+      "posizione": 5,
+      "df_numero": 7,
+      "tf_comune_atto": 2,
+      "lunghezza_atto": 93,
+      "primo": "doc-8457",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": true,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 33
+    },
+    {
+      "query": "ki-295",
+      "posizione": 1,
+      "df_numero": 4,
+      "tf_comune_atto": 6,
+      "lunghezza_atto": 108
+    },
+    {
+      "query": "ki-296",
+      "posizione": 7,
+      "df_numero": 28,
+      "tf_comune_atto": 3,
+      "lunghezza_atto": 91,
+      "primo": "doc-8387",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 9,
+      "lunghezza_primo": 59
+    },
+    {
+      "query": "ki-297",
+      "posizione": 6,
+      "df_numero": 16,
+      "tf_comune_atto": 14,
+      "lunghezza_atto": 66,
+      "primo": "doc-6706",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 13,
+      "lunghezza_primo": 27
+    },
+    {
+      "query": "ki-298",
+      "posizione": 8,
+      "df_numero": 3,
+      "tf_comune_atto": 5,
+      "lunghezza_atto": 88,
+      "primo": "doc-6706",
+      "primo_ha_il_numero": false,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 13,
+      "lunghezza_primo": 27
+    },
+    {
+      "query": "ki-299",
+      "posizione": 2,
+      "df_numero": 4,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 110,
+      "primo": "doc-0475",
+      "primo_ha_il_numero": true,
+      "primo_solo_per_prefisso": false,
+      "tf_comune_primo": 0,
+      "lunghezza_primo": 75
+    },
+    {
+      "query": "ki-300",
+      "posizione": 1,
+      "df_numero": 7,
+      "tf_comune_atto": 1,
+      "lunghezza_atto": 58
+    }
+  ]
+}

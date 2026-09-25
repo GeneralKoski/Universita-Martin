@@ -120,11 +120,19 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       nell'atto compare solo elisa. La ricerca ne salva il 2,3%, il filtro
       `elision` di Elasticsearch ne recupera il 99,4%
       (`risultati/esperimenti/2026-09-25_elisioni/`)
-- [ ] **BM25 e la ricerca per numero d'atto**: con BM25 l'atto giusto scende al
-      3° e al 5° posto, contro il 1° dell'euristico, a parità di recupero
-      disgiuntivo (`risultati/esperimenti/2026-09-23_numero-atto/`). Confermato
-      sulle 300 known-item: MRR@10 0,709 contro 0,975, atto primo nel 61,7% delle
-      query contro il 95,7%. Da capire
+- [x] **BM25 e la ricerca per numero d'atto** (25/09/2026): sulle 300
+      known-item BM25 fa MRR@10 0,709 contro 0,975 dell'euristico. In 61 dei
+      115 fallimenti vince un atto che combacia solo per prefisso (`190` con
+      `1900129`): BM25 pesa l'espansione con l'IDF del termine trovato, raro,
+      invece che con quello del termine cercato. Senza prefisso 0,854, con
+      `k1 = 0,3` 0,900, con `b = 0` solo 0,731
+      (`risultati/esperimenti/2026-09-25_bm25-numeri/`)
+- [ ] **Correggere il peso delle espansioni in BM25**, dietro un campo di
+      `Settings` e con la voce nel diario prima di misurare: pesare
+      un'espansione per prefisso o per refuso con l'IDF del termine cercato (o
+      mescolato, come Lucene per le fuzzy), o penalizzare i match non esatti.
+      Misurarla sulle known-item e su SciFact e NFCorpus, dove BM25 va già bene,
+      senza tarare niente sulle 300 query
 - [ ] **Documentale e la ricerca per numero e comune**: provare la correzione
       (le parole libere di stare in campi diversi, o un campo che le raccoglie
       tutte) e misurarla sulle stesse 300 query. Il controllo trova l'atto in
