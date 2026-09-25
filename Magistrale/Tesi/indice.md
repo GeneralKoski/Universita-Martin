@@ -4,7 +4,9 @@ Proposta del 25/09/2026, da portare al relatore prima di scrivere. È lo stesso
 indice dei capitoli in `latex/capitoli/`, che compilano già un sommario vero.
 Accanto a ogni sezione: a che punto è e dove sta il materiale.
 
-**Stato:** ✅ misurato, il materiale c'è · 🔶 in corso o in parte · ⬜ da fare
+**Stato:** ✅ misurato, il materiale c'è · 🔶 in corso o in parte · ⬜ da fare.
+*Bozza scritta* vuol dire che il capitolo è in `latex/capitoli/` per intero, da
+rileggere (capitoli 3 e 6, il 25/09/2026).
 
 ## Titolo, tre proposte
 
@@ -47,7 +49,7 @@ per tipo di query.
 2.6 Valutazione: paradigma di Cranfield, pooling, metriche, known-item, accordo fra annotatori
 2.7 Lavori correlati: BEIR, Lucene ed Elasticsearch, Meilisearch, predizione e scelta per query
 
-### 3. I sistemi e l'innesto ✅
+### 3. I sistemi e l'innesto ✅ · bozza scritta
 3.1 Koskidex: com'era il 23/09/2026
 3.2 Documentale: come cerca in produzione
 3.3 L'innesto: un contratto, due motori, gli stessi risultati
@@ -86,7 +88,7 @@ ed elisioni come Lucene, lo stemmer controllato sul vocabolario di Lucene) e
 le elisioni misurate; stopword e stemmer, come 5.7, aspettano le known-item
 umane.
 
-### 6. La ricerca in produzione: tre difetti di Documentale ✅
+### 6. La ricerca in produzione: tre difetti di Documentale ✅ · bozza scritta
 6.1 Il numero d'atto
 6.2 Le elisioni
 6.3 Numero e comune: il campo unico e i refusi sui numeri

@@ -1,17 +1,282 @@
 \chapter{La ricerca in produzione: tre difetti di Documentale}\label{chapter:produzione}
 
-\section{Il numero d'atto}
+I difetti di Koskidex dei capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido}
+erano ipotesi scritte leggendo il codice e poi misurate. Quelli di questo
+capitolo no: sono venuti fuori per strada, lavorando all'innesto e fabbricando
+le prime query sul corpus di dominio, e sono difetti della ricerca di Documentale
+\emph{in produzione}, cioè di Elasticsearch interrogato come lo interroga l'app.
+Sono tre, e tutti e tre colpiscono le ricerche più ordinarie di un documentale:
+un atto di cui si sa il numero, una parola italiana preceduta da un articolo,
+un numero insieme al nome del comune.
 
-Da scrivere.
+Il metodo è lo stesso per tutti. Il difetto si misura su Elasticsearch, passando
+dall'app o con la sua query esatta; la causa si isola con un controllo che cambia
+una cosa sola; la correzione si misura in Koskidex innestato, dietro una variabile
+d'ambiente di Documentale spenta per default. Misurarla in Koskidex ha un senso
+preciso grazie alla parità del capitolo~\ref{chapter:sistemi}: partendo dagli
+stessi insiemi di Elasticsearch, ogni differenza viene dalla correzione.
 
-\section{Le elisioni}
+\section{Il numero d'atto}\label{sec:numero-atto}
 
-Da scrivere.
+In un documentale si cerca spesso un atto di cui si conosce il numero. Due atti
+del Comune di Crispiano fanno da esempio: l'\emph{Ordinanza N.~187} e la
+\emph{Determina N.~1223}. La tabella~\ref{tab:numero-atto} dà la posizione
+dell'atto giusto con la query di produzione e con due varianti che isolano le
+cause.
 
-\section{Numero e comune: il campo unico e i refusi sui numeri}
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    Configurazione & \texttt{ordinanza 187} & \texttt{determina 1223} \\
+    \midrule
+    Elasticsearch, produzione & \textbf{12° su 85} & \textbf{5° su 8} \\
+    Elasticsearch senza refusi & 1° su 1 & 1° su 1 \\
+    Elasticsearch senza il campo \texttt{name} & 1° su 84 & 5° su 8 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Posizione dell'atto giusto per due query con il numero d'atto.}
+  \label{tab:numero-atto}
+\end{table}
 
-Da scrivere.
+\paragraph{La causa sono i refusi sui numeri.} Per \texttt{fuzziness: AUTO}
+\texttt{187} è una parola di tre caratteri e ammette un refuso: combacia con
+\texttt{18}, \texttt{17}, \texttt{137}, \texttt{186}. Spenti i refusi, l'atto
+giusto è primo e unico in tutti e due i casi. Un refuso è una tolleranza pensata
+per le parole, dove \emph{manutenzone} è quasi certamente \emph{manutenzione}; per
+un numero di protocollo una cifra diversa è un altro atto.
 
-\section{Cosa cambia per chi cerca}
+\paragraph{Il nome troncato la aggrava.} Prima di indicizzarlo, l'app passa il nome
+del documento da \texttt{pathinfo()} per togliere l'estensione del file. L'atto
+che vince \texttt{ordinanza 187} si chiama \emph{ORDINANZA N.~18.2026}, e
+\texttt{pathinfo()} prende \texttt{.2026} per un'estensione: nell'indice diventa
+\emph{ORDINANZA N.~18}, e nel campo che pesa di più, \texttt{name}, \texttt{18}
+combacia con \texttt{187} per un refuso. Per la stessa ragione il nome
+dell'atto giusto, dentro l'indice, il numero l'ha perso. Tolto quel campo dalla query, per
+l'ordinanza l'atto giusto torna primo; per la determina no, perché lì i
+concorrenti hanno il numero vicino nel riassunto.
 
-Da scrivere.
+Due atti sono un esempio, non una misura. La sezione~\ref{sec:numero-comune}
+ripete la domanda su trecento atti, e lì il difetto dei refusi sui numeri
+ricompare, dietro un altro.
+
+\section{Le elisioni}\label{sec:elisioni}
+
+\paragraph{Il difetto.} Il tokenizer standard di Elasticsearch tiene dentro la
+parola un apostrofo fra due lettere (sezione~\ref{sec:differenze}): nell'indice
+\emph{dell'illuminazione} è un termine solo, e chi cerca \emph{illuminazione} non
+trova un atto che la nomina solo così. L'analizzatore \texttt{italian} di
+Elasticsearch ha un filtro apposta, \texttt{elision}, con l'elenco degli articoli
+italiani~\cite{es-italian}, ma l'indice di Documentale usa l'analizzatore
+predefinito.
+
+\paragraph{Quanti atti tocca.} La misura è fatta sull'indice che l'app ha costruito,
+senza ricostruire il tokenizer. Dai termini che Elasticsearch ha scritto davvero
+si prendono quelli elisi (lettere, apostrofo, lettere) e per ognuno la parola
+dopo l'apostrofo. Una coppia (atto, parola) è \emph{a rischio} se nell'atto la
+parola compare solo elisa. È \emph{persa} se la query di produzione con quella sola
+parola non trova l'atto: si interroga il motore, invece di contare i termini,
+perché i refusi o un plurale nello stesso atto potrebbero salvarla. Il
+controllo della causa è un indice temporaneo con lo stesso mapping più il filtro
+\texttt{elision}: una coppia che lì torna era persa per l'elisione e non per
+altro. Le coppie in cui la forma elisa sta solo nel nome dell'ente
+(\emph{Gradisca d'Isonzo}) si contano anche a parte, perché chi cerca un comune ne
+scrive probabilmente il nome con l'apostrofo.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    & atti & \% \\
+    \midrule
+    nell'indice & 10.018 & \\
+    con almeno un termine eliso & 4.280 & 42,7 \\
+    \textbf{con almeno una coppia persa} & \textbf{4.033} & \textbf{40,3} \\
+    \quad escluso il solo nome dell'ente & 3.826 & 38,2 \\
+    \midrule
+    & coppie & \\
+    \midrule
+    a rischio & 5.913 & \\
+    salvate dalla ricerca (refusi, forme vicine) & 138 & 2,3 \\
+    \textbf{perse} & \textbf{5.775} & \\
+    perse che il filtro \texttt{elision} recupera & 5.739 & 99,4 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Le elisioni nell'Elasticsearch di produzione, su 507 parole.}
+  \label{tab:elisioni}
+\end{table}
+
+\textbf{Quattro atti su dieci hanno almeno una parola che la ricerca di quella
+parola non trova} (tabella~\ref{tab:elisioni}). Non dipende dalla fonte: a
+Crispiano sono il 34,6\% degli atti, nel Friuli Venezia Giulia il 40,6\%. È la
+lingua. La ricerca non salva quasi niente, il 2,3\% delle coppie, e il filtro ne
+recupera il 99,4\%: la causa è quella. Delle 36 coppie che restano, 17 sono
+elisioni fuori dall'elenco degli articoli (\emph{sant'}, \emph{cinquant'},
+\emph{quest'}), 13 sono parole attaccate per uno spazio mancante
+(\emph{scuoladell'infanzia}), le altre accenti scritti come apostrofo
+(\emph{conformita'}) e prefissi fuori elenco.
+
+Le parole più colpite dicono chi se ne accorge. \emph{Infanzia} è persa in tre atti
+su quattro fra quelli che la nominano (168 su 220), perché si scrive quasi sempre
+\emph{scuola dell'infanzia} o \emph{nido d'infanzia}; \emph{associazione} in 170 su
+230; \emph{art}, cioè i rinvii normativi come \emph{dell'art.~36}, in 595 su 1.406.
+\emph{Illuminazione}, la parola da cui tutto è partito, è fra le meno colpite: 12
+atti su 99.
+
+\paragraph{La correzione, nei due motori.} In Elasticsearch è il filtro
+\texttt{elision} nel mapping e una reindicizzazione. In Koskidex innestato è
+un'impostazione, \texttt{ElisionArticles}, con gli stessi 21 articoli
+dell'analizzatore \texttt{italian}, che Documentale accende con
+\texttt{KOSKIDEX\_ELISION=true}. Misurata con le stesse 507 parole:
+\begin{itemize}
+  \item senza, Koskidex perde \textbf{le stesse 5.775 coppie} di Elasticsearch in
+        produzione, non solo lo stesso numero;
+  \item con, ne perde \textbf{le stesse 36} di Elasticsearch col filtro;
+  \item sulle 24 query del confronto nessuna query perde un documento, e 8 ne
+        guadagnano 65 in tutto: \emph{illuminazione pubblica} passa da 62 a 73
+        atti, \emph{contributo associazioni} da 17 a 48;
+  \item sulle 300 query known-item della sezione seguente non cambia niente, nemmeno
+        l'ordine dei primi dieci.
+\end{itemize}
+Una differenza fra i due motori resta, ed è a favore di chi cerca: Koskidex toglie
+gli accenti, Elasticsearch con l'analizzatore predefinito no. Su 20 delle 507
+parole Koskidex trova qualcosa di più, 213 atti in tutto, 67 dei quali per
+\emph{unità}: chi scrive \emph{identita} senza accento trova \emph{identità}.
+
+\section{Numero e comune: il campo unico e i refusi sui numeri}\label{sec:numero-comune}
+
+\paragraph{Le query.} Il caso della sezione~\ref{sec:numero-atto} si può
+fabbricare in grande senza che nessuno annoti. Da 300 atti estratti a caso con un
+seme fisso si scrive la query \texttt{<numero> <comune>}, per esempio
+\texttt{13605 Fiume Veneto}; l'atto di partenza è l'unica risposta giusta. Si
+tengono solo gli atti la cui coppia (comune, numero) è unica nel corpus, perché
+la numerazione riparte ogni anno. Le query e il loro uso sono descritti nel
+capitolo~\ref{chapter:valutazione}; qui la metrica principale è l'MRR@10, con la
+quota di query con l'atto al primo posto, entro i primi dieci e a vuoto.
+
+\paragraph{Il difetto.} In produzione \textbf{l'atto giusto è entro i primi dieci
+nel 2\% delle query}, e sette query su dieci non trovano niente
+(tabella~\ref{tab:numero-comune}). Nelle 89 che trovano qualcosa l'atto giusto c'è
+in 6. La causa non è il numero ma come la query combina i campi: con
+\texttt{best\_fields} e \texttt{operator: and} tutte le parole devono stare nello
+stesso campo, ma il numero sta in \texttt{additional\_data} e il comune in
+\texttt{subjects}, e nessun campo li ha tutti e due. Il controllo lo conferma:
+riscritta la query con un \texttt{multi\_match} per parola, con gli stessi refusi,
+la stessa prima lettera esatta, gli stessi pesi e tutte le parole ancora
+obbligatorie, cade solo il vincolo del campo unico, e l'atto giusto torna in
+tutte e 300 le query. Koskidex innestato, con le impostazioni di compatibilità,
+trova gli stessi insiemi di Elasticsearch su tutte e 300: la parità eredita
+anche questo difetto.
+
+\paragraph{Due correzioni, perché i difetti sono due.} Spento in Koskidex
+innestato il solo vincolo del campo unico
+(\texttt{KOSKIDEX\_ALL\_TERMS\_IN\_ONE\_FIELD=false}), l'atto torna entro i primi
+dieci nel 93\% delle query e nessuna resta a vuoto, ma è primo solo nel 38\%.
+Nelle 185 query in cui non è primo, in 154 lo scavalca un atto con il numero a un
+refuso: per \texttt{1209 Crispiano} vince un atto con \texttt{1109}. È il difetto
+della sezione~\ref{sec:numero-atto}, che il vincolo del campo unico nascondeva.
+La seconda correzione è un'impostazione di Koskidex con lo stesso nome e lo
+stesso significato di quella di Meilisearch~\cite{meili-typo},
+\texttt{disable\_on\_numbers}: un termine della query fatto di sole cifre non
+ammette refusi, mentre i codici misti (\texttt{a651}) li tengono. In Documentale
+la accende \texttt{KOSKIDEX\_TYPOS\_ON\_NUMBERS=false}.
+
+\begin{table}[ht]
+  \centering
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    Dall'app & MRR@10 & primo & entro 10 & vuote \\
+    \midrule
+    Elasticsearch, produzione & 0,017 & 1,3\% & 2,0\% & 70\% \\
+    Koskidex, campo unico & 0,018 & 1,7\% & 2,0\% & 70\% \\
+    Koskidex, campo unico, numeri esatti & 0,020 & 2,0\% & 2,0\% & 95\% \\
+    Koskidex, parole libere & 0,548 & 38,3\% & 93,3\% & 0 \\
+    \textbf{Koskidex, parole libere, numeri esatti} & \textbf{0,950} & \textbf{91,7\%} & \textbf{99,7\%} & \textbf{0} \\
+    \midrule
+    Elasticsearch, parole libere (controllo) & 0,534 & 36,3\% & 96,0\% & 0 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Le 300 query \texttt{<numero> <comune>}. \emph{Campo unico}: tutte le
+  parole nello stesso campo, come in produzione; \emph{parole libere}: ciascuna in
+  un campo qualsiasi; senza \emph{numeri esatti} i numeri ammettono refusi. Le
+  prime cinque righe passano dall'app; il controllo interroga Elasticsearch con la
+  query riscritta parola per parola.}
+  \label{tab:numero-comune}
+\end{table}
+
+\textbf{Le due correzioni insieme portano l'atto giusto al primo posto in 275
+query su 300}, da 5. Nessuna delle due basta da sola: il vincolo del campo unico
+decide se l'atto si trova, i refusi sui numeri se è primo. La riga con il solo
+campo unico e i numeri esatti dice anche un'altra cosa: togliere i refusi ai
+numeri, lasciando il vincolo, porta le query a vuoto dal 70\% al 95\%. Quel 30\%
+che in produzione rispondeva, rispondeva soprattutto con numeri sbagliati.
+
+Nelle 25 query in cui l'atto giusto resta dietro, in 21 il primo classificato ha
+lo stesso numero, esatto, in un campo che pesa di più (il numero dell'atto giusto
+sta in \texttt{additional\_data}, che pesa 1); in 3 lo ha esatto in un campo che
+non pesa di più; in una sola non lo ha esatto, ed è l'unico codice misto fra i
+perdenti. Sulle 24 query del confronto le correzioni cambiano soltanto le due
+query con un numero d'atto: \texttt{ordinanza 187} e \texttt{determina 1223}
+restituiscono l'atto giusto, primo e unico.
+
+\section{Cosa cambia per chi cerca}\label{sec:cosa-cambia}
+
+Le tre correzioni sono misurate una alla volta, e una configurazione fatta di
+pezzi misurati separatamente potrebbe non fare la somma dei pezzi. In Documentale
+esiste per questo un profilo, \texttt{KOSKIDEX\_PROFILO=consigliata}, che fa
+partire insieme le tre variabili dal valore corretto, senza cambiare nessun
+default: senza profilo l'app si comporta come in produzione, e ogni variabile
+impostata da sola vince sul profilo. Il profilo è misurato come un tutto, da un
+indice vuoto, con le stesse query:
+\begin{itemize}
+  \item sulle 300 query known-item fa \textbf{esattamente} quello che facevano
+        parole libere e numeri esatti, fino all'ordine dei primi dieci risultati di
+        ogni query: l'elisione non sposta niente;
+  \item sulle 24 query del confronto nessuna query perde un documento e 7 ne
+        guadagnano, quelle toccate dalle elisioni;
+  \item \texttt{ordinanza 187} e \texttt{determina 1223} danno il solo atto giusto.
+\end{itemize}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    & produzione & consigliata \\
+    \midrule
+    \texttt{ordinanza 187} & 12° su 85 & 1° su 1 \\
+    \texttt{determina 1223} & 5° su 8 & 1° su 1 \\
+    \texttt{<numero> <comune>}, atto primo & 1,3\% & 91,7\% \\
+    \texttt{<numero> <comune>}, a vuoto & 70\% & 0 \\
+    coppie (atto, parola) perse per l'elisione & 5.775 & 36 \\
+    atti con una parola introvabile & 40,3\% & 0,4\% \\
+    \bottomrule
+  \end{tabular}
+  \caption{La ricerca di Documentale in produzione e con il profilo consigliato di
+  Koskidex innestato. Le righe delle elisioni vengono dalla misura delle 507
+  parole della sezione~\ref{sec:elisioni}.}
+  \label{tab:cosa-cambia}
+\end{table}
+
+La tabella~\ref{tab:cosa-cambia} riassume cosa cambia. Il numero degli atti con una
+parola introvabile, con il profilo, è quello delle 36 coppie residue, che stanno in
+36 atti diversi.
+
+\paragraph{Cosa non dice.} Tutte queste misure riguardano \emph{se} l'atto si
+trova e, per le query identificative, \emph{dove}. Non dicono niente dell'ordine
+dei risultati sulle ricerche in lingua naturale, come \emph{manutenzione strade}:
+lì non c'è un atto giusto solo, e per misurare servono giudizi di pertinenza, che
+sono l'oggetto del capitolo~\ref{chapter:confronto}. Non dicono neanche che
+Elasticsearch non si possa correggere: il filtro delle elisioni e la query
+riscritta parola per parola sono misurati anche lì, con lo stesso effetto. Per i
+numeri servirebbe separare nella query i termini fatti di sole cifre e cercarli
+senza refusi, e questo in Elasticsearch non è stato misurato.
+
+\paragraph{Cosa vuol dire.} I tre difetti hanno una cosa in comune: nessuno è un
+errore di programmazione. Il recupero congiuntivo per campo, la tolleranza ai refusi
+uguale per parole e numeri, il tokenizer che rispetta l'apostrofo sono tutte
+impostazioni ragionevoli di un motore generico, e ciascuna si rompe su una
+proprietà precisa dei documenti amministrativi italiani: i metadati sparsi in
+campi diversi, i numeri di protocollo, gli articoli elisi. Per trovarle è bastato
+fare le ricerche che fa chi usa un documentale e contare, con il codice dell'app,
+quante andavano a vuoto.
