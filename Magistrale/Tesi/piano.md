@@ -214,6 +214,16 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       buono
 - [ ] Fusione: RRF contro pesatura normalizzata, calibrazione, e fusione che
       dipende dal tipo di query (identificativa o in lingua naturale)
+- [x] **Scelta della configurazione per query** (25/09/2026): una regressione
+      logistica sceglie fra BM25 `any` e `all` e arriva a 0,0006 dall'oracolo
+      (0,6473 contro 0,6479 di media su known-item, SciFact e NFCorpus), mentre
+      la regola della cifra perde 0,26 su SciFact. Ma l'oracolo coincide con la
+      scelta per collezione, e una regola a due condizioni (cifra e `all` non
+      vuoto) fa quanto il classificatore
+      (`risultati/esperimenti/2026-09-25_scelta-per-query/`)
+- [ ] **Rifare la scelta per query sulle known-item umane**, con lo stesso
+      script: è lì che le cifre non bastano a riconoscere il tipo di query. Nel
+      motore entra solo se il classificatore batte la regola
 
 ### 6. Confronto finale in Documentale
 
@@ -262,6 +272,9 @@ esteso. Quelle segnate con `5f9b080` stanno nei piani rimossi.
 - La ricerca per numero e comune: due difetti distinti copiati da
   Elasticsearch, il campo unico e i refusi sui numeri, misurati nel quadrato
   due per due. Dal 2% al 92% (`risultati/esperimenti/2026-09-25_refusi-numeri/`)
+- Un classificatore che quasi raggiunge l'oracolo, e una regola a due
+  condizioni che fa lo stesso: quando il machine learning non serve, e perché
+  (`risultati/esperimenti/2026-09-25_scelta-per-query/`)
 - "BM25 perde sulla ricerca per numero": falso, perdeva il recupero
   disgiuntivo. A parità di recupero congiuntivo BM25 fa quanto l'euristico
   (`risultati/esperimenti/2026-09-25_known-item-divario/`)

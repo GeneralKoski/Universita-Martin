@@ -93,3 +93,66 @@ corta, ma non se B torna vuoto. Da lì una sesta strategia, scelta **dopo** aver
 visto quella prova e quindi senza previsione: **B se la query contiene una
 cifra e B trova qualcosa, altrimenti A**. Serve a una domanda sola: il
 classificatore fa più di questa regola scritta a mano?
+
+## Esito
+
+`2026-09-25T100505Z_esito.json`, da `analizza.py` al commit `cec00e1`, sulle dodici valutazioni di
+Koskidex `1588695`, albero pulito. Il classificatore ha imparato da 1.673
+query di addestramento in cui A e B differiscono (994 NFCorpus, 635 SciFact, 44
+known-item: sulle altre 256 known-item A e B fanno uguale); 2.026 pari escluse.
+
+nDCG@10 sul test:
+
+| strategia | known-item | SciFact | NFCorpus | media |
+|---|---|---|---|---|
+| sempre A (`any`) | 0,8629 | **0,6694** | **0,3049** | 0,6124 |
+| sempre B (`all`) | **0,9687** | 0,0246 | 0,1939 | 0,3957 |
+| oracolo | 0,9687 | 0,6694 | 0,3056 | 0,6479 |
+| regola della cifra | 0,9687 | 0,4105 | 0,3009 | 0,5600 |
+| ripiego (B, se vuoto A) | 0,9687 | 0,6663 | 0,2877 | 0,6409 |
+| **classificatore** | **0,9687** | **0,6694** | 0,3038 | **0,6473** |
+| cifra e B non vuoto (aggiunta dopo) | 0,9687 | 0,6694 | 0,3038 | 0,6473 |
+
+**Il classificatore arriva a 0,0006 dall'oracolo**, e sulle 114 query di
+SciFact con una cifra ne manda a B solo 2. I pesi (standardizzati) dicono cosa
+ha imparato: B vuoto -1,68, c'è una cifra +1,02, quota di cifre +0,96,
+lunghezza della query -0,46; le caratteristiche sull'IDF pesano poco.
+
+**Ma l'oracolo stesso non va oltre la scelta per collezione.** Su SciFact il
+recupero congiuntivo non è strettamente meglio su nessuna query di test; su
+NFCorpus lo è su 6, per 0,0007 in tutto. Scegliere per query, su questi dati,
+vuol dire soltanto riconoscere il tipo di query: e per riconoscerlo basta la
+regola a due condizioni aggiunta dopo, che fa esattamente quanto il
+classificatore.
+
+### Le previsioni
+
+1. Oracolo: sulle known-item entro 0,02 da sempre B, **confermata** (uguale);
+   su SciFact e NFCorpus almeno 0,01 sopra sempre A, **smentita** (0 e
+   0,0007). Il recupero congiuntivo non aiuta mai le frasi.
+2. Regola della cifra: uguale a B sulle known-item, oltre 0,05 sotto A su
+   SciFact, entro 0,005 da A su NFCorpus: **confermata** (-0,259 su SciFact,
+   -0,004 su NFCorpus).
+3. Ripiego: uguale a B sulle known-item, sotto A di più di 0,01 su SciFact e
+   NFCorpus: **smentita a metà**. Su NFCorpus -0,017, ma su SciFact solo
+   -0,003: B lì torna quasi sempre vuoto (290 query su 300), e il ripiego
+   diventa A.
+4. Classificatore: entro 0,01 da B sulle known-item, entro 0,005 da A su
+   SciFact e NFCorpus, e meglio della regola della cifra su SciFact:
+   **confermata**.
+
+### Cosa vuol dire
+
+Il classificatore funziona, ma su questi dati non serve: il problema che
+risolve è riconoscere a quale famiglia appartiene una query, e le famiglie
+stanno in collezioni diverse con segni evidenti (le cifre, la lunghezza, B
+vuoto). Una regola scritta a mano fa lo stesso ed è spiegabile in una riga.
+È il rischio dichiarato nel metodo: qui non si distingue "tipo di query" da
+"collezione".
+
+Il machine learning avrà qualcosa da dire solo con query dei due tipi nella
+stessa collezione, dove le cifre non bastano: una known-item umana come
+"ordinanza chiusura via Roma luglio" non ha numeri, e una frase può averne.
+La prova si rifà, con lo stesso script, quando ci sono le known-item umane
+(piano, sezione 2). Nel motore non entra niente finché quella prova non dice
+che il classificatore batte la regola.
