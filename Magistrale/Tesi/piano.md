@@ -230,9 +230,21 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
 `ranker.go` che citava sono cambiate.
 
 - [x] Da dove vengono gli embedding: **modello locale** (25/09/2026), via
-      Ollama. Koskidex oggi non li genera, li riceve in `_vector`
-- [ ] Scegliere il modello, multilingue perché il corpus è italiano (per esempio
-      `bge-m3` o `embeddinggemma`), e annotarne nome e versione in ogni esito
+      Ollama
+- [x] **Modello: `bge-m3`** (Ollama 0.34.4, digest `790764642607`, 1024
+      dimensioni, vettori già normalizzati, contesto 8192), multilingue e
+      senza prefissi da aggiungere a query e documenti. Nome e digest vanno in
+      ogni esito
+- [x] **Embedder in Koskidex** (25/09/2026, `5364533`): `Settings.Embedder`,
+      spento per default. Calcola `_vector` all'aggiunta dei documenti e il
+      vettore della query con `hybrid=true`; cache dei vettori per modello e
+      testo in `<data-dir>/embeddings.jsonl`. Dal vivo: 1.000 schede degli albi
+      in 51 secondi la prima volta, 0,15 dalla cache
+- [ ] `scripts/evaluate` con l'embedder e la stessa cache, per le collezioni
+      pubbliche e le known-item
+- [ ] Prima di indicizzare da Documentale con i vettori: il timeout del client
+      (15 s) e quello di scrittura di Koskidex (60 s) sono troppo corti per un
+      blocco da 1.000 atti calcolato per la prima volta
 - [ ] Suddivisione dei documenti lunghi in parti: decisa, scritta e misurata
 - [ ] `Settings.HybridMode`, vuoto = re-ranking di oggi; nel ramo ibrido il
       vettoriale aggiunge documenti ai candidati
