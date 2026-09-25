@@ -21,7 +21,7 @@ La domanda di tesi, le scelte e il perché stanno in [appunti.md](appunti.md).
 |---|---|---|
 | Impianto di valutazione (metriche, esecutore, pool, archivio) | fatto | Koskidex `internal/eval`, `scripts/`; `risultati/README.md` |
 | Difetto 0, recupero congiuntivo | chiuso e misurato | `Settings.RetrievalMode`; `eval/DIARIO.md` |
-| Difetto 1, niente IDF (BM25) | chiuso e misurato: SciFact 0,664 contro 0,665 di BEIR, NFCorpus 0,294 contro 0,325 | `Settings.ScoringMode`, `Settings.Analyzer` |
+| Difetto 1, niente IDF (BM25) | chiuso e misurato: SciFact 0,664 contro 0,665 di BEIR, NFCorpus 0,294 contro 0,325 | `Settings.ScoringMode`, `Settings.Stemmer` |
 | Corpus pubblico degli albi pretori, 10.018 atti | importato in Documentale ed esportabile | Koskidex `eval/corpora/c3-albo/SOURCE.md` |
 | Koskidex completo rispetto al contratto di Documentale (F1-F7) | fatto: 24 insiemi su 24 uguali a Elasticsearch | `risultati/esperimenti/2026-09-23_cause-divergenza/` |
 | Innesto in Documentale, motore scelto da `SEARCH_BACKEND` | fatto: dall'app 24/24 insiemi uguali, ricerca 2,7 ms contro 22 | Documentale `67cf954`, `2a03310`; `risultati/esperimenti/2026-09-25_innesto-parita/` |
@@ -131,7 +131,7 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
 
 Oggi Koskidex ha solo lo stemmer Porter inglese.
 
-- [ ] Stopword e stemmer italiani dietro `Settings.Analyzer`, con voce di diario
+- [ ] Stopword e stemmer italiani dietro `Settings.Stemmer`, con voce di diario
       e ipotesi prima di misurare
 - [ ] Decidere come trattare elisioni, date (`14.01.2026`) e decimali (`3,5`)
       fuori dalla modalità compatibile con Elasticsearch, e misurarlo
