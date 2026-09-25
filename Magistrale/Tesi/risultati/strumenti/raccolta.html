@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ritrovare un atto</title>
+<style>
+  :root {
+    --sfondo: #f7f6f3; --carta: #ffffff; --testo: #1d1d1b; --tenue: #6b6a66;
+    --bordo: #dddbd5; --accento: #1f5fa8; --accento-testo: #ffffff; --avviso: #8a5a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --sfondo: #1b1b1a; --carta: #252524; --testo: #ecebe7; --tenue: #a3a19b;
+      --bordo: #3a3936; --accento: #6ea8ec; --accento-testo: #10243d; --avviso: #e0b050;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--sfondo); color: var(--testo);
+         font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.5rem; margin: 0 0 12px; }
+  .passo { color: var(--tenue); font-size: .9rem; margin-bottom: 8px; }
+  .carta { background: var(--carta); border: 1px solid var(--bordo); border-radius: 10px; padding: 20px; }
+  .titolo-atto { font-weight: 600; font-size: 1.05rem; margin: 0 0 12px; }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0 0 12px; }
+  dt { color: var(--tenue); } dd { margin: 0; overflow-wrap: anywhere; }
+  .corpo { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 60vh; overflow-y: auto;
+           border-top: 1px solid var(--bordo); padding-top: 12px; font-size: .95rem; }
+  label { display: block; font-weight: 600; margin: 16px 0 6px; }
+  input[type=text], textarea { width: 100%; font: inherit; padding: 10px 12px; border: 1px solid var(--bordo);
+                               border-radius: 8px; background: var(--carta); color: var(--testo); }
+  textarea { min-height: 70px; }
+  .azioni { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 18px; }
+  button { font: inherit; padding: 10px 18px; border-radius: 8px; border: 1px solid var(--accento); cursor: pointer; }
+  button.primario { background: var(--accento); color: var(--accento-testo); }
+  button.secondario { background: transparent; color: var(--accento); }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .nota { color: var(--tenue); font-size: .9rem; }
+  .avviso { color: var(--avviso); }
+  ul { padding-left: 20px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const DATI = /*DATI*/null;
+const CHIAVE = `raccolta-${DATI.lotto}-${DATI.impronta}`;
+const app = document.getElementById("app");
+let stato = carica() || { fase: "intro", pseudonimo: "", indice: 0, risposte: [], iniziato: null, finito: null };
+let inizioFase = performance.now();
+
+function carica() {
+  try { return JSON.parse(localStorage.getItem(CHIAVE)); } catch (e) { return null; }
+}
+function salva() {
+  try { localStorage.setItem(CHIAVE, JSON.stringify(stato)); } catch (e) { /* senza memoria si va avanti lo stesso */ }
+}
+function secondi() { return Math.round((performance.now() - inizioFase) / 100) / 10; }
+function el(tag, attributi = {}, ...figli) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attributi)) {
+    if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else if (v !== false) e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const f of figli.flat(Infinity)) if (f !== null && f !== undefined) e.append(f);
+  return e;
+}
+function vai(fase) { stato.fase = fase; inizioFase = performance.now(); salva(); disegna(); }
+
+function intro() {
+  const campo = el("input", { type: "text", id: "pseudonimo", autocomplete: "off", maxlength: "40", value: stato.pseudonimo });
+  const via = el("button", { class: "primario", disabled: !stato.pseudonimo.trim(), onclick: () => {
+    stato.pseudonimo = campo.value.trim(); stato.iniziato = new Date().toISOString(); vai("lettura");
+  } }, "Comincia");
+  campo.addEventListener("input", () => { via.disabled = !campo.value.trim(); });
+  campo.addEventListener("keydown", (e) => { if (e.key === "Enter" && !via.disabled) via.click(); });
+  return [
+    el("h1", {}, "Ritrovare un atto"),
+    el("div", { class: "carta" },
+      el("p", {}, `Ti mostro ${DATI.atti.length} atti di comuni italiani (determine, delibere, ordinanze, avvisi), uno alla volta.`),
+      el("ul", {},
+        el("li", {}, "Leggi l'atto per il tempo che ti serve, poi premi ", el("b", {}, "Ho letto"), ": l'atto sparisce."),
+        el("li", {}, "Ti chiedo cosa scriveresti nella barra di ricerca di un archivio per ritrovarlo fra qualche settimana."),
+        el("li", {}, "Non c'è una risposta giusta: scrivi come faresti davvero, anche corto, anche con errori. Se non sai cosa scrivere, dillo."),
+        el("li", {}, "Non si torna indietro all'atto dopo averlo nascosto."),
+        el("li", {}, "Puoi fermarti e riprendere quando vuoi, ma sempre da questo browser: si ricorda dove eri."),
+        el("li", {}, "Alla fine scarichi un file e me lo rimandi.")),
+      el("label", { for: "pseudonimo" }, "Un soprannome"),
+      campo,
+      el("p", { class: "nota" }, "Non il tuo nome: serve solo a distinguere chi ha scritto cosa."),
+      el("div", { class: "azioni" }, via)),
+  ];
+}
+
+function lettura() {
+  const a = DATI.atti[stato.indice];
+  return [
+    el("div", { class: "passo" }, `Atto ${stato.indice + 1} di ${DATI.atti.length}`),
+    el("div", { class: "carta" },
+      el("p", { class: "titolo-atto" }, a.titolo),
+      a.righe.length ? el("dl", {}, a.righe.map(([k, v]) => [el("dt", {}, k), el("dd", {}, v)])) : null,
+      a.testo ? el("div", { class: "corpo" }, a.testo) : null,
+      el("div", { class: "azioni" }, el("button", { class: "primario", onclick: () => {
+        stato.lettura = secondi(); vai("scrittura");
+      } }, "Ho letto, nascondi l'atto"))),
+  ];
+}
+
+function scrittura() {
+  const campo = el("input", { type: "text", id: "query", autocomplete: "off", spellcheck: "false" });
+  const motivo = el("textarea", { id: "motivo" });
+  const blocco = el("div", { hidden: true }, el("label", { for: "motivo" }, "Perché? (facoltativo)"), motivo,
+    el("div", { class: "azioni" }, el("button", { class: "primario", onclick: () => registra("", motivo.value.trim()) }, "Avanti senza ricerca")));
+  const avanti = el("button", { class: "primario", disabled: true, onclick: () => registra(campo.value, "") }, "Avanti");
+  campo.addEventListener("input", () => { avanti.disabled = !campo.value.trim(); });
+  campo.addEventListener("keydown", (e) => { if (e.key === "Enter" && !avanti.disabled) avanti.click(); });
+  setTimeout(() => campo.focus(), 0);
+  return [
+    el("div", { class: "passo" }, `Atto ${stato.indice + 1} di ${DATI.atti.length}`),
+    el("div", { class: "carta" },
+      el("label", { for: "query" }, "Fra qualche settimana ti serve di nuovo questo atto. Cosa scriveresti nella barra di ricerca per ritrovarlo?"),
+      campo,
+      el("div", { class: "azioni" }, avanti,
+        el("button", { class: "secondario", onclick: (e) => { blocco.hidden = false; e.target.hidden = true; motivo.focus(); } }, "Non saprei cosa scrivere")),
+      blocco),
+  ];
+}
+
+function registra(query, motivo) {
+  stato.risposte.push({
+    posizione: stato.indice + 1, atto: DATI.atti[stato.indice].id, query, vuota: !query.trim(), motivo,
+    secondi_lettura: stato.lettura, secondi_scrittura: secondi(), ricaricato: !!stato.ricaricato,
+  });
+  delete stato.lettura; delete stato.ricaricato;
+  stato.indice += 1;
+  if (stato.indice >= DATI.atti.length) { stato.finito = new Date().toISOString(); vai("fine"); } else vai("lettura");
+}
+
+function contenuto() {
+  return { strumento: "raccolta-known-item", versione: 1, lotto: DATI.lotto, impronta: DATI.impronta,
+           pseudonimo: stato.pseudonimo, iniziato: stato.iniziato, finito: stato.finito, risposte: stato.risposte };
+}
+function scarica() {
+  const nome = `raccolta-${DATI.lotto}-${stato.pseudonimo.replace(/[^\p{L}\p{N}_-]+/gu, "_")}.json`;
+  const url = URL.createObjectURL(new Blob([JSON.stringify(contenuto(), null, 2)], { type: "application/json" }));
+  const link = el("a", { href: url, download: nome });
+  document.body.append(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function fine() {
+  return [
+    el("h1", {}, "Finito, grazie!"),
+    el("div", { class: "carta" },
+      el("p", {}, `Hai scritto ${stato.risposte.filter((r) => !r.vuota).length} ricerche su ${DATI.atti.length} atti.`),
+      el("p", {}, "Scarica il file e mandamelo: dentro ci sono solo le ricerche che hai scritto, i tempi e il soprannome."),
+      el("div", { class: "azioni" }, el("button", { class: "primario", id: "scarica", onclick: scarica }, "Scarica il file"))),
+  ];
+}
+
+function disegna() {
+  const schermate = { intro, lettura, scrittura, fine };
+  app.replaceChildren(...schermate[stato.fase]());
+  window.scrollTo(0, 0);
+}
+
+// Una pagina che si apre già in lettura o in scrittura è stata ricaricata a
+// metà: i secondi di quella fase ripartono da qui, e la risposta lo dice.
+if (stato.fase === "lettura" || stato.fase === "scrittura") stato.ricaricato = true;
+disegna();
+</script>
+</body>
+</html>

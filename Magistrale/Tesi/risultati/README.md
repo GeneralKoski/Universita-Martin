@@ -131,6 +131,23 @@ hanno i giudizi (`qrels/test.tsv`: l'atto di partenza, grado 2), in formato
 BEIR insieme a `queries.jsonl`; `queries.txt` è per `app:eval-run-queries`,
 `generazione.json` ha i conteggi degli atti esclusi.
 
+`query/known-item-auto-train/` - altre 300 query della stessa forma, seme
+20260926, nessun atto in comune con il lotto di test, giudizi in
+`qrels/train.tsv`. Servono solo per addestrare chi sceglie la configurazione
+per query (`esperimenti/2026-09-25_scelta-per-query/`), mai per valutare.
+
+`query/known-item-umane/` - le known-item scritte da persone, raccolte come
+dice la parte 1 di `../istruzioni-annotazione.md`. `campione.json` (da
+`strumenti/campione-atti.py`, seme 20260927) ha i quattro lotti di 40 atti, 20
+per fonte, con fonte e genere di ogni atto. `strumenti/prepara-raccolta.py`
+scrive in `pagine/` una pagina HTML per lotto, da aprire nel browser senza
+rete; le pagine contengono il testo degli atti e git le ignora. I file che le
+persone rimandano si copiano così come sono in `risposte/`, e
+`strumenti/importa-raccolta.py` ricostruisce da tutti `queries.jsonl`,
+`qrels/test.tsv`, `queries.txt` e `raccolta.json` (per ogni atto mostrato:
+query, soprannome, secondi di lettura e di scrittura, se la pagina è stata
+ricaricata, le query vuote con il motivo). Si misura solo a raccolta chiusa.
+
 ## Leggere i tempi senza farsi ingannare
 
 - **Elasticsearch e Koskidex non si confrontano alla pari.** Elasticsearch gira

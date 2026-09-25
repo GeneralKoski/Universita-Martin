@@ -92,9 +92,14 @@ Rifare i giudizi perché il pool era incompleto è l'unico lavoro davvero buttat
       bisogno informativo scritto e committato prima di aprire il pool, scala
       0-2 con i casi dubbi, tempi per sessione, secondo annotatore su query
       intere (almeno 150 righe) con kappa semplice e pesato
-- [ ] Lo strumento che estrae il campione di atti da mostrare (seme fissato,
-      per fonte e per genere) e quello che calcola il kappa: da scrivere quando
-      arrivano le persone, non prima
+- [x] **Strumenti per le known-item umane** (25/09/2026): campione di 160 atti
+      in quattro lotti da 40, metà per fonte; una pagina HTML per lotto che
+      mostra, nasconde, registra i tempi e scarica il file da rimandare;
+      l'importatore che costruisce la collezione e rifiuta file che non
+      corrispondono al lotto. Provati con un browser automatico su tutti i 160
+      atti (`risultati/query/known-item-umane/`)
+- [ ] Lo strumento che calcola il kappa: da scrivere quando ci sono i giudizi
+      del pool, non prima
 - [x] `scripts/pool -run <rapporto>` unisce al pool i ranking di
       `app:eval-run-queries` (Koskidex `5e771dd`), e rifiuta query non eseguite,
       id fuori dal corpus e rapporti di altro formato
@@ -114,8 +119,10 @@ con questa parola. Le due famiglie misurano cose diverse e restano separate.
       nel 99,7%. Koskidex innestato: stessi insiemi di Elasticsearch, 300 su 300
       (`risultati/esperimenti/2026-09-25_known-item-auto/`). `scripts/evaluate
       -rankings` valuta i rapporti dell'app con lo stesso codice delle metriche
-- [ ] **Known-item umane**, trenta o quaranta, da persone diverse: si mostra un
-      atto e si chiede la ricerca che farebbero per ritrovarlo
+- [ ] **Known-item umane**: trovare almeno tre persone che non conoscano i
+      motori, un lotto da 40 atti ciascuna; mandare la pagina del lotto, farsi
+      rimandare il file, copiarlo in `risposte/` e lanciare
+      `importa-raccolta.py`
 - [ ] Secondo annotatore (Leopoldo) su query intere estratte a caso dal foglio
       annotato, almeno 150 righe, e Cohen's kappa riportato comunque, anche se
       basso (parte 3 delle istruzioni)
