@@ -31,7 +31,7 @@ lavoro va avanti sullo sviluppo.
 | Koskidex completo rispetto al contratto di Documentale (F1-F7) | fatto: 24 insiemi su 24 uguali a Elasticsearch | `risultati/esperimenti/2026-09-23_cause-divergenza/` |
 | Innesto in Documentale, motore scelto da `SEARCH_BACKEND` | fatto: dall'app 24/24 insiemi uguali, ricerca 2,7 ms contro 22 | Documentale `67cf954`, `2a03310`; `risultati/esperimenti/2026-09-25_innesto-parita/` |
 | Ricerca per numero e comune in Documentale | dal 2% entro 10 in produzione al 92% primo, con due impostazioni di Koskidex | `risultati/esperimenti/2026-09-25_refusi-numeri/` |
-| Difetti 2 e 3 (ibrido e fusione) | aperti | qui sotto, sezione 5 |
+| Difetti 2 e 3 (ibrido e fusione) | chiusi e misurati: con il recupero congiuntivo l'unione vale +0,62 su SciFact; il peso del vettore va scelto per tipo di query | qui sotto, sezione 5 |
 | Query e giudizi sul corpus di dominio | assenti | qui sotto, sezioni 1 e 2 |
 
 ## Regole
@@ -260,9 +260,12 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       trova già quasi tutto), su NFCorpus +0,031 di Recall@100 e zero query a
       vuoto. Costo 5-15 ms per query, lineare. 4 previsioni e mezza su 6
       (`risultati/esperimenti/2026-09-25_ibrido-unione/`)
-- [ ] **Difetto 2 sulla ricerca congiuntiva di Documentale**: l'unione
-      dovrebbe pesare di più dove il lessicale trova poco. Serve l'embedder
-      dall'app (vedi i timeout sopra)
+- [x] **Difetto 2 sul recupero congiuntivo** (25/09/2026, Koskidex
+      `f16b4c9`): con `all` l'unione vale +0,62 di nDCG@10 su SciFact e +0,14
+      su NFCorpus, zero query a vuoto; il re-ranking non può niente. `all` più
+      unione tiene le known-item a 0,9579 (contro 0,8464 di `any` più unione)
+      perdendo 0,04 su SciFact. 5 previsioni su 5
+      (`risultati/esperimenti/2026-09-25_ibrido-congiuntivo/`)
 - [x] **Difetto 3** (25/09/2026, Koskidex `d3ffe17`): `FusionMode` (`rrf`,
       `convex`), `VectorWeight`, `FusionAlpha`. Calibrati su split separati:
       costante migliore 160 su SciFact e NFCorpus, 10 sulle known-item; α 0,5 e
@@ -271,8 +274,10 @@ tesi. Il piano di dettaglio del 15/09 (Fasi 2 e 3 di `piano-implementazione.md`)
       query. 3 previsioni e mezza su 7
       (`risultati/esperimenti/2026-09-25_fusione/`)
 - [ ] **Il peso del vettore per tipo di query**: aggiungerlo alla scelta di
-      `2026-09-25_scelta-per-query/` (oggi sceglie fra `any` e `all`) e
-      rifarla sulle known-item umane
+      `2026-09-25_scelta-per-query/` (oggi sceglie fra `any` e `all`, senza
+      vettori) e rifarla con l'unione dentro: se `all` più unione regge anche
+      sulle known-item umane, la scelta fra `any` e `all` potrebbe non servire
+      più
 - [x] **Scelta della configurazione per query** (25/09/2026): una regressione
       logistica sceglie fra BM25 `any` e `all` e arriva a 0,0006 dall'oracolo
       (0,6473 contro 0,6479 di media su known-item, SciFact e NFCorpus), mentre

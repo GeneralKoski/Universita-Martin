@@ -1,0 +1,134 @@
+{
+  "ran_at": "2026-09-25T13:21:52Z",
+  "config": {
+    "commit": "b64eb0b",
+    "modifiche_non_committate": "false",
+    "koskidex": [
+      "f16b4c9"
+    ],
+    "embedder_digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+    "unione_con_any": "2026-09-25T124914Z_esito.json",
+    "valutazioni": [
+      "2026-09-25T132046Z_scifact-all-L.json",
+      "2026-09-25T132058Z_scifact-all-R.json",
+      "2026-09-25T132112Z_scifact-all-U.json",
+      "2026-09-25T132114Z_nfcorpus-all-L.json",
+      "2026-09-25T132119Z_nfcorpus-all-R.json",
+      "2026-09-25T132125Z_nfcorpus-all-U.json",
+      "2026-09-25T132127Z_known-item-auto-all-L.json",
+      "2026-09-25T132131Z_known-item-auto-all-R.json",
+      "2026-09-25T132139Z_known-item-auto-all-U.json"
+    ]
+  },
+  "known-item-auto": {
+    "configurazioni": {
+      "L": {
+        "valutazione": "2026-09-25T132127Z_known-item-auto-all-L.json",
+        "metrica": "mrr@10",
+        "valore": 0.9596,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 1.182
+      },
+      "R": {
+        "valutazione": "2026-09-25T132131Z_known-item-auto-all-R.json",
+        "metrica": "mrr@10",
+        "valore": 0.9579,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 1.114
+      },
+      "U": {
+        "valutazione": "2026-09-25T132139Z_known-item-auto-all-U.json",
+        "metrica": "mrr@10",
+        "valore": 0.9579,
+        "recall@100": 1,
+        "a_vuoto": 0,
+        "ms_mediana": 16.028
+      }
+    },
+    "R_meno_L": -0.0017,
+    "U_meno_R": 0.0,
+    "U_con_any": {
+      "valore": 0.8464,
+      "ms_mediana": 17.185
+    },
+    "U_all_meno_U_any_ms": -1.157,
+    "candidati_lessicali_mediana": 1.0,
+    "candidati_portati_dal_vettore_mediana": 99.0
+  },
+  "nfcorpus": {
+    "configurazioni": {
+      "L": {
+        "valutazione": "2026-09-25T132114Z_nfcorpus-all-L.json",
+        "metrica": "ndcg@10",
+        "valore": 0.1939,
+        "recall@100": 0.0973,
+        "a_vuoto": 160,
+        "ms_mediana": 2.059
+      },
+      "R": {
+        "valutazione": "2026-09-25T132119Z_nfcorpus-all-R.json",
+        "metrica": "ndcg@10",
+        "valore": 0.1973,
+        "recall@100": 0.0973,
+        "a_vuoto": 160,
+        "ms_mediana": 2.054
+      },
+      "U": {
+        "valutazione": "2026-09-25T132125Z_nfcorpus-all-U.json",
+        "metrica": "ndcg@10",
+        "valore": 0.3333,
+        "recall@100": 0.2919,
+        "a_vuoto": 0,
+        "ms_mediana": 7.068
+      }
+    },
+    "R_meno_L": 0.0035,
+    "U_meno_R": 0.136,
+    "U_con_any": {
+      "valore": 0.334,
+      "ms_mediana": 8.291
+    },
+    "U_all_meno_U_any_ms": -1.223,
+    "candidati_lessicali_mediana": 1,
+    "candidati_portati_dal_vettore_mediana": 100
+  },
+  "scifact": {
+    "configurazioni": {
+      "L": {
+        "valutazione": "2026-09-25T132046Z_scifact-all-L.json",
+        "metrica": "ndcg@10",
+        "valore": 0.0246,
+        "recall@100": 0.0242,
+        "a_vuoto": 290,
+        "ms_mediana": 24.54
+      },
+      "R": {
+        "valutazione": "2026-09-25T132058Z_scifact-all-R.json",
+        "metrica": "ndcg@10",
+        "valore": 0.0246,
+        "recall@100": 0.0242,
+        "a_vuoto": 290,
+        "ms_mediana": 24.525
+      },
+      "U": {
+        "valutazione": "2026-09-25T132112Z_scifact-all-U.json",
+        "metrica": "ndcg@10",
+        "valore": 0.6483,
+        "recall@100": 0.9037,
+        "a_vuoto": 0,
+        "ms_mediana": 32.323
+      }
+    },
+    "R_meno_L": 0.0,
+    "U_meno_R": 0.6236,
+    "U_con_any": {
+      "valore": 0.6913,
+      "ms_mediana": 40.432
+    },
+    "U_all_meno_U_any_ms": -8.109,
+    "candidati_lessicali_mediana": 0.0,
+    "candidati_portati_dal_vettore_mediana": 100.0
+  }
+}
