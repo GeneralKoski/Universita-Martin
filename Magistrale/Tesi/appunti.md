@@ -1,8 +1,8 @@
 # Tesi magistrale - appunti
 
-Raccolta di appunti sulla scelta dell'argomento di tesi. Non è ancora un
-progetto: è il diario delle idee valutate e del perché sono state tenute o
-scartate.
+Il diario delle scelte sulla tesi: quali idee sono state valutate, perché è
+stata tenuta quella su Koskidex, e cosa è emerso strada facendo. Il lavoro che
+resta da fare sta in [piano.md](piano.md).
 
 ## Criterio di scelta
 
@@ -25,7 +25,7 @@ misure e un contributo difendibile vale più di una tesi applicativa.
 
 Passati in rassegna tutti i repo personali sull'account GitHub `GeneralKoski`.
 
-### Traccia aperta: Koskidex
+### Traccia scelta: Koskidex
 
 Motore di ricerca full-text self-hosted scritto in Go (2.850 righe di codice
 più 2.060 di test), binario
@@ -71,7 +71,7 @@ l'angolo più facile da difendere.
 ## Decisione presa (15 settembre 2026), confermata il 23 settembre
 
 **Tesi su Koskidex innestato in Documentale.** Il piano operativo sta in
-[piano-implementazione.md](piano-implementazione.md).
+[piano.md](piano.md).
 
 La domanda non è "integro il mio motore nel gestionale", che sarebbe lavoro di
 integrazione senza contributo. È che il recupero di Koskidex ha quattro difetti
@@ -110,7 +110,7 @@ Ognuno è un capitolo con un risultato numerico, e il baseline è il codice del
 **Stato al 23/09/2026: i difetti 0 e 1 sono chiusi e misurati**, entrambi dietro
 un campo di `Settings` con il comportamento vecchio come default, entrambi con
 l'ipotesi committata nel diario prima della misura. Restano il 2 e il 3, che
-hanno bisogno di un corpus con embedding e giudizi e quindi aspettano febbraio.
+hanno bisogno di embedding e di giudizi di rilevanza (sezioni 2 e 5 del piano).
 Il percorso completo del lessicale, da 0,0246 a 0,6197 su SciFact, è già un
 capitolo con dentro tre numeri e due sorprese.
 
@@ -160,13 +160,14 @@ risultati:
   occasione di vedersi. L'argomento "i miglioramenti valgono anche per
   Documentale" va quindi ricostruito: o Koskidex impara a riprodurre il
   matching di Elasticsearch, o si misura Elasticsearch direttamente, che ora
-  gira in locale sullo stesso corpus.
+  gira in locale sullo stesso corpus. **Ricostruito il 25/09/2026** per la
+  prima strada: vedi *Koskidex pronto per l'innesto*, qui sotto.
 
   E il confronto ha trovato una cosa grossa: **in produzione la ricerca per
   numero d'atto è rotta.** `ordinanza 187` mette l'atto giusto al 12° posto su
   85, perché per Elasticsearch `187` ammette un refuso e combacia con `18` e
-  `17`. Spenti i refusi, è primo e unico. Dettagli nel piano, sezione *Il
-  confronto sul corpus vero*.
+  `17`. Spenti i refusi, è primo e unico. Dettagli in
+  `risultati/esperimenti/2026-09-23_numero-atto/`.
 
 Con `or + BM25` tutte e sette le query rispondono, e il documento giusto è primo
 in tutte e sette.
@@ -233,8 +234,8 @@ Tre conseguenze buone e una scomoda.
   Sono pubblici per legge, ma il corpus **non si committa**: nel repo vanno gli
   script che lo riscaricano, e in tesi gli esempi si citano anonimizzati.
 
-Il dettaglio, con i numeri e le fonti scartate, sta nel Task E2 di
-[piano-autunno-2026.md](piano-autunno-2026.md).
+Il dettaglio, con fonti, licenze e numeri, sta in Koskidex
+`eval/corpora/c3-albo/SOURCE.md`.
 
 ## Koskidex pronto per l'innesto (25/09/2026)
 
@@ -255,8 +256,14 @@ Due scoperte fatte per strada, tutte e due materiale di tesi:
   "illuminazione" non trova gli atti con l'elisione. In un corpus italiano non è
   un caso raro. Da contare sul corpus intero.
 
-Il prossimo passo è l'innesto: `KoskidexService` accanto a
-`ElasticsearchService`, scelto da configurazione.
+**L'innesto è fatto lo stesso giorno** (Documentale `67cf954` e `2a03310`):
+`KoskidexService` accanto a `ElasticsearchService`, dietro lo stesso contratto
+`SearchBackend`, scelto da `SEARCH_BACKEND`. Dal vivo, passando dall'app sui
+10.018 atti: 24 insiemi su 24 identici a Elasticsearch, ricerca a 2,7 ms di
+mediana contro 22, indicizzazione 1,9 secondi contro 1,7. La prima misura ha
+trovato un altro difetto di Koskidex: un `fsync` per documento, 31,8 secondi di
+indicizzazione, corretto. Dettagli in
+`risultati/esperimenti/2026-09-25_innesto-parita/`.
 
 ## Termine di paragone: le tesi dei colleghi (24/09/2026)
 
@@ -279,7 +286,7 @@ Cosa ne segue, per come lavoro da qui a settembre 2027:
 ## Relatore: stato e tempi
 
 Il 21 settembre 2026 ho agganciato entrambi i potenziali relatori a fine
-lezione, come da [lunedi-21-settembre.md](lunedi-21-settembre.md): **Dal Palù**
+lezione: **Dal Palù**
 (Programmazione Dichiarativa) e **Bonnici** (Algoritmi per l'IA e Laboratorio
 di IA). Nessuno dei due discorsi ha chiuso l'argomento, ed era previsto così:
 l'obiettivo di quel giorno era aprire un canale, non ottenere un sì.
@@ -302,43 +309,25 @@ ranking, diventa allo stesso tempo l'esame e la dimostrazione da portare a
 Bonnici. Un progetto solo, due scopi. Da valutare quando Bonnici assegna i temi,
 senza forzare: se il tema è lontano, si fa il progetto e basta.
 
-Nel frattempo la tesi non parte comunque. Il vincolo resta quello scritto nel
-foglio del 21: sette esami da chiudere, la tesi entra nel vivo da febbraio o
-marzo 2027 per arrivare a settembre 2027.
+**Da chiedere a ricevimento**, a chiunque dei due apra: cosa considera un
+contributo sufficiente per una magistrale, che dimensione si aspetta, se va bene
+un corpus pubblico al posto dei dati aziendali, e se l'impianto di valutazione
+gli va bene prima che inizi ad annotare.
+
+I tempi: sette esami da chiudere fra gennaio e l'estate 2027, ma la parte
+tecnica è in anticipo e la previsione è di chiuderla prima della sessione
+invernale 2027. Dopo resta la scrittura, per la laurea a settembre 2027.
 
 ## Prossimi passi
 
-Il lavoro tecnico di questi mesi sta in [piano-autunno-2026.md](piano-autunno-2026.md).
-**Le correzioni al ranking si fanno prima della tesi** (deciso il 23/09/2026), a tre
-condizioni: baseline congelato in un test, ogni modifica dietro un flag di `Settings`
-con default sul comportamento attuale, e ogni modifica annotata in `eval/DIARIO.md`
-con l'ipotesi scritta *prima* di misurare. Il motivo è il tempo: da febbraio a luglio
-2027 ci sono cinque mesi di sere, e arrivarci con il codice già scritto lascia liberi
-misurazione e scrittura, che sono le parti che non si comprimono.
-
-**Entro dicembre 2026**
-
-- [ ] Scegliere il progetto di Laboratorio di IA guardando anche se può fare da
-      dimostrazione per Bonnici
-- [ ] Riproporre la tesi a Bonnici e Dal Palù a progetti consegnati
-- [x] ~~Chiedere all'azienda cosa è pubblicabile di Documentale~~ - decaduta il
-      23/09/2026, l'azienda ha abbandonato il progetto. Al suo posto: costruire il
-      corpus dagli albi pretori pubblici (Task E2 del piano)
-
-**Da gennaio 2027, quando escono le tracce**
-
-- [ ] Verificare se fra le tracce ufficiali c'è qualcosa che assorbe o sostituisce
-      la proposta su Koskidex
-- [ ] Chiudere sul relatore
-
-**Prima di annotare qualsiasi cosa**
-
-- [ ] Scegliere la collezione pubblica per validare BM25
-- [ ] Sentire il relatore prima di iniziare ad annotare il corpus di dominio
-- [x] ~~Chiedere se si può usare in gran parte una collezione pubblica~~ - risolto
-      il 23/09/2026, ma dal verso opposto a come era posto: **anche il corpus di
-      dominio è pubblico**. Resta intatto il costo nascosto, cioè le query e i
-      giudizi, che vanno prodotti a mano perché nessun log si riempirà
+Stanno in [piano.md](piano.md), con le regole che rendono sicuro toccare il
+ranking. La decisione del 23/09/2026 era di **fare le correzioni al ranking
+prima della tesi**, a tre condizioni: baseline congelato in un test, ogni
+modifica dietro un campo di `Settings` con default sul comportamento attuale, e
+ogni modifica annotata in `eval/DIARIO.md` con l'ipotesi scritta *prima* di
+misurare. Ha funzionato: i difetti 0 e 1 e l'innesto sono chiusi a settembre
+2026, e la misurazione e la scrittura, che sono le parti che non si comprimono,
+hanno il tempo che serve.
 
 ## Nota organizzativa
 
