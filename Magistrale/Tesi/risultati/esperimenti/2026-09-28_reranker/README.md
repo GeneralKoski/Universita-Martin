@@ -51,3 +51,34 @@ del primo stadio è il tetto del tetto, e si riporta accanto.
 6. **Il costo**: mediana del tempo di riordino almeno 2 secondi a query,
    mille volte Koskidex: il tetto non è una configurazione da usare dal vivo
    su questo hardware.
+
+## Esito, prima parte: SciFact, NFCorpus, known-item automatiche
+
+Misurato il 28/09/2026 fra le 14:38 e le 16:48, Koskidex `51d4988`,
+`bge-reranker-v2-m3` alla revisione `953dc6f`, MPS in fp32. Riassunto in
+`2026-09-28T144809Z_esito-beir.json` (`analizza.py beir`); primi stadi in
+`primo-stadio/`, rapporti riordinati in `riordinati/`, valutazioni in
+`evaluate/`. La previsione 4 e la 5 aspettano le known-item umane complete.
+
+| | primo stadio | riordino | recall@100 del primo stadio | mediana del riordino |
+|---|---|---|---|---|
+| SciFact, nDCG@10 | 0,6757 | **0,7233** | 0,886 | 12,0 s |
+| NFCorpus, nDCG@10 | 0,3062 | **0,3306** | 0,238 | 11,3 s |
+| known-item automatiche, MRR@10 | 0,8331 | **0,9528** | 1,000 | 5,1 s |
+
+**Quattro previsioni su quattro, due di misura e una nel verso sbagliato
+dello spirito.**
+
+1. **Confermata, di poco.** SciFact da 0,6757 a 0,7233, +0,048 (soglia 0,72).
+2. **Confermata, di pochissimo.** NFCorpus da 0,3062 a 0,3306 (soglia 0,33).
+   Il tetto qui è basso: il primo stadio porta fra i cento solo il 24% dei
+   documenti giusti, e il riordino non vede gli altri.
+3. **Confermata alla lettera, smentita nello spirito.** Il riordino di LA
+   resta sotto LT (0,9528 contro 0,9596), ma di 0,007, non del margine che
+   avevo in mente: porta LA da 0,833 a 0,953. Delle 13 query con l'atto fra
+   l'undicesimo e il centesimo posto ne porta 12 fra i primi dieci. Il
+   ragionamento («un cross-encoder non pesa un numero esatto più di uno
+   simile») era sbagliato: legge numero e comune nella scheda, e li riconosce.
+6. **Confermata.** Mediana da 5,1 a 12,0 secondi a query, contro il
+   millisecondo di Koskidex; il costo cresce con la lunghezza dei testi
+   (schede corte 5 s, abstract 11-12 s).

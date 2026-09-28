@@ -1,0 +1,94 @@
+{
+  "ran_at": "2026-09-28T14:48:09Z",
+  "config": {
+    "commit": "c1fb7e2",
+    "modifiche_non_committate": "false",
+    "file": {
+      "scifact LA": {
+        "primo_stadio": "2026-09-28T123829Z_scifact-rr-primo-LA.json",
+        "riordino": "2026-09-28T123829Z_scifact-rr-LA.json",
+        "valutazione": "2026-09-28T133934Z_scifact-rr-LA.json"
+      },
+      "nfcorpus LA": {
+        "primo_stadio": "2026-09-28T133935Z_nfcorpus-rr-primo-LA.json",
+        "riordino": "2026-09-28T133935Z_nfcorpus-rr-LA.json",
+        "valutazione": "2026-09-28T142250Z_nfcorpus-rr-LA.json"
+      },
+      "known-item-auto LA": {
+        "primo_stadio": "2026-09-28T142252Z_known-item-auto-rr-primo-LA.json",
+        "riordino": "2026-09-28T142252Z_known-item-auto-rr-LA.json",
+        "valutazione": "2026-09-28T144802Z_known-item-auto-rr-LA.json"
+      },
+      "known-item-auto LT": "2026-09-28T144803Z_known-item-auto-rr-primo-LT.json"
+    }
+  },
+  "righe": {
+    "scifact LA": {
+      "primo": {
+        "ndcg@10": 0.6757400555905284,
+        "mrr@10": 0.6478518518518519,
+        "recall@100": 0.8858888888888888
+      },
+      "riordino": {
+        "ndcg@10": 0.7233123964183057,
+        "mrr@10": 0.6985158730158729
+      },
+      "mediana_ms": 11973.1855,
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+    },
+    "nfcorpus LA": {
+      "primo": {
+        "ndcg@10": 0.3061724657221725,
+        "mrr@10": 0.5099316919750357,
+        "recall@100": 0.23762673367662912
+      },
+      "riordino": {
+        "ndcg@10": 0.3306424933492711,
+        "mrr@10": 0.5388802889576881
+      },
+      "mediana_ms": 11345.65,
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+    },
+    "known-item-auto LA": {
+      "primo": {
+        "ndcg@10": 0.8629294179158021,
+        "mrr@10": 0.833126984126984,
+        "recall@100": 1
+      },
+      "riordino": {
+        "ndcg@10": 0.9639383553560888,
+        "mrr@10": 0.9527777777777777
+      },
+      "mediana_ms": 5064.9895,
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+      "posizioni_primo_stadio": {
+        "primi_10": 287,
+        "da_11_a_100": 13,
+        "fuori": 0,
+        "portati_nei_10": 12
+      }
+    }
+  },
+  "previsioni": {
+    "1": {
+      "previsione": "SciFact nDCG@10 almeno 0,72",
+      "valore": "0.6757 -> 0.7233",
+      "esito": "confermata"
+    },
+    "2": {
+      "previsione": "NFCorpus nDCG@10 almeno 0,33",
+      "valore": "0.3062 -> 0.3306",
+      "esito": "confermata"
+    },
+    "3": {
+      "previsione": "known-item automatiche: il riordino di LA sotto LT",
+      "valore": "LA 0.8331, riordino 0.9528, LT 0.9596",
+      "esito": "confermata"
+    },
+    "6": {
+      "previsione": "mediana del riordino almeno 2 secondi a query",
+      "valore": "scifact LA 11973 ms; nfcorpus LA 11346 ms; known-item-auto LA 5065 ms",
+      "esito": "confermata"
+    }
+  }
+}
