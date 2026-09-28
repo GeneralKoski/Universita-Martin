@@ -418,13 +418,39 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & 7. I test passano; con l'impostazione il test del percorso veloce
       confronta tutte le query
     & 4.200 su 4.200: confermata \\
+  \addlinespace
+  \texttt{date-importi}
+    & 1. Tokenizer standard: data nel formato dell'atto almeno 90\% entro
+      dieci, in un altro formato al più 10\%
+    & 98-100\% e 0-8\%: confermata \\
+    & 2. Tokenizer di Koskidex: barra e punto almeno 90\%, col mese in
+      lettere al più 10\%
+    & 94\% e 0-8\%: confermata \\
+    & 3. Acceso: ogni coppia almeno 90\%, atto primo entro 5 punti dal
+      controllo
+    & 98-100\%, uguale al controllo: confermata \\
+    & 4. Importi: spento fra formati al più 10\%, acceso almeno 90\%
+    & 0\% e 100\%: confermata \\
+    & 5. Known-item automatiche, MRR@10 entro 0,005
+    & da 0,9750 a 0,9767 e 0,9772: confermata \\
+    & 6. Numeri da 1 a 31: candidati mai in aumento, in calo almeno per metà
+    & in calo per 4 su 12: smentita \\
+    & 7. Indicizzazione accesa al più il 20\% più lenta
+    & +41-46\%: smentita \\
+    & 8. I test passano
+    & confermata \\
+    & 9. (dopo l'esito) Saltando i testi senza il formato, nessun risultato
+      cambia
+    & 12 configurazioni su 12: confermata \\
+    & 10. (dopo l'esito) Indicizzazione accesa al più il 15\% più lenta
+    & +29-34\%: smentita \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 145: 96 confermate, 37 smentite, 9 a metà, e 3 senza
+In tutto le previsioni sono 155: 103 confermate, 40 smentite, 9 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 142 con un esito, quasi
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 152 con un esito, quasi
 una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},

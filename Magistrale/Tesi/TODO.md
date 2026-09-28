@@ -126,8 +126,14 @@ basta mettere i file nelle cartelle indicate e dirlo.
       Documentale: oggi non cambia niente (punteggio euristico), servirebbe
       solo passando a BM25.
 
-- [ ] Decidere come trattare date (`14.01.2026`) e decimali (`3,5`) fuori dalla
-      modalità compatibile con Elasticsearch, e misurarlo.
+- [x] Date e importi: `normalize_dates` e `normalize_amounts` (Koskidex
+      `c059664`, costo ridotto in `cec3b63`), misurati il 28/09 in
+      `2026-09-28_date-importi` su query sintetiche: sei previsioni su otto,
+      più una su due per il costo. Scritto nella sezione 6.4 (quarto difetto),
+      in 1, 9.1 e nel registro. Restano: esporle in Documentale (una variabile
+      e il profilo consigliato, misurato dall'app); i decimali semplici (`3,5`
+      contro `3.5`) non sono toccati; una passata scritta a mano al posto delle
+      espressioni regolari se il costo (+29-34% di indicizzazione) contasse.
 - [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui
       primi 100 candidati dei ranking archiviati, rivalutati con
       `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il

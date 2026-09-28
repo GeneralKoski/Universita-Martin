@@ -75,10 +75,12 @@ La domanda si articola in quattro:
         congiuntivo, non era fra quelli sospettati: è stato trovato misurando.
         Su SciFact il recupero lessicale passa da 0,0246 a 0,6757 di nDCG@10,
         il 99,5\% del riferimento BM25 di Lucene.
-  \item \textbf{Tre difetti della ricerca di Documentale in produzione}: il
-        numero d'atto, le elisioni e la combinazione di numero e comune. Su 300
-        ricerche \texttt{<numero> <comune>} l'atto giusto passa dall'1,3\% al
-        91,7\% dei casi al primo posto, con due impostazioni.
+  \item \textbf{Quattro difetti della ricerca di Documentale in produzione}:
+        il numero d'atto, le elisioni, la combinazione di numero e comune e le
+        date in formati diversi. Su 300 ricerche \texttt{<numero> <comune>}
+        l'atto giusto passa dall'1,3\% al 91,7\% dei casi al primo posto, con
+        due impostazioni; una data scritta in un formato diverso da quello
+        dell'atto passa dallo 0-8\% al 98-100\% di atti trovati.
   \item \textbf{Un innesto con gli stessi risultati}: Koskidex dentro
         Documentale, scelto da una variabile d'ambiente, che restituisce gli
         stessi insiemi di Elasticsearch su tutte le query del confronto
