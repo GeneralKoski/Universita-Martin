@@ -282,8 +282,8 @@ con i due motori nella stessa macchina virtuale, sotto carico e su archivi più
 grandi, è nella sezione~\ref{sec:latenza}.
 
 \paragraph{La prima misura ha trovato un altro difetto.} La prima
-indicizzazione con Koskidex costava 31,8 secondi: 2,6 millisecondi per
-documento, costanti. Ogni documento sincronizzava il registro delle operazioni
+indicizzazione con Koskidex costava 31,8 secondi: 3,2 millisecondi per
+documento. Ogni documento sincronizzava il registro delle operazioni
 sul disco, e su macOS una sincronizzazione è un \texttt{F\_FULLFSYNC}, che
 attende il supporto fisico. Ora una richiesta scrive tutte le sue righe del
 registro con una sincronizzazione sola, e se la scrittura fallisce non entra

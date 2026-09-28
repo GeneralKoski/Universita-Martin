@@ -4,7 +4,7 @@ Ogni esperimento di questa tesi ha scritto le sue previsioni prima della misura,
 con una soglia numerica, e le ha committate nel README dell'esperimento o nella
 voce del diario di Koskidex; a misura fatta ha aggiunto l'esito, previsione per
 previsione, senza toccare quello che era scritto prima. La
-tabella~\ref{tab:ipotesi} le raccoglie tutte: la prima colonna dice da dove
+tabella~\ref{tab:ipotesi} le raccoglie tutte, quelle già misurate: la prima colonna dice da dove
 viene la previsione (la cartella in \texttt{risultati/esperimenti/} senza la
 data, o la voce del diario), la seconda la riassume in una riga con la sua
 soglia, la terza riporta il numero misurato e il verdetto, confermata, smentita
@@ -12,8 +12,9 @@ o a metà quando una previsione in più parti ha tenuto solo in alcune. Il testo
 completo di ogni previsione, con il ragionamento che la sosteneva, sta nella
 fonte citata, committato prima della misura; le poche aggiunte dopo una prima
 analisi, ma prima della misura che giudicano, sono segnate come tali. Dove la
-fonte registra il numero ma non il verdetto, il verdetto è mio, ottenuto
-confrontando il numero con la soglia, ed è segnato con un asterisco.
+fonte registra il numero ma non il verdetto, o un verdetto che non tiene conto
+di tutte le parti della previsione, il verdetto è mio, ottenuto confrontando il
+numero con la soglia, ed è segnato con un asterisco.
 
 {\small
 \begin{longtable}{@{}>{\RaggedRight\arraybackslash}p{3.1cm}>{\RaggedRight\arraybackslash}p{6.1cm}>{\RaggedRight\arraybackslash}p{3.6cm}@{}}
@@ -254,7 +255,7 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & $-$0,0047, +0,0107, $-$0,384: a metà \\
     & 6. Convessa calibrata almeno +0,005 sulle pubbliche, non oltre 0,005
       sotto sulle known-item, almeno pari a RRF
-    & +0,0112, +0,0076, +0,0001; su NFCorpus 0,0031 sotto RRF: a metà \\
+    & +0,0112, +0,0076, +0,0001; su NFCorpus 0,0031 sotto RRF: a metà$^{*}$ \\
     & 7. Le fusioni nuove costano meno di 2 ms in più dell'unione
     & costano meno, da 1 a 7 ms: confermata \\
   \addlinespace
@@ -294,7 +295,8 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & 3. Memoria viva giù di almeno il 60\%
     & $-$65\%: confermata \\
     & 4. Documentale guadagna la parte del motore dei 24 ms in più
-    & non misurata nell'esperimento \\
+    & nessuna differenza fra i due binari dal vivo: i 24~ms erano il vettore
+      della query: smentita$^{*}$ \\
     & 5. (seconda modifica) Re-ranking non oltre 18 ms, unione non oltre 30
     & 24,62 e 39,60: smentita \\
     & 6. (seconda modifica) Heap vivo cresce di meno di 1 MB
@@ -518,9 +520,9 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
 \end{longtable}
 }
 
-In tutto le previsioni sono 184: 127 confermate, 45 smentite, 9 a metà, e 3 senza
-un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 181 con un esito, quasi
+In tutto le previsioni sono 184: 127 confermate, 46 smentite, 9 a metà, e 2 senza
+un esito registrato (la quarta della prima misura del baseline e la settima
+della voce E1). Delle 182 con un esito, quasi
 una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
@@ -528,4 +530,9 @@ già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-diverge
 hanno previsioni numeriche: il primo registrava due ipotesi sulle cause della
 divergenza residua, scritte senza soglia e sbagliate tutte e due. Le quattro
 ipotesi scritte nel diario il 23 settembre sul confronto fra scheda e testo
-intero aspettano ancora la misura (sezione~\ref{sec:scheda-testo}).
+intero aspettano ancora la misura (sezione~\ref{sec:scheda-testo}). Aspettano
+la misura, e quindi mancano dalla tabella, anche le previsioni già scritte e
+committate degli esperimenti che girano a raccolta delle known-item umane
+chiusa: \texttt{known-item-umane} (7), \texttt{italiano-umane} (4),
+\texttt{scelta-umane} (4), \texttt{scheda-testo} (5) e la parte umana di
+\texttt{reranker}; entreranno con il loro esito.

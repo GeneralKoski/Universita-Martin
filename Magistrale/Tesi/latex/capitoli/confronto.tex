@@ -85,7 +85,9 @@ doppio di quello di Elasticsearch.
     \bottomrule
   \end{tabular}
   \caption{Sotto carico, stesse 4 CPU: ricerche al secondo e p99 in
-  millisecondi. Tutti saturano le CPU dagli 8 client in su.}
+  millisecondi. Elasticsearch e Koskidex prima saturano le CPU dagli 8 client
+  in su (380-390\%); Koskidex dopo arriva al 319\% a 8 client e al 360\% a
+  32, e il resto va alla rete.}
   \label{tab:carico}
 \end{table}
 
@@ -142,8 +144,9 @@ trovate sono le stesse, nello stesso ordine
 a tutte e due le dimensioni, 9 valutazioni su 9, più un test che confronta
 42.420 ricerche di parole con il percorso di prima. Misurato contro un
 \emph{prima} rifatto nella stessa mezz'ora, le allocazioni scendono da 0,435 a
-0,081~MB a ricerca e la capacità nel container da 2.622 a 3.779 ricerche al
-secondo, +44\%, 6,6 volte Elasticsearch; nativo da 4.090 a 6.376. Cinque
+0,081~MB a ricerca, il p50 di una ricerca alla volta nel container da 1,14 a
+0,92~ms, e la capacità nel container da 2.622 a 3.779 ricerche al secondo,
++44\%, 6,6 volte Elasticsearch; nativo da 4.090 a 6.376. Cinque
 previsioni su sette. Una soglia era una quota, meno del 10\% dei byte allocati
 per quella funzione: è scesa al 30\%, ma perché è sceso tutto il resto con lei,
 e in valore assoluto è passata da 385 a 25~KB a ricerca. L'altra si aspettava
@@ -179,14 +182,16 @@ per la pertinenza no (tabella~\ref{tab:crescita}).
 \end{table}
 
 Alla dimensione dell'albo Koskidex occupa un decimo della memoria di
-Elasticsearch, e sotto carico 272~MB al massimo contro 1.566. Ma tiene tutto in
+Elasticsearch, e sotto carico 272~MB al massimo contro 1.566, 195 dopo la terza
+correzione. Ma tiene tutto in
 memoria, con gli identificativi dei documenti e i nomi dei campi come stringhe
 in ogni occorrenza: circa 12~KB a documento, e a 100.000 documenti la memoria è
 quasi quella di Elasticsearch, che ha un heap fisso. Le correzioni non la
 toccano (1.213 contro 1.184~MB), perché non toccano le strutture dell'indice.
 Toccano invece la coda: a 100.000 documenti il p95 di Koskidex era di 133~ms e
 il p99 di 201, dieci volte quelli a 10.018, contro i 21 e 36 di Elasticsearch;
-dopo sono 10,4 e 15,5, sotto quelli di Elasticsearch.
+dopo sono 10,4 e 15,5, sotto quelli di Elasticsearch, e 9,9 e 13,6 dopo la
+terza.
 
 \paragraph{Un difetto trovato per strada.} Il test che confronta i due percorsi
 su query casuali ha trovato una cosa che non cercava, e che ha avuto il suo
@@ -220,7 +225,7 @@ meno di un quinto del tempo, e sotto carico regge più di sei volte le ricerche
 sulle stesse CPU. A centomila documenti il tempo regge ancora, la memoria no: lì
 serve un indice più compatto, con identificativi e campi interi, che
 ridurrebbe anche l'indice su disco, oggi il doppio di quello di
-Elasticsearch, e l'indicizzazione, due volte e mezzo più lenta. I limiti delle
+Elasticsearch, e l'indicizzazione, 2,4 volte più lenta. I limiti delle
 misure: il client gira sullo stesso Mac, fuori dalla macchina virtuale, e tiene
 le connessioni aperte, mentre l'app in PHP ne apre in genere una per ricerca;
 Elasticsearch ha l'heap fissato a 1~GB, e con meno memoria si comporterebbe

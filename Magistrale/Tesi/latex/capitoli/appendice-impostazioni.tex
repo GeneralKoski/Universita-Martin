@@ -31,9 +31,15 @@ controlla a ogni commit.
   o BM25 (sezione~\ref{sec:difetto1}) \\
   \texttt{bm25\_k1}, \texttt{bm25\_b} & 1,2 e 0,75 & i parametri di BM25, quelli
   predefiniti di Lucene \\
-  \texttt{bm25\_expansion} & vuoto, \texttt{blended} & frequenza documentale di
-  un'espansione: del termine trovato, o la più alta fra i termini trovati dallo
-  stesso termine della query (sezione~\ref{sec:espansioni}) \\
+  \texttt{bm25\_expansion} & vuoto, \texttt{blended}, \texttt{synonym} &
+  frequenza documentale di un'espansione: del termine trovato, o la più alta fra
+  i termini trovati dallo stesso termine della query; con \texttt{synonym}
+  anche la frequenza nel documento è la somma delle espansioni, come la
+  \emph{SynonymQuery} di Lucene (sezione~\ref{sec:espansioni}) \\
+  \texttt{stable\_term\_order} & \texttt{false}, \texttt{true} & i termini
+  trovati da una parola della query si visitano in ordine lessicografico, non in
+  quello della mappa del vocabolario (sezioni~\ref{sec:espansioni}
+  e~\ref{sec:latenza}) \\
   \texttt{minimum\_should\_match} & vuoto, specifica & in recupero disgiuntivo,
   quanti termini deve contenere un documento, con la sintassi di Elasticsearch
   (sezione~\ref{sec:nessuna-unica}) \\
@@ -67,6 +73,16 @@ controlla a ogni commit.
   \texttt{typo\_tolerance.} \texttt{disable\_on\_numbers} & \texttt{false},
   \texttt{true} & nessun refuso sui termini della query fatti di sole cifre, come
   in Meilisearch (sezione~\ref{sec:numero-comune}) \\
+  \midrule
+  \multicolumn{3}{l}{\emph{Date e importi} (sezione~\ref{sec:date})} \\
+  \texttt{normalize\_dates} & \texttt{false}, \texttt{true} & le date valide in
+  quattro formati, con i mesi in italiano, diventano un numero solo,
+  \texttt{aaaammgg}, negli atti e nelle query \\
+  \texttt{normalize\_amounts} & \texttt{false}, \texttt{true} & agli importi si
+  tolgono i punti delle migliaia \\
+  \texttt{typo\_tolerance.} \texttt{disable\_on\_amounts} & \texttt{false},
+  \texttt{true} & nessun refuso sui termini della query fatti di cifre, punti e
+  virgole, come \texttt{1.234,56} \\
   \midrule
   \multicolumn{3}{l}{\emph{Vettori e fusione} (capitolo~\ref{chapter:ibrido})} \\
   \texttt{embedder} & vuoto, \texttt{ollama} con modello e campi & il server
