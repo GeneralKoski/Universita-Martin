@@ -458,13 +458,30 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & 0 e +0,0025: confermata \\
     & 6. Mediana del tempo per query entro il 5\%
     & fra $-$1,4\% e +2,8\%: confermata \\
+  \addlinespace
+  \texttt{allocazioni}
+    & 1. Nessun risultato cambia: impronte a 10.018 e 100.000 documenti,
+      metriche di \texttt{evaluate}
+    & 429 e 429 impronte uguali, 9 valutazioni su 9: confermata \\
+    & 2. Allocazioni per ricerca almeno il 60\% in meno
+    & da 0,435 a 0,081~MB: confermata \\
+    & 3. La raccolta dei candidati con refuso sotto il 10\% dei byte allocati
+    & dall'86\% al 30\%: smentita \\
+    & 4. Capacità nativa almeno +5\%
+    & +56\%: confermata \\
+    & 5. Capacità nel container almeno +5\%
+    & +44\%: confermata \\
+    & 6. A 100.000 documenti p95 e p99 almeno $-$15\%
+    & $-$4\% e $-$7\%: smentita \\
+    & 7. Una alla volta nel container, p50 non peggiore di oltre il 5\%
+    & $-$19\%: confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 161: 109 confermate, 40 smentite, 9 a metà, e 3 senza
+In tutto le previsioni sono 168: 114 confermate, 42 smentite, 9 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 158 con un esito, quasi
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 165 con un esito, quasi
 una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},

@@ -141,6 +141,18 @@ basta mettere i file nelle cartelle indicate e dirlo.
       `b958ea0`), misurate il 28/09 in `2026-09-28_espansioni-sinonimo`: sei
       previsioni su sei, nessuna regola di parità, SciFact 0,6667 (0,6734 con
       stopword). Scritto in 5.3 e nel registro; tolto dagli sviluppi futuri.
+- [x] Le allocazioni che restavano (Koskidex `2e6beff`, i candidati con
+      refuso filtrati prima di togliere i doppioni), misurate il 28/09 in
+      `2026-09-28_allocazioni` contro un "prima" rifatto: nessun risultato
+      cambia, allocazioni da 0,435 a 0,081 MB a ricerca, capacità nel
+      container +44% (3.779 ricerche al secondo), nativa +56%; cinque
+      previsioni su sette. Scritto in 8.3, 9.1 e nel registro. Resta, se
+      servisse: `transform.Chain` (la catena che toglie gli accenti, ricreata
+      a ogni testo) è ora la prima voce delle allocazioni, e la scansione del
+      vocabolario per le parole corte con un refuso il 7% della CPU.
+- [x] I rapporti dell'app sulle known-item umane (`confronto/*known-item-umane*`)
+      contengono il testo delle query: esclusi da git il 28/09, prima che
+      stasera ne nasca il primo. I tempi di indicizzazione restano tracciati.
 - [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui
       primi 100 candidati dei ranking archiviati, rivalutati con
       `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il

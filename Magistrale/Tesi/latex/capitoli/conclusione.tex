@@ -40,11 +40,12 @@ qualcosa}, vale +0,023 di nDCG@10 medio sulla migliore configurazione fissa. Se 
 regola riconosca il tipo di query o la collezione, su questi dati non si può dire.
 
 \paragraph{Il confronto con Elasticsearch.} Nella stessa macchina virtuale, con
-le stesse CPU e le richieste dell'app, Koskidex risponde in 1,1~ms di p50
-contro 6,3, regge 4,6 volte le ricerche al secondo e occupa un decimo della
+le stesse CPU e le richieste dell'app, Koskidex risponde in 0,9~ms di p50
+contro 6,3, regge 6,6 volte le ricerche al secondo e occupa un decimo della
 memoria. Non era così prima di misurarlo sotto carico: allocava 2,6~MB a
-ricerca, e il vantaggio si fermava a 1,14 volte. Due correzioni che non cambiano
-un solo risultato, verificato risposta per risposta, hanno tolto quel costo.
+ricerca, e il vantaggio si fermava a 1,14 volte. Tre correzioni che non cambiano
+un solo risultato, verificato risposta per risposta, hanno tolto quel costo:
+ora alloca 0,08~MB a ricerca.
 Il limite è la memoria: a centomila documenti è quasi quella di
 Elasticsearch. Quanto valgano in pertinenza, Koskidex corretto ed Elasticsearch
 di produzione, sulle ricerche scritte da persone, lo dirà il

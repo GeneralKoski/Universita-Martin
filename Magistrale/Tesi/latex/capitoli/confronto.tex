@@ -131,6 +131,27 @@ campioni è nelle chiamate di sistema della rete: il motore non è più la parte
 lenta della richiesta. Nativo, sugli 8 core del Mac, Koskidex passa da 975 a
 4.100 ricerche al secondo.
 
+\paragraph{Una terza correzione, e due previsioni sbagliate.} Delle allocazioni
+che restavano, l'86\% veniva da una riga sola: l'insieme che toglie i doppioni
+fra le parole del vocabolario che condividono un bigramma con quella cercata,
+migliaia per i bigrammi comuni, quasi tutte scartate subito dopo perché troppo
+lunghe o troppo corte. La correzione scarta prima e toglie i doppioni solo fra
+quelle che restano; il controllo dipende solo dalla parola, quindi le parole
+trovate sono le stesse, nello stesso ordine
+(\texttt{2026-09-28\_allocazioni}). La prova è la stessa: 429 impronte su 429
+a tutte e due le dimensioni, 9 valutazioni su 9, più un test che confronta
+42.420 ricerche di parole con il percorso di prima. Misurato contro un
+\emph{prima} rifatto nella stessa mezz'ora, le allocazioni scendono da 0,435 a
+0,081~MB a ricerca e la capacità nel container da 2.622 a 3.779 ricerche al
+secondo, +44\%, 6,6 volte Elasticsearch; nativo da 4.090 a 6.376. Cinque
+previsioni su sette. Una soglia era una quota, meno del 10\% dei byte allocati
+per quella funzione: è scesa al 30\%, ma perché è sceso tutto il resto con lei,
+e in valore assoluto è passata da 385 a 25~KB a ricerca. L'altra si aspettava
+un guadagno forte a 100.000 documenti, dove pensavo che le liste dei bigrammi
+fossero dieci volte più lunghe; ma la copia ripete gli stessi testi, il
+vocabolario non cresce, e la coda lì viene dalle liste dei documenti: p95 e p99
+scendono solo del 4 e del 7\%.
+
 \paragraph{Memoria e archivi più grandi.} Per vedere come cresce il costo ho
 copiato gli stessi atti fino a 50.000 e 100.000 documenti, con identificativi
 diversi e lo stesso testo: dati inventati, che per tempi e memoria vanno bene e
@@ -195,8 +216,8 @@ quanto pesa quella regola (sezione~\ref{sec:espansioni}).
 
 \paragraph{Cosa ne segue per Documentale.} All'albo di un comune, diecimila
 atti, Koskidex costa un decimo della memoria di Elasticsearch e risponde in
-meno di un quinto del tempo, e sotto carico regge quattro volte e mezzo le ricerche sulle
-stesse CPU. A centomila documenti il tempo regge ancora, la memoria no: lì
+meno di un quinto del tempo, e sotto carico regge più di sei volte le ricerche
+sulle stesse CPU. A centomila documenti il tempo regge ancora, la memoria no: lì
 serve un indice più compatto, con identificativi e campi interi, che
 ridurrebbe anche l'indice su disco, oggi il doppio di quello di
 Elasticsearch, e l'indicizzazione, due volte e mezzo più lenta. I limiti delle
