@@ -495,13 +495,32 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & +6,4\%: confermata \\
     & 8. I test di Documentale passano
     & confermata \\
+  \addlinespace
+  \texttt{importi-esatti}
+    & 1. Importi senza refusi: fra formati al più 10\% entro dieci
+    & 0\%: confermata \\
+    & 2. Con anche la normalizzazione: fra formati almeno 90\%, MRR@10 degli
+      importi almeno 0,95
+    & 100\% e 0,990: confermata \\
+    & 3. Risultati sulle query degli importi almeno il 20\% in meno
+    & da 175 a 106, $-$39\%: confermata \\
+    & 4. Date, MRR@10 entro 0,01
+    & +0,018: smentita, in meglio \\
+    & 5. Known-item automatiche identiche query per query
+    & 300 su 300: confermata \\
+    & 6. Known-item umane identiche query per query
+    & 76 su 76: confermata \\
+    & 7. Le 21 del confronto senza cifre identiche
+    & confermata \\
+    & 8. I test passano
+    & confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 176: 120 confermate, 44 smentite, 9 a metà, e 3 senza
+In tutto le previsioni sono 184: 127 confermate, 45 smentite, 9 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 173 con un esito, quasi
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 181 con un esito, quasi
 una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},

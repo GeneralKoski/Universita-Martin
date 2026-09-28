@@ -285,13 +285,31 @@ perché \texttt{5056,03} dista un carattere da \texttt{5.056,03}, e un termine
 con la virgola non è fatto di sole cifre, quindi i numeri esatti del
 profilo non lo riguardano. Lo stesso refuso fa combaciare importi diversi, e
 togliere i punti peggiora le cose: gli importi diventano più corti e più
-vicini, e l'MRR@10 degli importi scende da 0,917 a 0,891. Nell'app quindi le
-date vanno normalizzate e gli importi no; il difetto vero degli importi è che
-ammettono refusi. Del prezzo dell'anno da solo le query raccolte finora non
-dicono niente: nessuna delle umane contiene un anno, e l'unica del confronto
-che lo contiene non trova niente in nessuno dei due casi. Per questo la
-normalizzazione delle date resta fuori dal profilo finché non girano le
-known-item umane complete.
+vicini, e l'MRR@10 degli importi scende da 0,917 a 0,891. Il difetto vero
+degli importi è che ammettono refusi.
+
+\paragraph{Gli importi senza refusi.} È il difetto della
+sezione~\ref{sec:numero-atto} su un'altra forma di numero, e la correzione è la
+stessa: un'impostazione di Koskidex, \texttt{disable\_on\_amounts}, spenta per
+default, nega i refusi ai termini fatti di cifre, punti e virgole, e in
+Documentale è una variabile fuori dal profilo
+(\texttt{2026-09-28\_importi-esatti}). Da sola toglie il ponte che il refuso
+dava per caso, e gli importi fra formati non si trovano più (0 su 52); insieme
+alla normalizzazione degli importi si trovano tutti (52 su 52), l'MRR@10 degli
+importi sale da 0,917 a 0,990, e i risultati sulle 104 query scendono da 175 a
+106: quelli tolti sono atti con un importo diverso. Sette previsioni su otto;
+quella caduta è caduta in meglio. Anche \texttt{14.01.2026} è un termine con i
+punti, che prima ammetteva refusi e trovava \texttt{14.01.2025}: con
+l'impostazione 14 ricerche di date col punto migliorano, nessuna peggiora, e i
+risultati sulle query delle date scendono da 594 a 241. Le known-item
+automatiche, le umane raccolte finora e le 21 query del confronto senza cifre
+non cambiano.
+
+Nell'app quindi le date vanno normalizzate, e gli importi normalizzati ed
+esatti. Del prezzo dell'anno da solo le query raccolte finora non dicono niente:
+nessuna delle umane contiene un anno, e l'unica del confronto che lo contiene
+non trova niente in nessun caso. Per questo le tre impostazioni restano fuori
+dal profilo finché non girano le known-item umane complete.
 
 \section{Cosa cambia per chi cerca}\label{sec:cosa-cambia}
 

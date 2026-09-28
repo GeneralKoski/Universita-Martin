@@ -156,15 +156,16 @@ basta mettere i file nelle cartelle indicate e dirlo.
 - [ ] Dopo le known-item umane complete: rifare `2026-09-28_date-app/esegui.sh`
       (legge la collezione aggiornata) per il prezzo dell'anno da solo sulle
       query vere; se non costa, `normalize_dates` entra nel profilo
-      consigliato (in Documentale e nella tesi, 6.4 e 6.5), con la sua misura
-      del profilo come un tutto.
-- [ ] Gli importi ammettono refusi: con la tolleranza AUTO `5056,03` combacia
-      con `5.056,03` ma anche con importi diversi di una o due cifre, perché
-      un termine con la virgola non è "solo cifre" e sfugge a
-      `disable_on_numbers` (trovato in `2026-09-28_date-app`). Correzione
-      possibile: un'impostazione di Koskidex che tratta come numeri anche i
-      termini fatti di cifre, punti e virgole, con previsioni e misura
-      dall'app. Da scrivere in 6.4 come difetto aperto se non si fa.
+      consigliato insieme alla coppia degli importi (`normalize_amounts` e
+      `KOSKIDEX_TYPOS_ON_AMOUNTS=false`, `2026-09-28_importi-esatti`), in
+      Documentale e nella tesi (6.4 e 6.5), con la misura del profilo come
+      un tutto.
+- [x] Gli importi ammettono refusi (trovato in `2026-09-28_date-app`):
+      `typo_tolerance.disable_on_amounts` (Koskidex `98701ad`) e
+      `KOSKIDEX_TYPOS_ON_AMOUNTS` (Documentale `dad69da`), misurati dall'app
+      il 28/09 in `2026-09-28_importi-esatti`: sette previsioni su otto, con
+      la normalizzazione MRR@10 degli importi da 0,917 a 0,990; scritto in
+      6.4, 9.1 e nel registro.
 - [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui
       primi 100 candidati dei ranking archiviati, rivalutati con
       `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il
