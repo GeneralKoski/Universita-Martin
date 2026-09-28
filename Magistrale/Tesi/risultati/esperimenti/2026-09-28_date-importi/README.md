@@ -146,3 +146,19 @@ tutti frequenti. Le due impostazioni lo chiudono con tutti e due i tokenizer,
 senza toccare le ricerche per numero. Le query sono sintetiche: dicono che il
 motore trova la data in qualunque formato, non quanto spesso una persona
 cerca per data (nelle known-item umane raccolte finora, quasi mai).
+
+## Il costo, dopo
+
+Scritto dopo l'esito qui sopra e prima di toccare il codice. La previsione 7
+è caduta: +41-46% sul tempo di indicizzazione. Ogni espressione regolare passa
+su ogni testo anche quando non può trovare niente. Si controlla prima, con una
+ricerca di stringa, che il testo contenga una cifra e il separatore di quel
+formato (e, per i mesi, il nome di un mese); se no, si salta.
+
+1. **Nessun risultato cambia**: le metriche per query delle 36 valutazioni
+   coincidono con quelle dell'esito sopra.
+2. **Il costo scende**: l'indicizzazione accesa al più il 15% più lenta di
+   quella spenta, con tutti e due i tokenizer.
+
+`costo.sh` rifà le 36 valutazioni in `evaluate-costo/`, `costo.py` le
+confronta.
