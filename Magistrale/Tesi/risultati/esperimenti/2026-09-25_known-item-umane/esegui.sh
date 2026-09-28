@@ -51,7 +51,7 @@ if [ "$COSA" != piatte ]; then
   (cd "$KX" && go build -o "$BIN/koskidex" .)
   "$BIN/koskidex" -port 7711 -data-dir "$BIN/data" -log-level warn &
   PID=$!
-  trap 'kill $PID 2>/dev/null; rm -rf "$BIN"' EXIT
+  trap 'kill $PID 2>/dev/null; wait $PID 2>/dev/null || true; rm -rf "$BIN"' EXIT
   sleep 2
   export SEARCH_BACKEND=koskidex KOSKIDEX_HOST=http://localhost:7711 KOSKIDEX_PROFILO=consigliata
   "$STRUMENTI/indicizza-koskidex.sh" albo known-item-umane-consigliata http://localhost:7711

@@ -77,7 +77,11 @@ basta mettere i file nelle cartelle indicate e dirlo.
 **Quando arrivano i file delle known-item umane:**
 
 - [ ] Le misure sono già pronte, con README e previsioni committati prima dei
-      dati, e provate su risposte inventate. A raccolta chiusa, in ordine:
+      dati, e provate su risposte inventate. Prova generale il 28/09 sulle 76
+      query dei primi due lotti, con l'archivio in una cartella temporanea:
+      tutti e sei i passi girano, in circa due minuti. **Prima di partire
+      accendere Ollama** (`ollama serve`, serve `bge-m3` per A, B, V e
+      scheda-testo). A raccolta chiusa, in ordine:
       1. `strumenti/importa-raccolta.py` (collezione, giudizi per fonte,
          `raccolta.json`);
       2. `strumenti/collezioni-umane.py` (le tre collezioni in Koskidex);
@@ -166,10 +170,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       il 28/09 in `2026-09-28_importi-esatti`: sette previsioni su otto, con
       la normalizzazione MRR@10 degli importi da 0,917 a 0,990; scritto in
       6.4, 9.1 e nel registro.
-- [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui
-      primi 100 candidati dei ranking archiviati, rivalutati con
+- [ ] Opzionale, **rimandato a quando tutto il resto è finito** (deciso da
+      Martin il 28/09): un reranker neurale offline (cross-encoder multilingue
+      sui primi 100 candidati dei ranking archiviati, rivalutati con
       `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il
-      tetto di quanto vale riordinare; andrebbe nel capitolo 8. Se non si fa,
+      tetto di quanto vale riordinare; andrebbe nel capitolo 8. Servono torch
+      e un modello, qualche GB, con il disco al 96% il 28/09. Se non si fa,
       resta fra gli sviluppi futuri (9.3), dove è già scritto.
 
 ## Regole

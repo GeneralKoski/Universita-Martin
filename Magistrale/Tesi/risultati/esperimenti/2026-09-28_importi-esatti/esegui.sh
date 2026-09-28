@@ -25,7 +25,7 @@ BIN=$(mktemp -d)
 (cd "$KX" && go build -o "$BIN/koskidex" . && go build -o "$BIN/evaluate" ./scripts/evaluate)
 "$BIN/koskidex" -port 7712 -data-dir "$BIN/data" -log-level warn > "$BIN/log" 2>&1 &
 PID=$!
-trap 'kill $PID 2>/dev/null; rm -rf "$BIN"' EXIT
+trap 'kill $PID 2>/dev/null; wait $PID 2>/dev/null || true; rm -rf "$BIN"' EXIT
 for _ in $(seq 1 30); do curl -sf http://localhost:7712/health >/dev/null && break; sleep 1; done
 
 export DB_HOST=127.0.0.1 DB_PORT=33061 DB_DATABASE=albo DB_USERNAME=root DB_PASSWORD=root TELESCOPE_ENABLED=false
