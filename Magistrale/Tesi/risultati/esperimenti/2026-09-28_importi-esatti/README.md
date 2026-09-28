@@ -50,3 +50,56 @@ le known-item umane raccolte fin qui e le 24 del confronto; `scripts/evaluate
    nello stesso ordine, in tutte e quattro.
 8. **I test** di Koskidex, `TestBaselineRankingIsFrozen` senza toccarlo, e di
    Documentale passano.
+
+## Esito
+
+Misurato il 28/09/2026 con Koskidex `98701ad` e Documentale `dad69da`.
+Riassunto in `2026-09-28T115249Z_esito.json` (`analizza.py`); valutazioni in
+`evaluate/`, rapporti dell'app e tempi di indicizzazione in `confronto/`
+(`*importi-esatti*`; quelli delle known-item umane fuori da git). Le
+impostazioni lette dall'indice dopo ogni riempimento corrispondono alle
+quattro configurazioni. Una prima esecuzione di `analizza.py` si è fermata
+su un errore (le query senza risultati non hanno la lista `top`) prima di
+archiviare; corretto e committato, poi rieseguito sulle stesse misure.
+
+**Sette previsioni su otto**, e la smentita è nel verso buono.
+
+| | A profilo | B + importi normalizzati | C + importi esatti | D + tutti e due |
+|---|---|---|---|---|
+| importi fra formati, entro i primi dieci | 52/52 | 52/52 | 0/52 | **52/52** |
+| MRR@10 importi | 0,917 | 0,891 | 0,495 | **0,990** |
+| risultati sulle 104 query degli importi | 175 | 218 | 53 | 106 |
+| MRR@10 date | 0,315 | 0,315 | 0,333 | 0,333 |
+| MRR@10 known-item automatiche | 0,950 | 0,950 | 0,950 | 0,950 |
+| MRR@10 known-item umane (76) | 0,499 | 0,499 | 0,499 | 0,499 |
+
+1. **Confermata.** In C gli importi fra formati non si trovano più (0 su 52,
+   in A 52): il ponte era il refuso.
+2. **Confermata.** In D fra formati 52 su 52 e MRR@10 degli importi 0,990,
+   da 0,917.
+3. **Confermata.** Risultati sulle query degli importi da 175 a 106, -39%:
+   sono gli atti con un importo diverso di una o due cifre.
+4. **Smentita, nel verso buono.** MRR@10 delle date da 0,315 a 0,333, +0,018,
+   fuori dalla soglia di 0,01. Cambiano 14 query, tutte date col punto cercate
+   col punto, tutte in meglio: `14.01.2026` è un termine con i punti, e prima
+   ammetteva refusi, quindi trovava anche `14.01.2025` o `04.01.2026`. I
+   risultati sulle 450 query delle date scendono da 594 a 241.
+5. **Confermata.** Known-item automatiche identiche ad A in 300 query su 300.
+6. **Confermata.** Known-item umane identiche ad A in C e in D, 76 su 76.
+7. **Confermata.** Le 21 del confronto senza cifre identiche in tutte e
+   quattro; le tre con cifre danno 0, 1 e 1 risultati in tutte e quattro.
+8. **Confermata.** I test di Koskidex passano (`go test ./...` a `98701ad`,
+   `TestBaselineRankingIsFrozen` senza toccarlo); il test nuovo di
+   `KoskidexServiceTest` fallisce prima della modifica e passa dopo, e la
+   suite di Documentale passa tranne il 404 di `ExampleTest`, che c'era già.
+
+**Cosa ne segue.** Il difetto è quello del numero d'atto su un'altra forma di
+numero, e la correzione è la stessa: niente refusi su ciò che è un numero. Da
+sola toglie il ponte fra formati che il refuso dava per caso; insieme alla
+normalizzazione degli importi dà l'importo giusto in qualunque formato e solo
+quello. Dove la normalizzazione degli importi, da sola, peggiorava (B), con
+gli importi esatti migliora. Per il profilo consigliato la coppia
+`KOSKIDEX_TYPOS_ON_AMOUNTS=false` e `KOSKIDEX_NORMALIZE_AMOUNTS=true` non
+tocca le known-item automatiche, le umane raccolte finora e le 24 senza
+cifre; entrerà nel profilo insieme alla decisione sulle date, dopo le
+known-item umane complete, con la misura del profilo come un tutto.
