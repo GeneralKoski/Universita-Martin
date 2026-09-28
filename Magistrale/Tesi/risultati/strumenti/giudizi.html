@@ -115,7 +115,7 @@ function intro() {
         el("li", {}, "Un atto e la sua rettifica si giudicano ciascuno per conto proprio. Un comune diverso non abbassa il grado, se la query non ne nomina uno."),
         el("li", {}, "Se il riassunto non basta, apri il testo intero. Nel dubbio fra due gradi, il più basso, e una nota."),
         el("li", {}, "Gli atti sono in ordine di numero, non di ranking, e non sai quale motore li ha trovati: è voluto."),
-        el("li", {}, "Tasti: 0, 1, 2 per il grado, T per il testo intero, freccia a sinistra per tornare indietro."),
+        el("li", {}, "Tasti: 0, 1, 2 per il grado, T per il testo intero, frecce a sinistra e a destra per tornare indietro e riandare avanti fra gli atti già giudicati."),
         el("li", {}, "Sessioni di un'ora al massimo: dopo, i giudizi peggiorano senza accorgersene. Premi Pausa quando smetti."),
         el("li", {}, "Si ricorda dove eri, sempre da questo browser. Alla fine scarichi un file e lo metti in risposte/.")),
       ripresa ? el("p", {}, `Hai già dato ${dati()} giudizi su ${DATI.righe.length}.`) : null,
@@ -153,6 +153,7 @@ function giudica() {
       nota,
       el("div", { class: "azioni" },
         el("button", { class: "secondario", disabled: stato.indice === 0, onclick: indietro }, "Indietro"),
+        el("button", { class: "secondario", disabled: !puoAvanti(), onclick: avanti }, "Avanti"),
         el("button", { class: "secondario", onclick: pausa }, "Pausa"))),
   ];
 }
@@ -169,6 +170,8 @@ function registra(grado, nota) {
   vai("giudica");
 }
 function indietro() { if (stato.indice > 0) { stato.indice -= 1; vai("giudica"); } }
+function puoAvanti() { return stato.indice in stato.gradi && stato.indice + 1 < DATI.righe.length; }
+function avanti() { if (puoAvanti()) { stato.indice += 1; vai("giudica"); } }
 function pausa() { chiudiSessione(); vai("pausa"); }
 
 function contenuto() {
@@ -213,7 +216,7 @@ function fine() {
 
 function disegna() {
   const schermate = { intro, giudica, pausa: schermataPausa, fine };
-  app.replaceChildren(...schermate[stato.fase]());
+  app.replaceChildren(...schermate[stato.fase]().filter(x => x !== null && x !== undefined));
   window.scrollTo(0, 0);
 }
 
@@ -221,6 +224,7 @@ document.addEventListener("keydown", (e) => {
   if (stato.fase !== "giudica" || e.target.id === "nota") return;
   if (["0", "1", "2"].includes(e.key)) registra(Number(e.key), document.getElementById("nota").value.trim());
   else if (e.key === "ArrowLeft") indietro();
+  else if (e.key === "ArrowRight") avanti();
   else if (e.key.toLowerCase() === "t") { const b = [...document.querySelectorAll("button.secondario")].find((x) => x.textContent.includes("testo intero")); if (b) b.click(); }
 });
 // Riaprire la pagina chiude la sessione rimasta aperta: il tempo fra la
