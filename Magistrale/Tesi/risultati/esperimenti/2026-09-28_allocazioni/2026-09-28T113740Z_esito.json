@@ -1,0 +1,393 @@
+{
+  "ran_at": "2026-09-28T11:37:40Z",
+  "config": {
+    "commit": "edbd94d",
+    "modifiche_non_committate": "false",
+    "koskidex": {
+      "prima": [
+        "6f64947"
+      ],
+      "dopo": [
+        "2e6beff"
+      ]
+    },
+    "esiti": {
+      "prima": {
+        "carico-koskidex-docker": "2026-09-28T112504Z_carico-koskidex-docker.json",
+        "carico-koskidex-nativo": "2026-09-28T112735Z_carico-koskidex-nativo.json",
+        "profilo-carico-koskidex-nativo": "2026-09-28T112900Z_profilo-carico-koskidex-nativo.json",
+        "seq-koskidex-docker": "2026-09-28T112232Z_seq-koskidex-docker.json",
+        "seq-koskidex-docker-100000": "2026-09-28T112811Z_seq-koskidex-docker-100000.json",
+        "seq-koskidex-nativo": "2026-09-28T112234Z_seq-koskidex-nativo.json"
+      },
+      "dopo": {
+        "carico-koskidex-docker": "2026-09-28T113340Z_carico-koskidex-docker.json",
+        "carico-koskidex-nativo": "2026-09-28T113610Z_carico-koskidex-nativo.json",
+        "profilo-carico-koskidex-nativo": "2026-09-28T113735Z_profilo-carico-koskidex-nativo.json",
+        "seq-koskidex-docker": "2026-09-28T113108Z_seq-koskidex-docker.json",
+        "seq-koskidex-docker-100000": "2026-09-28T113645Z_seq-koskidex-docker-100000.json",
+        "seq-koskidex-nativo": "2026-09-28T113110Z_seq-koskidex-nativo.json"
+      }
+    }
+  },
+  "sequenziale": {
+    "seq-koskidex-docker": {
+      "p50": [
+        1.139,
+        0.92
+      ],
+      "p95": [
+        2.773,
+        2.319
+      ],
+      "p99": [
+        4.801,
+        4.093
+      ]
+    },
+    "seq-koskidex-nativo": {
+      "p50": [
+        0.79,
+        0.604
+      ],
+      "p95": [
+        2.323,
+        1.96
+      ],
+      "p99": [
+        4.377,
+        2.584
+      ]
+    },
+    "seq-koskidex-docker-100000": {
+      "p50": [
+        1.652,
+        1.449
+      ],
+      "p95": [
+        10.324,
+        9.924
+      ],
+      "p99": [
+        14.671,
+        13.583
+      ]
+    }
+  },
+  "carico": {
+    "carico-koskidex-docker": [
+      {
+        "client": 1,
+        "qps": [
+          713.7,
+          835.5
+        ],
+        "p99": [
+          4.809,
+          3.293
+        ],
+        "memoria_max_mb": [
+          216.5,
+          172.9
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 2,
+        "qps": [
+          1132.7,
+          1402
+        ],
+        "p99": [
+          6.208,
+          4.325
+        ],
+        "memoria_max_mb": [
+          222.3,
+          173.8
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 4,
+        "qps": [
+          1661,
+          2190
+        ],
+        "p99": [
+          8.156,
+          5.634
+        ],
+        "memoria_max_mb": [
+          247.6,
+          181.4
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 8,
+        "qps": [
+          2397.8,
+          3019.3
+        ],
+        "p99": [
+          13.027,
+          9.14
+        ],
+        "memoria_max_mb": [
+          271.3,
+          190.1
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 16,
+        "qps": [
+          2546,
+          3495.5
+        ],
+        "p99": [
+          26.478,
+          18.618
+        ],
+        "memoria_max_mb": [
+          281.1,
+          191.8
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 32,
+        "qps": [
+          2621.7,
+          3778.7
+        ],
+        "p99": [
+          43.752,
+          32.085
+        ],
+        "memoria_max_mb": [
+          280.7,
+          195.4
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      }
+    ],
+    "carico-koskidex-nativo": [
+      {
+        "client": 1,
+        "qps": [
+          965.1,
+          1210.9
+        ],
+        "p99": [
+          4.287,
+          2.449
+        ],
+        "memoria_max_mb": [
+          191.469,
+          166.563
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 2,
+        "qps": [
+          1841.7,
+          2414.9
+        ],
+        "p99": [
+          4.803,
+          2.564
+        ],
+        "memoria_max_mb": [
+          191.688,
+          167.078
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 4,
+        "qps": [
+          3274.5,
+          4698.8
+        ],
+        "p99": [
+          5.898,
+          2.855
+        ],
+        "memoria_max_mb": [
+          201.5,
+          173.813
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 8,
+        "qps": [
+          4070.4,
+          6266.1
+        ],
+        "p99": [
+          8.755,
+          5.314
+        ],
+        "memoria_max_mb": [
+          232.859,
+          180.594
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 16,
+        "qps": [
+          4089.9,
+          6375.5
+        ],
+        "p99": [
+          17.879,
+          12.047
+        ],
+        "memoria_max_mb": [
+          238.766,
+          180.875
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 32,
+        "qps": [
+          4041.8,
+          6289.1
+        ],
+        "p99": [
+          34.473,
+          24.834
+        ],
+        "memoria_max_mb": [
+          243.891,
+          186.094
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "allocazioni": {
+    "prima": {
+      "mb_per_ricerca": 0.4355,
+      "mb_totali": 70514.04,
+      "ricerche": 161913,
+      "quota_fuzzycandidates": 86.44,
+      "profilo": "2026-09-28T112900Z_allocs-top.txt"
+    },
+    "dopo": {
+      "mb_per_ricerca": 0.0813,
+      "mb_totali": 20440.16,
+      "ricerche": 251312,
+      "quota_fuzzycandidates": 30.48,
+      "profilo": "2026-09-28T113735Z_allocs-top.txt"
+    }
+  },
+  "impronte": {
+    "10018": {
+      "query": 429,
+      "diverse": 0,
+      "errori": [
+        0,
+        0
+      ]
+    },
+    "100000": {
+      "query": 429,
+      "diverse": 0,
+      "errori": [
+        0,
+        0
+      ]
+    }
+  },
+  "evaluate_uguali": {
+    "known-item-auto-baseline": true,
+    "known-item-auto-bm25-all": true,
+    "known-item-auto-bm25-any": true,
+    "nfcorpus-baseline": true,
+    "nfcorpus-bm25-all": true,
+    "nfcorpus-bm25-any": true,
+    "scifact-baseline": true,
+    "scifact-bm25-all": true,
+    "scifact-bm25-any": true
+  },
+  "previsioni": {
+    "1": {
+      "previsione": "nessun risultato cambia (impronte a 10.018 e 100.000, metriche di evaluate)",
+      "valore": "impronte diverse 0 e 0 su 429; evaluate uguali 9 su 9",
+      "esito": "confermata"
+    },
+    "2": {
+      "previsione": "allocazioni per ricerca almeno -60% nel profilo a 8 client",
+      "valore": "0.435 -> 0.081 MB, 81% in meno",
+      "esito": "confermata"
+    },
+    "3": {
+      "previsione": "fuzzyCandidates sotto il 10% dei byte allocati",
+      "valore": "86.44% -> 30.48%",
+      "esito": "smentita"
+    },
+    "4": {
+      "previsione": "capacità nativa, massimo almeno +5%",
+      "valore": "4089.9 -> 6375.5 ricerche/s (+55.9%)",
+      "esito": "confermata"
+    },
+    "5": {
+      "previsione": "capacità nel container, massimo almeno +5%",
+      "valore": "2621.7 -> 3778.7 ricerche/s (+44.1%)",
+      "esito": "confermata"
+    },
+    "6": {
+      "previsione": "a 100.000 documenti p95 e p99 almeno -15%",
+      "valore": "p95 10.324 -> 9.924 ms (-3.9%), p99 14.671 -> 13.583 ms (-7.4%)",
+      "esito": "smentita"
+    },
+    "7": {
+      "previsione": "una alla volta nel container, p50 non peggiora di più del 5%",
+      "valore": "1.139 -> 0.92 ms (-19.2%)",
+      "esito": "confermata"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "carico": [
+    {
+      "client": 8,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 17.954,
+        "media": 1.268,
+        "n": 251312,
+        "p50": 0.986,
+        "p95": 3.13,
+        "p99": 5.215
+      },
+      "ricerche_al_secondo": 6282.5,
+      "richieste": 251312,
+      "risorse": {
+        "campioni": 80,
+        "cpu_percento": {
+          "max": 722.5,
+          "media": 700.782,
+          "n": 80,
+          "p50": 703.1,
+          "p95": 713.7,
+          "p99": 722.5
+        },
+        "memoria_mb": {
+          "max": 184.641,
+          "media": 181.81,
+          "n": 80,
+          "p50": 181.625,
+          "p95": 184.641,
+          "p99": 184.641
+        }
+      }
+    }
+  ],
+  "config": {
+    "client_cpu": 8,
+    "client_go": "go1.27.1",
+    "commit": "2e6beff26863bad5b84433919372343a51dc7958",
+    "concorrenza": "8",
+    "docker_vm": "4 8323465216",
+    "durata_s": 40,
+    "famiglie": {
+      "confronto-24": {
+        "query": 24,
+        "sha256": "0b876340836f078fffcd480b50ba96b9b1b578bd5f42ea4265074afbb335af8a"
+      },
+      "known-item-auto": {
+        "query": 300,
+        "sha256": "e97f0878488d67b3c74506824a6c1998d051cf8dfa788a952b8c0acc668e33dd"
+      },
+      "umane": {
+        "query": 76,
+        "sha256": "b841bbc54bc0b10ab632e5e325096e9f0d83896f1e2e4951c876cd473c1784da"
+      }
+    },
+    "indice": "search-documents-local",
+    "modifiche_non_committate": "false",
+    "modo": "carico",
+    "motore": "koskidex",
+    "pid": 63032,
+    "query": 400,
+    "riscaldamento_s": 5,
+    "seme": 20260928,
+    "senza_cache": true,
+    "url": "http://localhost:7716",
+    "versione": "2e6beff"
+  },
+  "ran_at": "2026-09-28T11:36:50Z"
+}

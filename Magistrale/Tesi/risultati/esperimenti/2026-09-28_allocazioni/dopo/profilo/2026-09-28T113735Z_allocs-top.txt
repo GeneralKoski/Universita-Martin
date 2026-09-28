@@ -1,0 +1,38 @@
+# koskidex 2e6beff, allocazioni (byte) dall'avvio
+File: koskidex
+Type: alloc_space
+Time: 2026-09-28 13:37:21 CEST
+Showing nodes accounting for 19701.29MB, 96.39% of 20440.16MB total
+Dropped 120 nodes (cum <= 102.20MB)
+Showing top 30 nodes out of 49
+      flat  flat%   sum%        cum   cum%
+ 7073.20MB 34.60% 34.60%  7073.20MB 34.60%  golang.org/x/text/transform.Chain (inline)
+ 6229.71MB 30.48% 65.08%  6229.71MB 30.48%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzyCandidates
+ 2119.03MB 10.37% 75.45%  2119.03MB 10.37%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).docsForTermsLocked
+  911.08MB  4.46% 79.91% 19046.44MB 93.18%  github.com/GeneralKoski/Koskidex/internal/server.(*Server).handleSearch
+  814.24MB  3.98% 83.89%   912.74MB  4.47%  net/url.parseQuery
+  611.65MB  2.99% 86.88%  6857.59MB 33.55%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).candidatiCongiuntiviLocked
+  530.40MB  2.59% 89.48% 16630.95MB 81.36%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).SearchScored
+     239MB  1.17% 90.65%      239MB  1.17%  reflect.unsafe_New
+  216.55MB  1.06% 91.71%   225.06MB  1.10%  golang.org/x/text/transform.String
+  214.25MB  1.05% 92.75%   961.10MB  4.70%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).addDocumentLocked
+  157.09MB  0.77% 93.52%   157.09MB  0.77%  github.com/GeneralKoski/Koskidex/internal/engine.Tokenize.func1
+  131.01MB  0.64% 94.16%   131.01MB  0.64%  github.com/GeneralKoski/Koskidex/internal/engine.removeDuplicateTerms (inline)
+  116.01MB  0.57% 94.73%   116.01MB  0.57%  internal/bytealg.MakeNoZero
+      78MB  0.38% 95.11%   990.75MB  4.85%  net/url.ParseQuery (inline)
+   73.52MB  0.36% 95.47%   220.05MB  1.08%  net/http.readRequestLimit
+   59.01MB  0.29% 95.76%   301.07MB  1.47%  net/http.(*conn).readRequest
+   50.51MB  0.25% 96.01%  5161.85MB 25.25%  github.com/GeneralKoski/Koskidex/internal/engine.ParseQuery
+   45.02MB  0.22% 96.23%  7560.37MB 36.99%  github.com/GeneralKoski/Koskidex/internal/engine.Tokenize
+   13.50MB 0.066% 96.29%  7325.26MB 35.84%  github.com/GeneralKoski/Koskidex/internal/engine.removeAccents
+    8.50MB 0.042% 96.34%   736.74MB  3.60%  github.com/GeneralKoski/Koskidex/internal/engine.tokenizzaValore
+    7.50MB 0.037% 96.37%  6324.23MB 30.94%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked
+    2.51MB 0.012% 96.39%   133.14MB  0.65%  encoding/json/jsontext.(*encoderState).WriteToken
+         0     0% 96.39%   372.15MB  1.82%  encoding/json.(*Encoder).Encode
+         0     0% 96.39%   133.14MB  0.65%  encoding/json/jsontext.(*Encoder).WriteToken (inline)
+         0     0% 96.39%   370.14MB  1.81%  encoding/json/v2.MarshalEncode
+         0     0% 96.39%   333.14MB  1.63%  encoding/json/v2.makeInterfaceArshaler.func1
+         0     0% 96.39%   369.14MB  1.81%  encoding/json/v2.makeMapArshaler.func2
+         0     0% 96.39%   299.10MB  1.46%  encoding/json/v2.makeSliceArshaler.func2
+         0     0% 96.39%   370.14MB  1.81%  encoding/json/v2.marshalEncode
+         0     0% 96.39%   321.14MB  1.57%  encoding/json/v2.marshalValueAny

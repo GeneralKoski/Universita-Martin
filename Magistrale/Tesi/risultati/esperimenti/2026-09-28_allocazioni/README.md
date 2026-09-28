@@ -77,3 +77,61 @@ previsioni si controllano contro il "prima" rimisurato.
    (da circa 10,4 e 15,5 ms).
 7. **Una alla volta a 10.018 documenti** nel container: il p50 non peggiora di
    più del 5%.
+
+## Esito
+
+Misurato il 28/09/2026: "prima" Koskidex `6f64947`, "dopo" `2e6beff`, stessa
+macchina, a mezz'ora di distanza, con gli stessi altri container accesi.
+Riassunto in `2026-09-28T113740Z_esito.json` (`analizza.py`); le misure in
+`prima/` e `dopo/`, impronte e `evaluate` qui.
+
+**Cinque previsioni su sette.** Le due smentite lo sono per una premessa
+sbagliata, non per un effetto più piccolo del previsto.
+
+1. **Confermata.** Impronte uguali per tutte le 429 query a 10.018 e a
+   100.000 documenti; metriche di `evaluate` uguali nelle 9 combinazioni; i
+   test passano, `TestBaselineRankingIsFrozen` senza toccarlo. Il test nuovo
+   confronta 42.420 ricerche di termini con il percorso di prima, ordine
+   compreso, e fallisce se si rompe il controllo di lunghezza. L'unico test
+   esistente toccato è `TestFuzzyCandidatesComePrima`, per passare `nil` al
+   parametro nuovo.
+2. **Confermata.** Allocazioni per ricerca da 0,435 a 0,081 MB, l'81% in
+   meno.
+3. **Smentita.** `fuzzyCandidates` scende dall'86% al 30% dei byte allocati,
+   non sotto il 10%. La soglia era sbagliata in partenza: era una quota, e il
+   totale è sceso con lei. In valore assoluto la funzione passa da 385 a 25 KB
+   a ricerca, il 93% in meno; quello che resta è la mappa e la lista dei
+   candidati che passano il filtro (righe 207 e 208), cioè la risposta.
+4. **Confermata.** Capacità nativa da 4.090 a 6.376 ricerche al secondo, +56%.
+5. **Confermata.** Capacità nel container da 2.622 a 3.779 ricerche al
+   secondo, +44%.
+6. **Smentita.** A 100.000 documenti p95 da 10,3 a 9,9 ms (-4%) e p99 da 14,7
+   a 13,6 (-7%), non -15%. La premessa era sbagliata: la copia da 100.000
+   ripete gli stessi testi con identificativi diversi, quindi il vocabolario,
+   e con lui le liste dei bigrammi, non cresce. Cresce di dieci volte ciò che
+   dipende dai documenti, le liste di posting, e la coda a 100.000 viene da
+   lì.
+7. **Confermata.** Una alla volta nel container il p50 scende da 1,14 a
+   0,92 ms (-19%).
+
+| | prima | dopo |
+|---|---|---|
+| allocazioni per ricerca | 0,435 MB | **0,081 MB** |
+| una alla volta nel container, p50 / p95 / p99 ms | 1,14 / 2,77 / 4,80 | 0,92 / 2,32 / 4,09 |
+| nativo, p50 / p95 / p99 ms | 0,79 / 2,32 / 4,38 | 0,60 / 1,96 / 2,58 |
+| ricerche al secondo, massimo nel container | 2.622 | **3.779** |
+| ricerche al secondo, massimo nativo | 4.090 | **6.376** |
+| p99 a 32 client nel container, ms | 43,8 | 32,1 |
+| memoria sotto carico nel container, massimo MB | 281 | 195 |
+| 100.000 documenti, p95 / p99 ms | 10,3 / 14,7 | 9,9 / 13,6 |
+
+Il "prima" rimisurato coincide con il "dopo" di `2026-09-28_prestazioni`
+(2.622 contro 2.614 ricerche al secondo nel container, 0,435 contro 0,44 MB):
+i commit intermedi, a impostazioni spente, non hanno cambiato le prestazioni.
+
+**Il profilo dopo.** Il 55% dei campioni CPU è nelle chiamate di sistema della
+rete (era il 43%); il motore pesa ancora meno. Delle allocazioni, la prima voce
+è ora `transform.Chain` di golang.org/x/text (35%), la catena che toglie gli
+accenti, ricreata a ogni testo tokenizzato; poi `fuzzyCandidates` (30%) e
+`docsForTermsLocked` (10%). Fra i tempi resta visibile la scansione del
+vocabolario per le parole corte con un refuso (`maps.Iter.Next`, 7%).

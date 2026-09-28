@@ -1,0 +1,39 @@
+# koskidex 6f64947, profilo CPU di 20 s a 8 client
+File: koskidex
+Type: cpu
+Time: 2026-09-28 13:28:26 CEST
+Duration: 20.17s, Total samples = 129.89s (643.86%)
+Showing nodes accounting for 121.30s, 93.39% of 129.89s total
+Dropped 500 nodes (cum <= 0.65s)
+Showing top 30 nodes out of 96
+      flat  flat%   sum%        cum   cum%
+    56.56s 43.54% 43.54%     56.56s 43.54%  syscall.rawsyscalln
+     9.53s  7.34% 50.88%      9.53s  7.34%  runtime.memequal
+     9.32s  7.18% 58.06%     14.87s 11.45%  runtime.mapaccess2_faststr
+     6.14s  4.73% 62.78%      6.16s  4.74%  runtime.usleep
+     4.78s  3.68% 66.46%      5.67s  4.37%  runtime.tryDeferToSpanScan
+     3.75s  2.89% 69.35%     10.19s  7.85%  internal/runtime/maps.(*Iter).Next
+     3.64s  2.80% 72.15%      4.07s  3.13%  github.com/GeneralKoski/Koskidex/internal/engine.DamerauLevenshtein
+     3.54s  2.73% 74.88%      3.54s  2.73%  runtime.madvise
+     3.22s  2.48% 77.36%      3.22s  2.48%  runtime.kevent
+     2.99s  2.30% 79.66%      2.99s  2.30%  runtime.pthread_kill
+     2.42s  1.86% 81.52%     16.60s 12.78%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked.func1
+     2.04s  1.57% 83.09%      6.91s  5.32%  runtime.wbBufFlush1
+     1.81s  1.39% 84.49%      1.81s  1.39%  internal/runtime/maps.memHashAES
+     1.79s  1.38% 85.86%      2.08s  1.60%  internal/runtime/maps.(*Map).getWithoutKeySmallFastStr
+     1.35s  1.04% 86.90%      2.50s  1.92%  runtime.mapassign_faststr
+     1.29s  0.99% 87.90%      1.29s  0.99%  internal/runtime/maps.(*Map).directoryIndex (inline)
+     0.95s  0.73% 88.63%     41.27s 31.77%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked
+     0.90s  0.69% 89.32%      2.29s  1.76%  runtime.scanObjectsSmall
+     0.89s  0.69% 90.01%      0.89s  0.69%  runtime.(*mspan).base (inline)
+     0.76s  0.59% 90.59%     13.41s 10.32%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzyCandidates
+     0.76s  0.59% 91.18%      0.77s  0.59%  runtime.(*mspan).markBitsForIndex (inline)
+     0.69s  0.53% 91.71%      3.35s  2.58%  runtime.scanObject
+     0.50s  0.38% 92.09%      7.37s  5.67%  gcWriteBarrier
+     0.46s  0.35% 92.45%      1.65s  1.27%  runtime.findObject
+     0.29s  0.22% 92.67%      3.25s  2.50%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).docsForTermsLocked
+     0.27s  0.21% 92.88%      6.05s  4.66%  runtime.mapaccess1_faststr
+     0.24s  0.18% 93.06%      8.77s  6.75%  strings.HasPrefix (inline)
+     0.22s  0.17% 93.23%     44.51s 34.27%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).candidatiCongiuntiviLocked
+     0.12s 0.092% 93.33%     10.30s  7.93%  runtime.mapIterNext
+     0.08s 0.062% 93.39%      6.56s  5.05%  runtime.gcDrain
