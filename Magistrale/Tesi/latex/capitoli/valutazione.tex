@@ -159,8 +159,10 @@ persona si mostra un atto come lo vedrebbe un impiegato, lo si nasconde, e le si
 chiede cosa scriverebbe fra qualche settimana per ritrovarlo. L'atto si nasconde
 prima che la persona scriva, altrimenti la query copia il titolo e la trova
 qualunque motore. Scrivono persone che non conoscono i motori; l'autore di questa
-tesi no, perché le sue query misurerebbero lui. Al momento di scrivere la raccolta
-non è ancora fatta.
+tesi no, perché le sue query misurerebbero lui. Al momento di scrivere sono
+arrivati due lotti su quattro, 76 query su 80 atti: per quattro atti la
+risposta è stata «non saprei», un dato anche questo. Per il protocollo basta un
+terzo lotto.
 
 \paragraph{Bisogni aperti.} Per una query come \emph{manutenzione strade} non
 esiste un atto giusto solo. Le 24 query del confronto, scritte a mano il 23
@@ -192,11 +194,41 @@ giudicare. Un secondo annotatore giudica, senza vedere i giudizi del primo,
 query intere estratte con un seme dal foglio già annotato, almeno 150 righe. Si
 riportano il kappa di Cohen sui tre gradi, il kappa pesato linearmente, perché
 fra 1 e 2 si sbaglia meno che fra 0 e 2, e l'accordo semplice, comunque vengano.
-Le metriche della tesi usano i giudizi del primo annotatore, e si dice di quanto
-cambiano con quelli del secondo.
 
-Anche i giudizi, come le known-item umane, sono da fare. Il
-capitolo~\ref{chapter:confronto} li aspetta.
+\paragraph{Com'è andata.} Il protocollo voleva un annotatore umano su tutto il
+pool. Non è andata così, e lo scrivo come è andata. I 24 bisogni li ha scritti
+un modello linguistico, Claude Opus 5.5, in una sessione separata e prima che
+il foglio del pool fosse aperto, e io li ho rivisti prima di committarli. I 905
+giudizi li ha dati lo stesso modello, con sette istanze indipendenti, ciascuna
+su un gruppo di query, con la scala e le regole dell'appendice~\ref{chapter:appendice-annotazione},
+gli atti in ordine di identificativo e senza sapere quale motore li avesse
+trovati; il prompt, parola per parola, è nell'archivio accanto ai giudizi.
+L'annotatore umano sono stato io, nel ruolo del secondo: il campione estratto
+con il seme fissato prima di qualunque giudizio è di quattro query intere, 178
+righe, giudicate con la pagina di annotazione senza vedere i giudizi del
+modello.
+
+Prima di vedere un mio giudizio avevo scritto le previsioni e una regola:
+con un kappa pesato di almeno 0,60 il pool giudicato dal modello avrebbe retto
+il capitolo~\ref{chapter:confronto}, sotto 0,40 no. I lavori sui giudici
+automatici trovano accordi con gli annotatori umani molto variabili, spesso
+moderati~\cite{thomas2023llm,faggioli2023perspectives}. L'accordo semplice è
+del 54,5\%, il kappa di Cohen 0,262, quello pesato 0,370: sotto la soglia.
+Quattro previsioni su cinque sono cadute, e la più istruttiva è quella sul
+verso: avevo previsto un modello più generoso di me, come riporta la
+letteratura, ed è più severo, con 107 righe a 0 contro le mie 81. Il
+disaccordo sta soprattutto sul grado intermedio: io ho dato 1 a 47 righe, il
+modello a 26, e siamo d'accordo su 6. E dipende dalla query: su una il
+modello sta sistematicamente un grado sotto di me, su un'altra sopra.
+
+Bisogni e giudice vengono dallo stesso modello, quindi il kappa non misura
+solo il giudice: misura anche quanto io leggo i bisogni come li ha scritti
+lui. In ogni caso, per la regola fissata prima, i giudizi del modello non
+reggono da soli il confronto finale, e il resto del pool non l'ho giudicato:
+il capitolo~\ref{chapter:confronto} si regge sulle known-item umane, dove la
+risposta giusta è l'atto da cui la query è nata e non serve un giudizio. Il
+pool resta al più un confronto secondario, dichiarato come tale e con il kappa
+accanto.
 
 \paragraph{Le metriche.} Tre, calcolate dallo stesso codice per ogni motore:
 \begin{itemize}

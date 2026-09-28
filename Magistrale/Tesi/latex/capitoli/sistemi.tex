@@ -277,7 +277,9 @@ Documentale, e le 24 query tre volte per motore (tabella~\ref{tab:innesto}).
 I tempi vanno letti come ordini di grandezza, per due ragioni: Elasticsearch
 gira nella macchina virtuale di Docker e Koskidex nativo, e tutti e due i tempi
 comprendono il viaggio HTTP da PHP. Quello che dicono è che, su un archivio di
-diecimila atti, il motore piccolo non costa di più.
+diecimila atti, il motore piccolo non costa di più. Il confronto alla pari,
+con i due motori nella stessa macchina virtuale, sotto carico e su archivi più
+grandi, è nella sezione~\ref{sec:latenza}.
 
 \paragraph{La prima misura ha trovato un altro difetto.} La prima
 indicizzazione con Koskidex costava 31,8 secondi: 2,6 millisecondi per

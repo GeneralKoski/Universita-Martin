@@ -65,22 +65,14 @@ basta mettere i file nelle cartelle indicate e dirlo.
 - [ ] Committare `bisogni.md`, poi `risultati/strumenti/prepara-giudizi.py` per
       la pagina del primo annotatore.
 
-**Da correggere nella tesi, dal 28/09/2026:** i bisogni delle 24 query li ha
-scritti Claude, in un'altra sessione, e Martin li ha rivisti (lo dice
-`query/confronto-24/giudizi-llm.md`; il messaggio di `afecf63` li attribuiva a
-Martin). Il capitolo 4 e l'appendice B dicono che li scrive l'annotatore:
-vanno riscritti così com'è andata, fra i limiti anche un bisogno e un giudice
-automatico dallo stesso modello.
-
 **Il pool delle 24 query, dopo la decisione del 28/09:**
 
 - [x] Giudizi del modello, campione di Martin, kappa: esito in
       `esperimenti/2026-09-28_giudice-llm/` (kappa pesato 0,370, sotto 0,40).
-- [ ] Nella tesi: sezione 4.5 (come sono andati bisogni e giudizi, tempo per
-      giudizio e gradi del campione di Martin), kappa e disaccordi nei limiti
-      (9.2). Il pool con i giudizi del modello resta al più un confronto
-      secondario, dichiarato come tale e con il kappa accanto, mai la base del
-      capitolo 8.
+- [x] Scritto nella tesi il 28/09: 4.5 ("Com'è andata": bisogni e giudizi del
+      modello, campione di Martin, kappa, regola), appendice B, limiti (9.2).
+      Il pool con i giudizi del modello resta al più un confronto secondario,
+      dichiarato come tale e con il kappa accanto, mai la base del capitolo 8.
 
 **Quando arrivano i file delle known-item umane:**
 
@@ -124,14 +116,9 @@ automatico dallo stesso modello.
 
 ## Si può fare senza aspettare nessuno
 
-- [ ] **Scrivere nella tesi il carico e il prima e dopo delle prestazioni**
-      (5.x, dopo "Prestazioni dell'innesto", e 9.3): `2026-09-28_carico` e
-      `2026-09-28_prestazioni`, con i numeri dai loro esiti. I due interventi
-      (`60f7a43`, `510b9d2`) sono fatti e misurati il 28/09: nessun risultato
-      cambiato, otto previsioni su otto confermate (capacità nel container da
-      653 a 2.614 ricerche/s, p99 a 32 client da 215 a 43 ms). Da 9.3 escono
-      distanza e congiuntivo; restano l'indice compatto con id interi e la
-      mappa dei candidati in `fuzzyCandidates` (86% delle allocazioni rimaste).
+- [x] Scritti nella tesi il 28/09 il carico e il prima e dopo delle
+      prestazioni: sezione 8.3 (con il rimando da 5.5), 9.1, 9.2, 9.3 e le tre
+      voci nuove del registro delle ipotesi (carico, prestazioni, giudice-llm).
 - [ ] **Decidere con Martin**: la scansione del vocabolario per le parole
       corte con refuso segue l'ordine di una mappa Go, che cambia a ogni
       chiamata (highlights e, a parità di distanza, il termine accreditato a un

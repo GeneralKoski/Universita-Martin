@@ -341,14 +341,73 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & 6. (aggiunta) Meno dell'1\% dei documenti di SciFact e NFCorpus supera
       2.048 token
     & 3 e 2 (0,06\%): confermata \\
+  \addlinespace
+  \texttt{carico}
+    & 1. Una alla volta, p50 di Koskidex nel container sotto quello di
+      Elasticsearch come l'app
+    & 2,12 contro 6,32~ms: confermata \\
+    & 2. Da 1.000 risultati, Elasticsearch come l'app almeno il doppio che
+      senza il testo
+    & 27,5 contro 22,4~ms, su 5 richieste: smentita \\
+    & 3. Elasticsearch senza il testo e Koskidex entro un fattore 2
+    & rapporto 3,2: smentita \\
+    & 4. Con la cache, Koskidex sotto 1~ms di p50
+    & 0,29~ms: confermata \\
+    & 5. Capacità di Koskidex almeno 1,5 volte Elasticsearch
+    & 1,14 volte: smentita \\
+    & 6. Sotto carico Elasticsearch fra 1,3 e 1,8~GB, Koskidex al più 400~MB
+    & 1.566 e 355~MB: confermata \\
+    & 7. A 16 client p99 di Koskidex sotto 100~ms
+    & 105~ms: smentita \\
+    & 8. Il nativo al più il 30\% sotto il container
+    & 16\%: confermata \\
+    & 9. A 100.000 documenti memoria di Koskidex almeno $\times$5 ed
+      Elasticsearch sotto $\times$1,5; p50 di Koskidex almeno $\times$3,
+      Elasticsearch sotto $\times$3
+    & memoria $\times$7,85 e $\times$1,00; p50 $\times$2,57 e $\times$1,10: a
+      metà \\
+    & 10. Fra le prime cinque funzioni per CPU l'espansione dei refusi e la
+      scrittura del JSON
+    & la prima sì, la seconda no: a metà \\
+  \addlinespace
+  \texttt{prestazioni}
+    & 1. Nessun risultato cambia: impronte a 10.018 e 100.000 documenti,
+      metriche di \texttt{evaluate}
+    & 429 e 429 impronte uguali, 9 valutazioni su 9: confermata \\
+    & 2. Allocazioni per ricerca almeno il 60\% in meno
+    & da 2,57 a 0,44~MB: confermata \\
+    & 3. Una alla volta nel container p50 al più 1,5~ms e p95 al più 6
+    & 1,12 e 2,74~ms: confermata \\
+    & 4. Almeno 900 ricerche al secondo nel container
+    & 2.614: confermata \\
+    & 5. A 32 client p99 nel container al più 110~ms
+    & 43~ms: confermata \\
+    & 6. A 100.000 documenti p95 al più 40~ms e p99 al più 60
+    & 10,4 e 15,5~ms: confermata \\
+    & 7. Memoria a riposo entro il 10\%, sotto carico al più 300~MB
+    & $-$0,2\% e 272~MB: confermata \\
+    & 8. Con un client CPU del container al più 100\%
+    & 83\%: confermata \\
+  \addlinespace
+  \texttt{giudice-llm}
+    & 1. Kappa pesato fra modello e annotatore umano di almeno 0,60
+    & 0,370: smentita \\
+    & 2. Accordo semplice di almeno il 70\%
+    & 54,5\%: smentita \\
+    & 3. Meno del 10\% delle righe con un disaccordo fra 0 e 2
+    & 11,2\%: smentita \\
+    & 4. Il modello più generoso dell'annotatore umano
+    & più severo: smentita \\
+    & 5. c19 con l'accordo più alto delle quattro query
+    & 80\%: confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 115: 77 confermate, 28 smentite, 7 a metà, e 3 senza
+In tutto le previsioni sono 138: 90 confermate, 36 smentite, 9 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 112 con un esito, quasi
-una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 135 con un esito, una
+su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non

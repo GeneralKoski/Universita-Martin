@@ -8,9 +8,188 @@ Da scrivere.
 
 Da scrivere.
 
-\section{Latenza, memoria, dimensione dell'indice}
+\section{Latenza, memoria, dimensione dell'indice}\label{sec:latenza}
 
-Da scrivere.
+La sezione~\ref{sec:prestazioni-innesto} ha dato i tempi dei due motori
+passando dall'app, con Koskidex nativo ed Elasticsearch nella macchina
+virtuale: un ordine di grandezza, non un confronto alla pari. Qui i due motori
+girano nella stessa macchina virtuale, con le stesse 4 CPU e la stessa rete:
+Koskidex è lo stesso binario compilato per Linux, in un container accanto a
+quello di Elasticsearch, con l'indice riempito dall'app nella configurazione
+consigliata. Le richieste sono quelle che manda l'app, copiate dal codice: per
+Elasticsearch il \texttt{multi\_match} di produzione con i sei campi pesati,
+che restituisce anche il testo di ogni risultato; per Koskidex la ricerca con
+i soli identificativi. Le query sono 400: le 300 known-item automatiche, le 24
+del confronto e le 76 known-item umane raccolte fino al 28 settembre. Tutto
+sta in \texttt{risultati/esperimenti/2026-09-28\_carico/}, previsioni
+comprese.
+
+Koskidex tiene in memoria le ultime 1.024 risposte, e non c'è un'impostazione
+per spegnere la cache: ripetere le stesse query misurerebbe la cache. Ogni
+richiesta porta quindi un numero diverso di spazi in coda alla query, che il
+tokenizer ignora e la chiave della cache no; lo strumento verifica, prima di
+misurare, che con gli spazi nessuna delle 400 risposte cambi, su nessuno dei
+due motori.
+
+\paragraph{Una ricerca alla volta.} Ogni query cinque volte, in un ordine
+mescolato con un seme fisso. Il p50 di Koskidex è un terzo di quello di
+Elasticsearch, e l'avevo previsto; avevo previsto anche che la differenza
+stesse soprattutto nel peso della risposta, perché Elasticsearch restituisce il
+testo degli atti che l'app poi scarta. Non è così: senza il testo Elasticsearch
+non va più veloce (6,77~ms), perché con l'operatore \texttt{and} le risposte
+sono piccole, 160 byte di mediana. La differenza sta nel motore. La coda invece
+era quasi la stessa (tabella~\ref{tab:carico-sequenziale}, colonna
+\emph{prima}): 68 query su 400 superavano gli 8~ms, ed erano le query lunghe,
+piene di parole comuni.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    & p50 & p95 & p99 \\
+    \midrule
+    Elasticsearch, come l'app & 6,32 & 17,66 & 24,26 \\
+    Elasticsearch, senza il testo & 6,77 & 19,60 & 26,09 \\
+    Koskidex, prima & 2,12 & 12,36 & 18,31 \\
+    Koskidex, dopo & \textbf{1,12} & \textbf{2,74} & \textbf{4,79} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Una ricerca alla volta, in millisecondi, 400 query per cinque
+  passate, i due motori nella stessa macchina virtuale. \emph{Prima} è
+  Koskidex \texttt{ffa38ab}, \emph{dopo} \texttt{510b9d2}, con le due correzioni
+  di questa sezione.}
+  \label{tab:carico-sequenziale}
+\end{table}
+
+\paragraph{Sotto carico.} Da 1 a 32 client che mandano ricerche senza pause,
+20 secondi per livello. Avevo previsto che Koskidex reggesse almeno una volta e
+mezza le ricerche al secondo di Elasticsearch. Ne reggeva 1,14 volte: 653
+contro 571 (tabella~\ref{tab:carico}). Con un client solo usava già il 116\% di
+CPU, più di un core per una ricerca alla volta, e a 32 client il suo p99 era il
+doppio di quello di Elasticsearch.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{rrrrrrr}
+    \toprule
+    & \multicolumn{2}{c}{Elasticsearch} & \multicolumn{2}{c}{Koskidex, prima} &
+    \multicolumn{2}{c}{Koskidex, dopo} \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+    client & ricerche/s & p99 & ricerche/s & p99 & ricerche/s & p99 \\
+    \midrule
+    1 & 134,6 & 22,8 & 233,3 & 19,2 & 705,9 & 4,9 \\
+    4 & 471,7 & 26,6 & 588,9 & 29,1 & 1.707,9 & 7,9 \\
+    8 & 571,1 & 46,5 & 653,0 & 48,5 & 2.313,8 & 13,9 \\
+    16 & 550,4 & 69,6 & 622,6 & 105,0 & 2.588,7 & 25,3 \\
+    32 & 559,4 & 103,1 & 647,2 & 214,6 & \textbf{2.614,0} & \textbf{42,8} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Sotto carico, stesse 4 CPU: ricerche al secondo e p99 in
+  millisecondi. Tutti saturano le CPU dagli 8 client in su.}
+  \label{tab:carico}
+\end{table}
+
+\paragraph{Dove spendeva Koskidex.} Il profilo a 8 client ha dato la risposta, e
+non era quella che avevo previsto: avevo scommesso sull'espansione dei refusi e
+sulla scrittura del JSON della risposta. Koskidex allocava 2,57~MB a ricerca, e
+quella memoria si pagava in CPU: il 20\% dei campioni era nel lock
+dell'allocatore di Go e un altro 7\% nel garbage collector. Il 43\% delle
+allocazioni veniva dalla funzione che, per ogni parola della query, costruisce
+una voce per ogni documento che la contiene, anche per \emph{di} o \emph{per},
+e solo dopo scarta i documenti a cui manca una parola; un altro 40\% dalla
+distanza fra parole, che allocava una matrice intera a ogni confronto, e dalla
+raccolta dei candidati con refuso.
+
+\paragraph{Due correzioni che non cambiano un risultato.} A differenza delle
+correzioni dei capitoli precedenti non stanno dietro un'impostazione, e il
+motivo è la condizione stessa del lavoro: non devono cambiare né l'insieme né l'ordine né un
+punteggio, e se ne cambiassero uno non sarebbero queste correzioni. La prima
+calcola la distanza con tre righe riusate al posto della matrice, la stessa
+ricorrenza, e prende i bigrammi come sottostringhe. La seconda, con il recupero
+congiuntivo, trova prima i documenti che contengono tutte le parole, partendo
+da quella con meno occorrenze come fa Elasticsearch, e calcola il punteggio
+solo per loro, parola per parola nell'ordine della query: le somme in virgola
+mobile restano le stesse bit per bit. La prova è stata fatta prima di misurare
+i tempi: l'impronta di ogni risposta del server, identificativi e punteggi
+byte per byte, per 429 query (le 400 più 29 inventate con gli operatori, parole
+di una lettera, numeri, refusi e parole inesistenti), coincide prima e dopo
+per tutte, a 10.018 documenti e a 100.000; le metriche di
+\texttt{scripts/evaluate}, query per query, coincidono su SciFact, NFCorpus e le
+known-item automatiche nelle tre configurazioni di confronto; i test di
+Koskidex passano, compreso quello che congela l'ordine di partenza.
+
+Le otto previsioni scritte prima (\texttt{2026-09-28\_prestazioni}) sono tutte
+confermate, quasi sempre con molto margine: le soglie erano prudenti. Le
+allocazioni scendono da 2,57 a 0,44~MB a ricerca, l'83\% in meno. Una ricerca
+alla volta costa 1,12~ms di p50 e 2,74 di p95, e il p95 scende di più del p50:
+le correzioni hanno tolto proprio il costo delle query lunghe, che faceva la
+coda. Sotto carico Koskidex regge 2.614 ricerche al secondo, 4,6 volte
+Elasticsearch sulle stesse CPU, e a 32 client il suo p99 è 43~ms contro 103.
+Con un client la CPU scende dal 116\% all'83\%. Nel profilo nuovo il lock
+dell'allocatore e il garbage collector escono dalle prime righe, e il 43\% dei
+campioni è nelle chiamate di sistema della rete: il motore non è più la parte
+lenta della richiesta. Nativo, sugli 8 core del Mac, Koskidex passa da 975 a
+4.100 ricerche al secondo.
+
+\paragraph{Memoria e archivi più grandi.} Per vedere come cresce il costo ho
+copiato gli stessi atti fino a 50.000 e 100.000 documenti, con identificativi
+diversi e lo stesso testo: dati inventati, che per tempi e memoria vanno bene e
+per la pertinenza no (tabella~\ref{tab:crescita}).
+
+\begin{table}[ht]
+  \centering
+  \small
+  \begin{tabular}{lrrrrrr}
+    \toprule
+    & \multicolumn{2}{c}{memoria} & \multicolumn{2}{c}{indice su disco} &
+    \multicolumn{2}{c}{indicizzazione} \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+    documenti & ES & Koskidex & ES & Koskidex & ES & Koskidex \\
+    \midrule
+    10.018 & 1.431 MB & 155 MB & 3,5 MB & 6,3 MB & 1,1-1,7 s & 1,9-2,1 s \\
+    50.000 & 1.439 MB & 651 MB & 17,9 MB & 32,8 MB & 2,8 s & 6,2 s \\
+    100.000 & 1.433 MB & 1.213 MB & 35,5 MB & 65,6 MB & 5,3 s & 12,9 s \\
+    \bottomrule
+  \end{tabular}
+  \caption{Memoria a riposo dopo un riavvio, indice su disco e tempo di
+  indicizzazione, con gli atti copiati. A 10.018 documenti l'indicizzazione è
+  quella dall'app.}
+  \label{tab:crescita}
+\end{table}
+
+Alla dimensione dell'albo Koskidex occupa un decimo della memoria di
+Elasticsearch, e sotto carico 272~MB al massimo contro 1.566. Ma tiene tutto in
+memoria, con gli identificativi dei documenti e i nomi dei campi come stringhe
+in ogni occorrenza: circa 12~KB a documento, e a 100.000 documenti la memoria è
+quasi quella di Elasticsearch, che ha un heap fisso. Le correzioni non la
+toccano (1.213 contro 1.184~MB), perché non toccano le strutture dell'indice.
+Toccano invece la coda: a 100.000 documenti il p95 di Koskidex era di 133~ms e
+il p99 di 201, dieci volte quelli a 10.018, contro i 21 e 36 di Elasticsearch;
+dopo sono 10,4 e 15,5, sotto quelli di Elasticsearch.
+
+\paragraph{Un difetto trovato per strada.} Il test che confronta i due percorsi
+su query casuali ha trovato una cosa che non cercava. Per una parola corta con
+un refuso ammesso, quattro lettere o meno con la tolleranza automatica,
+Koskidex non usa i bigrammi ma scorre tutto il vocabolario, e il vocabolario è
+una mappa di Go, che si percorre in un ordine diverso a ogni chiamata. L'ordine
+delle parole evidenziate cambia da una ricerca all'altra; e se un documento
+contiene due parole alla stessa distanza da quella cercata, quale delle due gli
+viene accreditata, e quindi il suo punteggio BM25, dipende dal caso. Il difetto
+c'era da prima e resta: sulle 429 query delle impronte non ha prodotto
+differenze, e correggerlo può spostare qualche punteggio, quindi andrà dietro
+un'impostazione, come le correzioni dei capitoli precedenti.
+
+\paragraph{Cosa ne segue per Documentale.} All'albo di un comune, diecimila
+atti, Koskidex costa un decimo della memoria di Elasticsearch e risponde in
+meno di un quinto del tempo, e sotto carico regge quattro volte e mezzo le ricerche sulle
+stesse CPU. A centomila documenti il tempo regge ancora, la memoria no: lì
+serve un indice più compatto, con identificativi e campi interi, che
+ridurrebbe anche l'indice su disco, oggi il doppio di quello di
+Elasticsearch, e l'indicizzazione, due volte e mezzo più lenta. I limiti delle
+misure: il client gira sullo stesso Mac, fuori dalla macchina virtuale, e tiene
+le connessioni aperte, mentre l'app in PHP ne apre in genere una per ricerca;
+Elasticsearch ha l'heap fissato a 1~GB, e con meno memoria si comporterebbe
+diversamente.
 
 \section{Dove un motore piccolo è competitivo, e dove no}
 

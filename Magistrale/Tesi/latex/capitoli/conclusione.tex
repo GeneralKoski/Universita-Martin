@@ -3,8 +3,8 @@
 \section{Le risposte alla domanda}\label{sec:risposte}
 
 La domanda (sezione~\ref{sec:domanda}) si articolava in quattro parti. Le prime
-tre hanno una risposta misurata; la quarta aspetta i giudizi del
-capitolo~\ref{chapter:confronto}.
+tre hanno una risposta misurata; la quarta l'ha in parte, per i costi, e per la
+pertinenza aspetta le known-item umane del capitolo~\ref{chapter:confronto}.
 
 \paragraph{I difetti di Koskidex.} Dei quattro difetti sospettati leggendo il
 codice, il più grande non era fra quelli sospettati. Il recupero congiuntivo
@@ -37,10 +37,15 @@ congiuntivo e vettore leggero se la query ha una cifra e il congiuntivo trova
 qualcosa}, vale +0,023 di nDCG@10 medio sulla migliore configurazione fissa. Se la
 regola riconosca il tipo di query o la collezione, su questi dati non si può dire.
 
-\paragraph{Il confronto con Elasticsearch.} Sugli stessi insiemi di risultati,
-Koskidex risponde in una mediana di 2,7~ms contro 22, su due motori che non girano
-alla pari. Quanto valgano in pertinenza, Koskidex corretto ed Elasticsearch di
-produzione, sulle ricerche in lingua naturale, lo dirà il
+\paragraph{Il confronto con Elasticsearch.} Nella stessa macchina virtuale, con
+le stesse CPU e le richieste dell'app, Koskidex risponde in 1,1~ms di p50
+contro 6,3, regge 4,6 volte le ricerche al secondo e occupa un decimo della
+memoria. Non era così prima di misurarlo sotto carico: allocava 2,6~MB a
+ricerca, e il vantaggio si fermava a 1,14 volte. Due correzioni che non cambiano
+un solo risultato, verificato risposta per risposta, hanno tolto quel costo.
+Il limite è la memoria: a centomila documenti è quasi quella di
+Elasticsearch. Quanto valgano in pertinenza, Koskidex corretto ed Elasticsearch
+di produzione, sulle ricerche scritte da persone, lo dirà il
 capitolo~\ref{chapter:confronto}.
 
 \section{Limiti}\label{sec:limiti}
@@ -49,8 +54,9 @@ capitolo~\ref{chapter:confronto}.
   \item \textbf{Query fabbricate.} Le known-item automatiche hanno una sola forma,
         \texttt{<numero> <comune>}, e le 24 query del confronto le ha scritte
         l'autore. Misurano bene quello che misurano, e niente di più. Le query
-        scritte da persone servono proprio a questo, e al momento di scrivere non
-        ci sono ancora.
+        scritte da persone servono proprio a questo, e al momento di scrivere ne
+        sono arrivati due lotti su quattro; solo 3 query su 76 contengono un
+        numero, troppo poche per dire qualcosa di quelle.
   \item \textbf{Un solo corpus di dominio.} Gli albi pretori hanno la forma di un
         documentale, ma sono gli atti di comuni: altri archivi, con contratti o
         corrispondenza, hanno altri vocabolari e altre ricerche. Il testo intero
@@ -60,14 +66,21 @@ capitolo~\ref{chapter:confronto}.
         pubbliche: una regola che riconosce la collezione e una che riconosce il
         tipo di query danno gli stessi numeri. È il limite più serio della scelta
         per tipo di query, e la ragione per cui resta fuori dal motore.
-  \item \textbf{Pochi annotatori.} I giudizi del pool vengono da un annotatore, con
-        un secondo su una parte; il kappa dirà quanto dipendono dalla persona.
+  \item \textbf{I giudizi del pool.} Bisogni e giudizi del pool li ha dati un
+        modello linguistico, e con il mio campione l'accordo è modesto (kappa
+        pesato 0,370): il pool non regge da solo un confronto, e il capitolo
+        finale si regge sulle known-item umane. Un kappa basso con un solo
+        annotatore umano non dice chi dei due ha ragione, e i bisogni scritti
+        dallo stesso modello che giudica lo rendono difficile da leggere.
   \item \textbf{Il richiamo del pool è un limite superiore.} I documenti pertinenti
         che nessuna delle dodici configurazioni ha messo fra i primi dieci non
         sono giudicati, e contano come non pertinenti.
-  \item \textbf{I tempi.} Koskidex ed Elasticsearch non girano alla pari: uno
-        nativo, l'altro in una macchina virtuale e misurato attraverso una
-        chiamata HTTP. I tempi dicono l'ordine di grandezza, non un rapporto.
+  \item \textbf{I tempi.} Nei capitoli di recupero Koskidex gira nativo ed
+        Elasticsearch in una macchina virtuale, e i tempi dicono l'ordine di
+        grandezza. Il confronto alla pari della
+        sezione~\ref{sec:latenza} ha i suoi limiti: il client sullo stesso Mac,
+        con le connessioni aperte, l'heap di Elasticsearch fissato a 1~GB, gli
+        archivi più grandi fatti di atti copiati.
   \item \textbf{Un solo modello di embedding.} \texttt{bge-m3} in locale è una
         scelta, non un confronto: con un altro modello i pesi calibrati del
         capitolo~\ref{chapter:ibrido} potrebbero cambiare.
@@ -89,6 +102,16 @@ capitolo~\ref{chapter:confronto}.
         accorcerebbero, a prezzo di punteggi diversi nelle ultime cifre, e oltre
         qualche centinaio di migliaia di documenti servirebbe un indice
         approssimato.
+  \item \textbf{Un indice più compatto.} Identificativi dei documenti e nomi dei
+        campi come interi invece che come stringhe in ogni occorrenza: è la
+        condizione per usare Koskidex oltre i centomila documenti, dove oggi la
+        memoria è quasi quella di Elasticsearch, e ridurrebbe l'indice su disco
+        e il tempo di indicizzazione. Cambia il formato su disco, e per questo è
+        rimasto fuori dalle correzioni della sezione~\ref{sec:latenza}.
+  \item \textbf{L'ordine della scansione del vocabolario.} Per le parole corte
+        con un refuso l'ordine dei termini trovati cambia da una chiamata
+        all'altra (sezione~\ref{sec:latenza}); un ordine fisso, dietro
+        un'impostazione, con le impronte delle risposte prima e dopo.
   \item \textbf{Koskidex in produzione.} La tesi misura il recupero; un motore in
         produzione chiede anche un'istantanea che non riscriva l'indice intero,
         l'aggiornamento parziale di un documento, e un indice che non stia tutto
