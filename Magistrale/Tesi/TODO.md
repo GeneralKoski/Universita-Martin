@@ -135,6 +135,14 @@ automatico dallo stesso modello.
 
 ## Si può fare senza aspettare nessuno
 
+- [ ] **Le prestazioni di Koskidex**, dai punti dell'esito di
+      `risultati/esperimenti/2026-09-28_carico/`: congiuntivo dal termine più
+      raro, `DamerauLevenshtein` senza allocazioni, candidati con refuso
+      riusati, indice compatto con id interi. Nessuno cambia i risultati; ogni
+      punto con le previsioni prima e la stessa misura di carico come prova.
+      Da decidere con Martin se farli prima della tesi o lasciarli agli
+      sviluppi futuri (9.3).
+
 - [ ] Decidere come trattare date (`14.01.2026`) e decimali (`3,5`) fuori dalla
       modalità compatibile con Elasticsearch, e misurarlo.
 - [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui

@@ -1,0 +1,33 @@
+# koskidex c70bbcd, allocazioni (byte) dall'avvio
+File: koskidex
+Type: alloc_space
+Time: 2026-09-28 11:31:40 CEST
+Showing nodes accounting for 91800.56MB, 99.51% of 92256.74MB total
+Dropped 153 nodes (cum <= 461.28MB)
+      flat  flat%   sum%        cum   cum%
+39977.66MB 43.33% 43.33% 77066.69MB 83.54%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).findDocsForToken
+22960.55MB 24.89% 68.22% 22960.55MB 24.89%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzyCandidates.func1 (inline)
+14115.48MB 15.30% 83.52% 14115.48MB 15.30%  github.com/GeneralKoski/Koskidex/internal/engine.DamerauLevenshtein
+10489.52MB 11.37% 94.89% 90811.16MB 98.43%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).SearchScored
+ 2292.07MB  2.48% 97.38%  2292.07MB  2.48%  github.com/GeneralKoski/Koskidex/internal/engine.removeDuplicateTerms (inline)
+ 1546.67MB  1.68% 99.05%  1546.67MB  1.68%  golang.org/x/text/transform.Chain (inline)
+  233.29MB  0.25% 99.30%  1002.25MB  1.09%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).addDocumentLocked
+  131.80MB  0.14% 99.45% 91162.44MB 98.81%  github.com/GeneralKoski/Koskidex/internal/server.(*Server).handleSearch
+   18.02MB  0.02% 99.47%  1707.29MB  1.85%  github.com/GeneralKoski/Koskidex/internal/engine.Tokenize
+      14MB 0.015% 99.48%   765.41MB  0.83%  github.com/GeneralKoski/Koskidex/internal/engine.tokenizzaValore
+   11.50MB 0.012% 99.49% 13923.46MB 15.09%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked.func1
+    5.50MB 0.006% 99.50%   719.66MB  0.78%  github.com/GeneralKoski/Koskidex/internal/engine.ParseQuery
+       3MB 0.0033% 99.50%  1603.68MB  1.74%  github.com/GeneralKoski/Koskidex/internal/engine.removeAccents
+    1.50MB 0.0016% 99.51% 36885.51MB 39.98%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked
+         0     0% 99.51%  1002.25MB  1.09%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).AddDocument
+         0     0% 99.51% 22960.55MB 24.89%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzyCandidates
+         0     0% 99.51%  1036.90MB  1.12%  github.com/GeneralKoski/Koskidex/internal/manager.NewManager
+         0     0% 99.51%  1002.25MB  1.09%  github.com/GeneralKoski/Koskidex/internal/manager.NewManager.func1
+         0     0% 99.51% 91174.45MB 98.83%  github.com/GeneralKoski/Koskidex/internal/server.(*Server).ServeHTTP
+         0     0% 99.51%  1036.90MB  1.12%  github.com/GeneralKoski/Koskidex/internal/storage.(*Persistence).LoadIndexes
+         0     0% 99.51%  1038.05MB  1.13%  main.main
+         0     0% 99.51% 91164.66MB 98.82%  net/http.(*ServeMux).ServeHTTP
+         0     0% 99.51% 91214.68MB 98.87%  net/http.(*conn).serve
+         0     0% 99.51% 91164.16MB 98.82%  net/http.HandlerFunc.ServeHTTP
+         0     0% 99.51% 91176.17MB 98.83%  net/http.serverHandler.ServeHTTP
+         0     0% 99.51%  1038.05MB  1.13%  runtime.main

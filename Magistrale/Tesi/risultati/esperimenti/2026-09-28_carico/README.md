@@ -107,3 +107,129 @@ richieste con `size` maggiore di zero non usa la sua cache delle richieste.
 10. **Il profilo** mette fra le prime cinque funzioni per CPU la
     tokenizzazione o l'espansione dei termini con refusi (fuzziness AUTO) e la
     serializzazione JSON della risposta.
+
+## Esito
+
+Da `2026-09-28T093314Z_esito.json` (tutte le esecuzioni, l'ultima per
+etichetta) e dai profili `profilo/2026-09-28T093154Z_*`. Koskidex `ffa38ab`
+nei motori, strumenti da `c70bbcd`; Elasticsearch 9.1.0. Nessun errore in
+nessuna esecuzione; la verifica dice che gli spazi in coda non cambiano il
+risultato di nessuna delle 400 query, su nessuno dei due motori.
+
+**Una ricerca alla volta**, 400 query per 5 passate, ms:
+
+| | p50 | p95 | p99 |
+|---|---|---|---|
+| Elasticsearch, come l'app | 6,32 | 17,66 | 24,26 |
+| Elasticsearch, senza `_source` | 6,77 | 19,60 | 26,09 |
+| Koskidex nel container, cache aggirata | **2,12** | 12,36 | 18,31 |
+| Koskidex nel container, con la cache (passate 2-5) | 0,29 | 0,38 | 0,72 |
+| Koskidex nativo, cache aggirata | 1,78 | 12,43 | 17,43 |
+
+La prima passata, a motore appena riavviato, costa poco in più
+(Elasticsearch 7,07 ms di p50, Koskidex 2,17). Il p50 di Koskidex è un terzo di
+quello di Elasticsearch, ma la coda no: 68 query su 400 impiegano più di 8 ms,
+e sono le query lunghe, piene di parole comuni ("delibera di giunta sul
+bilancio di previsione 2026": 20,6 ms contro 16,6).
+
+**Sotto carico**, stesse 4 CPU della VM, cache aggirata:
+
+| client | Elasticsearch come l'app | | Koskidex nel container | |
+|---|---|---|---|---|
+| | ricerche/s | p99 ms | ricerche/s | p99 ms |
+| 1 | 134,6 | 22,8 | 233,3 | 19,2 |
+| 4 | 471,7 | 26,6 | 588,9 | 29,1 |
+| 8 | **571,1** | 46,5 | **653,0** | 48,5 |
+| 16 | 550,4 | 69,6 | 622,6 | 105,0 |
+| 32 | 559,4 | 103,1 | 647,2 | 214,6 |
+
+Tutti e due saturano le 4 CPU (Elasticsearch al 385-390%, Koskidex al
+375-382%). Con un client solo Koskidex usa già il 116% di CPU: più di un core
+per una ricerca alla volta. Koskidex nativo, sugli 8 core del Mac divisi con il
+client, arriva a 975 ricerche al secondo.
+
+**Memoria**, MB: a riposo dopo un riavvio, Elasticsearch 1.431 e Koskidex 155
+con i 10.018 atti; sotto carico al massimo 1.566 e 355.
+
+**Archivio più grande** (atti copiati, a riposo dopo un riavvio; ricerche una
+alla volta):
+
+| documenti | memoria ES | memoria Koskidex | p50 / p99 ES | p50 / p99 Koskidex | disco ES | disco Koskidex | indicizzazione ES / Koskidex |
+|---|---|---|---|---|---|---|---|
+| 10.018 | 1.431 MB | 155 MB | 6,3 / 24 ms | 2,1 / 18 ms | 3,5 MB | 6,3 MB | 1,1-1,7 s / 1,9-2,1 s (dall'app) |
+| 50.000 | 1.439 MB | 651 MB | 6,3 / 28 ms | 3,8 / 101 ms | 17,9 MB | 32,8 MB | 2,8 s / 6,2 s |
+| 100.000 | 1.433 MB | 1.213 MB | 7,0 / 36 ms | 5,4 / 201 ms | 35,5 MB | 65,6 MB | 5,3 s / 12,9 s |
+
+Previsione per previsione:
+
+1. **Confermata.** p50 2,12 ms contro 6,32.
+2. **Smentita**, e quasi senza materia: con l'operatore `and` solo una query
+   su 400 dà più di 1.000 risultati (5 richieste), e lì il p50 è 27,5 ms contro
+   22,4, non il doppio. Il `_source` non pesa perché le risposte sono piccole
+   (mediana 160 byte).
+3. **Smentita.** Senza `_source` Elasticsearch resta a 6,77 ms: il rapporto con
+   Koskidex è 3,2, non entro 2. La differenza è nel motore, non nella risposta.
+4. **Confermata.** 0,29 ms con la cache.
+5. **Smentita.** 653 contro 571 ricerche al secondo, 1,14 volte e non 1,5:
+   il vantaggio del p50 si perde sotto carico (vedi il profilo).
+6. **Confermata.** Elasticsearch al massimo 1.566 MB, Koskidex 355.
+7. **Smentita, di poco.** p99 105 ms a 16 client; a 32 client 215, contro i
+   103 di Elasticsearch: sotto carico la coda di Koskidex cresce più in fretta.
+8. **Confermata.** Il nativo è il 16% sotto il container (1,78 contro 2,12 ms).
+9. **A metà.** La memoria va come previsto: Koskidex ×7,85, Elasticsearch
+   ×1,00. Il p50 di Koskidex cresce di ×2,57 invece di almeno ×3; quello di
+   Elasticsearch di ×1,10. Ma il p50 nasconde il fatto più importante: la coda
+   di Koskidex cresce di dieci volte (p95 da 12 a 133 ms, p99 da 18 a 201),
+   quella di Elasticsearch di una volta e mezza.
+10. **A metà.** L'espansione dei termini con refusi c'è
+    (`fuzzySearchTermsLocked`, 16% della CPU cumulata), la serializzazione
+    JSON no: non compare fra le prime 40 funzioni. Il profilo dice un'altra
+    cosa, sotto.
+
+**Il profilo.** In circa 40.000 ricerche Koskidex ha allocato 92 GB, circa
+2 MB a ricerca: il 43% in `findDocsForToken`, il 25% in `fuzzyCandidates`, il
+15% in `DamerauLevenshtein`, l'11% in `SearchScored`. Quella memoria si paga in
+CPU: il 20% dei campioni è nel lock dell'allocatore di Go
+(`mheap.allocSpan`, `runtime.lock2`) e un altro 7% nel garbage collector. È per
+questo che una ricerca alla volta occupa più di un core, che sotto carico il
+vantaggio si riduce da 3 volte a 1,14 e che la coda cresce.
+
+**Dove può migliorare Koskidex**, in ordine di peso, con la misura che lo
+mostra. Nessuno di questi cambia i risultati:
+
+1. **Non costruire la mappa di tutti i documenti di ogni parola.** Con il
+   recupero congiuntivo `findDocsForToken` crea, per ogni termine della query,
+   una voce per ogni documento che lo contiene, anche per "di" o "per", e solo
+   dopo interseca. Partire dal termine più raro e cercare gli altri solo fra i
+   candidati sopravvissuti, come fa Elasticsearch, toglie la parte più grande
+   del 43% delle allocazioni e la crescita della coda con l'archivio.
+2. **`DamerauLevenshtein` senza matrice nuova a ogni chiamata**: due righe
+   riusate, fermandosi appena la distanza supera il massimo ammesso. Il 15%
+   delle allocazioni, con risultati identici.
+3. **La raccolta dei candidati con refuso** (`fuzzyCandidates`, 25% delle
+   allocazioni) può riusare le strutture fra un termine e l'altro. Per le
+   parole di 3-4 lettere con un refuso ammesso Koskidex scorre l'intero
+   vocabolario (`fuzzy.go`, il ramo senza bigrammi); con `prefix_length` 1,
+   come nel profilo consigliato, basterebbe scorrere i termini con la stessa
+   iniziale.
+4. **Una rappresentazione più compatta dell'indice**: circa 12 KB di memoria
+   per documento, con id dei documenti e nomi dei campi come stringhe in ogni
+   posting. Con id e campi interi la memoria a 100.000 documenti, oggi 1,2 GB
+   e quasi quella di Elasticsearch, scenderebbe di molto. Anche l'indice su
+   disco (il doppio di Elasticsearch) e l'indicizzazione in blocco (2,4 volte
+   più lenta) ne beneficerebbero.
+
+**Cosa ne segue per Documentale.** Alla dimensione dell'albo (10.018 atti)
+Koskidex è più leggero, circa un decimo della memoria, e una ricerca costa un
+terzo; sotto carico regge un po' più di Elasticsearch sulle stesse CPU. Con
+questa struttura dati il vantaggio si esaurisce verso i 100.000 documenti:
+lì la memoria è quasi quella di Elasticsearch e il p99 è più di cinque volte
+il suo. I punti 1 e 4 sono la condizione per usarlo su archivi più grandi.
+
+**Limiti.** Il client gira sullo stesso Mac, fuori dalla VM; le connessioni
+restano aperte fra una richiesta e l'altra, mentre l'app, in PHP, ne apre in
+genere una nuova per ogni ricerca;
+Elasticsearch ha l'heap fissato a 1 GB, e con meno memoria si comporterebbe
+diversamente; gli atti copiati hanno testi ripetuti, che per tempi e memoria
+vanno bene ma allungano le liste di posting delle parole comuni come
+succederebbe con un archivio vero dello stesso vocabolario.
