@@ -73,6 +73,13 @@ basta mettere i file nelle cartelle indicate e dirlo.
 - [ ] Committare `bisogni.md`, poi `risultati/strumenti/prepara-giudizi.py` per
       la pagina del primo annotatore.
 
+**Da correggere nella tesi, dal 28/09/2026:** i bisogni delle 24 query li ha
+scritti Claude, in un'altra sessione, e Martin li ha rivisti (lo dice
+`query/confronto-24/giudizi-llm.md`; il messaggio di `afecf63` li attribuiva a
+Martin). Il capitolo 4 e l'appendice B dicono che li scrive l'annotatore:
+vanno riscritti così com'è andata, fra i limiti anche un bisogno e un giudice
+automatico dallo stesso modello.
+
 **Quando arriva il file dei giudizi:**
 
 - [ ] `importa-giudizi.py`: giudizi, sessioni e `qrels/test.tsv`.
@@ -82,6 +89,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       consigliata e nelle configurazioni del pool; nDCG@10 e Recall@100 per
       famiglia di query; latenza, memoria e dimensione dell'indice; dove un
       motore piccolo è competitivo e dove no, scritto con onestà.
+- [ ] **Il giudice automatico**: i 905 giudizi di Claude Opus 5.5 in
+      `query/confronto-24/giudizi-llm.tsv` contro i giudizi di Martin: accordo,
+      kappa, dove sbaglia, e se la classifica dei motori cambia con i suoi
+      giudizi. Previsioni prima, come sempre.
 - [ ] Completare con i numeri del capitolo 8: la sezione 9.1, i contributi del
       capitolo 1, la sezione 4.5 (tempo per giudizio, distribuzione dei gradi).
 - [ ] Se i giudizi promuovono BM25 o i vettori, misurarli dentro il profilo
