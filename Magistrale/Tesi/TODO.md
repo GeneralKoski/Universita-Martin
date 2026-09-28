@@ -197,6 +197,19 @@ basta mettere i file nelle cartelle indicate e dirlo.
       CUDA, il modello (2,1 GB), i corpora e i file di `primo-stadio/`
       copiati. Se si fa, un controllo in più: gli ordini riordinati devono
       coincidere con quelli del Mac in fp32, e differire di poco in fp16.
+- [ ] Facoltativa, **da fare al fisso di Martin** (Ryzen 5, RTX 3060 Ti):
+      rifare `2026-09-28_carico` con tutti e due i motori, Koskidex
+      (al commit di `2026-09-28_allocazioni` o successivo) ed Elasticsearch
+      come l'app, per vedere se il rapporto misurato sul Mac regge su
+      un'altra macchina (sul Mac: capacità 6,6 volte, p50 0,92 contro 6,32
+      ms). Tutta CPU, la GPU non serve. Previsioni scritte prima, in un
+      esperimento nuovo che rimanda a quello del Mac: tempi per query simili
+      (dipendono dal singolo core), capacità nella zona del nativo del Mac
+      (dipende dai core), rapporto fra i motori entro il 30% di quello del
+      Mac. Da dichiarare il sistema operativo: su Linux Docker gira senza
+      macchina virtuale, su Windows passa da WSL2, e sul Mac il nativo va il
+      70% più veloce del container. Servono Docker, Go, gli indici o i dati
+      (Koskidex copiato, Elasticsearch riempito dall'app) e le 400 query.
 - [ ] Opzionale, **rimandato a quando tutto il resto è finito** (deciso da
       Martin il 28/09): un reranker neurale offline (cross-encoder multilingue
       sui primi 100 candidati dei ranking archiviati, rivalutati con
