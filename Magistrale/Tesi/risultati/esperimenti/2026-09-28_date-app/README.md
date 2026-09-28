@@ -64,3 +64,60 @@ le 24 del confronto; le prime quattro si valutano con `scripts/evaluate
    (il +29% di Koskidex piatto pesa poco dentro un'indicizzazione dominata
    dall'app e dal database).
 8. **I test di Documentale** passano.
+
+## Esito
+
+Misurato il 28/09/2026 con Koskidex `3bff7ca` e Documentale `f921ef7`.
+Riassunto in `2026-09-28T114447Z_esito.json` (`analizza.py`); le valutazioni
+in `evaluate/`, i rapporti dell'app e i tempi di indicizzazione in
+`confronto/` (`*date-app*`; quello delle known-item umane resta fuori da git
+perché contiene le query). Le impostazioni lette dall'indice: spento senza
+`normalize_*`, acceso con tutte e due, il resto uguale.
+
+**Cinque previsioni su sette.** Le due smentite dicono una cosa che Koskidex
+piatto non poteva mostrare, perché `scripts/evaluate` cerca senza refusi e
+l'app con i refusi AUTO.
+
+1. **Confermata.** Spento, la data nel formato dell'atto trova l'atto entro i
+   primi dieci nel 98-100% dei casi, in un altro formato nello 0-8%: come
+   Koskidex piatto con il tokenizer standard.
+2. **Confermata.** Acceso, ogni coppia di formati fra il 98% e il 100%. MRR@10
+   delle date da 0,315 a 0,979.
+3. **Smentita, per metà.** Acceso gli importi si trovano fra formati nel 100%
+   dei casi, ma anche spento: 50 su 50 e 2 su 2. Nell'app `5056,03` trova
+   `5.056,03` per i refusi: il tokenizer standard tiene l'importo come un
+   termine solo, un carattere di differenza è un refuso ammesso, e
+   `disable_on_numbers` non lo ferma perché un termine con la virgola non è
+   fatto di sole cifre (verificato a mano su un indice di prova: con
+   `fuzziness=AUTO` combacia, con `0` no). Lo stesso refuso fa combaciare
+   importi diversi. E accesa, la normalizzazione peggiora: MRR@10 degli
+   importi da 0,917 a 0,891, 12 query su 104 cambiano, 10 in peggio. Senza i
+   punti gli importi sono più corti e quindi più vicini per i refusi:
+   `6.999,14` e `69.199,10` distano tre modifiche, `6999,14` e `69199,10`
+   due, e il secondo atto entra fra i risultati sopra quello cercato.
+4. **Smentita, nel verso buono.** Known-item automatiche, MRR@10 da 0,9498 a
+   0,9551, +0,0053: fuori di poco dalla soglia di 0,005, in meglio, come in
+   Koskidex piatto (+0,002).
+5. **Confermata.** Known-item umane (76 query): nessuna cambia, né l'atto
+   entro i primi dieci né la posizione; MRR@10 identico.
+6. **Confermata.** Delle 24 del confronto, le 21 senza cifre trovano gli
+   stessi atti nello stesso ordine: le lunghezze dei campi cambiano, ma il
+   punteggio euristico dell'app non le usa. La query con l'anno non trova
+   niente né spenta né accesa, quindi non misura il prezzo dell'anno da solo.
+7. **Confermata.** Indicizzazione dall'app, mediana di tre, da 1.897 a
+   2.018 ms, +6,4%.
+8. **Confermata.** Il test nuovo di `KoskidexServiceTest` fallisce prima
+   della modifica e passa dopo; la suite passa tranne `ExampleTest` (la home
+   risponde 404), che fallisce allo stesso modo senza la modifica.
+
+**Cosa ne segue.** Nell'app le date vanno normalizzate e gli importi no. Le
+date sono il difetto misurato in `2026-09-28_date-importi`, chiuso anche
+dall'app, al prezzo del 6% di indicizzazione e di nessuna query vera cambiata
+fra quelle raccolte finora. Gli importi non hanno il difetto nell'app, perché
+lo coprono i refusi; ne hanno un altro, più grave: due importi che
+differiscono di una o due cifre combaciano, e la normalizzazione lo
+peggiora. La correzione giusta sarebbe trattare gli importi come numeri
+anche per `disable_on_numbers`, che cambia i risultati del profilo e va
+quindi dietro un'impostazione, con la sua misura. Il profilo resta com'è
+finché non girano le known-item umane complete, che sono il posto dove
+l'anno da solo può pesare.
