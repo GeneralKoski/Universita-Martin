@@ -85,3 +85,64 @@ formato di partenza e formato della query.
 7. **Il costo**: l'indicizzazione accesa al più il 20% più lenta di quella
    spenta.
 8. **I test** passano, `TestBaselineRankingIsFrozen` senza toccarlo.
+
+## Esito
+
+Da `2026-09-28T110657Z_esito.json` (`analizza.py`), Koskidex `c059664`, 36
+valutazioni in `evaluate/` (tre ripetizioni identiche nelle metriche). Le
+query: 707, 770 e 653 atti candidati per le date con la barra, il punto e il
+mese; 50 estratti per formato, 450 query. Per gli importi 191 candidati con i
+punti e **solo 2 senza**: 52 atti e 104 query, e la misura degli importi va di
+fatto in un verso solo, dagli atti con i punti alle query senza.
+
+**Date, atto entro i primi dieci**, su 50 query per coppia (formato dell'atto
+> formato della query):
+
+| coppia | standard, spento | Koskidex, spento | acceso (tutti e due) |
+|---|---|---|---|
+| barra > barra | 98% | 98% | 100% |
+| barra > punto | **0%** | 94% | 100% |
+| barra > mese | **6%** | **6%** | 100% |
+| punto > punto | 98% | 98% | 98% |
+| punto > barra | **0%** | 94% | 98% |
+| punto > mese | **0%** | **0%** | 98% |
+| mese > mese | 100% | 100% | 100% |
+| mese > barra | **8%** | **8%** | 100% |
+| mese > punto | **0%** | **8%** | 100% |
+
+1. **Confermata.** Con il tokenizer standard, quello di Elasticsearch, la data
+   nel formato dell'atto trova l'atto nel 98-100% dei casi, in un altro
+   formato nello 0-8%: quasi sempre a vuoto (fino a 50 query su 50).
+2. **Confermata.** Il tokenizer di Koskidex collega barra e punto (94%), non il
+   mese in lettere (0-8%).
+3. **Confermata.** Acceso, ogni coppia sta fra il 98% e il 100% entro i primi
+   dieci, con tutti e due i tokenizer, e l'atto primo nelle query in un altro
+   formato è lo stesso del controllo (100%, 96%, 92% per barra, mese e punto
+   di partenza). Due query con il punto perdono il primo posto rispetto allo
+   spento: accese, trovano anche un secondo atto che contiene davvero quella
+   data (scritta con i trattini) e le parole del comune, pur essendo di un
+   altro ente. L'unicità delle query è per ente, non per parole: è un limite
+   della famiglia sintetica, non della normalizzazione.
+4. **Confermata.** Importi: spento, con e senza punti non si trovano mai (0%
+   su 50 e su 2), con nessuno dei due tokenizer; acceso, 100%.
+5. **Confermata.** Le known-item automatiche non peggiorano, anzi: MRR@10 da
+   0,9750 a 0,9767 con il tokenizer di Koskidex, a 0,9772 con lo standard.
+6. **Smentita.** Sulle 12 known-item automatiche con un numero da 1 a 31 i
+   candidati non aumentano mai, ma calano solo per 4 (da 76 a 67 in tutto),
+   non per metà: il comune nella query restringe già a pochi atti, e fra
+   quelli pochi hanno una data con quel giorno.
+7. **Smentita.** L'indicizzazione accesa è più lenta del 41-46% (mediana da
+   924 a 1.345 ms con il tokenizer di Koskidex, da 998 a 1.411 con lo
+   standard), non al più del 20%: le cinque espressioni regolari passano su
+   tutto il testo di ogni campo. Si può ridurre senza cambiare un risultato,
+   saltando i testi senza cifre e cercando i mesi solo dove compare il nome
+   di un mese.
+8. **Confermata** (`go test ./...` a `c059664`).
+
+**Cosa ne segue.** Per Documentale è un difetto di produzione nuovo: con il
+tokenizer standard di Elasticsearch una data scritta in un formato diverso da
+quello dell'atto non trova quasi mai l'atto, e nel corpus i formati sono tre,
+tutti frequenti. Le due impostazioni lo chiudono con tutti e due i tokenizer,
+senza toccare le ricerche per numero. Le query sono sintetiche: dicono che il
+motore trova la data in qualunque formato, non quanto spesso una persona
+cerca per data (nelle known-item umane raccolte finora, quasi mai).
