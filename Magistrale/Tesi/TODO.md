@@ -137,6 +137,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       Prima di metterla nel profilo va misurato il prezzo: l'anno da solo
       (`bilancio 2026`) non combacia più con le date, e le known-item umane
       della sera del 28/09 girano con il profilo senza di lei.
+- [x] Le espansioni come sinonimi (`bm25_expansion: synonym`, Koskidex
+      `b958ea0`), misurate il 28/09 in `2026-09-28_espansioni-sinonimo`: sei
+      previsioni su sei, nessuna regola di parità, SciFact 0,6667 (0,6734 con
+      stopword). Scritto in 5.3 e nel registro; tolto dagli sviluppi futuri.
 - [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui
       primi 100 candidati dei ranking archiviati, rivalutati con
       `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il

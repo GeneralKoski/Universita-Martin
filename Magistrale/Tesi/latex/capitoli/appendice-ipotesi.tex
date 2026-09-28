@@ -444,13 +444,27 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & 12 configurazioni su 12: confermata \\
     & 10. (dopo l'esito) Indicizzazione accesa al più il 15\% più lenta
     & +29-34\%: smentita \\
+  \addlinespace
+  \texttt{espansioni-sinonimo}
+    & 1. Con \texttt{synonym} le metriche non dipendono dall'ordine
+    & 8 configurazioni su 8: confermata \\
+    & 2. Stessi candidati di \texttt{blended}
+    & 8 su 8: confermata \\
+    & 3. SciFact \texttt{any}, nDCG@10 fra $-$0,005 e +0,02
+    & $-$0,0028 e $-$0,0023: confermata, ma nel verso opposto al previsto \\
+    & 4. NFCorpus \texttt{any} entro 0,01
+    & $-$0,0007 e $-$0,0016: confermata \\
+    & 5. Known-item automatiche, MRR@10 entro 0,01
+    & 0 e +0,0025: confermata \\
+    & 6. Mediana del tempo per query entro il 5\%
+    & fra $-$1,4\% e +2,8\%: confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 155: 103 confermate, 40 smentite, 9 a metà, e 3 senza
+In tutto le previsioni sono 161: 109 confermate, 40 smentite, 9 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 152 con un esito, quasi
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 158 con un esito, quasi
 una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},

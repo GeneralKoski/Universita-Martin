@@ -211,6 +211,19 @@ documento pertinente scende di un posto (sezione~\ref{sec:latenza}). I due
 valori sono ugualmente arbitrari: 0,0024 è quanto quella regola pesa, ed è il
 margine con cui leggere le differenze di questo ordine su SciFact.
 
+Una regola che non sceglie c'è, ed è quella della \texttt{SynonymQuery} di
+Lucene: sommare nel documento le occorrenze di tutte le espansioni e usare la
+frequenza documentale più alta. Con un'altra impostazione,
+\texttt{BM25Expansion} a \texttt{synonym}, il punteggio non dipende più
+dall'ordine, e gli insiemi restano gli stessi. SciFact fa 0,6667, quasi quanto
+con l'ordine lessicografico, e con le stopword 0,6734 invece di 0,6757; NFCorpus
+e le known-item si spostano di meno di 0,003. Avevo previsto che sommare le
+varianti di una parola aiutasse come uno stemmer leggero, e non aiuta. Le due
+regole senza arbitrio sono d'accordo fra loro, e lo 0,6694 misurato è il valore,
+un po' più alto, dell'ordine di ingresso: i numeri di questo capitolo vanno
+letti con quei tre millesimi di margine
+(\texttt{2026-09-28\_espansioni-sinonimo}).
+
 \section{Le stopword: un guadagno che veniva da altrove}\label{sec:stopword}
 
 \paragraph{La prima misura.} Per capire quanto del divario dai riferimenti fosse

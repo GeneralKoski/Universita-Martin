@@ -110,12 +110,6 @@ capitolo~\ref{chapter:confronto}.
         memoria è quasi quella di Elasticsearch, e ridurrebbe l'indice su disco
         e il tempo di indicizzazione. Cambia il formato su disco, e per questo è
         rimasto fuori dalle correzioni della sezione~\ref{sec:latenza}.
-  \item \textbf{Una regola di parità per le espansioni.} Oggi a un documento si
-        accredita una sola delle espansioni alla stessa distanza, la prima in un
-        ordine arbitrario, e su SciFact la scelta vale 0,0024 di nDCG@10
-        (sezione~\ref{sec:latenza}). Sommare le espansioni, come fa la
-        riscrittura \emph{blended} di Lucene, toglierebbe la regola invece di
-        fissarla.
   \item \textbf{Koskidex in produzione.} La tesi misura il recupero; un motore in
         produzione chiede anche un'istantanea che non riscriva l'indice intero,
         l'aggiornamento parziale di un documento, e un indice che non stia tutto
