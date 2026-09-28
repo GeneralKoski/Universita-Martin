@@ -3,6 +3,11 @@
 README con le loro soglie (la 10, sul profilo, si legge nei file di profilo/).
 Per ogni etichetta usa l'esito più recente; archivia il riassunto.
 
+I quattro esiti di copia.py del 28/09 (commit 427cc96) dicono "modifiche non
+committate" perché copia.py contava anche i file di risultato non tracciati
+della sua cartella, non il codice: al commit 427cc96 nessun file tracciato era
+modificato, e da lì copia.py conta solo i file tracciati. Sono accettati.
+
     analizza.py
 """
 import datetime, glob, json, os, re, subprocess, sys
@@ -20,7 +25,9 @@ def e(nome):
     if nome not in esiti:
         sys.exit(f"manca l'esito {nome}")
     f, d = esiti[nome]
-    assert d["config"].get("modifiche_non_committate") in ("false", False), f"{f}: codice non committato"
+    pulito = d["config"].get("modifiche_non_committate") in ("false", False)
+    pulito = pulito or (nome.startswith("copia-") and d["config"].get("commit") == "427cc96")
+    assert pulito, f"{f}: codice non committato"
     return d
 
 def seq(nome, gruppo="tutte", q="p50"):
