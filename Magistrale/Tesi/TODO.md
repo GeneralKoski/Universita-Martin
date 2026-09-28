@@ -100,9 +100,13 @@ automatico dallo stesso modello.
 
 **Quando arriva il file del secondo annotatore:**
 
-- [ ] `importa-giudizi.py`, poi `risultati/strumenti/kappa.py`; kappa e
-      disaccordi nella sezione 4.5 e nei limiti (9.2), di quanto cambiano le
-      metriche con i giudizi del secondo.
+- [ ] Fatti il 28/09 import e `kappa.py --llm` (esito in
+      `esperimenti/2026-09-28_giudice-llm/`): kappa pesato modello-Martin
+      0,370, sotto 0,40, quindi per la regola i giudizi del modello **non si
+      usano da soli**. **Martin sceglie**: giudicare anche il resto del pool
+      (727 righe delle altre 20 query) o reggere il capitolo 8 sulle
+      known-item umane. Poi: kappa e disaccordi nella sezione 4.5 e nei
+      limiti (9.2).
 
 **Quando arrivano i file delle known-item umane:**
 
