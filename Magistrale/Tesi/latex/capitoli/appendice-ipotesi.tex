@@ -400,14 +400,32 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & più severo: smentita \\
     & 5. c19 con l'accordo più alto delle quattro query
     & 80\%: confermata \\
+  \addlinespace
+  \texttt{ordine-fisso}
+    & 1. Spento, il baseline non varia in cinque ripetizioni
+    & nessuna query varia: confermata \\
+    & 2. Spento, con BM25 al più 5 query variano e le medie coincidono alla
+      quarta cifra
+    & nessuna query varia: confermata \\
+    & 3. Acceso, nessuna query varia
+    & confermata \\
+    & 4. Acceso contro spento, nDCG@10 entro 0,001, baseline uguale
+    & SciFact BM25 \texttt{any} $-$0,0024: smentita \\
+    & 5. Documentale, le 429 impronte non cambiano
+    & 429 su 429: confermata \\
+    & 6. Mediana del tempo per query entro il 5\%
+    & fra $-$1,7\% e +3,2\%: confermata \\
+    & 7. I test passano; con l'impostazione il test del percorso veloce
+      confronta tutte le query
+    & 4.200 su 4.200: confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 138: 90 confermate, 36 smentite, 9 a metà, e 3 senza
+In tutto le previsioni sono 145: 96 confermate, 37 smentite, 9 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 135 con un esito, una
-su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 142 con un esito, quasi
+una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non

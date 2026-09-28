@@ -202,6 +202,15 @@ SciFact guadagna 0,050, cinque volte tanto. Le espansioni non sono rare: sono
 dappertutto, e costavano cinque punti di nDCG@10. Quanto, lo dice la sezione
 seguente.
 
+Resta, qui, una regola di parità arbitraria: se un documento contiene due
+espansioni alla stessa distanza dalla parola cercata, gli viene accreditata la
+prima che si incontra, e quindi la sua frequenza nel documento. Con l'ordine in
+cui i termini sono entrati nell'indice, quello di queste misure, SciFact fa
+0,6694; con l'ordine lessicografico, 0,6670, per due query su 300 in cui un
+documento pertinente scende di un posto (sezione~\ref{sec:latenza}). I due
+valori sono ugualmente arbitrari: 0,0024 è quanto quella regola pesa, ed è il
+margine con cui leggere le differenze di questo ordine su SciFact.
+
 \section{Le stopword: un guadagno che veniva da altrove}\label{sec:stopword}
 
 \paragraph{La prima misura.} Per capire quanto del divario dai riferimenti fosse

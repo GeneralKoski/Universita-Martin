@@ -168,16 +168,30 @@ il p99 di 201, dieci volte quelli a 10.018, contro i 21 e 36 di Elasticsearch;
 dopo sono 10,4 e 15,5, sotto quelli di Elasticsearch.
 
 \paragraph{Un difetto trovato per strada.} Il test che confronta i due percorsi
-su query casuali ha trovato una cosa che non cercava. Per una parola corta con
+su query casuali ha trovato una cosa che non cercava, e che ha avuto il suo
+esperimento (\texttt{2026-09-28\_ordine-fisso}). Per una parola corta con
 un refuso ammesso, quattro lettere o meno con la tolleranza automatica,
 Koskidex non usa i bigrammi ma scorre tutto il vocabolario, e il vocabolario è
 una mappa di Go, che si percorre in un ordine diverso a ogni chiamata. L'ordine
 delle parole evidenziate cambia da una ricerca all'altra; e se un documento
 contiene due parole alla stessa distanza da quella cercata, quale delle due gli
-viene accreditata, e quindi il suo punteggio BM25, dipende dal caso. Il difetto
-c'era da prima e resta: sulle 429 query delle impronte non ha prodotto
-differenze, e correggerlo può spostare qualche punteggio, quindi andrà dietro
-un'impostazione, come le correzioni dei capitoli precedenti.
+viene accreditata, e quindi il suo punteggio BM25, dipende dal caso: in un test
+con due documenti che contengono le stesse due parole con frequenze diverse,
+i due documenti si scambiano di posto da una chiamata all'altra. Lo stesso
+succede con la ricerca per sottostringa, che scorre il vocabolario allo stesso
+modo, e dopo un riavvio anche altrove, perché l'istantanea su disco scrive i
+documenti in ordine di mappa. La correzione è un'impostazione,
+\texttt{StableTermOrder}, spenta per default, che visita i termini trovati in
+ordine lessicografico. Sei previsioni su sette hanno tenuto: nessun numero di
+\texttt{scripts/evaluate} dipendeva dall'ordine della mappa, perché lo
+strumento cerca senza refusi, e cinque ripetizioni non variano mai, spente o
+accese; Documentale, con il punteggio euristico, dà le stesse 429 risposte;
+il costo sta nel rumore. È caduta quella che dava per uguali le medie con
+l'impostazione accesa e spenta: su SciFact con BM25 disgiuntivo passano da
+0,6694 a 0,6670. Anche l'ordine di ingresso nell'indice, che le misure della
+tesi hanno sempre usato, è arbitrario, e decide a parità di distanza quale
+espansione per prefisso viene accreditata; la differenza, due query su 300, è
+quanto pesa quella regola (sezione~\ref{sec:espansioni}).
 
 \paragraph{Cosa ne segue per Documentale.} All'albo di un comune, diecimila
 atti, Koskidex costa un decimo della memoria di Elasticsearch e risponde in
