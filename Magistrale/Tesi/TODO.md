@@ -187,6 +187,16 @@ basta mettere i file nelle cartelle indicate e dirlo.
       `strumenti/conteggi.py`. In 4.3 i numeri di AlboPOP (215 feed, 105 vivi,
       3 allegati su 14) vengono da `SOURCE.md` di Koskidex, una prova del
       23/09 che non si ripete: citarla come fonte o copiarla in `risultati/`.
+- [ ] Facoltativa, **da fare al fisso di Martin** (RTX 3060 Ti, 8 GB): il
+      costo del riordino di `2026-09-28_reranker` su una GPU da gaming, per
+      8.4 ("su un Mac costa 12 s a query, su una scheda consumer circa 2").
+      Solo tempi, non metriche: stessi primi stadi archiviati, stesso
+      `strumenti/riordina.py` con `--dispositivo cuda`, in fp32 come sul Mac
+      e poi in fp16; previsione scritta prima (stima: 4 s a query in fp32,
+      1,5-2,5 in fp16 su SciFact). Serve l'ambiente Python con torch per
+      CUDA, il modello (2,1 GB), i corpora e i file di `primo-stadio/`
+      copiati. Se si fa, un controllo in più: gli ordini riordinati devono
+      coincidere con quelli del Mac in fp32, e differire di poco in fp16.
 - [ ] Opzionale, **rimandato a quando tutto il resto è finito** (deciso da
       Martin il 28/09): un reranker neurale offline (cross-encoder multilingue
       sui primi 100 candidati dei ranking archiviati, rivalutati con
