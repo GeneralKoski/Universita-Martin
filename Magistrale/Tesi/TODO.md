@@ -117,11 +117,11 @@ basta mettere i file nelle cartelle indicate e dirlo.
 ## Si può fare senza aspettare nessuno
 
 - [x] Scritti nella tesi il 28/09 il carico e il prima e dopo delle
-      prestazioni: sezione 8.3 (con il rimando da 5.5), 9.1, 9.2, 9.3 e le tre
+      prestazioni: sezione 8.3 (con il rimando da 3.5), 9.1, 9.2, 9.3 e le tre
       voci nuove del registro delle ipotesi (carico, prestazioni, giudice-llm).
 - [x] L'ordine casuale dei termini trovati: `stable_term_order` (Koskidex
       `c514c77`), misurato in `2026-09-28_ordine-fisso` il 28/09, sei
-      previsioni su sette; scritto in 5.5 (espansioni), 8.3, 9.3 e nel
+      previsioni su sette; scritto in 5.3 (espansioni), 8.3, 9.3 e nel
       registro. Resta da decidere se accenderla nel profilo consigliato di
       Documentale: oggi non cambia niente (punteggio euristico), servirebbe
       solo passando a BM25.
