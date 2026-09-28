@@ -20,6 +20,12 @@ una query per atto, giudizio grado 2 sull'atto mostrato. Le query vuote ("non
 saprei") non entrano nella collezione e si contano a parte. Si misura solo a
 raccolta chiusa, con tutti i file arrivati.
 
+*Aggiunto il 28/09/2026, dopo l'arrivo dei primi due lotti.* Il file del
+lotto 2 si chiama `raccolta-lotto-2-Martin.json`, e con quel nome compare in
+`query/known-item-umane/riassunto.json`: il nome è quello che la persona ha
+scritto nella pagina di raccolta, ed è un omonimo dell'autore della tesi, non
+l'autore. Nessuna query della collezione è scritta dall'autore.
+
 **I motori**, sulle stesse query:
 
 - **dall'app**, con `app:eval-run-queries` sul corpus di Documentale e
