@@ -269,9 +269,29 @@ formato, non quanto spesso una persona cerca per data, e nelle known-item umane
 raccolte finora succede quasi mai. E la correzione ha un prezzo che nessuna
 previsione misurava: la data diventa un termine solo, quindi il suo anno non
 combacia più con una ricerca che contiene l'anno da solo, come \emph{bilancio
-2026}, a meno che l'anno compaia anche fuori da una data. Per questo, e perché
-non è misurata dall'app, la correzione non è esposta in Documentale e resta
-fuori dal profilo della sezione seguente.
+2026}, a meno che l'anno compaia anche fuori da una data.
+
+\paragraph{Dall'app.} In Documentale le due impostazioni sono due variabili,
+spente e fuori dal profilo della sezione seguente, misurate dall'app con il
+profilo acceso (\texttt{2026-09-28\_date-app}). Le date si comportano come in
+Koskidex piatto: da 0-8\% a 98-100\% di atti entro i primi dieci in un altro
+formato, MRR@10 da 0,315 a 0,979, con il 6\% in più di indicizzazione; le
+known-item automatiche migliorano appena, le 76 umane raccolte finora e le 21
+query del confronto senza cifre non cambiano di un posto. Gli importi no, e
+per una ragione che Koskidex piatto non poteva mostrare, perché
+\texttt{scripts/evaluate} cerca senza refusi e l'app con la tolleranza
+automatica: nell'app gli importi si trovano fra formati anche spenti,
+perché \texttt{5056,03} dista un carattere da \texttt{5.056,03}, e un termine
+con la virgola non è fatto di sole cifre, quindi i numeri esatti del
+profilo non lo riguardano. Lo stesso refuso fa combaciare importi diversi, e
+togliere i punti peggiora le cose: gli importi diventano più corti e più
+vicini, e l'MRR@10 degli importi scende da 0,917 a 0,891. Nell'app quindi le
+date vanno normalizzate e gli importi no; il difetto vero degli importi è che
+ammettono refusi. Del prezzo dell'anno da solo le query raccolte finora non
+dicono niente: nessuna delle umane contiene un anno, e l'unica del confronto
+che lo contiene non trova niente in nessuno dei due casi. Per questo la
+normalizzazione delle date resta fuori dal profilo finché non girano le
+known-item umane complete.
 
 \section{Cosa cambia per chi cerca}\label{sec:cosa-cambia}
 

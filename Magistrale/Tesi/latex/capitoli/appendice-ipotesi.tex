@@ -475,13 +475,33 @@ confrontando il numero con la soglia, ed è segnato con un asterisco.
     & $-$4\% e $-$7\%: smentita \\
     & 7. Una alla volta nel container, p50 non peggiore di oltre il 5\%
     & $-$19\%: confermata \\
+  \addlinespace
+  \texttt{date-app}
+    & 1. Dall'app, spento: data nel formato dell'atto almeno 90\% entro dieci,
+      in un altro al più 10\%
+    & 98-100\% e 0-8\%: confermata \\
+    & 2. Acceso: ogni coppia di formati almeno 90\%
+    & 98-100\%: confermata \\
+    & 3. Importi fra formati: acceso almeno 90\%, spento al più 10\%
+    & 100\% acceso, ma 100\% anche spento: smentita \\
+    & 4. Known-item automatiche, MRR@10 entro 0,005
+    & +0,0053: smentita \\
+    & 5. Known-item umane: nessuna entra o esce dai primi dieci, MRR@10 entro
+      0,01
+    & nessuna cambia: confermata \\
+    & 6. Le 24: senza cifre stessi atti, con l'anno risultati solo in calo
+    & 21 su 21; zero risultati in tutti e due: confermata \\
+    & 7. Indicizzazione dall'app accesa al più il 10\% più lenta
+    & +6,4\%: confermata \\
+    & 8. I test di Documentale passano
+    & confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 168: 114 confermate, 42 smentite, 9 a metà, e 3 senza
+In tutto le previsioni sono 176: 120 confermate, 44 smentite, 9 a metà, e 3 senza
 un esito registrato (la quarta della prima misura del baseline, la settima della
-voce E1 e la quarta di \texttt{costo-vettori}). Delle 165 con un esito, quasi
+voce E1 e la quarta di \texttt{costo-vettori}). Delle 173 con un esito, quasi
 una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},

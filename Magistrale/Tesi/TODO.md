@@ -130,13 +130,13 @@ basta mettere i file nelle cartelle indicate e dirlo.
       `c059664`, costo ridotto in `cec3b63`), misurati il 28/09 in
       `2026-09-28_date-importi` su query sintetiche: sei previsioni su otto,
       più una su due per il costo. Scritto nella sezione 6.4 (quarto difetto),
-      in 1, 9.1 e nel registro. Restano: esporle in Documentale (una variabile
-      e il profilo consigliato, misurato dall'app); i decimali semplici (`3,5`
-      contro `3.5`) non sono toccati; una passata scritta a mano al posto delle
-      espressioni regolari se il costo (+29-34% di indicizzazione) contasse.
-      Prima di metterla nel profilo va misurato il prezzo: l'anno da solo
-      (`bilancio 2026`) non combacia più con le date, e le known-item umane
-      della sera del 28/09 girano con il profilo senza di lei.
+      in 1, 9.1 e nel registro. Esposte in Documentale il 28/09 (`f921ef7`,
+      `KOSKIDEX_NORMALIZE_DATES` e `KOSKIDEX_NORMALIZE_AMOUNTS`, spente e fuori
+      dal profilo) e misurate dall'app in `2026-09-28_date-app`: sei previsioni
+      su otto, scritto in 6.4 e 9.1. Le date vanno normalizzate, gli importi
+      no. Restano: i decimali semplici (`3,5` contro `3.5`) non sono toccati;
+      una passata scritta a mano al posto delle espressioni regolari se il
+      costo contasse (dall'app è +6%).
 - [x] Le espansioni come sinonimi (`bm25_expansion: synonym`, Koskidex
       `b958ea0`), misurate il 28/09 in `2026-09-28_espansioni-sinonimo`: sei
       previsioni su sei, nessuna regola di parità, SciFact 0,6667 (0,6734 con
@@ -153,6 +153,18 @@ basta mettere i file nelle cartelle indicate e dirlo.
 - [x] I rapporti dell'app sulle known-item umane (`confronto/*known-item-umane*`)
       contengono il testo delle query: esclusi da git il 28/09, prima che
       stasera ne nasca il primo. I tempi di indicizzazione restano tracciati.
+- [ ] Dopo le known-item umane complete: rifare `2026-09-28_date-app/esegui.sh`
+      (legge la collezione aggiornata) per il prezzo dell'anno da solo sulle
+      query vere; se non costa, `normalize_dates` entra nel profilo
+      consigliato (in Documentale e nella tesi, 6.4 e 6.5), con la sua misura
+      del profilo come un tutto.
+- [ ] Gli importi ammettono refusi: con la tolleranza AUTO `5056,03` combacia
+      con `5.056,03` ma anche con importi diversi di una o due cifre, perché
+      un termine con la virgola non è "solo cifre" e sfugge a
+      `disable_on_numbers` (trovato in `2026-09-28_date-app`). Correzione
+      possibile: un'impostazione di Koskidex che tratta come numeri anche i
+      termini fatti di cifre, punti e virgole, con previsioni e misura
+      dall'app. Da scrivere in 6.4 come difetto aperto se non si fa.
 - [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui
       primi 100 candidati dei ranking archiviati, rivalutati con
       `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il

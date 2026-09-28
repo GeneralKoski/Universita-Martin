@@ -74,7 +74,7 @@ in `evaluate/`, i rapporti dell'app e i tempi di indicizzazione in
 perché contiene le query). Le impostazioni lette dall'indice: spento senza
 `normalize_*`, acceso con tutte e due, il resto uguale.
 
-**Cinque previsioni su sette.** Le due smentite dicono una cosa che Koskidex
+**Sei previsioni su otto** (le prime sette in `analizza.py`, l'ottava a mano). Le due smentite dicono una cosa che Koskidex
 piatto non poteva mostrare, perché `scripts/evaluate` cerca senza refusi e
 l'app con i refusi AUTO.
 
