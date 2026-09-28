@@ -123,8 +123,10 @@ Previsione per previsione:
 **Decisione.** Il kappa pesato è 0,370, sotto 0,40: per la regola fissata
 prima di misurare il capitolo 8 non usa i giudizi del modello da soli.
 Restano le due strade che la regola prevede: Martin giudica anche il resto del
-pool, o il capitolo 8 si regge sulle known-item umane. La scelta fra le due è
-ancora da fare.
+pool, o il capitolo 8 si regge sulle known-item umane. **Il 28/09/2026 Martin
+ha scelto la seconda**: il resto del pool non si giudica, e il pool con i
+giudizi del modello resta al più un confronto secondario, dichiarato come tale
+e con questo kappa accanto.
 
 **Dove stanno i disaccordi.**
 

@@ -8,7 +8,8 @@ la loro ultima versione è nel commit `ab4af30`, e si rilegge con
 ## Dove sta cosa
 
 - `latex/` - la tesi. Capitoli 1-7 e 9 e le quattro appendici sono scritti per
-  intero, da rileggere; il capitolo 8 è ancora vuoto.
+  intero, da rileggere; il capitolo 8 è ancora vuoto e si regge sulle
+  known-item umane (deciso il 28/09/2026).
 - `risultati/` - l'archivio di ogni misura, con le sue regole nel README; un
   README per esperimento in `risultati/esperimenti/`.
 - `istruzioni-annotazione.md` - il protocollo per chi raccoglie le query e per
@@ -24,7 +25,8 @@ basta mettere i file nelle cartelle indicate e dirlo.
 
 - [ ] **Rileggere i capitoli** in `latex/` (il PDF è `latex/tesi.pdf`): il testo
       è in prima persona e a tuo nome, e va controllato che sia tuo.
-- [ ] **Known-item umane.** Quattro persone che non sappiano come funzionano i
+- [ ] **Known-item umane: è su queste che si regge il capitolo 8.** Arrivati
+      i lotti 1 e 2 (28/09); ne manca almeno uno, meglio due. Quattro persone che non sappiano come funzionano i
       motori (non informatici), **un lotto diverso a testa**: i file
       `risultati/query/known-item-umane/pagine/raccolta-lotto-1.html` ... `-4`,
       40 atti ciascuno. Bastano tre persone. Mandarli **in privato** (contengono
@@ -33,22 +35,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       `risultati/query/known-item-umane/risposte/`. Martin non compila le
       pagine: le sue query misurerebbero lui. Istruzioni per chi raccoglie nella
       parte 1 di `istruzioni-annotazione.md`.
-- [ ] **I 24 bisogni**, prima dei giudizi: in
-      `risultati/query/confronto-24/bisogni.md`, una o due frasi dopo ogni
-      `Bisogno:` (cosa cerca chi digita quella query nel documentale di un
-      comune, e se serve cosa no), **senza guardare risultati**. Per i refusi,
-      com'è scritto nel file (`come «manutenzione strade»`); per le query con un
-      numero, cosa conta come quell'atto. Circa un'ora. Poi dirlo a Claude.
-- [ ] **I giudizi del pool**, dopo che Claude ha generato la pagina: aprire
-      `risultati/query/confronto-24/pagine/giudizi-primo.html` nel browser e
-      dare i 905 giudizi. Tasti 0 (non risponde), 1 (parziale), 2 (risponde), T
-      per il testo intero, freccia a sinistra per tornare indietro. Sessioni di
-      un'ora al massimo, con Pausa quando si smette; 4-5 ore in tutto. Alla fine
-      "Scarica il file", metterlo in `risultati/query/confronto-24/risposte/`.
-- [ ] **Il secondo annotatore** (Leopoldo o un'altra persona fidata), dopo i
-      giudizi: Claude prepara `giudizi-secondo.html` con query intere estratte a
-      caso, almeno 150 righe; la persona non vede i giudizi del primo (parte 3
-      delle istruzioni). Il suo file va nella stessa cartella `risposte/`.
+- [x] ~~I 24 bisogni, i giudizi del pool, il secondo annotatore~~: il 28/09
+      i bisogni li ha scritti Claude e Martin li ha rivisti, i 905 giudizi li ha
+      dati il modello, e Martin ha giudicato un campione di 178 righe (c03,
+      c10, c19, c21). Kappa pesato 0,370: i giudizi del modello non bastano da
+      soli, e il 28/09 Martin ha deciso di **non giudicare il resto del pool**:
+      il capitolo 8 si regge sulle known-item umane.
 - [ ] **Confermare la configurazione consigliata** (`KOSKIDEX_PROFILO=consigliata`
       in Documentale): nessun default cambia, il profilo accende le tre
       correzioni del capitolo 6. Da confermare con il relatore.
@@ -80,33 +72,15 @@ Martin). Il capitolo 4 e l'appendice B dicono che li scrive l'annotatore:
 vanno riscritti così com'è andata, fra i limiti anche un bisogno e un giudice
 automatico dallo stesso modello.
 
-**Quando arriva il file dei giudizi:**
+**Il pool delle 24 query, dopo la decisione del 28/09:**
 
-- [ ] `importa-giudizi.py`: giudizi, sessioni e `qrels/test.tsv`.
-- [ ] `prepara-giudizi.py --secondo` per la pagina del secondo annotatore.
-- [ ] **Capitolo 8**, con le previsioni scritte prima come sempre: le stesse
-      query su Elasticsearch di produzione e su Koskidex nella configurazione
-      consigliata e nelle configurazioni del pool; nDCG@10 e Recall@100 per
-      famiglia di query; latenza, memoria e dimensione dell'indice; dove un
-      motore piccolo è competitivo e dove no, scritto con onestà.
-- [ ] **Il giudice automatico**: i 905 giudizi di Claude Opus 5.5 in
-      `query/confronto-24/giudizi-llm.tsv` contro i giudizi di Martin: accordo,
-      kappa, dove sbaglia, e se la classifica dei motori cambia con i suoi
-      giudizi. Previsioni prima, come sempre.
-- [ ] Completare con i numeri del capitolo 8: la sezione 9.1, i contributi del
-      capitolo 1, la sezione 4.5 (tempo per giudizio, distribuzione dei gradi).
-- [ ] Se i giudizi promuovono BM25 o i vettori, misurarli dentro il profilo
-      consigliato come un tutto, come in `2026-09-25_configurazione-consigliata/`.
-
-**Quando arriva il file del secondo annotatore:**
-
-- [ ] Fatti il 28/09 import e `kappa.py --llm` (esito in
-      `esperimenti/2026-09-28_giudice-llm/`): kappa pesato modello-Martin
-      0,370, sotto 0,40, quindi per la regola i giudizi del modello **non si
-      usano da soli**. **Martin sceglie**: giudicare anche il resto del pool
-      (727 righe delle altre 20 query) o reggere il capitolo 8 sulle
-      known-item umane. Poi: kappa e disaccordi nella sezione 4.5 e nei
-      limiti (9.2).
+- [x] Giudizi del modello, campione di Martin, kappa: esito in
+      `esperimenti/2026-09-28_giudice-llm/` (kappa pesato 0,370, sotto 0,40).
+- [ ] Nella tesi: sezione 4.5 (come sono andati bisogni e giudizi, tempo per
+      giudizio e gradi del campione di Martin), kappa e disaccordi nei limiti
+      (9.2). Il pool con i giudizi del modello resta al più un confronto
+      secondario, dichiarato come tale e con il kappa accanto, mai la base del
+      capitolo 8.
 
 **Quando arrivano i file delle known-item umane:**
 
@@ -117,7 +91,13 @@ automatico dallo stesso modello.
       2. `strumenti/collezioni-umane.py` (le tre collezioni in Koskidex);
       3. `esperimenti/2026-09-25_known-item-umane/esegui.sh`, poi il suo
          `analizza.py` sulle otto valutazioni: Koskidex ed Elasticsearch sulle
-         query umane, per fonte (capitolo 8);
+         query umane, per fonte. È la base del **capitolo 8**, con le
+         previsioni già committate nel suo README: Elasticsearch di
+         produzione e Koskidex nella configurazione consigliata; MRR@10, atto
+         primo, atto entro i primi dieci, query a vuoto, per fonte e con o
+         senza numero; latenza, memoria e indice da
+         `2026-09-28_carico` e `2026-09-28_prestazioni`; dove un motore
+         piccolo è competitivo e dove no, scritto con onestà;
       4. `esperimenti/2026-09-25_scelta-umane/analizza.py` su A, B e LT del
          punto 3: la scelta per tipo di query, nel motore entra solo se il
          classificatore batte la regola (sezione 7.5);
@@ -130,6 +110,11 @@ automatico dallo stesso modello.
 - [ ] La suddivisione dei documenti lunghi in parti, se la previsione 4 di
       `2026-09-25_scheda-testo` tiene (sezione 7.1).
 - [ ] Completare la sezione 4.4 con i numeri della raccolta.
+- [ ] Completare con i numeri del capitolo 8 la sezione 9.1 e i contributi
+      del capitolo 1.
+- [ ] Se le known-item umane promuovono BM25 o i vettori, misurarli dentro il
+      profilo consigliato come un tutto, come in
+      `2026-09-25_configurazione-consigliata/`.
 
 **Alla fine:**
 
