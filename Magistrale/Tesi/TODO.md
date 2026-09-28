@@ -134,6 +134,9 @@ basta mettere i file nelle cartelle indicate e dirlo.
       e il profilo consigliato, misurato dall'app); i decimali semplici (`3,5`
       contro `3.5`) non sono toccati; una passata scritta a mano al posto delle
       espressioni regolari se il costo (+29-34% di indicizzazione) contasse.
+      Prima di metterla nel profilo va misurato il prezzo: l'anno da solo
+      (`bilancio 2026`) non combacia più con le date, e le known-item umane
+      della sera del 28/09 girano con il profilo senza di lei.
 - [ ] Opzionale: un reranker neurale offline (cross-encoder multilingue sui
       primi 100 candidati dei ranking archiviati, rivalutati con
       `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il
