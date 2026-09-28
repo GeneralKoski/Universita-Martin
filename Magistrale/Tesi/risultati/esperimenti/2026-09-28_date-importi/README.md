@@ -162,3 +162,17 @@ formato (e, per i mesi, il nome di un mese); se no, si salta.
 
 `costo.sh` rifà le 36 valutazioni in `evaluate-costo/`, `costo.py` le
 confronta.
+
+### Esito del costo
+
+Da `2026-09-28T111010Z_esito-costo.json` (`costo.py`), Koskidex `cec3b63`.
+
+1. **Confermata.** Le 12 configurazioni danno le stesse metriche per query di
+   prima, in tutte e tre le ripetizioni.
+2. **Smentita.** Il costo scende, ma non abbastanza: l'indicizzazione accesa è
+   più lenta del 34% con il tokenizer di Koskidex (era il 46%) e del 29% con
+   lo standard (era il 41%), non al più del 15%. I controlli saltano poco,
+   perché quasi ogni scheda contiene davvero cifre, barre e punti: il costo è
+   nelle espressioni regolari stesse. Per scendere ancora servirebbe una
+   passata sola scritta a mano al posto delle cinque espressioni; su 10.018
+   atti si parla di 0,3 secondi.
