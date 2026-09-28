@@ -71,7 +71,7 @@ prev(3, "D: risultati sulle query degli importi almeno -20% rispetto ad A", d <=
 x = righe["known-item-date"]["C"] - righe["known-item-date"]["A"]
 prev(4, "C: MRR@10 delle date entro 0,01 da A", abs(x) <= 0.01,
      f"{righe['known-item-date']['A']:.4f} -> {righe['known-item-date']['C']:.4f} ({x:+.4f})")
-uguali = lambda c, g: sum(pq(c, "A")[q]["top"] == pq(c, g)[q]["top"] for q in pq(c, "A"))
+uguali = lambda c, g: sum(pq(c, "A")[q].get("top") == pq(c, g)[q].get("top") for q in pq(c, "A"))
 n = len(pq("known-item-auto", "A"))
 prev(5, "C: known-item automatiche identiche ad A query per query", uguali("known-item-auto", "C") == n,
      f"{uguali('known-item-auto', 'C')} su {n}")
