@@ -6,13 +6,16 @@
 # collezioni in tre configurazioni.
 #
 #   identita.sh prima|dopo <cartella dati di koskidex nativo>
+#
+# ESPERIMENTO cambia la cartella dell'archivio (2026-09-28_allocazioni lo usa
+# per le sue prove).
 set -euo pipefail
 : "${TESI_RISULTATI:?TESI_RISULTATI non impostata: il risultato non verrebbe archiviato}"
 FASE=${1:?prima o dopo}; DATI=${2:?cartella dati}
 KX=${KOSKIDEX:-$HOME/Desktop/Progetti-personali/Koskidex}
 QUI=$(cd "$(dirname "$0")" && pwd)
 T=$(cd "$QUI/../../query" && pwd)
-ESP=2026-09-28_prestazioni
+ESP=${ESPERIMENTO:-2026-09-28_prestazioni}
 [ -z "$(git -C "$KX" status --porcelain)" ] || { echo "Koskidex ha modifiche non committate" >&2; exit 1; }
 LAV=$(mktemp -d); trap 'kill $P1 $P2 2>/dev/null || true; rm -rf "$LAV"' EXIT
 V=$(git -C "$KX" rev-parse --short HEAD)
