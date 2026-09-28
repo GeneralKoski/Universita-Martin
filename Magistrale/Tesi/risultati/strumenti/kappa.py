@@ -15,13 +15,17 @@ disaccordi. Si rifiuta di partire se il secondo annotatore non ha finito le
 query estratte (campione-secondo.json): un kappa su metà del campione non è
 quello da riportare.
 
-    kappa.py
+Con --llm il primo annotatore è il modello: legge giudizi-llm.tsv al posto di
+giudizi-primo.tsv (esperimento 2026-09-28_giudice-llm).
+
+    kappa.py [--llm]
 """
 import csv, datetime, hashlib, json, os, subprocess, sys
 
 QUI = os.path.dirname(os.path.abspath(__file__))
 CARTELLA = os.path.join(QUI, "..", "query", "confronto-24")
 GRADI = (0, 1, 2)
+LLM = "--llm" in sys.argv[1:]
 
 
 def leggi(ruolo):
@@ -42,7 +46,7 @@ def kappa(coppie, peso):
     return None if atteso == 1 else (osservato - atteso) / (1 - atteso)
 
 
-percorso_primo, primo = leggi("primo")
+percorso_primo, primo = leggi("llm" if LLM else "primo")
 percorso_secondo, secondo = leggi("secondo")
 scelte = set(json.load(open(os.path.join(CARTELLA, "campione-secondo.json")))["query"])
 foglio = [(r["query_id"], r["doc_id"]) for r in
@@ -83,6 +87,7 @@ impronta = lambda p: hashlib.sha256(open(p, "rb").read()).hexdigest()
 esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
          "config": {"commit": git("rev-parse", "--short", "HEAD"),
                     "modifiche_non_committate": "true" if git("status", "--porcelain", "--", QUI) else "false",
+                    "primo": "llm" if LLM else "umano",
                     "giudizi_primo_sha256": impronta(percorso_primo),
                     "giudizi_secondo_sha256": impronta(percorso_secondo)},
          **esito}
@@ -90,8 +95,9 @@ if not os.environ.get("TESI_RISULTATI"):
     sys.exit("!!! RISULTATO NON ARCHIVIATO: TESI_RISULTATI non è impostata.")
 d = os.path.join(os.environ["TESI_RISULTATI"], "query", "confronto-24", "accordo")
 os.makedirs(d, exist_ok=True)
-o = ora.strftime("%Y-%m-%dT%H%M%SZ"); p = os.path.join(d, f"{o}_kappa.json"); n = 2
+o = ora.strftime("%Y-%m-%dT%H%M%SZ"); nome = "kappa-llm" if LLM else "kappa"
+p = os.path.join(d, f"{o}_{nome}.json"); n = 2
 while os.path.exists(p):
-    p = os.path.join(d, f"{o}-{n}_kappa.json"); n += 1
+    p = os.path.join(d, f"{o}-{n}_{nome}.json"); n += 1
 open(p, "x").write(json.dumps(esito, indent=2, ensure_ascii=False))
 print("archiviato in", p)
