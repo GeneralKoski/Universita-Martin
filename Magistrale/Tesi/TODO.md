@@ -152,6 +152,7 @@ contestabili e non c'è modo di rimediare dopo.
    `ElasticsearchService` resta com'è, è il riferimento di produzione;
    Elasticsearch solo in locale (`localhost:9201`).
 7. **Il corpus non si committa**, e nemmeno le pagine di raccolta e di
-   annotazione: contengono nomi di persone. Nel repository vanno gli script e i
-   file con gli id.
+   annotazione, né le risposte delle known-item umane e i file con il testo
+   delle query: contengono, o possono contenere, nomi di persone. Nel
+   repository vanno gli script, i file con gli id e i riassunti numerici.
 8. **Un giudizio non si cambia dopo aver visto le metriche.**

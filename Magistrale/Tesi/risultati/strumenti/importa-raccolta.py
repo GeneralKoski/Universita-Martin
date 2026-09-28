@@ -7,7 +7,10 @@ ognuno corrisponda al suo lotto del campione, e riscrive da zero, in modo
 deterministico: queries.jsonl e qrels/test.tsv in formato BEIR, i giudizi per
 fonte (qrels/crispiano.tsv e qrels/fvg.tsv, per scripts/evaluate -split),
 queries.txt per app:eval-run-queries, raccolta.json con chi, quanto e come per
-ogni query.
+ogni query, riassunto.json con i soli numeri e i file letti.
+
+Il testo delle query resta fuori da git (può nominare le persone degli atti):
+del repository fanno parte solo i giudizi e riassunto.json.
 
 La collezione si ricostruisce a ogni file che arriva; si misura solo a raccolta
 chiusa. Le query vuote ("non saprei cosa scrivere") restano in raccolta.json e
@@ -81,4 +84,6 @@ riassunto = {"file": len(sorgenti), "atti_mostrati": len(righe), "query": len(pi
              "persone": len({x["pseudonimo"] for x in righe})}
 with open(os.path.join(CARTELLA, "raccolta.json"), "w", encoding="utf8") as f:
     f.write(json.dumps({"riassunto": riassunto, "sorgenti": sorgenti, "query": righe}, indent=2, ensure_ascii=False) + "\n")
+with open(os.path.join(CARTELLA, "riassunto.json"), "w", encoding="utf8") as f:
+    f.write(json.dumps({"riassunto": riassunto, "sorgenti": sorgenti}, indent=2, ensure_ascii=False) + "\n")
 print(json.dumps(riassunto, indent=2, ensure_ascii=False))
