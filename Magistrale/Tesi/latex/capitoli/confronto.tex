@@ -133,15 +133,20 @@ stemmer italiani sulle stesse query.}
 \dacompletare{} a \dacompletare{} di MRR@10 e A da \dacompletare{} a
 \dacompletare; degli atti che il primo stadio aveva fra l'undicesimo e il
 centesimo posto ne porta fra i primi dieci \dacompletare{} su \dacompletare.
-Sulle collezioni pubbliche \dacompletare{} (SciFact) e \dacompletare{}
-(NFCorpus); sulle ricerche \texttt{<numero> <comune>} \dacompletare, contro
-\dacompletare{} del recupero congiuntivo. Il prezzo è \dacompletare{} secondi
-di mediana a query.
-\todo[inline]{Previsioni di \texttt{reranker}: SciFact almeno 0,72, NFCorpus
-almeno 0,33, sulle known-item automatiche sotto LT, sulle umane almeno +0,05
-su LA e +0,03 su A, almeno metà degli atti dall'11° al 100° posto portati fra
-i primi dieci, almeno 2~s a query. Le prime tre e l'ultima si misurano prima
-del terzo lotto.}
+Sulle collezioni pubbliche il guadagno è più piccolo e ha un tetto: SciFact
+passa da 0,676 a 0,723 di nDCG@10, NFCorpus da 0,306 a 0,331, e su NFCorpus
+il primo stadio porta fra i cento soltanto il 24\% dei documenti giusti, gli
+unici che il riordino può vedere. Sulle ricerche \texttt{<numero> <comune>}
+porta LA da 0,833 a 0,953, contro 0,960 del recupero congiuntivo: degli atti
+fra l'undicesimo e il centesimo posto ne porta fra i primi dieci 12 su 13.
+Avevo previsto che restasse sotto LT perché un cross-encoder non pesa un
+numero esatto più di uno simile; resta sotto, ma di 0,007, e il ragionamento
+era sbagliato. Il prezzo è di 5 secondi di mediana a query sulle schede e di
+12 sugli abstract di SciFact, contro il millisecondo di Koskidex: la misura di
+un tetto, non una configurazione da mettere in produzione.
+\todo[inline]{Previsioni umane di \texttt{reranker}: almeno +0,05 su LA e
++0,03 su A, almeno metà degli atti dall'11° al 100° posto portati fra i primi
+dieci.}
 
 \section{Latenza, memoria, dimensione dell'indice}\label{sec:latenza}
 

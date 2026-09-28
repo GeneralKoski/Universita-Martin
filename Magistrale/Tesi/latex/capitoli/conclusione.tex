@@ -98,11 +98,14 @@ capitolo~\ref{chapter:confronto}.
   \item \textbf{Le known-item umane}, e con loro tre misure che le aspettano: la
         scelta per tipo di query su query dei due tipi nella stessa collezione,
         stopword e stemmer italiani, e la scheda contro il testo intero.
-  \item \textbf{Un secondo stadio di riordino.} Un modello neurale che riordina i
-        primi cento candidati (\emph{cross-encoder}) direbbe quanto vale
-        riordinare, dato il richiamo del primo stadio: il re-ranking funziona se è
-        progettato come stadio, con pochi candidati e un modello preciso. Non
-        dentro Koskidex, che resterebbe senza dipendenze, ma come servizio a parte.
+  \item \textbf{Un secondo stadio di riordino.} Il capitolo~\ref{chapter:confronto}
+        misura fuori linea quanto vale riordinare i primi cento candidati con un
+        \emph{cross-encoder}: il re-ranking funziona se è progettato come
+        stadio, con pochi candidati e un modello preciso. Portarlo nell'app
+        vuol dire un servizio a parte, non dentro Koskidex, che resterebbe
+        senza dipendenze, e un costo da abbattere: 5-12 secondi a query sulla
+        GPU di un portatile, da ridurre con meno candidati, testi più corti o
+        un modello più piccolo.
   \item \textbf{La scansione dei vettori.} A 10.000 documenti una scansione esatta
         costa 12-15~ms per passata; più accumulatori nel prodotto scalare la
         accorcerebbero, a prezzo di punteggi diversi nelle ultime cifre, e oltre

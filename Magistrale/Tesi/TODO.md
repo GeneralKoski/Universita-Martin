@@ -102,7 +102,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       6. `esperimenti/2026-09-25_scheda-testo/esegui.sh` e `analizza.py`:
          scheda contro testo intero, `b` e contesto dei vettori sui soli 563
          atti di Crispiano (sezioni 5.7 e 7.1);
-      7. l'esito di ognuna nel suo README, previsione per previsione.
+      7. `esperimenti/2026-09-28_reranker/esegui.sh umane` e
+         `analizza.py umane`: previsioni 4 e 5 del riordino (sezione 8.2),
+         qualche minuto a configurazione sulla GPU;
+      8. `esperimenti/2026-09-28_date-app/esegui.sh` di nuovo, per il prezzo
+         dell'anno da solo sulle query complete (vedi la voce di date-app);
+      9. l'esito di ognuna nel suo README, previsione per previsione.
 - [ ] La suddivisione dei documenti lunghi in parti, se la previsione 4 di
       `2026-09-25_scheda-testo` tiene (sezione 7.1).
 - [ ] Completare la sezione 4.4 con i numeri della raccolta.
@@ -210,13 +215,15 @@ basta mettere i file nelle cartelle indicate e dirlo.
       macchina virtuale, su Windows passa da WSL2, e sul Mac il nativo va il
       70% più veloce del container. Servono Docker, Go, gli indici o i dati
       (Koskidex copiato, Elasticsearch riempito dall'app) e le 400 query.
-- [ ] Opzionale, **rimandato a quando tutto il resto è finito** (deciso da
-      Martin il 28/09): un reranker neurale offline (cross-encoder multilingue
-      sui primi 100 candidati dei ranking archiviati, rivalutati con
-      `scripts/evaluate -rankings`), fuori da Koskidex e Documentale. Dà il
-      tetto di quanto vale riordinare; andrebbe nel capitolo 8. Servono torch
-      e un modello, qualche GB, con il disco al 96% il 28/09. Se non si fa,
-      resta fra gli sviluppi futuri (9.3), dove è già scritto.
+- [ ] Reranker neurale offline (`2026-09-28_reranker`, iniziato il 28/09 per
+      non restare fermi fino al terzo lotto): cross-encoder
+      `bge-reranker-v2-m3` sui primi 100 candidati, fuori da Koskidex e
+      Documentale. **Parte BEIR fatta il 28/09**: SciFact 0,676 → 0,723,
+      NFCorpus 0,306 → 0,331, known-item automatiche 0,833 → 0,953 (LT 0,960),
+      5-12 s a query; previsioni 1, 2, 3, 6 confermate, nel registro e in 8.2.
+      Manca la **parte umana** (previsioni 4 e 5), a raccolta chiusa:
+      `esegui.sh umane` + `analizza.py umane`, poi i `\dacompletare` di
+      "Quanto vale riordinare" in 8.2 e le due righe nel registro.
 
 ## Regole
 

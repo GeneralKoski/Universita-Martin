@@ -516,13 +516,23 @@ numero con la soglia, ed è segnato con un asterisco.
     & confermata \\
     & 8. I test passano
     & confermata \\
+  \addlinespace
+  \texttt{reranker}
+    & 1. SciFact, nDCG@10 riordinato almeno 0,72
+    & da 0,676 a 0,723: confermata, di poco \\
+    & 2. NFCorpus, nDCG@10 riordinato almeno 0,33
+    & da 0,306 a 0,331: confermata, di poco \\
+    & 3. Known-item automatiche: LA riordinato resta sotto LT
+    & 0,953 contro 0,960: confermata, ma di 0,007 \\
+    & 6. Mediana del riordino almeno 2~s a query
+    & da 5,1 a 12,0~s: confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 184: 127 confermate, 46 smentite, 9 a metà, e 2 senza
+In tutto le previsioni sono 188: 131 confermate, 46 smentite, 9 a metà, e 2 senza
 un esito registrato (la quarta della prima misura del baseline e la settima
-della voce E1). Delle 182 con un esito, quasi
+della voce E1). Delle 186 con un esito, quasi
 una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
@@ -535,4 +545,4 @@ la misura, e quindi mancano dalla tabella, anche le previsioni già scritte e
 committate degli esperimenti che girano a raccolta delle known-item umane
 chiusa: \texttt{known-item-umane} (7), \texttt{italiano-umane} (4),
 \texttt{scelta-umane} (4), \texttt{scheda-testo} (5) e la parte umana di
-\texttt{reranker}; entreranno con il loro esito.
+\texttt{reranker} (2); entreranno con il loro esito.
