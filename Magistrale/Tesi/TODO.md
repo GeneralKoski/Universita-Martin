@@ -135,13 +135,19 @@ automatico dallo stesso modello.
 
 ## Si può fare senza aspettare nessuno
 
-- [ ] **Le prestazioni di Koskidex**, dai punti dell'esito di
-      `risultati/esperimenti/2026-09-28_carico/`: congiuntivo dal termine più
-      raro, `DamerauLevenshtein` senza allocazioni, candidati con refuso
-      riusati, indice compatto con id interi. Nessuno cambia i risultati; ogni
-      punto con le previsioni prima e la stessa misura di carico come prova.
-      Da decidere con Martin se farli prima della tesi o lasciarli agli
-      sviluppi futuri (9.3).
+- [ ] **Scrivere nella tesi il carico e il prima e dopo delle prestazioni**
+      (5.x, dopo "Prestazioni dell'innesto", e 9.3): `2026-09-28_carico` e
+      `2026-09-28_prestazioni`, con i numeri dai loro esiti. I due interventi
+      (`60f7a43`, `510b9d2`) sono fatti e misurati il 28/09: nessun risultato
+      cambiato, otto previsioni su otto confermate (capacità nel container da
+      653 a 2.614 ricerche/s, p99 a 32 client da 215 a 43 ms). Da 9.3 escono
+      distanza e congiuntivo; restano l'indice compatto con id interi e la
+      mappa dei candidati in `fuzzyCandidates` (86% delle allocazioni rimaste).
+- [ ] **Decidere con Martin**: la scansione del vocabolario per le parole
+      corte con refuso segue l'ordine di una mappa Go, che cambia a ogni
+      chiamata (highlights e, a parità di distanza, il termine accreditato a un
+      documento). Correggerla (ordine fisso) può cambiare qualche punteggio,
+      quindi andrebbe dietro un flag con le impronte prima e dopo.
 
 - [ ] Decidere come trattare date (`14.01.2026`) e decimali (`3,5`) fuori dalla
       modalità compatibile con Elasticsearch, e misurarlo.
