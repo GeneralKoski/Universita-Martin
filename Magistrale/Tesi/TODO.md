@@ -170,6 +170,23 @@ basta mettere i file nelle cartelle indicate e dirlo.
       il 28/09 in `2026-09-28_importi-esatti`: sette previsioni su otto, con
       la normalizzazione MRR@10 degli importi da 0,917 a 0,990; scritto in
       6.4, 9.1 e nel registro.
+- [ ] Piccola, **dopo il reranker** (le misure sotto carico sulla CPU
+      falserebbero i suoi tempi): l'ultimo taglio di allocazioni in Koskidex.
+      Dopo `2026-09-28_allocazioni` la prima voce è `transform.Chain` di
+      golang.org/x/text (35% dei byte), la catena che toglie gli accenti,
+      ricreata a ogni testo tokenizzato: riusarla senza cambiare un risultato,
+      con lo stesso protocollo (previsioni, impronte, `evaluate`, prima e
+      dopo). Guadagno atteso marginale; se non si fa, resta una riga negli
+      sviluppi futuri.
+- [ ] Piccola: i numeri che stanno solo fuori da `risultati/` (dalla
+      rilettura del 28/09). In 5.1 le statistiche sulla lunghezza delle query
+      (12,5 termini; 163 query a 2,0 parole contro 160 a 4,7; 10 a 8,7 contro
+      290 a 12,6), in 5.4 le «25 query senza stopword» (`stopword-espansioni`
+      ne conta 29 con un'altra definizione), in 5.6 le 35.494 parole: stanno nel
+      diario di Koskidex; ricalcolarli con uno script e archiviarli, come
+      `strumenti/conteggi.py`. In 4.3 i numeri di AlboPOP (215 feed, 105 vivi,
+      3 allegati su 14) vengono da `SOURCE.md` di Koskidex, una prova del
+      23/09 che non si ripete: citarla come fonte o copiarla in `risultati/`.
 - [ ] Opzionale, **rimandato a quando tutto il resto è finito** (deciso da
       Martin il 28/09): un reranker neurale offline (cross-encoder multilingue
       sui primi 100 candidati dei ranking archiviati, rivalutati con
