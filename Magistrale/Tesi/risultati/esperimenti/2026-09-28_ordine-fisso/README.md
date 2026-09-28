@@ -65,3 +65,53 @@ ha di essere sempre lo stesso, come l'ultimo criterio di parità per id.
    l'impostazione accesa il test del percorso veloce confronta tutte le query,
    senza escludere quelle con la scansione del vocabolario, e un indice
    riempito in un altro ordine dà gli stessi risultati.
+
+## Esito
+
+Da `2026-09-28T104229Z_esito.json` (`analizza.py`), Koskidex `c514c77`: 90
+valutazioni in `evaluate/` e le impronte `2026-09-28T104225Z_risposte-acceso-10018.json`.
+
+**Cinque previsioni su sei confermate, più la settima**; la smentita è la più
+istruttiva.
+
+1. **Confermata.** Spento, il baseline dà le stesse metriche per query in
+   tutte e cinque le ripetizioni, su tutte e tre le collezioni.
+2. **Confermata, e più di così.** Spento, anche con BM25 nessuna query varia
+   fra le ripetizioni, in nessuna combinazione. Il motivo si vede solo
+   leggendo `scripts/evaluate`: cerca sempre con fuzziness `0`, quindi la
+   scansione del vocabolario per le parole corte con refuso non parte mai, e
+   `substring_match` è spento. L'ordine che resta è quello di ingresso dei
+   termini nell'indice, che con i documenti caricati sempre nello stesso
+   ordine è sempre lo stesso. Nessun numero di `evaluate` nella tesi dipende
+   dall'ordine della mappa.
+3. **Confermata.** Acceso, nessuna query varia fra le ripetizioni.
+4. **Smentita.** Acceso contro spento, otto combinazioni su nove coincidono,
+   baseline compreso, ma SciFact con BM25 `any` passa da 0,6694 a 0,6670 di
+   nDCG@10 (−0,0024, soglia 0,001). Cambiano 2 query su 300 (1140 e 452): in
+   ciascuna un documento pertinente scende di una posizione; Recall@100
+   identico, MRR@10 da 0,6410 a 0,6371. Non è rumore, perché spento e acceso
+   sono stabili ciascuno per conto suo: è l'ordine di ingresso nell'indice,
+   deterministico ma arbitrario quanto quello lessicografico, che a parità di
+   distanza decide quale espansione per prefisso viene accreditata a un
+   documento, e quindi il suo TF. Lo 0,6694 della tesi è uno dei due valori
+   che dà una regola di parità arbitraria; la differenza fra i due, 0,0024, è
+   quanto quella regola pesa su SciFact.
+5. **Confermata.** Su Documentale, con il punteggio euristico del suo profilo,
+   le 429 impronte con l'impostazione accesa coincidono con quelle "dopo" di
+   `2026-09-28_prestazioni`.
+6. **Confermata.** Le mediane del tempo per query stanno fra −1,7% e +3,2%.
+7. **Confermata** (`go test ./...` a `c514c77`): tutti i test passano,
+   `TestBaselineRankingIsFrozen` senza toccarlo; con l'impostazione accesa il
+   test del percorso veloce confronta tutte le 4.200 query, e il test nuovo
+   dà gli stessi risultati su un indice riempito in un altro ordine. Senza
+   l'impostazione lo stesso test fallisce alle prime chiamate, con due
+   documenti che si scambiano di posto.
+
+**Cosa ne segue.** Dove il difetto cambia i punteggi, cioè BM25 con le ricerche
+con refuso delle parole corte (come quelle dell'app, fuzziness AUTO) o con
+`substring_match`, e dopo ogni riavvio, l'impostazione lo toglie senza costo.
+Documentale oggi non ne risente, perché usa il punteggio euristico e non chiede
+gli highlights; se passasse a BM25 andrebbe accesa. Una regola di parità più
+sensata di quella lessicografica, per esempio sommare le espansioni come fa la
+riscrittura "blended" di Lucene invece di accreditarne una sola, cambierebbe
+i punteggi e sarebbe un esperimento a sé.
