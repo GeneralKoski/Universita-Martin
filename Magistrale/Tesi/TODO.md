@@ -27,8 +27,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       è in prima persona e a tuo nome, e va controllato che sia tuo.
 - [x] ~~Known-item umane~~: la raccolta si è chiusa il 29/09 con tre lotti
       su quattro (il quarto mai assegnato), 104 query su 120 atti. I tre file
-      stanno solo in locale, in `risultati/query/known-item-umane/risposte/`
-      (in gitignore): **tenerne una copia su un disco di Martin**.
+      stanno in `risultati/query/known-item-umane/risposte/` (in gitignore) e,
+      dal 29/09, anche sul server `hetzner` in
+      `/srv/backups/tesi-known-item-umane/`: come ripristinarli nel README
+      dell'archivio.
 - [x] ~~I 24 bisogni, i giudizi del pool, il secondo annotatore~~: il 28/09
       i bisogni li ha scritti Claude e Martin li ha rivisti, i 905 giudizi li ha
       dati il modello, e Martin ha giudicato un campione di 178 righe (c03,

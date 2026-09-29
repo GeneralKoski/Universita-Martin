@@ -150,7 +150,13 @@ query, soprannome, secondi di lettura e di scrittura, se la pagina è stata
 ricaricata, le query vuote con il motivo). Si misura solo a raccolta chiusa.
 La raccolta si è chiusa il 29/09/2026 con tre lotti su quattro (il quarto mai
 assegnato): 120 atti mostrati, 104 query, 16 vuote; il riassunto con le
-impronte dei tre file sta in `riassunto.json`, i file solo in locale.
+impronte dei tre file sta in `riassunto.json`. I file non vanno in git: ce n'è
+una copia in `risposte/` sul Mac e una sul server personale di Martin, host
+`hetzner` di `~/.ssh/config`, in `/srv/backups/tesi-known-item-umane/` (solo
+root, con un `LEGGIMI.txt`), copiata il 29/09/2026 con le stesse impronte. Per
+ripristinarli: `scp 'hetzner:/srv/backups/tesi-known-item-umane/raccolta-lotto-*.json'
+query/known-item-umane/risposte/`, poi `strumenti/importa-raccolta.py` e
+`strumenti/collezioni-umane.py`.
 
 ## Leggere i tempi senza farsi ingannare
 
