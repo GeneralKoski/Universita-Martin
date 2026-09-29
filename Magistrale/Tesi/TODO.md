@@ -181,6 +181,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       la provenienza gli esiti di numero-atto, innesto-parita, fusione e
       carico, tutti con gli stessi numeri (registro nel README
       dell'archivio).
+> **Compiti A e B preparati il 29/09**: le istruzioni complete per il Claude del
+> fisso sono in `ISTRUZIONI-FISSO.md`. Il compito B usa il pacchetto privato
+> `hetzner:/srv/backups/tesi-bundle-fisso/bundle-fisso-tesi.tar.gz` (dump di
+> `albo` e testi delle query, fuori da git). Quello che tornerà va scritto in
+> tesi in 8.2 (riordino) e 8.3 (carico) e nel registro.
+
 - [ ] Facoltativa, **da fare al fisso di Martin** (RTX 3060 Ti, 8 GB): il
       costo del riordino di `2026-09-28_reranker` su una GPU da gaming, per
       8.2 ("su un Mac costa 12 s a query, su una scheda consumer circa 2").
