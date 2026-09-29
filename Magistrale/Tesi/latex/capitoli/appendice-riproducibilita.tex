@@ -23,8 +23,9 @@ si rifà un file partendo da zero.
 
 \section*{L'ambiente}
 
-La macchina delle misure è descritta in \texttt{risultati/macchina.md}: Apple M2,
-Go 1.27.1, PHP 8.5.5. MySQL 8.4 ed Elasticsearch 9.1.0 girano in Docker,
+La macchina delle misure è descritta in \texttt{risultati/macchina.md}: Apple M2
+(salvo la prova di carico e il riordino su scheda grafica, misurati su un secondo
+computer, capitolo~\ref{chapter:confronto}), Go 1.27.1, PHP 8.5.5. MySQL 8.4 ed Elasticsearch 9.1.0 girano in Docker,
 Elasticsearch a nodo singolo con 1 GB di heap e la sicurezza spenta; gli embedding
 vengono da Ollama con il modello \texttt{bge-m3}, impronta \texttt{790764642607}.
 Gli strumenti scrivono nell'archivio solo se la variabile \texttt{TESI\_RISULTATI}

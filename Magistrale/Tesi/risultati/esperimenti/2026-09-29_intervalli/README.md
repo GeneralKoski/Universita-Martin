@@ -36,7 +36,7 @@ I 15 confronti (primo meno secondo):
 | C8 | A - B | +0,006 |
 | C9 | LA - LT | +0,213 |
 | C10 | RR-LA - LA | +0,074 |
-| C11 | RR-A - A | +0,028 |
+| C11 | RR-A - A | +0,028 (*nota del 30/09/2026: sui valori esatti è +0,027*) |
 | C12 | ESO - P2 | +0,001 |
 | C13 | P3 - P2 | +0,073 |
 | C14 | LA - P2 | +0,057 |

@@ -104,7 +104,9 @@ primo stadio dà gli stessi MRR@10 di LA e A in `2026-09-25_known-item-umane/`.
 controlla le due parti insieme).
 
 4. **A metà.** Il riordino porta LA da 0,559 a 0,633, +0,074: confermata. A
-   da 0,613 a 0,641, +0,028, appena sotto la soglia di 0,03: smentita. Il
+   da 0,613 a 0,641, +0,028 (*nota del 30/09/2026: sui valori esatti
+   0,6405 e 0,6130 è +0,027; il verdetto non cambia*), appena sotto la soglia
+   di 0,03: smentita. Il
    riordino aggiunge meno dove i vettori hanno già portato l'atto in alto.
 5. **Confermata.** Degli atti che il primo stadio aveva fra l'11° e il 100°
    posto, il riordino ne porta fra i primi dieci 13 su 16 con LA e 6 su 12

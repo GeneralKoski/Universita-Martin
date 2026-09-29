@@ -173,7 +173,8 @@ query/known-item-umane/risposte/`, poi `strumenti/importa-raccolta.py` e
   costruzione dell'indice in memoria da un file già letto.
 - **La prima esecuzione di una serie è a freddo** (cache del sistema, di
   Elasticsearch, della JVM). Per questo le esecuzioni si ripetono, di solito tre.
-- I tempi valgono sulla macchina di `macchina.md` e su nessun'altra.
+- I tempi valgono sulla macchina di `macchina.md` e su nessun'altra, salvo
+  `carico-fisso` e `reranker-gpu`, misurati sul secondo computer.
 
 ## Registro
 

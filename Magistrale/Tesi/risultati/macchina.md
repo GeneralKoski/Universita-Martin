@@ -1,6 +1,10 @@
 # La macchina delle misure
 
-Tutti i tempi di questa cartella sono stati misurati qui, e valgono solo qui.
+Tutti i tempi di questa cartella sono stati misurati qui, e valgono solo qui,
+tranne quelli di `esperimenti/2026-09-29_carico-fisso` e
+`esperimenti/2026-09-29_reranker-gpu`, misurati su un secondo computer (Ryzen 5
+8500G, 32 GB, Windows 11, RTX 3060 12 GB; la sua descrizione sta in quelle
+cartelle).
 Rilevato il 24/09/2026.
 
 | | |

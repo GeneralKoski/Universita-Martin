@@ -118,7 +118,9 @@ regge su un'altra macchina? Leggi prima i README di `2026-09-28_carico`,
 `2026-09-28_prestazioni` e `2026-09-28_allocazioni`, e `risultati/macchina.md`
 (la macchina del Mac).
 
-**Serve un file che non sta in git**: `bundle-fisso-tesi.tar.gz`. Sta sul
+**Serve un file che non sta in git**: `bundle-fisso-tesi.tar.gz`. *(Nota del
+30/09/2026: il compito B è fatto e il file è stato cancellato dal server il
+29/09; se serve di nuovo va rigenerato dal Mac.)* Stava sul
 server personale di Martin, alias SSH `hetzner` (definito in `~/.ssh/config`;
 l'indirizzo non si scrive mai in nessun file del repository). Martin ha dato
 il permesso di connettersi anche a questo computer. Scaricalo così:

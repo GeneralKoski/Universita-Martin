@@ -117,7 +117,8 @@ là. Le query sono corte, 4 parole di mediana, e le quattro con un numero sono
 frasi, da 5 a 9 parole. Due persone su tre hanno risposto «non saprei» per
 almeno un atto, 16 volte in tutto. Con quattro query, la colonna «con numero»
 della tabella~\ref{tab:known-item-umane} va letta come un aneddoto: una
-posizione in più o in meno su una query sposta l'MRR@10 di 0,25.
+query che scende dal primo al secondo posto sposta l'MRR@10 di 0,125, e di 0,25 se
+esce dai primi dieci.
 
 \paragraph{Il campo unico anche sulle ricerche per contenuto.} Il difetto della
 sezione~\ref{sec:numero-comune} era stato trovato sulle ricerche per numero e
@@ -211,7 +212,7 @@ recupero congiuntivo e aggiunge con l'unione i candidati dei vettori, non perde
 niente: sulle umane fa 0,607, come B fuori dall'app, sulle ricerche per numero
 0,956, sulle date 0,985 e sugli importi 0,990. È il profilo che sceglie la
 regola scritta prima della misura, fra quelli che tengono le ricerche per
-numero e le date sopra 0,95; il profilo consigliato di Documentale non cambia
+numero entro 0,01 da P1 e le date e gli importi sopra 0,95; il profilo consigliato di Documentale non cambia
 per questo, perché adottarlo chiede un servizio Ollama e un'indicizzazione
 più lunga, e la scelta spetta a chi gestisce l'app. Il prezzo è la ricerca, da 3,8 a 41,9~ms di mediana
 (il vettore della query si calcola a ogni ricerca; non ho isolato il contributo)
@@ -266,7 +267,7 @@ l'unica traduzione delle impostazioni di Koskidex; il confronto è sulle stesse
 0,633 di MRR@10 e A da 0,613 a 0,641; degli atti che il primo stadio aveva fra
 l'undicesimo e il centesimo posto ne porta fra i primi dieci 13 su 16 con LA e
 6 su 12 con A. Avevo previsto almeno +0,05 su LA e +0,03 su A: su A il
-guadagno si ferma a 0,028, perché dove i vettori hanno già portato l'atto in
+guadagno si ferma a 0,027, perché dove i vettori hanno già portato l'atto in
 alto resta poco da riordinare. Il tetto del riordino sta quindi poco sopra la
 migliore configurazione di Koskidex, e sul Mac costa 5-6 secondi a query.
 Sulle collezioni pubbliche, con il primo stadio LA con le stopword inglesi
@@ -344,7 +345,7 @@ confronti previsti. Le cinque previsioni sono nel registro (figura~\ref{fig:mrr-
     C8 & A $-$ B & $+$0,006 & $-$0,027 a $+$0,039 & 0,710 & no \\
     C9 & LA $-$ LT & $+$0,213 & $+$0,142 a $+$0,287 & $<$0,001 & sì \\
     C10 & RR-LA $-$ LA & $+$0,074 & $+$0,012 a $+$0,136 & 0,020 & sì \\
-    C11 & RR-A $-$ A & $+$0,028 & $-$0,035 a $+$0,090 & 0,383 & no \\
+    C11 & RR-A $-$ A & $+$0,027 & $-$0,035 a $+$0,090 & 0,383 & no \\
     C12 & ESO $-$ P2 & $+$0,001 & $-$0,039 a $+$0,040 & 0,973 & no \\
     C13 & P3 $-$ P2 & $+$0,073 & $+$0,026 a $+$0,123 & 0,003 & sì \\
     C14 & LA $-$ P2 & $+$0,057 & $-$0,004 a $+$0,117 & 0,072 & no \\

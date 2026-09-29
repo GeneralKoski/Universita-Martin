@@ -116,7 +116,7 @@ chiunque legga la tesi. Due fonti, verificate scaricandole il 23 settembre 2026:
         ottico: di solito da tre a sei pagine, con una mediana di 7.900 caratteri,
         otto atti su dieci fra 4.800 e 13.800 e cinque oltre i 30.000;
   \item \textbf{Regione Friuli Venezia Giulia}, API Socrata, licenza IODL 2.0:
-        9.455 atti dal 2011, di 171 enti e 46 tipologie, con ente, tipologia,
+        9.457 atti dal 2011 (9.455 nel corpus indicizzato), di 171 enti e 46 tipologie, con ente, tipologia,
         ufficio, oggetto e numero, ma senza testo integrale. I 171 enti si
         comportano come i clienti di un documentale condiviso.
 \end{itemize}
@@ -296,8 +296,8 @@ script importano i file ricevuti, controllano che corrispondano alla pagina da c
 vengono, e scrivono le query e i giudizi in formato BEIR. Le pagine contengono il
 testo degli atti e non entrano nel repository.
 
-\paragraph{La macchina.} Tutti i tempi sono misurati su un Apple M2 con 8 core e
-16 GB. Koskidex gira nativo su tutti i core; Elasticsearch 9.1.0 e MySQL in una
+\paragraph{La macchina.} I tempi sono misurati su un Apple M2 con 8 core e
+16 GB, tranne quelli del secondo computer, dichiarati dove compaiono. Koskidex gira nativo su tutti i core; Elasticsearch 9.1.0 e MySQL in una
 macchina virtuale Docker con 4 CPU, Elasticsearch con 1 GB di heap, e il suo
 tempo include la chiamata HTTP da PHP. I tempi dei due motori non si confrontano
 alla pari, e dove stanno fianco a fianco lo si scrive.

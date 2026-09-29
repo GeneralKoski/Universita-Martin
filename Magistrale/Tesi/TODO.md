@@ -83,10 +83,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       a metà, la 5 confermata. Scritto in 8.2 e nel registro.
 - [x] `date-app` rilanciato a raccolta chiusa: R1-R3 confermate, nessuna
       query umana si sposta, indicizzazione +8,1%. Scritto in 6.4 e nel
-      registro (222 previsioni, totale di allora; ora 239).
+      registro (222 previsioni, totale di allora; ora 253).
 - [x] Scritti il 29/09: capitolo 8 (8.1, 8.2 senza il riordino, 8.4), 4.4,
       5.6, 5.7, 7.1, 7.5, 9.1, 9.2, 9.3 e i contributi del capitolo 1; il
-      registro con le 24 righe nuove (217 previsioni, totale di allora; ora 239).
+      registro con le 24 righe nuove (217 previsioni, totale di allora; ora 253).
 - [x] **Fatto il 29/09 in `profilo-completo` (P1-P4), resta solo stopword e
       stemmer dentro l'app.** Era: le known-item umane promuovono il recupero
       disgiuntivo e i vettori (LA 0,559 e A 0,613 contro KC 0,432, fuori
@@ -183,9 +183,9 @@ basta mettere i file nelle cartelle indicate e dirlo.
       carico, tutti con gli stessi numeri (registro nel README
       dell'archivio).
 > **Compiti A e B preparati il 29/09**: le istruzioni complete per il Claude del
-> fisso sono in `ISTRUZIONI-FISSO.md`. Il compito B usa il pacchetto privato
-> `hetzner:/srv/backups/tesi-bundle-fisso/bundle-fisso-tesi.tar.gz` (dump di
-> `albo` e testi delle query, fuori da git). Quello che tornerà va scritto in
+> fisso sono in `ISTRUZIONI-FISSO.md`. Il compito B usava il pacchetto privato
+> `bundle-fisso-tesi.tar.gz` (dump di `albo` e testi delle query, fuori da
+> git), poi cancellato dal server il 29/09. Quello che tornerà va scritto in
 > tesi in 8.2 (riordino) e 8.3 (carico) e nel registro.
 
 - [x] Facoltativa, **fatta al fisso il 29/09 (esiti più sotto) di Martin** (RTX 3060, 12 GB): il

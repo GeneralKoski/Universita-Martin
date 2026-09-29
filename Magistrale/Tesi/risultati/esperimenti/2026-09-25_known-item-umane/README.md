@@ -119,8 +119,9 @@ se non trova il rapporto (`5897f6a`), e il rilancio delle 09:33 è quello usato.
 | V | 0,520 | 39,4% | 75,0% | 0,0% | 0,467 | 0,569 | 0,650 | 0,515 |
 
 **Cinque previsioni confermate, due a metà.** Le due a metà cadono entrambe
-sulla metà che riguarda le query con un numero, che sono 4: su 4 query una
-sola differenza di posizione sposta l'MRR di 0,25, e quella metà delle due
+sulla metà che riguarda le query con un numero, che sono 4: su 4 query uno
+scambio fra il primo e il secondo posto sposta l'MRR@10 di 0,125, e l'uscita dai
+primi dieci di 0,25, e quella metà delle due
 previsioni non dice molto né in un senso né nell'altro.
 
 1. **Confermata.** Contiene un numero il 3,8% delle query (4 su 104).
