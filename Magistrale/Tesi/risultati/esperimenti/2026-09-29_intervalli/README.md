@@ -70,3 +70,52 @@ LA - KC e **C17** A - KC (quanto sta sopra KC il recupero disgiuntivo fuori
 dall'app) e **C18** P4 - ES (quanto vale, in tutto, il lavoro sul profilo
 migliore dall'app rispetto alla produzione). Il calcolo è lo stesso, e le
 prime quindici righe non cambiano (stessi semi).
+
+## Esito
+
+Calcolato il 29/09/2026, script `intervalli.py`, 104 query, 10.000
+ricampionamenti, 20.000 permutazioni, semi fissi. Primo esito
+`2026-09-29T193420Z_esito.json` (C1-C15, le cinque previsioni); secondo
+`2026-09-29T193440Z_esito.json` (stessi numeri, più C16-C18).
+
+**Cinque previsioni su cinque.**
+
+1. **Confermata.** C1, C2, C4, C5 e C9 escludono lo zero. C1 di poco:
+   +0,106 con intervallo da +0,035 a +0,184, p 0,006.
+2. **Confermata.** C3, C8, C11 e C12 includono lo zero, e con largo margine
+   (p da 0,38 a 0,97).
+3. **Confermata, e C7 è un caso di confine.** RR-LA - LA esclude lo zero
+   (+0,074, da +0,012 a +0,136, p 0,020). A - LA: +0,054, intervallo da
+   -0,0005 a +0,111, p 0,058: l'estremo inferiore è quasi zero, e non si può
+   dire che i vettori aiutino su queste 104 query con la stessa sicurezza del
+   riordino.
+4. **Confermata.** La semiampiezza dell'intervallo di una singola media va da
+   0,075 a 0,088 di MRR@10.
+5. **Confermata.** Bootstrap e permutazione concordano in tutti i 15
+   confronti.
+
+Medie con intervallo al 95%:
+
+| | MRR@10 | intervallo | | MRR@10 | intervallo |
+|---|---|---|---|---|---|
+| ES | 0,326 | 0,243 - 0,410 | P0 = KC | 0,432 | 0,349 - 0,517 |
+| K0 | 0,337 | 0,259 - 0,418 | P2 | 0,502 | 0,417 - 0,588 |
+| LT | 0,346 | 0,264 - 0,431 | P3 | 0,576 | 0,492 - 0,657 |
+| ESC | 0,449 | 0,361 - 0,537 | P4 | 0,607 | 0,528 - 0,686 |
+| ESO | 0,503 | 0,419 - 0,588 | LA | 0,559 | 0,476 - 0,640 |
+| V | 0,520 | 0,441 - 0,601 | A | 0,613 | 0,534 - 0,691 |
+| RR-LA | 0,633 | 0,556 - 0,710 | B | 0,607 | 0,526 - 0,686 |
+| RR-A | 0,641 | 0,566 - 0,715 | | | |
+
+Cosa dicono: con 104 query due medie a meno di circa 0,15 l'una dall'altra
+hanno intervalli che si sovrappongono. Ma le differenze accoppiate sono più
+strette, perché le due configurazioni vedono le stesse query. Le differenze
+grandi (KC e ES, P4 e KC, LA e LT, ESC e ES) reggono. Non reggono: A su LA, P2
+su KC, LA su P2 (recupero disgiuntivo dall'app contro piatto), A su P3 e il
+riordino di A. Sono i confronti che la tesi chiama «nel rumore» o dà per
+suggeriti, ed è giusto che sia così.
+
+**Aggiunte, senza previsione.** C16 LA - KC +0,128 (da +0,048 a +0,208),
+C17 A - KC +0,181 (da +0,093 a +0,269), C18 P4 - ES +0,282 (da +0,195 a
++0,372): il recupero disgiuntivo fuori dall'app, i vettori, e il profilo
+migliore dall'app sopra la produzione sono tutti oltre l'intervallo.
