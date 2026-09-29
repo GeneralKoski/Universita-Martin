@@ -26,6 +26,17 @@ lotto 2 si chiama `raccolta-lotto-2-Martin.json`, e con quel nome compare in
 scritto nella pagina di raccolta, ed è un omonimo dell'autore della tesi, non
 l'autore. Nessuna query della collezione è scritta dall'autore.
 
+*Aggiunto il 29/09/2026, prima di qualunque misura sulla raccolta completa.*
+La raccolta si chiude con tre lotti su quattro: il lotto 3 è arrivato il
+29/09 (`raccolta-lotto-3-endri.json`), il quarto non è mai stato assegnato.
+Le istruzioni chiedevano tre persone come minimo, e la decisione di chiudere
+qui dipende dal tempo, non dai numeri di questo esperimento: le sole
+esecuzioni fatte finora sulle query dei primi due lotti sono la prova
+generale del 28/09, per provare la procedura, in una cartella temporanea e
+non archiviata, e le guardie di altri esperimenti (`date-app`,
+`importi-esatti`, `reranker`), che le usano per controllare che un
+intervento non cambi niente.
+
 **I motori**, sulle stesse query:
 
 - **dall'app**, con `app:eval-run-queries` sul corpus di Documentale e
