@@ -4,8 +4,8 @@
 
 Il confronto finale si regge sulle known-item umane
 (sezione~\ref{sec:query}): 104 query scritte da tre persone che non
-conoscono i motori, una per atto, su 120 atti estratti con un seme, metà per
-fonte. Per ogni query c'è un atto giusto solo, quindi la misura
+conoscono i motori, una per atto, su 120 atti (i primi tre lotti dei 160 estratti con un seme),
+metà per fonte. Per ogni query c'è un atto giusto solo, quindi la misura
 principale è l'MRR@10, accanto a tre quantità che un utente sente di più:
 l'atto al primo posto, l'atto fra i primi dieci, la ricerca a vuoto. I bisogni
 aperti delle 24 query restano un confronto secondario: i giudizi del modello
@@ -13,7 +13,8 @@ concordano con quelli umani con un kappa pesato di 0,370
 (sezione~\ref{sec:giudizi}), troppo poco per reggere un capitolo, e il resto
 del pool non ha un giudizio umano.
 
-Le configurazioni si misurano in due modi: dall'app, e con Koskidex piatto fuori dall'app.
+Le configurazioni si misurano in tre modi: dall'app, direttamente su
+Elasticsearch per le versioni corrette, e con Koskidex piatto fuori dall'app.
 
 \paragraph{Dall'app.} Due, sulle stesse query passate da
 \texttt{app:eval-run-queries}, cioè dalla ricerca vera di Documentale:
@@ -34,13 +35,16 @@ importi; \textbf{P2}, P1 con il recupero disgiuntivo e BM25 con l'ordine fisso
 dei termini; \textbf{P3}, P2 con i vettori di \texttt{bge-m3}, l'unione dei
 candidati e il peso 160; \textbf{P4}, P1 con BM25, l'ordine fisso e i vettori
 a peso 10, ma con il recupero congiuntivo. P2 e P3 sono LA e A dall'app, P4 è
-B. Altre due sono Elasticsearch con le stesse correzioni: \textbf{ESC} e
-\textbf{ESO}, un \texttt{multi\_match} \texttt{best\_fields} per parola con i
-pesi di produzione, il filtro delle elisioni e le parole di sole cifre senza
-refusi, con tutte le parole obbligatorie (ESC, come P0) o con una sola che
-basta (ESO, come P2). Le collezioni sono quelle dei capitoli precedenti: le
-300 ricerche \texttt{<numero> <comune>}, le 450 sulle date, le 104 sugli
-importi e le 104 known-item umane.
+B. Le collezioni sono quelle dei capitoli precedenti: le 300 ricerche
+\texttt{<numero> <comune>}, le 450 sulle date, le 104 sugli importi e le 104
+known-item umane.
+
+\paragraph{Elasticsearch corretto.} Due, che non passano dall'app: interrogano
+direttamente un indice di Elasticsearch a parte, con il mapping di produzione e
+il filtro delle elisioni. \textbf{ESC} e \textbf{ESO} sono un
+\texttt{multi\_match} \texttt{best\_fields} per parola con i pesi di produzione e
+le parole di sole cifre senza refusi, con tutte le parole obbligatorie (ESC,
+come P0) o con una sola che basta (ESO, come P2).
 
 \paragraph{Koskidex piatto.} Sei, con \texttt{scripts/evaluate} sul corpus a
 schede che esce dall'esportazione di Documentale, per vedere dove porterebbero
@@ -66,8 +70,8 @@ Ogni metrica si riporta su tutte le query, per fonte (Crispiano, dove chi
 scriveva aveva letto il testo intero e l'indice ha la scheda, e Friuli Venezia
 Giulia, dove l'atto è la sola scheda) e per query con e senza un numero. Le
 sette previsioni sono state scritte il 25 settembre, prima che arrivasse una
-sola risposta. Quelle dei tre esperimenti aggiunti il 29 settembre, a raccolta
-chiusa, sono state committate prima della misura di ciascuno, ma dopo aver visto
+sola risposta. Quelle dei tre esperimenti aggiunti il 29 settembre (\texttt{profilo-completo},
+\texttt{es-corretto} e \texttt{riordino-corto}), a raccolta chiusa, sono state committate prima della misura di ciascuno, ma dopo aver visto
 le metriche delle configurazioni piatte sulle stesse query; quelle di
 Elasticsearch corretto, quando le misure di P0 e P2 che ne sono il riferimento
 erano già archiviate, anche se non le avevo ancora guardate.
@@ -124,8 +128,8 @@ l'elisione, va a vuoto nel 29,8\% e fa 0,106 di MRR@10 sopra ES, 0,432 contro
 0,10: il difetto del campo unico riguarda anche le ricerche per contenuto. Ma
 KC resta molto sotto le configurazioni piatte con il recupero disgiuntivo, e
 tre ricerche su dieci tornano ancora vuote: il profilo consigliato corregge i
-campi, non il recupero congiuntivo di produzione, che sulle frasi scritte da
-persone è il limite più grande. Le quattro query con un numero tornano vuote
+campi, non il recupero congiuntivo senza vettori di produzione, che sulle frasi
+scritte da persone è il limite più grande. Le quattro query con un numero tornano vuote
 con tutti e due i motori dell'app.
 
 \paragraph{Congiuntivo o disgiuntivo.} Una parola in più, o scritta
@@ -191,7 +195,7 @@ recupero congiuntivo e quasi non toccano il disgiuntivo
 umane a 0,502, senza ricerche a vuoto, ma fa crollare le ricerche per numero e
 comune a 0,147 e le date a 0,478: avevo previsto un calo di almeno 0,03, ed è
 da 0,955 a 0,147. Non ne ho verificato la causa; nel confronto delle 24 query P2 e P3
-restituiscono tutte le 10.000 risposte in 8 query su 24, contro le al più 449
+restituiscono 10.000 risposte, quasi tutto l'indice, in 8 query su 24, contro le al più 449
 di P0, P1 e P4, e la lettura più semplice è che ogni atto con il solo comune, o
 con un numero simile, entri fra i candidati e il punteggio non lo rimetta sotto
 quello giusto. I vettori con peso 160 (P3) portano le umane a 0,576, ma
@@ -220,7 +224,7 @@ tenuto, la quarta a metà.
     \toprule
     & \texttt{<num.> <comune>} & umane & date & importi \\
     \midrule
-    ES, produzione & n.d. & 0,326 (46\%) & n.d. & n.d. \\
+    ES, produzione & 0,017 & 0,326 (46\%) & n.d. & n.d. \\
     ESC & 0,938 & 0,449 (30\%) & 0,305 & 0,903 \\
     P0 (KC) & 0,950 & 0,432 (30\%) & 0,315 & 0,917 \\
     \midrule
@@ -275,7 +279,7 @@ un tetto, non una configurazione da mettere in produzione.
 0,624 (0,633 con cento), A a 0,643 (0,641) e LA sulle ricerche
 \texttt{<numero> <comune>} a 0,949 (0,953), in circa un quarto del tempo: 1,2-1,3
 secondi di mediana sulle umane, contro 5,3-5,9. Con trenta candidati sono 0,629,
-0,639 e 0,960, cioè le automatiche appena sopra il recupero congiuntivo (0,960).
+0,639 e 0,960, cioè le automatiche appena sopra il recupero congiuntivo (0,9603 contro 0,9596).
 Il guadagno sta quasi tutto nei primi venti; il primo stadio ha già l'atto lì
 nell'83\% delle query con LA e nel 91\% con A, e dove non c'è il riordino non lo
 recupera. Le cinque previsioni hanno tenuto. Un

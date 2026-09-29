@@ -374,8 +374,8 @@ sono l'oggetto del capitolo~\ref{chapter:confronto}. Non dicono neanche che
 Elasticsearch non si possa correggere: il filtro delle elisioni e la query
 riscritta parola per parola sono misurati anche lì, con lo stesso effetto. I numeri si
 ottengono separando nella query i termini fatti di sole cifre e cercandoli senza
-refusi, ed è misurato: con le parole di sole cifre senza refusi Elasticsearch fa
-0,938 di MRR@10 sulle ricerche per numero e comune, contro 0,950 di Koskidex con
+refusi, ed è misurato: con le parole di sole cifre senza refusi, una clausola per parola e il
+filtro delle elisioni Elasticsearch fa 0,938 di MRR@10 sulle ricerche per numero e comune, contro 0,950 di Koskidex con
 il profilo (sezione~\ref{sec:pertinenza}).
 
 \paragraph{Oltre il profilo.} Il profilo consigliato non contiene il recupero

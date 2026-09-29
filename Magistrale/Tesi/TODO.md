@@ -82,11 +82,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       a metà, la 5 confermata. Scritto in 8.2 e nel registro.
 - [x] `date-app` rilanciato a raccolta chiusa: R1-R3 confermate, nessuna
       query umana si sposta, indicizzazione +8,1%. Scritto in 6.4 e nel
-      registro (222 previsioni).
+      registro (222 previsioni, totale di allora; ora 239).
 - [x] Scritti il 29/09: capitolo 8 (8.1, 8.2 senza il riordino, 8.4), 4.4,
       5.6, 5.7, 7.1, 7.5, 9.1, 9.2, 9.3 e i contributi del capitolo 1; il
-      registro con le 24 righe nuove (217 previsioni).
-- [ ] **Da decidere con Martin**: le known-item umane promuovono il recupero
+      registro con le 24 righe nuove (217 previsioni, totale di allora; ora 239).
+- [x] **Fatto il 29/09 in `profilo-completo` (P1-P4), resta solo stopword e
+      stemmer dentro l'app.** Era: le known-item umane promuovono il recupero
       disgiuntivo e i vettori (LA 0,559 e A 0,613 contro KC 0,432, fuori
       dall'app). Misurarli dentro l'app come un profilo intero, come in
       `2026-09-25_configurazione-consigliata/`, con le ricerche per numero
@@ -123,8 +124,8 @@ basta mettere i file nelle cartelle indicate e dirlo.
       in 1, 9.1 e nel registro. Esposte in Documentale il 28/09 (`f921ef7`,
       `KOSKIDEX_NORMALIZE_DATES` e `KOSKIDEX_NORMALIZE_AMOUNTS`, spente e fuori
       dal profilo) e misurate dall'app in `2026-09-28_date-app`: sei previsioni
-      su otto, scritto in 6.4 e 9.1. Le date vanno normalizzate, gli importi
-      no. Restano: i decimali semplici (`3,5` contro `3.5`) non sono toccati;
+      su otto, scritto in 6.4 e 9.1. Le date vanno normalizzate; gli importi
+      no, poi corretto: normalizzati e senza refusi (`importi-esatti`). Restano: i decimali semplici (`3,5` contro `3.5`) non sono toccati;
       una passata scritta a mano al posto delle espressioni regolari se il
       costo contasse (dall'app è +6%).
 - [x] Le espansioni come sinonimi (`bm25_expansion: synonym`, Koskidex
@@ -168,7 +169,7 @@ basta mettere i file nelle cartelle indicate e dirlo.
       che non tornavano (fra gli altri 213 → 195 atti e "da 5" → "da 4" in
       6.2-6.3, 22 query vuote su 24 di una parola in 5.1, *of* in 137 query e
       non 173, l'esempio `141 Sacile` al posto di `2 Pradamano`, 0,85 → 0,51 sul
-      test in 7.3, quattro arrotondamenti in 7), le frasi con il riferimento
+      test in 7.3 (poi corretto in 0,87 → 0,50, valori di calibrazione), quattro arrotondamenti in 7), le frasi con il riferimento
       sbagliato (le 24 query in 6.3 e 6.5, gli importi senza punti in 6.4) e il
       racconto dei difetti (tre sospettati leggendo il codice, il congiuntivo
       trovato misurando: 1, 3, 6, 9). Tolti i tempi dei vettori della prima
@@ -180,7 +181,7 @@ basta mettere i file nelle cartelle indicate e dirlo.
       dell'archivio).
 - [ ] Facoltativa, **da fare al fisso di Martin** (RTX 3060 Ti, 8 GB): il
       costo del riordino di `2026-09-28_reranker` su una GPU da gaming, per
-      8.4 ("su un Mac costa 12 s a query, su una scheda consumer circa 2").
+      8.2 ("su un Mac costa 12 s a query, su una scheda consumer circa 2").
       Solo tempi, non metriche: stessi primi stadi archiviati, stesso
       `strumenti/riordina.py` con `--dispositivo cuda`, in fp32 come sul Mac
       e poi in fp16; previsione scritta prima (stima: 4 s a query in fp32,
@@ -192,7 +193,7 @@ basta mettere i file nelle cartelle indicate e dirlo.
       rifare `2026-09-28_carico` con tutti e due i motori, Koskidex
       (al commit di `2026-09-28_allocazioni` o successivo) ed Elasticsearch
       come l'app, per vedere se il rapporto misurato sul Mac regge su
-      un'altra macchina (sul Mac: capacità 6,6 volte, p50 0,92 contro 6,32
+      un'altra macchina (sul Mac: capacità circa sette volte, p50 0,89 contro 6,32
       ms). Tutta CPU, la GPU non serve. Previsioni scritte prima, in un
       esperimento nuovo che rimanda a quello del Mac: tempi per query simili
       (dipendono dal singolo core), capacità nella zona del nativo del Mac
@@ -271,7 +272,8 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
 
 - [x] `profilo-completo` (Esito nel README, `104931Z_esito.json`, rilanciato
       in `122455Z`): scritto il 29/09 in 8.2 (tabella dei profili), 8.4, 6.5,
-      9.1, 9.2, 9.3, introduzione e registro (7 previsioni, la quarta a metà).
+      9.1, 9.2 (limite su Elasticsearch corretto), 9.3, introduzione e registro (7
+      previsioni, la quarta a metà).
 - [x] `profilo-completo`, la cache dei vettori: controllata il 29/09 con
       `cache-vettori.sh`. Indicizzare P4 costa 499,6 s senza cache e 2,7 s con
       i vettori già calcolati; i 476,7 s di P4 sono senza cache, la copia da P3
@@ -282,10 +284,11 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
       nello sviluppo futuro del reranker; registro (5 previsioni).
 - [x] Registro: 239 previsioni, 170 confermate, 51 smentite, 16 a metà, due
       senza esito (237 con un esito).
-- [ ] Quarto controllo indipendente (tesi contro archivio, subagente in sola
-      lettura), rimandato il 29/09 su richiesta di Martin per i token
-      rimasti: da fare dopo aver scritto i tre esperimenti in tesi, poi le
-      correzioni.
+- [x] Quarto e quinto controllo indipendente (tesi contro archivio,
+      subagente in sola lettura), fatti il 29/09 dopo aver scritto i tre
+      esperimenti: 3 errori e una decina di frasi troppo larghe nel quarto
+      (corretti in `8aa157a`), 4 errori nella documentazione di lavoro e
+      alcuni chiarimenti nel quinto (corretti dopo).
 
 ## Regole
 

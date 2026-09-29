@@ -22,7 +22,10 @@ Se un numero non ha un file qui, non esiste.
 4. **Solo identificativi, mai titoli.** Gli oggetti degli atti degli albi
    pretori possono contenere nomi di persone, e questa cartella sta in un
    repository pubblico. Per vedere un titolo si risale dal `doc-NNNN` al corpus,
-   che resta fuori da git.
+   che resta fuori da git. Fanno eccezione, in locale e in `.gitignore`, i
+   rapporti che riportano il testo delle query scritte da persone
+   (`confronto/*known-item-umane*`, `riordinati/*known-item-umane*`): non si
+   committano, e le valutazioni che ne derivano hanno solo id.
 5. **Solo esecuzioni vere.** I controlli fatti mentre si scrive codice si lanciano
    con `TESI_RISULTATI=` vuota: non sono misure, e non devono finire qui.
 6. **Si archivia da solo.** Gli strumenti scrivono qui se è impostata
@@ -35,10 +38,10 @@ Se un numero non ha un file qui, non esiste.
 |---|---|---|
 | `koskidex-beir/` | valutazioni di Koskidex sulle collezioni pubbliche SciFact e NFCorpus: nDCG@10, Recall@100, MRR@10 per query, query a vuoto, tempi | `scripts/evaluate` di Koskidex |
 | `valutazioni-albo/` | valutazioni sul corpus degli albi, stesso formato di `koskidex-beir/`: Koskidex in memoria e, con `-rankings`, i rapporti dei motori passati dall'app, contati dallo stesso codice | `scripts/evaluate -archivio valutazioni-albo` di Koskidex |
-| `confronto/` | le stesse query su Elasticsearch (il codice di produzione di Documentale) e su Koskidex, sullo stesso corpus: ranking, latenza per query, tempi di indicizzazione | `app:eval-run-queries` di Documentale (col motore scelto da `SEARCH_BACKEND`), `scripts/compare` di Koskidex, `strumenti/indicizza-elasticsearch.sh`, `strumenti/indicizza-koskidex.sh` |
+| `confronto/` | le stesse query su Elasticsearch (il codice di produzione di Documentale) e su Koskidex, sullo stesso corpus: ranking, latenza per query, tempi di indicizzazione | `app:eval-run-queries` di Documentale (col motore scelto da `SEARCH_BACKEND`), `scripts/compare` di Koskidex, `strumenti/indicizza-elasticsearch.sh`, `strumenti/indicizza-koskidex.sh`, `esperimenti/2026-09-29_es-corretto/es-corretto.py`, `esperimenti/2026-09-29_profilo-completo/cache-vettori.sh` |
 | `corpus/` | numeri descrittivi che la tesi cita senza un esperimento: composizione delle fonti, lunghezze, formati di date e importi, e i numeri che prima stavano solo nel diario di Koskidex o in `SOURCE.md` (con la prova di AlboPOP, che non si ripete, e le voci del diario da cui vengono previsioni e fatti, copiate con commit e impronta) | `strumenti/conteggi.py`, `strumenti/numeri-diario.py` |
 | `query/` | i file di query usati, così ogni esecuzione si rifà con le stesse | scritti a mano, vedi sotto |
-| `esperimenti/` | esperimenti una tantum, con dati, codice per rifarli e spiegazione | una sottocartella per esperimento |
+| `esperimenti/` | esperimenti una tantum, con dati, codice per rifarli e spiegazione: ogni sottocartella ha un `README.md` con domanda, metodo, previsioni scritte prima di misurare ed esito; l'elenco delle previsioni con i verdetti sta nel registro della tesi (appendice C) | una sottocartella per esperimento |
 | `strumenti/` | script che non stanno in nessuno dei due progetti | |
 | `macchina.md` | la macchina su cui sono stati misurati i tempi | |
 
