@@ -66,9 +66,9 @@ Cosa c'è già (leggi `risultati/esperimenti/2026-09-28_reranker/README.md`):
 `BAAI/bge-reranker-v2-m3` (568M parametri, revisione `953dc6f`), `max_length`
 512, batch 32, primi 100 candidati; sul Mac (M2, MPS, fp32) la mediana è 12,0 s
 a query su SciFact e 11,3 s su NFCorpus. I primi stadi sono archiviati in
-`esperimenti/2026-09-28_reranker/primo-stadio/` (i file delle collezioni
-pubbliche e delle known-item automatiche sono in git; quelli delle umane no),
-i rapporti riordinati sul Mac in `riordinati/`.
+`esperimenti/2026-09-28_reranker/primo-stadio/` (in git, solo id), i
+rapporti riordinati sul Mac in `riordinati/` (in git quelli di SciFact, NFCorpus
+e delle automatiche; quelli delle umane no, hanno il testo delle query).
 
 **Fai solo SciFact e NFCorpus**, che sono pubbliche: le collezioni degli albi
 non sono in git e non devi ricostruirle sul fisso.
@@ -77,10 +77,10 @@ Passi:
 
 1. Ambiente Python a parte con torch per CUDA, `sentence-transformers` 6.x,
    `huggingface_hub`; scarica il modello (2,1 GB) e controlla la revisione
-   `953dc6f`. Le collezioni BEIR SciFact e NFCorpus vanno scaricate da BEIR
-   nella forma che `strumenti/riordina.py` legge (`corpus.jsonl` e
-   `queries.jsonl` in una cartella, `qrels/test.tsv`); `Koskidex/eval/corpora/
-   c1-public/` dice dove stanno di solito. Se non riesci a ricostruirle uguali
+   `953dc6f`. Le collezioni SciFact e NFCorpus stanno nel repository Koskidex,
+   `eval/corpora/c1-public/{scifact,nfcorpus}/` (`corpus.jsonl`, `queries.jsonl`,
+   `qrels/test.tsv`, il formato che `strumenti/riordina.py` legge);
+   `SOURCE.md` nella stessa cartella dà provenienza e md5: controllali. Se non riesci a ricostruirle uguali
    a quelle del Mac, fermati e dillo.
 2. Crea `risultati/esperimenti/<data>_reranker-gpu/README.md` con domanda,
    metodo e previsioni, e **committalo**. Previsioni di partenza (stima scritta
