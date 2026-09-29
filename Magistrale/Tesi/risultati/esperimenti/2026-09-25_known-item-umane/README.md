@@ -93,11 +93,12 @@ solo le ricerche per numero ma anche quelle per contenuto.
 
 Misurato il 29/09/2026 sulla raccolta chiusa (tre lotti, 120 atti mostrati,
 104 query, 16 vuote, 50 di Crispiano e 54 del Friuli Venezia Giulia), Koskidex
-`cd86102`. Riassunto in `2026-09-29T094243Z_esito.json` (`analizza.py`), con le
+`cd86102`. Riassunto in `2026-09-29T094732Z_esito.json` (`analizza.py`), con le
 otto valutazioni in `valutazioni-albo/2026-09-29T0930*` e `0933*`; i rapporti
 dell'app con il testo delle query restano fuori dal repository, come le
-risposte. L'esito delle 09:41 (`2026-09-29T094130Z_esito.json`) ha gli stessi
-risultati: il rilancio aggiunge solo le parole per query, che l'Esito cita.
+risposte. Gli esiti delle 09:41 e delle 09:42 hanno gli stessi risultati: i
+due rilanci aggiungono solo le parole per query e le risposte vuote per lotto
+(4, 0 e 12 su 40), che l'Esito e la tesi citano.
 
 **Le valutazioni dall'app sono rifatte.** Il primo giro (09:31) ha lasciato a
 ES e KC le metriche di K0: `app:eval-run-queries` colora l'output anche in una
