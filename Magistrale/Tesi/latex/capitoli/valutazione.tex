@@ -258,6 +258,16 @@ Accanto, sempre, le query a vuoto e il numero di candidati: una media non
 distingue un motore che ordina male da uno che non trova, e i due chiedono
 correzioni opposte.
 
+\paragraph{Gli intervalli.} Sulle 104 known-item umane le medie di MRR@10 si
+riportano, dove servono, con un intervallo di confidenza al 95\% ottenuto con il
+bootstrap accoppiato: si ricampionano le query, non le configurazioni, perché
+le configurazioni vedono le stesse query e la loro differenza ha meno variabilità
+delle due medie prese da sole. Sono 10.000 ricampionamenti con un seme fisso; un
+test di permutazione a segni sulla differenza per query, con 20.000 permutazioni,
+serve da controllo. Lo strumento e le previsioni sono
+nell'esperimento \texttt{intervalli}, e il risultato è nel
+capitolo~\ref{chapter:confronto}.
+
 \section{Gli strumenti}\label{sec:strumenti}
 
 \paragraph{Koskidex piatto.} \texttt{scripts/evaluate} carica una collezione in

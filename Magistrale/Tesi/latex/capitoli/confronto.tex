@@ -144,8 +144,11 @@ sezione~\ref{sec:scelta}, qui vale poco: fra A e B cambia qualcosa su 31 query
 su 104, e la regola sceglie B una volta sola.
 
 \paragraph{I vettori.} A, che aggiunge ai candidati di LA i cento più vicini,
-fa 0,606 sulle query senza numero, 0,055 sopra LA, ed è la configurazione
-migliore; B, pensata per gli identificativi, le sta a 0,002. I soli vettori (V)
+fa 0,606 sulle query senza numero, 0,055 sopra LA, ed è la configurazione con la
+media più alta senza riordino; su tutte le 104 query, però, A sta sopra LA di
+0,054 con un intervallo al 95\% che va da $-$0,0005 a $+$0,111
+(tabella~\ref{tab:intervalli}): con questi numeri non si distingue dallo zero con
+sicurezza. B, pensata per gli identificativi, le sta a 0,002. I soli vettori (V)
 fanno 0,515, a 0,036 da LA, e sulle query con un numero 0,650: avevo previsto
 meno di 0,30, di nuovo pensando a un numero con poco intorno, e anche qui il
 resto della frase basta ai vettori. Sulle query vere l'unione di lessicale e
@@ -298,6 +301,60 @@ previsioni hanno tenuto, la prima vicino al bordo della soglia. Restano secondi
 contro il millisecondo di Koskidex, quindi la conclusione non cambia: il tetto
 del riordino non è una configurazione da usare dal vivo. I venti candidati e la
 scheda grafica non sono stati misurati insieme.
+
+\paragraph{Quanto pesano 104 query.} Le differenze della
+tabella~\ref{tab:known-item-umane} vanno lette con l'incertezza di 104 query.
+Un intervallo al 95\% attorno a una singola media di MRR@10 è largo, per ogni
+configurazione, da 0,075 a 0,088 in più o in meno, quindi le medie
+di configurazioni vicine si sovrappongono; ma le configurazioni vedono le
+stesse query, e la differenza accoppiata è più stretta
+(tabella~\ref{tab:intervalli}, \texttt{intervalli}). Su 18 differenze, quelle
+di 0,071 o meno includono lo zero e quelle di 0,073 o più lo escludono. Reggono
+le differenze grandi: KC sopra ES di 0,106 (da 0,035 a 0,184, di poco),
+ESC sopra ES di 0,123, P4 sopra KC di 0,176 e sopra ES di 0,282, LA sopra LT di
+0,213, il riordino di LA di 0,074 e il recupero disgiuntivo fuori dall'app
+sopra KC (LA di 0,128, A di 0,181). Non si distinguono dallo zero A sopra LA
+(0,054, da $-$0,0005 a 0,111, appena), A contro B, il riordino di A, P2 sopra KC
+e P2 contro LA, ESC contro KC, ESO contro P2 e A contro P3: sono i confronti
+che questo capitolo dice «nel rumore» o suggeriti, e con 104 query non sono di
+più. Il test di permutazione concorda con il bootstrap in tutti i quindici
+confronti previsti. Le cinque previsioni sono nel registro.
+
+\begin{table}[ht]
+  \centering
+  \small
+  \begin{tabular}{llrrrc}
+    \toprule
+    & confronto & differenza & intervallo al 95\% & $p$ & esclude 0 \\
+    \midrule
+    C1 & KC $-$ ES & $+$0,106 & $+$0,035 a $+$0,184 & 0,006 & sì \\
+    C2 & ESC $-$ ES & $+$0,123 & $+$0,064 a $+$0,188 & $<$0,001 & sì \\
+    C3 & ESC $-$ KC & $+$0,017 & $-$0,033 a $+$0,068 & 0,508 & no \\
+    C4 & P4 $-$ KC & $+$0,176 & $+$0,094 a $+$0,258 & $<$0,001 & sì \\
+    C5 & P4 $-$ P2 & $+$0,105 & $+$0,038 a $+$0,171 & 0,002 & sì \\
+    C6 & P2 $-$ KC & $+$0,071 & $-$0,015 a $+$0,157 & 0,112 & no \\
+    C7 & A $-$ LA & $+$0,054 & $-$0,001 a $+$0,111 & 0,058 & no \\
+    C8 & A $-$ B & $+$0,006 & $-$0,027 a $+$0,039 & 0,710 & no \\
+    C9 & LA $-$ LT & $+$0,213 & $+$0,142 a $+$0,287 & $<$0,001 & sì \\
+    C10 & RR-LA $-$ LA & $+$0,074 & $+$0,012 a $+$0,136 & 0,020 & sì \\
+    C11 & RR-A $-$ A & $+$0,028 & $-$0,035 a $+$0,090 & 0,383 & no \\
+    C12 & ESO $-$ P2 & $+$0,001 & $-$0,039 a $+$0,040 & 0,973 & no \\
+    C13 & P3 $-$ P2 & $+$0,073 & $+$0,026 a $+$0,123 & 0,003 & sì \\
+    C14 & LA $-$ P2 & $+$0,057 & $-$0,004 a $+$0,117 & 0,072 & no \\
+    C15 & A $-$ P3 & $+$0,037 & $-$0,028 a $+$0,102 & 0,273 & no \\
+    \midrule
+    C16 & LA $-$ KC & $+$0,128 & $+$0,048 a $+$0,208 & 0,002 & sì \\
+    C17 & A $-$ KC & $+$0,181 & $+$0,093 a $+$0,269 & $<$0,001 & sì \\
+    C18 & P4 $-$ ES & $+$0,282 & $+$0,195 a $+$0,372 & $<$0,001 & sì \\
+    \bottomrule
+  \end{tabular}
+  \caption{Differenze accoppiate di MRR@10 sulle 104 known-item umane, con
+  l'intervallo al 95\% del bootstrap accoppiato (10.000 ricampionamenti) e il
+  $p$ del test di permutazione a segni. Le prime quindici righe avevano una
+  previsione; le ultime tre (dopo la riga) sono state aggiunte dopo aver visto
+  il primo esito.}
+  \label{tab:intervalli}
+\end{table}
 
 \section{Latenza, memoria, dimensione dell'indice}\label{sec:latenza}
 

@@ -56,7 +56,8 @@ un solo risultato, verificato risposta per risposta, hanno tolto quel costo:
 ora alloca 0,05~MB a ricerca.
 Il limite è la memoria: a centomila documenti è quasi quella di
 Elasticsearch. Sulle 104 ricerche scritte da persone Koskidex innestato fa
-0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, e lascia a vuoto
+0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, con una differenza
+di 0,106 il cui intervallo al 95\% va da 0,035 a 0,184, e lascia a vuoto
 tre ricerche su dieci invece di quasi una su due: il difetto del campo unico
 colpisce anche chi cerca per argomento. Con le stesse correzioni anche
 Elasticsearch arriva a 0,449: sulle ricerche per contenuto il vantaggio sta
@@ -82,8 +83,10 @@ peggiora invece di migliorare.
         scritte da persone servono proprio a questo, ma sono 104, di tre
         persone: la raccolta si è chiusa con tre lotti su quattro, il minimo
         del protocollo. Solo 4 contengono un numero, troppo poche per dire
-        qualcosa di quelle, e le differenze sotto qualche centesimo di MRR@10
-        stanno nel rumore di una collezione così.
+        qualcosa di quelle. L'intervallo al 95\% attorno a una media di MRR@10 è
+        largo da 0,075 a 0,088 in più o in meno, e delle 18 differenze accoppiate
+        misurate (tabella~\ref{tab:intervalli}) quelle di 0,071 o meno includono
+        lo zero: fra queste A sopra LA, con 0,054.
   \item \textbf{Un solo corpus di dominio.} Gli albi pretori hanno la forma di un
         documentale, ma sono gli atti di comuni: altri archivi, con contratti o
         corrispondenza, hanno altri vocabolari e altre ricerche. Il testo intero
@@ -134,9 +137,10 @@ peggiora invece di migliorare.
         documentale. Stopword e stemmer italiani, che sul congiuntivo tolgono
         7,7 punti di ricerche a vuoto, non sono ancora stati misurati dentro
         l'app.
-  \item \textbf{Più query scritte da persone}, e più persone: con cento query
-        un effetto di qualche centesimo non si distingue dal rumore, e le
-        ricerche con un numero mancano quasi del tutto.
+  \item \textbf{Più query scritte da persone}, e più persone: con 104 query una
+        differenza di MRR@10 di 0,071 o meno non si distingue dallo zero
+        (tabella~\ref{tab:intervalli}), e le ricerche con un numero mancano quasi del
+        tutto.
   \item \textbf{Un secondo stadio di riordino.} Il capitolo~\ref{chapter:confronto}
         misura fuori linea quanto vale riordinare i primi cento candidati con un
         \emph{cross-encoder}: il re-ranking funziona se è progettato come

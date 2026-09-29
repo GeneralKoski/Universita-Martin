@@ -652,6 +652,18 @@ numero con la soglia, ed è segnato con un asterisco.
     & 5. Umane, 20 candidati: mediana almeno 0,8~s
     & 1,22 e 1,28~s: confermata \\
   \addlinespace
+  \texttt{intervalli}
+    & 1. Le differenze C1, C2, C4, C5, C9 escludono lo zero
+    & tutte e cinque, C1 di poco: confermata \\
+    & 2. Le differenze C3, C8, C11, C12 includono lo zero
+    & tutte e quattro, p da 0,38 a 0,97: confermata \\
+    & 3. C10 (riordino di LA) esclude lo zero, C7 (A su LA) lo include
+    & C10 da $+$0,012, C7 da $-$0,0005: confermata \\
+    & 4. Semiampiezza dell'intervallo di ogni media fra 0,06 e 0,10
+    & da 0,075 a 0,088: confermata \\
+    & 5. Bootstrap e permutazione concordano in almeno 13 confronti su 15
+    & 15 su 15: confermata \\
+  \addlinespace
   \texttt{reranker-gpu}
     & 1. Riordino di cento candidati in fp32 su SciFact: mediana fra 2,5 e 5~s
     & 4,75~s: confermata, vicino al bordo \\
@@ -677,10 +689,10 @@ numero con la soglia, ed è segnato con un asterisco.
 \end{longtable}
 }
 
-In tutto le previsioni sono 248: 178 confermate, 52 smentite, 16 a metà, e due
+In tutto le previsioni sono 253: 183 confermate, 52 smentite, 16 a metà, e due
 senza un esito registrato (la settima della voce E1, e la terza del diario
 sulla scheda contro il testo, che le query umane non permettono di misurare).
-Delle 246 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+Delle 251 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non

@@ -320,6 +320,12 @@ Claude del Mac:
       Scritto il 29/09 dal Claude del Mac in 8.3, 8.4, 9.1, 9.2 e nel registro
       (totali: 248 previsioni, 178 confermate, 52 smentite, 16 a metà, 2 senza esito).
 
+- [x] `intervalli` (`2026-09-29T193420Z_esito.json` e `193440Z`): intervalli di
+      confidenza sulle differenze delle umane, 5 previsioni su 5. Scritto il
+      29/09 in 8.2 (tabella `tab:intervalli`), nel capitolo 3 (metriche), in
+      9.2, 9.3, nella frase su A e LA, e nel registro (totali: 253 previsioni,
+      183 confermate, 52 smentite, 16 a metà, 2 senza esito).
+
 ## Regole
 
 Valgono per tutto il lavoro che resta. Se ne salta una, i numeri diventano
