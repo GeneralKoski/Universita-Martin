@@ -1,4 +1,13 @@
+% PDF/A-1 è PDF 1.4. Con TeX Live 2026 pdfx non riesce più a impostarlo da sé
+% (il PDF uscirebbe 1.7): va detto prima della classe, come chiede pdfx.
+\pdfminorversion=4
 \documentclass{theme/uniprthesis}
+
+% PDF/A-1b non ammette gruppi di trasparenza, e pdftex.def (dal 2024) ne mette
+% uno su ogni PDF incluso. L'unico PDF incluso è il logo, senza trasparenza.
+\makeatletter
+\def\Gread@pdf#1{\let\Gin@decode\@empty\Gin@interpolatefalse\Gread@transgroupfalse\Gread@pdftex{#1}}
+\makeatother
 
 \usepackage[italian]{babel}
 \usepackage{todonotes}
