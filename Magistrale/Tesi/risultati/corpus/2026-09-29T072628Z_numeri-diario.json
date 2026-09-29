@@ -1,0 +1,98 @@
+{
+  "ran_at": "2026-09-29T07:26:28Z",
+  "config": {
+    "commit": "6e0be4a",
+    "modifiche_non_committate": "false",
+    "koskidex": "51d4988"
+  },
+  "lunghezza_query": {
+    "scifact": {
+      "valutazione": {
+        "file": "koskidex-beir/2026-09-23T155407Z_scifact-legacy.json",
+        "sha256": "a249ae74f03a5e583b02bcdb245f478cdca985cb20410a0ee99a2467bca73d2d",
+        "commit": "4fc2841",
+        "recupero": "all",
+        "punteggio": "legacy",
+        "analisi": "none"
+      },
+      "query": 300,
+      "parole_media": 12.51,
+      "con_risultati": {
+        "query": 10,
+        "parole_media": 8.7
+      },
+      "a_vuoto": {
+        "query": 290,
+        "parole_media": 12.64
+      }
+    },
+    "nfcorpus": {
+      "valutazione": {
+        "file": "koskidex-beir/2026-09-23T155526Z_nfcorpus-legacy.json",
+        "sha256": "02a8e256aac7d8f989d8f684e4d24de893e5c572fd7ccc99c1e05326edc16286",
+        "commit": "4fc2841",
+        "recupero": "all",
+        "punteggio": "legacy",
+        "analisi": "none"
+      },
+      "query": 323,
+      "parole_media": 3.29,
+      "con_risultati": {
+        "query": 163,
+        "parole_media": 1.96
+      },
+      "a_vuoto": {
+        "query": 160,
+        "parole_media": 4.66
+      }
+    }
+  },
+  "stopword_candidati": {
+    "senza_stopword": {
+      "file": "koskidex-beir/2026-09-23T155448Z_scifact-bm25.json",
+      "sha256": "793e165c04a1d06993f7d46a128543b8d13aa6ad1802d22b85739b80585cb962",
+      "commit": "4fc2841",
+      "recupero": "any",
+      "punteggio": "bm25",
+      "analisi": "none"
+    },
+    "con_stopword": {
+      "file": "koskidex-beir/2026-09-23T155503Z_scifact-bm25-stopwords.json",
+      "sha256": "a7038c2f5acd19575f6853eb99fa97a4697a4aec5701ef885120926baab28274",
+      "commit": "4fc2841",
+      "recupero": "any",
+      "punteggio": "bm25",
+      "analisi": "stopwords"
+    },
+    "candidati_medi": {
+      "prima": 4833,
+      "dopo": 2522
+    },
+    "delta_ndcg@10": {
+      "taglio_sopra_la_mediana": {
+        "query": 150,
+        "media": 0.0523
+      },
+      "taglio_non_sopra_la_mediana": {
+        "query": 150,
+        "media": 0.0364
+      },
+      "nessun_candidato_perso": {
+        "query": 25,
+        "media": 0.0035
+      }
+    }
+  },
+  "vocabolario_stemmer": {
+    "file": "internal/engine/testdata/itlight.txt",
+    "commit": "51d4988",
+    "righe": 35494
+  },
+  "albopop": {
+    "file": "eval/corpora/c3-albo/SOURCE.md",
+    "commit": "51d4988",
+    "sha256": "2452202cc6efc0432f5693f85b66630e6f72116e60b52fcb620b6c1cb8218db7",
+    "commit_del_file": "69ae8c6 2026-09-25",
+    "resoconto": "**AlboPOP** (`albopop.it`) era la strada che sembrava giusta: il progetto che\nconverte gli albi pretori in feed di formato comune, 253 comuni schedati, 215\ncon un feed dichiarato. Provati tutti e 215:\n\n- 105 feed rispondono ancora e hanno almeno un item\n- 71 dichiarano allegati, 9.564 in totale\n- scaricandone 14 a campione, **3 arrivano**. Gli altri rispondono `200 OK` con\n  944 byte di HTML: una pagina di errore travestita da successo\n\nI feed vivi sono quasi tutti fermi al 2021, venivano dagli scraper del progetto\nsulla ricostruzione post-terremoto, che non girano piu'. Resta un ottimo\ncatalogo di chi pubblica cosa; come sorgente di documenti non regge. **Il modo\nin cui non regge - 200 su un errore - e' la ragione per cui andava provato\nscaricando invece che contando le righe del catalogo.**"
+  }
+}

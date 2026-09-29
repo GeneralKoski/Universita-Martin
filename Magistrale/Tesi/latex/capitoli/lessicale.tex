@@ -27,8 +27,8 @@ Recall@100 e nDCG@10 sono lo stesso numero, 0,024. Il motore non ordinava male:
 non trovava.
 
 \paragraph{La causa.} Ogni termine della query è obbligatorio
-(sezione~\ref{sec:koskidex}). Una query di SciFact ha in media 12,5 termini, e
-nessun documento li contiene tutti: 290 query su 300 tornano vuote. La prova che
+(sezione~\ref{sec:koskidex}). Una query di SciFact ha in media 12,5 parole, e
+nessun documento le contiene tutte: 290 query su 300 tornano vuote. La prova che
 è la lunghezza della query, e non altro, sta nella stessa collezione: su NFCorpus
 le 163 query con risultati hanno in media 2,0 parole, le 160 vuote 4,7; su
 SciFact le 10 con risultati 8,7, le 290 vuote 12,6. Non è un errore di
@@ -254,8 +254,8 @@ termini frequentissimi. È andata al contrario (tabella~\ref{tab:stopword}).
 Le stopword fanno dieci volte lo stemmer su SciFact. La spiegazione che ne avevo
 dato era di recupero, non di punteggio: i candidati medi passano da 4.833 a 2.522,
 perché in recupero disgiuntivo ogni documento che contiene \emph{the} è un
-candidato, e le 25 query senza stopword non guadagnano quasi niente. Lo stemmer
-invece salva nove delle 24 query vuote di NFCorpus, quasi tutte plurali il cui
+candidato, e le 25 query che non perdono nessun candidato non guadagnano quasi
+niente (+0,0035 di nDCG@10). Lo stemmer invece salva nove delle 24 query vuote di NFCorpus, quasi tutte plurali il cui
 singolare nel corpus c'è: \emph{leeks}, \emph{pineapples}, \emph{turnips},
 \emph{bagels}.
 

@@ -183,15 +183,15 @@ basta mettere i file nelle cartelle indicate e dirlo.
       con lo stesso protocollo (previsioni, impronte, `evaluate`, prima e
       dopo). Guadagno atteso marginale; se non si fa, resta una riga negli
       sviluppi futuri.
-- [ ] Piccola: i numeri che stanno solo fuori da `risultati/` (dalla
-      rilettura del 28/09). In 5.1 le statistiche sulla lunghezza delle query
-      (12,5 termini; 163 query a 2,0 parole contro 160 a 4,7; 10 a 8,7 contro
-      290 a 12,6), in 5.4 le «25 query senza stopword» (`stopword-espansioni`
-      ne conta 29 con un'altra definizione), in 5.6 le 35.494 parole: stanno nel
-      diario di Koskidex; ricalcolarli con uno script e archiviarli, come
-      `strumenti/conteggi.py`. In 4.3 i numeri di AlboPOP (215 feed, 105 vivi,
-      3 allegati su 14) vengono da `SOURCE.md` di Koskidex, una prova del
-      23/09 che non si ripete: citarla come fonte o copiarla in `risultati/`.
+- [x] I numeri che stavano solo fuori da `risultati/` (dalla rilettura del
+      28/09): il 29/09 `strumenti/numeri-diario.py` li ricalcola dalle
+      valutazioni archiviate (lunghezze delle query in 5.1, candidati e le 25
+      query che non ne perdono in 5.4) e dal test di Koskidex (35.494 parole in
+      5.6), e copia con commit e impronta la prova di AlboPOP (4.3, con nota a
+      piè di pagina). Tornano tutti; in 5.1 «termini» è diventato «parole»,
+      che è quello che si conta, e in 5.4 le «25 query senza stopword» sono
+      quelle che non perdono candidati (le 29 di `stopword-espansioni` usano
+      un'altra definizione).
 - [ ] Facoltativa, **da fare al fisso di Martin** (RTX 3060 Ti, 8 GB): il
       costo del riordino di `2026-09-28_reranker` su una GPU da gaming, per
       8.4 ("su un Mac costa 12 s a query, su una scheda consumer circa 2").
