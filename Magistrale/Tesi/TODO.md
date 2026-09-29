@@ -73,7 +73,7 @@ basta mettere i file nelle cartelle indicate e dirlo.
       - `known-item-umane`: cinque previsioni su sette, due a metà (solo sulla
         metà con un numero, 4 query). ES 0,326, KC 0,432, LA 0,559, A 0,613;
       - `scelta-umane`: tre su quattro, la scelta per tipo di query vale poco;
-      - `italiano-umane`: due su quattro, stopword e stemmer aiutano solo il
+      - `italiano-umane`: una su quattro (corretto il 29/09: prima dicevo due), stopword e stemmer aiutano solo il
         congiuntivo (7,7 punti di vuoti in meno insieme);
       - `scheda-testo`: tre su cinque, il testo intero peggiora LA e A, e con
         la 4 caduta **la suddivisione dei documenti in parti non serve**; le

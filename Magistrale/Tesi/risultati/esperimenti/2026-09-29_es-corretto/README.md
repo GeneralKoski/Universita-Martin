@@ -49,6 +49,12 @@ dire con un numero.
 
 ## Esito
 
+*Nota del 29/09/2026, dal quarto controllo indipendente: le previsioni sopra
+sono state committate (`e70769b`) quando le misure di P0 e P2 di
+`2026-09-29_profilo-completo`, che ne sono il riferimento, erano già
+archiviate. Non le avevo ancora guardate, ma "prima di qualunque misura"
+vale solo per le misure di Elasticsearch corretto.*
+
 Misurato il 29/09/2026 fra le 12:51 e le 12:52, Elasticsearch 9.1.0 del
 container dell'app, script `1c2f674`, Koskidex `0e914f5` per la valutazione.
 Riassunto in `2026-09-29T105143Z_esito.json` (`analizza.py`); rapporti in

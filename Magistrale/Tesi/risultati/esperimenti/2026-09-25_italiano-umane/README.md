@@ -70,6 +70,10 @@ sono LA e LT di `2026-09-25_known-item-umane/`.
    ma le schede sono corte e una parola funzionale della query può mancare
    proprio lì.
 
+*Nota del 29/09/2026: il titolo «Due previsioni su quattro» è sbagliato. Nell'elenco
+qui sopra ne ha tenuto una sola, la seconda; la prima, la terza e la quarta sono
+smentite, come nel registro della tesi.*
+
 Le due analisi insieme, con `all`, valgono più di ciascuna: 7,7 punti di
 query a vuoto in meno (da 45 a 37) e +0,037 di MRR@10. Con `any` quasi non
 contano. Nessuna diventa un default; il recupero congiuntivo è quello di
