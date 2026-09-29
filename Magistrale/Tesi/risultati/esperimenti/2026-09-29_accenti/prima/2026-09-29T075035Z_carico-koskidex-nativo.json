@@ -1,0 +1,236 @@
+{
+  "carico": [
+    {
+      "client": 1,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 119.612,
+        "media": 0.897,
+        "n": 22203,
+        "p50": 0.64,
+        "p95": 2.031,
+        "p99": 3.463
+      },
+      "ricerche_al_secondo": 1110.1,
+      "richieste": 22203,
+      "risorse": {
+        "campioni": 40,
+        "cpu_percento": {
+          "max": 105.7,
+          "media": 94.65,
+          "n": 40,
+          "p50": 96.2,
+          "p95": 102.1,
+          "p99": 105.7
+        },
+        "memoria_mb": {
+          "max": 163.156,
+          "media": 161.435,
+          "n": 40,
+          "p50": 161.625,
+          "p95": 163.141,
+          "p99": 163.156
+        }
+      }
+    },
+    {
+      "client": 2,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 141.884,
+        "media": 0.891,
+        "n": 44741,
+        "p50": 0.602,
+        "p95": 2.038,
+        "p99": 3.124
+      },
+      "ricerche_al_secondo": 2236.9,
+      "richieste": 44741,
+      "risorse": {
+        "campioni": 40,
+        "cpu_percento": {
+          "max": 206.2,
+          "media": 187.858,
+          "n": 40,
+          "p50": 195.7,
+          "p95": 204.9,
+          "p99": 206.2
+        },
+        "memoria_mb": {
+          "max": 165.281,
+          "media": 163.252,
+          "n": 40,
+          "p50": 163.375,
+          "p95": 165.281,
+          "p99": 165.281
+        }
+      }
+    },
+    {
+      "client": 4,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 24.19,
+        "media": 0.873,
+        "n": 91350,
+        "p50": 0.635,
+        "p95": 2.062,
+        "p99": 3.218
+      },
+      "ricerche_al_secondo": 4567.3,
+      "richieste": 91350,
+      "risorse": {
+        "campioni": 40,
+        "cpu_percento": {
+          "max": 413.2,
+          "media": 405.918,
+          "n": 40,
+          "p50": 407,
+          "p95": 412.6,
+          "p99": 413.2
+        },
+        "memoria_mb": {
+          "max": 172.297,
+          "media": 170.839,
+          "n": 40,
+          "p50": 169.625,
+          "p95": 172.297,
+          "p99": 172.297
+        }
+      }
+    },
+    {
+      "client": 8,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 112.678,
+        "media": 1.401,
+        "n": 113768,
+        "p50": 1.061,
+        "p95": 3.492,
+        "p99": 6.131
+      },
+      "ricerche_al_secondo": 5687.9,
+      "richieste": 113768,
+      "risorse": {
+        "campioni": 40,
+        "cpu_percento": {
+          "max": 714.9,
+          "media": 647.803,
+          "n": 40,
+          "p50": 668.3,
+          "p95": 704.4,
+          "p99": 714.9
+        },
+        "memoria_mb": {
+          "max": 176.938,
+          "media": 176.289,
+          "n": 40,
+          "p50": 176.766,
+          "p95": 176.938,
+          "p99": 176.938
+        }
+      }
+    },
+    {
+      "client": 16,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 96.19,
+        "media": 2.8,
+        "n": 114014,
+        "p50": 1.979,
+        "p95": 7.905,
+        "p99": 14.031
+      },
+      "ricerche_al_secondo": 5699.7,
+      "richieste": 114014,
+      "risorse": {
+        "campioni": 40,
+        "cpu_percento": {
+          "max": 704,
+          "media": 641.797,
+          "n": 40,
+          "p50": 656.9,
+          "p95": 690.9,
+          "p99": 704
+        },
+        "memoria_mb": {
+          "max": 184.766,
+          "media": 184.233,
+          "n": 40,
+          "p50": 184.516,
+          "p95": 184.75,
+          "p99": 184.766
+        }
+      }
+    },
+    {
+      "client": 32,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 89.97,
+        "media": 5.649,
+        "n": 113211,
+        "p50": 3.696,
+        "p95": 17.777,
+        "p99": 29.371
+      },
+      "ricerche_al_secondo": 5655.7,
+      "richieste": 113211,
+      "risorse": {
+        "campioni": 40,
+        "cpu_percento": {
+          "max": 706.3,
+          "media": 642.48,
+          "n": 40,
+          "p50": 657.7,
+          "p95": 694.2,
+          "p99": 706.3
+        },
+        "memoria_mb": {
+          "max": 190.828,
+          "media": 188.772,
+          "n": 40,
+          "p50": 190.625,
+          "p95": 190.828,
+          "p99": 190.828
+        }
+      }
+    }
+  ],
+  "config": {
+    "client_cpu": 8,
+    "client_go": "go1.27.1",
+    "commit": "51d4988d7c0b8694366b5016cb59557c07f22549",
+    "concorrenza": "1,2,4,8,16,32",
+    "docker_vm": "4 8323465216",
+    "durata_s": 20,
+    "famiglie": {
+      "confronto-24": {
+        "query": 24,
+        "sha256": "0b876340836f078fffcd480b50ba96b9b1b578bd5f42ea4265074afbb335af8a"
+      },
+      "known-item-auto": {
+        "query": 300,
+        "sha256": "e97f0878488d67b3c74506824a6c1998d051cf8dfa788a952b8c0acc668e33dd"
+      },
+      "umane": {
+        "query": 76,
+        "sha256": "b841bbc54bc0b10ab632e5e325096e9f0d83896f1e2e4951c876cd473c1784da"
+      }
+    },
+    "indice": "search-documents-local",
+    "modifiche_non_committate": "false",
+    "modo": "carico",
+    "motore": "koskidex",
+    "pid": 53062,
+    "query": 400,
+    "riscaldamento_s": 5,
+    "seme": 20260928,
+    "senza_cache": true,
+    "url": "http://localhost:7714",
+    "versione": "51d4988"
+  },
+  "ran_at": "2026-09-29T07:48:05Z"
+}

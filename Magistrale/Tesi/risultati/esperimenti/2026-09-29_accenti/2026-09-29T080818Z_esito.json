@@ -1,0 +1,385 @@
+{
+  "ran_at": "2026-09-29T08:08:18Z",
+  "config": {
+    "commit": "72e18e6",
+    "modifiche_non_committate": "false",
+    "koskidex": {
+      "prima": [
+        "51d4988"
+      ],
+      "dopo": [
+        "df6f62b"
+      ]
+    },
+    "esiti": {
+      "prima": {
+        "carico-koskidex-docker": "2026-09-29T075459Z_carico-koskidex-docker.json",
+        "carico-koskidex-nativo": "2026-09-29T075729Z_carico-koskidex-nativo.json",
+        "profilo-carico-koskidex-nativo": "2026-09-29T075854Z_profilo-carico-koskidex-nativo.json",
+        "seq-koskidex-docker": "2026-09-29T075227Z_seq-koskidex-docker.json",
+        "seq-koskidex-docker-100000": "2026-09-29T075805Z_seq-koskidex-docker-100000.json",
+        "seq-koskidex-nativo": "2026-09-29T075229Z_seq-koskidex-nativo.json"
+      },
+      "dopo": {
+        "carico-koskidex-docker": "2026-09-29T080332Z_carico-koskidex-docker.json",
+        "carico-koskidex-nativo": "2026-09-29T080602Z_carico-koskidex-nativo.json",
+        "profilo-carico-koskidex-nativo": "2026-09-29T080724Z_profilo-carico-koskidex-nativo.json",
+        "seq-koskidex-docker": "2026-09-29T080100Z_seq-koskidex-docker.json",
+        "seq-koskidex-docker-100000": "2026-09-29T080635Z_seq-koskidex-docker-100000.json",
+        "seq-koskidex-nativo": "2026-09-29T080102Z_seq-koskidex-nativo.json"
+      }
+    }
+  },
+  "sequenziale": {
+    "seq-koskidex-docker": {
+      "p50": [
+        0.93,
+        0.892
+      ],
+      "p95": [
+        2.357,
+        2.279
+      ],
+      "p99": [
+        3.552,
+        3.009
+      ]
+    },
+    "seq-koskidex-nativo": {
+      "p50": [
+        0.594,
+        0.593
+      ],
+      "p95": [
+        1.968,
+        1.923
+      ],
+      "p99": [
+        2.508,
+        2.394
+      ]
+    },
+    "seq-koskidex-docker-100000": {
+      "p50": [
+        1.473,
+        1.418
+      ],
+      "p95": [
+        10.029,
+        9.833
+      ],
+      "p99": [
+        14.946,
+        13.397
+      ]
+    }
+  },
+  "carico": {
+    "carico-koskidex-docker": [
+      {
+        "client": 1,
+        "qps": [
+          880.4,
+          887.2
+        ],
+        "p99": [
+          2.92,
+          2.793
+        ],
+        "memoria_max_mb": [
+          170.2,
+          168.4
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 2,
+        "qps": [
+          1440.7,
+          1413.9
+        ],
+        "p99": [
+          4.016,
+          3.872
+        ],
+        "memoria_max_mb": [
+          174.4,
+          171.9
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 4,
+        "qps": [
+          2372.5,
+          2363.6
+        ],
+        "p99": [
+          4.85,
+          4.847
+        ],
+        "memoria_max_mb": [
+          178.3,
+          177.3
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 8,
+        "qps": [
+          2944.6,
+          3352.3
+        ],
+        "p99": [
+          9.683,
+          7.006
+        ],
+        "memoria_max_mb": [
+          185.4,
+          176.2
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 16,
+        "qps": [
+          3535.3,
+          4054
+        ],
+        "p99": [
+          17.987,
+          13.109
+        ],
+        "memoria_max_mb": [
+          187.1,
+          177.7
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 32,
+        "qps": [
+          3854.3,
+          3963.3
+        ],
+        "p99": [
+          30.509,
+          29.779
+        ],
+        "memoria_max_mb": [
+          192.4,
+          178.9
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      }
+    ],
+    "carico-koskidex-nativo": [
+      {
+        "client": 1,
+        "qps": [
+          1128.8,
+          1197.6
+        ],
+        "p99": [
+          3.05,
+          2.476
+        ],
+        "memoria_max_mb": [
+          163.5,
+          167.625
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 2,
+        "qps": [
+          2365.5,
+          2396.4
+        ],
+        "p99": [
+          2.639,
+          2.544
+        ],
+        "memoria_max_mb": [
+          166.547,
+          168.344
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 4,
+        "qps": [
+          4680.4,
+          4534.3
+        ],
+        "p99": [
+          2.894,
+          3.136
+        ],
+        "memoria_max_mb": [
+          170.547,
+          172.891
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 8,
+        "qps": [
+          6227.7,
+          5808.6
+        ],
+        "p99": [
+          5.307,
+          6.03
+        ],
+        "memoria_max_mb": [
+          177.563,
+          179.422
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 16,
+        "qps": [
+          6414.8,
+          6525.5
+        ],
+        "p99": [
+          11.828,
+          11.656
+        ],
+        "memoria_max_mb": [
+          181.766,
+          179.156
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      },
+      {
+        "client": 32,
+        "qps": [
+          6027.8,
+          6093.8
+        ],
+        "p99": [
+          27.271,
+          26.317
+        ],
+        "memoria_max_mb": [
+          184.484,
+          181.719
+        ],
+        "errori": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "allocazioni": {
+    "prima": {
+      "mb_per_ricerca": 0.0779,
+      "mb_totali": 18156.87,
+      "ricerche": 233041,
+      "chain_kb_per_ricerca": 27.27,
+      "chain_quota": 35.0,
+      "profilo": "2026-09-29T075854Z_allocs.pb.gz"
+    },
+    "dopo": {
+      "mb_per_ricerca": 0.0525,
+      "mb_totali": 13425.36,
+      "ricerche": 255844,
+      "chain_kb_per_ricerca": 0.014,
+      "chain_quota": 0.03,
+      "profilo": "2026-09-29T080724Z_allocs.pb.gz"
+    }
+  },
+  "impronte": {
+    "10018": {
+      "query": 429,
+      "diverse": 0,
+      "errori": [
+        0,
+        0
+      ]
+    },
+    "100000": {
+      "query": 429,
+      "diverse": 0,
+      "errori": [
+        0,
+        0
+      ]
+    }
+  },
+  "evaluate_uguali": {
+    "known-item-auto-baseline": true,
+    "known-item-auto-bm25-all": true,
+    "known-item-auto-bm25-any": true,
+    "nfcorpus-baseline": true,
+    "nfcorpus-bm25-all": true,
+    "nfcorpus-bm25-any": true,
+    "scifact-baseline": true,
+    "scifact-bm25-all": true,
+    "scifact-bm25-any": true
+  },
+  "previsioni": {
+    "1": {
+      "previsione": "nessun risultato cambia (impronte a 10.018 e 100.000, metriche di evaluate)",
+      "valore": "impronte diverse 0 e 0 su 429; evaluate uguali 9 su 9",
+      "esito": "confermata"
+    },
+    "2": {
+      "previsione": "allocazioni per ricerca almeno -25% nel profilo a 8 client",
+      "valore": "0.078 -> 0.052 MB, 33% in meno",
+      "esito": "confermata"
+    },
+    "3": {
+      "previsione": "transform.Chain sotto 1 KB a ricerca",
+      "valore": "27.27 -> 0.014 KB a ricerca",
+      "esito": "confermata"
+    },
+    "4": {
+      "previsione": "capacità nativa, massimo fra -3% e +15%",
+      "valore": "6414.8 -> 6525.5 ricerche/s (+1.7%)",
+      "esito": "confermata"
+    },
+    "5": {
+      "previsione": "una alla volta nel container, p50 non peggiora di più del 5%",
+      "valore": "0.93 -> 0.892 ms (-4.1%)",
+      "esito": "confermata"
+    }
+  }
+}

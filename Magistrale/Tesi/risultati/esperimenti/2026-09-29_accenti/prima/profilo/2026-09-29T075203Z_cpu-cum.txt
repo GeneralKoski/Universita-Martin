@@ -1,0 +1,49 @@
+# koskidex 51d4988, profilo CPU cumulativo
+File: koskidex
+Type: cpu
+Time: 2026-09-29 09:51:29 CEST
+Duration: 20.16s, Total samples = 122.70s (608.64%)
+Showing nodes accounting for 104.72s, 85.35% of 122.70s total
+Dropped 482 nodes (cum <= 0.61s)
+Showing top 40 nodes out of 90
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%    115.72s 94.31%  net/http.(*conn).serve
+         0     0%     0%     62.62s 51.04%  internal/poll.ignoringEINTRIO (inline)
+         0     0%     0%     62.62s 51.04%  syscall.syscall
+         0     0%     0%     62.62s 51.04%  syscall.syscalln
+    62.60s 51.02% 51.02%     62.60s 51.02%  syscall.rawsyscalln
+         0     0% 51.02%     61.51s 50.13%  bufio.(*Writer).Flush
+         0     0% 51.02%     61.41s 50.05%  internal/poll.(*FD).Write
+         0     0% 51.02%     61.41s 50.05%  net.(*conn).Write
+         0     0% 51.02%     61.41s 50.05%  net.(*netFD).Write
+         0     0% 51.02%     61.41s 50.05%  net/http.checkConnErrorWriter.Write
+         0     0% 51.02%     61.40s 50.04%  syscall.Write (inline)
+         0     0% 51.02%     61.40s 50.04%  syscall.write
+         0     0% 51.02%     59.91s 48.83%  net/http.(*response).finishRequest
+     0.01s 0.0081% 51.03%     54.24s 44.21%  net/http.serverHandler.ServeHTTP
+     0.01s 0.0081% 51.04%     54.23s 44.20%  github.com/GeneralKoski/Koskidex/internal/server.(*Server).ServeHTTP
+         0     0% 51.04%     54.19s 44.16%  net/http.(*ServeMux).ServeHTTP
+     0.02s 0.016% 51.05%     54.18s 44.16%  github.com/GeneralKoski/Koskidex/internal/server.(*Server).handleSearch
+         0     0% 51.05%     54.18s 44.16%  net/http.HandlerFunc.ServeHTTP
+     0.01s 0.0081% 51.06%     51.33s 41.83%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).SearchScored
+     0.42s  0.34% 51.40%     45.07s 36.73%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).candidatiCongiuntiviLocked
+     0.01s 0.0081% 51.41%     40.14s 32.71%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).matchedTermsLocked
+     1.53s  1.25% 52.66%     40.12s 32.70%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked
+     0.14s  0.11% 52.77%     20.76s 16.92%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked.func3 (inline)
+     2.72s  2.22% 54.99%     19.92s 16.23%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked.func2 (partial-inline)
+    14.41s 11.74% 66.73%     14.41s 11.74%  runtime.memequal
+     0.02s 0.016% 66.75%     13.35s 10.88%  strings.HasPrefix (inline)
+     0.37s   0.3% 67.05%     13.33s 10.86%  internal/stringslite.HasPrefix (inline)
+     0.55s  0.45% 67.50%     10.16s  8.28%  runtime.mapIterNext
+     6.35s  5.18% 72.67%      9.68s  7.89%  internal/runtime/maps.(*Iter).Next
+     4.73s  3.85% 76.53%      9.40s  7.66%  runtime.mapaccess2_faststr
+     0.40s  0.33% 76.85%      9.28s  7.56%  runtime.mapaccess1_faststr
+     0.50s  0.41% 77.26%      7.68s  6.26%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzyCandidates
+     6.05s  4.93% 82.19%      6.65s  5.42%  github.com/GeneralKoski/Koskidex/internal/engine.DamerauLevenshtein
+         0     0% 82.19%      6.55s  5.34%  runtime.systemstack
+     0.50s  0.41% 82.60%      5.16s  4.21%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).docsForTermsLocked
+     2.47s  2.01% 84.61%      3.09s  2.52%  internal/runtime/maps.(*Map).getWithoutKeySmallFastStr
+     0.14s  0.11% 84.73%      2.89s  2.36%  gcWriteBarrier
+         0     0% 84.73%      2.80s  2.28%  runtime.wbBufFlush
+         0     0% 84.73%      2.80s  2.28%  runtime.wbBufFlush.func1
+     0.76s  0.62% 85.35%      2.80s  2.28%  runtime.wbBufFlush1

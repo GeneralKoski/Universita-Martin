@@ -1,0 +1,39 @@
+# koskidex 51d4988, profilo CPU di 20 s a 8 client
+File: koskidex
+Type: cpu
+Time: 2026-09-29 09:51:29 CEST
+Duration: 20.16s, Total samples = 122.70s (608.64%)
+Showing nodes accounting for 115.51s, 94.14% of 122.70s total
+Dropped 482 nodes (cum <= 0.61s)
+Showing top 30 nodes out of 90
+      flat  flat%   sum%        cum   cum%
+    62.60s 51.02% 51.02%     62.60s 51.02%  syscall.rawsyscalln
+    14.41s 11.74% 62.76%     14.41s 11.74%  runtime.memequal
+     6.35s  5.18% 67.94%      9.68s  7.89%  internal/runtime/maps.(*Iter).Next
+     6.05s  4.93% 72.87%      6.65s  5.42%  github.com/GeneralKoski/Koskidex/internal/engine.DamerauLevenshtein
+     4.73s  3.85% 76.72%      9.40s  7.66%  runtime.mapaccess2_faststr
+     2.72s  2.22% 78.94%     19.92s 16.23%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked.func2 (partial-inline)
+     2.47s  2.01% 80.95%      3.09s  2.52%  internal/runtime/maps.(*Map).getWithoutKeySmallFastStr
+     1.88s  1.53% 82.49%      1.89s  1.54%  runtime.usleep
+     1.80s  1.47% 83.95%      1.80s  1.47%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked.func1
+     1.65s  1.34% 85.30%      1.97s  1.61%  runtime.tryDeferToSpanScan
+     1.62s  1.32% 86.62%      1.62s  1.32%  internal/runtime/maps.memHashAES
+     1.53s  1.25% 87.86%     40.12s 32.70%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked
+     1.36s  1.11% 88.97%      1.36s  1.11%  runtime.kevent
+     0.76s  0.62% 89.59%      2.80s  2.28%  runtime.wbBufFlush1
+     0.68s  0.55% 90.15%      0.68s  0.55%  runtime.pthread_kill
+     0.68s  0.55% 90.70%      0.68s  0.55%  unicode/utf8.RuneCountInString (inline)
+     0.55s  0.45% 91.15%     10.16s  8.28%  runtime.mapIterNext
+     0.50s  0.41% 91.56%      5.16s  4.21%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).docsForTermsLocked
+     0.50s  0.41% 91.96%      7.68s  6.26%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzyCandidates
+     0.42s  0.34% 92.31%     45.07s 36.73%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).candidatiCongiuntiviLocked
+     0.40s  0.33% 92.63%      9.28s  7.56%  runtime.mapaccess1_faststr
+     0.37s   0.3% 92.93%     13.33s 10.86%  internal/stringslite.HasPrefix (inline)
+     0.32s  0.26% 93.19%      1.34s  1.09%  runtime.scanObject
+     0.30s  0.24% 93.44%      1.02s  0.83%  runtime.findObject
+     0.26s  0.21% 93.65%      1.11s   0.9%  runtime.mapassign_faststr
+     0.26s  0.21% 93.86%      0.94s  0.77%  runtime.scanObjectsSmall
+     0.14s  0.11% 93.98%      2.89s  2.36%  gcWriteBarrier
+     0.14s  0.11% 94.09%     20.76s 16.92%  github.com/GeneralKoski/Koskidex/internal/engine.(*InvertedIndex).fuzzySearchTermsLocked.func3 (inline)
+     0.04s 0.033% 94.12%      1.01s  0.82%  runtime.mallocgc
+     0.02s 0.016% 94.14%     54.18s 44.16%  github.com/GeneralKoski/Koskidex/internal/server.(*Server).handleSearch
