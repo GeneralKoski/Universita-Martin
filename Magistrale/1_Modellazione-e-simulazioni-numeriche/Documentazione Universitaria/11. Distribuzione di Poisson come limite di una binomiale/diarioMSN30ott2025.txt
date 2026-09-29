@@ -1,0 +1,76 @@
+nn1 = puntiRetta(2,10,1e5);
+nn2 = puntiRetta(1,20,1e6);
+nn3 = puntiRetta(2,10,1e6);
+edit puntiRetta.m
+help puntiRetta
+  out=<strong>puntiRetta</strong>(lam,l,N,x)
+  lam densità dei punti
+  l ampiezza finestra di osservazione
+  N numero di prove
+  l0=l*x larghezza intervallo su cui sono distribuiti i punti
+  out matrice 2xn con sulla prima riga le frequenze e sulla seconda i
+  conteggi
+
+edit puntiRetta.m
+subplot(221)
+bar(nn1(2,:),nn1(1,:))
+nn1(2,:)
+
+ans =
+
+  Columns 1 through 21
+
+     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20    21    22    23    24    25
+
+  Columns 22 through 37
+
+    26    27    28    29    30    31    32    33    34    35    36    37    38    39    40    41
+
+subplot(222)
+shg
+bar(nn3(2,:),nn3(1,:))
+shg
+subplot(223)
+bar(nn2(2,:),nn2(1,:))
+shg
+ax = [0 50 0 0.11]
+
+ax =
+
+         0   50.0000         0    0.1100
+
+subplot(221)
+axis(ax)
+subplot(222)
+axis(ax)
+subplot(223)
+axis(ax)
+shg
+bar(nn2(2,:),poisspdf(nn2(2,:),20),'r')
+subplot(223)
+bar(nn2(2,:),nn2(1,:))
+subplot(224)
+bar(nn2(2,:),poisspdf(nn2(2,:),20),'r')
+axis(ax)
+subplot(223)
+axis(ax)
+shg
+sum(nn1(2,:).*nn1(1,:))
+
+ans =
+
+   19.9839
+
+sum(nn2(2,:).*nn2(1,:))
+
+ans =
+
+   19.9950
+
+sum(nn3(2,:).*nn3(1,:))
+
+ans =
+
+   19.9895
+
+diary off

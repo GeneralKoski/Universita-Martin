@@ -1,0 +1,289 @@
+what
+
+MATLAB Code files in the current folder /Users/francescodirenzo/Work/didattica/ModSimMag2526/13nov
+
+CercaCluster         GraficoPercolazione  
+
+
+rand(12)<0.6
+
+ans =
+
+  12×12 <a href="matlab:helpPopup('logical')" style="font-weight:bold">logical</a> array
+
+   0   0   1   1   1   0   0   1   0   0   0   0
+   0   1   1   1   1   0   1   0   1   1   0   0
+   1   0   0   1   0   0   0   1   1   0   1   1
+   1   1   1   0   1   1   0   1   1   1   0   1
+   0   1   1   1   1   1   1   0   1   1   1   1
+   0   1   0   1   0   0   0   0   1   0   1   0
+   1   1   1   1   1   1   1   1   0   1   0   0
+   1   1   0   0   0   1   0   1   1   0   1   0
+   1   0   0   0   0   1   0   1   0   0   1   1
+   1   1   1   0   0   0   1   0   0   0   0   1
+   0   0   1   0   0   1   1   0   1   1   1   0
+   1   1   1   1   0   1   0   0   0   0   1   1
+
+rand(20)<0.6
+
+ans =
+
+  20×20 <a href="matlab:helpPopup('logical')" style="font-weight:bold">logical</a> array
+
+   0   0   0   0   1   1   0   1   0   0   1   1   0   0   1   1   1   0   1   1
+   0   0   1   1   1   1   1   1   1   0   0   0   0   1   0   1   1   0   1   0
+   1   1   0   1   1   1   1   1   1   0   0   1   1   1   1   0   1   0   0   1
+   1   0   1   0   1   1   1   0   1   0   1   1   1   0   1   0   0   1   1   0
+   1   1   1   1   1   1   1   0   1   1   0   0   1   1   0   1   0   1   1   1
+   1   1   0   0   1   1   1   1   1   0   1   1   1   0   0   0   0   0   1   0
+   0   1   1   0   1   1   0   1   1   1   0   1   1   0   0   1   1   1   1   1
+   0   0   1   1   0   0   0   1   1   0   1   0   1   0   1   1   1   0   1   0
+   1   1   1   1   1   1   1   1   0   1   0   0   0   1   1   1   0   0   0   1
+   1   0   1   1   1   0   1   1   1   1   0   1   0   0   1   1   0   1   0   1
+   0   1   0   1   0   0   1   1   1   1   0   0   0   1   1   0   1   1   0   0
+   0   1   0   0   1   0   1   0   1   1   1   0   0   1   1   1   0   1   0   1
+   1   1   1   0   0   0   1   1   0   0   0   0   0   1   1   0   1   0   0   1
+   0   0   0   1   1   1   1   0   0   1   1   0   0   0   0   0   0   1   1   1
+   0   1   0   1   1   0   1   1   1   1   1   1   0   0   1   0   1   1   1   1
+   0   0   1   1   0   1   0   1   0   0   0   1   1   0   0   1   0   0   1   0
+   0   1   1   0   1   1   1   0   0   1   1   1   1   1   1   1   0   0   1   0
+   1   1   1   1   1   1   0   1   1   1   1   1   1   1   1   0   1   0   0   0
+   1   1   0   0   1   0   1   0   1   1   1   0   1   1   1   1   1   1   1   0
+   1   1   1   1   0   0   0   0   1   1   0   1   0   1   0   1   0   1   1   1
+
+help CercaCluster
+  <strong>CercaCluster</strong> trova i cluster su un reticolo L x L con probabilità p di
+  avere un sito colorato
+ 
+  input:
+        L: lunghezza lato matrice
+        p: probabilità di colorare un sito della matrice
+ 
+  ritorna:
+        res.p: probabilità di avere un sito colorato
+        res.matrice: matrice dei siti colorati
+        res.label: matrice delle etichette dei cluster trovati
+        res.percolazioneTB: valore di esistenza di percolazione partendo
+        dal bordo superiore al bordo inferiore       
+        res.percolazioneLR: valore di esistenza di percolazione partendo
+        dal bordo sinistro al bordo destro
+
+help CercaCluster
+  res = <strong>CercaCluster</strong>(L, p)
+  <strong>CercaCluster</strong> trova i cluster su un reticolo L x L con probabilità p di
+  avere un sito colorato
+ 
+  input:
+        L: lunghezza lato matrice
+        p: probabilità di colorare un sito della matrice
+ 
+  ritorna:
+        res.p: probabilità di avere un sito colorato
+        res.matrice: matrice dei siti colorati
+        res.label: matrice delle etichette dei cluster trovati
+        res.percolazioneTB: valore di esistenza di percolazione partendo
+        dal bordo superiore al bordo inferiore       
+        res.percolazioneLR: valore di esistenza di percolazione partendo
+        dal bordo sinistro al bordo destro
+
+RR = CercaCluster(20,0.3)
+
+RR = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+           matrice: [20×20 double]
+    percolazioneTB: 0
+    percolazioneLR: 0
+                 p: 0.3000
+             label: [20×20 double]
+
+RR.matrice
+
+ans =
+
+     0     0     0     1     0     0     0     0     1     1     0     1     0     0     0     1     0     0     0     1
+     0     0     0     0     0     0     0     0     0     0     1     0     0     0     0     0     1     0     1     0
+     0     0     1     0     0     0     0     1     0     0     1     0     0     0     1     0     0     0     0     1
+     0     0     0     0     0     0     1     0     0     0     0     1     0     0     0     1     0     0     0     0
+     1     0     0     0     1     0     0     0     0     0     1     0     1     0     0     1     1     0     1     0
+     0     0     0     0     0     0     0     1     0     0     0     0     1     1     0     1     0     0     0     0
+     1     0     0     0     0     0     0     1     0     1     1     1     1     0     1     0     0     0     0     0
+     0     0     1     1     1     0     0     0     1     0     1     1     0     0     0     0     0     1     0     1
+     0     0     0     0     0     0     0     1     0     0     0     1     0     0     1     1     0     0     0     0
+     0     0     0     1     1     1     1     0     0     0     0     0     0     0     0     0     0     0     0     1
+     0     1     1     0     0     0     0     0     0     0     0     1     0     0     1     1     1     1     0     0
+     0     0     0     1     1     0     0     0     1     0     0     0     0     0     0     0     0     0     0     0
+     0     1     0     0     0     0     0     1     0     0     0     0     0     0     0     1     1     1     0     0
+     0     1     0     0     0     0     1     0     0     0     0     0     0     1     0     1     0     0     0     1
+     0     1     0     0     1     0     0     0     0     0     0     0     0     0     0     1     0     0     1     1
+     0     0     1     0     0     0     0     0     1     1     0     0     0     0     0     1     0     1     0     0
+     0     0     1     0     1     0     0     1     0     1     1     0     1     0     0     0     0     0     1     0
+     0     0     0     0     1     1     0     1     0     0     1     0     0     1     0     0     0     0     0     0
+     0     0     0     0     1     0     0     0     0     0     1     1     1     0     0     0     0     0     0     1
+     0     0     0     0     1     1     0     1     0     1     1     0     0     0     0     1     0     0     0     0
+
+RR
+
+RR = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+           matrice: [20×20 double]
+    percolazioneTB: 0
+    percolazioneLR: 0
+                 p: 0.3000
+             label: [20×20 double]
+
+RR.label
+
+ans =
+
+     0     0     0     8     0     0     0     0    22    22     0    29     0     0     0    39     0     0     0    50
+     0     0     0     0     0     0     0     0     0     0    27     0     0     0     0     0    43     0    46     0
+     0     0     5     0     0     0     0    16     0     0    27     0     0     0    35     0     0     0     0    51
+     0     0     0     0     0     0    14     0     0     0     0    30     0     0     0    40     0     0     0     0
+     1     0     0     0    11     0     0     0     0     0    28     0    26     0     0    40    40     0    47     0
+     0     0     0     0     0     0     0    17     0     0     0     0    26    26     0    40     0     0     0     0
+     2     0     0     0     0     0     0    17     0    26    26    26    26     0    36     0     0     0     0     0
+     0     0     6     6     6     0     0     0    23     0    26    26     0     0     0     0     0    44     0    52
+     0     0     0     0     0     0     0    18     0     0     0    26     0     0    37    37     0     0     0     0
+     0     0     0     9     9     9     9     0     0     0     0     0     0     0     0     0     0     0     0    53
+     0     3     3     0     0     0     0     0     0     0     0    31     0     0    38    38    38    38     0     0
+     0     0     0    10    10     0     0     0    24     0     0     0     0     0     0     0     0     0     0     0
+     0     4     0     0     0     0     0    19     0     0     0     0     0     0     0    41    41    41     0     0
+     0     4     0     0     0     0    15     0     0     0     0     0     0    33     0    41     0     0     0    48
+     0     4     0     0    12     0     0     0     0     0     0     0     0     0     0    41     0     0    48    48
+     0     0     7     0     0     0     0     0    25    25     0     0     0     0     0    41     0    45     0     0
+     0     0     7     0    13     0     0    20     0    25    25     0    32     0     0     0     0     0    49     0
+     0     0     0     0    13    13     0    20     0     0    25     0     0    34     0     0     0     0     0     0
+     0     0     0     0    13     0     0     0     0     0    25    25    25     0     0     0     0     0     0    54
+     0     0     0     0    13    13     0    21     0    25    25     0     0     0     0    42     0     0     0     0
+
+m = 1:12
+
+m =
+
+     1     2     3     4     5     6     7     8     9    10    11    12
+
+find(m>4)
+
+ans =
+
+     5     6     7     8     9    10    11    12
+
+m = rand(1,12)
+
+m =
+
+    0.6357    0.2299    0.3812    0.6313    0.9622    0.1817    0.4184    0.1495    0.5388    0.6185    0.7263    0.1784
+
+find(m>0.5)
+
+ans =
+
+     1     4     5     9    10    11
+
+m = randi(1)
+
+m =
+
+     1
+
+m = round(rand(1,12))
+
+m =
+
+     0     0     0     1     0     0     1     0     1     1     1     1
+
+find(m)
+
+ans =
+
+     4     7     9    10    11    12
+
+mm = randn(12)
+
+mm =
+
+    1.0325    0.4564   -0.0549   -0.8413   -1.2223    0.9807    0.3879    1.0802   -0.2122    0.0925    0.8989   -0.9636
+   -1.6832   -0.4953    0.3471    0.8949    0.5238   -1.4826    1.7995   -1.2768   -0.1630    0.4187   -2.3157    0.8620
+   -0.3174   -0.4927    0.1018   -0.0614    0.8482   -0.2929   -1.1686    0.7224   -1.4767   -0.0377   -0.3858   -0.4293
+   -0.6534   -0.8927    0.4447    1.5653    0.6104    0.3159    2.2086    0.3552    0.2116   -0.1157    1.2744    1.3675
+    2.4020    0.3733   -1.8142   -1.4834   -0.3682   -0.2660   -1.7566    0.4208   -0.0154    0.4405    2.2546    1.6669
+   -1.1340    0.0720   -0.9483    1.5768   -1.9432   -1.3859   -0.8143   -1.0181    1.4317   -0.5816    1.6530   -0.0412
+   -2.0017   -0.2830    0.2065    0.7087    0.5652    1.2887   -0.9217    0.8795   -0.2685    0.2295   -0.0951    0.3999
+   -0.7094   -1.3493   -0.3663    0.1418    1.5777   -2.0512    2.1816   -0.2241   -0.6380    0.4565    0.2697   -0.9556
+    1.6125    0.4118    0.0461   -0.1395   -1.1374   -0.6799    1.5521    0.2328   -1.8625    0.4683    0.1491    1.3326
+   -1.0866   -0.7354    0.1328   -1.1753   -1.4941   -0.5335    0.3410    1.3833   -1.1859    2.3444   -0.7016    0.0204
+   -0.2439   -0.4862    0.1680    0.0813    0.2696    0.9027   -0.0738   -0.4217    0.8346    0.0934    0.4977    0.5093
+    1.7296    0.3877    1.2778   -1.2099   -0.3901    2.2326   -0.4123    0.7794    1.0003    0.2488   -1.1205   -0.8775
+
+mm = randn(8)
+
+mm =
+
+   -1.3035    1.5129   -0.2089    0.5576    0.6752   -0.6143   -0.4063    2.4077
+    0.0773   -0.7248   -1.4604   -1.5780    0.6905    0.2772    1.3973    0.8379
+   -0.6966    0.8674    0.4396    0.5780    0.0177   -0.8079    0.6056   -1.2345
+   -0.2970   -1.0687    1.8518   -0.0317    0.9013   -0.5093   -0.9567    1.0669
+    1.5200    1.0176    0.4694   -1.0373   -1.0070    1.6068    0.4110    0.8478
+    0.5219    0.2815    1.3652    0.2228   -1.2493    0.0416    1.9471   -0.0887
+   -0.5490   -0.0595   -0.4709   -1.5991   -0.5382   -1.2981    0.4739    0.9341
+   -0.1499    1.4704    0.8415    0.2160   -0.2825    0.0405    1.2824    0.0822
+
+mm(1,2)
+
+ans =
+
+    1.5129
+
+mm(17)
+
+ans =
+
+   -0.2089
+
+mm = 1:49
+
+mm =
+
+  Columns 1 through 20
+
+     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+
+  Columns 21 through 40
+
+    21    22    23    24    25    26    27    28    29    30    31    32    33    34    35    36    37    38    39    40
+
+  Columns 41 through 49
+
+    41    42    43    44    45    46    47    48    49
+
+mm = reshape(mm,7,7)
+
+mm =
+
+     1     8    15    22    29    36    43
+     2     9    16    23    30    37    44
+     3    10    17    24    31    38    45
+     4    11    18    25    32    39    46
+     5    12    19    26    33    40    47
+     6    13    20    27    34    41    48
+     7    14    21    28    35    42    49
+
+RR
+
+RR = 
+
+  <a href="matlab:helpPopup('struct')" style="font-weight:bold">struct</a> with fields:
+
+           matrice: [20×20 double]
+    percolazioneTB: 0
+    percolazioneLR: 0
+                 p: 0.3000
+             label: [20×20 double]
+
+tic,GraficoPercolazione,toc
+Elapsed time is 78.148789 seconds.
+diary off

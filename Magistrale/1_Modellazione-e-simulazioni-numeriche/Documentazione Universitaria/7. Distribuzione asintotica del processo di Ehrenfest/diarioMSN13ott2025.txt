@@ -1,0 +1,215 @@
+load MSN9ott2025.mat
+whos
+  Name        Size                         Bytes  Class     Attributes
+
+  ff100       1x101                          808  double              
+  ff1000      1x1001                        8008  double              
+  ff500       1x501                         4008  double              
+  nn100       1x10000001                80000008  double              
+  nn1000      1x1000000001            8000000008  double              
+  nn500       1x100000001              800000008  double              
+
+plot(nn100)
+plot(nn1000(1:100:end))
+subplot(211)
+plot(nn100)
+subplot(212)
+plot(nn1000(1:100:end))
+shg
+subplot(311)
+bar(0:1e2,ff100)
+shg
+close all
+subplot(311)
+hist(nnn(5000:end))
+{The end operator must be used within an array index expression.
+} 
+bar(0:1e2,ff100)
+shg
+subplot(312)
+bar(0:5e2,ff500)
+shg
+subplot(313)
+bar(0:1e3,ff1000)
+shg
+subplot(313)
+axis
+
+ans =
+
+   1.0e+03 *
+
+   -0.0012    1.0012         0    0.0000
+
+ax = axis
+
+ax =
+
+   1.0e+03 *
+
+   -0.0012    1.0012         0    0.0000
+
+subplot(311)
+ax0 = axis
+
+ax0 =
+
+   -1.2000  101.2000         0    0.0800
+
+ax(4) = ax0(4)
+
+ax =
+
+   1.0e+03 *
+
+   -0.0012    1.0012         0    0.0001
+
+subplot(311)
+axis(ax)
+subplot(312)
+axis(ax)
+subplot(313)
+axis(ax)
+shg
+subplot(313)
+bar(0:1e3,ff1000)
+subplot(312)
+bar(0:5e2,ff500)
+subplot(311)
+bar(0:1e2,ff100)
+shg
+close all
+help binopdf
+ <strong>binopdf</strong> - Binomial probability density function
+    This MATLAB function computes the binomial probability density function
+    at each of the values in x using the corresponding number of trials in n
+    and probability of success for each trial in p.
+
+    Syntax
+      y = <strong>binopdf</strong>(x,n,p)
+
+    Input Arguments
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/stats/binopdf.html#mw_bd43323e-13cc-4d69-b684-f3d11567c51a">x</a> - Values at which to evaluate binomial pdf
+        integer from interval [0 n] | array of integers from interval [0 n]
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/stats/binopdf.html#mw_70ca4805-10eb-4959-bba9-f5de1e25a8b7">n</a> - Number of trials
+        positive integer | array of positive integers
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/stats/binopdf.html#mw_41215d82-60d1-4f3b-9457-7e6e112b38d5">p</a> - Probability of success for each trial
+        scalar value from interval [0 1] |
+        array of scalar values from interval [0 1]
+
+    Output Arguments
+      <a href="matlab:web /Applications/MATLAB_R2025a.app/help/stats/binopdf.html#mw_3f634fd4-dbd0-4afa-8c70-be4d5f2614fa">y</a> - Binomial pdf values
+        scalar value | array of scalar values
+
+    Examples
+      <a href="matlab:openExample('stats/ComputeAndPlotBinomialProbabilityDensityFunctionExample')">Compute and Plot Binomial Probability Density Function</a>
+
+    See also <a href="matlab:help pdf -displayBanner">pdf</a>, <a href="matlab:help binoinv -displayBanner">binoinv</a>, <a href="matlab:help binocdf -displayBanner">binocdf</a>, <a href="matlab:help binofit -displayBanner">binofit</a>, <a href="matlab:help binostat -displayBanner">binostat</a>, <a href="matlab:help binornd -displayBanner">binornd</a>,
+      <a href="matlab:help prob.BinomialDistribution -displayBanner">BinomialDistribution</a>
+
+    Introduced in Statistics and Machine Learning Toolbox before R2006a
+    <a href="matlab:doc binopdf">Documentation for binopdf</a>
+    <a href="matlab:matlab.lang.internal.introspective.overloads.displayOverloads('binopdf')">Other uses of binopdf</a>
+
+binopdf(50,100,0.5)
+
+ans =
+
+    0.0796
+
+subplot(321)
+bar(0:100,ff100)
+shg
+subplot(322)
+shg
+bar(0:100,binopdf(0:100,100,0.5))
+shg
+ff100(51)
+
+ans =
+
+    0.0795
+
+binopdf(50,100,0.5)
+
+ans =
+
+    0.0796
+
+binopdf(51,100,0.5)
+
+ans =
+
+    0.0780
+
+binopdf(49,100,0.5)
+
+ans =
+
+    0.0780
+
+ff100(50)
+
+ans =
+
+    0.0778
+
+ff100(49)
+
+ans =
+
+    0.0733
+
+ff100(52)
+
+ans =
+
+    0.0780
+
+ff100(51)
+
+ans =
+
+    0.0795
+
+ff100(50)
+
+ans =
+
+    0.0778
+
+binopdf(49,100,0.5)
+
+ans =
+
+    0.0780
+
+subplot(323)
+bar(0:5e2,ff500)
+shg
+subplot(324)
+bar(0:500,binopdf(0:500,500,0.5))
+shg
+subplot(325)
+bar(0:1e3,ff1000)
+subplot(326)
+bar(0:1000,binopdf(0:1000,1000,0.5))
+shg
+figure
+bar(0:100,ff100)
+hold
+Current plot held
+bar(0:100,binopdf(0:100,100,0.5),'r')
+shg
+hold
+Current plot released
+bar(0:1000,ff1000)
+shg
+hold
+Current plot held
+bar(0:1000,binopdf(0:1000,1000,0.5),'r')
+shg
+figure
+bar(0:10000,binopdf(0:10000,10000,0.5),'r')
+shg
+diary off

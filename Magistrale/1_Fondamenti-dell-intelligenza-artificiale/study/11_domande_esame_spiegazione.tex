@@ -1,0 +1,163 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{csquotes}
+\renewcommand{\arraystretch}{1.4}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\newcommand{\sym}[1]{$#1$}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Come si leggono le formule}\\[2pt]
+{\itshape Legenda \enquote{alla buona} dei simboli usati nelle risposte d'esame}
+\end{center}
+
+Questa guida serve a \textbf{leggere e capire} i simboli che trovi in
+\texttt{11\_domande\_esame.pdf}. Non devi impararli a memoria: tienila a fianco
+finché non ti vengono naturali.
+
+\section*{1. Lettere greche (sono solo \enquote{nomi})}
+
+Le lettere greche sono solo etichette per quantità: non spaventarti, ognuna ha
+un nome e un significato fisso nel corso.
+
+\begin{center}
+\begin{tabular}{>{$}c<{$} l l p{7.2cm}}
+\toprule
+\textrm{Simbolo} & \textrm{Si legge} & \textrm{Nome} & \textrm{Cosa indica nel corso} \\
+\midrule
+\varphi & \enquote{fi} & phi & funzione di attivazione (ReLU, sigmoide\dots) \\
+\psi & \enquote{psi} & psi & funzione di attivazione dell'output \\
+\sigma & \enquote{sigma} & sigma & la sigmoide $\sigma(z)=1/(1+e^{-z})$ \\
+\theta & \enquote{theta} & theta & i parametri del modello (pesi+bias), o un angolo \\
+\eta & \enquote{eta} & eta & learning rate (passo della discesa del gradiente) \\
+\delta & \enquote{delta} & delta & il \enquote{segnale di errore} nella backprop \\
+\varepsilon & \enquote{epsilon} & epsilon & un numero piccolo a piacere \\
+\nabla & \enquote{nabla} & nabla & il gradiente (vettore delle derivate) \\
+\Sigma & \enquote{sigma maiusc.} & sigma & sommatoria (somma di tanti termini) \\
+\alpha,\ \beta & \enquote{alfa, beta} & alpha, beta & coefficienti generici \\
+\gamma & \enquote{gamma} & gamma & esponente della correzione gamma (immagini) \\
+\tau & \enquote{tau} & tau & variabile di integrazione (tempo) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{2. Apici, pedici e \enquote{cappelli} (la parte che confonde)}
+
+\begin{center}
+\begin{tabular}{>{$}c<{$} l p{9.5cm}}
+\toprule
+\textrm{Scrittura} & \textrm{Si legge} & \textrm{Significato} \\
+\midrule
+x_i & \enquote{x con i} & l'$i$-esimo elemento del vettore $x$ (pedice = indice) \\
+x_0 & \enquote{x zero} & un punto/valore di partenza \\
+W^{(1)} & \enquote{W uno} & i pesi del \textbf{layer 1}. L'apice tra parentesi è il \textbf{numero dello strato}, NON un esponente! \\
+W^{(2)} & \enquote{W due} & i pesi del layer 2 \\
+x^2 & \enquote{x al quadrato} & questo sì è un esponente vero \\
+\hat{y} & \enquote{y cappello} & valore \textbf{predetto} dal modello (il \enquote{cappello} = stimato) \\
+W^{T} & \enquote{W trasposta} & la matrice ribaltata (righe$\leftrightarrow$colonne) \\
+\mathbb{R}^{N} & \enquote{erre enne} & lo spazio dei vettori di $N$ numeri reali \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Regola d'oro: \textbf{pedice = indice} (\enquote{quale elemento}); \textbf{apice
+tra parentesi = numero del layer}; \textbf{apice numerico = potenza}.
+
+\section*{3. Operatori e simboli matematici}
+
+\begin{center}
+\begin{tabular}{>{$}c<{$} l p{9.5cm}}
+\toprule
+\textrm{Simbolo} & \textrm{Si legge} & \textrm{Significato} \\
+\midrule
+\cdot & \enquote{per} & prodotto (scalare tra vettori: $w\cdot x=\sum_i w_i x_i$) \\
+\times & \enquote{per} & moltiplicazione, o dimensioni (es. $224\times 224$) \\
+\odot & \enquote{prodotto elemento per elemento} & moltiplica posizione per posizione (Hadamard) \\
+* & \enquote{convoluto con} & convoluzione (filtri, CNN) \\
+\sum_i & \enquote{sommatoria su i} & somma tutti i termini al variare di $i$ \\
+\int & \enquote{integrale} & somma \enquote{continua} (area sotto la curva) \\
+\partial & \enquote{derivata parziale} & derivata rispetto a una variabile sola \\
+\nabla f & \enquote{gradiente di f} & vettore di tutte le derivate parziali di $f$ \\
+\|x\| & \enquote{norma di x} & \enquote{lunghezza} del vettore $x$ \\
+|x| & \enquote{valore assoluto} & $x$ senza segno \\
+\sqrt{x} & \enquote{radice di x} & radice quadrata \\
+\approx & \enquote{circa uguale} & approssimativamente uguale \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{4. Simboli logici e di insiemi}
+
+\begin{center}
+\begin{tabular}{>{$}c<{$} l p{9.5cm}}
+\toprule
+\textrm{Simbolo} & \textrm{Si legge} & \textrm{Significato} \\
+\midrule
+\in & \enquote{appartiene a} & $x\in\mathbb{R}$: \enquote{x è un numero reale} \\
+\forall & \enquote{per ogni} & vale per tutti \\
+\exists & \enquote{esiste} & esiste almeno uno \\
+\Rightarrow & \enquote{implica} & se\dots allora \\
+\Leftrightarrow & \enquote{se e solo se} & vale in entrambi i versi \\
+\to & \enquote{tende a / va in} & $f:\mathbb{R}^N\to\mathbb{R}$: prende $N$ numeri, restituisce 1 numero \\
+\le,\ \ge & \enquote{minore/maggiore uguale} & disuguaglianze \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+\section*{5. Le formule chiave \enquote{lette a parole}}
+
+\subsection*{Rete neurale (MLP con un layer nascosto)}
+\[ h = \varphi(W^{(1)} x + b^{(1)}), \qquad \hat{y} = \psi(W^{(2)} h + b^{(2)}) \]
+\textbf{Si legge}: \enquote{acca uguale fi di W-uno per x più b-uno; y-cappello
+uguale psi di W-due per acca più b-due}.\\
+\textbf{Significato}: prendo l'input $x$, lo combino con i pesi $W^{(1)}$, aggiungo
+il bias $b^{(1)}$ e applico l'attivazione $\varphi$ $\rightarrow$ ottengo lo strato
+nascosto $h$. Poi rifaccio lo stesso con $h$ per ottenere la predizione $\hat{y}$.
+È \textbf{due volte lo stesso schema} \enquote{pesi$\times$input + bias, poi attivazione}.
+
+\subsection*{Discesa del gradiente}
+\[ x_{k+1} = x_k - \eta \cdot \nabla f(x_k) \]
+\textbf{Si legge}: \enquote{x al passo k+1 uguale x al passo k meno eta per il
+gradiente di f}.\\
+\textbf{Significato}: dal punto attuale mi sposto un pochino ($\eta$) nella
+direzione opposta al gradiente (cioè in \enquote{discesa}), per avvicinarmi al minimo.
+
+\subsection*{Funzione di costo MSE}
+\[ L(\theta) = \frac{1}{n}\sum_i (f_\theta(x_i) - t_i)^2 \]
+\textbf{Si legge}: \enquote{L di theta uguale uno su n, sommatoria su i, di
+(predetto meno vero) al quadrato}.\\
+\textbf{Significato}: media degli errori al quadrato tra predizione $f_\theta(x_i)$
+e valore vero $t_i$. Più è piccola, meglio il modello.
+
+\subsection*{Filtro di Sobel (bordi)}
+\[ M = \sqrt{G_x^2 + G_y^2}, \qquad \theta = \arctan2(G_y, G_x) \]
+\textbf{Si legge}: \enquote{M uguale radice di G-x quadro più G-y quadro}.\\
+\textbf{Significato}: $G_x,G_y$ sono le variazioni di luminosità in orizzontale e
+verticale; $M$ è quanto è \enquote{forte} il bordo, $\theta$ la sua direzione.
+
+\subsection*{Softmax + cross-entropy (classificazione)}
+\[ \text{softmax}(z)_i = \frac{e^{z_i}}{\sum_j e^{z_j}}, \qquad L = -\log p_c \]
+\textbf{Si legge}: \enquote{softmax di z, componente i, uguale e alla z-i diviso la
+somma di e alla z-j}.\\
+\textbf{Significato}: la softmax trasforma dei punteggi in \textbf{probabilità}
+(che sommano a 1); la cross-entropy $-\log p_c$ punisce il modello quanto più
+bassa è la probabilità data alla classe giusta $c$.
+
+\vspace{1em}
+\hrule
+\vspace{6pt}
+\textbf{Trucco per leggere qualsiasi formula}: leggi da sinistra a destra dicendo
+ad alta voce cosa fa ogni pezzo (\enquote{prendo questo, lo moltiplico per\dots,
+aggiungo\dots, applico\dots}). Se sai \emph{a parole} cosa fa, la formula la
+\textbf{ricostruisci} da solo: all'esame non serve ricordarla a memoria, serve
+capirla.
+
+\end{document}

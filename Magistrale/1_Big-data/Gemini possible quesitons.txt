@@ -1,0 +1,33 @@
+D: "Mi spieghi in due parole qual è il problema fondamentale di questo algoritmo? Perché discrimina se non usa la razza?"
+Il problema è la scelta della variabile target (Label). L'algoritmo usa i costi sanitari futuri come proxy della salute. Poiché i neri hanno meno accesso alle cure e spendono meno a parità di malattia, l'algoritmo impara che "costano meno" e quindi deduce erroneamente che "stanno meglio".
+
+D: "Cosa intende per 'Proxy'? Mi faccia un esempio in questo contesto."
+Un proxy è una variabile misurabile usata per approssimare un concetto difficile da quantificare. Qui, il "Cost" è il proxy per la "Health Needs" (bisogni di salute). L'assunto è che più stai male, più costerai. Questo assunto però fallisce per le minoranze.
+
+D: "L'algoritmo è 'Race-Blind'. Cosa significa e perché non è bastato a evitare il bias?"
+Significa che la variabile "razza" non è tra gli input forniti al modello. Non è bastato perché il bias non era negli input, ma nella label (costi) che riflette disuguaglianze strutturali della società già presenti nei dati storici.
+
+D: "Nel paper si parla di 'Calibration'. L'algoritmo era calibrato male?"
+No, l'algoritmo era ben calibrato rispetto alla variabile target (i costi). Prediceva correttamente che i pazienti neri avrebbero speso quanto i bianchi con lo stesso score. Il problema è che quella calibrazione sui costi non corrispondeva a una equità nella salute reale.
+
+D: "Come hanno fatto i ricercatori a dimostrare che i pazienti neri erano più malati? Che dati hanno usato come 'Ground Truth'?"
+Hanno usato i biomarcatori (dati biologici oggettivi) estratti dalle cartelle cliniche: livelli di emoglobina glicata, pressione arteriosa, funzionalità renale, ecc. Questi dati provano che la malattia era biologicamente più grave a parità di score algoritmico.
+
+D: "Mi ha parlato di 'Patient-Years'. Perché lo studio usa questa metrica invece di contare solo i pazienti?"
+Perché il rischio è dinamico. Lo stesso paziente può avere un rischio basso nel 2013 e alto nel 2014. L'unità di analisi corretta per un algoritmo predittivo annuale è l'anno-paziente (l'istanza di predizione), non la persona statica.
+
+D: "Lei ha detto che i neri costano meno a parità di malattia. Mi dia due motivi concreti per cui succede."
+Accesso: Difficoltà logistiche, trasporti, permessi di lavoro.
+Relazione medico-paziente: Sfiducia nel sistema, bias impliciti dei medici che prescrivono trattamenti meno costosi o specialistici.
+
+D: "Se i medici vedono che il paziente sta male, perché non correggono l'errore dell'algoritmo?"
+Lo fanno, ma solo in piccola parte (Automation Bias). Quando l'algoritmo suggerisce un rischio basso, il medico tende ad ancorarsi a quel giudizio ("anchoring"). Lo studio mostra che l'intervento umano corregge il bias solo marginalmente (dal 17,7% al 19,2%).
+
+D: "Come si risolve questo problema? Bisogna usare un algoritmo diverso? Una Random Forest invece di una Regressione?"
+No, il tipo di modello non c'entra. Bisogna cambiare la Label (l'obiettivo). Invece di predire solo i costi, bisogna addestrare il modello a predire un indice composto che include la salute reale (es. numero di malattie croniche o biomarcatori). Questo ha ridotto il bias dell'84%.
+
+D: "Questo problema riguarda solo la sanità?"
+Assolutamente no. È un rischio ovunque si usino proxy "comodi" per misurare concetti complessi. Esempi:
+Assunzioni (Proxy: recensioni passate → Bias verso donne/minoranze).
+Credito (Proxy: reddito → Bias verso chi vive in zone povere).
+Giustizia (Proxy: arresti passati → Bias verso chi è più controllato dalla polizia).

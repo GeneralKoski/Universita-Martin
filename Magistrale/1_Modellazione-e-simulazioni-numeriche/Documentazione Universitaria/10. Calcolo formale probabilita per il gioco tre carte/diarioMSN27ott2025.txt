@@ -1,0 +1,229 @@
+what
+
+MATLAB Code files in the current folder /Users/francescodirenzo/Work/didattica/ModSimMag2526/27ott2025
+
+Densita_Poission  puntiRetta        
+
+
+edit Densita_Poission.m
+Densita_Poission
+
+Frequenze =
+
+  Columns 1 through 6
+
+   0.011300000000000   0.009480000000000   0.009600000000000   0.010080000000000   0.010257000000000   0.009939200000000
+
+  Columns 7 through 10
+
+   0.010001800000000   0.009981560000000   0.010008170000000   0.010005214000000
+
+!cp Densita_Poission.m Densita_Poission_bis.m
+edit Densita_Poission_bis.m
+Densita_Poission_bis
+whos
+  Name                       Size                      Bytes  Class     Attributes
+
+  Densita                    1x1                           8  double              
+  Freq                       1x4                          32  double              
+  Frequenze                  1x10                       1512  cell                
+  Iterazioni                 1x1                           8  double              
+  L                          1x100000                 800000  double              
+  Media_Punti_Attesa         1x1                           8  double              
+  Misure                     1x10                       1512  cell                
+  Punti_Sottointervallo      1x50000000            400000000  double              
+  d                          1x1                           8  double              
+  dim                        1x1                           8  double              
+  i                          1x1                           8  double              
+  idx                        1x1                           8  double              
+  iter                       1x1                           8  double              
+  iterations                 1x10                         80  double              
+  l                          1x1                           8  double              
+  n                          1x1                           8  double              
+
+Misure{1}
+
+ans =
+
+     0     1     2     3
+
+Media_Punti_Attesa
+
+Media_Punti_Attesa =
+
+   0.100000000000000
+
+Frequenze{1}
+
+ans =
+
+   0.899000000000000   0.094000000000000   0.006000000000000   0.001000000000000
+
+Misure{end}
+
+ans =
+
+     0     1     2     3
+
+Frequenze{end}
+
+ans =
+
+   0.904377660000000   0.091354120000000   0.004179360000000   0.000088860000000
+
+Frequenze{1}
+
+ans =
+
+   0.899000000000000   0.094000000000000   0.006000000000000   0.001000000000000
+
+clear
+subplot(211)
+bar(0:3,Frequenze{1})
+{Undefined variable 'Frequenze'.
+} 
+Densita_Poission_bis
+subplot(211)
+bar(0:3,Frequenze{1})
+shg
+subplot(212)
+bar(0:3,Frequenze{end})
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('bar', '/Applications/MATLAB_R2025a.app/toolbox/matlab/graphics/graphics/specgraph/bar.m', 176)" style="font-weight:bold">bar</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2025a.app/toolbox/matlab/graphics/graphics/specgraph/bar.m',176,0)">line 176</a>)
+X must be same length as Y.
+} 
+bar(0:3,Frequenze{10})
+{Error using <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('bar', '/Applications/MATLAB_R2025a.app/toolbox/matlab/graphics/graphics/specgraph/bar.m', 176)" style="font-weight:bold">bar</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2025a.app/toolbox/matlab/graphics/graphics/specgraph/bar.m',176,0)">line 176</a>)
+X must be same length as Y.
+} 
+Misure{end}
+
+ans =
+
+     0     1     2     3     4
+
+bar(0:4,Frequenze{10})
+shg
+Frequenze{end}
+
+ans =
+
+   0.904738960000000   0.090677680000000   0.004443720000000   0.000110360000000   0.000029280000000
+
+subplot(211)
+hold;bar(0:3,poisspdf(0:3,0.1),'r')
+Current plot held
+shg
+Densita_Poission_bis
+figure
+subplot(211)
+bar(Misure{1},Frequenze{1})
+shg
+subplot(212)
+bar(Misure{end},Frequenze{end})
+ax = axis
+
+ax =
+
+  -1.200000000000000   7.200000000000000                   0   0.400000000000000
+
+subplot(211)
+axis(ax)
+shg
+subplot(212)
+hold;bar(Misure{end},poisspdf(1,Misure{end}),'r')
+Current plot held
+shg
+Misure{end}
+
+ans =
+
+     0     1     2     3     4     5     6
+
+hold;bar(Misure{end},poisspdf(Misure{end},1),'r')
+Current plot released
+shg
+ishold
+
+ans =
+
+  <a href="matlab:helpPopup('logical')" style="font-weight:bold">logical</a>
+
+   0
+
+hold on
+bar(Misure{end},Frequenze{end})
+shg
+bar(Misure{end},Frequenze{end},'b')
+shg
+figure
+bar(Misure{end},Frequenze{end},'b')
+shg
+subplot(211)
+bar(Misure{end},Frequenze{end},'b')
+shg
+Densita_Poission_bis
+subplot(212)
+bar(Misure{end},Frequenze{end},'r')
+shg
+ax = [-1 7 0 0.5]
+
+ax =
+
+  -1.000000000000000   7.000000000000000                   0   0.500000000000000
+
+subplot(212)
+axis(ax)
+subplot(211)
+axis(ax)
+shg
+hold
+Current plot held
+hold;bar(Misure{end},poisspdf(1,Misure{end}),'g')
+Current plot released
+shg
+hold;bar(Misure{end},poisspdf(Misure{end},1),'g')
+Current plot held
+shg
+hold
+Current plot released
+hold;bar(Misure{end},poisspdf(Misure{end},1),'g')
+Current plot held
+hold
+Current plot released
+bar(Misure{end},Frequenze{end},'r')
+shg
+hold
+Current plot held
+bar(Misure{end},Frequenze{end},'r')
+shg
+ishold
+
+ans =
+
+  <a href="matlab:helpPopup('logical')" style="font-weight:bold">logical</a>
+
+   1
+
+hold;bar(Misure{end},poisspdf(Misure{end},1),'g')
+Current plot released
+shg
+figure
+bar(Misure{end},Frequenze{end},'r')
+hold
+Current plot held
+hold;bar(Misure{end},poisspdf(Misure{end},1),'g')
+Current plot released
+shg
+ishold
+
+ans =
+
+  <a href="matlab:helpPopup('logical')" style="font-weight:bold">logical</a>
+
+   0
+
+hold
+Current plot held
+bar(Misure{end},Frequenze{end},'r')
+shg
+diary off

@@ -1,1 +1,0 @@
-Basic examples: magic square and sudoku. Analysis of symmetries on variables renaming and on global permutations of cells. The problem of local symmetries and how to constraint implication constraints. The impact of symmetry breaking on search time and search space.

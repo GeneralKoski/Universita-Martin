@@ -1,0 +1,41 @@
+1. “Perché usare i costi come proxy della salute è così diffuso?”
+Perché sono facilmente disponibili, standardizzati, già aggregati, storicamente correlati alla gravità clinica.
+
+2. “Questo algoritmo è inaccurato?”
+No, è accurato rispetto all’obiettivo che ottimizza, il problema è l’allineamento tra obiettivo e finalità etica/clinica.
+
+3. “Quindi il problema è l’assenza della variabile razza?”
+No, anche includerla senza cambiare la label non risolve, il bias entra dai costi, non dagli input.
+
+4. “Come misurano la salute ‘reale’?”
+Numero di patologie croniche, biomarcatori (HbA1c, pressione, creatinina, ematocrito).
+
+5. “Come fanno a dire che il bias non è casuale?”
+Confronto sistematico a parità di risk score, risultati consistenti su più metriche di salute, replicazione su dataset nazionale.
+
+6. “C’è confondimento socioeconomico?”
+Sì, ed è parte del problema, ma il dataset controlla per assicurazione, quindi il bias persiste anche a parità di copertura.
+
+7. “Non è semplicemente un problema del sistema sanitario USA?”
+Il contesto è USA, ma il meccanismo proxy → disuguaglianza è generale, infatti gli autori parlano di implicazioni cross-dominio.
+
+8. “Cambiare la label non rischia di aumentare i costi?”
+Sì, potenzialmente, ed è proprio la tensione tra efficienza economica ed equità, il paper non la elimina, la rende esplicita.
+
+9. “Questo è un problema tecnico o politico?”
+Entrambi, tecnico nella formulazione, politico nella scelta di cosa ottimizzare.
+
+10. “Perché i medici non correggono il bias?”
+Ancoraggio cognitivo, carico decisionale, fiducia nell’output algoritmico.
+
+11. “Questo significa che dovremmo togliere l’algoritmo?”
+No, significa riprogettarlo, e usarlo con consapevolezza dei suoi limiti.
+
+12. “Puoi fare un esempio fuori dalla sanità?”
+Credito, giustizia, HR.
+
+13. “Come collegheresti questo studio al concetto di fairness in ML?”
+Mostra il limite delle metriche puramente statistiche, fairness dipende da cosa misuri e perché, non esiste fairness senza contesto.
+
+14. “Secondo te qual è il contributo principale del paper?”
+Non aver scoperto il bias, ma aver mostrato da dove nasce, e che può essere ridotto senza cambiare modello, ma cambiando obiettivo.

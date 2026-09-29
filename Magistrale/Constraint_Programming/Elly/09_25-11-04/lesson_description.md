@@ -1,1 +1,0 @@
-Basic examples: send more money, latin square. Comparison among different strategies, constraint redundancy / propagators cost. Search trees shapes and impact on search. Search strategies and relation on search tree.

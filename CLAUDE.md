@@ -12,7 +12,7 @@ Repository personale con il materiale del percorso universitario.
 
 ## Struttura
 
-- `Magistrale/` - corso attuale (laurea magistrale)
+- `Magistrale/` - corso attuale (laurea magistrale). Una cartella per corso, nominata `<anno>_Nome-del-corso` (es. `1_Big-data`, `2_Programmazione-dichiarativa`), con l'anno del piano di studi: Applicazioni Industriali sta nel `2_` anche se è stato anticipato. `Tesi/` resta senza prefisso
 - `Triennale/` - solo storico, materiale della laurea triennale già conclusa
 
 ## Magistrale - stato esami
@@ -40,9 +40,9 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 Tutti e quattro al primo semestre, tutti caratterizzanti e monodisciplinari:
 
-- Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici. **Esame: solo scritto, crocette + domande aperte** (confermato dal docente il 21/09/2026). Niente orale, la scheda ufficiale che parla di "integrazione del voto tramite orale" è superata
-- Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, prof. **Vincenzo Arceri**. La scheda 2026/27 lo dà come "NON ASSEGNATO" e Arceri come "non più in servizio": è un buco della scheda, il corso lo tiene ancora lui (confermato il 16/09/2026). La scheda resta priva di obiettivi, programma ed esame
-- Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici. **Esame: progetto da presentare** (confermato dal docente il 21/09/2026), che deve applicare bene tutti i concetti del laboratorio **più qualcosa dal corso teorico di Algoritmi per l'IA**. La teoria di Algoritmi serve quindi per entrambi gli esami: studiarla una volta sola, non due
+- Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici. **Esame: scritto, crocette + domanda aperta**, più un **orale facoltativo** per migliorare il voto, che fa media con lo scritto (slide del corso, confermato da Martin il 29/09/2026). **Martin l'orale non lo farà**: si prepara solo lo scritto
+- Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, prof. **Vincenzo Arceri**. La scheda 2026/27 lo dà come "NON ASSEGNATO" e Arceri come "non più in servizio": è un buco della scheda, il corso lo tiene ancora lui (confermato il 16/09/2026). La scheda resta priva di obiettivi, programma ed esame. **Esame: seminario (discussione di almeno un paper) + orale** (slide *01 - Introduction*, letta il 29/09/2026), pesi non indicati
+- Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici. **Esame: progetto da presentare** (confermato dal docente il 21/09/2026; la slide *Introduzione al corso* dice progetto + orale, ma vale la conferma del docente, deciso da Martin il 29/09/2026), che deve applicare bene tutti i concetti del laboratorio **più qualcosa dal corso teorico di Algoritmi per l'IA**. La teoria di Algoritmi serve quindi per entrambi gli esami: studiarla una volta sola, non due
 - Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù - senza edizione Elly 2025/26 (mai pubblicata), quindi nessun materiale d'archivio: c'è solo quello che carica lui a lezione. Iniziato il 21/09/2026; su Elly pubblica una sezione per lezione con le slide annotate a mano, più la dispensa Dovier-Formisano come testo di riferimento
 
 ### Elly: un'istanza per anno accademico

@@ -1,0 +1,67 @@
+pwd
+
+ans =
+
+    '/Users/francescodirenzo/Work/didattica/ModSimMag2526/09ott2025'
+
+edit DoYourJob.m
+DoYourJob
+plot(nn100)
+shg
+bar(0:100,ff100)
+shg
+mean(nn100(1e3:end))
+
+ans =
+
+   49.9195
+
+edit DoYourJob_bis.m
+DoYourJob_bis
+bar(0:100,ff100)
+shg
+mean(nn100(1e3:end))
+
+ans =
+
+   50.0004
+
+edit DoYourJobL.m
+DoYourJobL
+whos
+  Name        Size                         Bytes  Class     Attributes
+
+  ans         1x1                              8  double              
+  ff100       1x101                          808  double              
+  ff1000      1x1001                        8008  double              
+  ff500       1x501                         4008  double              
+  nn100       1x10000001                80000008  double              
+  nn1000      1x1000000001            8000000008  double              
+  nn500       1x100000001              800000008  double              
+
+subplot(311)
+bar(0:100,ff100)
+subplot(312)
+bar(0:500,ff500)
+subplot(313)
+bar(0:1000,ff1000)
+shg
+mean(nn100(1e3:end))
+
+ans =
+
+   50.0212
+
+mean(nn500(1e3:end))
+
+ans =
+
+  250.0417
+
+mean(nn1000(1e3:end))
+
+ans =
+
+  499.9954
+
+diary off

@@ -1,1 +1,0 @@
-../notes/02_cheatsheet.md
