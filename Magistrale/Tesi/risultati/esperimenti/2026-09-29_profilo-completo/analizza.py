@@ -47,6 +47,9 @@ for p in PROFILI:
     f24, r24 = ultimo(CONFRONTO, f"profilo-completo-{p}-confronto-24-koskidex")
     file[f"{p} confronto-24"] = f24
     righe[p]["confronto_24_risultati"] = [len(x["ids"]) for x in r24["query"]]
+    n24 = righe[p]["confronto_24_risultati"]
+    righe[p]["confronto_24_a_10000"] = sum(n >= 10000 for n in n24)
+    righe[p]["confronto_24_massimo_sotto_10000"] = max((n for n in n24 if n < 10000), default=0)
 
 print(f"{'':4}" + "".join(f"{c:>34}" for c in COLLEZIONI))
 for p in PROFILI:
