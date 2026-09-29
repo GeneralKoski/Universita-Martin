@@ -1,0 +1,28 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{groupplot}[group style={group size=2 by 1, horizontal sep=1.4cm, y descriptions at=edge left},
+        tesi, width=.5\textwidth, height=6.2cm, xmode=log, log basis x=2,
+        xtick={1,2,4,8,16,32}, xticklabels={1,2,4,8,16,32}, xmin=1, xmax=32,
+        ymin=0, ymax=7000, xlabel={client in parallelo}]
+      \nextgroupplot[title={\footnotesize Mac (M2)}, ylabel={ricerche al secondo},
+          legend to name=leg:carico, legend columns=3]
+        \addplot[color=black, mark=square*, mark size=1.6pt] table[x=client, y=mac_es] {dati/carico.dat};
+        \addplot[color=black, mark=triangle*, mark size=2pt, dashed] table[x=client, y=mac_kc] {dati/carico.dat};
+        \addplot[color=black, mark=*, mark size=1.6pt, densely dotted] table[x=client, y=mac_kn] {dati/carico.dat};
+        \legend{Elasticsearch come l'app, Koskidex nel container, Koskidex nativo}
+      \nextgroupplot[title={\footnotesize Secondo computer (Windows, WSL2)}]
+        \addplot[color=black, mark=square*, mark size=1.6pt] table[x=client, y=fisso_es] {dati/carico.dat};
+        \addplot[color=black, mark=triangle*, mark size=2pt, dashed] table[x=client, y=fisso_kc] {dati/carico.dat};
+        \addplot[color=black, mark=*, mark size=1.6pt, densely dotted] table[x=client, y=fisso_kn] {dati/carico.dat};
+    \end{groupplot}
+  \end{tikzpicture}
+
+  \ref{leg:carico}
+  \caption{Ricerche al secondo al crescere dei client che le mandano senza
+  pause, sui 10.018 atti dell'albo. Elasticsearch, come lo usa l'app, e Koskidex
+  nel container hanno le stesse quattro CPU; Koskidex nativo gira fuori da
+  Docker. Sul Mac Koskidex è dopo le correzioni delle allocazioni. Dati:
+  \texttt{latex/dati/carico.dat}.}
+  \label{fig:carico}
+\end{figure}

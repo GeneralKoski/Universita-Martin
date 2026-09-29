@@ -64,7 +64,10 @@ documento insieme e costa secondi a query (5-12 sul Mac su cui sono fatte le
 altre misure, meno su una scheda grafica) (\texttt{2026-09-28\_reranker}, \texttt{reranker-gpu}). Dicono quanto vale, al massimo, riordinare
 quello che il lessicale trova. Lo stesso riordino sui primi venti e sui primi
 trenta candidati, invece di cento, dice quanto del tetto resta con un costo
-minore (\texttt{riordino-corto}).
+minore (\texttt{riordino-corto}). La figura~\ref{fig:flusso} mostra dove le
+configurazioni differiscono.
+
+\input{figure/flusso}
 
 Ogni metrica si riporta su tutte le query, per fonte (Crispiano, dove chi
 scriveva aveva letto il testo intero e l'indice ha la scheda, e Friuli Venezia
@@ -218,7 +221,9 @@ vettori sono già nella cache che Koskidex tiene su disco, l'indicizzazione scen
 a 2,7~s (prova a parte, sullo stesso P4). Nella corsa dei cinque profili la
 copia della cache da P3 a P4 non ha avuto effetto, e non so perché: i 476,7~s
 sono quindi senza cache. Sei previsioni su sette hanno
-tenuto, la quarta a metà.
+tenuto, la quarta a metà (figura~\ref{fig:compromesso}).
+
+\input{figure/compromesso}
 
 \begin{table}[ht]
   \centering
@@ -318,7 +323,9 @@ sopra KC (LA di 0,128, A di 0,181). Non si distinguono dallo zero A sopra LA
 e P2 contro LA, ESC contro KC, ESO contro P2 e A contro P3: sono i confronti
 che questo capitolo dice «nel rumore» o suggeriti, e con 104 query non sono di
 più. Il test di permutazione concorda con il bootstrap in tutti i quindici
-confronti previsti. Le cinque previsioni sono nel registro.
+confronti previsti. Le cinque previsioni sono nel registro (figura~\ref{fig:mrr-umane}).
+
+\input{figure/mrr-umane}
 
 \begin{table}[ht]
   \centering
@@ -414,7 +421,9 @@ piene di parole comuni.
 mezza le ricerche al secondo di Elasticsearch. Ne reggeva 1,14 volte: 653
 contro 571 (tabella~\ref{tab:carico}). Con un client solo usava già il 116\% di
 CPU, più di un core per una ricerca alla volta, e a 32 client il suo p99 era il
-doppio di quello di Elasticsearch.
+doppio di quello di Elasticsearch (figura~\ref{fig:carico}).
+
+\input{figure/carico}
 
 \begin{table}[ht]
   \centering
@@ -518,7 +527,9 @@ cambiare un'interfaccia o il formato dell'indice.
 \paragraph{Memoria e archivi più grandi.} Per vedere come cresce il costo ho
 copiato gli stessi atti fino a 50.000 e 100.000 documenti, con identificativi
 diversi e lo stesso testo: dati inventati, che per tempi e memoria vanno bene e
-per la pertinenza no (tabella~\ref{tab:crescita}).
+per la pertinenza no (tabella~\ref{tab:crescita}, figura~\ref{fig:crescita}).
+
+\input{figure/crescita}
 
 \begin{table}[ht]
   \centering

@@ -1,0 +1,26 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[tesi, xbar, bar width=7pt, width=.88\textwidth, height=11.4cm,
+        xmin=0, xmax=0.8, xlabel={MRR@10 sulle 104 known-item umane},
+        ytick={0,...,14}, yticklabels from table={dati/mrr-umane.dat}{nome}, y dir=reverse,
+        enlarge y limits=0.04, grid=major, ymajorgrids=false,
+        legend style={at={(0.5,1.03)}, anchor=south, draw=none, fill=none, font=\footnotesize, /tikz/every even column/.append style={column sep=6pt}}, legend columns=4,
+        legend cell align=left]
+      \addplot+[fill=gray!25, draw=black, bar shift=0pt, error bars/.cd, x dir=both, x explicit, error bar style={black}, error mark options={black, rotate=90}]
+        table[x=media, y=posizione, x error minus=meno, x error plus=piu] {dati/mrr-umane-g0.dat};
+      \addplot+[fill=white, draw=black, bar shift=0pt, error bars/.cd, x dir=both, x explicit, error bar style={black}, error mark options={black, rotate=90}]
+        table[x=media, y=posizione, x error minus=meno, x error plus=piu] {dati/mrr-umane-g1.dat};
+      \addplot+[fill=gray!60, draw=black, bar shift=0pt, error bars/.cd, x dir=both, x explicit, error bar style={black}, error mark options={black, rotate=90}]
+        table[x=media, y=posizione, x error minus=meno, x error plus=piu] {dati/mrr-umane-g2.dat};
+      \addplot+[pattern=north east lines, draw=black, bar shift=0pt, error bars/.cd, x dir=both, x explicit, error bar style={black}, error mark options={black, rotate=90}]
+        table[x=media, y=posizione, x error minus=meno, x error plus=piu] {dati/mrr-umane-g3.dat};
+      \legend{dall'app, Koskidex piatto, Elasticsearch corretto, riordinato}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{MRR@10 delle configurazioni sulle 104 known-item umane, con
+  l'intervallo al 95\% del bootstrap. Gli intervalli di configurazioni vicine si
+  sovrappongono; le differenze accoppiate, più strette, sono nella
+  tabella~\ref{tab:intervalli}. Dati: \texttt{latex/dati/mrr-umane.dat}.}
+  \label{fig:mrr-umane}
+\end{figure}

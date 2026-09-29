@@ -1,0 +1,21 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{groupplot}[group style={group size=3 by 1, horizontal sep=1.3cm},
+        tesi, width=.36\textwidth, height=5.4cm, xmin=-.3, xmax=7.3,
+        xtick={0,...,7}, xticklabels={0,5,10,20,40,80,160,320},
+        x tick label style={font=\tiny, rotate=90, anchor=east}, xlabel={costante}]
+      \nextgroupplot[title={\footnotesize SciFact, nDCG@10}]
+        \addplot[color=black, mark=*, mark size=1.5pt] table[x=posizione, y=scifact] {dati/fusione.dat};
+      \nextgroupplot[title={\footnotesize NFCorpus, nDCG@10}]
+        \addplot[color=black, mark=*, mark size=1.5pt] table[x=posizione, y=nfcorpus] {dati/fusione.dat};
+      \nextgroupplot[title={\footnotesize known-item, MRR@10}]
+        \addplot[color=black, mark=*, mark size=1.5pt] table[x=posizione, y=known] {dati/fusione.dat};
+    \end{groupplot}
+  \end{tikzpicture}
+  \caption{La costante della somma pesata al variare del suo valore, sulle
+  tre collezioni di calibrazione (SciFact e known-item, sezione di addestramento; NFCorpus, sviluppo). Il valore di
+  partenza di Koskidex è 20: giusto per caso sulle known-item, otto volte troppo
+  basso per le query in lingua naturale. Dati: \texttt{latex/dati/fusione.dat}.}
+  \label{fig:fusione}
+\end{figure}

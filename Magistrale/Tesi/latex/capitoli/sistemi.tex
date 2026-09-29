@@ -140,7 +140,9 @@ l'esistenza e cercare (\texttt{fuzzySearch}, che restituisce gli id in ordine di
 rilevanza). Accanto a \texttt{ElasticsearchService} c'è \texttt{KoskidexService},
 che implementa lo stesso contratto su un client HTTP di Koskidex, e quale dei due
 si usa lo decide una variabile d'ambiente, \texttt{SEARCH\_BACKEND}. Nient'altro
-dell'app cambia.
+dell'app cambia (figura~\ref{fig:innesto}).
+
+\input{figure/innesto}
 
 \paragraph{Prima dell'innesto, un motore completo.} La regola era di non
 innestare un Koskidex che non sapesse fare tutto quello che l'app chiede.

@@ -42,7 +42,7 @@ Se un numero non ha un file qui, non esiste.
 | `corpus/` | numeri descrittivi che la tesi cita senza un esperimento: composizione delle fonti, lunghezze, formati di date e importi, e i numeri che prima stavano solo nel diario di Koskidex o in `SOURCE.md` (con la prova di AlboPOP, che non si ripete, e le voci del diario da cui vengono previsioni e fatti, copiate con commit e impronta) | `strumenti/conteggi.py`, `strumenti/numeri-diario.py` |
 | `query/` | i file di query usati, così ogni esecuzione si rifà con le stesse | scritti a mano, vedi sotto |
 | `esperimenti/` | esperimenti una tantum, con dati, codice per rifarli e spiegazione: ogni sottocartella ha un `README.md` con domanda, metodo, previsioni scritte prima di misurare ed esito; l'elenco delle previsioni con i verdetti sta nel registro della tesi (appendice C) | una sottocartella per esperimento |
-| `strumenti/` | script che non stanno in nessuno dei due progetti | |
+| `strumenti/` | script che non stanno in nessuno dei due progetti; `dati-grafici.py` legge gli esiti archiviati e scrive i `.dat` di `latex/dati/` da cui pgfplots disegna i grafici (con `PROVENIENZA.md`) | |
 | `macchina.md` | la macchina su cui sono stati misurati i tempi | |
 
 ### I comandi

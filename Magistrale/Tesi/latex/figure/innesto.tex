@@ -1,0 +1,27 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[node distance=0.9cm and 1.2cm,
+      box/.style={draw, rounded corners=2pt, align=center, font=\footnotesize, inner sep=5pt, minimum height=8mm},
+      nota/.style={font=\scriptsize\itshape, align=left},
+      freccia/.style={-{Stealth[length=5pt]}, line width=.7pt}]
+    \node[box] (app) {App Documentale (Laravel)};
+    \node[box, below=of app] (sb) {\texttt{SearchBackend}\\ (interfaccia)};
+    \node[box, below left=1.1cm and 0.7cm of sb] (es) {\texttt{ElasticsearchService}\\ (produzione, non toccato)};
+    \node[box, below right=1.1cm and 0.7cm of sb] (ks) {\texttt{KoskidexService}\\ (aggiunto)};
+    \node[box, below=of es] (esm) {Elasticsearch};
+    \node[box, below=of ks] (kc) {client HTTP};
+    \node[box, below=of kc] (k) {Koskidex\\ indice in memoria};
+    \draw[freccia] (app) -- (sb);
+    \draw[freccia] (sb) -- (es);
+    \draw[freccia] (sb) -- (ks);
+    \draw[freccia] (es) -- (esm);
+    \draw[freccia] (ks) -- (kc);
+    \draw[freccia] (kc) -- (k);
+    \node[nota, right=0.4cm of sb] {motore scelto da\\ \texttt{SEARCH\_BACKEND}};
+  \end{tikzpicture}
+  \caption{L'innesto. L'app parla con un'interfaccia estratta da
+  \texttt{ElasticsearchService}, con le stesse firme; \texttt{KoskidexService}
+  la implementa su un client HTTP di Koskidex. Cambiando una variabile
+  d'ambiente si passa da un motore all'altro e nient'altro dell'app cambia.}
+  \label{fig:innesto}
+\end{figure}

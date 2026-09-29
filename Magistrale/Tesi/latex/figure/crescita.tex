@@ -1,0 +1,25 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{groupplot}[group style={group size=2 by 1, horizontal sep=1.8cm},
+        tesi, width=.5\textwidth, height=5.8cm, xmin=0, xmax=110000,
+        scaled x ticks=false, xtick={10018,50000,100000}, xticklabels={10.018,50.000,100.000},
+        x tick label style={font=\footnotesize, rotate=30, anchor=north east},
+        xlabel={documenti}, ymin=0]
+      \nextgroupplot[title={\footnotesize Memoria a riposo (MB)}, legend to name=leg:crescita, legend columns=2]
+        \addplot[color=black, mark=square*, mark size=1.6pt] table[x=documenti, y=mem_es] {dati/crescita.dat};
+        \addplot[color=black, mark=triangle*, mark size=2pt, dashed] table[x=documenti, y=mem_k] {dati/crescita.dat};
+        \legend{Elasticsearch, Koskidex}
+      \nextgroupplot[title={\footnotesize Indice su disco (MB)}]
+        \addplot[color=black, mark=square*, mark size=1.6pt] table[x=documenti, y=disco_es] {dati/crescita.dat};
+        \addplot[color=black, mark=triangle*, mark size=2pt, dashed] table[x=documenti, y=disco_k] {dati/crescita.dat};
+    \end{groupplot}
+  \end{tikzpicture}
+
+  \ref{leg:crescita}
+  \caption{Memoria a riposo e indice su disco al crescere dell'archivio, con gli
+  stessi atti copiati fino a 50.000 e 100.000 documenti. Elasticsearch ha
+  l'heap fissato a 1~GB, quindi la sua memoria non cresce; quella di Koskidex sì.
+  Dati: \texttt{latex/dati/crescita.dat}.}
+  \label{fig:crescita}
+\end{figure}

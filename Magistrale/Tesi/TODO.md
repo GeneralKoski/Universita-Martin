@@ -8,7 +8,8 @@ la loro ultima versione è nel commit `ab4af30`, e si rilegge con
 ## Dove sta cosa
 
 - `latex/` - la tesi. Tutti i capitoli e le quattro appendici sono scritti per
-  intero, da rileggere; il capitolo 8 si regge sulle known-item umane (deciso
+  intero, da rileggere; sette figure (cinque grafici da `latex/dati/`, generati
+  da `risultati/strumenti/dati-grafici.py`, e due schemi in `latex/figure/`); il capitolo 8 si regge sulle known-item umane (deciso
   il 28/09/2026), scritto il 29/09 a raccolta chiusa.
 - `risultati/` - l'archivio di ogni misura, con le sue regole nel README; un
   README per esperimento in `risultati/esperimenti/`.

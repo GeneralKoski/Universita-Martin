@@ -1,0 +1,17 @@
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[tesi, width=.8\textwidth, height=6.6cm, xmode=log, xmin=2.5, xmax=100, xtick={3,5,10,20,50}, xticklabels={3,5,10,20,50},
+        ymin=0.25, ymax=0.7, xlabel={mediana della ricerca dall'app (ms, scala logaritmica)},
+        ylabel={MRR@10, 104 umane}]
+      \addplot[only marks, mark=*, mark size=2.2pt, color=black, nodes near coords,
+          point meta=explicit symbolic, every node near coord/.append style={font=\footnotesize, anchor=south west, xshift=1pt}]
+        table[x=ms, y=mrr, meta=nome] {dati/compromesso.dat};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Pertinenza contro costo dei profili dall'app: Elasticsearch di
+  produzione (ES) e i cinque profili di Koskidex (P0 è il profilo consigliato).
+  P0 e P1 hanno le stesse umane e sono un punto solo. In alto e a sinistra è meglio. Dati:
+  \texttt{latex/dati/compromesso.dat}.}
+  \label{fig:compromesso}
+\end{figure}

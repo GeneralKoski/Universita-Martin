@@ -27,6 +27,15 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,backgrounds,patterns}
+\pgfplotsset{tesi/.style={
+  tick label style={font=\footnotesize}, label style={font=\footnotesize},
+  legend style={font=\footnotesize, draw=none, fill=none},
+  grid=major, grid style={line width=.2pt, draw=gray!35}, every axis plot/.append style={line width=.9pt}}}
 
 \usepackage[backend=biber, style=numeric-comp, sorting=nyt, giveninits=true, maxbibnames=10]{biblatex}
 \addbibresource{bibliografia.bib}
