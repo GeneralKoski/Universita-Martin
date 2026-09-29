@@ -2,9 +2,10 @@
 
 \section{Le risposte alla domanda}\label{sec:risposte}
 
-La domanda (sezione~\ref{sec:domanda}) si articolava in quattro parti. Le prime
-tre hanno una risposta misurata; la quarta l'ha in parte, per i costi, e per la
-pertinenza aspetta le known-item umane del capitolo~\ref{chapter:confronto}.
+La domanda (sezione~\ref{sec:domanda}) si articolava in quattro parti, e
+tutte e quattro hanno una risposta misurata; per la pertinenza sulle ricerche
+scritte da persone la risposta viene dalle known-item umane del
+capitolo~\ref{chapter:confronto}.
 
 \paragraph{I difetti di Koskidex.} Dei quattro difetti di Koskidex, quello che
 viene prima di tutti non era fra i tre sospettati leggendo il codice. Il recupero congiuntivo
@@ -41,7 +42,9 @@ Lucene ed Elasticsearch non reggono tutte e due; il peso giusto del vettore
 dipende dal tipo di query. Sceglierlo con una regola di una riga, \emph{recupero
 congiuntivo e vettore leggero se la query ha una cifra e il congiuntivo trova
 qualcosa}, vale +0,023 di nDCG@10 medio sulla migliore configurazione fissa. Se la
-regola riconosca il tipo di query o la collezione, su questi dati non si può dire.
+regola riconosca il tipo di query o la collezione, su questi dati non si può dire,
+e le query umane non lo decidono: solo 4 su 104 hanno una cifra, e lì la regola
+non perde niente rispetto a sempre A e non guadagna quasi niente.
 
 \paragraph{Il confronto con Elasticsearch.} Nella stessa macchina virtuale, con
 le stesse CPU e le richieste dell'app, Koskidex risponde in 0,9~ms di p50
@@ -51,9 +54,16 @@ ricerca, e il vantaggio si fermava a 1,14 volte. Quattro correzioni che non camb
 un solo risultato, verificato risposta per risposta, hanno tolto quel costo:
 ora alloca 0,05~MB a ricerca.
 Il limite è la memoria: a centomila documenti è quasi quella di
-Elasticsearch. Quanto valgano in pertinenza, Koskidex corretto ed Elasticsearch
-di produzione, sulle ricerche scritte da persone, lo dirà il
-capitolo~\ref{chapter:confronto}.
+Elasticsearch. Sulle 104 ricerche scritte da persone Koskidex innestato fa
+0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, e lascia a vuoto
+tre ricerche su dieci invece di quasi una su due: il difetto del campo unico
+colpisce anche chi cerca per argomento. Il margine più grande però resta: fuori
+dall'app, lo stesso motore in recupero disgiuntivo fa 0,559 e con i vettori
+0,613, e l'atto è fra i primi dieci nell'86\% delle ricerche. Il limite che
+resta a Documentale è il recupero congiuntivo che ha scelto, non il motore.
+Due risultati sono andati contro le attese: sugli atti di Crispiano il testo
+intero ritrova l'atto peggio della scheda, e leggere più testo nei vettori
+peggiora invece di migliorare.
 
 \section{Limiti}\label{sec:limiti}
 
@@ -61,9 +71,11 @@ capitolo~\ref{chapter:confronto}.
   \item \textbf{Query fabbricate.} Le known-item automatiche hanno una sola forma,
         \texttt{<numero> <comune>}, e le 24 query del confronto le ha scritte
         l'autore. Misurano bene quello che misurano, e niente di più. Le query
-        scritte da persone servono proprio a questo, e al momento di scrivere ne
-        sono arrivati due lotti su quattro; solo 3 query su 76 contengono un
-        numero, troppo poche per dire qualcosa di quelle.
+        scritte da persone servono proprio a questo, ma sono 104, di tre
+        persone: la raccolta si è chiusa con tre lotti su quattro, il minimo
+        del protocollo. Solo 4 contengono un numero, troppo poche per dire
+        qualcosa di quelle, e le differenze sotto qualche centesimo di MRR@10
+        stanno nel rumore di una collezione così.
   \item \textbf{Un solo corpus di dominio.} Gli albi pretori hanno la forma di un
         documentale, ma sono gli atti di comuni: altri archivi, con contratti o
         corrispondenza, hanno altri vocabolari e altre ricerche. Il testo intero
@@ -71,8 +83,9 @@ capitolo~\ref{chapter:confronto}.
   \item \textbf{Tipi di query separati per collezione.} Le query identificative
         stanno tutte sugli albi, quelle in lingua naturale sulle collezioni
         pubbliche: una regola che riconosce la collezione e una che riconosce il
-        tipo di query danno gli stessi numeri. È il limite più serio della scelta
-        per tipo di query, e la ragione per cui resta fuori dal motore.
+        tipo di query danno gli stessi numeri, e le query umane, quasi tutte
+        senza cifre, non bastano a separarle. È il limite più serio della
+        scelta per tipo di query, e la ragione per cui resta fuori dal motore.
   \item \textbf{I giudizi del pool.} Bisogni e giudizi del pool li ha dati un
         modello linguistico, e con il mio campione l'accordo è modesto (kappa
         pesato 0,370): il pool non regge da solo un confronto, e il capitolo
@@ -96,9 +109,16 @@ capitolo~\ref{chapter:confronto}.
 \section{Sviluppi futuri}\label{sec:sviluppi}
 
 \begin{itemize}
-  \item \textbf{Le known-item umane}, e con loro tre misure che le aspettano: la
-        scelta per tipo di query su query dei due tipi nella stessa collezione,
-        stopword e stemmer italiani, e la scheda contro il testo intero.
+  \item \textbf{Il recupero congiuntivo di Documentale.} Sulle query scritte da
+        persone è il limite che resta dopo il profilo consigliato: passare a un
+        recupero disgiuntivo con BM25, o all'unione con i vettori, andrebbe
+        misurato dentro l'app come un profilo intero, con le ricerche per
+        numero d'atto che il congiuntivo oggi protegge. Lo stesso vale per
+        stopword e stemmer italiani, che sul congiuntivo tolgono 7,7 punti di
+        ricerche a vuoto.
+  \item \textbf{Più query scritte da persone}, e più persone: con cento query
+        un effetto di qualche centesimo non si distingue dal rumore, e le
+        ricerche con un numero mancano quasi del tutto.
   \item \textbf{Un secondo stadio di riordino.} Il capitolo~\ref{chapter:confronto}
         misura fuori linea quanto vale riordinare i primi cento candidati con un
         \emph{cross-encoder}: il re-ranking funziona se è progettato come

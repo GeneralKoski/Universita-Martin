@@ -364,7 +364,17 @@ ed Elasticsearch no, e \emph{identita} trova \emph{identità}.
 
 Stopword e stemmer italiani non si possono misurare con le known-item
 automatiche, fatte di un numero e del nome di un comune, che non li mettono alla
-prova. Aspettano le known-item scritte da persone.
+prova. Si misurano sulle 104 known-item umane (\texttt{2026-09-25\_italiano-umane}),
+con BM25 e la frequenza mescolata, in recupero disgiuntivo e congiuntivo. Con
+il disgiuntivo quasi non contano: lo stemmer sposta l'MRR@10 di +0,007, le
+stopword di $-$0,010, e con tutte e due resta a 0,561 contro 0,559. Con il
+congiuntivo contano: stemmer e stopword tolgono ciascuno 3,8 punti di query a
+vuoto, e insieme 7,7 (da 45 a 37 su 104), con l'MRR@10 da 0,346 a 0,383. Delle
+quattro previsioni ne hanno tenuto due: avevo previsto per lo stemmer un
+effetto più grande, e per le stopword con il congiuntivo nessun effetto, perché
+\emph{di} e \emph{per} stanno in quasi ogni scheda. Nessuna delle due diventa un
+default: il recupero congiuntivo è quello di Documentale, e un'analisi italiana
+nel profilo consigliato andrebbe misurata con il profilo intero.
 
 \section{Scheda contro testo intero, e la lunghezza dei documenti}\label{sec:scheda-testo}
 
@@ -373,6 +383,23 @@ soli metadati, e 563 atti di Crispiano di cui c'è anche il testo intero, 7.900 
 mediana. Due domande restano aperte, e si misurano sui soli atti di
 Crispiano, perché mescolare le due fonti in un indice solo darebbe una risposta
 falsa. La prima: quanto guadagna il recupero quando al posto della scheda c'è il
-documento. La seconda: se $b = 0{,}75$, tarato su collezioni di articoli, vada bene
-quando le schede corte schiacciano la lunghezza media. Tutte e due chiedono query
-scritte da persone su quegli atti, e aspettano le known-item umane.
+documento. La seconda: se $b = 0{,}75$, tarato su collezioni di articoli, vada
+bene su un corpus di documenti tutti lunghi. Tutte e due chiedono query scritte
+da persone su quegli atti: sono le 50 known-item umane di Crispiano, scritte da
+chi aveva letto il testo intero (\texttt{2026-09-25\_scheda-testo}).
+
+La risposta alla prima va contro quello che mi aspettavo. Con il recupero
+disgiuntivo il testo intero non aiuta, peggiora: LA passa da 0,540 di MRR@10
+sulla scheda a 0,463 sul testo, e l'atto fra i primi dieci dall'80\% al 78\%.
+Aiuta solo il recupero congiuntivo, che sul testo trova più spesso tutte le
+parole della query: le query a vuoto scendono dal 48\% al 26\%, l'MRR@10 sale da
+0,262 a 0,344, ma resta sotto la scheda con LA. E la perdita si concentra sulle
+query lunghe: sulle 20 sopra la mediana di quattro parole LA perde 0,147, sulle
+30 corte 0,029. La lettura più semplice, che non ho verificato atto per atto,
+è che la scheda sia già un riassunto dell'atto, scritto apposta per dire che
+cos'è, e che il testo intero aggiunga parole che fanno combaciare anche atti che
+non c'entrano. Alla seconda domanda la risposta è
+quella attesa: fra $b = 0{,}25$ e $b = 1$ l'MRR@10 di LA sul testo si muove di
+0,037, e 0,75 sta a 0,014 dal migliore. Tre previsioni su cinque; la
+raccomandazione di indicizzare il testo intero, che avrei scritto se la prima
+avesse tenuto, non c'è.

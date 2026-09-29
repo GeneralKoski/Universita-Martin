@@ -7,9 +7,9 @@ la loro ultima versione è nel commit `ab4af30`, e si rilegge con
 
 ## Dove sta cosa
 
-- `latex/` - la tesi. Capitoli 1-7 e 9 e le quattro appendici sono scritti per
-  intero, da rileggere; il capitolo 8 è ancora vuoto e si regge sulle
-  known-item umane (deciso il 28/09/2026).
+- `latex/` - la tesi. Tutti i capitoli e le quattro appendici sono scritti per
+  intero, da rileggere; il capitolo 8 si regge sulle known-item umane (deciso
+  il 28/09/2026), scritto il 29/09 a raccolta chiusa.
 - `risultati/` - l'archivio di ogni misura, con le sue regole nel README; un
   README per esperimento in `risultati/esperimenti/`.
 - `istruzioni-annotazione.md` - il protocollo per chi raccoglie le query e per
@@ -25,16 +25,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
 
 - [ ] **Rileggere i capitoli** in `latex/` (il PDF è `latex/tesi.pdf`): il testo
       è in prima persona e a tuo nome, e va controllato che sia tuo.
-- [ ] **Known-item umane: è su queste che si regge il capitolo 8.** Arrivati
-      i lotti 1 e 2 (28/09); ne manca almeno uno, meglio due. Quattro persone che non sappiano come funzionano i
-      motori (non informatici), **un lotto diverso a testa**: i file
-      `risultati/query/known-item-umane/pagine/raccolta-lotto-1.html` ... `-4`,
-      40 atti ciascuno. Bastano tre persone. Mandarli **in privato** (contengono
-      il testo degli atti, con nomi di persone), farsi rimandare il `.json` che
-      la pagina scarica alla fine, copiarlo così com'è in
-      `risultati/query/known-item-umane/risposte/`. Martin non compila le
-      pagine: le sue query misurerebbero lui. Istruzioni per chi raccoglie nella
-      parte 1 di `istruzioni-annotazione.md`.
+- [x] ~~Known-item umane~~: la raccolta si è chiusa il 29/09 con tre lotti
+      su quattro (il quarto mai assegnato), 104 query su 120 atti. I tre file
+      stanno solo in locale, in `risultati/query/known-item-umane/risposte/`
+      (in gitignore): **tenerne una copia su un disco di Martin**.
 - [x] ~~I 24 bisogni, i giudizi del pool, il secondo annotatore~~: il 28/09
       i bisogni li ha scritti Claude e Martin li ha rivisti, i 905 giudizi li ha
       dati il modello, e Martin ha giudicato un campione di 178 righe (c03,
@@ -69,48 +63,33 @@ basta mettere i file nelle cartelle indicate e dirlo.
       Il pool con i giudizi del modello resta al più un confronto secondario,
       dichiarato come tale e con il kappa accanto, mai la base del capitolo 8.
 
-**Quando arrivano i file delle known-item umane:**
+**Le known-item umane, a raccolta chiusa (29/09):**
 
-- [ ] Le misure sono già pronte, con README e previsioni committati prima dei
-      dati, e provate su risposte inventate. Prova generale il 28/09 sulle 76
-      query dei primi due lotti, con l'archivio in una cartella temporanea:
-      tutti e sei i passi girano, in circa due minuti. **Prima di partire
-      accendere Ollama** (`ollama serve`, serve `bge-m3` per A, B, V e
-      scheda-testo). A raccolta chiusa, in ordine:
-      1. `strumenti/importa-raccolta.py` (collezione, giudizi per fonte,
-         `raccolta.json`);
-      2. `strumenti/collezioni-umane.py` (le tre collezioni in Koskidex);
-      3. `esperimenti/2026-09-25_known-item-umane/esegui.sh`, poi il suo
-         `analizza.py` sulle otto valutazioni: Koskidex ed Elasticsearch sulle
-         query umane, per fonte. È la base del **capitolo 8**, con le
-         previsioni già committate nel suo README: Elasticsearch di
-         produzione e Koskidex nella configurazione consigliata; MRR@10, atto
-         primo, atto entro i primi dieci, query a vuoto, per fonte e con o
-         senza numero; latenza, memoria e indice da
-         `2026-09-28_carico` e `2026-09-28_prestazioni`; dove un motore
-         piccolo è competitivo e dove no, scritto con onestà;
-      4. `esperimenti/2026-09-25_scelta-umane/analizza.py` su A, B e LT del
-         punto 3: la scelta per tipo di query, nel motore entra solo se il
-         classificatore batte la regola (sezione 7.5);
-      5. `esperimenti/2026-09-25_italiano-umane/esegui.sh` e `analizza.py`:
-         stopword e stemmer italiani (sezione 5.6);
-      6. `esperimenti/2026-09-25_scheda-testo/esegui.sh` e `analizza.py`:
-         scheda contro testo intero, `b` e contesto dei vettori sui soli 563
-         atti di Crispiano (sezioni 5.7 e 7.1);
-      7. `esperimenti/2026-09-28_reranker/esegui.sh umane` e
-         `analizza.py umane`: previsioni 4 e 5 del riordino (sezione 8.2),
-         qualche minuto a configurazione sulla GPU;
-      8. `esperimenti/2026-09-28_date-app/esegui.sh` di nuovo, per il prezzo
-         dell'anno da solo sulle query complete (vedi la voce di date-app);
-      9. l'esito di ognuna nel suo README, previsione per previsione.
-- [ ] La suddivisione dei documenti lunghi in parti, se la previsione 4 di
-      `2026-09-25_scheda-testo` tiene (sezione 7.1).
-- [ ] Completare la sezione 4.4 con i numeri della raccolta.
-- [ ] Completare con i numeri del capitolo 8 la sezione 9.1 e i contributi
-      del capitolo 1.
-- [ ] Se le known-item umane promuovono BM25 o i vettori, misurarli dentro il
-      profilo consigliato come un tutto, come in
-      `2026-09-25_configurazione-consigliata/`.
+- [x] Procedura completa sulle 104 query: `importa-raccolta.py`,
+      `collezioni-umane.py`, poi gli esperimenti, ciascuno con l'esito nel suo
+      README:
+      - `known-item-umane`: cinque previsioni su sette, due a metà (solo sulla
+        metà con un numero, 4 query). ES 0,326, KC 0,432, LA 0,559, A 0,613;
+      - `scelta-umane`: tre su quattro, la scelta per tipo di query vale poco;
+      - `italiano-umane`: due su quattro, stopword e stemmer aiutano solo il
+        congiuntivo (7,7 punti di vuoti in meno insieme);
+      - `scheda-testo`: tre su cinque, il testo intero peggiora LA e A, e con
+        la 4 caduta **la suddivisione dei documenti in parti non serve**; le
+        quattro ipotesi del diario del 23/09 controllate nello stesso README.
+- [ ] `2026-09-28_reranker/esegui.sh umane` + `analizza.py umane`
+      (previsioni 4 e 5), poi RR-LA e RR-A nella tabella di 8.2, il paragrafo
+      "Quanto vale riordinare" e le due righe nel registro.
+- [ ] `2026-09-28_date-app/esegui.sh` di nuovo (previsioni R1-R3 committate
+      in `56fa69b`), poi l'esito, 6.4 e 6.5, le tre righe nel registro.
+- [x] Scritti il 29/09: capitolo 8 (8.1, 8.2 senza il riordino, 8.4), 4.4,
+      5.6, 5.7, 7.1, 7.5, 9.1, 9.2, 9.3 e i contributi del capitolo 1; il
+      registro con le 24 righe nuove (217 previsioni).
+- [ ] **Da decidere con Martin**: le known-item umane promuovono il recupero
+      disgiuntivo e i vettori (LA 0,559 e A 0,613 contro KC 0,432, fuori
+      dall'app). Misurarli dentro l'app come un profilo intero, come in
+      `2026-09-25_configurazione-consigliata/`, con le ricerche per numero
+      d'atto che il congiuntivo oggi protegge; lo stesso per stopword e
+      stemmer italiani sul congiuntivo.
 
 **Alla fine:**
 
@@ -243,14 +222,14 @@ controllo indipendente del 29/09 (tesi e archivio, in sola lettura):
 - [ ] `confronto.tex` tabella `tab:crescita`, riga 10.018: 3,5 e 6,3 MB su
       disco senza file (anche in `carico/README.md`). Archiviare la misura a
       10.018 documenti o togliere le due celle.
-- [ ] `sistemi.tex` (query di produzione): i parametri sono cinque, manca
+- [x] `sistemi.tex` (query di produzione): i parametri sono cinque, manca
       `tie_breaker: 0.3` (tocca solo il punteggio, non gli insiemi).
-- [ ] `confronto.tex` e `appendice-ipotesi.tex`, reranker: il primo stadio è
+- [x] `confronto.tex` e `appendice-ipotesi.tex`, reranker: il primo stadio è
       "LA con le stopword inglesi" (0,6757 e 0,3062), non LA.
-- [ ] `confronto.tex`, memoria sotto carico: a `ffa38ab` 355 MB contro 1.566;
+- [x] `confronto.tex`, memoria sotto carico: a `ffa38ab` 355 MB contro 1.566;
       272 dopo le prime due correzioni, 179 dopo l'ultima.
-- [ ] `appendice-ipotesi.tex` in cima: "ogni esperimento con previsioni".
-- [ ] `confronto.tex`: "un quinto del tempo, più di sei volte" → "circa un
+- [x] `appendice-ipotesi.tex` in cima: "ogni esperimento con previsioni".
+- [x] `confronto.tex`: "un quinto del tempo, più di sei volte" → "circa un
       settimo, circa sette volte" (numeri dopo `accenti`).
 - [ ] README, negli Esito con nota datata: `cause-divergenza` (a `1902826`
       la terza esecuzione cambia anche un'altra testa, legata a
@@ -272,9 +251,15 @@ controllo indipendente del 29/09 (tesi e archivio, in sola lettura):
 
 Dal terzo lotto (29/09):
 
-- [ ] Known-item umane chiuse con tre lotti, 104 query (16 vuote, 4 con un
+- [x] Known-item umane chiuse con tre lotti, 104 query (16 vuote, 4 con un
       numero, mediana 4 parole): aggiornare 4.4, 9.2 ("due lotti su
       quattro"), la voce di Martin qui sopra e il README dell'archivio.
+      Fatto il 29/09, README dell'archivio compreso.
+- [ ] `produzione.tex` 6.4 e 6.5 dicono ancora "le 76 known-item umane
+      raccolte finora": dopo il rilancio di `date-app`.
+- [x] `confronto.tex` 8.3 cita le 76 known-item umane del carico: giusto
+      (il carico è del 28/09), e il testo dice già "raccolte fino al 28
+      settembre".
 
 ## Regole
 

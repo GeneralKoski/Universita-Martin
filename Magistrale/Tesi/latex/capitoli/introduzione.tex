@@ -89,7 +89,14 @@ La domanda si articola in quattro:
         contro 22, su due motori che non girano alla pari.
   \item \textbf{Un corpus pubblico di dominio}: 10.018 atti degli albi pretori
         comunali, riscaricabili da chiunque, con 300 query known-item generate e
-        un protocollo per quelle scritte da persone.
+        104 scritte da tre persone con un protocollo fissato prima della
+        raccolta.
+  \item \textbf{Un confronto su query scritte da persone}: sulle 104
+        known-item umane Koskidex innestato con il profilo consigliato fa
+        0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, e lascia a
+        vuoto il 30\% delle ricerche contro il 46\%; lo stesso motore fuori
+        dall'app, in recupero disgiuntivo e con i vettori, arriva a 0,613
+        (capitolo~\ref{chapter:confronto}).
   \item \textbf{Una misura di come usare il vettore}: con il recupero
         congiuntivo di Documentale l'unione dei candidati vale +0,62 di nDCG@10
         su SciFact, e il peso giusto del vettore dipende dal tipo di query, tanto

@@ -1,7 +1,7 @@
 \chapter{Registro delle ipotesi}\label{chapter:appendice-ipotesi}
 
-Ogni esperimento di questa tesi ha scritto le sue previsioni prima della misura,
-con una soglia numerica, e le ha committate nel README dell'esperimento o nella
+Ogni esperimento di questa tesi con previsioni le ha scritte prima della
+misura, quasi sempre con una soglia numerica, e le ha committate nel README dell'esperimento o nella
 voce del diario di Koskidex; a misura fatta ha aggiunto l'esito, previsione per
 previsione, senza toccare quello che era scritto prima. La
 tabella~\ref{tab:ipotesi} le raccoglie tutte, quelle già misurate: la prima colonna dice da dove
@@ -530,7 +530,8 @@ numero con la soglia, ed è segnato con un asterisco.
     & $-$4\%: confermata \\
   \addlinespace
   \texttt{reranker}
-    & 1. SciFact, nDCG@10 riordinato almeno 0,72
+    & 1. SciFact, nDCG@10 riordinato almeno 0,72 (primo stadio LA con le
+      stopword inglesi, anche per la 2)
     & da 0,676 a 0,723: confermata, di poco \\
     & 2. NFCorpus, nDCG@10 riordinato almeno 0,33
     & da 0,306 a 0,331: confermata, di poco \\
@@ -538,22 +539,78 @@ numero con la soglia, ed è segnato con un asterisco.
     & 0,953 contro 0,960: confermata, ma di 0,007 \\
     & 6. Mediana del riordino almeno 2~s a query
     & da 5,1 a 12,0~s: confermata \\
+  \addlinespace
+  \texttt{known-item-\allowbreak umane}
+    & 1. Meno del 25\% delle query con un numero
+    & 4 su 104: confermata \\
+    & 2. ES: più del 30\% a vuoto, atto entro dieci in meno della metà
+    & 46,2\% e 42,3\%: confermata \\
+    & 3. KC almeno 0,10 di MRR@10 sopra ES, almeno 10 punti di vuoti in meno
+    & +0,106 e 16,3 punti: confermata, di poco \\
+    & 4. Senza numero LA almeno 0,05 sopra LT; con un numero LT sopra LA
+    & +0,195; 0,083 contro 0,750: a metà \\
+    & 5. A la migliore piatta senza numero, almeno 0,03 sopra LA
+    & 0,606, +0,055: confermata \\
+    & 6. Crispiano almeno 0,10 sotto il Friuli per LA e KC
+    & $-$0,158 e $-$0,216: confermata \\
+    & 7. V senza numero entro 0,10 da LA; con un numero sotto 0,30
+    & $-$0,036; 0,650: a metà \\
+  \addlinespace
+  \texttt{italiano-umane}
+    & 1. Con \texttt{all} lo stemmer: almeno 5 punti di vuoti in meno, MRR@10
+      almeno +0,02
+    & 3,8 punti e +0,013: smentita \\
+    & 2. Con \texttt{any} lo stemmer sposta l'MRR@10 di meno di 0,02
+    & +0,007: confermata \\
+    & 3. Con \texttt{any} le stopword spostano l'MRR@10 di meno di 0,01
+    & $-$0,0101: smentita, di un soffio \\
+    & 4. Con \texttt{all} le stopword spostano i vuoti di meno di 2 punti
+    & 3,8 punti: smentita \\
+  \addlinespace
+  \texttt{scelta-umane}
+    & 1. L'oracolo almeno 0,03 sopra la regola
+    & +0,032: confermata, di poco \\
+    & 2. La regola non più di 0,01 sotto la migliore fissa
+    & 0,0008 sopra: confermata \\
+    & 3. Il classificatore non supera la regola di più di 0,01
+    & +0,004: confermata \\
+    & 4. Senza cifra B batte A su almeno il 15\% delle query
+    & 12 su 100: smentita \\
+  \addlinespace
+  \texttt{scheda-testo}
+    & 1. Il testo porta LA almeno 0,10 sopra la scheda
+    & da 0,540 a 0,463: smentita \\
+    & 2. Con LT il testo toglie almeno 20 punti di vuoti
+    & 22 punti: confermata \\
+    & 3. Su testo $b$ 0,75 entro 0,02 dal migliore di quattro valori
+    & 0,014: confermata \\
+    & 4. Su testo, A a 8.192 token almeno 0,02 sopra A a 2.048
+    & 0,515 contro 0,558: smentita \\
+    & 5. Su testo A almeno 0,03 sopra LA
+    & +0,095: confermata \\
+  \addlinespace
+  Diario, scheda contro testo
+    & 1. Il testo aumenta il richiamo, guadagno piccolo sul nDCG@10
+    & richiamo su solo con LT, LA $-$0,077: a metà$^{*}$ \\
+    & 2. Il guadagno è più grande sulle query lunghe
+    & sì con LT, no con LA e A: a metà$^{*}$ \\
+    & 3. Sulle ricerche per numero d'atto il testo non serve
+    & 3 query con una cifra: non misurata \\
+    & 4. Su documenti tutti lunghi $b$ conta meno
+    & 0,037 fra 0,25 e 1: confermata$^{*}$ \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 193: 137 confermate, 45 smentite, 10 a metà, e una
-senza un esito registrato (la settima della voce E1). Delle 192 con un esito,
-più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+In tutto le previsioni sono 217: 150 confermate, 51 smentite, 14 a metà, e due
+senza un esito registrato (la settima della voce E1, e la terza del diario
+sulla scheda contro il testo, che le query umane non permettono di misurare).
+Delle 215 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non
 hanno previsioni numeriche: il primo registrava due ipotesi sulle cause della
 divergenza residua, scritte senza soglia e sbagliate tutte e due. Le quattro
 ipotesi scritte nel diario il 23 settembre sul confronto fra scheda e testo
-intero aspettano ancora la misura (sezione~\ref{sec:scheda-testo}). Aspettano
-la misura, e quindi mancano dalla tabella, anche le previsioni già scritte e
-committate degli esperimenti che girano a raccolta delle known-item umane
-chiusa: \texttt{known-item-umane} (7), \texttt{italiano-umane} (4),
-\texttt{scelta-umane} (4), \texttt{scheda-testo} (5) e la parte umana di
-\texttt{reranker} (2); entreranno con il loro esito.
+intero non hanno soglia, e il verdetto, segnato con l'asterisco, è mio, sui
+numeri di \texttt{scheda-testo} divisi per lunghezza della query.

@@ -55,9 +55,12 @@ contesto limitato, e i documenti più lunghi di quel contesto vanno spezzati in
 parti, con un vettore per parte. Per le schede, che Documentale indicizza oggi,
 la questione non si pone. Per il testo integrale, con il contesto portato a 8.192
 token, resterebbero tagliati 3 atti su 563. Se leggere tutto il testo, o
-spezzarlo, migliori la pertinenza lo dirà la misura della scheda contro il testo
-intero (sezione~\ref{sec:scheda-testo}), che confronta il vettore dei primi 2.048
-token con quello dei primi 8.192 e aspetta le query known-item scritte da persone.
+spezzarlo, migliori la pertinenza l'ha misurato la scheda contro il testo
+intero (sezione~\ref{sec:scheda-testo}), sulle 50 known-item umane di
+Crispiano: con i vettori dei primi 8.192 token A fa 0,515 di MRR@10, con quelli
+dei primi 2.048 fa 0,558, e sulla scheda 0,613. Quello che sta dopo i primi
+2.048 token, su queste query, pesa contro; per la regola scritta prima della
+misura, spezzare i documenti lunghi in parti non serve.
 
 \section{Difetto 2: dal re-ranking al recupero ibrido}\label{sec:difetto2}
 
@@ -375,6 +378,19 @@ l'atto, mentre le frasi di SciFact, anche quando hanno una cifra (114 query su
 di query danno gli stessi numeri, e su questi dati non si possono distinguere. La
 prova giusta sono query dei due tipi nella stessa collezione, cioè le known-item
 scritte da persone sul corpus degli albi, dove \emph{ordinanza chiusura via Roma
-luglio} non ha numeri e una frase può averne. Finché quella prova non c'è, la
-scelta per tipo di query resta fuori dal motore e fuori dal profilo consigliato del
+luglio} non ha numeri e una frase può averne.
+
+\paragraph{La prova sulle query umane.} Le 104 known-item umane
+(\texttt{2026-09-25\_scelta-umane}), con il classificatore congelato, cioè con i
+pesi imparati sopra e nessuna query umana usata per imparare, danno una prova
+più debole di quella che serviva: solo 4 query su 104 contengono una cifra, e i
+due tipi nella stessa collezione ci sono appena. Su queste query A e B danno lo
+stesso nDCG@10 in 73 casi su 104, e la scelta vale poco in tutte e due le
+direzioni. La regola sceglie B una volta sola, e fa 0,6727 contro 0,6719 di
+sempre A; il classificatore sceglie B su 59 query e fa 0,6769, appena 0,004
+sopra la regola; l'oracolo arriva a 0,7045, 0,032 sopra la regola. Tre
+previsioni su quattro: è caduta quella che metteva il margine dell'oracolo fra
+le query senza cifra, dove B batte A su 12 query su 100, non su almeno il
+15\%. Il rischio della collezione resta quindi aperto, e la scelta per tipo di
+query resta fuori dal motore e fuori dal profilo consigliato del
 capitolo~\ref{chapter:produzione}.

@@ -2,14 +2,10 @@
 
 \section{Le configurazioni a confronto}\label{sec:configurazioni}
 
-\todo[inline]{Bozza del 28/09, prima del terzo lotto: struttura e ragionamento
-fissati, i numeri (\dacompletare) arrivano da
-\texttt{2026-09-25\_known-item-umane} a raccolta chiusa.}
-
 Il confronto finale si regge sulle known-item umane
-(sezione~\ref{sec:query}): \dacompletare{} query scritte da persone che non
-conoscono i motori, una per atto, su \dacompletare{} atti estratti con un seme,
-metà per fonte. Per ogni query c'è un atto giusto solo, quindi la misura
+(sezione~\ref{sec:query}): 104 query scritte da tre persone che non
+conoscono i motori, una per atto, su 120 atti estratti con un seme, metà per
+fonte. Per ogni query c'è un atto giusto solo, quindi la misura
 principale è l'MRR@10, accanto a tre quantità che un utente sente di più:
 l'atto al primo posto, l'atto fra i primi dieci, la ricerca a vuoto. I bisogni
 aperti delle 24 query restano un confronto secondario: i giudizi del modello
@@ -63,78 +59,92 @@ sola risposta.
     \toprule
     & tutte & Crispiano & Friuli V.G. & con numero & senza numero \\
     \midrule
-    ES & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
-    KC & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
+    ES & 0,326 (46\%) & 0,227 (48\%) & 0,417 (44\%) & 0,000 (100\%) & 0,339 (44\%) \\
+    KC & 0,432 (30\%) & 0,320 (36\%) & 0,536 (24\%) & 0,000 (100\%) & 0,449 (27\%) \\
     \midrule
-    K0 & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
-    LA & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
-    LT & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
-    A & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
-    B & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
-    V & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
+    K0 & 0,337 (43\%) & 0,308 (46\%) & 0,364 (41\%) & 0,063 (75\%) & 0,348 (42\%) \\
+    LA & 0,559 (1\%) & 0,477 (0\%) & 0,635 (2\%) & 0,750 (0\%) & 0,552 (1\%) \\
+    LT & 0,346 (43\%) & 0,243 (46\%) & 0,442 (41\%) & 0,083 (75\%) & 0,357 (42\%) \\
+    A & \textbf{0,613} (0\%) & \textbf{0,557} (0\%) & 0,665 (0\%) & \textbf{0,778} (0\%) & \textbf{0,606} (0\%) \\
+    B & 0,607 (0\%) & 0,506 (0\%) & \textbf{0,700} (0\%) & 0,675 (0\%) & 0,604 (0\%) \\
+    V & 0,520 (0\%) & 0,467 (0\%) & 0,569 (0\%) & 0,650 (0\%) & 0,515 (0\%) \\
     \midrule
     RR-LA & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
     RR-A & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
     \bottomrule
   \end{tabular}
   \caption{Known-item umane: MRR@10 e, fra parentesi, la quota di ricerche a
-  vuoto. ES e KC dall'app, le altre con Koskidex piatto sul corpus a schede.}
+  vuoto. ES e KC dall'app, le altre con Koskidex piatto sul corpus a schede.
+  Le query sono 104: 50 di Crispiano, 54 del Friuli Venezia Giulia, 4 con un
+  numero e 100 senza.}
   \label{tab:known-item-umane}
 \end{table}
 
-\paragraph{Che cosa scrive chi cerca.} \dacompletare{} query su
-\dacompletare{} contengono un numero; avevo previsto meno di una su quattro,
-perché chi ricorda un atto dopo settimane ne ricorda l'argomento, non il
-protocollo. \dacompletare{} persone su \dacompletare{} hanno risposto «non
-saprei» per almeno un atto.
-\todo[inline]{Previsione 1. Se le query con un numero sono poche, le colonne
-«con numero» vanno lette come aneddoti: dirlo con il loro conteggio.}
+\paragraph{Che cosa scrive chi cerca.} Solo 4 query su 104 contengono un
+numero; avevo previsto meno di una su quattro, perché chi ricorda un atto dopo
+settimane ne ricorda l'argomento, non il protocollo, ed è andata ancora più in
+là. Le query sono corte, 4 parole di mediana, e le quattro con un numero sono
+frasi, da 5 a 9 parole. Due persone su tre hanno risposto «non saprei» per
+almeno un atto, 16 volte in tutto. Con quattro query, la colonna «con numero»
+della tabella~\ref{tab:known-item-umane} va letta come un aneddoto: una
+posizione in più o in meno su una query sposta l'MRR@10 di 0,25.
 
 \paragraph{Il campo unico anche sulle ricerche per contenuto.} Il difetto della
 sezione~\ref{sec:numero-comune} era stato trovato sulle ricerche per numero e
 comune. Qui la domanda è se colpisca anche chi cerca per argomento: con
 l'operatore \texttt{and} di produzione tutte le parole devono stare nello
 stesso campo della scheda, e chi scrive aggiunge facilmente il comune, un anno o
-una parola del testo. ES va a vuoto nel \dacompletare{} delle query e trova
-l'atto fra i primi dieci nel \dacompletare; KC, con le parole libere di stare
-in campi diversi e l'elisione, va a vuoto nel \dacompletare{} e fa
-\dacompletare{} di MRR@10 sopra ES.
-\todo[inline]{Previsioni 2 e 3: più del 30\% a vuoto per ES, KC almeno 0,10
-sopra con almeno 10 punti di vuoti in meno. Se tengono tutte e due, il
-difetto del campo unico riguarda anche le ricerche per contenuto: è la frase
-da scrivere.}
+una parola del testo. ES va a vuoto nel 46,2\% delle query e trova l'atto fra i
+primi dieci nel 42,3\%; KC, con le parole libere di stare in campi diversi e
+l'elisione, va a vuoto nel 29,8\% e fa 0,106 di MRR@10 sopra ES, 0,432 contro
+0,326. Le due previsioni hanno tenuto, la seconda di poco sulla soglia di
+0,10: il difetto del campo unico riguarda anche le ricerche per contenuto. Ma
+KC resta molto sotto le configurazioni piatte con il recupero disgiuntivo, e
+tre ricerche su dieci tornano ancora vuote: il profilo consigliato corregge i
+campi, non il recupero congiuntivo di produzione, che sulle frasi scritte da
+persone è il limite più grande. Le quattro query con un numero tornano vuote
+con tutti e due i motori dell'app.
 
 \paragraph{Congiuntivo o disgiuntivo.} Una parola in più, o scritta
 diversamente da come è nell'atto, svuota il recupero congiuntivo. Sulle query
-senza numero LA fa \dacompletare{} e LT \dacompletare; su quelle con un numero
-\dacompletare.
-\todo[inline]{Previsione 4: LA almeno 0,05 sopra LT senza numero, LT sopra LA
-con il numero. Collegare alla sezione~\ref{sec:scelta}: la regola per tipo di
-query e il classificatore sulle stesse query (\texttt{scelta-umane}).}
+senza numero LA fa 0,552 e LT 0,357, e LT lascia a vuoto il 42\% delle query
+contro l'1\%; su quelle con un numero LA fa 0,750 e LT 0,083. Avevo previsto
+il contrario per le query con un numero, pensando a un numero con poche altre
+parole, dove il congiuntivo aiuta; ma le quattro sono frasi, e il congiuntivo le
+svuota come le altre: la previsione ha tenuto a metà. Scegliere fra i due per
+tipo di query, con la regola o con il classificatore della
+sezione~\ref{sec:scelta}, qui vale poco: fra A e B cambia qualcosa su 31 query
+su 104, e la regola sceglie B una volta sola.
 
 \paragraph{I vettori.} A, che aggiunge ai candidati di LA i cento più vicini,
-fa \dacompletare{} sulle query senza numero, \dacompletare{} sopra LA; i soli
-vettori (V) \dacompletare, e sulle query con un numero \dacompletare.
-\todo[inline]{Previsioni 5 e 7: A almeno 0,03 sopra LA senza numero; V entro
-0,10 da LA senza numero e sotto 0,30 con il numero. È la verifica, su query
-vere, di quello che il capitolo~\ref{chapter:ibrido} aveva visto sulle
-collezioni pubbliche.}
+fa 0,606 sulle query senza numero, 0,055 sopra LA, ed è la configurazione
+migliore; B, pensata per gli identificativi, le sta a 0,002. I soli vettori (V)
+fanno 0,515, a 0,036 da LA, e sulle query con un numero 0,650: avevo previsto
+meno di 0,30, di nuovo pensando a un numero con poco intorno, e anche qui il
+resto della frase basta ai vettori. Sulle query vere l'unione di lessicale e
+vettori fa quello che il capitolo~\ref{chapter:ibrido} aveva visto sulle
+collezioni pubbliche: trova l'atto fra i primi dieci nell'86\% dei casi, contro
+il 76\% di LA e il 42\% di ES.
 
 \paragraph{Le due fonti.} Su Crispiano chi scriveva aveva letto il testo
 intero, e l'indice ha la scheda: le parole che ricorda possono non esserci. LA
-fa \dacompletare{} su Crispiano e \dacompletare{} sul Friuli Venezia Giulia, KC
-\dacompletare{} e \dacompletare.
-\todo[inline]{Previsione 6: almeno 0,10 sotto su Crispiano per LA e KC.
-Rimandare alla sezione~\ref{sec:scheda-testo} per scheda contro testo intero
-sui soli atti di Crispiano, e alla sezione~\ref{sec:italiana} per stopword e
-stemmer italiani sulle stesse query.}
+fa 0,477 su Crispiano e 0,635 sul Friuli Venezia Giulia, KC 0,320 e 0,536,
+come previsto. La spiegazione della previsione regge solo in parte. Sui soli
+atti di Crispiano (sezione~\ref{sec:scheda-testo}) il recupero congiuntivo
+trova tutte le parole della query più spesso nel testo che nella scheda, quindi
+qualche parola ricordata dal testo nella scheda manca davvero; ma con il
+disgiuntivo il testo intero ritrova l'atto peggio della scheda, e le parole
+mancanti non bastano a spiegare il divario fra le due fonti. Stopword e stemmer italiani, sulle stesse 104 query, aiutano il
+recupero congiuntivo e quasi non toccano il disgiuntivo
+(sezione~\ref{sec:italiana}).
 
 \paragraph{Quanto vale riordinare.} Il cross-encoder porta LA da
 \dacompletare{} a \dacompletare{} di MRR@10 e A da \dacompletare{} a
 \dacompletare; degli atti che il primo stadio aveva fra l'undicesimo e il
 centesimo posto ne porta fra i primi dieci \dacompletare{} su \dacompletare.
-Sulle collezioni pubbliche il guadagno è più piccolo e ha un tetto: SciFact
-passa da 0,676 a 0,723 di nDCG@10, NFCorpus da 0,306 a 0,331, e su NFCorpus
+Sulle collezioni pubbliche, con il primo stadio LA con le stopword inglesi
+come nel capitolo~\ref{chapter:lessicale}, il guadagno è più piccolo e ha un
+tetto: SciFact passa da 0,676 a 0,723 di nDCG@10, NFCorpus da 0,306 a 0,331, e su NFCorpus
 il primo stadio porta fra i cento soltanto il 24\% dei documenti giusti, gli
 unici che il riordino può vedere. Sulle ricerche \texttt{<numero> <comune>}
 porta LA da 0,833 a 0,953, contro 0,960 del recupero congiuntivo: degli atti
@@ -334,8 +344,8 @@ per la pertinenza no (tabella~\ref{tab:crescita}).
 \end{table}
 
 Alla dimensione dell'albo Koskidex occupa un decimo della memoria di
-Elasticsearch, e sotto carico 272~MB al massimo contro 1.566, 179 dopo l'ultima
-correzione. Ma tiene tutto in
+Elasticsearch, e sotto carico 355~MB al massimo contro 1.566; 272 dopo le
+prime due correzioni, 179 dopo l'ultima. Ma tiene tutto in
 memoria, con gli identificativi dei documenti e i nomi dei campi come stringhe
 in ogni occorrenza: circa 12~KB a documento, e a 100.000 documenti la memoria è
 quasi quella di Elasticsearch, che ha un heap fisso. Le correzioni non la
@@ -373,7 +383,7 @@ quanto pesa quella regola (sezione~\ref{sec:espansioni}).
 
 \paragraph{Cosa ne segue per Documentale.} All'albo di un comune, diecimila
 atti, Koskidex costa un decimo della memoria di Elasticsearch e risponde in
-meno di un quinto del tempo, e sotto carico regge più di sei volte le ricerche
+circa un settimo del tempo, e sotto carico regge circa sette volte le ricerche
 sulle stesse CPU. A centomila documenti il tempo regge ancora, la memoria no: lì
 serve un indice più compatto, con identificativi e campi interi, che
 ridurrebbe anche l'indice su disco, oggi quasi il doppio di quello di
@@ -385,10 +395,6 @@ diversamente.
 
 \section{Dove un motore piccolo è competitivo, e dove no}\label{sec:competitivo}
 
-\todo[inline]{Bozza del 28/09: le affermazioni sui costi hanno già i loro
-numeri (sezione~\ref{sec:latenza}); quelle sulla pertinenza aspettano la
-sezione~\ref{sec:pertinenza}.}
-
 La domanda della tesi non era se Koskidex batte Elasticsearch, ma se un motore
 piccolo, innestato in un documentale al posto di uno grande, regge, e dove
 smette di reggere. Le risposte sono di tre tipi.
@@ -399,12 +405,9 @@ secondo sulle stesse quattro CPU (4.054 contro 571, Elasticsearch misurato il
 giorno prima sulla stessa macchina) e occupa un decimo della memoria. Sulle ricerche per
 numero e comune il profilo consigliato porta l'atto giusto al primo posto nel
 91,7\% dei casi, contro l'1,3\% di produzione, e con la normalizzazione delle
-date, che resta fuori dal profilo, le date si trovano in qualunque formato. Sulle ricerche per contenuto scritte da persone KC fa
-\dacompletare{} di MRR@10 contro \dacompletare{} di ES.
-\todo[inline]{Se la previsione 3 cade, questa frase cambia verso: dire allora
-che la differenza di pertinenza sta nelle impostazioni di produzione, non nel
-motore, e che Elasticsearch con le stesse correzioni farebbe lo stesso
-(la parità del capitolo~\ref{chapter:sistemi}).}
+date, che resta fuori dal profilo, le date si trovano in qualunque formato.
+Sulle ricerche per contenuto scritte da persone KC fa 0,432 di MRR@10 contro
+0,326 di ES, e lascia a vuoto tre ricerche su dieci invece di quasi una su due.
 
 \paragraph{Dove il vantaggio non è del motore.} Quasi tutto il guadagno di
 pertinenza viene da impostazioni che Elasticsearch ha già, o potrebbe avere:
@@ -414,7 +417,11 @@ un'opzione, ma si ottengono separando nella query i termini numerici e
 cercandoli senza fuzziness. Il capitolo~\ref{chapter:sistemi} ha
 mostrato che con le stesse impostazioni i due motori trovano gli stessi
 insiemi. Il merito di Koskidex, in questa tesi, è stato di rendere visibili e
-misurabili i difetti di una configurazione, non di esserne immune.
+misurabili i difetti di una configurazione, non di esserne immune. E il
+margine più grande resta sul tavolo: sulle stesse query, fuori dall'app e
+quindi solo come ordine di grandezza, Koskidex piatto fa 0,346 in recupero
+congiuntivo, 0,559 in disgiuntivo e 0,613 con i vettori. Il limite che resta a
+KC è il recupero congiuntivo che Documentale ha scelto, non il motore.
 
 \paragraph{Dove non regge.} La memoria: Koskidex tiene tutto in memoria, con
 identificativi e nomi dei campi come stringhe in ogni occorrenza, e a centomila
@@ -423,5 +430,10 @@ su disco è quasi il doppio e l'indicizzazione 2,4 volte più lenta. Mancano le 
 un documentale grande dà per scontate e che questa tesi non ha misurato:
 repliche, shard, un ecosistema di strumenti. E la pertinenza sulle ricerche
 aperte resta non misurata con giudizi umani.
-\todo[inline]{Chiudere con una frase sola: per chi, con quali numeri di
-archivio e di utenti, un motore piccolo è la scelta giusta.}
+
+Per un documentale come questo, l'archivio di un ente con qualche decina di
+migliaia di atti su un server solo, un motore piccolo è una scelta ragionevole:
+costa un decimo della memoria, risponde in meno di un millisecondo, e la
+pertinenza dipende dalle impostazioni più che dal motore. Oltre i centomila
+documenti, o dove servono più server, no, almeno finché l'indice non diventa
+più compatto.

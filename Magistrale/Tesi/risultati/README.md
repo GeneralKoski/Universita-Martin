@@ -148,6 +148,9 @@ persone rimandano si copiano così come sono in `risposte/`, e
 `qrels/test.tsv`, `queries.txt` e `raccolta.json` (per ogni atto mostrato:
 query, soprannome, secondi di lettura e di scrittura, se la pagina è stata
 ricaricata, le query vuote con il motivo). Si misura solo a raccolta chiusa.
+La raccolta si è chiusa il 29/09/2026 con tre lotti su quattro (il quarto mai
+assegnato): 120 atti mostrati, 104 query, 16 vuote; il riassunto con le
+impronte dei tre file sta in `riassunto.json`, i file solo in locale.
 
 ## Leggere i tempi senza farsi ingannare
 
