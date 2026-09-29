@@ -217,8 +217,9 @@ Lucene: sommare nel documento le occorrenze di tutte le espansioni e usare la
 frequenza documentale più alta. Con un'altra impostazione,
 \texttt{BM25Expansion} a \texttt{synonym}, il punteggio non dipende più
 dall'ordine, e gli insiemi restano gli stessi. SciFact fa 0,6667, quasi quanto
-con l'ordine lessicografico, e con le stopword 0,6734 invece di 0,6757; NFCorpus
-e le known-item si spostano di meno di 0,003. Avevo previsto che sommare le
+con l'ordine lessicografico, e con le stopword 0,6734 invece di 0,6757;
+NFCorpus si sposta di meno di 0,002 di nDCG@10, le known-item di 0,0025 di
+MRR@10 (0,0033 di nDCG@10). Avevo previsto che sommare le
 varianti di una parola aiutasse come uno stemmer leggero, e non aiuta. Le due
 regole che non dipendono dall'ordine di ingresso, quella lessicografica e la
 somma, sono d'accordo fra loro, e lo 0,6694 misurato è il valore,

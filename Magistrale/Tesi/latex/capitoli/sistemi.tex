@@ -54,7 +54,8 @@ nessuna parte.
 portare il vettore della query. In quel caso al punteggio di ogni documento
 \emph{già trovato} dalla parte lessicale si aggiunge la similarità del coseno
 moltiplicata per 20. È un riordino dei risultati lessicali, non una ricerca
-ibrida: un documento che non contiene le parole della query non entra mai.
+ibrida: con una query che ha almeno un termine, un documento che non ne
+contiene le parole non entra mai.
 
 \paragraph{Il punto di partenza, congelato.} Il comportamento di quel giorno è
 fissato in un test, \texttt{TestBaselineRankingIsFrozen}, che confronta gli

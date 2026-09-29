@@ -208,7 +208,8 @@ la accende \texttt{KOSKIDEX\_TYPOS\_ON\_NUMBERS=false}.
 \end{table}
 
 \textbf{Le due correzioni insieme portano l'atto giusto al primo posto in 275
-query su 300}, da 4. Nessuna delle due basta da sola: il vincolo del campo unico
+query su 300}, da 4 di Elasticsearch in produzione e 5 di Koskidex innestato
+con il solo campo unico. Nessuna delle due basta da sola: il vincolo del campo unico
 decide se l'atto si trova, i refusi sui numeri se è primo. La riga con il solo
 campo unico e i numeri esatti dice anche un'altra cosa: togliere i refusi ai
 numeri, lasciando il vincolo, porta le query a vuoto dal 70\% al 95\%. Quel 30\%

@@ -229,7 +229,7 @@ controllo indipendente del 29/09 (tesi e archivio, in sola lettura):
 - [x] `appendice-ipotesi.tex` in cima: "ogni esperimento con previsioni".
 - [x] `confronto.tex`: "un quinto del tempo, più di sei volte" → "circa un
       settimo, circa sette volte" (numeri dopo `accenti`).
-- [ ] README, negli Esito con nota datata: `cause-divergenza` (a `1902826`
+- [x] README, negli Esito con nota datata (fatto il 29/09, `df5c15d`): `cause-divergenza` (a `1902826`
       la terza esecuzione cambia anche un'altra testa, legata a
       `stable_term_order`); `elisioni-koskidex` 213 → 195 (213 con i 18 di
       *comunale*); `carico` e `prestazioni` 35.913 ricerche e 2,569 MB;
@@ -237,15 +237,23 @@ controllo indipendente del 29/09 (tesi e archivio, in sola lettura):
       `accenti` p99 14,9; `prestazioni` 1.566; `elisioni-koskidex` 1,1-1,2 e
       6,1-6,3 ms; `recupero-intermedio` la riga `all` da `4ee872c`;
       `date-app` previsione 5 (3 query su 76 hanno una cifra).
-- [ ] Dubbi da decidere: `produzione.tex` "275 su 300, da 4" (Koskidex
-      innestato partiva da 5, dire contro cosa); `ibrido.tex` NFCorpus
-      0,3261 e 0,3263; `contesto-ollama` previsione 1 forse a metà;
-      `sistemi.tex:57` "non entra mai" (vero per le query non vuote); 53
-      contro 79 oggetti con dati personali (criteri diversi, dirlo);
-      `contesto-ollama` 1.409 caratteri senza titolo, 1.662 con;
-      `lessicale.tex:221` "meno di 0,003" vale per l'MRR, il nDCG sale di
-      0,0033; lotto 2 iniziato alle 18:22Z del 25/09, prima del commit delle
-      previsioni (18:39Z), da dire in 4.4.
+- [x] Dubbi, decisi il 29/09:
+      - `produzione.tex` "275 su 300": ora dice da 4 di Elasticsearch e da 5
+        di Koskidex con il solo campo unico;
+      - `sistemi.tex` "non entra mai": ora limitato alle query con almeno un
+        termine;
+      - `lessicale.tex` sinonimi: NFCorpus meno di 0,002 di nDCG@10, le
+        known-item 0,0025 di MRR@10 e 0,0033 di nDCG@10;
+      - `contesto-ollama`: nota datata, 1.409 caratteri senza titolo, 1.662
+        con;
+      - 53 contro 79 oggetti con dati personali: la tesi (53, parole intere,
+        archiviato) resta; il 79 di `SOURCE.md` non si riproduce (143 come
+        sottostringhe), nota in Koskidex `0e914f5`;
+      - lotto 2 aperto prima del commit delle previsioni: detto in 4.4;
+      - lasciati come sono: il grassetto di NFCorpus in `ibrido.tex` è
+        giusto (0,3263 contro 0,3261); `contesto-ollama` previsione 1 resta
+        confermata, con la croce (†) del registro e la spiegazione nel
+        README.
 
 Dal terzo lotto (29/09):
 

@@ -118,7 +118,10 @@ Previsione per previsione:
 5. **Confermata.** Nessuna scheda supera 2.048 token, la più lunga ne ha 486.
    Le schede dei 563 atti di Crispiano non sono contate a parte (nel corpus
    `beir-full` quegli atti hanno il testo intero), ma la più lunga delle
-   schede di `beir-metadata` ha 1.409 caratteri e resta lontana dalla soglia.
+   schede di `beir-metadata` ha 1.409 caratteri e resta lontana dalla soglia
+   (*nota del 29/09/2026, dal terzo controllo della tesi*: 1.409 è il solo
+   testo; con il titolo, cioè quello che va nel vettore, sono 1.662,
+   `caratteri_scheda_max` di `corpus/*_numeri-diario.json`).
    I vettori delle misure di Documentale e dell'albo nel capitolo 7 non sono
    stati tagliati.
 6. **Confermata.** 3 documenti di SciFact e 2 di NFCorpus superano 2.048
