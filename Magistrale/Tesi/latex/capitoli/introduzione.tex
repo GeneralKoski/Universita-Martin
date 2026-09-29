@@ -38,17 +38,17 @@ interroga Documentale in produzione.
 
 \begin{quote}
   \emph{Quali difetti di recupero ha un motore di ricerca piccolo e senza
-  dipendenze quando prende il posto di Elasticsearch in un sistema documentale,
+  servizi esterni quando prende il posto di Elasticsearch in un sistema documentale,
   quanto costa ciascuno in pertinenza e in tempo, e quanto se ne recupera
   correggendoli uno alla volta?}
 \end{quote}
 
 La domanda si articola in quattro:
 \begin{enumerate}
-  \item quanto pesano, misurati, i difetti del recupero di Koskidex che la lettura
-        del codice fa sospettare: il recupero congiuntivo, l'assenza di IDF, un
-        vettore che riordina senza recuperare, e una fusione che somma scale
-        incomparabili (capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido});
+  \item quanto pesano, misurati, i difetti del recupero di Koskidex: i tre che la
+        lettura del codice fa sospettare, l'assenza di IDF, un vettore che
+        riordina senza recuperare e una fusione che somma scale incomparabili, e
+        il recupero congiuntivo, che la prima misura ha messo davanti a tutti (capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido});
   \item quali difetti ha la ricerca di Documentale in produzione, che l'innesto
         porta alla luce (capitolo~\ref{chapter:produzione});
   \item se esiste una configurazione che vada bene per le ricerche identificative
@@ -71,8 +71,8 @@ La domanda si articola in quattro:
         e~\ref{chapter:appendice-ipotesi}).
   \item \textbf{Quattro difetti di Koskidex, più uno trovato strada facendo,
         misurati e corretti}, ciascuno dietro un'impostazione che lascia il
-        comportamento di partenza come default. Il più grande, il recupero
-        congiuntivo, non era fra quelli sospettati: è stato trovato misurando.
+        comportamento di partenza come default. Il primo, il recupero
+        congiuntivo, non era fra i tre sospettati: è stato trovato misurando.
         Su SciFact il recupero lessicale passa da 0,0246 a 0,6757 di nDCG@10,
         il 99,5\% del riferimento BM25 di Lucene.
   \item \textbf{Quattro difetti della ricerca di Documentale in produzione}:
@@ -80,7 +80,8 @@ La domanda si articola in quattro:
         date in formati diversi. Su 300 ricerche \texttt{<numero> <comune>}
         l'atto giusto passa dall'1,3\% al 91,7\% dei casi al primo posto, con
         due impostazioni; una data scritta in un formato diverso da quello
-        dell'atto passa dallo 0-8\% al 98-100\% di atti trovati.
+        dell'atto passa dallo 0-8\% al 98-100\% di atti trovati entro i primi
+        dieci.
   \item \textbf{Un innesto con gli stessi risultati}: Koskidex dentro
         Documentale, scelto da una variabile d'ambiente, che restituisce gli
         stessi insiemi di Elasticsearch su tutte le query del confronto
@@ -106,10 +107,10 @@ previsione. Quello che si aggiunge dopo aver visto un numero lo si dichiara.
 
 Serve a una cosa: che un risultato non sia stato scelto dopo averlo visto. E ha un
 effetto collaterale che non avevo previsto: le previsioni sbagliate sono state le
-più utili. Che le stopword valessero più dello stemmer, che quel guadagno venisse
-in realtà dalle espansioni per prefisso, che la costante della fusione non
-dipendesse dalla lunghezza delle query ma dal tipo: ognuna di queste è una
-previsione smentita, ed è scritta come tale.
+più utili. Che le stopword valessero più dello stemmer, che le espansioni per
+prefisso non fossero rare nemmeno sulle query in inglese, che la costante della
+fusione non dipendesse dalla lunghezza delle query ma dal tipo: ognuna di queste
+ha smentito una previsione, ed è scritta come tale.
 
 \section{Struttura della tesi}\label{sec:struttura}
 

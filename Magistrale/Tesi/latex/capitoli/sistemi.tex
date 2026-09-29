@@ -22,8 +22,8 @@ come oggetto di questa tesi contava circa 2.850 righe di codice e 2.060 di test.
 termine la lista delle occorrenze (\emph{posting}), ciascuna con documento,
 campo e posizione. Accanto all'indice ci sono i documenti originali, l'elenco
 dei termini di ogni documento (per cancellarlo senza scorrere l'indice intero) e
-una mappa dai primi due caratteri ai termini che li hanno, usata per cercare i
-refusi. La persistenza è un registro delle operazioni (\emph{write-ahead log}) in
+una mappa da ogni coppia di caratteri consecutivi (bigramma) ai termini che la
+contengono, usata per cercare i refusi. La persistenza è un registro delle operazioni (\emph{write-ahead log}) in
 JSON, scritto prima di toccare l'indice, più un'istantanea periodica di tutti i
 documenti; all'avvio il motore ricarica l'istantanea e riapplica il registro.
 Tutto si usa da un'API HTTP: indici, documenti, impostazioni, ricerca con
@@ -65,12 +65,12 @@ partenza come valore predefinito. Misurato sulle collezioni pubbliche del
 capitolo~\ref{chapter:valutazione}, il punto di partenza fa 0,0246 di nDCG@10 su
 SciFact e 0,1659 su NFCorpus.
 
-Letto il codice, quattro scelte sembravano i candidati a difetti di recupero:
-il recupero congiuntivo, l'assenza di IDF, il vettore che riordina senza
-recuperare e la costante 20 che somma due scale diverse. Sono i difetti dei
-capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido}. Il primo, come si vedrà,
-è stato trovato misurando e non leggendo: la tesi stava per essere scritta su
-tre capitoli di ottimizzazione del punteggio di un motore che su SciFact non
+Letto il codice, tre scelte sembravano i candidati a difetti di recupero:
+l'assenza di IDF, il vettore che riordina senza recuperare e la costante 20 che
+somma due scale diverse. Con il recupero congiuntivo sono i quattro difetti dei
+capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido}. Il recupero
+congiuntivo, come si vedrà, è stato trovato misurando e non leggendo: la tesi
+stava per essere scritta su tre capitoli di ottimizzazione del punteggio di un motore che su SciFact non
 restituiva niente in 290 query su 300.
 
 \section{Documentale: come cerca in produzione}\label{sec:documentale}
@@ -223,8 +223,8 @@ motore solo (tabella~\ref{tab:divergenza}).
 Ciascuna è diventata un'impostazione di Koskidex, spenta per default.
 
 \paragraph{Due ipotesi sbagliate, e un difetto di Koskidex.} Dopo il quarto passo
-restavano 9 query diverse, con 42 documenti trovati solo da Elasticsearch, quasi
-tutti sulla query \texttt{ordinanza 187}. Le due spiegazioni scritte allora
+restavano 9 query diverse, con 42 documenti trovati solo da Elasticsearch, tutti
+sulla query \texttt{ordinanza 187}. Le due spiegazioni scritte allora
 erano plausibili e sbagliate tutte e due. La prima era la tokenizzazione dei
 numeri. La seconda era il limite di espansioni dei refusi di Elasticsearch
 (\texttt{max\_expansions}), smentita rilanciando la query di produzione con un

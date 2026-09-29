@@ -53,7 +53,10 @@ ipotesi scritte qui il 23/09 erano **sbagliate** tutte e due:
   Damerau e non la manteneva).
 - **Non era `max_expansions`.** La query di produzione rilanciata con
   `max_expansions: 10000` dà esattamente gli stessi insiemi su tutte e 24 le
-  query (controllo fatto a mano con uno script nello scratchpad, non archiviato).
+  query (controllo fatto a mano con uno script nello scratchpad, non archiviato;
+  rifatto il 29/09 sugli stessi dati con `max-expansions.py`, 24 insiemi su 24
+  uguali e uguali al rapporto dell'app archiviato:
+  `2026-09-29T074738Z_max-expansions.json`).
 
 **La quinta causa è il tokenizer.** `_explain` su un documento in più ha
 mostrato il motivo: il nome dice *"dell'illuminazione pubblica"*, e il

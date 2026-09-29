@@ -29,9 +29,8 @@ motore vede solo i vettori.
 Documentale la accende con una variabile d'ambiente,
 \texttt{KOSKIDEX\_EMBEDDER\_MODEL}. Il testo di cui si calcola il vettore è quello
 indicizzato: nelle valutazioni piatte titolo e testo in un campo solo, in
-Documentale i sei campi della scheda. Calcolare la prima volta i vettori ha
-richiesto 11 minuti per i 5.183 documenti di SciFact, 8 per i 3.633 di NFCorpus e 9
-per i 10.018 atti; dalla cache, frazioni di secondo.
+Documentale i sei campi della scheda. Calcolare la prima volta i vettori richiede
+minuti per collezione; dalla cache, frazioni di secondo.
 
 \paragraph{Quanto testo arriva al vettore.} Il contesto di 8.192 token è quello
 del modello, non quello che Ollama usa: senza opzioni nella richiesta, Ollama
@@ -41,7 +40,9 @@ grande con \texttt{num\_ctx} non basta, perché Ollama taglia al minimo fra
 2.048. L'ho scoperto tardi, e per caso: una prova su dati inventati dava numeri
 identici con e senza il contesto più grande. L'esperimento che lo misura
 (\texttt{2026-09-25\_contesto-ollama}) conta i token letti documento per
-documento. Nessuna scheda arriva alla soglia (la più lunga ha 486 token), e in
+documento. Nessuna delle 9.455 schede del Friuli Venezia Giulia arriva alla
+soglia (la più lunga ha 486 token), né quelle di Crispiano, che non superano i
+1.058 caratteri; e in
 SciFact e NFCorpus la superano 5 documenti su 8.816, di poche centinaia di token:
 i vettori delle misure di questo capitolo hanno letto tutto il testo, o quasi. Dei 563 testi integrali
 degli atti di Crispiano, invece, il 59\% supera i 2.048 token (mediana 2.168), e
@@ -198,8 +199,8 @@ per non spostare il comportamento di partenza senza un guadagno
     $\alpha$ & 0 & 0,2 & 0,4 & 0,5 & 0,6 & 0,8 & 0,9 & 1 \\
     \midrule
     SciFact train & 0,712 & 0,731 & 0,743 & \textbf{0,748} & 0,745 & 0,720 & 0,703 & 0,678 \\
-    NFCorpus dev & 0,303 & 0,317 & 0,320 & \textbf{0,323} & 0,320 & 0,307 & 0,299 & 0,276 \\
-    known-item train & 0,195 & 0,283 & 0,444 & 0,579 & 0,719 & 0,850 & \textbf{0,863} & 0,861 \\
+    NFCorpus dev & 0,303 & 0,316 & 0,320 & \textbf{0,323} & 0,320 & 0,307 & 0,299 & 0,276 \\
+    known-item train & 0,195 & 0,283 & 0,444 & 0,578 & 0,719 & 0,850 & \textbf{0,863} & 0,861 \\
     \bottomrule
   \end{tabular}
   \caption{La calibrazione della somma e della combinazione convessa: nDCG@10, MRR@10
@@ -232,7 +233,7 @@ tabella~\ref{tab:difetto3}.
 \textbf{Il 20 era sbagliato di un fattore otto per le query in lingua naturale e
 giusto, per caso, per quelle identificative.} Calibrare la costante vale +0,015 su
 SciFact e +0,010 su NFCorpus; la stessa costante, 160, sulle known-item porta l'MRR
-da 0,87 a 0,50. RRF, che di parametri non ne ha, fa come la somma calibrata su
+da 0,85 a 0,51. RRF, che di parametri non ne ha, fa come la somma calibrata su
 NFCorpus, sotto la somma a occhio su SciFact, e dimezza le known-item: pesa la
 posizione vettoriale dell'atto giusto, pessima, quanto quella lessicale. La
 normalizzazione della combinazione convessa non risolve: $\alpha = 0{,}5$ va bene per
@@ -296,13 +297,14 @@ misurato direttamente, è che il ciclo non è limitato dal numero di operazioni 
 dalla latenza di una catena di 1.024 somme dipendenti: le tre somme di prima correvano in parallelo, e toglierne due
 lascia la stessa catena. Accorciarla vorrebbe più accumulatori, cioè sommare in un
 altro ordine, e punteggi diversi nelle ultime cifre. A 10.000 documenti da 1.024
-dimensioni una scansione esatta costa quindi 12-15~ms su un portatile.
+dimensioni una scansione esatta costa quindi circa 15~ms su un portatile:
+l'unione, che ne fa due, costa 39,6~ms contro i 24,6 del re-ranking, che ne fa una.
 
 \paragraph{In Documentale.} Dal vivo, sulle 24 query del confronto, il re-ranking
-vettoriale sembrava portare la mediana da 8,7 a 33~ms. Rimisurato in A/B, con il
+vettoriale sembrava portare la mediana a 33~ms, contro gli 8-11 senza vettori. Rimisurato in A/B, con il
 motore di prima e quello di dopo sugli stessi dati, i due binari non differiscono
 in modo misurabile (le passate ballano di 2~ms nei due versi), e con i vettori
-delle query già calcolati la mediana è di 9,4-9,9~ms. I 24~ms in più erano il vettore della query, che Ollama
+delle query già calcolati la mediana è di 9,4-9,9~ms. I 23~ms in più erano il vettore della query, che Ollama
 calcola la prima volta che una query si vede. Con il re-ranking e il recupero
 congiuntivo i candidati lessicali sono pochi, e la conversione dei vettori non
 pesava. Il costo del vettore, in un documentale, è la query, non la ricerca.
@@ -340,7 +342,7 @@ perché B con l'unione non è mai vuota (tabella~\ref{tab:scelta}).
     sempre A (disgiuntivo, 160) & 0,5589 & \textbf{0,7067} & \textbf{0,3441} & 0,5366 \\
     sempre B (congiuntivo, 10) & \textbf{0,9680} & 0,6483 & 0,3325 & 0,6496 \\
     sempre congiuntivo, peso 20 & 0,9675 & 0,6483 & 0,3333 & 0,6497 \\
-    oracolo & 0,9731 & 0,7280 & 0,3655 & 0,6889 \\
+    oracolo & 0,9731 & 0,7280 & 0,3655 & 0,6888 \\
     \textbf{la regola} & \textbf{0,9680} & 0,7067 & 0,3438 & \textbf{0,6728} \\
     classificatore & 0,9680 & 0,7036 & 0,3432 & 0,6716 \\
     \midrule
@@ -359,7 +361,7 @@ prenderlo basta ancora la regola di una riga; il classificatore impara la stessa
 regola e fa appena peggio.
 
 E adesso l'oracolo ha spazio oltre il tipo di query: 0,016 sopra la regola, quasi
-tutto sulle frasi (+0,021 su SciFact e su NFCorpus), dove senza vettori non ne
+tutto sulle frasi (+0,021 su SciFact e +0,022 su NFCorpus), dove senza vettori non ne
 aveva. A e B sono ormai due ordinamenti diversi della stessa frase, il lessicale con
 un vettore forte contro quasi solo il vettore, e B vince su 29 query di SciFact su
 300 e su 82 di NFCorpus su 323. Nessuna caratteristica della query lo sa

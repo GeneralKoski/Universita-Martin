@@ -23,7 +23,7 @@ fosse molto più alto del nDCG: il motore senza IDF avrebbe trovato i documenti 
 li avrebbe ordinati male. Avevo anche scritto che, se il richiamo fosse stato
 basso, il problema non sarebbe stato l'ordinamento ma il recupero, e la tesi
 sarebbe cambiata. È andata così (tabella~\ref{tab:difetto0}): su SciFact
-Recall@100 e nDCG@10 sono lo stesso numero, 0,024. Il motore non ordinava male:
+Recall@100 e nDCG@10 sono quasi lo stesso numero, 0,024 e 0,025. Il motore non ordinava male:
 non trovava.
 
 \paragraph{La causa.} Ogni termine della query è obbligatorio
@@ -75,12 +75,13 @@ metriche, e il motivo è che il filtro era ridondante con il punteggio che c'era
 già: chi trova più termini prende più punti, e i documenti con tutti i termini
 restano in testa da soli. L'AND non aggiungeva precisione, toglieva richiamo.
 
-\paragraph{Il residuo.} Le 24 query di NFCorpus ancora vuote sono tutte di un
-termine solo e raro: \emph{eggnog}, \emph{halibut}, \emph{okra},
-\emph{Fosamax}. Da un campione di dieci avevo concluso che nove non compaiono nel
-corpus in nessuna forma e che solo \emph{leeks} sarebbe stata salvata da uno
-stemmer. Il campione era troppo piccolo: la sezione~\ref{sec:stopword} ne
-recupera nove.
+\paragraph{Il residuo.} Delle 24 query di NFCorpus ancora vuote, 22 sono di un
+termine solo e raro, come \emph{eggnog}, \emph{halibut}, \emph{okra},
+\emph{Fosamax}, e 2 di due (\emph{airport scanners}, \emph{canker sores}). Da
+un campione di dieci avevo concluso che nove non compaiono nel corpus in nessuna
+forma e che solo \emph{leeks} sarebbe stata salvata da uno stemmer. La
+conclusione era sbagliata già sul campione, che conteneva anche
+\emph{deafness}: la sezione~\ref{sec:stopword} ne recupera nove.
 
 \section{Difetto 1: niente IDF, e BM25}\label{sec:difetto1}
 
@@ -121,7 +122,7 @@ normalizzazione sulla lunghezza fa il suo mestiere.
 
 \paragraph{La guardia che è scattata.} Avevo scritto una guardia: BM25 cambia come
 si ordina, non cosa si recupera, quindi Recall@100 doveva restare entro $\pm0{,}02$.
-Si è mosso di +0,117 su SciFact e +0,038 su NFCorpus. Una guardia che scatta vuol
+Si è mosso di +0,118 su SciFact e +0,038 su NFCorpus. Una guardia che scatta vuol
 dire che il risultato è falso o che la guardia era scritta male, e le due ipotesi
 producono lo stesso sintomo. Tre riscontri dicono la seconda:
 \begin{itemize}
@@ -135,7 +136,7 @@ producono lo stesso sintomo. Tre riscontri dicono la seconda:
 Recall@100 non misura quanto si è recuperato ma quanti documenti pertinenti sono
 entrati nei primi cento, e quando i candidati sono molti più di cento è una
 metrica di ordinamento come il nDCG. Su SciFact in recupero disgiuntivo la query
-mediana trova 5.182 documenti su 5.183. Il +0,117, letto bene, è un secondo
+mediana trova 5.182 documenti su 5.183. Il +0,118, letto bene, è un secondo
 risultato: BM25 non trova più documenti pertinenti, li porta dentro i primi cento.
 
 Da qui la guardia giusta, che vale per tutto il resto della tesi: il valutatore
@@ -154,7 +155,7 @@ segno era uscito su \emph{ordinanza 187}.
 \paragraph{La causa.} Nelle 115 query in cui BM25 non mette l'atto primo, in 61
 il primo classificato non contiene nessun termine della query tale e quale:
 combacia solo per prefisso. \texttt{190 Crispiano} è vinta da un atto che contiene
-\texttt{1900129}, \texttt{2 Pradamano} da uno che contiene \texttt{2026}.
+\texttt{1900129}, \texttt{141 Sacile} da uno che contiene \texttt{1411}.
 Koskidex fa la ricerca per prefisso anche con i refusi spenti, e attribuisce il
 match al termine trovato; BM25 usa poi la frequenza documentale di quel termine.
 Un codice lungo e raro che comincia con le cifre cercate ha un IDF altissimo, e
@@ -207,7 +208,7 @@ espansioni alla stessa distanza dalla parola cercata, gli viene accreditata la
 prima che si incontra, e quindi la sua frequenza nel documento. Con l'ordine in
 cui i termini sono entrati nell'indice, quello di queste misure, SciFact fa
 0,6694; con l'ordine lessicografico, 0,6670, per due query su 300 in cui un
-documento pertinente scende di un posto (sezione~\ref{sec:latenza}). I due
+documento pertinente scende di uno e di due posti (sezione~\ref{sec:latenza}). I due
 valori sono ugualmente arbitrari: 0,0024 è quanto quella regola pesa, ed è il
 margine con cui leggere le differenze di questo ordine su SciFact.
 
@@ -219,7 +220,8 @@ dall'ordine, e gli insiemi restano gli stessi. SciFact fa 0,6667, quasi quanto
 con l'ordine lessicografico, e con le stopword 0,6734 invece di 0,6757; NFCorpus
 e le known-item si spostano di meno di 0,003. Avevo previsto che sommare le
 varianti di una parola aiutasse come uno stemmer leggero, e non aiuta. Le due
-regole senza arbitrio sono d'accordo fra loro, e lo 0,6694 misurato è il valore,
+regole che non dipendono dall'ordine di ingresso, quella lessicografica e la
+somma, sono d'accordo fra loro, e lo 0,6694 misurato è il valore,
 un po' più alto, dell'ordine di ingresso: i numeri di questo capitolo vanno
 letti con quei tre millesimi di margine
 (\texttt{2026-09-28\_espansioni-sinonimo}).
@@ -268,7 +270,7 @@ di tutte le espansioni. La prova è il controfattuale diretto: con la ricerca pe
 prefisso spenta le stopword portano SciFact da 0,6634 a 0,6664, cioè +0,003.
 
 Il meccanismo, contato: 271 query di test su 300 contengono una stopword di
-almeno due lettere, che Koskidex espande. \emph{of} compare in 173 query e in
+almeno due lettere, che Koskidex espande. \emph{of} compare 173 volte, in 137 query, e in
 5.173 documenti su 5.183, ma porta 26 espansioni con frequenza mediana di due
 documenti; \emph{in} ne porta 933, di cui 332 in un documento solo. BM25 pesava
 ogni espansione con il suo IDF: chiedere \emph{of} voleva dire premiare chi
@@ -281,8 +283,8 @@ non va letto come un effetto dell'analisi lessicale.
 \paragraph{Dove arriva.} Il confronto giusto con i riferimenti, che non fanno
 ricerca per prefisso, è con la frequenza mescolata: con le stopword SciFact fa
 0,6757, il 99,5\% di 0,6789, e NFCorpus 0,3062, il 95\% di 0,3218. Il difetto 1 è
-chiuso. Resta, e non la forzo, una cosa non spiegata: su SciFact aggiungere lo
-stemmer alle stopword abbassa il nDCG@10 di 0,006 e alza il Recall@100 da 0,879
+chiuso. Resta, e non la forzo, una cosa non spiegata: con BM25 di serie
+(tabella~\ref{tab:stopword}), su SciFact aggiungere lo stemmer alle stopword abbassa il nDCG@10 di 0,006 e alza il Recall@100 da 0,879
 a 0,910, mentre su NFCorpus migliora tutti e due.
 
 \section{Identificativi e lingua naturale: nessuna impostazione unica}\label{sec:nessuna-unica}

@@ -1,7 +1,8 @@
 \chapter{La ricerca in produzione: quattro difetti di Documentale}\label{chapter:produzione}
 
-I difetti di Koskidex dei capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido}
-erano ipotesi scritte leggendo il codice e poi misurate. Quelli di questo
+I difetti di Koskidex dei capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido},
+tranne il recupero congiuntivo, erano ipotesi scritte leggendo il codice e poi
+misurate. Quelli di questo
 capitolo no: sono venuti fuori per strada, lavorando all'innesto e fabbricando
 le prime query sul corpus di dominio, e sono difetti della ricerca di Documentale
 \emph{in produzione}, cioè di Elasticsearch interrogato come lo interroga l'app.
@@ -141,7 +142,7 @@ dell'analizzatore \texttt{italian}, che Documentale accende con
 \end{itemize}
 Una differenza fra i due motori resta, ed è a favore di chi cerca: Koskidex toglie
 gli accenti, Elasticsearch con l'analizzatore predefinito no. Su 20 delle 507
-parole Koskidex trova qualcosa di più, 213 atti in tutto, 67 dei quali per
+parole Koskidex trova qualcosa di più, 195 atti in tutto, 67 dei quali per
 \emph{unità}: chi scrive \emph{identita} senza accento trova \emph{identità}.
 
 \section{Numero e comune: il campo unico e i refusi sui numeri}\label{sec:numero-comune}
@@ -207,7 +208,7 @@ la accende \texttt{KOSKIDEX\_TYPOS\_ON\_NUMBERS=false}.
 \end{table}
 
 \textbf{Le due correzioni insieme portano l'atto giusto al primo posto in 275
-query su 300}, da 5. Nessuna delle due basta da sola: il vincolo del campo unico
+query su 300}, da 4. Nessuna delle due basta da sola: il vincolo del campo unico
 decide se l'atto si trova, i refusi sui numeri se è primo. La riga con il solo
 campo unico e i numeri esatti dice anche un'altra cosa: togliere i refusi ai
 numeri, lasciando il vincolo, porta le query a vuoto dal 70\% al 95\%. Quel 30\%
@@ -217,16 +218,18 @@ Nelle 25 query in cui l'atto giusto resta dietro, in 21 il primo classificato ha
 lo stesso numero, esatto, in un campo che pesa di più (il numero dell'atto giusto
 sta in \texttt{additional\_data}, che pesa 1); in 3 lo ha esatto in un campo che
 non pesa di più; in una sola non lo ha esatto, ed è l'unico codice misto fra i
-perdenti. Sulle 24 query del confronto le correzioni cambiano soltanto le due
-query con un numero d'atto: \texttt{ordinanza 187} e \texttt{determina 1223}
-restituiscono l'atto giusto, primo e unico.
+perdenti. Sulle 24 query del confronto il campo libero allarga 14 insiemi su 24,
+di 375 atti in tutto, senza toglierne nessuno; i numeri esatti cambiano poi
+soltanto le due query con un numero d'atto: \texttt{ordinanza 187} e
+\texttt{determina 1223} restituiscono l'atto giusto, primo e unico.
 
 \section{Le date, in tre formati}\label{sec:date}
 
 Nelle schede degli atti la stessa data compare in tre formati, tutti frequenti:
 \texttt{14/01/2026} (3.097 volte, in 1.465 atti), \texttt{14 gennaio 2026}
-(1.834 volte, in 949) e \texttt{14.01.2026} (2.103 volte, in 982); gli importi
-con i punti delle migliaia e senza. Il tokenizer standard di Elasticsearch tiene
+(1.834 volte, in 949) e \texttt{14.01.2026} (2.103 volte, in 982). Gli importi
+hanno quasi sempre i punti delle migliaia (312 volte, in 201 atti), e quasi mai
+no (2 volte, in 2). Il tokenizer standard di Elasticsearch tiene
 \texttt{14.01.2026} come un termine solo e spezza \texttt{14/01/2026} in tre, e
 nessun tokenizer sa che \emph{gennaio} è \texttt{01}: chi scrive una data in un
 formato non trova gli atti che la scrivono in un altro. Il tokenizer di
@@ -243,7 +246,8 @@ capitolo~\ref{chapter:sistemi} il primo si comporta come Elasticsearch sui
 termini. Le query sono sintetiche, come le known-item automatiche: da un atto
 si prende una data che in quel comune compare in quell'atto solo, e la si
 scrive nei tre formati, cinquanta atti per formato di partenza; allo stesso modo
-gli importi, con e senza i punti delle migliaia.
+gli importi, con e senza i punti delle migliaia, su 52 atti: 50 con i punti e i
+soli 2 che non li hanno.
 
 \paragraph{Il difetto.} Con il tokenizer standard la data nel formato dell'atto
 trova l'atto entro i primi dieci nel 98-100\% delle query; in un altro formato
@@ -266,7 +270,7 @@ saltare i testi che non possono contenere un formato l'ha solo ridotta dal
 
 Le query sono fabbricate: dicono che il motore trova una data in qualunque
 formato, non quanto spesso una persona cerca per data, e nelle known-item umane
-raccolte finora succede quasi mai. E la correzione ha un prezzo che nessuna
+raccolte finora non succede mai: nessuna delle 76 contiene una data. E la correzione ha un prezzo che nessuna
 previsione misurava: la data diventa un termine solo, quindi il suo anno non
 combacia più con una ricerca che contiene l'anno da solo, come \emph{bilancio
 2026}, a meno che l'anno compaia anche fuori da una data.
@@ -324,8 +328,10 @@ indice vuoto, con le stesse query:
   \item sulle 300 query known-item fa \textbf{esattamente} quello che facevano
         parole libere e numeri esatti, fino all'ordine dei primi dieci risultati di
         ogni query: l'elisione non sposta niente;
-  \item sulle 24 query del confronto nessuna query perde un documento e 7 ne
-        guadagnano, quelle toccate dalle elisioni;
+  \item sulle 24 query del confronto, rispetto a parole libere e numeri esatti,
+        nessuna query perde un documento e 7 ne guadagnano, quelle toccate
+        dalle elisioni (l'ottava della sezione~\ref{sec:elisioni},
+        \texttt{ordinanza 187}, con i numeri esatti ha già il solo atto giusto);
   \item \texttt{ordinanza 187} e \texttt{determina 1223} danno il solo atto giusto.
 \end{itemize}
 

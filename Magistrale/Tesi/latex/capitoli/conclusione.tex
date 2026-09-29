@@ -6,8 +6,8 @@ La domanda (sezione~\ref{sec:domanda}) si articolava in quattro parti. Le prime
 tre hanno una risposta misurata; la quarta l'ha in parte, per i costi, e per la
 pertinenza aspetta le known-item umane del capitolo~\ref{chapter:confronto}.
 
-\paragraph{I difetti di Koskidex.} Dei quattro difetti sospettati leggendo il
-codice, il più grande non era fra quelli sospettati. Il recupero congiuntivo
+\paragraph{I difetti di Koskidex.} Dei quattro difetti di Koskidex, quello che
+viene prima di tutti non era fra i tre sospettati leggendo il codice. Il recupero congiuntivo
 lasciava a vuoto 290 query di SciFact su 300: correggerlo porta il nDCG@10 da
 0,0246 a 0,4936, e solo dopo ha senso parlare di punteggio. BM25 lo porta a
 0,6197, e la correzione di un difetto dentro BM25, le espansioni pesate con la
@@ -30,7 +30,8 @@ atti; con un'impostazione per le date, misurata anche dall'app, una data si
 trova in qualunque formato. Gli importi, nell'app, si trovano già fra formati,
 ma per un refuso ammesso che fa combaciare anche importi diversi: negare i
 refusi agli importi, come ai numeri d'atto, e togliere i punti delle migliaia
-dà l'importo giusto in qualunque formato, e solo quello. Nessuno dei quattro è un errore di programmazione: sono impostazioni
+dà l'importo giusto in qualunque formato, e in 102 query su 104 soltanto quello.
+Nessuno dei quattro è un errore di programmazione: sono impostazioni
 ragionevoli di un motore generico, che si rompono su proprietà precise dei
 documenti amministrativi italiani.
 
@@ -107,7 +108,7 @@ capitolo~\ref{chapter:confronto}.
         GPU di un portatile, da ridurre con meno candidati, testi più corti o
         un modello più piccolo.
   \item \textbf{La scansione dei vettori.} A 10.000 documenti una scansione esatta
-        costa 12-15~ms per passata; più accumulatori nel prodotto scalare la
+        costa circa 15~ms per passata; più accumulatori nel prodotto scalare la
         accorcerebbero, a prezzo di punteggi diversi nelle ultime cifre, e oltre
         qualche centinaio di migliaia di documenti servirebbe un indice
         approssimato.

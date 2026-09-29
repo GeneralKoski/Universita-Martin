@@ -122,6 +122,8 @@ basta mettere i file nelle cartelle indicate e dirlo.
 - [ ] Titolo e relatore in `latex/tesi.tex` (`\title` e `\advisor`, oggi
       "DA DEFINIRE"), quando sono decisi.
 - [ ] Rileggere la tesi intera contro l'archivio: ogni numero con il suo file.
+      Capitoli 1-7 e 9 riletti il 29/09 (vedi sotto): a capitolo 8 scritto
+      restano il capitolo 8, le appendici e i numeri nuovi di 4.4, 9.1 e 1.
 
 ## Si può fare senza aspettare nessuno
 
@@ -192,6 +194,21 @@ basta mettere i file nelle cartelle indicate e dirlo.
       che è quello che si conta, e in 5.4 le «25 query senza stopword» sono
       quelle che non perdono candidati (le 29 di `stopword-espansioni` usano
       un'altra definizione).
+- [x] Rilettura dei capitoli 1-7 e 9 contro l'archivio, il 29/09: circa mille
+      numeri, quasi tutti ricalcolati dai JSON. Corretti nel testo i valori
+      che non tornavano (fra gli altri 213 → 195 atti e "da 5" → "da 4" in
+      6.2-6.3, 22 query vuote su 24 di una parola in 5.1, *of* in 137 query e
+      non 173, l'esempio `141 Sacile` al posto di `2 Pradamano`, 0,85 → 0,51 sul
+      test in 7.3, quattro arrotondamenti in 7), le frasi con il riferimento
+      sbagliato (le 24 query in 6.3 e 6.5, gli importi senza punti in 6.4) e il
+      racconto dei difetti (tre sospettati leggendo il codice, il congiuntivo
+      trovato misurando: 1, 3, 6, 9). Tolti i tempi dei vettori della prima
+      volta e gli 8,7 ms, che non hanno file. Dati un file ai numeri che non ne
+      avevano: `numeri-diario.py` esteso (mediane, gradi dei qrels, schede
+      distinte, voci del diario copiate), `max-expansions.py`, e rifatti con
+      la provenienza gli esiti di numero-atto, innesto-parita, fusione e
+      carico, tutti con gli stessi numeri (registro nel README
+      dell'archivio).
 - [ ] Facoltativa, **da fare al fisso di Martin** (RTX 3060 Ti, 8 GB): il
       costo del riordino di `2026-09-28_reranker` su una GPU da gaming, per
       8.4 ("su un Mac costa 12 s a query, su una scheda consumer circa 2").

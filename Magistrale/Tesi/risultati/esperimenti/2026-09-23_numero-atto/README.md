@@ -38,4 +38,7 @@ Onestà sul confronto: Koskidex ha il nome intero, non quello troncato, e le sue
 soglie non ammettono refusi su tre caratteri. Su `1223` le soglie coincidono
 (un refuso per quattro caratteri) e Koskidex di oggi è comunque primo.
 
-File d'esito: `2026-09-24T105848Z_esito.json`.
+File d'esito: `2026-09-24T105848Z_esito.json`. Quel file non dice da quale
+commit viene: il 29/09 `posizioni.py` ha preso commit e stato dell'albero, e
+l'esito rifatto sullo stesso rapporto di Koskidex dà le stesse posizioni:
+`2026-09-29T074736Z_esito.json`.

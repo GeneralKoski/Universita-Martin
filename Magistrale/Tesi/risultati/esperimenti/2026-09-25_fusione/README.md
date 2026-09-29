@@ -79,7 +79,10 @@ bene ovunque, e il difetto 3 si ridimensiona a una costante da scegliere.
 
 Calibrazione `2026-09-25T131533Z_calibrazione.json`, da `calibra.py` al commit
 `f288962` (albero pulito), sulle 57 valutazioni di `calibrazione-fusione/`
-(Koskidex `d3ffe17`). Esito sul test `2026-09-25T131731Z_esito.json`, da
+(Koskidex `d3ffe17`). Esito sul test `2026-09-25T131731Z_esito.json` (marcato con modifiche non
+committate perché il controllo guardava anche `calibrazione.json`, non ancora
+tracciato; rifatto il 29/09 con il controllo corretto, stessi numeri:
+`2026-09-29T074830Z_esito.json`), da
 `analizza.py` allo stesso commit, sulle dieci valutazioni delle 13:16-13:17 UTC
 più le tre U del difetto 2. Un primo lancio di `calibra.py` si è fermato sul proprio controllo
 prima di stampare un numero: le esecuzioni convesse non registrano

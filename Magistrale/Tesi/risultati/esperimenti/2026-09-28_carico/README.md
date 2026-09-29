@@ -110,7 +110,10 @@ richieste con `size` maggiore di zero non usa la sua cache delle richieste.
 
 ## Esito
 
-Da `2026-09-28T093314Z_esito.json` (tutte le esecuzioni, l'ultima per
+Da `2026-09-28T093314Z_esito.json` (marcato con modifiche non committate per i
+file di risultato non tracciati della cartella; rifatto il 29/09 con il
+controllo corretto, stessi numeri e stessi esiti letti:
+`2026-09-29T074830Z_esito.json`) (tutte le esecuzioni, l'ultima per
 etichetta) e dai profili `profilo/2026-09-28T093154Z_*`. Koskidex `ffa38ab`
 nei motori, strumenti da `c70bbcd`; Elasticsearch 9.1.0. Nessun errore in
 nessuna esecuzione; la verifica dice che gli spazi in coda non cambiano il

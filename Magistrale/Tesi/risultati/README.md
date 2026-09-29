@@ -207,3 +207,32 @@ Quello che è stato tolto o toccato, perché la regola 1 non valga a metà.
   23/09) vengono da prima degli strumenti di misura: hanno le metriche ma non
   hanno né `timings` né `config`. Le stesse configurazioni rifatte dopo hanno
   metriche identiche e i tempi.
+- **29/09/2026, 1 file tolto** in `confronto/`
+  (`2026-09-29T074108Z_albo-metadata-indicizzazione-elasticsearch.json`, mai
+  committato): una reindicizzazione di Elasticsearch fatta per preparare i
+  controlli della rilettura, non una misura, mentre un'altra sessione
+  ricostruiva i container. La verifica di quella sessione, successiva, rifà le
+  300 known-item automatiche su Elasticsearch con 0 query diverse.
+- **Rilettura del 29/09/2026**, file che la tesi usa e che non dicevano da dove
+  vengono, rifatti sugli stessi dati con stessi risultati, e i vecchi lasciati:
+  - `esperimenti/2026-09-28_carico/2026-09-28T093314Z_esito.json` e
+    `esperimenti/2026-09-25_fusione/2026-09-25T131731Z_esito.json`, marcati
+    `true` perché il controllo contava i file di risultato non tracciati;
+    rifatti come `2026-09-29T074830Z_esito.json`. Restano marcati `true` i
+    quattro `copia-*-{50000,100000}.json` del carico (commit `427cc96`), per lo
+    stesso difetto di `copia.py`, corretto in `d23c56f`: a `427cc96` nessun
+    file tracciato era modificato, e sono accettati (docstring di `analizza.py`);
+  - `esperimenti/2026-09-23_numero-atto/2026-09-24T105848Z_esito.json` e
+    `esperimenti/2026-09-25_innesto-parita/2026-09-25T072346Z_esito.json`,
+    senza commit: rifatti come `2026-09-29T074736Z_esito.json` e
+    `2026-09-29T074830Z_esito.json`;
+  - il controllo di `max_expansions` di `2026-09-23_cause-divergenza`, fatto a
+    mano il 24/09 e mai archiviato: `2026-09-29T074738Z_max-expansions.json`.
+- **Versione di Koskidex `dev`** nei rapporti dell'app
+  `confronto/2026-09-25T145241Z_pool-24-*` e
+  `esperimenti/2026-09-25_costo-vettori/dal-vivo/*_old-*` e `*_new-*`: i
+  binari erano compilati senza il commit dentro. Il commit di Documentale e lo
+  stato pulito ci sono; per `dal-vivo/` i due commit di Koskidex (`d3ffe17` e
+  `10c48bd`, da alberi puliti) li dice il README dell'esperimento, per il pool
+  nessun file. Per il pool conta la composizione, non il motore: i giudizi
+  riguardano i documenti, e le 905 righe si ricontano da `composizione.json`.

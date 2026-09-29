@@ -43,7 +43,13 @@ nella macchina virtuale Docker, Koskidex nativo; entrambi i tempi di ricerca
 includono il viaggio HTTP da PHP, e l'indicizzazione include l'avvio di PHP e
 la lettura degli atti da MySQL.
 
-File d'esito: `2026-09-25T072346Z_esito.json` (Koskidex `f583d03`). Rapporti:
+File d'esito: `2026-09-25T072346Z_esito.json` (Koskidex `f583d03`); rifatto il
+29/09 sugli stessi sei rapporti con la provenienza e le due mediane nel file
+(2,675 e 22,03 ms), stessi risultati: `2026-09-29T074830Z_esito.json`. Il
+tempo di indicizzazione della tesi (3,2 ms a documento) è quello dal comando
+dell'app, PHP e MySQL compresi (31.793 ms su 10.018 in
+`confronto/2026-09-25T072111Z`); i 2,6 ms del server da solo non sono
+archiviati. Rapporti:
 `confronto/2026-09-25T072328Z`, `072328Z-2`, `072329Z` (Koskidex) e `072340Z`,
 `072341Z`, `072342Z` (Elasticsearch); indicizzazione
 `confronto/2026-09-25T072327Z` (Koskidex) e `072339Z` (Elasticsearch).
