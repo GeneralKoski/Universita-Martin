@@ -41,3 +41,45 @@ vettori a 2.048 token è misurato in `2026-09-25_contesto-ollama/`.
 Se la 1 tiene, la raccomandazione per Documentale è indicizzare il testo
 intero, e la sezione 5.7 lo dice con il suo numero. Se la 4 cade, spezzare i
 documenti lunghi in parti (sezione 7.1) non serve a queste query.
+
+## Esito
+
+Misurato il 29/09/2026 sulle known-item umane dei tre lotti che cercano atti di
+Crispiano: **50 query**, non le circa 80 che il Metodo si aspettava con
+quattro lotti. Koskidex `cd86102`. Riassunto in `2026-09-29T094542Z_esito.json`
+(`analizza.py`), le dieci valutazioni in `valutazioni-albo/2026-09-29T0945*`.
+I vettori del testo a 8.192 token vengono dalla cache di
+`2026-09-25_contesto-ollama/` (14 vettori nuovi, quelli delle query mai viste
+a quel contesto): `embedder` nel `config` è `ollama/bge-m3@8192`.
+
+| | MRR@10 | atto primo | entro 10 | a vuoto |
+|---|---|---|---|---|
+| scheda, LA | 0,540 | 40% | 80% | 0% |
+| scheda, LT | 0,262 | 18% | 40% | 48% |
+| scheda, A | **0,613** | 48% | 92% | 0% |
+| testo, LA ($b$ 0,75) | 0,463 | 30% | 78% | 0% |
+| testo, LT | 0,344 | 22% | 60% | 26% |
+| testo, A (2.048 token) | 0,558 | 40% | 88% | 0% |
+| testo, A (8.192 token) | 0,515 | 36% | 86% | 0% |
+| testo, LA, $b$ 0,25 / 0,5 / 1 | 0,439 / 0,454 / 0,477 | | | |
+
+**Tre previsioni su cinque.**
+
+1. **Smentita.** Il testo intero non porta LA sopra la scheda: la porta
+   sotto, da 0,540 a 0,463 (-0,077).
+2. **Confermata.** Con LT il testo intero toglie 22 punti di query a vuoto
+   (da 24 a 13 su 50), e l'MRR@10 sale da 0,262 a 0,344.
+3. **Confermata.** Su testo, $b$ 0,75 sta a 0,014 dal migliore dei quattro
+   valori ($b$ 1, 0,477).
+4. **Smentita.** A con il contesto di 8.192 token sta sotto A con quello
+   predefinito, 0,515 contro 0,558 (-0,044): quello che sta dopo i primi 2.048
+   token, su queste query, pesa contro.
+5. **Confermata.** Su testo A supera LA di 0,095.
+
+La 1 cade, e con lei la raccomandazione di indicizzare il testo intero: con il
+recupero disgiuntivo, e con i vettori, la scheda ritrova l'atto meglio del
+testo, anche se la persona ha letto il testo. Il testo intero aiuta solo il
+recupero congiuntivo, che è quello di Documentale, perché gli dà più parole in
+cui trovare tutte quelle della query: ma anche lì resta sotto la scheda con
+LA o con A. La 4 cade, e secondo la regola scritta prima spezzare i documenti
+lunghi in parti (sezione 7.1) non serve a queste query.
