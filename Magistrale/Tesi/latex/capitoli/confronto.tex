@@ -173,7 +173,7 @@ due motori.
 
 \paragraph{Una ricerca alla volta.} Ogni query cinque volte, in un ordine
 mescolato con un seme fisso. Il p50 di Koskidex è un terzo di quello di
-Elasticsearch, e l'avevo previsto; avevo previsto anche che la differenza
+Elasticsearch: avevo previsto che fosse più basso; avevo previsto anche che la differenza
 stesse soprattutto nel peso della risposta, perché Elasticsearch restituisce il
 testo degli atti che l'app poi scarta. Non è così: senza il testo Elasticsearch
 non va più veloce (6,77~ms), perché con l'operatore \texttt{and} le risposte
@@ -226,7 +226,7 @@ doppio di quello di Elasticsearch.
   \end{tabular}
   \caption{Sotto carico, stesse 4 CPU: ricerche al secondo e p99 in
   millisecondi. Elasticsearch e Koskidex prima saturano le CPU dagli 8 client
-  in su (380-390\%); Koskidex dopo arriva al 319\% a 8 client e al 360\% a
+  in su (375-390\%); Koskidex dopo arriva al 319\% a 8 client e al 360\% a
   32, e il resto va alla rete.}
   \label{tab:carico}
 \end{table}
@@ -328,13 +328,13 @@ per la pertinenza no (tabella~\ref{tab:crescita}).
     \bottomrule
   \end{tabular}
   \caption{Memoria a riposo dopo un riavvio, indice su disco e tempo di
-  indicizzazione, con gli atti copiati. A 10.018 documenti l'indicizzazione è
-  quella dall'app.}
+  indicizzazione, con gli atti copiati, Koskidex a \texttt{ffa38ab}, prima delle
+  correzioni. A 10.018 documenti l'indicizzazione è quella dall'app.}
   \label{tab:crescita}
 \end{table}
 
 Alla dimensione dell'albo Koskidex occupa un decimo della memoria di
-Elasticsearch, e sotto carico 272~MB al massimo contro 1.566, 195 dopo la terza
+Elasticsearch, e sotto carico 272~MB al massimo contro 1.566, 179 dopo l'ultima
 correzione. Ma tiene tutto in
 memoria, con gli identificativi dei documenti e i nomi dei campi come stringhe
 in ogni occorrenza: circa 12~KB a documento, e a 100.000 documenti la memoria è
@@ -342,8 +342,8 @@ quasi quella di Elasticsearch, che ha un heap fisso. Le correzioni non la
 toccano (1.213 contro 1.184~MB), perché non toccano le strutture dell'indice.
 Toccano invece la coda: a 100.000 documenti il p95 di Koskidex era di 133~ms e
 il p99 di 201, dieci volte quelli a 10.018, contro i 21 e 36 di Elasticsearch;
-dopo sono 10,4 e 15,5, sotto quelli di Elasticsearch, e 9,9 e 13,6 dopo la
-terza.
+dopo sono 10,4 e 15,5, sotto quelli di Elasticsearch, e 9,8 e 13,4 dopo
+l'ultima.
 
 \paragraph{Un difetto trovato per strada.} Il test che confronta i due percorsi
 su query casuali ha trovato una cosa che non cercava, e che ha avuto il suo
@@ -376,7 +376,7 @@ atti, Koskidex costa un decimo della memoria di Elasticsearch e risponde in
 meno di un quinto del tempo, e sotto carico regge più di sei volte le ricerche
 sulle stesse CPU. A centomila documenti il tempo regge ancora, la memoria no: lì
 serve un indice più compatto, con identificativi e campi interi, che
-ridurrebbe anche l'indice su disco, oggi il doppio di quello di
+ridurrebbe anche l'indice su disco, oggi quasi il doppio di quello di
 Elasticsearch, e l'indicizzazione, 2,4 volte più lenta. I limiti delle
 misure: il client gira sullo stesso Mac, fuori dalla macchina virtuale, e tiene
 le connessioni aperte, mentre l'app in PHP ne apre in genere una per ricerca;
@@ -394,11 +394,12 @@ piccolo, innestato in un documentale al posto di uno grande, regge, e dove
 smette di reggere. Le risposte sono di tre tipi.
 
 \paragraph{Dove regge.} All'albo di un comune, diecimila atti, Koskidex
-risponde in 0,92~ms di p50 contro 6,32, regge 6,6 volte le ricerche al secondo
-sulle stesse quattro CPU e occupa un decimo della memoria. Sulle ricerche per
+risponde in 0,89~ms di p50 contro 6,32, regge circa sette volte le ricerche al
+secondo sulle stesse quattro CPU (4.054 contro 571, Elasticsearch misurato il
+giorno prima sulla stessa macchina) e occupa un decimo della memoria. Sulle ricerche per
 numero e comune il profilo consigliato porta l'atto giusto al primo posto nel
-91,7\% dei casi, contro l'1,3\% di produzione, e le date si trovano in
-qualunque formato. Sulle ricerche per contenuto scritte da persone KC fa
+91,7\% dei casi, contro l'1,3\% di produzione, e con la normalizzazione delle
+date, che resta fuori dal profilo, le date si trovano in qualunque formato. Sulle ricerche per contenuto scritte da persone KC fa
 \dacompletare{} di MRR@10 contro \dacompletare{} di ES.
 \todo[inline]{Se la previsione 3 cade, questa frase cambia verso: dire allora
 che la differenza di pertinenza sta nelle impostazioni di produzione, non nel
@@ -417,8 +418,8 @@ misurabili i difetti di una configurazione, non di esserne immune.
 
 \paragraph{Dove non regge.} La memoria: Koskidex tiene tutto in memoria, con
 identificativi e nomi dei campi come stringhe in ogni occorrenza, e a centomila
-documenti ne usa 1.213~MB, quasi quanto l'heap fisso di Elasticsearch. L'indice
-su disco è il doppio e l'indicizzazione 2,4 volte più lenta. Mancano le cose che
+documenti ne usa 1.184~MB, quasi quanto l'heap fisso di Elasticsearch. L'indice
+su disco è quasi il doppio e l'indicizzazione 2,4 volte più lenta. Mancano le cose che
 un documentale grande dà per scontate e che questa tesi non ha misurato:
 repliche, shard, un ecosistema di strumenti. E la pertinenza sulle ricerche
 aperte resta non misurata con giudizi umani.

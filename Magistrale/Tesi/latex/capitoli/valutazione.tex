@@ -8,8 +8,8 @@ vengono prima, perché sono loro a dire quanto ci si può fidare del resto.
 \section{Principi: ipotesi prima, interruttori, baseline congelato, archivio con provenienza}\label{sec:principi}
 
 \paragraph{Le ipotesi prima della misura.} Ogni modifica che cambia l'ordine dei
-risultati ha una voce nel diario di Koskidex, e ogni esperimento un README, con
-una sezione \emph{Prima di misurare} committata prima di lanciare la
+risultati ha una voce nel diario di Koskidex, e ogni esperimento che misura una
+previsione un README, con una sezione \emph{Prima di misurare} committata prima di lanciare la
 valutazione, spesso prima di scrivere il codice. Le previsioni sono numeriche,
 con una soglia, e dicono cosa vorrebbe dire sbagliarle. A misura fatta si
 aggiunge l'esito, previsione per previsione, senza toccare quello che era scritto
@@ -29,7 +29,10 @@ default si decidono alla fine, tutti insieme.
 2026 è fissato in un test, \texttt{TestBaselineRankingIsFrozen}, che confronta gli
 ordinamenti di un corpus di prova con quelli registrati. Deve passare a ogni
 commit, con le impostazioni predefinite e senza che il test venga toccato: è la
-prova che nessuna correzione ha cambiato il punto di partenza di nascosto.
+prova che nessuna correzione ha cambiato il punto di partenza di nascosto. Il
+test è stato toccato una volta sola, tre minuti dopo il congelamento, per
+aggiungere il caso di due atti a pari punteggio, che lo spareggio per
+identificativo aveva appena reso deterministico (appendice~\ref{chapter:appendice-ipotesi}).
 
 \paragraph{L'archivio.} Le esecuzioni vanno in un archivio, nel repository della
 tesi, con regole scritte prima di riempirlo:

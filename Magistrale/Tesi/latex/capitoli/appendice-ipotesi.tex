@@ -44,7 +44,7 @@ numero con la soglia, ed è segnato con un asterisco.
     & 3. Recall@100 molto più alto di nDCG@10
     & SciFact 0,0242 contro 0,0246: smentita \\
     & 4. Nessuna query saltata su SciFact (339 giudizi a rilevanza 1)
-    & esito non registrato \\
+    & 0 saltate, 339 giudizi a rilevanza 1: confermata$^{*}$ \\
   \addlinespace
   Diario, difetto 0
     & 1. Le query a vuoto crollano quasi a zero
@@ -67,7 +67,7 @@ numero con la soglia, ed è segnato con un asterisco.
     & +0,118 e +0,038: smentita, guardia posta male \\
     & 4. \texttt{TestBaselineIdentifier\allowbreak TieBreaksByDocID} fallisce
     & mal posta: gira a default \texttt{legacy} e non poteva fallire; il
-      contenuto era giusto: a metà \\
+      contenuto era giusto: a metà$^{*}$ \\
     & 5. \texttt{TestBaselineRankingIsFrozen} verde a default
     & tre esecuzioni: confermata \\
   \addlinespace
@@ -315,12 +315,12 @@ numero con la soglia, ed è segnato con un asterisco.
   Diario, contesto di Ollama
     & 1. Con \texttt{context} a zero la richiesta resta identica e il nome del
       modello non cambia
-    & test verde: confermata \\
+    & test verde: confermata$^{*}$ \\
     & 2. Con \texttt{context} 8.192 un testo oltre 2.048 token ha un vettore
       diverso
     & vettori identici: smentita \\
     & 3. \texttt{TestBaselineRankingIsFrozen} passa senza modifiche
-    & confermata \\
+    & confermata$^{*}$ \\
     & 4. (dopo la 2) Con \texttt{num\_ctx} e \texttt{num\_batch} Ollama legge
       8.192 token
     & confermata \\
@@ -485,7 +485,7 @@ numero con la soglia, ed è segnato con un asterisco.
     & 2. Acceso: ogni coppia di formati almeno 90\%
     & 98-100\%: confermata \\
     & 3. Importi fra formati: acceso almeno 90\%, spento al più 10\%
-    & 100\% acceso, ma 100\% anche spento: smentita \\
+    & 100\% acceso, ma 100\% anche spento: a metà \\
     & 4. Known-item automatiche, MRR@10 entro 0,005
     & +0,0053: smentita \\
     & 5. Known-item umane: nessuna entra o esce dai primi dieci, MRR@10 entro
@@ -542,10 +542,9 @@ numero con la soglia, ed è segnato con un asterisco.
 \end{longtable}
 }
 
-In tutto le previsioni sono 193: 136 confermate, 46 smentite, 9 a metà, e 2 senza
-un esito registrato (la quarta della prima misura del baseline e la settima
-della voce E1). Delle 191 con un esito, quasi
-una su tre non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+In tutto le previsioni sono 193: 137 confermate, 45 smentite, 10 a metà, e una
+senza un esito registrato (la settima della voce E1). Delle 192 con un esito,
+più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non

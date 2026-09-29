@@ -297,7 +297,7 @@ misurato direttamente, è che il ciclo non è limitato dal numero di operazioni 
 dalla latenza di una catena di 1.024 somme dipendenti: le tre somme di prima correvano in parallelo, e toglierne due
 lascia la stessa catena. Accorciarla vorrebbe più accumulatori, cioè sommare in un
 altro ordine, e punteggi diversi nelle ultime cifre. A 10.000 documenti da 1.024
-dimensioni una scansione esatta costa quindi circa 15~ms su un portatile:
+dimensioni una scansione esatta costa quindi 12-15~ms su un portatile:
 l'unione, che ne fa due, costa 39,6~ms contro i 24,6 del re-ranking, che ne fa una.
 
 \paragraph{In Documentale.} Dal vivo, sulle 24 query del confronto, il re-ranking

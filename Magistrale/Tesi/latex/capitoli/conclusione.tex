@@ -45,11 +45,11 @@ regola riconosca il tipo di query o la collezione, su questi dati non si può di
 
 \paragraph{Il confronto con Elasticsearch.} Nella stessa macchina virtuale, con
 le stesse CPU e le richieste dell'app, Koskidex risponde in 0,9~ms di p50
-contro 6,3, regge 6,6 volte le ricerche al secondo e occupa un decimo della
+contro 6,3, regge circa sette volte le ricerche al secondo e occupa un decimo della
 memoria. Non era così prima di misurarlo sotto carico: allocava 2,6~MB a
-ricerca, e il vantaggio si fermava a 1,14 volte. Tre correzioni che non cambiano
+ricerca, e il vantaggio si fermava a 1,14 volte. Quattro correzioni che non cambiano
 un solo risultato, verificato risposta per risposta, hanno tolto quel costo:
-ora alloca 0,08~MB a ricerca.
+ora alloca 0,05~MB a ricerca.
 Il limite è la memoria: a centomila documenti è quasi quella di
 Elasticsearch. Quanto valgano in pertinenza, Koskidex corretto ed Elasticsearch
 di produzione, sulle ricerche scritte da persone, lo dirà il
@@ -108,7 +108,7 @@ capitolo~\ref{chapter:confronto}.
         GPU di un portatile, da ridurre con meno candidati, testi più corti o
         un modello più piccolo.
   \item \textbf{La scansione dei vettori.} A 10.000 documenti una scansione esatta
-        costa circa 15~ms per passata; più accumulatori nel prodotto scalare la
+        costa 12-15~ms per passata; più accumulatori nel prodotto scalare la
         accorcerebbero, a prezzo di punteggi diversi nelle ultime cifre, e oltre
         qualche centinaio di migliaia di documenti servirebbe un indice
         approssimato.
