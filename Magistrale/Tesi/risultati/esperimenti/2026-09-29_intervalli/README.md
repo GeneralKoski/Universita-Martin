@@ -60,3 +60,13 @@ P0-P4 di `2026-09-29_profilo-completo`, ESC ed ESO di `2026-09-29_es-corretto`.
    configurazioni.
 5. **Il test di permutazione concorda con il bootstrap** (p sotto 0,05 se e
    solo se l'intervallo esclude lo zero) in almeno 13 confronti su 15.
+
+## Aggiunte dopo
+
+Dopo il primo esito (`2026-09-29T193420Z_esito.json`, cinque previsioni su
+cinque) ho aggiunto tre confronti che non avevano una previsione, perché
+servono a due frasi della tesi che il primo esito metteva in dubbio: **C16**
+LA - KC e **C17** A - KC (quanto sta sopra KC il recupero disgiuntivo fuori
+dall'app) e **C18** P4 - ES (quanto vale, in tutto, il lavoro sul profilo
+migliore dall'app rispetto alla produzione). Il calcolo è lo stesso, e le
+prime quindici righe non cambiano (stessi semi).

@@ -34,6 +34,8 @@ CONFRONTI = [  # (numero, primo, secondo)
     ("C1", "KC", "ES"), ("C2", "ESC", "ES"), ("C3", "ESC", "KC"), ("C4", "P4", "KC"), ("C5", "P4", "P2"),
     ("C6", "P2", "KC"), ("C7", "A", "LA"), ("C8", "A", "B"), ("C9", "LA", "LT"), ("C10", "RR-LA", "LA"),
     ("C11", "RR-A", "A"), ("C12", "ESO", "P2"), ("C13", "P3", "P2"), ("C14", "LA", "P2"), ("C15", "A", "P3"),
+    # Aggiunti dopo aver visto il primo esito (README, "Aggiunte dopo"): non hanno previsioni.
+    ("C16", "LA", "KC"), ("C17", "A", "KC"), ("C18", "P4", "ES"),
 ]
 
 
@@ -101,7 +103,7 @@ prev(3, "C10 esclude lo zero e C7 lo include", es0("C10") and not es0("C7"), {"C
 semi = {n: m["semiampiezza"] for n, m in medie.items()}
 prev(4, "semiampiezza di ogni media fra 0,06 e 0,10", all(0.06 <= v <= 0.10 for v in semi.values()),
      {"minima": min(semi.values()), "massima": max(semi.values())})
-concordi = sum((d["p_permutazione"] < 0.05) == d["esclude_zero"] for d in diff.values())
+concordi = sum((diff[n]["p_permutazione"] < 0.05) == diff[n]["esclude_zero"] for n in [f"C{i}" for i in range(1, 16)])
 prev(5, "permutazione e bootstrap concordano in almeno 13 confronti su 15", concordi >= 13, f"{concordi} su 15")
 
 ora = datetime.datetime.now(datetime.timezone.utc)
