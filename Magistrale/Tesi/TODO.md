@@ -266,6 +266,22 @@ Dal terzo lotto (29/09):
       (il carico è del 28/09), e il testo dice già "raccolte fino al 28
       settembre".
 
+Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
+`riordino-corto`), da scrivere in tesi dopo l'ultimo:
+
+- [ ] `profilo-completo` (Esito nel README, `104931Z_esito.json`): P0-P4
+      dall'app; 6 previsioni su 7 confermate, la 4 smentita per l'80% (76,9%).
+      Regola di scelta: P4 (congiuntivo, BM25, vettori a peso 10): umane
+      0,6073, automatiche 0,9556, date 0,9847, importi 0,9904; costo 41,94 ms
+      a ricerca e 476,7 s di indicizzazione. P2 e P3 (disgiuntivo) crollano
+      sulle automatiche (0,1468 e 0,1783). Da fare: 8.4 o un 8.5, 6.5, 9.x, un
+      contributo del capitolo 1, il registro (7 previsioni).
+- [ ] `profilo-completo`, da chiarire: P4 ha indicizzato in 476,7 s
+      nonostante la cache dei vettori copiata da P3; non ho verificato se la
+      cache è stata usata. Da controllare prima di citare il costo.
+- [ ] `es-corretto`: misura ancora da fare, poi Esito e tesi (8.4).
+- [ ] `riordino-corto`: misura ancora da fare, poi Esito e tesi (8.x).
+
 ## Regole
 
 Valgono per tutto il lavoro che resta. Se ne salta una, i numeri diventano

@@ -89,3 +89,63 @@ l'MRR@10 più alto sulle umane fra quelli che sulle automatiche stanno entro
 nuovi ci sta, resta P1, e il limite del recupero congiuntivo va scritto come
 il prezzo delle ricerche per numero. Il profilo consigliato di Documentale non
 cambia qui: lo sceglie la tesi, e lo conferma il relatore.
+
+## Esito
+
+Misurato il 29/09/2026 fra le 12:31 e le 12:49, Koskidex `0e914f5`, Documentale
+`fd5fb45`, bge-m3 su Ollama per P3 e P4. Riassunto in
+`2026-09-29T104931Z_esito.json` (`analizza.py`); rapporti in `confronto/`,
+valutazioni in `evaluate/`. I rapporti sulle umane contengono il testo delle
+query e restano fuori da git. Le impostazioni rilette dall'indice di ogni
+profilo corrispondono alla tabella dei profili.
+
+MRR@10, con fra parentesi le ricerche a vuoto:
+
+| | automatiche (300) | umane (104) | date (450) | importi (104) | ricerca dall'app, umane | indicizzazione |
+|---|---|---|---|---|---|---|
+| P0 | 0,9498 | 0,4317 (29,8%) | 0,3153 (50,4%) | 0,9167 | 3,82 ms | 1,8 s |
+| P1 | 0,9551 | 0,4317 (29,8%) | 0,9789 (0,7%) | 0,9904 | 3,75 ms | 1,9 s |
+| P2 | 0,1468 | 0,5024 (0%) | 0,4781 | 0,7007 | 8,52 ms | 2,0 s |
+| P3 | 0,1783 | 0,5758 (0%) | 0,6007 | 0,6674 | 47,62 ms | 488,5 s |
+| P4 | **0,9556** | **0,6073 (0%)** | **0,9847** | **0,9904** | 41,94 ms | 476,7 s |
+
+**Sei previsioni su sette, la regola di scelta dà P4.**
+
+1. **Confermata.** P1 lascia le umane a 0,4317 come P0 e porta le automatiche
+   a 0,9551, le date da 0,3153 a 0,9789, gli importi da 0,9167 a 0,9904.
+2. **Confermata.** P2 sulle umane 0,5024, nessuna ricerca a vuoto: sotto LA
+   fuori dall'app (0,559) come avevo previsto, ma sopra KC (0,432).
+3. **Confermata, molto di più.** P2 sulle automatiche crolla da 0,9551 a
+   0,1468, non di 0,03. Anche le date (0,4781) e gli importi (0,7007) perdono
+   molto. La causa non l'ho verificata: nel confronto delle 24 query P2 e P3
+   restituiscono tutte le 10.000 risposte in 8 query su 24, P0, P1 e P4 al
+   più 449. Con il recupero disgiuntivo una ricerca per numero porta dentro
+   ogni atto che ha solo il comune o solo un numero simile, e nell'app il
+   punteggio non basta a rimetterli sotto l'atto giusto.
+4. **A metà, smentita.** P3 sulle umane sale da 0,5024 a 0,5758 (soglia +0,03
+   superata), ma l'atto entro dieci è nel 76,9% delle query, sotto l'80%.
+   Dall'app P3 fa 0,576, contro 0,613 di A fuori dall'app.
+5. **Confermata.** P3 sulle automatiche 0,1783: il vettore a 160 non le
+   salva.
+6. **Confermata, con un margine.** P4 sulle automatiche 0,9556 (sopra P1) e
+   sulle umane 0,6073, uguale a B fuori dall'app (0,607).
+7. **Confermata.** P4 sulle date 0,9847, sopra P1 (0,9789).
+
+**Regola di scelta: ammesso solo P4**, che sulle umane fa 0,6073 contro 0,4317
+di P1 e 0,3256 di Elasticsearch di produzione (`2026-09-25_known-item-umane`),
+senza toccare le ricerche per numero (automatiche 0,9556, importi 0,9904) e
+con le date sopra P1. Il profilo consigliato di Documentale non cambia qui.
+
+**Il prezzo di P4**: la ricerca dall'app passa da circa 3,8 ms di mediana a
+circa 42 ms, perché ogni query calcola il suo vettore, e l'indicizzazione dei
+10.018 atti da 1,9 s a 476,7 s, perché ogni atto ne calcola uno. Richiede Ollama con bge-m3 raggiungibile
+dall'applicazione.
+
+P4 ha impiegato quasi quanto P3 (476,7 contro 488,5 s) nonostante `esegui.sh`
+copi per P4 la cache dei vettori degli atti calcolata da P3: non ho verificato
+se la cache sia stata usata.
+
+**P2 e P3 restano un risultato negativo utile**: il recupero disgiuntivo, che
+fuori dall'app porta LA a 0,559, dentro Documentale è inutilizzabile se non si
+protegge la ricerca per numero. La strada che funziona è quella congiuntiva
+con i vettori, non quella disgiuntiva.
