@@ -11,7 +11,8 @@ prova di AlboPOP (23/09/2026) non si ripete, e se ne copia il resoconto con
 commit e impronta. Allo stesso modo si copiano, parola per parola, le voci di
 eval/DIARIO.md da cui la tesi prende previsioni e fatti che stanno solo lì
 (le soglie dei difetti 0 e 1, delle stopword e della frequenza mescolata, il
-campione delle query vuote, i 14 documenti di prova, i buchi F1-F7): il diario
+campione delle query vuote, i 14 documenti di prova, i buchi F1-F7, le quattro
+ipotesi del 23/09 sulla scheda contro il testo intero): il diario
 è committato prima delle misure, ed è lui la prova. Scrive
 risultati/corpus/<ora>_numeri-diario.json.
 
@@ -117,7 +118,8 @@ VOCI = ["Prima misura del baseline legacy su C1", "Recupero disgiuntivo (difetto
         "BM25 al posto del punteggio euristico (difetto 1)", "Analisi lessicale: stopword e stemmer (Task E1)",
         "BM25: le espansioni pesate con la frequenza mescolata",
         "Contro Elasticsearch sul corpus vero: il modello è lo stesso, il matching no",
-        "Parte F: Koskidex completo, e gli stessi insiemi di Elasticsearch"]
+        "Parte F: Koskidex completo, e gli stessi insiemi di Elasticsearch",
+        "Il corpus di dominio arriva, e porta due trappole"]
 intestazioni = list(re.finditer(r"^## (.+)$", diario_testo, re.M))
 voci = []
 for v in VOCI:
