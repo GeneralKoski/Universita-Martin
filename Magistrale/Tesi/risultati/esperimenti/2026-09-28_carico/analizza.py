@@ -115,7 +115,7 @@ ora = datetime.datetime.now(datetime.timezone.utc)
 git = lambda *x: subprocess.run(["git", "-C", QUI, *x], capture_output=True, text=True, check=True).stdout.strip()
 esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
          "config": {"commit": git("rev-parse", "--short", "HEAD"),
-                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--", QUI) else "false",
+                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--untracked-files=no", "--", QUI) else "false",
                     "esiti": {n: f for n, (f, _) in sorted(esiti.items())}},
          "sequenziale": righe, "carico": carichi, "riposo_mb": riposi, "copie": copie, "previsioni": previsioni}
 if not os.environ.get("TESI_RISULTATI"):

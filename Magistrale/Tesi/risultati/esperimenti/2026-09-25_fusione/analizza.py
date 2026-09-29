@@ -85,7 +85,7 @@ for coll, e in esito.items():
 ora = datetime.datetime.now(datetime.timezone.utc)
 esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
          "config": {"commit": git("rev-parse", "--short", "HEAD"),
-                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--", QUI) else "false",
+                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--untracked-files=no", "--", QUI) else "false",
                     "koskidex": sorted(koskidex), "calibrazione": os.path.basename(cal_path),
                     "valutazioni": sorted(os.path.basename(p) for p in valutazioni)},
          **esito}

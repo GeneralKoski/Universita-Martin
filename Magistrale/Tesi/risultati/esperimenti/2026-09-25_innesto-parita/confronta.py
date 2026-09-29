@@ -7,7 +7,10 @@ l'insieme trovato, il top 10 e la latenza mediana delle esecuzioni.
 
     confronta.py <rapporto> [<rapporto> ...]
 """
-import datetime, json, os, statistics, sys
+import datetime, json, os, statistics, subprocess, sys
+
+QUI = os.path.dirname(os.path.abspath(__file__))
+git = lambda *x: subprocess.run(["git", "-C", QUI, *x], capture_output=True, text=True, check=True).stdout.strip()
 
 rapporti = {"koskidex": [], "elasticsearch": []}
 for f in sys.argv[1:]:
@@ -39,12 +42,17 @@ print(f"ms mediana per query: koskidex {statistics.median(r['ms_koskidex'] for r
 
 ora = datetime.datetime.now(datetime.timezone.utc)
 esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
-         "config": {"rapporti_koskidex": [r["_file"] for r in kx], "rapporti_elasticsearch": [r["_file"] for r in es],
+         "config": {"commit": git("rev-parse", "--short", "HEAD"),
+                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--untracked-files=no", "--", QUI) else "false",
+                    "rapporti_koskidex": [r["_file"] for r in kx], "rapporti_elasticsearch": [r["_file"] for r in es],
                     "commit_documentale": kx[0]["config"]["commit"], "koskidex_versione": kx[0]["config"]["koskidex_versione"],
                     "elasticsearch_versione": es[0]["config"]["elasticsearch_versione"],
                     "documenti": {"koskidex": kx[0]["config"]["documenti_indicizzati"], "elasticsearch": es[0]["config"]["documenti_indicizzati"]},
                     "statistica": "insiemi dalla prima esecuzione di ciascun motore, ms mediana delle esecuzioni"},
-         "insiemi_identici": identici, "top10_identici": top10, "query": righe}
+         "insiemi_identici": identici, "top10_identici": top10,
+         "ms_mediana": {"koskidex": statistics.median(r["ms_koskidex"] for r in righe),
+                        "elasticsearch": statistics.median(r["ms_elasticsearch"] for r in righe)},
+         "query": righe}
 if not os.environ.get("TESI_RISULTATI"):
     sys.exit("!!! RISULTATO NON ARCHIVIATO: TESI_RISULTATI non è impostata.")
 d = os.path.join(os.environ["TESI_RISULTATI"], "esperimenti", "2026-09-25_innesto-parita")
