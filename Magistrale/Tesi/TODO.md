@@ -60,11 +60,6 @@ basta mettere i file nelle cartelle indicate e dirlo.
 
 ## Da fare poi (Claude), quando arrivano le cose di Martin
 
-**Quando i 24 bisogni sono scritti:**
-
-- [ ] Committare `bisogni.md`, poi `risultati/strumenti/prepara-giudizi.py` per
-      la pagina del primo annotatore.
-
 **Il pool delle 24 query, dopo la decisione del 28/09:**
 
 - [x] Giudizi del modello, campione di Martin, kappa: esito in
