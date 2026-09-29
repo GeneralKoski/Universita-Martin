@@ -122,7 +122,7 @@ normalizzazione sulla lunghezza fa il suo mestiere.
 
 \paragraph{La guardia che è scattata.} Avevo scritto una guardia: BM25 cambia come
 si ordina, non cosa si recupera, quindi Recall@100 doveva restare entro $\pm0{,}02$.
-Si è mosso di +0,118 su SciFact e +0,038 su NFCorpus. Una guardia che scatta vuol
+Si è mosso di +0,1175 su SciFact e +0,038 su NFCorpus. Una guardia che scatta vuol
 dire che il risultato è falso o che la guardia era scritta male, e le due ipotesi
 producono lo stesso sintomo. Tre riscontri dicono la seconda:
 \begin{itemize}
@@ -136,7 +136,7 @@ producono lo stesso sintomo. Tre riscontri dicono la seconda:
 Recall@100 non misura quanto si è recuperato ma quanti documenti pertinenti sono
 entrati nei primi cento, e quando i candidati sono molti più di cento è una
 metrica di ordinamento come il nDCG. Su SciFact in recupero disgiuntivo la query
-mediana trova 5.182 documenti su 5.183. Il +0,118, letto bene, è un secondo
+mediana trova 5.182 documenti su 5.183. Il +0,1175, letto bene, è un secondo
 risultato: BM25 non trova più documenti pertinenti, li porta dentro i primi cento.
 
 Da qui la guardia giusta, che vale per tutto il resto della tesi: il valutatore

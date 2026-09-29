@@ -83,7 +83,7 @@ funzionavano perché spegnevano la ricerca per prefisso proprio sulle parole
 che la usavano peggio.
 
 **Il meccanismo, contato.** 271 query di test su 300 contengono almeno una
-stopword espandibile. `of` compare in 173 query e sta in 5.173 documenti su
+stopword espandibile. `of` compare 173 volte, in 137 query, e sta in 5.173 documenti su
 5.183, ma porta 26 espansioni con una frequenza mediana di 2 documenti; `in`
 ne porta 933, di cui 332 in un documento solo. BM25 pesava ogni espansione con
 il suo IDF: chiedere `of` voleva dire premiare chi contiene `offspring`.

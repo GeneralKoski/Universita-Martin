@@ -7,7 +7,8 @@ tabella~\ref{tab:impostazioni} elenca quelle aggiunte per questa tesi, con il
 nome con cui compaiono nell'API. Ognuna ha come valore predefinito il
 comportamento di partenza, che la tabella scrive per primo: un indice che non le
 imposta si comporta come quel giorno, e \texttt{TestBaselineRankingIsFrozen} lo
-controlla a ogni commit.
+controlla: fa parte di \texttt{make check}, che ho lanciato prima di ogni
+commit (è una regola di lavoro, non un controllo automatico).
 
 {\small
 \begin{longtable}{>{\raggedright\arraybackslash}p{4.4cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{5.6cm}}
@@ -30,7 +31,9 @@ controlla a ogni commit.
   \texttt{scoring\_mode} & \texttt{legacy}, \texttt{bm25} & punteggio euristico
   o BM25 (sezione~\ref{sec:difetto1}) \\
   \texttt{bm25\_k1}, \texttt{bm25\_b} & 1,2 e 0,75 & i parametri di BM25, quelli
-  predefiniti di Lucene \\
+  predefiniti di Lucene; valgono per un indice creato con le impostazioni
+  predefinite, mentre un aggiornamento dall'API che non li passa li porta a
+  zero (Documentale non usa BM25 e non ne è toccato) \\
   \texttt{bm25\_expansion} & vuoto, \texttt{blended}, \texttt{synonym} &
   frequenza documentale di un'espansione: del termine trovato, o la più alta fra
   i termini trovati dallo stesso termine della query; con \texttt{synonym}

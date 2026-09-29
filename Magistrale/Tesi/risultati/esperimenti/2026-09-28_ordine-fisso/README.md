@@ -87,8 +87,9 @@ istruttiva.
 3. **Confermata.** Acceso, nessuna query varia fra le ripetizioni.
 4. **Smentita.** Acceso contro spento, otto combinazioni su nove coincidono,
    baseline compreso, ma SciFact con BM25 `any` passa da 0,6694 a 0,6670 di
-   nDCG@10 (−0,0024, soglia 0,001). Cambiano 2 query su 300 (1140 e 452): in
-   ciascuna un documento pertinente scende di una posizione; Recall@100
+   nDCG@10 (−0,0024, soglia 0,001). Cambiano 2 query su 300 (1140 e 452): un
+   documento pertinente scende dal primo al terzo posto nella 1140 e dal
+   primo al secondo nella 452; Recall@100
    identico, MRR@10 da 0,6410 a 0,6371. Non è rumore, perché spento e acceso
    sono stabili ciascuno per conto suo: è l'ordine di ingresso nell'indice,
    deterministico ma arbitrario quanto quello lessicografico, che a parità di

@@ -183,7 +183,9 @@ Previsione per previsione:
    ×1,00. Il p50 di Koskidex cresce di ×2,57 invece di almeno ×3; quello di
    Elasticsearch di ×1,10. Ma il p50 nasconde il fatto più importante: la coda
    di Koskidex cresce di dieci volte (p95 da 12 a 133 ms, p99 da 18 a 201),
-   quella di Elasticsearch di una volta e mezza.
+   quella di Elasticsearch di una volta e mezza. *Aggiunto il 29/09/2026:*
+   l'esito di `analizza.py` scrive `smentita`, perché dà un verdetto solo a
+   tutta la previsione; la memoria ha tenuto e il p50 no, quindi a metà.
 10. **A metà.** L'espansione dei termini con refusi c'è
     (`fuzzySearchTermsLocked`, 16% della CPU cumulata), la serializzazione
     JSON no: non compare fra le prime 40 funzioni. Il profilo dice un'altra

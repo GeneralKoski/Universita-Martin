@@ -86,6 +86,11 @@ archiviare; corretto e committato, poi rieseguito sulle stesse misure.
    risultati sulle 450 query delle date scendono da 594 a 241.
 5. **Confermata.** Known-item automatiche identiche ad A in 300 query su 300.
 6. **Confermata.** Known-item umane identiche ad A in C e in D, 76 su 76.
+   *Aggiunto il 29/09/2026:* la ragione scritta nella previsione era
+   sbagliata. Tre query su 76 hanno una cifra
+   (`corpus/2026-09-28T124257Z_conteggi.json`, `con_una_cifra`); nessuna ha
+   un importo o una data (`con_importo` e `con_data` a 0), ed è per questo che
+   C e D non le toccano.
 7. **Confermata.** Le 21 del confronto senza cifre identiche in tutte e
    quattro; le tre con cifre danno 0, 1 e 1 risultati in tutte e quattro.
 8. **Confermata.** I test di Koskidex passano (`go test ./...` a `98701ad`,
