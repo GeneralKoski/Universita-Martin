@@ -108,5 +108,5 @@ di `analizza.py`: 30 query corte (fino alla mediana, 4 parole) e 20 lunghe.
 3. *Sulle ricerche per numero d'atto il testo non serve.* **Non misurata.**
    Delle 50 query solo 3 contengono una cifra.
 4. *$b$ su un corpus di soli documenti lunghi conta meno.* **Confermata, senza
-   soglia.** Fra $b$ 0,25 e 1 l'MRR@10 di LA sta in 0,038 (da 0,439 a 0,477),
+   soglia.** Fra $b$ 0,25 e 1 l'MRR@10 di LA sta in 0,037 (da 0,439 a 0,477),
    e 0,75 è a 0,014 dal migliore.
