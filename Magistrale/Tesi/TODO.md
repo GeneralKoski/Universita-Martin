@@ -279,7 +279,12 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
 - [ ] `profilo-completo`, da chiarire: P4 ha indicizzato in 476,7 s
       nonostante la cache dei vettori copiata da P3; non ho verificato se la
       cache è stata usata. Da controllare prima di citare il costo.
-- [ ] `es-corretto`: misura ancora da fare, poi Esito e tesi (8.4).
+- [ ] `es-corretto` (Esito nel README, `105143Z_esito.json`): 5 previsioni su 5.
+      ESC umane 0,4490 (produzione 0,3256, P0 0,4317), automatiche 0,9379;
+      ESO umane 0,5032 (P2 0,5024), automatiche 0,1311. Da fare: 8.4 (il
+      vantaggio sulle ricerche per contenuto sta nelle impostazioni, non nel
+      motore), 9.x, il registro (5 previsioni). Limite da dire: date e importi
+      non normalizzati in Elasticsearch.
 - [ ] `riordino-corto`: misura ancora da fare, poi Esito e tesi (8.x).
 
 ## Regole

@@ -46,3 +46,53 @@ con P0 e con P2, non con P1.
 Se tengono la 1, la 2 e la 4, il vantaggio di Koskidex innestato sulle ricerche
 per contenuto sta nelle impostazioni e non nel motore, e la sezione 8.4 lo può
 dire con un numero.
+
+## Esito
+
+Misurato il 29/09/2026 fra le 12:51 e le 12:52, Elasticsearch 9.1.0 del
+container dell'app, script `1c2f674`, Koskidex `0e914f5` per la valutazione.
+Riassunto in `2026-09-29T105143Z_esito.json` (`analizza.py`); rapporti in
+`confronto/`, valutazioni in `evaluate/`. I rapporti sulle umane contengono il
+testo delle query e restano fuori da git. Il riferimento è
+`2026-09-29_profilo-completo` (P0 e P2) e, sulle umane,
+`valutazioni-albo/2026-09-29T093306Z_known-item-umane-ku-app-elasticsearch.json`
+(Elasticsearch di produzione, 0,3256).
+
+MRR@10, con fra parentesi le ricerche a vuoto:
+
+| | automatiche | umane | date | importi |
+|---|---|---|---|---|
+| Elasticsearch di produzione | | 0,3256 | | |
+| **ESC** | 0,9379 | 0,4490 (29,8%) | 0,3054 (50,7%) | 0,9026 |
+| P0 (Koskidex, profilo consigliato) | 0,9498 | 0,4317 (29,8%) | 0,3153 (50,4%) | 0,9167 |
+| **ESO** | 0,1311 | 0,5032 (0%) | 0,1231 | 0,3714 |
+| P2 (Koskidex, disgiuntivo BM25) | 0,1468 | 0,5024 (0%) | 0,4781 | 0,7007 |
+
+**Cinque previsioni su cinque.**
+
+1. **Confermata.** ESC sulle automatiche 0,9379 contro 0,9498 di P0.
+2. **Confermata.** ESC sulle umane 0,4490 contro 0,4317 di P0, con la stessa
+   quota di ricerche a vuoto (29,8%).
+3. **Confermata.** ESC sulle umane 0,4490 contro 0,3256 di Elasticsearch di
+   produzione.
+4. **Confermata, quasi identici.** ESO sulle umane 0,5032 contro 0,5024 di
+   P2, senza ricerche a vuoto in tutti e due.
+5. **Confermata, molto di più.** ESO sulle automatiche 0,1311, contro 0,9379
+   di ESC: come P2 sotto P1, il recupero disgiuntivo perde le ricerche per
+   numero.
+
+**Cosa dice.** Sulle ricerche per contenuto Elasticsearch, con le stesse
+correzioni, arriva dove arriva Koskidex: le umane passano da 0,3256 a 0,4490
+con le parole libere di stare in campi diversi, il filtro delle elisioni e i
+numeri senza refusi, contro 0,4317 di Koskidex; nel recupero disgiuntivo 0,5032
+contro 0,5024. La sezione 8.4 può dire che il vantaggio sulle ricerche per
+contenuto sta nelle impostazioni e non nel motore, con questo numero. Quello
+che Elasticsearch non ha, in questa prova, sono i vettori: P4 fa 0,6073.
+
+**Limiti.** Le date e gli importi restano come in produzione (ESC 0,3054 sulle
+date, contro 0,9789 di P1): normalizzarli in Elasticsearch vuol dire scrivere
+char filter a mano per ogni formato, e non l'ho fatto. Le clausole per parola
+le ho scelte io prima di misurare (README, "Metodo"), non sono l'unica
+traduzione possibile delle impostazioni di Koskidex in Elasticsearch. Il
+confronto è sulle stesse 104 query umane, quindi non dice quanto vale su query
+diverse.
