@@ -1,0 +1,927 @@
+{
+  "ran_at": "2026-09-29T09:43:48Z",
+  "config": {
+    "commit": "263f52d",
+    "modifiche_non_committate": "false",
+    "valutazioni": {
+      "A": "2026-09-29T093111Z_known-item-umane-ku-A.json",
+      "B": "2026-09-29T093116Z_known-item-umane-ku-B.json",
+      "LT": "2026-09-29T093102Z_known-item-umane-ku-LT.json"
+    },
+    "koskidex": [
+      "cd86102"
+    ],
+    "classificatore_da": "2026-09-25T133033Z_esito.json"
+  },
+  "risultati": {
+    "tutte": {
+      "query": 104,
+      "sempre A": {
+        "ndcg@10": 0.6719,
+        "scelte_b": 0
+      },
+      "sempre B": {
+        "ndcg@10": 0.6623,
+        "scelte_b": 104
+      },
+      "oracolo": {
+        "ndcg@10": 0.7045,
+        "scelte_b": 13
+      },
+      "regola": {
+        "ndcg@10": 0.6727,
+        "scelte_b": 1
+      },
+      "classificatore": {
+        "ndcg@10": 0.6769,
+        "scelte_b": 59
+      },
+      "b_batte_a": 13,
+      "a_batte_b": 18
+    },
+    "con cifra": {
+      "query": 4,
+      "sempre A": {
+        "ndcg@10": 0.8253,
+        "scelte_b": 0
+      },
+      "sempre B": {
+        "ndcg@10": 0.7544,
+        "scelte_b": 4
+      },
+      "oracolo": {
+        "ndcg@10": 0.8467,
+        "scelte_b": 1
+      },
+      "regola": {
+        "ndcg@10": 0.8467,
+        "scelte_b": 1
+      },
+      "classificatore": {
+        "ndcg@10": 0.7544,
+        "scelte_b": 3
+      },
+      "b_batte_a": 1,
+      "a_batte_b": 1
+    },
+    "senza cifra": {
+      "query": 100,
+      "sempre A": {
+        "ndcg@10": 0.6657,
+        "scelte_b": 0
+      },
+      "sempre B": {
+        "ndcg@10": 0.6586,
+        "scelte_b": 100
+      },
+      "oracolo": {
+        "ndcg@10": 0.6989,
+        "scelte_b": 12
+      },
+      "regola": {
+        "ndcg@10": 0.6657,
+        "scelte_b": 0
+      },
+      "classificatore": {
+        "ndcg@10": 0.6738,
+        "scelte_b": 56
+      },
+      "b_batte_a": 12,
+      "a_batte_b": 17
+    }
+  },
+  "scelte": [
+    {
+      "query": "ku-1-01",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-02",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-03",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.43067655807339306,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-04",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-06",
+      "cifra": true,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-07",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-08",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.43067655807339306,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-09",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-10",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-12",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-13",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-14",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-16",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-17",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-18",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-19",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-20",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-21",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-22",
+      "cifra": true,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-23",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-24",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-25",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-26",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-27",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-28",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-29",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-30",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-31",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-32",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-33",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-34",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-35",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-36",
+      "cifra": true,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-1-37",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0.3333333333333333,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-38",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-1-39",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-2-01",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.3154648767857287,
+      "ndcg_b": 0.3562071871080222,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-02",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-03",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-04",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-05",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-06",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-07",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0,
+      "ndcg_b": 0.5,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-08",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-09",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0,
+      "ndcg_b": 0.3333333333333333,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-10",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-11",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 0.5,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-12",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-13",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-14",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-15",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-16",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-2-17",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.5,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-18",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-19",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-20",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-21",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-22",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0.38685280723454163,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-2-23",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.5,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-24",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-25",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-26",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-27",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.43067655807339306,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-28",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 0.2890648263178879,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-29",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.38685280723454163,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-30",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.43067655807339306,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-31",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-32",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-33",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0.43067655807339306,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-34",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-35",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-2-36",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-2-37",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.5,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-38",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.2890648263178879,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-39",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.5,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-2-40",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.3333333333333333,
+      "ndcg_b": 0,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-3-01",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0.38685280723454163,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-02",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-04",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-3-05",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-06",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-3-07",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-08",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.43067655807339306,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-09",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-11",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-3-13",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-14",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.5,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-15",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-17",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.38685280723454163,
+      "ndcg_b": 0.38685280723454163,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-19",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.2890648263178879,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-20",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.6309297535714574,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-21",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-22",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-23",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.3562071871080222,
+      "ndcg_b": 0.43067655807339306,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-24",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-26",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-28",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-29",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0.5,
+      "ndcg_b": 0.43067655807339306,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-30",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-32",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 0,
+      "ndcg_b": 0,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-33",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    },
+    {
+      "query": "ku-3-35",
+      "cifra": true,
+      "l_vuoto": false,
+      "ndcg_a": 0.3010299956639812,
+      "ndcg_b": 0.38685280723454163,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-3-36",
+      "cifra": false,
+      "l_vuoto": false,
+      "ndcg_a": 0.6309297535714574,
+      "ndcg_b": 0.38685280723454163,
+      "classificatore": "B"
+    },
+    {
+      "query": "ku-3-39",
+      "cifra": false,
+      "l_vuoto": true,
+      "ndcg_a": 1,
+      "ndcg_b": 1,
+      "classificatore": "A"
+    }
+  ]
+}
