@@ -1,0 +1,76 @@
+{
+  "ran_at": "2026-09-29T10:05:54Z",
+  "config": {
+    "commit": "ff42562",
+    "modifiche_non_committate": "false",
+    "file": {
+      "known-item-umane LA": {
+        "primo_stadio": "2026-09-29T094634Z_known-item-umane-rr-primo-LA.json",
+        "riordino": "2026-09-29T094634Z_known-item-umane-rr-LA.json",
+        "valutazione": "2026-09-29T095513Z_known-item-umane-rr-LA.json"
+      },
+      "known-item-umane A": {
+        "primo_stadio": "2026-09-29T095518Z_known-item-umane-rr-primo-A.json",
+        "riordino": "2026-09-29T095518Z_known-item-umane-rr-A.json",
+        "valutazione": "2026-09-29T100549Z_known-item-umane-rr-A.json"
+      }
+    }
+  },
+  "righe": {
+    "known-item-umane LA": {
+      "primo": {
+        "ndcg@10": 0.6081616056903025,
+        "mrr@10": 0.5591460622710624,
+        "recall@100": 0.9134615384615384
+      },
+      "riordino": {
+        "ndcg@10": 0.6867973201942894,
+        "mrr@10": 0.6328258547008547
+      },
+      "mediana_ms": 5303.3035,
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+      "posizioni_primo_stadio": {
+        "primi_10": 79,
+        "da_11_a_100": 16,
+        "fuori": 9,
+        "portati_nei_10": 13
+      }
+    },
+    "known-item-umane A": {
+      "primo": {
+        "ndcg@10": 0.6718508494481225,
+        "mrr@10": 0.6130303724053727,
+        "recall@100": 0.9711538461538461
+      },
+      "riordino": {
+        "ndcg@10": 0.6996158860113806,
+        "mrr@10": 0.6405181623931624
+      },
+      "mediana_ms": 5931.342000000001,
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+      "posizioni_primo_stadio": {
+        "primi_10": 89,
+        "da_11_a_100": 12,
+        "fuori": 3,
+        "portati_nei_10": 6
+      }
+    }
+  },
+  "previsioni": {
+    "4": {
+      "previsione": "umane: riordino di LA almeno +0,05, di A almeno +0,03",
+      "valore": "LA 0.5591 -> 0.6328 (+0.0737); A 0.6130 -> 0.6405 (+0.0275)",
+      "esito": "smentita"
+    },
+    "5": {
+      "previsione": "umane: dall'11° al 100° posto nei primi dieci almeno in metà dei casi",
+      "valore": "LA 13 su 16; A 6 su 12",
+      "esito": "confermata"
+    },
+    "6": {
+      "previsione": "mediana del riordino almeno 2 secondi a query",
+      "valore": "known-item-umane LA 5303 ms; known-item-umane A 5931 ms",
+      "esito": "confermata"
+    }
+  }
+}

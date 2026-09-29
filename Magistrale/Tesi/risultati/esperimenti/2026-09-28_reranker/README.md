@@ -82,3 +82,34 @@ dello spirito.**
 6. **Confermata.** Mediana da 5,1 a 12,0 secondi a query, contro il
    millisecondo di Koskidex; il costo cresce con la lunghezza dei testi
    (schede corte 5 s, abstract 11-12 s).
+
+## Esito, seconda parte: known-item umane
+
+Misurato il 29/09/2026 fra le 11:46 e le 12:05 sulle 104 known-item umane dei
+tre lotti, Koskidex `cd86102`, `bge-reranker-v2-m3` alla revisione `953dc6f`,
+MPS. Riassunto in `2026-09-29T100627Z_esito-umane.json` (`analizza.py umane`);
+l'esito delle 12:05 (`100554Z`) ha gli stessi numeri senza la divisione per
+gruppo, aggiunta per la tabella del capitolo 8. I rapporti riordinati
+contengono il testo delle query e restano fuori da git, come le risposte. Il
+primo stadio dà gli stessi MRR@10 di LA e A in `2026-09-25_known-item-umane/`.
+
+| MRR@10 | tutte | Crispiano | FVG | con numero (4) | senza numero | recall@100 del primo stadio | mediana del riordino |
+|---|---|---|---|---|---|---|---|
+| LA | 0,559 | 0,477 | 0,635 | 0,750 | 0,552 | 0,913 | |
+| LA riordinato | **0,633** | 0,551 | 0,709 | 0,833 | 0,625 | | 5,3 s |
+| A | 0,613 | 0,557 | 0,665 | 0,778 | 0,606 | 0,971 | |
+| A riordinato | **0,641** | 0,565 | 0,711 | 0,833 | 0,633 | | 5,9 s |
+
+**La 5 confermata, la 4 a metà** (`analizza.py` la segna smentita perché
+controlla le due parti insieme).
+
+4. **A metà.** Il riordino porta LA da 0,559 a 0,633, +0,074: confermata. A
+   da 0,613 a 0,641, +0,028, appena sotto la soglia di 0,03: smentita. Il
+   riordino aggiunge meno dove i vettori hanno già portato l'atto in alto.
+5. **Confermata.** Degli atti che il primo stadio aveva fra l'11° e il 100°
+   posto, il riordino ne porta fra i primi dieci 13 su 16 con LA e 6 su 12
+   con A.
+
+La 6, il costo, tiene anche qui: 5,3 e 5,9 s di mediana a query. Il riordino
+non cambia le ricerche a vuoto, perché riordina solo quello che il primo
+stadio trova: LA ne lascia una, A nessuna.
