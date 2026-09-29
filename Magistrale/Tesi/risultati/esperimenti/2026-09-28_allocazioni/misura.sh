@@ -12,13 +12,16 @@
 # - il profilo a 8 client, con profilo.sh.
 #
 #   misura.sh prima|dopo <dati del container kosk-carico> <dati di koskidex nativo>
+#
+# ESPERIMENTO cambia la cartella dell'archivio (2026-09-29_accenti lo usa per
+# le sue misure).
 set -euo pipefail
 : "${TESI_RISULTATI:?TESI_RISULTATI non impostata: il risultato non verrebbe archiviato}"
 FASE=${1:?prima o dopo}; DATI_C=${2:?dati del container}; DATI_N=${3:?dati del nativo}
 KX=${KOSKIDEX:-$HOME/Desktop/Progetti-personali/Koskidex}
 QUI=$(cd "$(dirname "$0")" && pwd)
 T=$(cd "$QUI/../../query" && pwd)
-ESP=2026-09-28_allocazioni/$FASE
+ESP=${ESPERIMENTO:-2026-09-28_allocazioni}/$FASE
 Q=(-query "known-item-auto=$KX/eval/corpora/c3-albo/known-item-auto/queries.jsonl"
    -query "confronto-24=$T/confronto-24/queries.jsonl"
    -query "umane=$T/known-item-umane/queries.jsonl")
