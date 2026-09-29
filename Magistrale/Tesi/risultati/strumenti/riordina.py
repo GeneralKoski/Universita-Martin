@@ -11,7 +11,7 @@ primo stadio. Il campo ms di ogni query è il tempo del riordino.
 Gira nell'ambiente a parte con torch e sentence-transformers
 (~/.venvs/tesi-reranker), non nel Python di sistema.
 
-    riordina.py --valutazione <json> --collezione <cartella BEIR> --uscita <json>
+    riordina.py --valutazione <json> --collezione <cartella BEIR> --uscita <json> [--dtype float16]
 """
 import argparse, datetime, hashlib, json, os, platform, subprocess, time
 
@@ -25,6 +25,7 @@ p.add_argument("--k", type=int, default=100)
 p.add_argument("--max-length", type=int, default=512)
 p.add_argument("--batch", type=int, default=32)
 p.add_argument("--dispositivo", default="mps")
+p.add_argument("--dtype", default="float32", choices=["float32", "float16"])
 a = p.parse_args()
 
 import sentence_transformers, torch
@@ -43,7 +44,8 @@ for riga in open(os.path.join(a.collezione, "queries.jsonl"), encoding="utf8"):
     q = json.loads(riga)
     domande[q["_id"]] = q["text"]
 
-modello = CrossEncoder(a.modello, max_length=a.max_length, device=a.dispositivo)
+modello = CrossEncoder(a.modello, max_length=a.max_length, device=a.dispositivo,
+                       model_kwargs={"dtype": getattr(torch, a.dtype)})
 esiti = []
 for q in primo["per_query"]:
     candidati = (q.get("top") or [])[: a.k]
@@ -64,6 +66,7 @@ rapporto = {
         "motore": "reranker-" + a.modello.split("/")[-1], "modello": a.modello,
         "revisione": os.path.basename(snapshot_download(a.modello, local_files_only=True)),
         "k": a.k, "max_length": a.max_length, "batch": a.batch, "dispositivo": a.dispositivo,
+        "dtype": str(next(modello.parameters()).dtype).removeprefix("torch."),
         "torch": torch.__version__, "sentence_transformers": sentence_transformers.__version__,
         "python": platform.python_version(),
         "primo_stadio": os.path.basename(a.valutazione),
