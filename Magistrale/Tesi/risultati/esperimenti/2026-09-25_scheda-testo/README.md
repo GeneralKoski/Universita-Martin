@@ -46,8 +46,10 @@ documenti lunghi in parti (sezione 7.1) non serve a queste query.
 
 Misurato il 29/09/2026 sulle known-item umane dei tre lotti che cercano atti di
 Crispiano: **50 query**, non le circa 80 che il Metodo si aspettava con
-quattro lotti. Koskidex `cd86102`. Riassunto in `2026-09-29T094542Z_esito.json`
+quattro lotti. Koskidex `cd86102`. Riassunto in `2026-09-29T095003Z_esito.json`
 (`analizza.py`), le dieci valutazioni in `valutazioni-albo/2026-09-29T0945*`.
+L'esito delle 09:45 (`2026-09-29T094542Z_esito.json`) ha gli stessi numeri
+senza la divisione per lunghezza, aggiunta per le ipotesi del diario.
 I vettori del testo a 8.192 token vengono dalla cache di
 `2026-09-25_contesto-ollama/` (14 vettori nuovi, quelli delle query mai viste
 a quel contesto): `embedder` nel `config` è `ollama/bge-m3@8192`.
@@ -83,3 +85,28 @@ recupero congiuntivo, che è quello di Documentale, perché gli dà più parole 
 cui trovare tutte quelle della query: ma anche lì resta sotto la scheda con
 LA o con A. La 4 cade, e secondo la regola scritta prima spezzare i documenti
 lunghi in parti (sezione 7.1) non serve a queste query.
+
+**Le quattro ipotesi del diario.** Il 23/09, prima di ogni misura, la voce di
+Koskidex `eval/DIARIO.md` sul corpus misto aveva scritto quattro ipotesi senza
+soglia sulla scheda contro il testo intero, da controllare sui soli atti di
+Crispiano con query vere. Si controllano qui, con la divisione per lunghezza
+di `analizza.py`: 30 query corte (fino alla mediana, 4 parole) e 20 lunghe.
+
+| MRR@10 (entro 10) | corte, scheda | corte, testo | lunghe, scheda | lunghe, testo |
+|---|---|---|---|---|
+| LA | 0,525 (80%) | 0,496 (87%) | 0,561 (80%) | 0,414 (65%) |
+| LT | 0,437 (67%) | 0,501 (83%) | 0,000 (0%) | 0,109 (25%) |
+| A | 0,609 (90%) | 0,593 (87%) | 0,618 (95%) | 0,506 (90%) |
+
+1. *Il testo aumenta il richiamo, con un guadagno piccolo sul nDCG@10.*
+   **A metà.** Il richiamo sale con il recupero congiuntivo (LT, atto entro
+   dieci dal 40% al 60%), non con quello disgiuntivo (LA, dall'80% al 78%), e
+   con LA l'MRR@10 non sale di poco: scende di 0,077.
+2. *Il guadagno è più grande sulle query lunghe.* **A metà.** Con LT sì
+   (+0,109 sulle lunghe, +0,064 sulle corte); con LA e con A sulle lunghe il
+   testo perde di più (-0,147 e -0,112, contro -0,029 e -0,016 sulle corte).
+3. *Sulle ricerche per numero d'atto il testo non serve.* **Non misurata.**
+   Delle 50 query solo 3 contengono una cifra.
+4. *$b$ su un corpus di soli documenti lunghi conta meno.* **Confermata, senza
+   soglia.** Fra $b$ 0,25 e 1 l'MRR@10 di LA sta in 0,038 (da 0,439 a 0,477),
+   e 0,75 è a 0,014 dal migliore.
