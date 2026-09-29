@@ -269,28 +269,19 @@ Dal terzo lotto (29/09):
 Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
 `riordino-corto`), da scrivere in tesi dopo l'ultimo:
 
-- [ ] `profilo-completo` (Esito nel README, `104931Z_esito.json`): P0-P4
-      dall'app; 6 previsioni su 7 confermate, la 4 smentita per l'80% (76,9%).
-      Regola di scelta: P4 (congiuntivo, BM25, vettori a peso 10): umane
-      0,6073, automatiche 0,9556, date 0,9847, importi 0,9904; costo 41,94 ms
-      a ricerca e 476,7 s di indicizzazione. P2 e P3 (disgiuntivo) crollano
-      sulle automatiche (0,1468 e 0,1783). Da fare: 8.4 o un 8.5, 6.5, 9.x, un
-      contributo del capitolo 1, il registro (7 previsioni).
-- [ ] `profilo-completo`, da chiarire: P4 ha indicizzato in 476,7 s
-      nonostante la cache dei vettori copiata da P3; non ho verificato se la
-      cache è stata usata. Da controllare prima di citare il costo.
-- [ ] `es-corretto` (Esito nel README, `105143Z_esito.json`): 5 previsioni su 5.
-      ESC umane 0,4490 (produzione 0,3256, P0 0,4317), automatiche 0,9379;
-      ESO umane 0,5032 (P2 0,5024), automatiche 0,1311. Da fare: 8.4 (il
-      vantaggio sulle ricerche per contenuto sta nelle impostazioni, non nel
-      motore), 9.x, il registro (5 previsioni). Limite da dire: date e importi
-      non normalizzati in Elasticsearch.
-- [ ] `riordino-corto` (Esito nel README, `121254Z_esito.json`): 5 previsioni
-      su 5. Con k 20 umane LA 0,6242 (k 100 0,6328), umane A 0,6430 (0,6405),
-      automatiche LA 0,9486 (0,9528); mediana 1,22-1,28 s sulle umane, circa
-      un quarto di k 100. Da fare: 8.x accanto al reranker, 9.x, il registro
-      (5 previsioni).
-
+- [x] `profilo-completo` (Esito nel README, `104931Z_esito.json`, rilanciato
+      in `122455Z`): scritto il 29/09 in 8.2 (tabella dei profili), 8.4, 6.5,
+      9.1, 9.2, 9.3, introduzione e registro (7 previsioni, la quarta a metà).
+- [x] `profilo-completo`, la cache dei vettori: controllata il 29/09 con
+      `cache-vettori.sh`. Indicizzare P4 costa 499,6 s senza cache e 2,7 s con
+      i vettori già calcolati; i 476,7 s di P4 sono senza cache, la copia da P3
+      non ha avuto effetto in quella corsa e non so perché. In tesi sta in 8.2.
+- [x] `es-corretto` (`105143Z_esito.json`): scritto il 29/09 in 8.2 (tabella
+      `tab:es-corretto`), 8.4, 6.5, 9.1, introduzione e registro (5 previsioni).
+- [x] `riordino-corto` (`121254Z_esito.json`): scritto il 29/09 in 8.2 e
+      nello sviluppo futuro del reranker; registro (5 previsioni).
+- [x] Registro: 239 previsioni, 170 confermate, 51 smentite, 16 a metà, due
+      senza esito (237 con un esito).
 - [ ] Quarto controllo indipendente (tesi contro archivio, subagente in sola
       lettura), rimandato il 29/09 su richiesta di Martin per i token
       rimasti: da fare dopo aver scritto i tre esperimenti in tesi, poi le

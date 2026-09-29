@@ -610,14 +610,55 @@ numero con la soglia, ed è segnato con un asterisco.
     & 3 query con una cifra: non misurata \\
     & 4. Su documenti tutti lunghi $b$ conta meno
     & 0,037 fra 0,25 e 1: confermata$^{*}$ \\
+  \addlinespace
+  \texttt{profilo-completo}
+    & 1. P1: umane entro 0,005 da P0, automatiche almeno 0,950, date e importi
+      almeno 0,95
+    & 0,4317 contro 0,4317; 0,9551; 0,9789; 0,9904: confermata \\
+    & 2. P2, umane: MRR@10 almeno 0,50, a vuoto al più 3\%
+    & 0,5024, 0\%: confermata \\
+    & 3. P2, automatiche: almeno 0,03 sotto P1
+    & da 0,9551 a 0,1468: confermata \\
+    & 4. P3, umane: almeno 0,03 sopra P2, atto entro dieci almeno 80\%
+    & da 0,5024 a 0,5758; 76,9\%: a metà \\
+    & 5. P3, automatiche: MRR@10 al più 0,80
+    & 0,1783: confermata \\
+    & 6. P4: automatiche almeno 0,94, umane almeno 0,50
+    & 0,9556; 0,6073: confermata \\
+    & 7. P4, date: MRR@10 almeno 0,95
+    & 0,9847: confermata \\
+  \addlinespace
+  \texttt{es-corretto}
+    & 1. ESC entro 0,02 da P0 sulle automatiche
+    & 0,9379 contro 0,9498: confermata \\
+    & 2. ESC entro 0,03 da P0 sulle umane
+    & 0,4490 contro 0,4317: confermata \\
+    & 3. ESC almeno 0,08 sopra Elasticsearch di produzione sulle umane
+    & 0,4490 contro 0,3256: confermata \\
+    & 4. ESO entro 0,05 da P2 sulle umane
+    & 0,5032 contro 0,5024: confermata \\
+    & 5. ESO almeno 0,03 sotto ESC sulle automatiche
+    & da 0,9379 a 0,1311: confermata \\
+  \addlinespace
+  \texttt{riordino-corto}
+    & 1. Umane, LA: con 30 candidati almeno 0,61, con 20 almeno 0,60
+    & 0,6293 e 0,6242: confermata \\
+    & 2. Umane, A: con 20 candidati entro 0,01 da quello con 100
+    & 0,6430 contro 0,6405: confermata \\
+    & 3. Automatiche, LA: con 20 candidati almeno 0,93
+    & 0,9486: confermata \\
+    & 4. La mediana con 20 candidati è fra il 15\% e il 25\% di quella con 100
+    & dal 21,5\% al 24,5\%: confermata \\
+    & 5. Umane, 20 candidati: mediana almeno 0,8~s
+    & 1,22 e 1,28~s: confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 222: 154 confermate, 51 smentite, 15 a metà, e due
+In tutto le previsioni sono 239: 170 confermate, 51 smentite, 16 a metà, e due
 senza un esito registrato (la settima della voce E1, e la terza del diario
 sulla scheda contro il testo, che le query umane non permettono di misurare).
-Delle 220 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+Delle 237 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non

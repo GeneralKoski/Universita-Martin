@@ -26,6 +26,22 @@ Le configurazioni sono di due tipi, e si misurano in due modi.
         diversi, numeri esatti, elisione; senza vettori.
 \end{itemize}
 
+\paragraph{Dall'app, con le altre correzioni.} KC è il primo di cinque profili
+misurati dall'app, ciascuno da un indice vuoto e con le variabili che
+Documentale ora espone (sezione~\ref{sec:cosa-cambia}): \textbf{P0}, che è KC;
+\textbf{P1}, con le date e gli importi normalizzati e senza refusi sugli
+importi; \textbf{P2}, P1 con il recupero disgiuntivo e BM25 con l'ordine fisso
+dei termini; \textbf{P3}, P2 con i vettori di \texttt{bge-m3}, l'unione dei
+candidati e il peso 160; \textbf{P4}, P1 con BM25, l'ordine fisso e i vettori
+a peso 10, ma con il recupero congiuntivo. P2 e P3 sono LA e A dall'app, P4 è
+B. Altre due sono Elasticsearch con le stesse correzioni: \textbf{ESC} e
+\textbf{ESO}, un \texttt{multi\_match} \texttt{best\_fields} per parola con i
+pesi di produzione, il filtro delle elisioni e le parole di sole cifre senza
+refusi, con tutte le parole obbligatorie (ESC, come P0) o con una sola che
+basta (ESO, come P2). Le collezioni sono quelle dei capitoli precedenti: le
+300 ricerche \texttt{<numero> <comune>}, le 450 sulle date, le 104 sugli
+importi e le 104 known-item umane.
+
 \paragraph{Koskidex piatto.} Sei, con \texttt{scripts/evaluate} sul corpus a
 schede che esce dall'esportazione di Documentale, per vedere dove porterebbero
 le correzioni dei capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido} se
@@ -42,13 +58,17 @@ loro si confrontano alla pari, con ES e KC solo nell'ordine di grandezza.
 cross-encoder multilingue (\texttt{bge-reranker-v2-m3}), che legge query e
 documento insieme e costa secondi a query su questo hardware
 (\texttt{2026-09-28\_reranker}). Dicono quanto vale, al massimo, riordinare
-quello che il lessicale trova.
+quello che il lessicale trova. Lo stesso riordino sui primi venti e sui primi
+trenta candidati, invece di cento, dice quanto del tetto resta con un costo
+minore (\texttt{riordino-corto}).
 
 Ogni metrica si riporta su tutte le query, per fonte (Crispiano, dove chi
 scriveva aveva letto il testo intero e l'indice ha la scheda, e Friuli Venezia
 Giulia, dove l'atto è la sola scheda) e per query con e senza un numero. Le
 sette previsioni sono state scritte il 25 settembre, prima che arrivasse una
-sola risposta.
+sola risposta. Quelle dei tre esperimenti aggiunti il 29 settembre, a raccolta
+chiusa, sono state committate prima di ogni misura, ma dopo aver visto le
+metriche delle configurazioni piatte sulle stesse query.
 
 \section{Pertinenza, per famiglia di query e per fonte}\label{sec:pertinenza}
 
@@ -139,6 +159,90 @@ mancanti non bastano a spiegare il divario fra le due fonti. Stopword e stemmer 
 recupero congiuntivo e quasi non toccano il disgiuntivo
 (sezione~\ref{sec:italiana}).
 
+\begin{table}[ht]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{lrrrrrr}
+    \toprule
+    & num.+com. & umane & date & importi & ricerca & indicizz. \\
+    \midrule
+    P0 (KC)  & 0,950 & 0,432 (30\%) & 0,315 & 0,917 & 3,8~ms & 1,8~s \\
+    P1       & 0,955 & 0,432 (30\%) & 0,979 & 0,990 & 3,8~ms & 1,9~s \\
+    P2       & 0,147 & 0,502 (0\%)  & 0,478 & 0,701 & 8,5~ms & 2,0~s \\
+    P3       & 0,178 & 0,576 (0\%)  & 0,601 & 0,667 & 47,6~ms & 488,5~s \\
+    P4       & \textbf{0,956} & \textbf{0,607} (0\%) & \textbf{0,985} & \textbf{0,990} & 41,9~ms & 476,7~s \\
+    \bottomrule
+  \end{tabular}
+  \caption{I cinque profili dall'app, MRR@10 sulle quattro collezioni con un
+  atto giusto solo (num.+com. sono le ricerche \texttt{<numero> <comune>}); per
+  le umane, fra parentesi, le ricerche a vuoto. La
+  ricerca è la mediana dall'app sulle umane; l'indicizzazione è quella dei
+  10.018 atti da un indice vuoto. In grassetto il migliore di ogni colonna di
+  pertinenza.}
+  \label{tab:profili-app}
+\end{table}
+
+\paragraph{Il profilo completo, dall'app.} Le date e gli importi normalizzati
+(P1) non toccano le query umane, come previsto, e portano le date da 0,315 a
+0,979 e gli importi da 0,917 a 0,990. Il recupero disgiuntivo (P2) porta le
+umane a 0,502, senza ricerche a vuoto, ma fa crollare le ricerche per numero e
+comune a 0,147 e le date a 0,478: avevo previsto un calo di almeno 0,03, ed è
+da 0,955 a 0,147. Non ne ho verificato la causa; nel confronto delle 24 query P2 e P3
+restituiscono tutte le 10.000 risposte in 8 query su 24, contro le al più 449
+di P0, P1 e P4, e la lettura più semplice è che ogni atto con il solo comune, o
+con un numero simile, entri fra i candidati e il punteggio non lo rimetta sotto
+quello giusto. I vettori con peso 160 (P3) portano le umane a 0,576, ma
+l'atto è fra i primi dieci nel 76,9\% delle query, non nell'80\% che avevo
+previsto, e le ricerche per numero non si salvano (0,178). Solo P4, che tiene il
+recupero congiuntivo e aggiunge con l'unione i candidati dei vettori, non perde
+niente: sulle umane fa 0,607, come B fuori dall'app, sulle ricerche per numero
+0,956, sulle date 0,985 e sugli importi 0,990. È il profilo che sceglie la
+regola scritta prima della misura, fra quelli che tengono le ricerche per
+numero e le date sopra 0,95. Il prezzo è la ricerca, da 3,8 a 41,9~ms di mediana
+perché ogni query calcola il suo vettore, e l'indicizzazione, da 1,9 a 476,7~s
+per i 10.018 atti perché ognuno ne calcola uno, con Ollama in locale; se i
+vettori sono già in cache, che Koskidex conserva su disco, l'indicizzazione
+torna a 2,7~s (prova a parte, sullo stesso P4). Sei previsioni su sette hanno
+tenuto, la quarta a metà.
+
+\begin{table}[ht]
+  \centering
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    & \texttt{<num.> <comune>} & umane & date & importi \\
+    \midrule
+    ES, produzione & n.d. & 0,326 (46\%) & n.d. & n.d. \\
+    ESC & 0,938 & 0,449 (30\%) & 0,305 & 0,903 \\
+    P0 (KC) & 0,950 & 0,432 (30\%) & 0,315 & 0,917 \\
+    \midrule
+    ESO & 0,131 & 0,503 (0\%) & 0,123 & 0,371 \\
+    P2 & 0,147 & 0,502 (0\%) & 0,478 & 0,701 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Elasticsearch con le stesse correzioni di Koskidex, MRR@10 e, per le
+  umane, le ricerche a vuoto fra parentesi. ESC e ESO non normalizzano date e
+  importi.}
+  \label{tab:es-corretto}
+\end{table}
+
+\paragraph{Elasticsearch con le stesse correzioni.} La sezione~\ref{sec:competitivo}
+sosteneva che quasi tutto il guadagno di KC viene da impostazioni che
+Elasticsearch ha già; qui è una misura (tabella~\ref{tab:es-corretto}). ESC
+fa 0,449 sulle umane, contro 0,326 di ES in produzione e 0,432 di KC, e lascia a
+vuoto la stessa quota di ricerche di KC, il 29,8\%; sulle ricerche per numero e
+comune fa 0,938 contro 0,950. ESO, dove una parola basta, fa 0,503 contro 0,502
+di P2, e crolla come P2 sulle ricerche per numero (0,131). Le cinque
+previsioni hanno tenuto. Sulle ricerche per contenuto, quindi, il vantaggio di
+Koskidex innestato sta nelle impostazioni e non nel motore. Quello che
+Elasticsearch, in questa prova, non ha sono i vettori. I limiti: date e importi
+restano come in produzione, perché normalizzarli in Elasticsearch vuol dire
+scrivere un \emph{char filter} per formato e non l'ho fatto (ESC fa 0,305 sulle
+date); le clausole per parola le ho scelte io prima di misurare, e non sono
+l'unica traduzione delle impostazioni di Koskidex; il confronto è sulle stesse
+104 query.
+
 \paragraph{Quanto vale riordinare.} Il cross-encoder porta LA da 0,559 a
 0,633 di MRR@10 e A da 0,613 a 0,641; degli atti che il primo stadio aveva fra
 l'undicesimo e il centesimo posto ne porta fra i primi dieci 13 su 16 con LA e
@@ -158,6 +262,17 @@ numero esatto più di uno simile; resta sotto, ma di 0,007, e il ragionamento
 era sbagliato. Il prezzo è di 5 secondi di mediana a query sulle schede e di
 12 sugli abstract di SciFact, contro il millisecondo di Koskidex: la misura di
 un tetto, non una configurazione da mettere in produzione.
+
+\paragraph{Riordinare meno.} Con i primi venti candidati invece di cento
+(\texttt{riordino-corto}) il cross-encoder porta LA sulle umane a
+0,624 (0,633 con cento), A a 0,643 (0,641) e LA sulle ricerche
+\texttt{<numero> <comune>} a 0,949 (0,953), in circa un quarto del tempo: 1,2-1,3
+secondi di mediana sulle umane, contro 5,3-5,9. Con trenta candidati sono 0,629,
+0,639 e 0,960. Il guadagno sta quasi tutto nei primi venti perché il primo
+stadio ha già l'atto lì nell'83\% delle query con LA e nel 91\% con A: dove
+non c'è, il riordino non lo recupera. Le cinque previsioni hanno tenuto. Un
+secondo a query resta troppo per una ricerca dal vivo su questo hardware, ma
+non è più un ordine di grandezza fuori portata.
 
 \section{Latenza, memoria, dimensione dell'indice}\label{sec:latenza}
 
@@ -409,7 +524,10 @@ numero e comune il profilo consigliato porta l'atto giusto al primo posto nel
 91,7\% dei casi, contro l'1,3\% di produzione, e con la normalizzazione delle
 date, che resta fuori dal profilo, le date si trovano in qualunque formato.
 Sulle ricerche per contenuto scritte da persone KC fa 0,432 di MRR@10 contro
-0,326 di ES, e lascia a vuoto tre ricerche su dieci invece di quasi una su due.
+0,326 di ES, e lascia a vuoto tre ricerche su dieci invece di quasi una su due;
+con i vettori, dall'app, P4 arriva a 0,607 senza toccare le ricerche per numero
+(0,956), al prezzo di una ricerca da circa 42~ms e, senza i vettori già in cache, di
+un'indicizzazione da otto minuti.
 
 \paragraph{Dove il vantaggio non è del motore.} Quasi tutto il guadagno di
 pertinenza viene da impostazioni che Elasticsearch ha già, o potrebbe avere:
@@ -418,12 +536,18 @@ filtro, le date con un \emph{char filter}; i numeri esatti non hanno
 un'opzione, ma si ottengono separando nella query i termini numerici e
 cercandoli senza fuzziness. Il capitolo~\ref{chapter:sistemi} ha
 mostrato che con le stesse impostazioni i due motori trovano gli stessi
-insiemi. Il merito di Koskidex, in questa tesi, è stato di rendere visibili e
-misurabili i difetti di una configurazione, non di esserne immune. E il
-margine più grande resta sul tavolo: sulle stesse query, fuori dall'app e
-quindi solo come ordine di grandezza, Koskidex piatto fa 0,346 in recupero
-congiuntivo, 0,559 in disgiuntivo e 0,613 con i vettori. Il limite che resta a
-KC è il recupero congiuntivo che Documentale ha scelto, non il motore.
+insiemi, e la sezione~\ref{sec:pertinenza} lo misura sulla pertinenza:
+Elasticsearch con le stesse correzioni fa 0,449 sulle umane, contro 0,432 di KC
+e 0,326 di produzione, e in recupero disgiuntivo 0,503 contro 0,502. Il merito
+di Koskidex, in questa tesi, è stato di rendere visibili e misurabili i difetti
+di una configurazione, non di esserne immune. Il margine più grande sta nel
+recupero e nei vettori, che Elasticsearch in questa prova non ha: dall'app, il
+recupero disgiuntivo (P2) porta le umane a 0,502 ma fa crollare le ricerche per
+numero, e solo i vettori con il recupero congiuntivo (P4) li tengono insieme,
+0,607 e 0,956. Fuori dall'app, solo come ordine di grandezza, Koskidex piatto fa
+0,346 in recupero congiuntivo, 0,559 in disgiuntivo e 0,613 con i vettori. Il
+limite che resta a KC è il recupero congiuntivo che Documentale ha scelto, non
+il motore.
 
 \paragraph{Dove non regge.} La memoria: Koskidex tiene tutto in memoria, con
 identificativi e nomi dei campi come stringhe in ogni occorrenza, e a centomila

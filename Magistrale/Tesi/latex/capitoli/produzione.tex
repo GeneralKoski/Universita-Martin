@@ -370,9 +370,22 @@ dei risultati sulle ricerche in lingua naturale, come \emph{manutenzione strade}
 lì non c'è un atto giusto solo, e per misurare servono giudizi di pertinenza, che
 sono l'oggetto del capitolo~\ref{chapter:confronto}. Non dicono neanche che
 Elasticsearch non si possa correggere: il filtro delle elisioni e la query
-riscritta parola per parola sono misurati anche lì, con lo stesso effetto. Per i
-numeri servirebbe separare nella query i termini fatti di sole cifre e cercarli
-senza refusi, e questo in Elasticsearch non è stato misurato.
+riscritta parola per parola sono misurati anche lì, con lo stesso effetto. I numeri si
+ottengono separando nella query i termini fatti di sole cifre e cercandoli senza
+refusi, ed è misurato: con le parole di sole cifre senza refusi Elasticsearch fa
+0,938 di MRR@10 sulle ricerche per numero e comune, contro 0,950 di Koskidex con
+il profilo (sezione~\ref{sec:pertinenza}).
+
+\paragraph{Oltre il profilo.} Il profilo consigliato non contiene il recupero
+disgiuntivo, BM25 e i vettori, che il capitolo~\ref{chapter:confronto} misura
+dall'app come altri quattro profili: Documentale espone ora
+\texttt{KOSKIDEX\_RETRIEVAL\_MODE}, \texttt{KOSKIDEX\_SCORING},
+\texttt{KOSKIDEX\_STABLE\_TERM\_ORDER} e \texttt{KOSKIDEX\_VECTOR\_WEIGHT}, tutte
+spente per default e fuori dal profilo. Il recupero disgiuntivo porta le
+ricerche scritte da persone a 0,502 e fa crollare quelle per numero e comune a
+0,147; con BM25 e i vettori a peso 10 il recupero congiuntivo dà 0,607 sulle
+prime e 0,956 sulle seconde, a un costo di ricerca e di indicizzazione più
+alto.
 
 \paragraph{Cosa vuol dire.} I quattro difetti hanno una cosa in comune: nessuno è
 un errore di programmazione. Il recupero congiuntivo per campo, la tolleranza ai

@@ -57,10 +57,17 @@ Il limite è la memoria: a centomila documenti è quasi quella di
 Elasticsearch. Sulle 104 ricerche scritte da persone Koskidex innestato fa
 0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, e lascia a vuoto
 tre ricerche su dieci invece di quasi una su due: il difetto del campo unico
-colpisce anche chi cerca per argomento. Il margine più grande però resta: fuori
-dall'app, lo stesso motore in recupero disgiuntivo fa 0,559 e con i vettori
-0,613, e l'atto è fra i primi dieci nell'86\% delle ricerche. Il limite che
-resta a Documentale è il recupero congiuntivo che ha scelto, non il motore.
+colpisce anche chi cerca per argomento. Con le stesse correzioni anche
+Elasticsearch arriva a 0,449: sulle ricerche per contenuto il vantaggio sta
+nelle impostazioni, non nel motore. Il margine più grande sta nel recupero e nei
+vettori. Dall'app, il recupero disgiuntivo porta le ricerche scritte da persone
+a 0,502 ma fa crollare quelle per numero e comune a 0,147, e solo il recupero
+congiuntivo con i vettori a peso 10 tiene insieme le due cose, con 0,607 e 0,956,
+al prezzo di circa 42~ms a ricerca e di otto minuti per indicizzare i 10.018
+atti, se i vettori non sono già in cache. Fuori dall'app, lo stesso motore in recupero disgiuntivo fa 0,559 e con i
+vettori 0,613, e l'atto è fra i primi dieci nell'86\% delle ricerche. Il limite
+che resta a Documentale è il recupero congiuntivo senza vettori che ha scelto,
+non il motore.
 Due risultati sono andati contro le attese: sugli atti di Crispiano il testo
 intero ritrova l'atto peggio della scheda, e leggere più testo nei vettori
 peggiora invece di migliorare.
@@ -95,6 +102,12 @@ peggiora invece di migliorare.
   \item \textbf{Il richiamo del pool è un limite superiore.} I documenti pertinenti
         che nessuna delle dodici configurazioni ha messo fra i primi dieci non
         sono giudicati, e contano come non pertinenti.
+  \item \textbf{Elasticsearch corretto a metà.} Il confronto con le stesse
+        correzioni vale per le parole libere in campi diversi, le elisioni e i
+        numeri senza refusi. Le date e gli importi non sono stati normalizzati
+        in Elasticsearch, che chiede un \emph{char filter} per formato, e le
+        clausole per parola sono una delle traduzioni possibili delle
+        impostazioni di Koskidex.
   \item \textbf{I tempi.} Nei capitoli di recupero Koskidex gira nativo ed
         Elasticsearch in una macchina virtuale, e i tempi dicono l'ordine di
         grandezza. Il confronto alla pari della
@@ -110,14 +123,15 @@ peggiora invece di migliorare.
 
 \begin{itemize}
   \item \textbf{Il recupero congiuntivo di Documentale.} Sulle query scritte da
-        persone è il limite che resta dopo il profilo consigliato: passare a un
-        recupero disgiuntivo con BM25, o all'unione con i vettori, andrebbe
-        misurato dentro l'app come un profilo intero, con le ricerche per
-        numero d'atto che il congiuntivo oggi protegge. Lo stesso vale per
-        stopword e stemmer italiani, che sul congiuntivo tolgono 7,7 punti di
-        ricerche a vuoto, e per le date normalizzate e gli importi esatti, che
-        sulle query raccolte non costano niente ma non sono ancora stati
-        misurati dentro il profilo.
+        persone è il limite che resta dopo il profilo consigliato, e il
+        capitolo~\ref{chapter:confronto} lo ha misurato dentro l'app come
+        profilo intero: il recupero disgiuntivo non si può adottare, perché
+        fa crollare le ricerche per numero d'atto, e l'unione con i vettori a
+        peso 10 dà 0,607 senza toccarle. Resta da decidere se il costo, un
+        servizio Ollama e otto minuti di indicizzazione, sia accettabile per un
+        documentale. Stopword e stemmer italiani, che sul congiuntivo tolgono
+        7,7 punti di ricerche a vuoto, non sono ancora stati misurati dentro
+        l'app.
   \item \textbf{Più query scritte da persone}, e più persone: con cento query
         un effetto di qualche centesimo non si distingue dal rumore, e le
         ricerche con un numero mancano quasi del tutto.
@@ -127,8 +141,10 @@ peggiora invece di migliorare.
         stadio, con pochi candidati e un modello preciso. Portarlo nell'app
         vuol dire un servizio a parte, non dentro Koskidex, che resterebbe
         senza dipendenze, e un costo da abbattere: 5-12 secondi a query sulla
-        GPU di un portatile, da ridurre con meno candidati, testi più corti o
-        un modello più piccolo.
+        GPU di un portatile con cento candidati. Con venti sono circa 1,2
+        secondi sulle schede e il guadagno è quasi lo stesso, ma resta troppo
+        per una ricerca dal vivo: restano testi più corti, un modello più
+        piccolo o una GPU di un server.
   \item \textbf{La scansione dei vettori.} A 10.000 documenti una scansione esatta
         costa 12-15~ms per passata; più accumulatori nel prodotto scalare la
         accorcerebbero, a prezzo di punteggi diversi nelle ultime cifre, e oltre
