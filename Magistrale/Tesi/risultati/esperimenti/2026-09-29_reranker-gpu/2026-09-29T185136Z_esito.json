@@ -1,0 +1,116 @@
+{
+  "ran_at": "2026-09-29T18:51:36Z",
+  "config": {
+    "commit": "849948f",
+    "modifiche_non_committate": "false",
+    "file": {
+      "scifact mac": {
+        "riordino": "2026-09-28T123829Z_scifact-rr-LA.json",
+        "valutazione": "2026-09-29T175806Z_scifact-rr-LA-mac.json"
+      },
+      "scifact float32": {
+        "riordino": "2026-09-29T175806Z_scifact-rr-LA-float32.json",
+        "valutazione": "2026-09-29T182157Z_scifact-rr-LA-float32.json"
+      },
+      "scifact float16": {
+        "riordino": "2026-09-29T182157Z_scifact-rr-LA-float16.json",
+        "valutazione": "2026-09-29T182901Z_scifact-rr-LA-float16.json"
+      },
+      "nfcorpus mac": {
+        "riordino": "2026-09-28T133935Z_nfcorpus-rr-LA.json",
+        "valutazione": "2026-09-29T182901Z_nfcorpus-rr-LA-mac.json"
+      },
+      "nfcorpus float32": {
+        "riordino": "2026-09-29T182901Z_nfcorpus-rr-LA-float32.json",
+        "valutazione": "2026-09-29T184613Z_nfcorpus-rr-LA-float32.json"
+      },
+      "nfcorpus float16": {
+        "riordino": "2026-09-29T184613Z_nfcorpus-rr-LA-float16.json",
+        "valutazione": "2026-09-29T185125Z_nfcorpus-rr-LA-float16.json"
+      }
+    }
+  },
+  "righe": {
+    "scifact mac": {
+      "ndcg@10": 0.7233123964183057,
+      "mrr@10": 0.6985158730158729,
+      "mediana_ms": 11973.1855
+    },
+    "scifact float32": {
+      "ndcg@10": 0.7233123964183057,
+      "mrr@10": 0.6985158730158729,
+      "mediana_ms": 4745.1605,
+      "p90_ms": 5119.138,
+      "p99_ms": 5306.303,
+      "query": 300,
+      "primi_10_uguali_al_mac": 1.0,
+      "torch": "2.14.0+cu130",
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+    },
+    "scifact float16": {
+      "ndcg@10": 0.7233123964183057,
+      "mrr@10": 0.6985158730158729,
+      "mediana_ms": 1388.284,
+      "p90_ms": 1488.415,
+      "p99_ms": 1544.548,
+      "query": 300,
+      "primi_10_uguali_al_mac": 0.9533,
+      "torch": "2.14.0+cu130",
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+    },
+    "nfcorpus mac": {
+      "ndcg@10": 0.3306424933492711,
+      "mrr@10": 0.5388802889576881,
+      "mediana_ms": 11345.65
+    },
+    "nfcorpus float32": {
+      "ndcg@10": 0.3306424933492711,
+      "mrr@10": 0.5388802889576881,
+      "mediana_ms": 4509.357,
+      "p90_ms": 4890.006,
+      "p99_ms": 5124.779,
+      "query": 323,
+      "primi_10_uguali_al_mac": 1.0,
+      "torch": "2.14.0+cu130",
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+    },
+    "nfcorpus float16": {
+      "ndcg@10": 0.33017700795793636,
+      "mrr@10": 0.537332301341589,
+      "mediana_ms": 1332.199,
+      "p90_ms": 1436.658,
+      "p99_ms": 1497.756,
+      "query": 323,
+      "primi_10_uguali_al_mac": 0.9536,
+      "torch": "2.14.0+cu130",
+      "revisione_modello": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e"
+    }
+  },
+  "previsioni": {
+    "1": {
+      "previsione": "fp32 SciFact: mediana fra 2,5 e 5 s",
+      "valore": "4745 ms",
+      "esito": "confermata"
+    },
+    "2": {
+      "previsione": "fp32 NFCorpus: mediana entro il 20% di SciFact",
+      "valore": "4509 contro 4745 ms",
+      "esito": "confermata"
+    },
+    "3": {
+      "previsione": "fp16: SciFact fra 0,7 e 2,5 s, almeno due volte più veloce di fp32",
+      "valore": "SciFact 1388 ms (3.42x), NFCorpus 1332 ms (3.38x)",
+      "esito": "confermata"
+    },
+    "4": {
+      "previsione": "fp32: metriche entro 0,001 dal Mac, almeno 95% delle query con i primi dieci identici",
+      "valore": "scifact scarto 0.0000, primi dieci uguali 1.000; nfcorpus scarto 0.0000, primi dieci uguali 1.000",
+      "esito": "confermata"
+    },
+    "5": {
+      "previsione": "fp16: metriche entro 0,005 dal Mac",
+      "valore": "scifact scarto 0.0000; nfcorpus scarto 0.0015",
+      "esito": "confermata"
+    }
+  }
+}

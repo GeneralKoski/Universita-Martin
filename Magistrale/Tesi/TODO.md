@@ -298,6 +298,17 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
       (corretti in `8aa157a`), 4 errori nella documentazione di lavoro e
       alcuni chiarimenti nel quinto (corretti dopo).
 
+Dal fisso di Martin (29/09, `ISTRUZIONI-FISSO.md`), da scrivere in tesi dal
+Claude del Mac:
+
+- [ ] `reranker-gpu` (`185136Z_esito.json`, 5 previsioni su 5): su una RTX
+      3060 (non Ti) in Windows nativo il riordino dei primi cento costa 4,75 s
+      a query su SciFact e 4,51 su NFCorpus in fp32, 1,39 e 1,33 in fp16;
+      ordini identici al Mac in fp32, scarto massimo 0,0015 in fp16. Da citare
+      in 8.2 accanto al costo del Mac (righe 63 e 263 di `confronto.tex`), in
+      `conclusione.tex` riga 143 ("5-12 secondi a query sulla GPU di un
+      portatile") e nel registro delle previsioni (5 nuove).
+
 ## Regole
 
 Valgono per tutto il lavoro che resta. Se ne salta una, i numeri diventano

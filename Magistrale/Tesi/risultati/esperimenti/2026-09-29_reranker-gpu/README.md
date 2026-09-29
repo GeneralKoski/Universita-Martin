@@ -56,3 +56,47 @@ primi dieci identici a quelli del Mac.
    identici.
 5. **fp16, ordini**: nDCG@10 e MRR@10 entro 0,005 da quelli del Mac su
    entrambe le collezioni.
+
+## Esito
+
+Misurato il 29/09/2026 fra le 19:58 e le 20:51 (ora italiana) sul fisso, in
+Windows 11 nativo, Koskidex `0e914f5` per la valutazione,
+`bge-reranker-v2-m3` alla revisione `953dc6f`, CUDA su RTX 3060 12 GB. Riassunto in
+`2026-09-29T185136Z_esito.json` (`analizza.py`); rapporti in `riordinati/`,
+valutazioni in `evaluate/` (le `rr-LA-mac` sono i rapporti del Mac valutati
+con lo stesso binario: danno gli stessi 0,7233 e 0,3306 di
+`2026-09-28_reranker`). Dichiarato: dopo aver committato le previsioni e prima
+della misura ho fatto una prova di sviluppo dell'opzione `--dtype` su 3 query
+di SciFact, archiviata altrove e non usata (circa 4,7 s in fp32 e 1,4 s in
+fp16).
+
+| | Mac, MPS fp32 | fisso, CUDA fp32 | fisso, CUDA fp16 |
+|---|---|---|---|
+| SciFact, mediana / p90 / p99 per query | 12,0 s | **4,75** / 5,12 / 5,31 s | **1,39** / 1,49 / 1,55 s |
+| NFCorpus, mediana / p90 / p99 per query | 11,3 s | **4,51** / 4,89 / 5,13 s | **1,33** / 1,44 / 1,50 s |
+| SciFact, nDCG@10 / MRR@10 | 0,7233 / 0,6985 | 0,7233 / 0,6985 | 0,7233 / 0,6985 |
+| NFCorpus, nDCG@10 / MRR@10 | 0,3306 / 0,5389 | 0,3306 / 0,5389 | 0,3302 / 0,5373 |
+| query con i primi dieci identici al Mac | | 100% / 100% | 95,3% / 95,4% |
+
+**Cinque previsioni su cinque.**
+
+1. **Confermata, vicino al bordo.** fp32 su SciFact: 4,75 s di mediana
+   (soglia 2,5-5), contro 12,0 sul Mac.
+2. **Confermata.** NFCorpus 4,51 s contro 4,75 di SciFact (sul Mac 11,3
+   contro 12,0).
+3. **Confermata.** fp16: 1,39 s su SciFact e 1,33 su NFCorpus, 3,42 e 3,38
+   volte meno di fp32.
+4. **Confermata.** fp32: metriche identiche al Mac alla quarta cifra e i primi
+   dieci identici in tutte le query delle due collezioni. MPS e CUDA danno lo
+   stesso riordino.
+5. **Confermata.** fp16: SciFact identica; NFCorpus 0,3302 contro 0,3306 di
+   nDCG@10 e 0,5373 contro 0,5389 di MRR@10, scarto massimo 0,0015 (soglia
+   0,005). I primi dieci cambiano in circa una query su venti; non ho
+   guardato quali documenti si scambiano.
+
+**Cosa dice.** Il costo di 11-12 s a query era in buona parte della macchina:
+una GPU consumer lo porta a 4,5-4,8 s nella stessa precisione e a 1,3-1,4 s in
+fp16, con le stesse metriche in fp32 e quasi le stesse in fp16. Resta comunque
+un costo da secondi, contro il millisecondo di Koskidex: la conclusione di
+`2026-09-28_reranker` (il tetto non è una configurazione da usare dal vivo)
+regge anche su questa macchina.
