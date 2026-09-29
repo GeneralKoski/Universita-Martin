@@ -2,7 +2,9 @@
 """Controlla le previsioni di 2026-09-28_reranker sulle esecuzioni di esegui.sh
 e archivia il riassunto: primo stadio contro riordino, recall@100 del primo
 stadio come tetto, tempo del riordino, e per le known-item dove stava l'atto
-nel primo stadio. Nessun testo di query finisce nel riassunto.
+nel primo stadio; per le known-item umane anche MRR@10 e ricerche a vuoto del
+riordino per fonte e con o senza numero, da raccolta.json, come nella tabella
+del capitolo 8. Nessun testo di query finisce nel riassunto.
 
     analizza.py beir|umane
 """
@@ -13,6 +15,7 @@ BASE = os.environ.get("TESI_RISULTATI") or os.path.join(QUI, "..", "..")
 DIR = os.path.join(BASE, "esperimenti", "2026-09-28_reranker")
 COSA = sys.argv[1]
 KX = os.path.expanduser("~/Desktop/Progetti-personali/Koskidex/eval/corpora")
+RACCOLTA = os.path.join(QUI, "..", "..", "query", "known-item-umane", "raccolta.json")
 
 
 def ultimo(cartella, nome):
@@ -58,6 +61,17 @@ for corpora, c, conf in CASI:
             if chiave == "da_11_a_100" and any(d in g[q["query_id"]] for d in rr[q["query_id"]][:10]):
                 posizioni["portati_nei_10"] += 1
         riga["posizioni_primo_stadio"] = posizioni
+    if c == "known-item-umane":
+        info = {q["query"]: q for q in json.load(open(RACCOLTA, encoding="utf8"))["query"] if not q["vuota"]}
+        gruppi = {"tutte": lambda q: True, "crispiano": lambda q: info[q]["fonte"] == "crispiano",
+                  "fvg": lambda q: info[q]["fonte"] == "fvg", "con numero": lambda q: info[q]["contiene_numero"],
+                  "senza numero": lambda q: not info[q]["contiene_numero"]}
+        riga["per_gruppo"] = {}
+        for g_, dentro in gruppi.items():
+            qs = [x for x in r["per_query"] if dentro(x["query_id"])]
+            riga["per_gruppo"][g_] = {"query": len(qs), "mrr@10": round(sum(x["mrr@10"] for x in qs) / len(qs), 4),
+                                      "a_vuoto": round(sum(x["retrieved"] == 0 for x in qs) / len(qs), 4)}
+        print(f"{c} {conf} riordinato per gruppo: " + json.dumps(riga["per_gruppo"]))
     righe[f"{c} {conf}"] = riga
     print(f"{c:18} {conf}  nDCG@10 {riga['primo']['ndcg@10']:.4f} -> {riga['riordino']['ndcg@10']:.4f}  "
           f"MRR@10 {riga['primo']['mrr@10']:.4f} -> {riga['riordino']['mrr@10']:.4f}  "
