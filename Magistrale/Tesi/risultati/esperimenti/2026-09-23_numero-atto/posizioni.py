@@ -12,7 +12,7 @@ rapporto di scripts/compare gia' archiviato.
 Gli atti giusti sono doc-0001 (Ordinanza N. 187) e doc-0002 (Determina N. 1223),
 verificati sul corpus: sono i due atti di Crispiano con quel numero.
 """
-import datetime, json, os, sys, time, urllib.request
+import datetime, json, os, subprocess, sys, time, urllib.request
 
 ES = "http://localhost:9201/search-documents-local"
 CASI = {"ordinanza 187": "1", "determina 1223": "2"}
@@ -22,6 +22,10 @@ VARIANTI = {
     "senza_refusi": {"fuzziness": 0, "fields": CAMPI},
     "senza_campo_name": {"fuzziness": "AUTO", "fields": CAMPI[1:]},
 }
+
+QUI = os.path.dirname(os.path.abspath(__file__))
+git = lambda *a: subprocess.run(["git", "-C", QUI, *a] if a[0] != "-C" else ["git", *a], capture_output=True, text=True, check=True).stdout.strip()
+
 
 def post(url, body):
     r = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
@@ -59,8 +63,13 @@ for r in righe:
 ora = datetime.datetime.now(datetime.timezone.utc)
 esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
          "config": {"elasticsearch_versione": json.load(urllib.request.urlopen("http://localhost:9201"))["version"]["number"],
-                    "indice": "search-documents-local", "rapporto_koskidex": sys.argv[1]},
+                    "indice": "search-documents-local", "rapporto_koskidex": sys.argv[1],
+                    "commit": git("rev-parse", "--short", "HEAD"),
+                    "modifiche_non_committate": "true" if git("status", "--porcelain", "--", os.path.abspath(__file__)) else "false",
+                    "commit_documentale": git("-C", os.path.expanduser("~/Desktop/Dieffetech/Documentale"), "rev-parse", "--short", "HEAD")},
          "righe": righe}
+if not os.environ.get("TESI_RISULTATI"):
+    sys.exit("!!! RISULTATO NON ARCHIVIATO: TESI_RISULTATI non è impostata.")
 d = os.path.join(os.environ["TESI_RISULTATI"], "esperimenti", "2026-09-23_numero-atto")
 o = ora.strftime("%Y-%m-%dT%H%M%SZ"); p = os.path.join(d, f"{o}_esito.json"); n = 2
 while os.path.exists(p):
