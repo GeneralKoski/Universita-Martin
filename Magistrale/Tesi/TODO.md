@@ -216,9 +216,10 @@ Ogni dato nuovo o che non torna, segnato qui appena si vede, così a capitolo 8
 scritto si allineano tesi, README e archivio in un colpo solo. Dal terzo
 controllo indipendente del 29/09 (tesi e archivio, in sola lettura):
 
-- [ ] `confronto.tex` tabella `tab:crescita`, riga 10.018: 3,5 e 6,3 MB su
+- [x] `confronto.tex` tabella `tab:crescita`, riga 10.018: 3,5 e 6,3 MB su
       disco senza file (anche in `carico/README.md`). Archiviare la misura a
-      10.018 documenti o togliere le due celle.
+      10.018 documenti o togliere le due celle. Fatto il 29/09 con
+      `carico/disco-10018.sh`: 3,9 e 6,6 MB, corretti in tesi e README.
 - [x] `sistemi.tex` (query di produzione): i parametri sono cinque, manca
       `tie_breaker: 0.3` (tocca solo il punteggio, non gli insiemi).
 - [x] `confronto.tex` e `appendice-ipotesi.tex`, reranker: il primo stadio è

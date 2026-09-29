@@ -159,9 +159,20 @@ alla volta):
 
 | documenti | memoria ES | memoria Koskidex | p50 / p99 ES | p50 / p99 Koskidex | disco ES | disco Koskidex | indicizzazione ES / Koskidex |
 |---|---|---|---|---|---|---|---|
-| 10.018 | 1.431 MB | 155 MB | 6,3 / 24 ms | 2,1 / 18 ms | 3,5 MB | 6,3 MB | 1,1-1,7 s / 1,9-2,1 s (dall'app) |
+| 10.018 | 1.431 MB | 155 MB | 6,3 / 24 ms | 2,1 / 18 ms | 3,9 MB* | 6,6 MB* | 1,1-1,7 s / 1,9-2,1 s (dall'app) |
 | 50.000 | 1.439 MB | 651 MB | 6,3 / 28 ms | 3,8 / 101 ms | 17,9 MB | 32,8 MB | 2,8 s / 6,2 s |
 | 100.000 | 1.433 MB | 1.213 MB | 7,0 / 36 ms | 5,4 / 201 ms | 35,5 MB | 65,6 MB | 5,3 s / 12,9 s |
+
+\* *Corretto il 29/09/2026.* I 3,5 e 6,3 MB scritti qui il 28/09 non avevano
+un file (lo ha trovato il terzo controllo della tesi). Misurati di nuovo con
+`disco-10018.sh`, con il metodo di `copia.py`, in
+`2026-09-29T100953Z_disco-10018.json`: 3.868.374 byte per Elasticsearch
+(l'indice dell'app, ricostruito il 29/09 dopo l'azzeramento di Docker) e
+6.556.875 per Koskidex (`cd86102`, profilo consigliato; le correzioni dopo
+`ffa38ab` non toccano il formato su disco). Koskidex torna con la riga a
+50.000, cinque volte tanto; Elasticsearch no, e non ho verificato perché:
+l'indice dell'app non è una copia fatta in blocchi da 1.000 come quelli più
+grandi, e può essere compattato in segmenti diversi.
 
 Previsione per previsione:
 
