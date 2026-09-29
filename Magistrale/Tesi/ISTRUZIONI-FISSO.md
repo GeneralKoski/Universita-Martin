@@ -105,26 +105,96 @@ Passi:
    Martin lo chiede: la tesi la ricompila e la verifica lui o il Claude del
    Mac.
 
-## Compito B: il carico su un'altra macchina (solo se l'ambiente c'è)
+## Compito B: il carico su un'altra macchina
 
 Domanda: il rapporto fra Koskidex ed Elasticsearch misurato sul Mac
 (`2026-09-28_carico`: capacità circa sette volte, p50 0,89 contro 6,32 ms)
-regge su un'altra macchina? Leggi il README di `2026-09-28_carico`, di
-`2026-09-28_prestazioni` e di `2026-09-28_allocazioni`.
+regge su un'altra macchina? Leggi prima i README di `2026-09-28_carico`,
+`2026-09-28_prestazioni` e `2026-09-28_allocazioni`, e `risultati/macchina.md`
+(la macchina del Mac).
 
-Prerequisiti (tutti da verificare prima di scrivere una riga di previsioni):
-Docker, Go, Koskidex al commit di `2026-09-28_allocazioni` o successivo,
-Documentale con Elasticsearch e MySQL in locale e il **database degli albi già
-riempito** (10.018 atti: non è in git, sta sul Mac di Martin), e le 400 query
-del carico. **Se il database o gli indici non ci sono, non ricostruirli: Compito
-B saltato, dillo a Martin.**
+**Serve un file che non sta in git**: `bundle-fisso-tesi.tar.gz`, che Martin
+ha sul Mac (sul Desktop) e ti porta a mano (chiavetta, AirDrop o il suo
+server). Chiedilo a Martin; se non c'è, **il compito B è saltato**: dillo e
+passa oltre. Contiene il dump esatto del database `albo` (10.018 atti, id
+originali: **non reimportare gli albi da zero**, gli id cambierebbero) e i testi
+delle query. È privato: mai in git, mai in chat, mai in cloud. La sua impronta
+sha256 è
+`c44ba7f3926e8df76f6de4640aa2e528c0ca9d21ee7cf65581f0aa5c7670a3e6`: controllala
+prima di usarlo. Dentro c'è un `LEGGIMI.txt` e un `SHA256SUMS`.
 
-Previsioni da scrivere prima (in un esperimento nuovo che rimanda a quello del
-Mac): tempi per query simili al Mac (dipendono dal singolo core); capacità del
-nativo nella zona del Mac (dipende dai core); rapporto fra i motori entro il 30%
-di quello del Mac. Dichiara il sistema operativo: su Linux Docker gira senza
-macchina virtuale, su Windows passa da WSL2, e sul Mac il nativo va il 70% più
-veloce del container.
+### Preparazione (una volta, poi si misura)
+
+Presupposti da verificare: Docker funzionante, Go, PHP 8.4 o superiore con
+Composer, git. Se qualcosa non si installa con poca fatica, fermati e dillo a
+Martin: è una misura facoltativa.
+
+1. **Clona i repository** (accanto a questo): `Koskidex`
+   (`github.com/GeneralKoski/Koskidex`, branch `main`) e `Documentale`
+   (`github.com/Dieffetech/Documentale`, branch `martin/tesi-magistrale`,
+   codice in `apps/laravel`; `composer install`). Se il clone di Documentale
+   non parte (repository privato), chiedi a Martin come dare l'accesso.
+2. **MySQL con gli albi.**
+   `docker run -d --name doc-tesi-mysql -e MYSQL_ROOT_PASSWORD=root -p 33061:3306 mysql:8.4.10`,
+   poi, dalla cartella del bundle scompattato,
+   `gzip -dc albo.sql.gz | docker exec -i doc-tesi-mysql mysql -uroot -proot`.
+   Controlla: `select count(*) from albo.documents` e `from albo.document_versions`
+   danno 10018 tutti e due, `min(id)` 1 e `max(id)` 10045.
+3. **Elasticsearch come sul Mac.**
+   `docker run -d --name doc-tesi-es -p 9201:9200 -e xpack.security.enabled=false -e "ES_JAVA_OPTS=-Xms1g -Xmx1g" -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:9.1.0`.
+   Sul Mac Docker gira in una macchina virtuale con 4 CPU e circa 7-8 GB: sul
+   fisso dichiara quante risorse ha Docker (su Linux nessuna VM, su Windows
+   WSL2, e dichiara anche quante CPU e quanta RAM gli dai).
+4. **Le query nei posti giusti**, dal bundle:
+   `query/known-item-auto.queries.jsonl` in
+   `<Koskidex>/eval/corpora/c3-albo/known-item-auto/queries.jsonl` (crea le
+   cartelle se mancano) e `query/known-item-umane.queries.jsonl` in
+   `Magistrale/Tesi/risultati/query/known-item-umane/queries.jsonl` (è in
+   `.gitignore`: controlla con `git status` che non compaia).
+5. **Riempi Elasticsearch dall'app.** Il `.env` di Documentale non serve e
+   punta a servizi che non esistono più: passa le variabili sulla riga di
+   comando. Da `Documentale/apps/laravel`, con
+   `DB_HOST=127.0.0.1 DB_PORT=33061 DB_DATABASE=albo DB_USERNAME=root DB_PASSWORD=root TELESCOPE_ENABLED=false ELASTICSEARCH_HOST=http://localhost:9201`,
+   lancia dal repository `strumenti/indicizza-elasticsearch.sh albo prova-fisso`
+   con `TESI_RISULTATI` puntata a una **cartella temporanea** (non ai risultati
+   veri: è un'indicizzazione di preparazione). Controlla
+   `curl localhost:9201/search-documents-local/_count` = 10018.
+6. **Koskidex due volte.** Compila da `Koskidex`: il binario nativo
+   (`go build -o k-nativo .`) e quello per il container
+   (`GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o k-linux .`, o `arm64`
+   se il container è arm). Avvia il nativo sulla porta 7714
+   (`-port 7714 -data-dir <cartella> -log-level warn`) e il container sulla 7713:
+   `docker run -d --name kosk-carico -p 7713:7700 -v <cartella-con-k-linux>:/k alpine:latest /k/k-linux --port 7700 --data-dir /k/data --log-level warn`.
+   Riempili dall'app con `SEARCH_BACKEND=koskidex KOSKIDEX_PROFILO=consigliata`
+   e `KOSKIDEX_HOST` sulla porta giusta, con
+   `strumenti/indicizza-koskidex.sh albo prova-fisso http://localhost:7713` (e
+   `:7714`; lo script accetta solo `localhost`), sempre con `TESI_RISULTATI`
+   temporanea. Controlla `curl localhost:7713/health` e `:7714/health`:
+   `"documents":10018`.
+
+### Misura
+
+Con tutto acceso, il flusso è quello di `2026-09-28_carico/esegui.sh`, che
+presuppone proprio questi nomi e porte (`doc-tesi-es` su 9201, `kosk-carico` su
+7713, nativo su 7714, con `K_NATIVO_PID` il processo del nativo).
+
+1. **Prima delle misure** crea `risultati/esperimenti/<data>_carico-fisso/README.md`
+   che rimanda a quello del Mac, dichiara la macchina e il sistema operativo
+   (file `macchina.md` accanto), e scrive le previsioni con soglia. Quelle di
+   partenza (stimate il 29/09 sul Mac, puoi affinarle prima di misurare ma non
+   dopo): i tempi per query sono simili a quelli del Mac (dipendono dal singolo
+   core); la capacità del nativo sta nella zona del Mac (dipende dai core);
+   il rapporto fra i motori sta entro il 30% di quello del Mac. **Committalo**.
+2. Adatta `esegui.sh`, `analizza.py` e le loro cartelle nell'esperimento
+   nuovo (copia, non modificare gli originali), committa, poi lancia con
+   `TESI_RISULTATI` sul repository vero.
+3. Scrivi l'Esito, previsione per previsione, con le mediane e i percentili,
+   e le risorse date a Docker.
+4. **Prima di ogni commit** controlla che nei file nuovi non compaia il testo
+   di nessuna query umana: per esempio confronta ogni riga di
+   `known-item-umane.queries.jsonl` (il campo `text`) con `grep -rF` su tutti i
+   file nuovi. I rapporti del carico contengono numeri, non testi, ma va
+   verificato e non assunto.
 
 ## Alla fine
 
