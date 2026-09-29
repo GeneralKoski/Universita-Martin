@@ -74,6 +74,10 @@ strumento: una ricerca alla volta nel container e nativo, sotto carico da 1 a
 
 ## Esito
 
+*Nota del 29/09/2026, dal terzo controllo della tesi.* I «circa 2 MB a
+ricerca» della Domanda sono, nel file, 2,569 MB su 35.913 ricerche
+(`allocazioni.prima` dell'esito qui sotto).
+
 Misurato il 28/09/2026: "prima" il motore `ffa38ab` (le misure di
 `2026-09-28_carico`; per le impronte e `evaluate`, `d7eaf9a`, stesso codice del
 motore), "dopo" `510b9d2`, cioè i due interventi `60f7a43` (distanza e
@@ -103,7 +107,7 @@ soglie erano prudenti.
    di partenza più basso, e resta sotto quella di Elasticsearch.
 7. **Confermata.** A riposo 154,6 contro 154,3 MB a 10.018 documenti (−0,2%),
    1.213 contro 1.184 a 100.000; sotto carico il massimo nel container da 355
-   a 272 MB (Elasticsearch circa 1.565).
+   a 272 MB (Elasticsearch circa 1.566; corretto il 29/09/2026, dal terzo controllo della tesi, il JSON dà 1.565,7).
 8. **Confermata.** Con un client la CPU nel container dall'116% all'83%.
 
 | | prima | dopo | Elasticsearch come l'app |
@@ -113,7 +117,7 @@ soglie erano prudenti.
 | ricerche al secondo, massimo nel container | 653 | **2.614** | 571 |
 | p99 a 32 client nel container, ms | 215 | **43** | 103 |
 | 100.000 documenti, p50 / p95 / p99 ms | 5,44 / 133 / 201 | **1,72 / 10,4 / 15,5** | 6,95 / 21,1 / 35,9 |
-| memoria sotto carico, massimo MB | 355 | 272 | 1.565 |
+| memoria sotto carico, massimo MB | 355 | 272 | 1.566 |
 
 Il nativo arriva a 4.100 ricerche al secondo (da 975): nel container il
 limite sono le 4 CPU della VM, sul Mac gli 8 core.

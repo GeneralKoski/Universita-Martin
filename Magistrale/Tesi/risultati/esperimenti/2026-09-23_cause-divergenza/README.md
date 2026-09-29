@@ -97,7 +97,12 @@ elisioni è quello giusto; per date e decimali andrebbe ripensato a parte.
 `070259Z`, `070303Z`, `1902826`): nessun totale cambia in nessuna delle tre
 configurazioni; cambia una sola testa di ranking, `or + BM25` su *"delibera di
 giunta sul bilancio di previsione 2026"*, dove `2026` (quattro caratteri) ora
-trova anche `2206`, a una trasposizione. Le valutazioni BEIR girano con i
+trova anche `2206`, a una trasposizione. *(corretto il 29/09/2026, dal terzo controllo della tesi)* Vale per `070255Z` e
+`070259Z`. In `070303Z` cambia anche la testa di `or + BM25` su un'altra
+query, la diciassettesima: le tre esecuzioni a `1902826` non coincidono fra
+loro, mentre le tre a `1549de2` coincidono al bit. È l'ordine casuale della
+mappa del vocabolario per le parole corte con un refuso, trovato dopo e
+corretto da `stable_term_order` (`2026-09-28_ordine-fisso`). Le valutazioni BEIR girano con i
 refusi spenti e non ne sono toccate per costruzione.
 
 ## Rifarlo

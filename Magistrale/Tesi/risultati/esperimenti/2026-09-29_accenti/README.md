@@ -124,7 +124,9 @@ secondo giro torna sui numeri di ieri (6.415 e 3.854), ed è quello che
 | ricerche al secondo, massimo nel container | 3.854 | 4.054 |
 | ricerche al secondo, massimo nativo | 6.415 | 6.526 |
 | memoria sotto carico nel container, massimo MB | 192 | 179 |
-| 100.000 documenti, p95 / p99 ms | 10,0 / 15,0 | 9,8 / 13,4 |
+| 100.000 documenti, p95 / p99 ms | 10,0 / 14,9* | 9,8 / 13,4 |
+
+\* *(corretto il 29/09/2026, dal terzo controllo della tesi)*: qui c'era 15,0, il JSON dà 14,946.
 
 Com'era previsto, è un taglio di allocazioni e non di tempi: un terzo dei byte
 in meno, la capacità nativa nel rumore. **Il profilo dopo.** Delle

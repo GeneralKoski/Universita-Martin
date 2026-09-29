@@ -202,8 +202,9 @@ Previsione per previsione:
     JSON no: non compare fra le prime 40 funzioni. Il profilo dice un'altra
     cosa, sotto.
 
-**Il profilo.** In circa 40.000 ricerche Koskidex ha allocato 92 GB, circa
-2 MB a ricerca: il 43% in `findDocsForToken`, il 25% in `fuzzyCandidates`, il
+**Il profilo.** In 35.913 ricerche Koskidex ha allocato 92 GB, 2,57 MB a
+ricerca (corretto il 29/09/2026, dal terzo controllo della tesi, da `2026-09-28_prestazioni`, `allocazioni.prima`; qui
+c'era «circa 40.000» e «circa 2 MB»): il 43% in `findDocsForToken`, il 25% in `fuzzyCandidates`, il
 15% in `DamerauLevenshtein`, l'11% in `SearchScored`. Quella memoria si paga in
 CPU: il 20% dei campioni è nel lock dell'allocatore di Go
 (`mheap.allocSpan`, `runtime.lock2`) e un altro 7% nel garbage collector. È per

@@ -192,8 +192,11 @@ risulta `dev`, perché compilati senza il commit dentro).
   risultati di Koskidex, che risponde senza cercare.
 - **La diagnosi era sbagliata a metà.** Col binario di prima e gli stessi dati
   la mediana con i vettori è 9,85 ms, non 33: quello che è cambiato dalla
-  mattina è che i vettori delle 24 query ora stanno nella cache. I 24 ms in più
-  erano il vettore della query calcolato da Ollama. La conversione, in
+  mattina è che i vettori delle 24 query ora stanno nella cache. I 23 ms in più
+  (33,04 contro 9,85; corretto il 29/09/2026, dal terzo controllo della tesi, qui c'era 24) erano il vettore della
+  query calcolato da Ollama. Gli 8,7 ms della Domanda non hanno un file: la
+  mediana archiviata senza vettori, col binario di prima, è 8,36
+  (`dal-vivo/`). La conversione, in
   Documentale, non pesava: il re-ranking tocca solo i candidati lessicali, che
   con `operator and` sono pochi. Pesa dove i vettori si leggono tutti, cioè
   con l'unione, e dove i candidati sono migliaia, come nel benchmark.

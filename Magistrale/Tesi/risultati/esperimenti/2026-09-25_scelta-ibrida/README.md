@@ -114,7 +114,8 @@ cifra e il recupero lessicale congiuntivo trova qualcosa. Anche il ripiego fa
 lo stesso in media.
 
 **E adesso l'oracolo ha spazio oltre il tipo di query**: 0,016 sopra la regola,
-quasi tutto sulle frasi (+0,021 su SciFact, +0,021 su NFCorpus), dove nella
+quasi tutto sulle frasi (+0,021 su SciFact, +0,022 su NFCorpus: 0,3655
+contro 0,3438, corretto il 29/09/2026, dal terzo controllo della tesi), dove nella
 scelta per query senza vettori faceva zero. A e B sono ormai due ordinamenti
 diversi della stessa frase, lessicale con vettore forte contro quasi solo
 vettore, e B vince su 29 query di SciFact su 300 e su 82 di NFCorpus su 323. Ma

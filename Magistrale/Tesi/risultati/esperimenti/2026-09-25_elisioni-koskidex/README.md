@@ -139,7 +139,8 @@ con Elasticsearch: 13 *sant'*, 2 *cinquant'*, *quest'*, *tutt'*, parole
 attaccate per uno spazio mancante (*scuoladell'*, *controllodell'*...), accenti
 scritti come apostrofo (*conformita'*, *societa'*) e pochi prefissi strani.
 
-Le ricerche costano 1,2 ms di mediana su Koskidex e 6,1 su Elasticsearch, con
+Le ricerche costano 1,1-1,2 ms di mediana su Koskidex e 6,1-6,3 su
+Elasticsearch (corretto il 29/09/2026, dal terzo controllo della tesi, dai `timings` delle quattro configurazioni), con
 o senza elisione (dallo script, senza PHP di mezzo: i tempi dall'app sono in
 `2026-09-25_innesto-parita/`).
 
@@ -148,7 +149,8 @@ o senza elisione (dallo script, senza PHP di mezzo: i tempi dall'app sono in
 1. `elis0` e la produzione con lo stesso insieme per almeno 500 parole:
    **486, smentita.** Le cause sono quelle trovate nella prova di sviluppo e
    ora contate dallo script: in 20 parole Koskidex trova solo di più, mai di
-   meno, perché toglie gli accenti (213 documenti in più, 67 per *unità*); in
+   meno, perché toglie gli accenti (195 documenti in più, 67 per *unità*; corretto il 29/09/2026, dal terzo controllo della tesi: il
+   `documenti_solo_elis0` dell'esito, 213, comprende i 18 di *comunale*); in
    una, *comunale*, il tetto dei 10.000 risultati taglia 18 atti diversi.
    Nessuna parola in cui Elasticsearch trovi qualcosa che Koskidex non trova.
    La parità misurata sulle 324 query vale per il matching; sugli accenti i due

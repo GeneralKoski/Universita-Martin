@@ -60,7 +60,8 @@ cercata; se no, la risposta è la scelta per tipo di query (piano, sezione 5).
 ## Esito
 
 `2026-09-25T094842Z_esito.json`, da `analizza.py`, sulle valutazioni di Koskidex
-`2fd4721` (albero pulito) contro le basi archiviate da `f449b02`. Le basi,
+`2fd4721` (albero pulito) contro le basi archiviate da `f449b02` (la riga
+`all` da `4ee872c`; corretto il 29/09/2026, dal terzo controllo della tesi). Le basi,
 rifatte su `2fd4721` come controllo di sviluppo non archiviato, danno gli
 stessi 0,8331, 0,6694 e 0,3049.
 
