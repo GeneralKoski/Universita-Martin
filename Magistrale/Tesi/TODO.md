@@ -287,6 +287,11 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
       non normalizzati in Elasticsearch.
 - [ ] `riordino-corto`: misura ancora da fare, poi Esito e tesi (8.x).
 
+- [ ] Quarto controllo indipendente (tesi contro archivio, subagente in sola
+      lettura), rimandato il 29/09 su richiesta di Martin per i token
+      rimasti: da fare dopo aver scritto i tre esperimenti in tesi, poi le
+      correzioni.
+
 ## Regole
 
 Valgono per tutto il lavoro che resta. Se ne salta una, i numeri diventano
