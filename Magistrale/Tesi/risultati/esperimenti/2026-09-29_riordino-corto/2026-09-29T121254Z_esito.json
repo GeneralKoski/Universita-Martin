@@ -1,0 +1,147 @@
+{
+  "ran_at": "2026-09-29T12:12:54Z",
+  "config": {
+    "commit": "57f1d19",
+    "modifiche_non_committate": "false",
+    "file": {
+      "known-item-umane LA": {
+        "primo_stadio": "2026-09-29T094634Z_known-item-umane-rr-primo-LA.json",
+        "20": {
+          "riordino": "2026-09-29T105213Z_known-item-umane-rr20-LA.json",
+          "valutazione": "2026-09-29T105427Z_known-item-umane-rr20-LA.json"
+        },
+        "30": {
+          "riordino": "2026-09-29T105427Z_known-item-umane-rr30-LA.json",
+          "valutazione": "2026-09-29T105759Z_known-item-umane-rr30-LA.json"
+        },
+        "100": {
+          "riordino": "2026-09-29T094634Z_known-item-umane-rr-LA.json",
+          "valutazione": "2026-09-29T095513Z_known-item-umane-rr-LA.json"
+        }
+      },
+      "known-item-umane A": {
+        "primo_stadio": "2026-09-29T095518Z_known-item-umane-rr-primo-A.json",
+        "20": {
+          "riordino": "2026-09-29T105759Z_known-item-umane-rr20-A.json",
+          "valutazione": "2026-09-29T110023Z_known-item-umane-rr20-A.json"
+        },
+        "30": {
+          "riordino": "2026-09-29T110023Z_known-item-umane-rr30-A.json",
+          "valutazione": "2026-09-29T110407Z_known-item-umane-rr30-A.json"
+        },
+        "100": {
+          "riordino": "2026-09-29T095518Z_known-item-umane-rr-A.json",
+          "valutazione": "2026-09-29T100549Z_known-item-umane-rr-A.json"
+        }
+      },
+      "known-item-auto LA": {
+        "primo_stadio": "2026-09-28T142252Z_known-item-auto-rr-primo-LA.json",
+        "20": {
+          "riordino": "2026-09-29T110407Z_known-item-auto-rr20-LA.json",
+          "valutazione": "2026-09-29T111040Z_known-item-auto-rr20-LA.json"
+        },
+        "30": {
+          "riordino": "2026-09-29T111040Z_known-item-auto-rr30-LA.json",
+          "valutazione": "2026-09-29T120510Z_known-item-auto-rr30-LA.json"
+        },
+        "100": {
+          "riordino": "2026-09-28T142252Z_known-item-auto-rr-LA.json",
+          "valutazione": "2026-09-28T144802Z_known-item-auto-rr-LA.json"
+        }
+      }
+    }
+  },
+  "casi": {
+    "known-item-umane LA": {
+      "primo": 0.5591,
+      "k": {
+        "20": {
+          "mrr@10": 0.6242,
+          "recall@k_primo_stadio": 0.8269,
+          "mediana_ms": 1223.3
+        },
+        "30": {
+          "mrr@10": 0.6293,
+          "recall@k_primo_stadio": 0.8558,
+          "mediana_ms": 1945.9
+        },
+        "100": {
+          "mrr@10": 0.6328,
+          "recall@k_primo_stadio": 0.9135,
+          "mediana_ms": 5303.3
+        }
+      }
+    },
+    "known-item-umane A": {
+      "primo": 0.613,
+      "k": {
+        "20": {
+          "mrr@10": 0.643,
+          "recall@k_primo_stadio": 0.9135,
+          "mediana_ms": 1276.4
+        },
+        "30": {
+          "mrr@10": 0.6388,
+          "recall@k_primo_stadio": 0.9231,
+          "mediana_ms": 2049.3
+        },
+        "100": {
+          "mrr@10": 0.6405,
+          "recall@k_primo_stadio": 0.9712,
+          "mediana_ms": 5931.3
+        }
+      }
+    },
+    "known-item-auto LA": {
+      "primo": 0.8331,
+      "k": {
+        "20": {
+          "mrr@10": 0.9486,
+          "recall@k_primo_stadio": 0.9833,
+          "mediana_ms": 1238.6
+        },
+        "30": {
+          "mrr@10": 0.9603,
+          "recall@k_primo_stadio": 1.0,
+          "mediana_ms": 2455.1
+        },
+        "100": {
+          "mrr@10": 0.9528,
+          "recall@k_primo_stadio": 1.0,
+          "mediana_ms": 5065.0
+        }
+      }
+    }
+  },
+  "previsioni": {
+    "1": {
+      "previsione": "umane LA: k 30 almeno 0,61, k 20 almeno 0,60",
+      "valore": "k 30 0.6293, k 20 0.6242",
+      "esito": "confermata"
+    },
+    "2": {
+      "previsione": "umane A: k 20 entro 0,01 da k 100",
+      "valore": "0.6405 -> 0.643",
+      "esito": "confermata"
+    },
+    "3": {
+      "previsione": "automatiche LA: k 20 almeno 0,93",
+      "valore": "0.9486",
+      "esito": "confermata"
+    },
+    "4": {
+      "previsione": "mediana con k 20 fra il 15% e il 25% di k 100 in ogni caso",
+      "valore": {
+        "known-item-umane LA": 0.231,
+        "known-item-umane A": 0.215,
+        "known-item-auto LA": 0.245
+      },
+      "esito": "confermata"
+    },
+    "5": {
+      "previsione": "umane, k 20: mediana almeno 0,8 s",
+      "valore": "LA 1223.3 ms, A 1276.4 ms",
+      "esito": "confermata"
+    }
+  }
+}

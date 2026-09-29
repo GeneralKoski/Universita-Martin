@@ -43,3 +43,39 @@ riordino.
    il 15% e il 25% di quella con k 100, per ciascuno dei tre casi.
 5. **Resta lento per l'uso dal vivo**: con k 20 la mediana è comunque almeno
    0,8 secondi a query sulle umane, centinaia di volte Koskidex.
+
+## Esito
+
+Misurato il 29/09/2026, Koskidex `0e914f5` per la valutazione,
+`bge-reranker-v2-m3` alla stessa revisione di `2026-09-28_reranker`, MPS in
+fp32. Riassunto in `2026-09-29T121254Z_esito.json` (`analizza.py`); rapporti
+in `riordinati/`, valutazioni in `evaluate/`. I rapporti sulle umane
+contengono il testo delle query e restano fuori da git. La colonna k 100 viene
+da `2026-09-28_reranker`, gli stessi primi stadi.
+
+MRR@10, con la recall del primo stadio entro k e la mediana del riordino:
+
+| | primo stadio | k 20 | k 30 | k 100 |
+|---|---|---|---|---|
+| umane, LA | 0,5591 | **0,6242** (recall 0,827, 1,22 s) | 0,6293 (0,856, 1,95 s) | 0,6328 (0,913, 5,30 s) |
+| umane, A | 0,6130 | **0,6430** (0,913, 1,28 s) | 0,6388 (0,923, 2,05 s) | 0,6405 (0,971, 5,93 s) |
+| automatiche, LA | 0,8331 | **0,9486** (0,983, 1,24 s) | 0,9603 (1,000, 2,46 s) | 0,9528 (1,000, 5,07 s) |
+
+**Cinque previsioni su cinque.**
+
+1. **Confermata.** Umane LA: 0,6293 con k 30 e 0,6242 con k 20, contro 0,6328
+   con k 100.
+2. **Confermata.** Umane A: 0,6430 con k 20 contro 0,6405 con k 100. Con k 20
+   è appena sopra, e la differenza è dentro il rumore di 104 query.
+3. **Confermata.** Automatiche LA con k 20: 0,9486 contro 0,9528 con k 100.
+4. **Confermata.** La mediana con k 20 è il 23,1%, il 21,5% e il 24,5% di
+   quella con k 100.
+5. **Confermata.** Con k 20 sulle umane la mediana resta 1,22 s (LA) e 1,28 s
+   (A), sopra gli 0,8 s previsti.
+
+**Cosa dice.** Riordinare solo i primi venti dà quasi tutto il guadagno del
+riordino sui cento: il tetto si raggiunge già lì, e costa un quarto del
+tempo. Non lo rende una ricerca dal vivo: un secondo e passa a query su questo
+hardware, centinaia di volte Koskidex. Il risultato vale per i casi misurati,
+in cui il primo stadio ha già l'atto quasi sempre nei primi venti (recall 0,83
+con LA e 0,91 con A sulle umane); dove non c'è, il riordino non lo recupera.

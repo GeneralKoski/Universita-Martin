@@ -285,7 +285,11 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
       vantaggio sulle ricerche per contenuto sta nelle impostazioni, non nel
       motore), 9.x, il registro (5 previsioni). Limite da dire: date e importi
       non normalizzati in Elasticsearch.
-- [ ] `riordino-corto`: misura ancora da fare, poi Esito e tesi (8.x).
+- [ ] `riordino-corto` (Esito nel README, `121254Z_esito.json`): 5 previsioni
+      su 5. Con k 20 umane LA 0,6242 (k 100 0,6328), umane A 0,6430 (0,6405),
+      automatiche LA 0,9486 (0,9528); mediana 1,22-1,28 s sulle umane, circa
+      un quarto di k 100. Da fare: 8.x accanto al reranker, 9.x, il registro
+      (5 previsioni).
 
 - [ ] Quarto controllo indipendente (tesi contro archivio, subagente in sola
       lettura), rimandato il 29/09 su richiesta di Martin per i token
