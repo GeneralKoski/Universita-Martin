@@ -187,7 +187,7 @@ basta mettere i file nelle cartelle indicate e dirlo.
 > `albo` e testi delle query, fuori da git). Quello che tornerà va scritto in
 > tesi in 8.2 (riordino) e 8.3 (carico) e nel registro.
 
-- [ ] Facoltativa, **da fare al fisso di Martin** (RTX 3060 Ti, 8 GB): il
+- [x] Facoltativa, **fatta al fisso il 29/09 (esiti più sotto) di Martin** (RTX 3060, 12 GB): il
       costo del riordino di `2026-09-28_reranker` su una GPU da gaming, per
       8.2 ("su un Mac costa 12 s a query, su una scheda consumer circa 2").
       Solo tempi, non metriche: stessi primi stadi archiviati, stesso
@@ -197,7 +197,7 @@ basta mettere i file nelle cartelle indicate e dirlo.
       CUDA, il modello (2,1 GB), i corpora e i file di `primo-stadio/`
       copiati. Se si fa, un controllo in più: gli ordini riordinati devono
       coincidere con quelli del Mac in fp32, e differire di poco in fp16.
-- [ ] Facoltativa, **da fare al fisso di Martin** (Ryzen 5, RTX 3060 Ti):
+- [x] Facoltativa, **fatta al fisso il 29/09 (esiti più sotto) di Martin** (Ryzen 5 8500G, RTX 3060):
       rifare `2026-09-28_carico` con tutti e due i motori, Koskidex
       (al commit di `2026-09-28_allocazioni` o successivo) ed Elasticsearch
       come l'app, per vedere se il rapporto misurato sul Mac regge su
@@ -301,14 +301,15 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
 Dal fisso di Martin (29/09, `ISTRUZIONI-FISSO.md`), da scrivere in tesi dal
 Claude del Mac:
 
-- [ ] `reranker-gpu` (`185136Z_esito.json`, 5 previsioni su 5): su una RTX
+- [x] `reranker-gpu` (`185136Z_esito.json`, 5 previsioni su 5): su una RTX
       3060 (non Ti) in Windows nativo il riordino dei primi cento costa 4,75 s
       a query su SciFact e 4,51 su NFCorpus in fp32, 1,39 e 1,33 in fp16;
       ordini identici al Mac in fp32, scarto massimo 0,0015 in fp16. Da citare
       in 8.2 accanto al costo del Mac (righe 63 e 263 di `confronto.tex`), in
       `conclusione.tex` riga 143 ("5-12 secondi a query sulla GPU di un
       portatile") e nel registro delle previsioni (5 nuove).
-- [ ] `carico-fisso` (`191821Z_esito.json`, 3 previsioni su 4): sul fisso
+      Scritto il 29/09 dal Claude del Mac in 8.2, 9.1, 9.2, 9.3 e nel registro.
+- [x] `carico-fisso` (`191821Z_esito.json`, 3 previsioni su 4): sul fisso
       (Windows, Docker in WSL2, `--cpus 4` per container) tutti e due i motori
       sono più lenti (p50 Koskidex nel container 1,46 ms, Elasticsearch 8,93),
       ma il rapporto regge: capacità 2.636 contro 376, 7,01 (Mac 7,10); p50
@@ -316,6 +317,8 @@ Claude del Mac:
       non 400 (104 umane). Da citare in 8.3 (limiti delle misure: "il client
       gira sullo stesso Mac") e in `sec:competitivo` di `confronto.tex`
       ("circa sette volte"), più il registro (4 nuove).
+      Scritto il 29/09 dal Claude del Mac in 8.3, 8.4, 9.1, 9.2 e nel registro
+      (totali: 248 previsioni, 178 confermate, 52 smentite, 16 a metà, 2 senza esito).
 
 ## Regole
 

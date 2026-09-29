@@ -60,8 +60,8 @@ loro si confrontano alla pari, con ES e KC solo nell'ordine di grandezza.
 \paragraph{Il tetto del riordino.} Un'ultima coppia non è una proposta:
 \textbf{RR-LA} e \textbf{RR-A} sono i primi cento di LA e di A riordinati da un
 cross-encoder multilingue (\texttt{bge-reranker-v2-m3}), che legge query e
-documento insieme e costa secondi a query su questo hardware
-(\texttt{2026-09-28\_reranker}). Dicono quanto vale, al massimo, riordinare
+documento insieme e costa secondi a query (5-12 sul Mac su cui sono fatte le
+altre misure, meno su una scheda grafica) (\texttt{2026-09-28\_reranker}, \texttt{reranker-gpu}). Dicono quanto vale, al massimo, riordinare
 quello che il lessicale trova. Lo stesso riordino sui primi venti e sui primi
 trenta candidati, invece di cento, dice quanto del tetto resta con un costo
 minore (\texttt{riordino-corto}).
@@ -260,7 +260,7 @@ l'undicesimo e il centesimo posto ne porta fra i primi dieci 13 su 16 con LA e
 6 su 12 con A. Avevo previsto almeno +0,05 su LA e +0,03 su A: su A il
 guadagno si ferma a 0,028, perché dove i vettori hanno già portato l'atto in
 alto resta poco da riordinare. Il tetto del riordino sta quindi poco sopra la
-migliore configurazione di Koskidex, e costa 5-6 secondi a query.
+migliore configurazione di Koskidex, e sul Mac costa 5-6 secondi a query.
 Sulle collezioni pubbliche, con il primo stadio LA con le stopword inglesi
 come nel capitolo~\ref{chapter:lessicale}, il guadagno è più piccolo e ha un
 tetto: SciFact passa da 0,676 a 0,723 di nDCG@10, NFCorpus da 0,306 a 0,331, e su NFCorpus
@@ -270,7 +270,7 @@ porta LA da 0,833 a 0,953, contro 0,960 del recupero congiuntivo: degli atti
 fra l'undicesimo e il centesimo posto ne porta fra i primi dieci 12 su 13.
 Avevo previsto che restasse sotto LT perché un cross-encoder non pesa un
 numero esatto più di uno simile; resta sotto, ma di 0,007, e il ragionamento
-era sbagliato. Il prezzo è di 5 secondi di mediana a query sulle schede e di
+era sbagliato. Il prezzo, sul Mac, è di 5 secondi di mediana a query sulle schede e di
 12 sugli abstract di SciFact, contro il millisecondo di Koskidex: la misura di
 un tetto, non una configurazione da mettere in produzione.
 
@@ -283,8 +283,21 @@ secondi di mediana sulle umane, contro 5,3-5,9. Con trenta candidati sono 0,629,
 Il guadagno sta quasi tutto nei primi venti; il primo stadio ha già l'atto lì
 nell'83\% delle query con LA e nel 91\% con A, e dove non c'è il riordino non lo
 recupera. Le cinque previsioni hanno tenuto. Un
-secondo a query resta troppo per una ricerca dal vivo su questo hardware, ma
-non è più un ordine di grandezza fuori portata.
+secondo a query resta troppo per una ricerca dal vivo sul Mac, ma non è più un
+ordine di grandezza fuori portata.
+
+\paragraph{Su una scheda grafica.} Il costo di 5-12 secondi era in buona parte
+del Mac. Su un secondo computer, con una RTX 3060 da 12~GB in Windows
+(\texttt{reranker-gpu}), lo stesso riordino dei primi cento costa in fp32
+4,75~s di mediana a query su SciFact e 4,51 su NFCorpus, contro 12,0 e 11,3 sul
+Mac, e in fp16 1,39 e 1,33, circa 3,4 volte meno. In fp32 gli ordini sono
+identici a quelli del Mac in tutte le query; in fp16 le metriche sono uguali su
+SciFact e su NFCorpus scarto di 0,0015 al massimo (nDCG@10 0,3302 contro
+0,3306), con i primi dieci diversi in circa una query su venti. Le cinque
+previsioni hanno tenuto, la prima vicino al bordo della soglia. Restano secondi
+contro il millisecondo di Koskidex, quindi la conclusione non cambia: il tetto
+del riordino non è una configurazione da usare dal vivo. I venti candidati e la
+scheda grafica non sono stati misurati insieme.
 
 \section{Latenza, memoria, dimensione dell'indice}\label{sec:latenza}
 
@@ -520,7 +533,25 @@ Elasticsearch, e l'indicizzazione, 2,4 volte più lenta. I limiti delle
 misure: il client gira sullo stesso Mac, fuori dalla macchina virtuale, e tiene
 le connessioni aperte, mentre l'app in PHP ne apre in genere una per ricerca;
 Elasticsearch ha l'heap fissato a 1~GB, e con meno memoria si comporterebbe
-diversamente.
+diversamente. La stessa misura su un secondo computer è nel paragrafo che
+segue.
+
+\paragraph{Su un secondo computer.} La misura è stata rifatta su un altro
+computer (\texttt{carico-fisso}): Ryzen 5 8500G a 6 core, 32~GB, Windows 11 con
+Docker in WSL2, ogni container dei motori limitato a 4 CPU, Elasticsearch 9.1
+con l'heap a 1~GB, Koskidex compilato per Linux nel container e per Windows nel
+nativo. Le query sono 428 e non 400: le known-item umane sono le 104 della
+raccolta chiusa. Tutti e due i motori sono più lenti che sul Mac: Koskidex nel
+container 1,46~ms di p50 contro 0,89, Elasticsearch 8,93 contro 6,32, fuori da
+tutte e due le soglie che avevo scritto. Il rapporto invece regge:
+Elasticsearch impiega 6,13 volte il tempo di Koskidex (7,08 sul Mac), e sotto
+carico Koskidex nel container arriva a 2.636 ricerche al secondo contro 376, 7,01
+volte (7,10 sul Mac), e il nativo a 6.258. Elasticsearch satura le sue quattro
+CPU già a quattro client. La memoria sotto carico è di al massimo 1.584~MB per
+Elasticsearch e 199 per Koskidex, a riposo 1.607 e 144. Tre previsioni su
+quattro hanno tenuto; ha sbagliato quella sui tempi assoluti. Non ho misurato
+quanto pesino il core, Windows e la rete ciascuno: i tempi assoluti dipendono
+dalla macchina, il rapporto fra i motori no.
 
 \section{Dove un motore piccolo è competitivo, e dove no}\label{sec:competitivo}
 
@@ -531,7 +562,8 @@ smette di reggere. Le risposte sono di tre tipi.
 \paragraph{Dove regge.} All'albo di un comune, diecimila atti, Koskidex
 risponde in 0,89~ms di p50 contro 6,32, regge circa sette volte le ricerche al
 secondo sulle stesse quattro CPU (4.054 contro 571, Elasticsearch misurato il
-giorno prima sulla stessa macchina) e occupa un decimo della memoria. Sulle ricerche per
+giorno prima sulla stessa macchina; 2.636 contro 376 su un secondo computer) e
+occupa un decimo della memoria. Sulle ricerche per
 numero e comune il profilo consigliato porta l'atto giusto al primo posto nel
 91,7\% dei casi, contro l'1,3\% di produzione, e con la normalizzazione delle
 date, che resta fuori dal profilo, le date si trovano in qualunque formato.

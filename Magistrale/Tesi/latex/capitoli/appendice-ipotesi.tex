@@ -651,14 +651,36 @@ numero con la soglia, ed è segnato con un asterisco.
     & dal 21,5\% al 24,5\%: confermata \\
     & 5. Umane, 20 candidati: mediana almeno 0,8~s
     & 1,22 e 1,28~s: confermata \\
+  \addlinespace
+  \texttt{reranker-gpu}
+    & 1. Riordino di cento candidati in fp32 su SciFact: mediana fra 2,5 e 5~s
+    & 4,75~s: confermata, vicino al bordo \\
+    & 2. Su NFCorpus la mediana in fp32 è entro il 20\% di quella di SciFact
+    & 4,51 contro 4,75~s: confermata \\
+    & 3. In fp16 SciFact fra 0,7 e 2,5~s e almeno due volte più veloce di fp32
+    & 1,39~s; 3,42 volte: confermata \\
+    & 4. In fp32 metriche entro 0,001 dal Mac e almeno il 95\% delle query con i primi dieci identici
+    & scarto 0 su tutte e due, 100\%: confermata \\
+    & 5. In fp16 metriche entro 0,005 dal Mac
+    & scarto massimo 0,0015: confermata \\
+  \addlinespace
+  \texttt{carico-fisso}
+    & 1. p50 di Koskidex nel container fra 0,6 e 1,3~ms, di Elasticsearch fra 4,4 e 8,2~ms
+    & 1,46 e 8,93~ms: smentita \\
+    & 2. Massimo del nativo fra 4.000 e 8.000 ricerche al secondo
+    & 6.258: confermata \\
+    & 3. Rapporto di capacità Koskidex nel container su Elasticsearch entro il 30\% di quello del Mac
+    & 7,01 contro 7,10: confermata \\
+    & 4. Rapporto dei p50 Elasticsearch su Koskidex entro il 30\% di quello del Mac
+    & 6,13 contro 7,08: confermata \\
   \bottomrule
 \end{longtable}
 }
 
-In tutto le previsioni sono 239: 170 confermate, 51 smentite, 16 a metà, e due
+In tutto le previsioni sono 248: 178 confermate, 52 smentite, 16 a metà, e due
 senza un esito registrato (la settima della voce E1, e la terza del diario
 sulla scheda contro il testo, che le query umane non permettono di misurare).
-Delle 237 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+Delle 246 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non

@@ -1,4 +1,4 @@
-# Istruzioni per Claude sul fisso di Martin (RTX 3060 Ti, Ryzen 5)
+# Istruzioni per Claude sul fisso di Martin (RTX 3060 da 12 GB, Ryzen 5 8500G)
 
 Scritto il 29/09/2026 sul Mac di Martin, per un Claude che parte da zero su
 un altro computer. Leggi tutto prima di toccare qualcosa. Rispondi a Martin in
@@ -60,7 +60,7 @@ toccare** nient'altro che quel branch e mai `ElasticsearchService`).
 ## Compito A: il riordino su una GPU consumer
 
 Domanda: il costo del cross-encoder misurato sul Mac (`2026-09-28_reranker`)
-scende su una RTX 3060 Ti? Solo tempi, non metriche.
+scende su una RTX 3060? Solo tempi, non metriche.
 
 Cosa c'è già (leggi `risultati/esperimenti/2026-09-28_reranker/README.md`):
 `BAAI/bge-reranker-v2-m3` (568M parametri, revisione `953dc6f`), `max_length`
