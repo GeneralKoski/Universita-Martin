@@ -113,12 +113,20 @@ regge su un'altra macchina? Leggi prima i README di `2026-09-28_carico`,
 `2026-09-28_prestazioni` e `2026-09-28_allocazioni`, e `risultati/macchina.md`
 (la macchina del Mac).
 
-**Serve un file che non sta in git**: `bundle-fisso-tesi.tar.gz`, che Martin
-ha sul Mac (sul Desktop) e ti porta a mano (chiavetta, AirDrop o il suo
-server). Chiedilo a Martin; se non c'è, **il compito B è saltato**: dillo e
-passa oltre. Contiene il dump esatto del database `albo` (10.018 atti, id
+**Serve un file che non sta in git**: `bundle-fisso-tesi.tar.gz`. Sta sul
+server personale di Martin, alias SSH `hetzner` (definito in `~/.ssh/config`;
+l'indirizzo non si scrive mai in nessun file del repository). Martin ha dato
+il permesso di connettersi anche a questo computer. Scaricalo così:
+
+    scp 'hetzner:/srv/backups/tesi-bundle-fisso/bundle-fisso-tesi.tar.gz' .
+
+La cartella sul server è leggibile solo da root e contiene anche un
+`LEGGIMI.txt`. Se `ssh hetzner` non risponde o chiede una password, **non
+insistere e non cercare altre strade**: chiedi a Martin di copiartelo (chiavetta
+o AirDrop) e, se non si riesce, **il compito B è saltato**: dillo e passa oltre.
+Non cancellare né modificare niente sul server, a parte leggere il file. Contiene il dump esatto del database `albo` (10.018 atti, id
 originali: **non reimportare gli albi da zero**, gli id cambierebbero) e i testi
-delle query. È privato: mai in git, mai in chat, mai in cloud. La sua impronta
+delle query. È privato: mai in git, mai in chat, mai in cloud pubblici. La sua impronta
 sha256 è
 `c44ba7f3926e8df76f6de4640aa2e528c0ca9d21ee7cf65581f0aa5c7670a3e6`: controllala
 prima di usarlo. Dentro c'è un `LEGGIMI.txt` e un `SHA256SUMS`.
