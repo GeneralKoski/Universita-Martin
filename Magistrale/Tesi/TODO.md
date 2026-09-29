@@ -101,12 +101,14 @@ basta mettere i file nelle cartelle indicate e dirlo.
 
 - [ ] Titolo e relatore in `latex/tesi.tex` (`\title` e `\advisor`, oggi
       "DA DEFINIRE"), quando sono decisi.
-- [ ] Rileggere la tesi intera contro l'archivio: ogni numero con il suo file.
+- [x] Rileggere la tesi intera contro l'archivio: ogni numero con il suo file.
       Capitoli 1-7 e 9 riletti il 29/09 (vedi sotto): a capitolo 8 scritto
       restano il capitolo 8, le appendici e i numeri nuovi di 4.4, 9.1 e 1.
 
 ## Si può fare senza aspettare nessuno
-
+      Fatto il 29/09 dal quarto e dal quinto controllo indipendente (subagenti
+      in sola lettura), con i numeri del capitolo 8 verificati anche con uno
+      script contro gli `*_esito.json`; correzioni committate.
 - [x] Scritti nella tesi il 28/09 il carico e il prima e dopo delle
       prestazioni: sezione 8.3 (con il rimando da 3.5), 9.1, 9.2, 9.3 e le tre
       voci nuove del registro delle ipotesi (carico, prestazioni, giudice-llm).
