@@ -107,6 +107,11 @@ Passi:
 
 ## Compito B: il carico su un'altra macchina
 
+> **Stato al 29/09/2026:** il compito B è stato fatto (`2026-09-29_carico-fisso`) e il
+> pacchetto è stato cancellato dal server dopo l'uso. Se lo si rifà, va prima
+> rigenerato dal Mac (dump del container `doc-tesi-mysql` e testi delle query) e
+> ricaricato; le istruzioni sotto restano valide per il resto.
+
 Domanda: il rapporto fra Koskidex ed Elasticsearch misurato sul Mac
 (`2026-09-28_carico`: capacità circa sette volte, p50 0,89 contro 6,32 ms)
 regge su un'altra macchina? Leggi prima i README di `2026-09-28_carico`,
