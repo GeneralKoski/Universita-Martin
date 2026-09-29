@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Scheda contro testo intero sugli atti di Crispiano: MRR@10, atto primo,
 entro 10 e a vuoto per ogni configurazione. Metodo e previsioni nel README.
+Per le ipotesi del diario del 23/09, anche per query corte e lunghe (fino alla
+mediana delle parole o sopra, da raccolta.json) e il numero di query con una
+cifra.
 
-    analizza.py <valutazione> [...]   (le dieci di esegui.sh)
+    analizza.py [--raccolta <raccolta.json>] <valutazione> [...]   (le dieci di esegui.sh)
 """
-import datetime, json, os, subprocess, sys
+import argparse, datetime, json, os, statistics, subprocess, sys
 
 QUI = os.path.dirname(os.path.abspath(__file__))
 ATTESE = ["scheda LA", "scheda LT", "scheda A", "testo LA", "testo LT", "testo A", "testo A 8192",
@@ -26,8 +29,13 @@ def nome(f, v):
     return base if c["bm25_b"] == "0.75" else f"{base} b{c['bm25_b']}"
 
 
+ap = argparse.ArgumentParser()
+ap.add_argument("--raccolta", default=os.path.join(QUI, "..", "..", "query", "known-item-umane", "raccolta.json"))
+ap.add_argument("valutazioni", nargs="+")
+args = ap.parse_args()
+
 per_conf = {}
-for f in sys.argv[1:]:
+for f in args.valutazioni:
     v = json.load(open(f))
     k = nome(f, v)
     assert k not in per_conf, f"{f}: {k} due volte"
@@ -36,16 +44,33 @@ assert sorted(per_conf) == sorted(ATTESE), f"servono {ATTESE}: {sorted(per_conf)
 query = {k: sorted(r["query_id"] for r in v["per_query"]) for k, (_, v) in per_conf.items()}
 assert len({tuple(x) for x in query.values()}) == 1, "le configurazioni non hanno le stesse query"
 
-risultati = {}
+info = {q["query"]: q for q in json.load(open(args.raccolta, encoding="utf8"))["query"] if not q["vuota"]}
+parole = {q: len(info[q]["testo"].split()) for q in query[ATTESE[0]]}
+mediana = statistics.median(parole.values())
+gruppi = {"tutte": lambda q: True, "corte": lambda q: parole[q] <= mediana, "lunghe": lambda q: parole[q] > mediana}
+
+
+def metriche(qs):
+    n = len(qs)
+    return {"query": n,
+            "mrr@10": round(sum(r["mrr@10"] for r in qs) / n, 4),
+            "atto_primo": round(sum(r["mrr@10"] == 1 for r in qs) / n, 4),
+            "entro_10": round(sum(r["mrr@10"] > 0 for r in qs) / n, 4),
+            "a_vuoto": round(sum(r["retrieved"] == 0 for r in qs) / n, 4)}
+
+
+risultati, per_lunghezza = {}, {}
 for k in ATTESE:
     qs = per_conf[k][1]["per_query"]
-    n = len(qs)
-    risultati[k] = {"query": n,
-                    "mrr@10": round(sum(r["mrr@10"] for r in qs) / n, 4),
-                    "atto_primo": round(sum(r["mrr@10"] == 1 for r in qs) / n, 4),
-                    "entro_10": round(sum(r["mrr@10"] > 0 for r in qs) / n, 4),
-                    "a_vuoto": round(sum(r["retrieved"] == 0 for r in qs) / n, 4)}
+    risultati[k] = metriche(qs)
+    per_lunghezza[k] = {g: metriche([r for r in qs if dentro(r["query_id"])]) for g, dentro in gruppi.items() if g != "tutte"}
     print(f"{k:16} " + "  ".join(f"{x} {y}" for x, y in risultati[k].items()))
+query_info = {"parole_mediana": mediana, "corte": sum(v <= mediana for v in parole.values()),
+              "lunghe": sum(v > mediana for v in parole.values()),
+              "con_numero": sum(info[q]["contiene_numero"] for q in parole)}
+print("query:", json.dumps(query_info))
+for k in ("scheda LA", "testo LA", "scheda LT", "testo LT", "scheda A", "testo A"):
+    print(f"{k:16} " + "  ".join(f"{g} mrr@10 {x['mrr@10']} entro_10 {x['entro_10']}" for g, x in per_lunghezza[k].items()))
 
 ora = datetime.datetime.now(datetime.timezone.utc)
 git = lambda *x: subprocess.run(["git", "-C", QUI, *x], capture_output=True, text=True, check=True).stdout.strip()
@@ -55,7 +80,7 @@ esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "valutazioni": {k: os.path.basename(f) for k, (f, _) in sorted(per_conf.items())},
                     "koskidex": sorted({v["config"]["commit"][:7] for _, v in per_conf.values()}),
                     "corpora_sha256": sorted({v["config"]["corpus_sha256"] for _, v in per_conf.values()})},
-         "risultati": risultati}
+         "risultati": risultati, "query": query_info, "per_lunghezza": per_lunghezza}
 if not os.environ.get("TESI_RISULTATI"):
     sys.exit("!!! RISULTATO NON ARCHIVIATO: TESI_RISULTATI non è impostata.")
 d = os.path.join(os.environ["TESI_RISULTATI"], "esperimenti", "2026-09-25_scheda-testo")
