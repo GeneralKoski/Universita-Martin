@@ -78,11 +78,11 @@ basta mettere i file nelle cartelle indicate e dirlo.
       - `scheda-testo`: tre su cinque, il testo intero peggiora LA e A, e con
         la 4 caduta **la suddivisione dei documenti in parti non serve**; le
         quattro ipotesi del diario del 23/09 controllate nello stesso README.
-- [ ] `2026-09-28_reranker/esegui.sh umane` + `analizza.py umane`
-      (previsioni 4 e 5), poi RR-LA e RR-A nella tabella di 8.2, il paragrafo
-      "Quanto vale riordinare" e le due righe nel registro.
-- [ ] `2026-09-28_date-app/esegui.sh` di nuovo (previsioni R1-R3 committate
-      in `56fa69b`), poi l'esito, 6.4 e 6.5, le tre righe nel registro.
+- [x] `reranker` parte umana: LA da 0,559 a 0,633, A da 0,613 a 0,641; la 4
+      a metà, la 5 confermata. Scritto in 8.2 e nel registro.
+- [x] `date-app` rilanciato a raccolta chiusa: R1-R3 confermate, nessuna
+      query umana si sposta, indicizzazione +8,1%. Scritto in 6.4 e nel
+      registro (222 previsioni).
 - [x] Scritti il 29/09: capitolo 8 (8.1, 8.2 senza il riordino, 8.4), 4.4,
       5.6, 5.7, 7.1, 7.5, 9.1, 9.2, 9.3 e i contributi del capitolo 1; il
       registro con le 24 righe nuove (217 previsioni).
@@ -91,7 +91,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       dall'app). Misurarli dentro l'app come un profilo intero, come in
       `2026-09-25_configurazione-consigliata/`, con le ricerche per numero
       d'atto che il congiuntivo oggi protegge; lo stesso per stopword e
-      stemmer italiani sul congiuntivo.
+      stemmer italiani sul congiuntivo, e per `normalize_dates` con la coppia
+      degli importi (`normalize_amounts` e `KOSKIDEX_TYPOS_ON_AMOUNTS=false`),
+      che dopo il rilancio di `date-app` non costano niente sulle query vere
+      ma entrano nel profilo solo con una misura del profilo intero.
 
 **Alla fine:**
 
@@ -140,13 +143,6 @@ basta mettere i file nelle cartelle indicate e dirlo.
 - [x] I rapporti dell'app sulle known-item umane (`confronto/*known-item-umane*`)
       contengono il testo delle query: esclusi da git il 28/09, prima che
       stasera ne nasca il primo. I tempi di indicizzazione restano tracciati.
-- [ ] Dopo le known-item umane complete: rifare `2026-09-28_date-app/esegui.sh`
-      (legge la collezione aggiornata) per il prezzo dell'anno da solo sulle
-      query vere; se non costa, `normalize_dates` entra nel profilo
-      consigliato insieme alla coppia degli importi (`normalize_amounts` e
-      `KOSKIDEX_TYPOS_ON_AMOUNTS=false`, `2026-09-28_importi-esatti`), in
-      Documentale e nella tesi (6.4 e 6.5), con la misura del profilo come
-      un tutto.
 - [x] Gli importi ammettono refusi (trovato in `2026-09-28_date-app`):
       `typo_tolerance.disable_on_amounts` (Koskidex `98701ad`) e
       `KOSKIDEX_TYPOS_ON_AMOUNTS` (Documentale `dad69da`), misurati dall'app
@@ -205,15 +201,14 @@ basta mettere i file nelle cartelle indicate e dirlo.
       macchina virtuale, su Windows passa da WSL2, e sul Mac il nativo va il
       70% più veloce del container. Servono Docker, Go, gli indici o i dati
       (Koskidex copiato, Elasticsearch riempito dall'app) e le 400 query.
-- [ ] Reranker neurale offline (`2026-09-28_reranker`, iniziato il 28/09 per
+- [x] Reranker neurale offline (`2026-09-28_reranker`, iniziato il 28/09 per
       non restare fermi fino al terzo lotto): cross-encoder
       `bge-reranker-v2-m3` sui primi 100 candidati, fuori da Koskidex e
       Documentale. **Parte BEIR fatta il 28/09**: SciFact 0,676 → 0,723,
       NFCorpus 0,306 → 0,331, known-item automatiche 0,833 → 0,953 (LT 0,960),
       5-12 s a query; previsioni 1, 2, 3, 6 confermate, nel registro e in 8.2.
-      Manca la **parte umana** (previsioni 4 e 5), a raccolta chiusa:
-      `esegui.sh umane` + `analizza.py umane`, poi i `\dacompletare` di
-      "Quanto vale riordinare" in 8.2 e le due righe nel registro.
+      **Parte umana fatta il 29/09**: LA 0,559 → 0,633, A 0,613 → 0,641,
+      previsione 4 a metà, 5 confermata; in 8.2 e nel registro.
 
 ## Da allineare alla fine
 
@@ -257,8 +252,7 @@ Dal terzo lotto (29/09):
       numero, mediana 4 parole): aggiornare 4.4, 9.2 ("due lotti su
       quattro"), la voce di Martin qui sopra e il README dell'archivio.
       Fatto il 29/09, README dell'archivio compreso.
-- [ ] `produzione.tex` 6.4 e 6.5 dicono ancora "le 76 known-item umane
-      raccolte finora": dopo il rilancio di `date-app`.
+- [x] `produzione.tex` 6.4 e 6.5 aggiornati al rilancio di `date-app`.
 - [x] `confronto.tex` 8.3 cita le 76 known-item umane del carico: giusto
       (il carico è del 28/09), e il testo dice già "raccolte fino al 28
       settembre".

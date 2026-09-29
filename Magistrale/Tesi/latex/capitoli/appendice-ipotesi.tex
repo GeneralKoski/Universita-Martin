@@ -497,6 +497,14 @@ numero con la soglia, ed è segnato con un asterisco.
     & +6,4\%: confermata \\
     & 8. I test di Documentale passano
     & confermata \\
+    & R1. Rilancio a raccolta chiusa: le previsioni 1-4 e 6 con gli stessi
+      numeri
+    & confermata \\
+    & R2. Known-item umane, 104 query: nessuna entra o esce dai primi dieci,
+      MRR@10 entro 0,01
+    & nessuna si sposta: confermata \\
+    & R3. Indicizzazione accesa di nuovo al più il 10\% più lenta
+    & +8,1\%: confermata \\
   \addlinespace
   \texttt{importi-esatti}
     & 1. Importi senza refusi: fra formati al più 10\% entro dieci
@@ -537,8 +545,12 @@ numero con la soglia, ed è segnato con un asterisco.
     & da 0,306 a 0,331: confermata, di poco \\
     & 3. Known-item automatiche: LA riordinato resta sotto LT
     & 0,953 contro 0,960: confermata, ma di 0,007 \\
+    & 4. Known-item umane: riordino di LA almeno +0,05, di A almeno +0,03
+    & +0,074 e +0,028: a metà \\
+    & 5. Umane: almeno metà degli atti dall'11° al 100° posto nei primi dieci
+    & 13 su 16 e 6 su 12: confermata \\
     & 6. Mediana del riordino almeno 2~s a query
-    & da 5,1 a 12,0~s: confermata \\
+    & da 5,1 a 12,0~s (5,3 e 5,9 sulle umane): confermata \\
   \addlinespace
   \texttt{known-item-\allowbreak umane}
     & 1. Meno del 25\% delle query con un numero
@@ -602,10 +614,10 @@ numero con la soglia, ed è segnato con un asterisco.
 \end{longtable}
 }
 
-In tutto le previsioni sono 217: 150 confermate, 51 smentite, 14 a metà, e due
+In tutto le previsioni sono 222: 154 confermate, 51 smentite, 15 a metà, e due
 senza un esito registrato (la settima della voce E1, e la terza del diario
 sulla scheda contro il testo, che le query umane non permettono di misurare).
-Delle 215 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
+Delle 220 con un esito, più di una su quattro non ha tenuto del tutto. La prima di \texttt{contesto-ollama},
 segnata con $\dagger$, è scritta dopo una prova di sviluppo non archiviata che
 già la indicava, e il README lo dichiara. Gli esperimenti \texttt{cause-divergenza},
 \texttt{numero-atto}, \texttt{costo-sottostringa} e \texttt{innesto-parita} non

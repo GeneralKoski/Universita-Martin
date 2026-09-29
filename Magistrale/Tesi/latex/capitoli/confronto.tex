@@ -69,14 +69,15 @@ sola risposta.
     B & 0,607 (0\%) & 0,506 (0\%) & \textbf{0,700} (0\%) & 0,675 (0\%) & 0,604 (0\%) \\
     V & 0,520 (0\%) & 0,467 (0\%) & 0,569 (0\%) & 0,650 (0\%) & 0,515 (0\%) \\
     \midrule
-    RR-LA & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
-    RR-A & \dacompletare & \dacompletare & \dacompletare & \dacompletare & \dacompletare \\
+    RR-LA & 0,633 (1\%) & 0,551 (0\%) & 0,709 (2\%) & 0,833 (0\%) & 0,625 (1\%) \\
+    RR-A & 0,641 (0\%) & 0,565 (0\%) & 0,711 (0\%) & 0,833 (0\%) & 0,633 (0\%) \\
     \bottomrule
   \end{tabular}
   \caption{Known-item umane: MRR@10 e, fra parentesi, la quota di ricerche a
   vuoto. ES e KC dall'app, le altre con Koskidex piatto sul corpus a schede.
   Le query sono 104: 50 di Crispiano, 54 del Friuli Venezia Giulia, 4 con un
-  numero e 100 senza.}
+  numero e 100 senza. In grassetto la migliore di ogni colonna fra le
+  configurazioni senza riordino, che è un tetto e non una proposta.}
   \label{tab:known-item-umane}
 \end{table}
 
@@ -138,10 +139,13 @@ mancanti non bastano a spiegare il divario fra le due fonti. Stopword e stemmer 
 recupero congiuntivo e quasi non toccano il disgiuntivo
 (sezione~\ref{sec:italiana}).
 
-\paragraph{Quanto vale riordinare.} Il cross-encoder porta LA da
-\dacompletare{} a \dacompletare{} di MRR@10 e A da \dacompletare{} a
-\dacompletare; degli atti che il primo stadio aveva fra l'undicesimo e il
-centesimo posto ne porta fra i primi dieci \dacompletare{} su \dacompletare.
+\paragraph{Quanto vale riordinare.} Il cross-encoder porta LA da 0,559 a
+0,633 di MRR@10 e A da 0,613 a 0,641; degli atti che il primo stadio aveva fra
+l'undicesimo e il centesimo posto ne porta fra i primi dieci 13 su 16 con LA e
+6 su 12 con A. Avevo previsto almeno +0,05 su LA e +0,03 su A: su A il
+guadagno si ferma a 0,028, perché dove i vettori hanno già portato l'atto in
+alto resta poco da riordinare. Il tetto del riordino sta quindi poco sopra la
+migliore configurazione di Koskidex, e costa 5-6 secondi a query.
 Sulle collezioni pubbliche, con il primo stadio LA con le stopword inglesi
 come nel capitolo~\ref{chapter:lessicale}, il guadagno è più piccolo e ha un
 tetto: SciFact passa da 0,676 a 0,723 di nDCG@10, NFCorpus da 0,306 a 0,331, e su NFCorpus
@@ -154,9 +158,6 @@ numero esatto più di uno simile; resta sotto, ma di 0,007, e il ragionamento
 era sbagliato. Il prezzo è di 5 secondi di mediana a query sulle schede e di
 12 sugli abstract di SciFact, contro il millisecondo di Koskidex: la misura di
 un tetto, non una configurazione da mettere in produzione.
-\todo[inline]{Previsioni umane di \texttt{reranker}: almeno +0,05 su LA e
-+0,03 su A, almeno metà degli atti dall'11° al 100° posto portati fra i primi
-dieci.}
 
 \section{Latenza, memoria, dimensione dell'indice}\label{sec:latenza}
 
