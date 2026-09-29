@@ -145,3 +145,26 @@ ogni etichetta. Cosa mi aspetto:
 Se R2 tiene, l'anno da solo non costa niente sulle query vere raccolte, e
 `normalize_dates` può entrare nel profilo consigliato, con una misura del
 profilo come un tutto.
+
+**Esito del rilancio.** Misurato il 29/09/2026 alle 12:07, Koskidex `cd86102`,
+Documentale `dad69da`. Riassunto in `2026-09-29T100734Z_esito.json`
+(`analizza.py`, che ora legge le misure di oggi); le valutazioni in
+`evaluate/2026-09-29T1007*`, i rapporti e i tempi in `confronto/` (quello
+delle known-item umane fuori da git). **Tre previsioni su tre.**
+
+- **R1. Confermata.** Previsioni 1-4 e 6 con gli stessi numeri del 28/09:
+  date nel formato dell'atto 98-100%, in un altro 0-8%, accese 98-100% e
+  MRR@10 da 0,315 a 0,979; importi fra formati 50 su 50 e 2 su 2 anche
+  spenti, MRR@10 da 0,917 a 0,891; known-item automatiche da 0,9498 a 0,9551;
+  le 21 del confronto senza cifre con gli stessi atti nello stesso ordine.
+- **R2. Confermata.** Known-item umane, 104 query: nessuna entra o esce dai
+  primi dieci, nessuna cambia posizione, MRR@10 0,4317 in tutte e due le fasi
+  (lo stesso di KC in `2026-09-25_known-item-umane/`). Nemmeno le 4 con una
+  cifra si muovono.
+- **R3. Confermata.** Indicizzazione dall'app, mediana di tre, da 1.767 a
+  1.910 ms, +8,1%.
+
+Sulle query vere raccolte l'anno da solo non costa niente, e
+`normalize_dates` può entrare nel profilo consigliato. Non ce lo metto qui:
+cambia il profilo di Documentale, e va misurato come un tutto insieme alla
+coppia degli importi (`2026-09-28_importi-esatti`), con la sua previsione.
