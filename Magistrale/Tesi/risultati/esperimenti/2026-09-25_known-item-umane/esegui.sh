@@ -40,11 +40,12 @@ if [ "$COSA" != piatte ]; then
   unset KOSKIDEX_EMBEDDER_MODEL SEARCH_BACKEND KOSKIDEX_HOST KOSKIDEX_PROFILO
 
   domande() {  # esegue le query dall'app e stampa il percorso del rapporto archiviato
-    (cd "$APP" && php -d memory_limit=1G artisan app:eval-run-queries "$Q/queries.txt" --label="$1") \
+    (cd "$APP" && php -d memory_limit=1G artisan app:eval-run-queries --no-ansi "$Q/queries.txt" --label="$1") \
       | tee /dev/stderr | sed -n 's/^Archiviato in //p'
   }
 
-  rapporto=$(domande known-item-umane)
+  # Senza rapporto, evaluate -rankings "" valuterebbe Koskidex in memoria.
+  rapporto=$(domande known-item-umane); [ -n "$rapporto" ] || { echo "rapporto dell'app non trovato" >&2; exit 1; }
   valuta ku-app-elasticsearch -rankings "$rapporto"
 
   BIN=$(mktemp -d)
@@ -55,6 +56,6 @@ if [ "$COSA" != piatte ]; then
   sleep 2
   export SEARCH_BACKEND=koskidex KOSKIDEX_HOST=http://localhost:7711 KOSKIDEX_PROFILO=consigliata
   "$STRUMENTI/indicizza-koskidex.sh" albo known-item-umane-consigliata http://localhost:7711
-  rapporto=$(domande known-item-umane-consigliata)
+  rapporto=$(domande known-item-umane-consigliata); [ -n "$rapporto" ] || { echo "rapporto dell'app non trovato" >&2; exit 1; }
   valuta ku-app-koskidex-consigliata -rankings "$rapporto"
 fi

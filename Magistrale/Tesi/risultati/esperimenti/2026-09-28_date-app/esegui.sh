@@ -33,9 +33,10 @@ export SEARCH_BACKEND=koskidex KOSKIDEX_HOST=http://localhost:7712 KOSKIDEX_PROF
 unset KOSKIDEX_EMBEDDER_MODEL KOSKIDEX_NORMALIZE_DATES KOSKIDEX_NORMALIZE_AMOUNTS
 
 domande() {  # file di query, etichetta: stampa il percorso del rapporto archiviato
-  (cd "$APP" && php -d memory_limit=1G artisan app:eval-run-queries "$1" --label="$2") | sed -n 's/^Archiviato in //p'
+  (cd "$APP" && php -d memory_limit=1G artisan app:eval-run-queries --no-ansi "$1" --label="$2") | sed -n 's/^Archiviato in //p'
 }
 valuta() {  # collezione, run, rapporto
+  [ -n "$3" ] || { echo "rapporto dell'app non trovato per $1" >&2; exit 1; }
   (cd "$KX" && "$BIN/evaluate" -corpora "$CORPORA" -collection "$1" -run "$2" -rankings "$3" -top 10 \
     -archivio "$ESP/evaluate" >/dev/null)
 }
