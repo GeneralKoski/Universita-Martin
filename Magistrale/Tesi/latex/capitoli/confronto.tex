@@ -295,6 +295,18 @@ fossero dieci volte più lunghe; ma la copia ripete gli stessi testi, il
 vocabolario non cresce, e la coda lì viene dalle liste dei documenti: p95 e p99
 scendono solo del 4 e del 7\%.
 
+\paragraph{L'ultima, e dove le allocazioni si fermano.} Dopo, la prima voce
+delle allocazioni era la catena che toglie gli accenti, il 35\% dei byte:
+ricreata per ogni testo, con due buffer da 4~KB. Ora i testi solo ASCII, per i
+quali è l'identità, la saltano, e gli altri la prendono da un pool
+(\texttt{2026-09-29\_accenti}). Stesse prove, tutte superate, e cinque
+previsioni su cinque: le allocazioni scendono da 0,078 a 0,052~MB a ricerca, la
+catena da 27 KB a 14 byte, e la capacità resta nel rumore, +1,7\% nativo e
++5\% nel container. Era atteso: tolto il lavoro inutile, allocare meno non
+compra più tempo. Quello che resta è la risposta stessa (i candidati con
+refuso, le liste dei documenti, la lettura della query), e non si toglie senza
+cambiare un'interfaccia o il formato dell'indice.
+
 \paragraph{Memoria e archivi più grandi.} Per vedere come cresce il costo ho
 copiato gli stessi atti fino a 50.000 e 100.000 documenti, con identificativi
 diversi e lo stesso testo: dati inventati, che per tempi e memoria vanno bene e

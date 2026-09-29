@@ -177,14 +177,11 @@ basta mettere i file nelle cartelle indicate e dirlo.
       il 28/09 in `2026-09-28_importi-esatti`: sette previsioni su otto, con
       la normalizzazione MRR@10 degli importi da 0,917 a 0,990; scritto in
       6.4, 9.1 e nel registro.
-- [ ] Piccola, **dopo il reranker** (le misure sotto carico sulla CPU
-      falserebbero i suoi tempi): l'ultimo taglio di allocazioni in Koskidex.
-      Dopo `2026-09-28_allocazioni` la prima voce è `transform.Chain` di
-      golang.org/x/text (35% dei byte), la catena che toglie gli accenti,
-      ricreata a ogni testo tokenizzato: riusarla senza cambiare un risultato,
-      con lo stesso protocollo (previsioni, impronte, `evaluate`, prima e
-      dopo). Guadagno atteso marginale; se non si fa, resta una riga negli
-      sviluppi futuri.
+- [x] L'ultimo taglio di allocazioni in Koskidex, `transform.Chain`: fatto il
+      29/09 in `2026-09-29_accenti` (Koskidex `df6f62b`), cinque previsioni su
+      cinque, nessun risultato cambiato; allocazioni da 0,078 a 0,052 MB a
+      ricerca, capacità nel rumore. Scritto in 8.x e nel registro. Quello che
+      resta non si toglie senza cambiare interfacce o formato dell'indice.
 - [x] I numeri che stavano solo fuori da `risultati/` (dalla rilettura del
       28/09): il 29/09 `strumenti/numeri-diario.py` li ricalcola dalle
       valutazioni archiviate (lunghezze delle query in 5.1, candidati e le 25
