@@ -234,6 +234,48 @@ basta mettere i file nelle cartelle indicate e dirlo.
       `esegui.sh umane` + `analizza.py umane`, poi i `\dacompletare` di
       "Quanto vale riordinare" in 8.2 e le due righe nel registro.
 
+## Da allineare alla fine
+
+Ogni dato nuovo o che non torna, segnato qui appena si vede, così a capitolo 8
+scritto si allineano tesi, README e archivio in un colpo solo. Dal terzo
+controllo indipendente del 29/09 (tesi e archivio, in sola lettura):
+
+- [ ] `confronto.tex` tabella `tab:crescita`, riga 10.018: 3,5 e 6,3 MB su
+      disco senza file (anche in `carico/README.md`). Archiviare la misura a
+      10.018 documenti o togliere le due celle.
+- [ ] `sistemi.tex` (query di produzione): i parametri sono cinque, manca
+      `tie_breaker: 0.3` (tocca solo il punteggio, non gli insiemi).
+- [ ] `confronto.tex` e `appendice-ipotesi.tex`, reranker: il primo stadio è
+      "LA con le stopword inglesi" (0,6757 e 0,3062), non LA.
+- [ ] `confronto.tex`, memoria sotto carico: a `ffa38ab` 355 MB contro 1.566;
+      272 dopo le prime due correzioni, 179 dopo l'ultima.
+- [ ] `appendice-ipotesi.tex` in cima: "ogni esperimento con previsioni".
+- [ ] `confronto.tex`: "un quinto del tempo, più di sei volte" → "circa un
+      settimo, circa sette volte" (numeri dopo `accenti`).
+- [ ] README, negli Esito con nota datata: `cause-divergenza` (a `1902826`
+      la terza esecuzione cambia anche un'altra testa, legata a
+      `stable_term_order`); `elisioni-koskidex` 213 → 195 (213 con i 18 di
+      *comunale*); `carico` e `prestazioni` 35.913 ricerche e 2,569 MB;
+      `scelta-ibrida` +0,022; `costo-vettori` 23 ms e 8,36 (non 8,7);
+      `accenti` p99 14,9; `prestazioni` 1.566; `elisioni-koskidex` 1,1-1,2 e
+      6,1-6,3 ms; `recupero-intermedio` la riga `all` da `4ee872c`;
+      `date-app` previsione 5 (3 query su 76 hanno una cifra).
+- [ ] Dubbi da decidere: `produzione.tex` "275 su 300, da 4" (Koskidex
+      innestato partiva da 5, dire contro cosa); `ibrido.tex` NFCorpus
+      0,3261 e 0,3263; `contesto-ollama` previsione 1 forse a metà;
+      `sistemi.tex:57` "non entra mai" (vero per le query non vuote); 53
+      contro 79 oggetti con dati personali (criteri diversi, dirlo);
+      `contesto-ollama` 1.409 caratteri senza titolo, 1.662 con;
+      `lessicale.tex:221` "meno di 0,003" vale per l'MRR, il nDCG sale di
+      0,0033; lotto 2 iniziato alle 18:22Z del 25/09, prima del commit delle
+      previsioni (18:39Z), da dire in 4.4.
+
+Dal terzo lotto (29/09):
+
+- [ ] Known-item umane chiuse con tre lotti, 104 query (16 vuote, 4 con un
+      numero, mediana 4 parole): aggiornare 4.4, 9.2 ("due lotti su
+      quattro"), la voce di Martin qui sopra e il README dell'archivio.
+
 ## Regole
 
 Valgono per tutto il lavoro che resta. Se ne salta una, i numeri diventano

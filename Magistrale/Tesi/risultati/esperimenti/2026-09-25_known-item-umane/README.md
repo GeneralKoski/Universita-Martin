@@ -88,3 +88,67 @@ ricerche di chi non sa che l'atto esiste.
 
 Se la 2 e la 3 tengono, il difetto del campo unico del capitolo 6 non riguarda
 solo le ricerche per numero ma anche quelle per contenuto.
+
+## Esito
+
+Misurato il 29/09/2026 sulla raccolta chiusa (tre lotti, 120 atti mostrati,
+104 query, 16 vuote, 50 di Crispiano e 54 del Friuli Venezia Giulia), Koskidex
+`cd86102`. Riassunto in `2026-09-29T094243Z_esito.json` (`analizza.py`), con le
+otto valutazioni in `valutazioni-albo/2026-09-29T0930*` e `0933*`; i rapporti
+dell'app con il testo delle query restano fuori dal repository, come le
+risposte. L'esito delle 09:41 (`2026-09-29T094130Z_esito.json`) ha gli stessi
+risultati: il rilancio aggiunge solo le parole per query, che l'Esito cita.
+
+**Le valutazioni dall'app sono rifatte.** Il primo giro (09:31) ha lasciato a
+ES e KC le metriche di K0: `app:eval-run-queries` colora l'output anche in una
+pipe quando `FORCE_COLOR` è impostata, `esegui.sh` non trovava il percorso del
+rapporto e `evaluate -rankings` riceveva un argomento vuoto. I due file sono
+stati tolti senza essere committati; lo script ora passa `--no-ansi` e si ferma
+se non trova il rapporto (`5897f6a`), e il rilancio delle 09:33 è quello usato.
+
+| | MRR@10 | atto primo | entro 10 | a vuoto | Crispiano | FVG | con numero (4) | senza numero (100) |
+|---|---|---|---|---|---|---|---|---|
+| ES | 0,326 | 27,9% | 42,3% | 46,2% | 0,227 | 0,417 | 0,000 | 0,339 |
+| KC | 0,432 | 34,6% | 58,7% | 29,8% | 0,320 | 0,536 | 0,000 | 0,449 |
+| K0 | 0,337 | 25,0% | 51,0% | 43,3% | 0,308 | 0,364 | 0,063 | 0,348 |
+| LA | 0,559 | 45,2% | 76,0% | 1,0% | 0,477 | 0,635 | 0,750 | 0,552 |
+| LT | 0,346 | 28,8% | 47,1% | 43,3% | 0,243 | 0,442 | 0,083 | 0,357 |
+| A | **0,613** | 49,0% | 85,6% | 0,0% | 0,557 | 0,665 | 0,778 | **0,606** |
+| B | 0,607 | 50,0% | 83,7% | 0,0% | 0,506 | 0,700 | 0,675 | 0,604 |
+| V | 0,520 | 39,4% | 75,0% | 0,0% | 0,467 | 0,569 | 0,650 | 0,515 |
+
+**Cinque previsioni confermate, due a metà.** Le due a metà cadono entrambe
+sulla metà che riguarda le query con un numero, che sono 4: su 4 query una
+sola differenza di posizione sposta l'MRR di 0,25, e quella metà delle due
+previsioni non dice molto né in un senso né nell'altro.
+
+1. **Confermata.** Contiene un numero il 3,8% delle query (4 su 104).
+2. **Confermata.** ES lascia a vuoto il 46,2% delle query e trova l'atto entro
+   i primi dieci nel 42,3%.
+3. **Confermata, di poco sul primo numero.** KC fa +0,106 di MRR@10 su ES
+   (0,432 contro 0,326) e ha 16,3 punti di query a vuoto in meno (29,8% contro
+   46,2%).
+4. **A metà.** Sulle query senza numero LA supera LT di 0,195 (0,552 contro
+   0,357): confermata. Su quelle con un numero LT non supera LA ma resta molto
+   sotto (0,083 contro 0,750): smentita. La previsione immaginava query con il
+   numero e poche altre parole, dove il congiuntivo aiuta; le quattro query con
+   un numero sono frasi, da 5 a 9 parole (mediana 6,5 contro 3 delle query
+   senza numero), e il congiuntivo le svuota come le altre (LT a vuoto su 3
+   delle 4).
+5. **Confermata.** Sulle query senza numero A è la configurazione piatta
+   migliore, 0,606, sopra LA di 0,055. B è a 0,002 da A: sulle frasi scritte da
+   persone le due configurazioni ibride del capitolo 7 si equivalgono.
+6. **Confermata.** Crispiano sotto il Friuli Venezia Giulia di 0,158 per LA
+   (0,477 contro 0,635) e di 0,216 per KC (0,320 contro 0,536).
+7. **A metà.** Sulle query senza numero V è a 0,036 da LA (0,515 contro 0,552):
+   confermata. Su quelle con un numero V fa 0,650 e non resta sotto 0,30:
+   smentita. Come nella 4, le quattro query con un numero sono frasi, e il
+   resto della frase basta ai vettori per ritrovarle.
+
+Tengono la 2 e la 3: il difetto del campo unico riguarda anche le ricerche per
+contenuto. Resta però un divario grande fra KC e le configurazioni piatte
+disgiuntive (0,432 contro 0,559 di LA, 29,8% di query a vuoto contro l'1%):
+Koskidex innestato parte dagli stessi insiemi di Elasticsearch, e quindi ne eredita
+il recupero congiuntivo sui campi, che sulle frasi è il limite principale. Le
+correzioni del profilo consigliato (capitolo 6) ne recuperano una parte, 16
+punti di query a vuoto, non tutto.
