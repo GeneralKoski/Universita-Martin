@@ -308,6 +308,14 @@ Claude del Mac:
       in 8.2 accanto al costo del Mac (righe 63 e 263 di `confronto.tex`), in
       `conclusione.tex` riga 143 ("5-12 secondi a query sulla GPU di un
       portatile") e nel registro delle previsioni (5 nuove).
+- [ ] `carico-fisso` (`191821Z_esito.json`, 3 previsioni su 4): sul fisso
+      (Windows, Docker in WSL2, `--cpus 4` per container) tutti e due i motori
+      sono più lenti (p50 Koskidex nel container 1,46 ms, Elasticsearch 8,93),
+      ma il rapporto regge: capacità 2.636 contro 376, 7,01 (Mac 7,10); p50
+      6,13 volte (Mac 7,08); nativo 6.258 ricerche al secondo. 428 query e
+      non 400 (104 umane). Da citare in 8.3 (limiti delle misure: "il client
+      gira sullo stesso Mac") e in `sec:competitivo` di `confronto.tex`
+      ("circa sette volte"), più il registro (4 nuove).
 
 ## Regole
 

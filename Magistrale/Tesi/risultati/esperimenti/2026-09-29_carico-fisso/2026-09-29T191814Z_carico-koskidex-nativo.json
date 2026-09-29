@@ -1,0 +1,139 @@
+{
+  "carico": [
+    {
+      "client": 1,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 9.078,
+        "media": 0.993,
+        "n": 19933,
+        "p50": 0.869,
+        "p95": 2.507,
+        "p99": 3.632
+      },
+      "ricerche_al_secondo": 996.6,
+      "richieste": 19933,
+      "risorse": {
+        "campioni": 0
+      }
+    },
+    {
+      "client": 2,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 8.461,
+        "media": 1.003,
+        "n": 39447,
+        "p50": 0.829,
+        "p95": 2.527,
+        "p99": 3.653
+      },
+      "ricerche_al_secondo": 1972.3,
+      "richieste": 39447,
+      "risorse": {
+        "campioni": 0
+      }
+    },
+    {
+      "client": 4,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 14.401,
+        "media": 1.106,
+        "n": 72016,
+        "p50": 0.941,
+        "p95": 2.658,
+        "p99": 4.276
+      },
+      "ricerche_al_secondo": 3600.4,
+      "richieste": 72016,
+      "risorse": {
+        "campioni": 0
+      }
+    },
+    {
+      "client": 8,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 15.97,
+        "media": 1.513,
+        "n": 105253,
+        "p50": 1.164,
+        "p95": 3.674,
+        "p99": 6.307
+      },
+      "ricerche_al_secondo": 5262.4,
+      "richieste": 105253,
+      "risorse": {
+        "campioni": 0
+      }
+    },
+    {
+      "client": 16,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 30.587,
+        "media": 2.545,
+        "n": 125182,
+        "p50": 2.127,
+        "p95": 5.688,
+        "p99": 9.518
+      },
+      "ricerche_al_secondo": 6258.1,
+      "richieste": 125182,
+      "risorse": {
+        "campioni": 0
+      }
+    },
+    {
+      "client": 32,
+      "errori": 0,
+      "latenza_ms": {
+        "max": 77.366,
+        "media": 5.13,
+        "n": 124434,
+        "p50": 4.325,
+        "p95": 10.324,
+        "p99": 16.494
+      },
+      "ricerche_al_secondo": 6219.8,
+      "richieste": 124434,
+      "risorse": {
+        "campioni": 0
+      }
+    }
+  ],
+  "config": {
+    "client_cpu": 12,
+    "client_go": "go1.27.1",
+    "commit": "0e914f53048fa726ae31dc3dc927bf313c8b2bd6",
+    "concorrenza": "1,2,4,8,16,32",
+    "docker_vm": "12 25204797440",
+    "durata_s": 20,
+    "famiglie": {
+      "confronto-24": {
+        "query": 24,
+        "sha256": "6e6c42b51449e54a85e66e0d931e667b97401874a78cd1abedf1abe520469e2b"
+      },
+      "known-item-auto": {
+        "query": 300,
+        "sha256": "e97f0878488d67b3c74506824a6c1998d051cf8dfa788a952b8c0acc668e33dd"
+      },
+      "umane": {
+        "query": 104,
+        "sha256": "e577c267c89ca932f6ea8d65157216ea1f813ea7f1e2d220d828919bf8dd4043"
+      }
+    },
+    "indice": "search-documents-local",
+    "modifiche_non_committate": "false",
+    "modo": "carico",
+    "motore": "koskidex",
+    "query": 428,
+    "riscaldamento_s": 5,
+    "seme": 20260928,
+    "senza_cache": true,
+    "url": "http://localhost:7714",
+    "versione": "dev"
+  },
+  "ran_at": "2026-09-29T19:15:43Z"
+}

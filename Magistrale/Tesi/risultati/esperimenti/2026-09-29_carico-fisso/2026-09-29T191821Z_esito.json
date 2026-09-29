@@ -1,0 +1,566 @@
+{
+  "ran_at": "2026-09-29T19:18:21Z",
+  "config": {
+    "commit": "b78c9ed",
+    "modifiche_non_committate": "false",
+    "esiti": {
+      "carico-es-app": "2026-09-29T191029Z_carico-es-app.json",
+      "carico-es-senza-source": "2026-09-29T191306Z_carico-es-senza-source.json",
+      "carico-koskidex-docker": "2026-09-29T191543Z_carico-koskidex-docker.json",
+      "carico-koskidex-nativo": "2026-09-29T191814Z_carico-koskidex-nativo.json",
+      "riposo-es": "2026-09-29T190602Z_riposo-es.json",
+      "riposo-koskidex-docker": "2026-09-29T190622Z_riposo-koskidex-docker.json",
+      "seq-es-app": "2026-09-29T190701Z_seq-es-app.json",
+      "seq-es-senza-source": "2026-09-29T190739Z_seq-es-senza-source.json",
+      "seq-koskidex-docker": "2026-09-29T190746Z_seq-koskidex-docker.json",
+      "seq-koskidex-docker-cache": "2026-09-29T190751Z_seq-koskidex-docker-cache.json",
+      "seq-koskidex-nativo": "2026-09-29T190753Z_seq-koskidex-nativo.json",
+      "verifica-es": "2026-09-29T190539Z_verifica-es.json",
+      "verifica-koskidex-docker": "2026-09-29T190540Z_verifica-koskidex-docker.json"
+    },
+    "mac": {
+      "seq-es-app": "2026-09-28_carico/2026-09-28T091331Z_seq-es-app.json",
+      "seq-es-senza-source": "2026-09-28_carico/2026-09-28T091403Z_seq-es-senza-source.json",
+      "seq-koskidex-docker": "2026-09-29_accenti/dopo/2026-09-29T080100Z_seq-koskidex-docker.json",
+      "seq-koskidex-nativo": "2026-09-29_accenti/dopo/2026-09-29T080102Z_seq-koskidex-nativo.json",
+      "carico-es-app": "2026-09-28_carico/2026-09-28T091655Z_carico-es-app.json",
+      "carico-es-senza-source": "2026-09-28_carico/2026-09-28T091925Z_carico-es-senza-source.json",
+      "carico-koskidex-docker": "2026-09-29_accenti/dopo/2026-09-29T080332Z_carico-koskidex-docker.json",
+      "carico-koskidex-nativo": "2026-09-29_accenti/dopo/2026-09-29T080602Z_carico-koskidex-nativo.json"
+    }
+  },
+  "sequenziale": {
+    "seq-es-app": {
+      "famiglia confronto-24": {
+        "n": 120,
+        "p50": 16.8,
+        "p95": 25.787,
+        "p99": 32.426
+      },
+      "famiglia known-item-auto": {
+        "n": 1500,
+        "p50": 7.515,
+        "p95": 13.86,
+        "p99": 25.258
+      },
+      "famiglia umane": {
+        "n": 520,
+        "p50": 16.927,
+        "p95": 29.114,
+        "p99": 37.04
+      },
+      "passate successive": {
+        "n": 1712,
+        "p50": 8.459,
+        "p95": 22.586,
+        "p99": 29.473
+      },
+      "prima passata": {
+        "n": 428,
+        "p50": 10.732,
+        "p95": 28.63,
+        "p99": 40.389
+      },
+      "risultati 100-999": {
+        "n": 30,
+        "p50": 19.16,
+        "p95": 29.262,
+        "p99": 30.649
+      },
+      "risultati da 1000": {
+        "n": 5,
+        "p50": 29.156,
+        "p95": 48.068,
+        "p99": 48.068
+      },
+      "risultati sotto 100": {
+        "n": 2105,
+        "p50": 8.851,
+        "p95": 23.422,
+        "p99": 32.294
+      },
+      "tutte": {
+        "n": 2140,
+        "p50": 8.929,
+        "p95": 24.093,
+        "p99": 32.468
+      }
+    },
+    "seq-es-senza-source": {
+      "famiglia confronto-24": {
+        "n": 120,
+        "p50": 15.97,
+        "p95": 23.797,
+        "p99": 29.438
+      },
+      "famiglia known-item-auto": {
+        "n": 1500,
+        "p50": 7.492,
+        "p95": 14.334,
+        "p99": 24.14
+      },
+      "famiglia umane": {
+        "n": 520,
+        "p50": 16.517,
+        "p95": 28.155,
+        "p99": 33.372
+      },
+      "passate successive": {
+        "n": 1712,
+        "p50": 8.167,
+        "p95": 22.175,
+        "p99": 28.526
+      },
+      "prima passata": {
+        "n": 428,
+        "p50": 11.147,
+        "p95": 27.363,
+        "p99": 37.066
+      },
+      "risultati 100-999": {
+        "n": 30,
+        "p50": 16.284,
+        "p95": 24.437,
+        "p99": 29.438
+      },
+      "risultati da 1000": {
+        "n": 5,
+        "p50": 22.43,
+        "p95": 25.157,
+        "p99": 25.157
+      },
+      "risultati sotto 100": {
+        "n": 2105,
+        "p50": 8.794,
+        "p95": 23.052,
+        "p99": 31.586
+      },
+      "tutte": {
+        "n": 2140,
+        "p50": 8.879,
+        "p95": 23.196,
+        "p99": 31.586
+      }
+    },
+    "seq-koskidex-docker": {
+      "famiglia confronto-24": {
+        "n": 120,
+        "p50": 1.945,
+        "p95": 4.211,
+        "p99": 4.584
+      },
+      "famiglia known-item-auto": {
+        "n": 1500,
+        "p50": 1.236,
+        "p95": 3.219,
+        "p99": 4.092
+      },
+      "famiglia umane": {
+        "n": 520,
+        "p50": 1.907,
+        "p95": 4.335,
+        "p99": 6.232
+      },
+      "passate successive": {
+        "n": 1712,
+        "p50": 1.446,
+        "p95": 3.595,
+        "p99": 4.545
+      },
+      "prima passata": {
+        "n": 428,
+        "p50": 1.499,
+        "p95": 3.652,
+        "p99": 5.352
+      },
+      "risultati 100-999": {
+        "n": 45,
+        "p50": 1.515,
+        "p95": 3.049,
+        "p99": 3.31
+      },
+      "risultati da 1000": {
+        "n": 5,
+        "p50": 3.834,
+        "p95": 9.939,
+        "p99": 9.939
+      },
+      "risultati sotto 100": {
+        "n": 2090,
+        "p50": 1.446,
+        "p95": 3.615,
+        "p99": 4.832
+      },
+      "tutte": {
+        "n": 2140,
+        "p50": 1.456,
+        "p95": 3.615,
+        "p99": 4.832
+      }
+    },
+    "seq-koskidex-docker-cache": {
+      "famiglia confronto-24": {
+        "n": 120,
+        "p50": 0.82,
+        "p95": 2.511,
+        "p99": 3.208
+      },
+      "famiglia known-item-auto": {
+        "n": 1500,
+        "p50": 0.51,
+        "p95": 1.518,
+        "p99": 2.51
+      },
+      "famiglia umane": {
+        "n": 520,
+        "p50": 0.523,
+        "p95": 2.221,
+        "p99": 3.62
+      },
+      "passate successive": {
+        "n": 1712,
+        "p50": 0.504,
+        "p95": 1.072,
+        "p99": 1.173
+      },
+      "prima passata": {
+        "n": 428,
+        "p50": 1.237,
+        "p95": 2.919,
+        "p99": 3.664
+      },
+      "risultati 100-999": {
+        "n": 45,
+        "p50": 0.992,
+        "p95": 2.057,
+        "p99": 2.589
+      },
+      "risultati da 1000": {
+        "n": 5,
+        "p50": 1.836,
+        "p95": 4.31,
+        "p99": 4.31
+      },
+      "risultati sotto 100": {
+        "n": 2090,
+        "p50": 0.514,
+        "p95": 1.778,
+        "p99": 2.919
+      },
+      "tutte": {
+        "n": 2140,
+        "p50": 0.516,
+        "p95": 1.808,
+        "p99": 2.919
+      }
+    },
+    "seq-koskidex-nativo": {
+      "famiglia confronto-24": {
+        "n": 120,
+        "p50": 1.141,
+        "p95": 2.7,
+        "p99": 4.758
+      },
+      "famiglia known-item-auto": {
+        "n": 1500,
+        "p50": 0.585,
+        "p95": 2.424,
+        "p99": 3.416
+      },
+      "famiglia umane": {
+        "n": 520,
+        "p50": 1.128,
+        "p95": 3.343,
+        "p99": 5.327
+      },
+      "passate successive": {
+        "n": 1712,
+        "p50": 0.868,
+        "p95": 2.698,
+        "p99": 4.203
+      },
+      "prima passata": {
+        "n": 428,
+        "p50": 0.914,
+        "p95": 2.318,
+        "p99": 3.4
+      },
+      "risultati 100-999": {
+        "n": 45,
+        "p50": 1.034,
+        "p95": 2.393,
+        "p99": 2.618
+      },
+      "risultati da 1000": {
+        "n": 5,
+        "p50": 2.887,
+        "p95": 4.175,
+        "p99": 4.175
+      },
+      "risultati sotto 100": {
+        "n": 2090,
+        "p50": 0.862,
+        "p95": 2.597,
+        "p99": 4.116
+      },
+      "tutte": {
+        "n": 2140,
+        "p50": 0.885,
+        "p95": 2.607,
+        "p99": 4.116
+      }
+    }
+  },
+  "carico": {
+    "carico-es-app": [
+      {
+        "client": 1,
+        "qps": 105.3,
+        "p50": 7.618,
+        "p99": 27.186,
+        "errori": 0,
+        "memoria_max_mb": 1561.6,
+        "cpu_media": 96.405
+      },
+      {
+        "client": 2,
+        "qps": 200.7,
+        "p50": 8.174,
+        "p99": 29.203,
+        "errori": 0,
+        "memoria_max_mb": 1575.936,
+        "cpu_media": 204.662
+      },
+      {
+        "client": 4,
+        "qps": 376,
+        "p50": 8.782,
+        "p99": 31.881,
+        "errori": 0,
+        "memoria_max_mb": 1583.104,
+        "cpu_media": 348.805
+      },
+      {
+        "client": 8,
+        "qps": 344.3,
+        "p50": 12.577,
+        "p99": 81.683,
+        "errori": 0,
+        "memoria_max_mb": 1584.128,
+        "cpu_media": 366.925
+      },
+      {
+        "client": 16,
+        "qps": 343,
+        "p50": 38.27,
+        "p99": 102.564,
+        "errori": 0,
+        "memoria_max_mb": 1584.128,
+        "cpu_media": 362.575
+      },
+      {
+        "client": 32,
+        "qps": 350.8,
+        "p50": 91.261,
+        "p99": 173.572,
+        "errori": 0,
+        "memoria_max_mb": 1584.128,
+        "cpu_media": 360.255
+      }
+    ],
+    "carico-es-senza-source": [
+      {
+        "client": 1,
+        "qps": 113.2,
+        "p50": 6.969,
+        "p99": 27.174,
+        "errori": 0,
+        "memoria_max_mb": 1584.128,
+        "cpu_media": 95.822
+      },
+      {
+        "client": 2,
+        "qps": 220.2,
+        "p50": 7.45,
+        "p99": 27.426,
+        "errori": 0,
+        "memoria_max_mb": 1585.152,
+        "cpu_media": 173.218
+      },
+      {
+        "client": 4,
+        "qps": 382.5,
+        "p50": 8.699,
+        "p99": 30.858,
+        "errori": 0,
+        "memoria_max_mb": 1585.152,
+        "cpu_media": 346.594
+      },
+      {
+        "client": 8,
+        "qps": 347.5,
+        "p50": 12.457,
+        "p99": 81.136,
+        "errori": 0,
+        "memoria_max_mb": 1585.152,
+        "cpu_media": 367.507
+      },
+      {
+        "client": 16,
+        "qps": 347.4,
+        "p50": 38.165,
+        "p99": 100.662,
+        "errori": 0,
+        "memoria_max_mb": 1586.176,
+        "cpu_media": 363.838
+      },
+      {
+        "client": 32,
+        "qps": 354.9,
+        "p50": 90.194,
+        "p99": 174.561,
+        "errori": 0,
+        "memoria_max_mb": 1586.176,
+        "cpu_media": 360.687
+      }
+    ],
+    "carico-koskidex-docker": [
+      {
+        "client": 1,
+        "qps": 694.3,
+        "p50": 1.247,
+        "p99": 4.466,
+        "errori": 0,
+        "memoria_max_mb": 186.2,
+        "cpu_media": 85.74
+      },
+      {
+        "client": 2,
+        "qps": 1310.8,
+        "p50": 1.311,
+        "p99": 4.706,
+        "errori": 0,
+        "memoria_max_mb": 188.6,
+        "cpu_media": 155.965
+      },
+      {
+        "client": 4,
+        "qps": 2324.5,
+        "p50": 1.455,
+        "p99": 5.869,
+        "errori": 0,
+        "memoria_max_mb": 196.7,
+        "cpu_media": 298.331
+      },
+      {
+        "client": 8,
+        "qps": 2616.1,
+        "p50": 2.642,
+        "p99": 9.946,
+        "errori": 0,
+        "memoria_max_mb": 197.8,
+        "cpu_media": 365.327
+      },
+      {
+        "client": 16,
+        "qps": 2633.6,
+        "p50": 5.013,
+        "p99": 21.719,
+        "errori": 0,
+        "memoria_max_mb": 198.1,
+        "cpu_media": 365.901
+      },
+      {
+        "client": 32,
+        "qps": 2636,
+        "p50": 9.563,
+        "p99": 44.743,
+        "errori": 0,
+        "memoria_max_mb": 198.6,
+        "cpu_media": 364.234
+      }
+    ],
+    "carico-koskidex-nativo": [
+      {
+        "client": 1,
+        "qps": 996.6,
+        "p50": 0.869,
+        "p99": 3.632,
+        "errori": 0,
+        "memoria_max_mb": null,
+        "cpu_media": null
+      },
+      {
+        "client": 2,
+        "qps": 1972.3,
+        "p50": 0.829,
+        "p99": 3.653,
+        "errori": 0,
+        "memoria_max_mb": null,
+        "cpu_media": null
+      },
+      {
+        "client": 4,
+        "qps": 3600.4,
+        "p50": 0.941,
+        "p99": 4.276,
+        "errori": 0,
+        "memoria_max_mb": null,
+        "cpu_media": null
+      },
+      {
+        "client": 8,
+        "qps": 5262.4,
+        "p50": 1.164,
+        "p99": 6.307,
+        "errori": 0,
+        "memoria_max_mb": null,
+        "cpu_media": null
+      },
+      {
+        "client": 16,
+        "qps": 6258.1,
+        "p50": 2.127,
+        "p99": 9.518,
+        "errori": 0,
+        "memoria_max_mb": null,
+        "cpu_media": null
+      },
+      {
+        "client": 32,
+        "qps": 6219.8,
+        "p50": 4.325,
+        "p99": 16.494,
+        "errori": 0,
+        "memoria_max_mb": null,
+        "cpu_media": null
+      }
+    ]
+  },
+  "riposo_mb": {
+    "riposo-es": 1606.656,
+    "riposo-koskidex-docker": 144.2
+  },
+  "previsioni": {
+    "1": {
+      "previsione": "p50 Koskidex nel container fra 0,6 e 1,3 ms, Elasticsearch come l'app fra 4,4 e 8,2 ms",
+      "valore": "Koskidex 1.456 ms (Mac 0.892), ES 8.929 ms (Mac 6.316)",
+      "esito": "smentita"
+    },
+    "2": {
+      "previsione": "massimo del nativo fra 4.000 e 8.000 ricerche/s",
+      "valore": "6258 (Mac 6526)",
+      "esito": "confermata"
+    },
+    "3": {
+      "previsione": "rapporto di capacità Koskidex nel container / ES come l'app entro il 30% del Mac",
+      "valore": "2636 / 376 = 7.01 (Mac 7.10)",
+      "esito": "confermata"
+    },
+    "4": {
+      "previsione": "rapporto dei p50 ES come l'app / Koskidex nel container entro il 30% del Mac",
+      "valore": "8.929 / 1.456 = 6.13 (Mac 7.08)",
+      "esito": "confermata"
+    }
+  }
+}
