@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Known-item umane: MRR@10, atto primo, entro 10 e query a vuoto per ogni
 configurazione, su tutte le query, per fonte e per query con e senza numero;
-per gli stessi gruppi, quante parole hanno le query (separate da spazi).
+per gli stessi gruppi, quante parole hanno le query (separate da spazi); per
+ogni lotto, cioè per ogni persona, gli atti e le risposte vuote.
 Metodo e previsioni nel README.
 
     analizza.py [--raccolta <raccolta.json>] <valutazione> [...]
@@ -83,6 +84,13 @@ for g, dentro in gruppi.items():
     n = sorted(len(info[q]["testo"].split()) for q in info if dentro(q))
     parole[g] = {"query": len(n), "mediana": statistics.median(n), "minimo": n[0], "massimo": n[-1]}
 print("parole per query:", json.dumps(parole, ensure_ascii=False))
+per_lotto = {}
+for q in raccolta["query"]:
+    x = per_lotto.setdefault(q["lotto"], {"atti": 0, "vuote": 0})
+    x["atti"] += 1
+    x["vuote"] += q["vuota"]
+per_lotto = dict(sorted(per_lotto.items()))
+print("vuote per lotto:", json.dumps(per_lotto))
 print(f"{'':6}" + "".join(f"{g:>22}" for g in gruppi))
 for k in CONFIGURAZIONI:
     celle = [risultati[k][g] for g in gruppi]
@@ -97,7 +105,7 @@ esito = {"ran_at": ora.strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "valutazioni": {k: os.path.basename(f) for k, (f, _) in sorted(per_conf.items())},
                     "koskidex": sorted({v["config"]["commit"][:7] for _, v in per_conf.values()}),
                     "corpus_sha256": corpora.pop()},
-         "raccolta": raccolta["riassunto"], "parole_per_query": parole, "risultati": risultati}
+         "raccolta": raccolta["riassunto"], "parole_per_query": parole, "vuote_per_lotto": per_lotto, "risultati": risultati}
 if not os.environ.get("TESI_RISULTATI"):
     sys.exit("!!! RISULTATO NON ARCHIVIATO: TESI_RISULTATI non è impostata.")
 d = os.path.join(os.environ["TESI_RISULTATI"], "esperimenti", "2026-09-25_known-item-umane")
