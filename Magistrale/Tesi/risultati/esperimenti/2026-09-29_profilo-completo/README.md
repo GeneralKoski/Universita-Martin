@@ -96,7 +96,12 @@ Misurato il 29/09/2026 fra le 12:31 e le 12:49, Koskidex `0e914f5`, Documentale
 `fd5fb45`, bge-m3 su Ollama per P3 e P4. Riassunto in
 `2026-09-29T104931Z_esito.json` (`analizza.py`); rapporti in `confronto/`,
 valutazioni in `evaluate/`. I rapporti sulle umane contengono il testo delle
-query e restano fuori da git. Le impostazioni rilette dall'indice di ogni
+query e restano fuori da git.
+Lo stesso riassunto rilanciato più tardi, `2026-09-29T122455Z_esito.json`, ha
+gli stessi numeri e in più, per profilo, quante delle 24 query del confronto
+restituiscono 10.000 risultati (8 con P2 e con P3, nessuna con gli altri) e il
+massimo sotto quella soglia (7.530 e 7.531 con P2 e P3, 449 con P4, 434 con P0
+e P1). Le impostazioni rilette dall'indice di ogni
 profilo corrispondono alla tabella dei profili.
 
 MRR@10, con fra parentesi le ricerche a vuoto:
@@ -141,9 +146,21 @@ circa 42 ms, perché ogni query calcola il suo vettore, e l'indicizzazione dei
 10.018 atti da 1,9 s a 476,7 s, perché ogni atto ne calcola uno. Richiede Ollama con bge-m3 raggiungibile
 dall'applicazione.
 
+### La cache dei vettori
+
 P4 ha impiegato quasi quanto P3 (476,7 contro 488,5 s) nonostante `esegui.sh`
-copi per P4 la cache dei vettori degli atti calcolata da P3: non ho verificato
-se la cache sia stata usata.
+copi per P4 la cache dei vettori degli atti calcolata da P3. Controllato dopo,
+con `cache-vettori.sh` (indicizzazione da un indice vuoto con il profilo P4,
+due volte, riavviando Koskidex sulla stessa cartella di dati; rapporti
+`2026-09-29T123133Z_prova-cache-prima-indicizzazione-koskidex.json` e
+`2026-09-29T123141Z_prova-cache-seconda-indicizzazione-koskidex.json`):
+la prima volta 499,6 s, la seconda, con i vettori già in `embeddings.jsonl`
+(10.017 righe all'avvio, dal log della prova, non archiviato), **2,7 s**. La
+cache quindi funziona, e i 476,7 s di P4 sono il costo senza cache: nella
+corsa di `esegui.sh` la copia da P3 non ha avuto effetto, e non so perché
+(lo script è scritto per copiarla, e di quella corsa ho solo i tempi). Il
+costo di indicizzare con i vettori già calcolati è quello della seconda
+indicizzazione, 2,7 s; senza, fra 477 e 500 s.
 
 **P2 e P3 restano un risultato negativo utile**: il recupero disgiuntivo, che
 fuori dall'app porta LA a 0,559, dentro Documentale è inutilizzabile se non si
