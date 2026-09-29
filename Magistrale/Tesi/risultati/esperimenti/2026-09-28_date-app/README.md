@@ -121,3 +121,27 @@ anche per `disable_on_numbers`, che cambia i risultati del profilo e va
 quindi dietro un'impostazione, con la sua misura. Il profilo resta com'è
 finché non girano le known-item umane complete, che sono il posto dove
 l'anno da solo può pesare.
+
+## Rilancio sulle known-item umane complete
+
+*Scritto il 29/09/2026, prima del rilancio.* La raccolta si è chiusa con tre
+lotti e 104 query (`query/known-item-umane/riassunto.json`); 4 contengono una
+cifra. La previsione 5 sopra diceva «nessuna contiene cifre» delle 76 dei primi
+due lotti, ed era sbagliata nella premessa: 3 su 76 ne hanno una (lo ha
+trovato il terzo controllo della tesi il 29/09); l'esito, nessuna query
+cambiata, resta quello misurato. Il rilancio è lo stesso `esegui.sh`, con
+Koskidex `cd86102` (le correzioni fra `3bff7ca` e questo non cambiano i
+risultati: `2026-09-28_allocazioni` e `2026-09-29_accenti`) e Documentale al
+commit corrente, e lo stesso `analizza.py`, che rilegge l'esito più recente di
+ogni etichetta. Cosa mi aspetto:
+
+- **R1.** Le previsioni 1-4 e 6 danno gli stessi numeri del 28/09: date,
+  importi, known-item automatiche e le 24 non dipendono dalla raccolta.
+- **R2.** Known-item umane, 104 query: nessuna entra o esce dai primi dieci
+  e l'MRR@10 cambia di meno di 0,01, cioè la previsione 5 tiene anche sulla
+  raccolta completa. Se una query cambia, è fra le 4 con una cifra.
+- **R3.** Indicizzazione accesa di nuovo al più il 10% più lenta.
+
+Se R2 tiene, l'anno da solo non costa niente sulle query vere raccolte, e
+`normalize_dates` può entrare nel profilo consigliato, con una misura del
+profilo come un tutto.
