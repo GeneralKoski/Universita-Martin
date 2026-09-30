@@ -48,10 +48,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       Titolo e relatore sono già sul frontespizio (vedi sotto).
 - [ ] **Gennaio 2027**: guardare le tracce ufficiali e chiudere sul relatore.
 - [ ] **I ringraziamenti** (`latex/capitoli/ringraziamenti.tex`): solo tuoi.
-- [ ] **Frontespizio**: dedica (oggi segnaposto). Citazione messa il 30/09
-      (Feynman, *Cargo Cult Science*, 1974, verificata sul testo di Caltech). Titolo ("Recupero
-      ibrido lessicale e vettoriale in un sistema di gestione documentale") e
-      relatore (Dal Palù) messi il 30/09; il relatore va riconfermato a dicembre.
+- [x] **Frontespizio** (30/09): titolo ("Recupero ibrido lessicale e vettoriale
+      in un sistema di gestione documentale"), relatore (Dal Palù, da
+      riconfermare a dicembre), citazione (Feynman, *Cargo Cult Science*, 1974,
+      verificata sul testo di Caltech) e dedica ("Alla mia famiglia").
 - [ ] **Refusi**: nell'ambiente di Claude non c'è un dizionario italiano, quindi
       il controllo ortografico automatico non è stato fatto. Uno spellcheck tuo
       sul PDF, oltre alla rilettura.
