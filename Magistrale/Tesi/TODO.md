@@ -47,7 +47,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       pubblico al posto dei dati aziendali, se l'impianto di valutazione va bene.
       Titolo e relatore sono già sul frontespizio (vedi sotto).
 - [ ] **Gennaio 2027**: guardare le tracce ufficiali e chiudere sul relatore.
-- [ ] **I ringraziamenti** (`latex/capitoli/ringraziamenti.tex`): solo tuoi.
+- [x] **I ringraziamenti** (30/09): scritti da Martin (compagni di università,
+      Dieffetech e Francesco Desiderio, amici, Giulia, famiglia, Endri), spellcheck
+      fatto. Eventuali righe per il relatore e per chi ha scritto le query: a tua
+      scelta.
 - [x] **Frontespizio** (30/09): titolo ("Recupero ibrido lessicale e vettoriale
       in un sistema di gestione documentale"), relatore (Dal Palù, da
       riconfermare a dicembre), citazione (Feynman, *Cargo Cult Science*, 1974,
@@ -56,8 +59,7 @@ basta mettere i file nelle cartelle indicate e dirlo.
       it_IT di LibreOffice (in `~/Library/Spelling`), sui sorgenti TeX e sul PDF.
       Nessun refuso: restano solo termini tecnici, inglesi ed esempi voluti
       (`manutenzone`, `identita`, `atre`). Nessuna parola ripetuta, nessun
-      accento mancante. I ringraziamenti sono ancora "Da scrivere.", quindi da
-      ricontrollare quando li scrivi. Resta la tua rilettura.
+      accento mancante. I ringraziamenti sono stati ricontrollati il 30/09. Resta la tua rilettura.
 - [x] **Provando P4 a mano nell'app (30/09)**: `see-all` riordinava per nome e
       `ai-search` per data, perdendo l'ordine di rilevanza: corretto in
       Documentale (commit con `SearchRelevanceOrderTest`), come il bug per cui
