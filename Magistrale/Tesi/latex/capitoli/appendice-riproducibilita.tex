@@ -3,7 +3,8 @@
 
 Ogni numero di questa tesi viene da un file dell'archivio \texttt{risultati/}, nel
 repository della tesi, e ogni file registra il commit del codice che l'ha prodotto
-e se l'albero era pulito (sezione~\ref{sec:principi}). Questa appendice dice come
+e se l'albero era pulito, con le poche eccezioni dichiarate nel registro di
+\texttt{risultati/README.md} (sezione~\ref{sec:principi}). Questa appendice dice come
 si rifà un file partendo da zero.
 
 \section*{I tre repository}
@@ -45,7 +46,7 @@ Nessun dato sta nei repository: si riscaricano.
   \item \textbf{Dentro Documentale}: \texttt{app:import-albo-corpus} importa gli
         atti con il modello dei documenti dell'app;
         \texttt{app:export-to-elastic-search} li indicizza in Elasticsearch, e lo
-        script \texttt{strumenti/indicizza-koskidex.sh} fa lo stesso su Koskidex
+        script \texttt{risultati/strumenti/indicizza-koskidex.sh} fa lo stesso su Koskidex
         passando dall'app; \texttt{app:export-eval-corpus} esporta il corpus in
         formato BEIR per le valutazioni piatte.
 \end{enumerate}

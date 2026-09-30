@@ -165,7 +165,7 @@ stesso campo, ma il numero sta in \texttt{additional\_data} e il comune in
 \texttt{subjects}, e nessun campo li ha tutti e due. Il controllo lo conferma:
 riscritta la query con un \texttt{multi\_match} per parola, con gli stessi refusi,
 la stessa prima lettera esatta, gli stessi pesi e tutte le parole ancora
-obbligatorie, cade solo il vincolo del campo unico, e l'atto giusto torna in
+obbligatorie, cade solo il vincolo del campo unico, e l'atto giusto torna, entro i primi cento, in
 tutte e 300 le query. Koskidex innestato, con le impostazioni di compatibilità,
 trova gli stessi insiemi di Elasticsearch su tutte e 300: la parità eredita
 anche questo difetto.
@@ -270,8 +270,8 @@ l'indicizzazione costa il 29-34\% in più: avevo previsto al più il 20\%, e
 saltare i testi che non possono contenere un formato l'ha solo ridotta dal
 41-46\%, perché quasi ogni scheda contiene davvero cifre, barre e punti.
 
-Le query sono fabbricate: dicono che il motore trova una data in qualunque
-formato, non quanto spesso una persona cerca per data, e nelle known-item umane
+Le query sono fabbricate: dicono che il motore trova una data nei formati
+provati, non quanto spesso una persona cerca per data, e nelle known-item umane
 succede di rado: solo 4 query su 104 contengono una cifra. E la correzione ha un prezzo che nessuna
 previsione misurava: la data diventa un termine solo, quindi il suo anno non
 combacia più con una ricerca che contiene l'anno da solo, come \emph{bilancio

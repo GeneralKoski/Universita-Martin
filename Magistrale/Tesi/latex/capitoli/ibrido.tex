@@ -57,10 +57,10 @@ la questione non si pone. Per il testo integrale, con il contesto portato a 8.19
 token, resterebbero tagliati 3 atti su 563. Se leggere tutto il testo, o
 spezzarlo, migliori la pertinenza l'ha misurato la scheda contro il testo
 intero (sezione~\ref{sec:scheda-testo}), sulle 50 known-item umane di
-Crispiano: con i vettori dei primi 8.192 token A fa 0,515 di MRR@10, con quelli
+Crispiano: con i vettori dei primi 8.192 token A (LA più i vettori, sezione~\ref{sec:configurazioni}) fa 0,515 di MRR@10, con quelli
 dei primi 2.048 fa 0,558, e sulla scheda 0,613. Quello che sta dopo i primi
 2.048 token, su queste query, pesa contro; per la regola scritta prima della
-misura, spezzare i documenti lunghi in parti non serve.
+misura, spezzare i documenti lunghi in parti non è giustificato; non l'ho provato.
 
 \section{Difetto 2: dal re-ranking al recupero ibrido}\label{sec:difetto2}
 
@@ -138,13 +138,13 @@ cambiando solo il recupero, dà la tabella~\ref{tab:difetto2-all}.
     known-item MRR@10 & 0,9596 & 0,9579 & 0,9579 & 0,8464 \\
     \bottomrule
   \end{tabular}
-  \caption{Il difetto 2 con il recupero congiuntivo di Documentale. L'ultima colonna
+  \caption{Il difetto 2 con il recupero congiuntivo (Koskidex piatto, \texttt{all}). L'ultima colonna
   è l'unione della tabella~\ref{tab:difetto2-any}, per confronto.}
   \label{tab:difetto2-all}
 \end{table}
 
-\textbf{Con il recupero congiuntivo il difetto 2 è il più grande dei difetti di
-Koskidex}: l'unione vale +0,62 di nDCG@10 su SciFact e +0,14 su NFCorpus, e porta a
+\textbf{Con il recupero congiuntivo l'unione recupera più di ogni altra
+correzione di Koskidex}: l'unione vale +0,62 di nDCG@10 su SciFact e +0,14 su NFCorpus, e porta a
 zero le query a vuoto. Il re-ranking non può niente: riordina i pochi documenti che
 il lessicale ha trovato. E c'è un risultato che non avevo previsto, nell'ultima
 riga. Il recupero congiuntivo con l'unione tiene le known-item a 0,958, dove quello
@@ -153,8 +153,9 @@ disgiuntivo ($-$0,043 su SciFact, $-$0,001 su NFCorpus). Il motivo per cui il re
 disgiuntivo serviva alle query in lingua naturale era che il congiuntivo le
 lasciava vuote; l'unione toglie quel motivo, perché i documenti li porta il
 vettore. È anche la configurazione più vicina a Documentale, che cerca già in modo
-congiuntivo: alla ricerca di produzione, per correggere il difetto 2, basta
-aggiungere i vettori.
+congiuntivo: alla ricerca di produzione, per correggere il difetto 2, servono i
+vettori, dopo le correzioni del capitolo~\ref{chapter:produzione} (da sola, sulle
+ricerche per numero, fa 0,017).
 
 \section{Difetto 3: fondere scale incomparabili}\label{sec:difetto3}
 
@@ -248,7 +249,7 @@ Avevo previsto il contrario sulla parte che conta. La mia ipotesi era che la
 costante dipendesse dalla lunghezza delle query, più alta su SciFact (dodici termini
 in mediana) che su NFCorpus (due), e che solo la normalizzazione rendesse il peso
 trasferibile fra le due. La prima è caduta: su SciFact e NFCorpus la costante
-migliore è la stessa, 160. La seconda ha tenuto ($\alpha = 0{,}5$ su tutte e due),
+migliore è la stessa, 160 (su un plateau: a 80 NFCorpus fa 0,3261 contro 0,3263). La seconda ha tenuto ($\alpha = 0{,}5$ su tutte e due),
 ma senza il merito che le davo, perché anche le costanti coincidono. La scala che conta sembra non essere quella
 fra query lunghe e corte ma quella fra \emph{tipi} di query, che qui coincidono con le collezioni. Su una query
 identificativa il vettore non sa niente del numero e va tenuto basso; su una in

@@ -339,10 +339,10 @@ vincolo sul numero di termini che va bene per due parole è sbagliato per dodici
 La coordinazione è il compromesso migliore, perché chiude quasi tutto il divario
 sulle known-item senza togliere documenti, ma costa 0,027 su SciFact e 0,011 su
 NFCorpus: premia chi ha più parole della query, e sulle frasi le parole meno
-importanti contano quanto le altre. È la ragione per cui Lucene l'ha tolta.
+importanti contano quanto le altre. Potrebbe essere la ragione per cui Lucene l'ha tolta; non l'ho verificato.
 
-\textbf{Nessuna impostazione unica va bene per le query identificative e per
-quelle in lingua naturale.} Restano tutte spente, e la domanda diventa come
+\textbf{Nessuna delle impostazioni provate va bene, su questi dati, per le query
+identificative e per quelle in lingua naturale.} Restano tutte spente, e la domanda diventa come
 riconoscere il tipo di query e scegliere di conseguenza. Con il solo lessicale la
 risposta è una regola di una riga; con i vettori la scelta si allarga al peso del
 vettore, e se ne occupa la sezione~\ref{sec:scelta}.
@@ -392,7 +392,7 @@ da persone su quegli atti: sono le 50 known-item umane di Crispiano, scritte da
 chi aveva letto il testo intero (\texttt{2026-09-25\_scheda-testo}).
 
 La risposta alla prima va contro quello che mi aspettavo. Con il recupero
-disgiuntivo il testo intero non aiuta, peggiora: LA passa da 0,540 di MRR@10
+disgiuntivo il testo intero non aiuta, peggiora: LA (BM25 disgiuntivo, sezione~\ref{sec:configurazioni}) passa da 0,540 di MRR@10
 sulla scheda a 0,463 sul testo, e l'atto fra i primi dieci dall'80\% al 78\%.
 Aiuta solo il recupero congiuntivo, che sul testo trova più spesso tutte le
 parole della query: le query a vuoto scendono dal 48\% al 26\%, l'MRR@10 sale da

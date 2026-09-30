@@ -141,7 +141,7 @@ previsioni non dice molto né in un senso né nell'altro.
    migliore, 0,606, sopra LA di 0,055. B è a 0,002 da A: sulle frasi scritte da
    persone le due configurazioni ibride del capitolo 7 si equivalgono.
 6. **Confermata.** Crispiano sotto il Friuli Venezia Giulia di 0,158 per LA
-   (0,477 contro 0,635) e di 0,216 per KC (0,320 contro 0,536; *nota del 30/09/2026: il valore esatto è 0,5355, che la tesi arrotonda a 0,535*).
+   (0,477 contro 0,635) e di 0,216 per KC (0,320 contro 0,536; *nota del 30/09/2026: il valore esatto è 0,53549 (nel JSON è arrotondato a 0,5355), che a tre decimali fa 0,535*).
 7. **A metà.** Sulle query senza numero V è a 0,036 da LA (0,515 contro 0,552):
    confermata. Su quelle con un numero V fa 0,650 e non resta sotto 0,30:
    smentita. Come nella 4, le quattro query con un numero sono frasi, e il

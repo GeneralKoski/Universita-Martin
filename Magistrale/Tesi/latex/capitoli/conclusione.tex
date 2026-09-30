@@ -51,7 +51,7 @@ recupero congiuntivo e peso 10) tiene insieme le ricerche per contenuto e quelle
 per numero (0,607 e 0,956).
 
 \paragraph{Il confronto con Elasticsearch.} Nella stessa macchina virtuale, con
-le stesse CPU e le richieste dell'app, Koskidex risponde in 0,9~ms di p50
+le stesse CPU e le richieste dell'app, Koskidex risponde in 0,9~ms di p50 (dopo l'ultima correzione)
 contro 6,3, regge circa sette volte le ricerche al secondo (anche su un secondo
 computer, dove tutti i tempi assoluti sono più alti) e occupa un decimo della
 memoria. Non era così prima di misurarlo sotto carico: allocava 2,6~MB a
@@ -103,6 +103,18 @@ migliorare (su 50 query, senza intervallo).
         hanno scritte tre persone dopo aver letto un atto, non chi cerca un atto
         di cui ha bisogno. Misurano il ritrovamento di un atto noto, non i
         bisogni aperti.
+  \item \textbf{Due fonti, e un'importazione mia.} Le query automatiche vengono per
+        293 su 300 dal Friuli Venezia Giulia, e il 2\% entro i primi dieci del
+        campo unico dipende anche da come lo script di importazione scritto per la
+        tesi assegna i campi (il numero d'atto in \texttt{additional\_data}, l'ente
+        in \texttt{subjects}). Dire che i difetti sono proprietà dei documenti
+        amministrativi italiani generalizza da queste due fonti.
+  \item \textbf{I giudizi umani sul pool sono stati dati in fretta.} I 178
+        giudizi li ho dati in un quarto d'ora, con una mediana di 2,6~s l'uno,
+        mentre il protocollo dice di aprire l'atto nel dubbio: un kappa basso può
+        dipendere anche da questo. E sulle known-item umane non ho verificato che
+        l'atto di partenza sia l'unico pertinente: altri atti equivalenti
+        abbasserebbero l'MRR@10.
   \item \textbf{Le date non sono misurate su Elasticsearch.} Il difetto delle
         date è misurato con Koskidex piatto come sostituto, non sull'indice di
         produzione; lo stesso sostituto ha sbagliato per gli importi

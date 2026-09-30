@@ -1,7 +1,8 @@
 \chapter{L'impianto di valutazione}\label{chapter:valutazione}
 
 Ogni numero di questa tesi viene da un file di un archivio, prodotto da codice
-committato, e ogni misura che conta ha le sue previsioni scritte prima. Questo
+committato, e quasi ogni misura che conta ha le sue previsioni scritte prima (le eccezioni
+sono nell'appendice~\ref{chapter:appendice-ipotesi}). Questo
 capitolo descrive le regole, le collezioni, le query e gli strumenti; le regole
 vengono prima, perché sono loro a dire quanto ci si può fidare del resto.
 
@@ -42,7 +43,8 @@ tesi, con regole scritte prima di riempirlo:
         modificato a mano;
   \item ogni file registra da dove viene: il commit del codice, se l'albero aveva
         modifiche non committate, il corpus con la sua impronta, ogni
-        impostazione. Per la tesi valgono solo i file da alberi puliti;
+        impostazione. Per la tesi valgono i file da alberi puliti, con poche eccezioni dichiarate nel
+        registro di \texttt{risultati/README.md};
   \item i tempi stanno separati dalle metriche, perché cambiano a ogni esecuzione
         e le metriche no;
   \item solo identificativi, mai titoli: gli atti contengono nomi di persone, e
@@ -113,7 +115,7 @@ chiunque legga la tesi. Due fonti, verificate scaricandole il 23 settembre 2026:
 \begin{itemize}
   \item \textbf{Comune di Crispiano} (TA), feed RSS, licenza CC BY 4.0: 563 atti
         da novembre 2025 a settembre 2026, 390 determine, 82 delibere, 58
-        ordinanze. Il testo è nativo nei PDF, estraibile senza riconoscimento
+        ordinanze e 33 atti di altro genere. Il testo è nativo nei PDF, estraibile senza riconoscimento
         ottico: di solito da tre a sei pagine, con una mediana di 7.900 caratteri,
         otto atti su dieci fra 4.800 e 13.800 e cinque oltre i 30.000;
   \item \textbf{Regione Friuli Venezia Giulia}, API Socrata, licenza IODL 2.0:
@@ -185,7 +187,8 @@ aperto diciassette minuti prima del commit. Quelle dei tre esperimenti aggiunti 
 raccolta chiusa, dichiarate nella sezione~\ref{sec:configurazioni}, sono
 committate prima della misura di ciascuno. Le previsioni 4 e 5 del riordino
 (28 settembre) sono state scritte dopo una prova generale sui primi due lotti, 76
-query, in cui avevo già visto le metriche di LA e A.
+query, in cui avevo già visto le metriche di LA e A (definite nella
+sezione~\ref{sec:configurazioni}).
 
 \paragraph{Bisogni aperti.} Per una query come \emph{manutenzione strade} non
 esiste un atto giusto solo. Le 24 query del confronto, scritte a mano il 23
