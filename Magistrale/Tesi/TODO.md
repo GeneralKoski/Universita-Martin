@@ -45,18 +45,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       d'esame consegnati. Portare il PDF e le domande: cosa considerano un
       contributo sufficiente, che dimensione si aspettano, se va bene un corpus
       pubblico al posto dei dati aziendali, se l'impianto di valutazione va bene.
-      Titolo, tre proposte:
-      1. *Ritrovare un atto: difetti di recupero di un motore di ricerca
-         leggero, misurati in un sistema documentale*
-      2. *Dal motore alla produzione: valutazione e correzione del recupero di
-         un motore di ricerca senza dipendenze in un documentale*
-      3. *Koskidex in Documentale: cosa costa, in pertinenza, un motore di
-         ricerca piccolo*
+      Titolo e relatore sono già sul frontespizio (vedi sotto).
 - [ ] **Gennaio 2027**: guardare le tracce ufficiali e chiudere sul relatore.
 - [ ] **I ringraziamenti** (`latex/capitoli/ringraziamenti.tex`): solo tuoi.
-- [ ] **Frontespizio**: titolo (fra le tre proposte sopra), nome del relatore
-      (`latex/tesi.tex`, `\title` e `\advisor`), dedica e citazione (oggi
-      segnaposto).
+- [ ] **Frontespizio**: dedica e citazione (oggi segnaposto). Titolo ("Recupero
+      ibrido lessicale e vettoriale in un sistema di gestione documentale") e
+      relatore (Dal Palù) messi il 30/09; il relatore va riconfermato a dicembre.
 - [ ] **Refusi**: nell'ambiente di Claude non c'è un dizionario italiano, quindi
       il controllo ortografico automatico non è stato fatto. Uno spellcheck tuo
       sul PDF, oltre alla rilettura.
@@ -114,8 +108,8 @@ basta mettere i file nelle cartelle indicate e dirlo.
 
 **Alla fine:**
 
-- [ ] Titolo e relatore in `latex/tesi.tex` (`\title` e `\advisor`, oggi
-      "DA DEFINIRE"), quando sono decisi.
+- [x] Titolo e relatore in `latex/tesi.tex` (30/09: titolo deciso da Martin,
+      relatore Dal Palù, da riconfermare a dicembre).
 - [x] Rileggere la tesi intera contro l'archivio: ogni numero con il suo file.
       Capitoli 1-7 e 9 riletti il 29/09 (vedi sotto): a capitolo 8 scritto
       restano il capitolo 8, le appendici e i numeri nuovi di 4.4, 9.1 e 1.
