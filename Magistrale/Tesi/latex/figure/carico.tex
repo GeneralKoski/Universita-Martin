@@ -2,11 +2,11 @@
   \centering
   \begin{tikzpicture}
     \begin{groupplot}[group style={group size=2 by 1, horizontal sep=1.4cm, y descriptions at=edge left},
-        tesi, width=.5\textwidth, height=6.2cm, xmode=log, log basis x=2,
+        tesi, width=.46\textwidth, height=6.2cm, xmode=log, log basis x=2,
         xtick={1,2,4,8,16,32}, xticklabels={1,2,4,8,16,32}, xmin=1, xmax=32,
         ymin=0, ymax=7000, xlabel={client in parallelo}]
       \nextgroupplot[title={\footnotesize Mac (M2)}, ylabel={ricerche al secondo},
-          legend to name=leg:carico, legend columns=3]
+          legend to name=leg:carico, legend columns=3, legend style={font=\scriptsize, column sep=4pt}]
         \addplot[color=black, mark=square*, mark size=1.6pt] table[x=client, y=mac_es] {dati/carico.dat};
         \addplot[color=black, mark=triangle*, mark size=2pt, dashed] table[x=client, y=mac_kc] {dati/carico.dat};
         \addplot[color=black, mark=*, mark size=1.6pt, densely dotted] table[x=client, y=mac_kn] {dati/carico.dat};

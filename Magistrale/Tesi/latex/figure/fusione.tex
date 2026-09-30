@@ -2,7 +2,7 @@
   \centering
   \begin{tikzpicture}
     \begin{groupplot}[group style={group size=3 by 1, horizontal sep=1.3cm},
-        tesi, width=.36\textwidth, height=5.4cm, xmin=-.3, xmax=7.3,
+        tesi, width=.32\textwidth, height=5.4cm, xmin=-.3, xmax=7.3,
         xtick={0,...,7}, xticklabels={0,5,10,20,40,80,160,320},
         x tick label style={font=\tiny, rotate=90, anchor=east}, xlabel={costante}]
       \nextgroupplot[title={\footnotesize SciFact, nDCG@10}]
@@ -15,7 +15,7 @@
   \end{tikzpicture}
   \caption[La costante della somma pesata sulle collezioni di calibrazione]{La costante della somma pesata al variare del suo valore, sulle
   tre collezioni di calibrazione (SciFact e known-item, sezione di addestramento; NFCorpus, sviluppo). Il valore di
-  partenza di Koskidex è 20: giusto per caso sulle known-item, otto volte troppo
-  basso per le query in lingua naturale. Dati: \texttt{latex/dati/fusione.dat}.}
+  partenza di Koskidex è 20: vicino all'ottimo sulle known-item, e otto volte più
+  basso dell'ottimo sulle query in lingua naturale. Dati: \texttt{latex/dati/fusione.dat}.}
   \label{fig:fusione}
 \end{figure}

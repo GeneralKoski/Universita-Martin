@@ -54,6 +54,15 @@ basta mettere i file nelle cartelle indicate e dirlo.
          ricerca piccolo*
 - [ ] **Gennaio 2027**: guardare le tracce ufficiali e chiudere sul relatore.
 - [ ] **I ringraziamenti** (`latex/capitoli/ringraziamenti.tex`): solo tuoi.
+- [ ] **Frontespizio**: titolo (fra le tre proposte sopra), nome del relatore
+      (`latex/tesi.tex`, `\title` e `\advisor`), dedica e citazione (oggi
+      segnaposto).
+- [ ] **Refusi**: nell'ambiente di Claude non c'è un dizionario italiano, quindi
+      il controllo ortografico automatico non è stato fatto. Uno spellcheck tuo
+      sul PDF, oltre alla rilettura.
+- [ ] **Profilo consigliato: P4 o l'attuale?** Dall'app P4 (recupero congiuntivo,
+      vettori a peso 10) fa 0,607 sulle umane e 0,956 sui numeri, ma costa circa
+      42 ms a ricerca e un servizio Ollama; il profilo consigliato non li ha.
 
 ## Da fare poi (Claude), quando arrivano le cose di Martin
 
@@ -221,6 +230,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       previsione 4 a metà, 5 confermata; in 8.2 e nel registro.
 
 ## Da allineare alla fine
+
+Cinque giri di controllo indipendenti il 30/09 (numeri ricalcolati dai file per
+query, previsioni e logica, stile e PDF, lettura severa): nessun numero sbagliato
+oltre agli arrotondamenti, e le affermazioni oltre i dati sono state ridimensionate
+o portate fra i limiti (`conclusione.tex`). Cause chiuse: i 2 atti FVG in meno
+(id duplicati) e la cache di P4 (difetto di `esegui.sh`, note datate nei README).
 
 Ogni dato nuovo o che non torna, segnato qui appena si vede, così a capitolo 8
 scritto si allineano tesi, README e archivio in un colpo solo. Dal terzo
