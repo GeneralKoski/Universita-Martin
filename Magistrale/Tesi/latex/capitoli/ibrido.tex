@@ -7,7 +7,7 @@ trovato, ma non ne porta di nuovi. Il difetto 3: il punteggio lessicale e la
 similarità si sommano con una costante, 20, messa a occhio, su due scale che non
 hanno niente in comune. Questo capitolo li misura tutti e due, ne misura il costo,
 e arriva a una conclusione che nessuno dei due, da solo, faceva prevedere: il modo
-giusto di usare il vettore dipende dal tipo di query.
+giusto di usare il vettore sembra dipendere dal tipo di query (che nei dati coincide con la collezione).
 
 \section{Gli embedding e la suddivisione dei documenti lunghi}\label{sec:embedding}
 
@@ -249,8 +249,8 @@ costante dipendesse dalla lunghezza delle query, più alta su SciFact (dodici te
 in mediana) che su NFCorpus (due), e che solo la normalizzazione rendesse il peso
 trasferibile fra le due. La prima è caduta: su SciFact e NFCorpus la costante
 migliore è la stessa, 160. La seconda ha tenuto ($\alpha = 0{,}5$ su tutte e due),
-ma senza il merito che le davo, perché anche le costanti coincidono. La scala che conta non è quella
-fra query lunghe e corte ma quella fra \emph{tipi} di query. Su una query
+ma senza il merito che le davo, perché anche le costanti coincidono. La scala che conta sembra non essere quella
+fra query lunghe e corte ma quella fra \emph{tipi} di query, che qui coincidono con le collezioni. Su una query
 identificativa il vettore non sa niente del numero e va tenuto basso; su una in
 lingua naturale va pesato otto volte più di quanto facesse il motore. Nessuna
 fusione con un parametro unico regge i due tipi, e la correzione del difetto 3 non

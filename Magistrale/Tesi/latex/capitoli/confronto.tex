@@ -51,7 +51,8 @@ schede che esce dall'esportazione di Documentale, per vedere dove porterebbero
 le correzioni dei capitoli~\ref{chapter:lessicale} e~\ref{chapter:ibrido} se
 entrassero nell'app: \textbf{K0}, il punto di partenza (congiuntivo,
 punteggio euristico); \textbf{LA} e \textbf{LT}, BM25 con la frequenza
-mescolata in recupero disgiuntivo e congiuntivo; \textbf{A} e \textbf{B},
+mescolata in recupero disgiuntivo (\emph{any}, LA) e
+congiuntivo (\emph{all}, LT); \textbf{A} e \textbf{B},
 le due configurazioni ibride del capitolo~\ref{chapter:ibrido}, quella per le
 frasi e quella per gli identificativi; \textbf{V}, i soli vettori. Le
 configurazioni piatte non passano dall'app e non hanno i refusi, quindi fra
@@ -160,7 +161,8 @@ meno di 0,30, di nuovo pensando a un numero con poco intorno, e anche qui il
 resto della frase basta ai vettori. Sulle query vere l'unione di lessicale e
 vettori fa quello che il capitolo~\ref{chapter:ibrido} aveva visto sulle
 collezioni pubbliche: trova l'atto fra i primi dieci nell'86\% dei casi, contro
-il 76\% di LA e il 42\% di ES.
+il 76\% di LA e il 42\% di ES; sull'MRR@10, però, A sopra LA include lo zero
+(tabella~\ref{tab:intervalli}).
 
 \paragraph{Le due fonti.} Su Crispiano chi scriveva aveva letto il testo
 intero, e l'indice ha la scheda: le parole che ricorda possono non esserci. LA
@@ -222,8 +224,12 @@ e l'indicizzazione, da 1,9 a 476,7~s
 per i 10.018 atti perché ognuno ne calcola uno, con Ollama in locale; se i
 vettori sono già nella cache che Koskidex tiene su disco, l'indicizzazione scende
 a 2,7~s (prova a parte, sullo stesso P4). Nella corsa dei cinque profili la
-copia della cache da P3 a P4 non ha avuto effetto, e non so perché: i 476,7~s
-sono quindi senza cache. Sei previsioni su sette hanno
+copia della cache da P3 a P4 non ha avuto effetto per un difetto dello script:
+Koskidex crea il file dei vettori, vuoto, a ogni avvio, anche per i profili
+senza embedder, e lo script copiava nella cartella comune quello di P0 e non lo
+sostituiva più con quello pieno di P3, così P4 è partito a cache vuota e i
+476,7~s sono senza cache. La causa la ricavo dal codice e da una riproduzione
+della sola logica dello script, non da un log di quella corsa. Sei previsioni su sette hanno
 tenuto, la quarta a metà (figura~\ref{fig:compromesso}).
 
 \input{figure/compromesso}
@@ -624,7 +630,7 @@ CPU già a quattro client. La memoria sotto carico è di al massimo 1.584~MB per
 Elasticsearch e 199 per Koskidex, a riposo 1.607 e 144. Tre previsioni su
 quattro hanno tenuto; ha sbagliato quella sui tempi assoluti. Non ho misurato
 quanto pesino il core, Windows e la rete ciascuno: i tempi assoluti dipendono
-dalla macchina, il rapporto fra i motori no.
+dalla macchina, mentre il rapporto fra i motori è simile sulle due che ho provato.
 
 \section{Dove un motore piccolo è competitivo, e dove no}\label{sec:competitivo}
 
@@ -678,7 +684,8 @@ aperte resta non misurata con giudizi umani.
 
 Per un documentale come questo, l'archivio di un ente con qualche decina di
 migliaia di atti su un server solo, un motore piccolo è una scelta ragionevole:
-costa un decimo della memoria, risponde in meno di un millisecondo, e la
-pertinenza dipende dalle impostazioni più che dal motore. Oltre i centomila
+a 10.018 atti e senza vettori costa un decimo della memoria e risponde in meno di
+un millisecondo (con i vettori, P4, circa 42~ms); le misure arrivano a centomila
+atti copiati, e la pertinenza sembra dipendere dalle impostazioni più che dal motore. Oltre i centomila
 documenti, o dove servono più server, no, almeno finché l'indice non diventa
 più compatto.

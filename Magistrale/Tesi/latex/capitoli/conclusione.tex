@@ -7,7 +7,7 @@ tutte e quattro hanno una risposta misurata; per la pertinenza sulle ricerche
 scritte da persone la risposta viene dalle known-item umane del
 capitolo~\ref{chapter:confronto}.
 
-\paragraph{I difetti di Koskidex.} Dei quattro difetti di Koskidex, quello che
+\paragraph{I difetti di Koskidex.} Dei quattro difetti principali di Koskidex, quello che
 viene prima di tutti non era fra i tre sospettati leggendo il codice. Il recupero congiuntivo
 lasciava a vuoto 290 query di SciFact su 300: correggerlo porta il nDCG@10 da
 0,0246 a 0,4936, e solo dopo ha senso parlare di punteggio. BM25 lo porta a
@@ -39,7 +39,7 @@ documenti amministrativi italiani.
 \paragraph{Una configurazione per tutto.} Senza vettori non c'è. Il recupero congiuntivo è giusto
 per le ricerche identificative e disastroso per le frasi; le vie di mezzo di
 Lucene ed Elasticsearch non reggono tutte e due; il peso giusto del vettore
-dipende dal tipo di query. Sceglierlo con una regola di una riga, \emph{recupero
+sembra dipendere dal tipo di query. Sceglierlo con una regola di una riga, \emph{recupero
 congiuntivo e vettore leggero se la query ha una cifra e il congiuntivo trova
 qualcosa}, vale +0,023 di nDCG@10 medio sulla migliore configurazione fissa. Se la
 regola riconosca il tipo di query o la collezione, su questi dati non si può dire,
@@ -72,8 +72,9 @@ vettori 0,613, e l'atto è fra i primi dieci nell'86\% delle ricerche. Il limite
 che resta a Documentale è il recupero congiuntivo senza vettori che ha scelto,
 non il motore.
 Due risultati sono andati contro le attese: sugli atti di Crispiano il testo
-intero ritrova l'atto peggio della scheda, e leggere più testo nei vettori
-peggiora invece di migliorare.
+intero, con il recupero disgiuntivo, ritrova l'atto peggio della scheda (con il
+congiuntivo aiuta), e nei vettori leggere più testo sembra peggiorare invece di
+migliorare (su 50 query, senza intervallo).
 
 \section{Limiti}\label{sec:limiti}
 

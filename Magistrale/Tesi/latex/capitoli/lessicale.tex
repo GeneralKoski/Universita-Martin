@@ -298,7 +298,7 @@ numero, e 35 di questi ripetono il nome del comune più dell'atto giusto; solo i
 contributi, e un atto con il solo nome del comune, ripetuto, supera uno che ha
 numero e comune una volta sola. L'euristico non ci cade perché mette prima chi ha
 tutti i termini. Con il recupero congiuntivo BM25 fa 0,960, e col prefisso spento
-0,976, cioè quanto l'euristico: \textbf{sulle known-item BM25 non è peggio
+0,976, cioè quanto l'euristico: \textbf{sulle known-item, con il prefisso spento, BM25 non è peggio
 dell'euristico, lo è il recupero disgiuntivo}. Il confronto 0,709 contro 0,975
 era in realtà fra un recupero disgiuntivo e uno congiuntivo.
 
@@ -332,8 +332,9 @@ prima di misurare (tabella~\ref{tab:intermedio}):
 \end{table}
 
 Due previsioni su cinque hanno tenuto. \texttt{minimum\_should\_match} è
-inservibile su tutte e tre: lascia a vuoto 169 query di SciFact e 100 di NFCorpus,
-e sulle known-item da tre termini in su ne lascia cadere uno, spesso il numero. Un
+pessimo sulle frasi: lascia a vuoto 169 query di SciFact e 100 di NFCorpus, e
+sulle known-item, dove pure fa meglio del disgiuntivo (0,889 contro 0,833), da
+tre termini in su ne lascia cadere uno, spesso il numero. Un
 vincolo sul numero di termini che va bene per due parole è sbagliato per dodici.
 La coordinazione è il compromesso migliore, perché chiude quasi tutto il divario
 sulle known-item senza togliere documenti, ma costa 0,027 su SciFact e 0,011 su

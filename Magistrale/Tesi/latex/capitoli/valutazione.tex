@@ -28,8 +28,9 @@ default si decidono alla fine, tutti insieme.
 \paragraph{Il baseline congelato.} Il comportamento di Koskidex del 23 settembre
 2026 è fissato in un test, \texttt{TestBaselineRankingIsFrozen}, che confronta gli
 ordinamenti di un corpus di prova con quelli registrati. Deve passare a ogni
-commit, con le impostazioni predefinite e senza che il test venga toccato: è la
-prova che nessuna correzione ha cambiato il punto di partenza di nascosto. Il
+commit, con le impostazioni predefinite e senza che il test venga toccato: è il
+controllo che nessuna correzione ha cambiato il punto di partenza di nascosto
+(lo lancio io prima di ogni commit, non è automatico). Il
 test è stato toccato una volta sola, tre minuti dopo il congelamento, per
 aggiungere il caso di due atti a pari punteggio, che lo spareggio per
 identificativo aveva appena reso deterministico (appendice~\ref{chapter:appendice-ipotesi}).
@@ -116,9 +117,14 @@ chiunque legga la tesi. Due fonti, verificate scaricandole il 23 settembre 2026:
         ottico: di solito da tre a sei pagine, con una mediana di 7.900 caratteri,
         otto atti su dieci fra 4.800 e 13.800 e cinque oltre i 30.000;
   \item \textbf{Regione Friuli Venezia Giulia}, API Socrata, licenza IODL 2.0:
-        9.457 atti dal 2011 (9.455 nel corpus indicizzato), di 171 enti e 46 tipologie, con ente, tipologia,
+        9.457 righe dal 2011, di 171 enti e 46 tipologie, con ente, tipologia,
         ufficio, oggetto e numero, ma senza testo integrale. I 171 enti si
-        comportano come i clienti di un documentale condiviso.
+        comportano come i clienti di un documentale condiviso. Due atti (uno del Comune
+        di Dogna e uno del Comune di Comeglians) compaiono due volte nella fonte, con
+        stessi ente, tipologia, numero, data di inizio e oggetto e diversi solo per la
+        data di fine pubblicazione: ricevono lo stesso identificativo e l'importazione
+        li fonde in un solo documento. Gli atti distinti sono 9.455, che con i 563 di
+        Crispiano fanno i 10.018 documenti del corpus.
 \end{itemize}
 Scartato AlboPOP, il progetto che converte gli albi in feed comuni: dei 215 feed
 schedati ne rispondono 105, e scaricando a campione gli allegati ne arrivano 3 su

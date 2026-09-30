@@ -286,7 +286,7 @@ Dai tre esperimenti del 29/09 (`profilo-completo`, `es-corretto`,
 - [x] `profilo-completo`, la cache dei vettori: controllata il 29/09 con
       `cache-vettori.sh`. Indicizzare P4 costa 499,6 s senza cache e 2,7 s con
       i vettori già calcolati; i 476,7 s di P4 sono senza cache, la copia da P3
-      non ha avuto effetto in quella corsa e non so perché. In tesi sta in 8.2.
+      non ha avuto effetto in quella corsa per un difetto di `esegui.sh` (cache vuota copiata da P0, vedi il README, nota del 30/09). In tesi sta in 8.2.
 - [x] `es-corretto` (`105143Z_esito.json`): scritto il 29/09 in 8.2 (tabella
       `tab:es-corretto`), 8.4, 6.5, 9.1, introduzione e registro (5 previsioni).
 - [x] `riordino-corto` (`121254Z_esito.json`): scritto il 29/09 in 8.2 e
