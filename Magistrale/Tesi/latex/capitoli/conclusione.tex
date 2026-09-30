@@ -115,6 +115,15 @@ migliorare (su 50 query, senza intervallo).
         dipendere anche da questo. E sulle known-item umane non ho verificato che
         l'atto di partenza sia l'unico pertinente: altri atti equivalenti
         abbasserebbero l'MRR@10.
+  \item \textbf{L'interfaccia non mostra l'ordine di rilevanza, e l'unione non ha
+        soglia.} Le misure leggono gli identificativi nell'ordine in cui il motore
+        li restituisce. L'app, però, li usa come un filtro e riordina per nome
+        (\texttt{see-all}) o per data di modifica (\texttt{ai-search}), quindi
+        in interfaccia il vantaggio di P4 sulle prime posizioni non si vede. E
+        l'unione porta sempre i cento vettori più vicini, senza soglia di
+        similarità: provando a mano, una query senza senso torna comunque cento
+        documenti con P4, contro nessuno con Elasticsearch. L'MRR@10 non ne risente,
+        ma per l'utente l'elenco non è più un filtro.
   \item \textbf{Le date non sono misurate su Elasticsearch.} Il difetto delle
         date è misurato con Koskidex piatto come sostituto, non sull'indice di
         produzione; lo stesso sostituto ha sbagliato per gli importi
