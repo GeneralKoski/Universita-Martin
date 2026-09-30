@@ -38,9 +38,9 @@ basta mettere i file nelle cartelle indicate e dirlo.
       c10, c19, c21). Kappa pesato 0,370: i giudizi del modello non bastano da
       soli, e il 28/09 Martin ha deciso di **non giudicare il resto del pool**:
       il capitolo 8 si regge sulle known-item umane.
-- [ ] **Confermare la configurazione consigliata** (`KOSKIDEX_PROFILO=consigliata`
-      in Documentale): nessun default cambia, il profilo accende le tre
-      correzioni del capitolo 6. Da confermare con il relatore.
+- [x] **Configurazione consigliata** (`KOSKIDEX_PROFILO=consigliata` in
+      Documentale): nessun default cambia, il profilo accende le tre correzioni
+      del capitolo 6. Deciso da Martin il 30/09, senza aspettare il relatore.
 - [ ] **Dicembre 2026**: riproporre la tesi a Bonnici e Dal Palù, a progetti
       d'esame consegnati. Portare il PDF e le domande: cosa considerano un
       contributo sufficiente, che dimensione si aspettano, se va bene un corpus
@@ -59,10 +59,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       `ai-search` per data, perdendo l'ordine di rilevanza: corretto in
       Documentale (commit con `SearchRelevanceOrderTest`), come il bug per cui
       un risultato vuoto in `see-all` mostrava tutto.
-- [ ] **Profilo consigliato: P4** (deciso il 30/09, da confermare col relatore).
-      Dall'app P4 (recupero congiuntivo, vettori a peso 10) fa 0,607 sulle umane
-      contro 0,432 del profilo attuale e 0 ricerche a vuoto contro il 29,8%, ma
-      costa circa 42 ms a ricerca e un servizio Ollama; il profilo attuale non li ha.
+- [x] **Profilo raccomandato: P4** (deciso da Martin il 30/09). Dall'app P4
+      (recupero congiuntivo, vettori a peso 10) fa 0,607 sulle umane contro
+      0,432 del profilo attuale e 0 ricerche a vuoto contro il 29,8%, al prezzo
+      di circa 42 ms a ricerca e un servizio Ollama. Scritto in 9.3.
 
 ## Da fare poi (Claude), quando arrivano le cose di Martin
 
