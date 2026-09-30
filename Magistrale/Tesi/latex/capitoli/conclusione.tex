@@ -164,16 +164,16 @@ migliorare (su 50 query, senza intervallo).
 \section{Sviluppi futuri}\label{sec:sviluppi}
 
 \begin{itemize}
-  \item \textbf{Il recupero congiuntivo di Documentale.} Sulle query scritte da
-        persone è il limite che resta dopo il profilo consigliato, e il
-        capitolo~\ref{chapter:confronto} lo ha misurato dentro l'app come
-        profilo intero: il recupero disgiuntivo non si può adottare, perché
-        fa crollare le ricerche per numero d'atto, e l'unione con i vettori a
-        peso 10 dà 0,607 senza toccarle. Resta da decidere se il costo, un
-        servizio Ollama e otto minuti di indicizzazione senza cache, sia accettabile per un
-        documentale. Stopword e stemmer italiani, che sul congiuntivo tolgono
-        7,7 punti di ricerche a vuoto, non sono ancora stati misurati dentro
-        l'app.
+  \item \textbf{Stopword e stemmer italiani nel recupero congiuntivo.} Sulle
+        query scritte da persone il recupero congiuntivo è il limite che resta
+        dopo il profilo consigliato. Il capitolo~\ref{chapter:confronto} lo ha
+        misurato dentro l'app come profilo intero: il recupero disgiuntivo non
+        si può adottare, perché fa crollare le ricerche per numero d'atto, e
+        l'unione con i vettori a peso 10 (P4) dà 0,607 senza toccarle. È il
+        profilo che raccomando, al prezzo di un servizio Ollama e di otto minuti
+        di indicizzazione senza cache. Stopword e stemmer italiani, che sul
+        congiuntivo tolgono 7,7 punti di ricerche a vuoto, non sono ancora stati
+        misurati dentro l'app.
   \item \textbf{Più query scritte da persone}, e più persone: con 104 query una
         differenza di MRR@10 di 0,071 o meno non si distingue dallo zero
         (tabella~\ref{tab:intervalli}), e le ricerche con un numero mancano quasi del
