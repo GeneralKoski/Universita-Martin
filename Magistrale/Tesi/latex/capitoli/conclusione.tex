@@ -115,15 +115,11 @@ migliorare (su 50 query, senza intervallo).
         dipendere anche da questo. E sulle known-item umane non ho verificato che
         l'atto di partenza sia l'unico pertinente: altri atti equivalenti
         abbasserebbero l'MRR@10.
-  \item \textbf{L'unione non ha una soglia di similarità.} L'unione porta sempre i
-        cento vettori più vicini: provando a mano nell'app, una query senza
-        senso torna comunque cento documenti con P4, contro nessuno con
-        Elasticsearch. L'MRR@10 non ne risente, ma per l'utente l'elenco non è più
-        un filtro. Provando P4 a mano ho anche visto che l'app riordinava i
-        risultati per nome (\texttt{see-all}) o per data (\texttt{ai-search}),
-        perdendo l'ordine di rilevanza del motore; l'ho corretto in Documentale
-        (30 settembre), dopo le misure, che leggono gli identificativi
-        nell'ordine del motore e non ne sono toccate.
+  \item \textbf{L'app riordinava i risultati.} Provando P4 a mano ho visto che
+        l'app riordinava i risultati per nome (\texttt{see-all}) o per data
+        (\texttt{ai-search}), perdendo l'ordine di rilevanza del motore; l'ho
+        corretto in Documentale (30 settembre), dopo le misure, che leggono gli
+        identificativi nell'ordine del motore e non ne sono toccate.
   \item \textbf{Le date non sono misurate su Elasticsearch.} Il difetto delle
         date è misurato con Koskidex piatto come sostituto, non sull'indice di
         produzione; lo stesso sostituto ha sbagliato per gli importi

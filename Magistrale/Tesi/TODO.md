@@ -64,12 +64,10 @@ basta mettere i file nelle cartelle indicate e dirlo.
       `ai-search` per data, perdendo l'ordine di rilevanza: corretto in
       Documentale (commit con `SearchRelevanceOrderTest`), come il bug per cui
       un risultato vuoto in `see-all` mostrava tutto.
-- [ ] **Soglia di similarità nell'unione**: con P4 una query senza senso torna
-      100 documenti (Elasticsearch: 0). Sarebbe un altro esperimento, con
-      previsioni scritte prima. Scritto fra i limiti della conclusione.
-- [ ] **Profilo consigliato: P4 o l'attuale?** Dall'app P4 (recupero congiuntivo,
-      vettori a peso 10) fa 0,607 sulle umane e 0,956 sui numeri, ma costa circa
-      42 ms a ricerca e un servizio Ollama; il profilo consigliato non li ha.
+- [ ] **Profilo consigliato: P4** (deciso il 30/09, da confermare col relatore).
+      Dall'app P4 (recupero congiuntivo, vettori a peso 10) fa 0,607 sulle umane
+      contro 0,432 del profilo attuale e 0 ricerche a vuoto contro il 29,8%, ma
+      costa circa 42 ms a ricerca e un servizio Ollama; il profilo attuale non li ha.
 
 ## Da fare poi (Claude), quando arrivano le cose di Martin
 
