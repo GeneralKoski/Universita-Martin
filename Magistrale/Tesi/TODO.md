@@ -52,9 +52,12 @@ basta mettere i file nelle cartelle indicate e dirlo.
       in un sistema di gestione documentale"), relatore (Dal Palù, da
       riconfermare a dicembre), citazione (Feynman, *Cargo Cult Science*, 1974,
       verificata sul testo di Caltech) e dedica ("Alla mia famiglia").
-- [ ] **Refusi**: nell'ambiente di Claude non c'è un dizionario italiano, quindi
-      il controllo ortografico automatico non è stato fatto. Uno spellcheck tuo
-      sul PDF, oltre alla rilettura.
+- [x] **Refusi** (30/09): spellcheck italiano fatto con hunspell e il dizionario
+      it_IT di LibreOffice (in `~/Library/Spelling`), sui sorgenti TeX e sul PDF.
+      Nessun refuso: restano solo termini tecnici, inglesi ed esempi voluti
+      (`manutenzone`, `identita`, `atre`). Nessuna parola ripetuta, nessun
+      accento mancante. I ringraziamenti sono ancora "Da scrivere.", quindi da
+      ricontrollare quando li scrivi. Resta la tua rilettura.
 - [x] **Provando P4 a mano nell'app (30/09)**: `see-all` riordinava per nome e
       `ai-search` per data, perdendo l'ordine di rilevanza: corretto in
       Documentale (commit con `SearchRelevanceOrderTest`), come il bug per cui
