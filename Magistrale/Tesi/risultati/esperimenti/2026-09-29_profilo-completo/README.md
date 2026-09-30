@@ -158,13 +158,13 @@ la prima volta 499,6 s, la seconda, con i vettori già in `embeddings.jsonl`
 (10.017 righe all'avvio, dal log della prova, non archiviato), **2,7 s**. La
 cache quindi funziona, e i 476,7 s di P4 sono il costo senza cache: nella
 corsa di `esegui.sh` la copia da P3 non ha avuto effetto. *Nota del 30/09/2026,
-dal codice e non da un log di quella corsa (lo script cancella la sua cartella
+dal codice e da una simulazione della sola logica dello script in shell, non da un log di quella corsa (lo script cancella la sua cartella
 di lavoro): Koskidex crea `embeddings.jsonl`, vuoto, a ogni avvio, anche per i
 profili senza embedder (`main.go:101`, `internal/embedder/cache.go:39`); la
 riga 67 di `esegui.sh` copia nella cartella comune il file di un profilo solo
 se quella non ha già un `embeddings.jsonl`, e dopo P0 ne ha uno, vuoto; il file
 pieno di P3 non la sostituisce, e la riga 58 lo copia vuoto in `dati-P4`. Una
-riesecuzione con `esegui.sh P0 P3 P4` dovrebbe portare P4 a circa 3 s; con `[ -s ]`
+riesecuzione con `esegui.sh P3 P4` (senza P0 davanti) dovrebbe portare P4 a circa 3 s, mentre con `P0 P3 P4` il difetto si ripete finché lo script non usa `[ -s ]`; con `[ -s ]`
 invece di `[ -e ]` alle righe 58 e 67 lo script sarebbe corretto. Lo script è
 rimasto com'era, perché ha prodotto questi dati.* Il
 costo di indicizzare con i vettori già calcolati è quello della seconda

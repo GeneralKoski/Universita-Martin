@@ -147,7 +147,7 @@ bilancio di previsione 2026": 20,6 ms contro 16,6).
 | 32 | 559,4 | 103,1 | 647,2 | 214,6 |
 
 Tutti e due saturano le 4 CPU (Elasticsearch al 385-390%, Koskidex al
-375-382%). Con un client solo Koskidex usa già il 116% di CPU: più di un core
+377-382%). Con un client solo Koskidex usa già il 116% di CPU: più di un core
 per una ricerca alla volta. Koskidex nativo, sugli 8 core del Mac divisi con il
 client, arriva a 975 ricerche al secondo.
 

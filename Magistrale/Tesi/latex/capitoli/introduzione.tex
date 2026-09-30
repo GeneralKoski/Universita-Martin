@@ -43,6 +43,9 @@ interroga Documentale in produzione.
   correggendoli uno alla volta?}
 \end{quote}
 
+La pertinenza si misura sul ritrovamento di un atto noto (\emph{known-item}); sulle
+ricerche aperte non c'è un giudizio umano affidabile (sezione~\ref{sec:limiti}).
+
 La domanda si articola in quattro:
 \begin{enumerate}
   \item quanto pesano, misurati, i difetti del recupero di Koskidex: i tre che la
@@ -86,7 +89,8 @@ La domanda si articola in quattro:
         Documentale, scelto da una variabile d'ambiente, che restituisce gli
         stessi insiemi di Elasticsearch su tutte le query del confronto
         (capitolo~\ref{chapter:sistemi}), con una mediana di 2,7~ms per ricerca
-        contro 22, su due motori che non girano alla pari.
+        contro 22, su due motori che non girano alla pari (alla pari: 0,9 contro 6,3~ms di
+        mediana, sezione~\ref{sec:latenza}).
   \item \textbf{Un corpus pubblico di dominio}: 10.018 atti degli albi pretori
         comunali, riscaricabili da chiunque, con 300 query known-item generate e
         104 scritte da tre persone con un protocollo fissato prima della
@@ -95,7 +99,7 @@ La domanda si articola in quattro:
         known-item umane Koskidex innestato con il profilo consigliato fa
         0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, e lascia a
         vuoto il 30\% delle ricerche contro il 46\%. Con le stesse correzioni anche
-        Elasticsearch arriva a 0,449, e su 104 ricerche i due non si
+        Elasticsearch arriva a 0,449, e su 104 ricerche per contenuto i due non si
         distinguono: il vantaggio è compatibile con stare nelle impostazioni,
         non nel motore. Dall'app, il profilo che tiene insieme le ricerche per
         contenuto e quelle per numero, con il recupero congiuntivo e i vettori,
@@ -118,13 +122,14 @@ nell'appendice~\ref{chapter:appendice-ipotesi}. Prima una domanda e un
 metodo; poi le previsioni, con una soglia numerica, committate prima di lanciare
 la misura e spesso prima di scrivere il codice; poi la misura, da codice
 committato, in un file che non si sovrascrive; poi l'esito, previsione per
-previsione. Quello che si aggiunge dopo aver visto un numero lo si dichiara.
+previsione. Quello che si aggiunge dopo aver visto un numero lo si dichiara, e le eccezioni
+sono nella sezione~\ref{sec:limiti}.
 
 Serve a una cosa: che un risultato non sia stato scelto dopo averlo visto. E ha un
 effetto collaterale che non avevo previsto: le previsioni sbagliate sono state le
 più utili. Che le stopword valessero più dello stemmer, che le espansioni per
 prefisso non fossero rare nemmeno sulle query in inglese, che la costante della
-fusione non dipendesse dalla lunghezza delle query ma dal tipo: ognuna di queste
+fusione non dipendesse dalla lunghezza delle query ma sembrasse dipendere dal tipo: ognuna di queste
 ha smentito una previsione, ed è scritta come tale.
 
 \section{Struttura della tesi}\label{sec:struttura}

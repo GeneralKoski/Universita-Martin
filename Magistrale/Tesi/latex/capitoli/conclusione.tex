@@ -3,9 +3,10 @@
 \section{Le risposte alla domanda}\label{sec:risposte}
 
 La domanda (sezione~\ref{sec:domanda}) si articolava in quattro parti, e
-tutte e quattro hanno una risposta misurata; per la pertinenza sulle ricerche
-scritte da persone la risposta viene dalle known-item umane del
-capitolo~\ref{chapter:confronto}.
+tutte e quattro hanno una risposta misurata sul ritrovamento di un atto noto
+(known-item); per le ricerche scritte da persone la risposta viene dalle
+known-item umane del capitolo~\ref{chapter:confronto}, e sulle ricerche aperte la
+pertinenza resta non misurata con giudizi umani.
 
 \paragraph{I difetti di Koskidex.} Dei quattro difetti principali di Koskidex, quello che
 viene prima di tutti non era fra i tre sospettati leggendo il codice. Il recupero congiuntivo
@@ -16,8 +17,9 @@ frequenza del termine trovato, a 0,6694; con le stopword Koskidex arriva a
 0,6757, il 99,5\% del riferimento di Lucene, e su NFCorpus al 95\%. Sui vettori, il
 re-ranking vale due punti con il recupero disgiuntivo; con quello congiuntivo di
 Documentale non vale niente, e l'unione dei candidati vale +0,62 su SciFact. La
-costante della fusione era otto volte troppo bassa per le query in lingua naturale
-e giusta, per caso, per quelle identificative.
+costante della fusione sembra otto volte troppo bassa per le query in lingua naturale
+e giusta per quelle identificative (nei dati il tipo di query coincide con la
+collezione).
 
 \paragraph{I difetti di Documentale.} La ricerca di produzione ha quattro difetti
 che colpiscono le ricerche più ordinarie: un numero d'atto trova gli atti con un
@@ -28,11 +30,11 @@ dell'atto non lo trova quasi mai. Con Koskidex innestato e tre impostazioni, rac
 profilo (per le ricerche per numero e comune ne bastano due), l'atto giusto passa dall'1,3\% al 91,7\% di prime posizioni sulle
 ricerche per numero e comune, e le parole introvabili dal 40,3\% allo 0,4\% degli
 atti; con un'impostazione per le date, misurata anche dall'app, una data si
-trova in qualunque formato. Gli importi, nell'app, si trovano già fra formati,
+trova in ognuno dei formati provati (98-100\% entro i primi dieci). Gli importi, nell'app, si trovano già fra formati,
 ma per un refuso ammesso che fa combaciare anche importi diversi: negare i
 refusi agli importi, come ai numeri d'atto, e togliere i punti delle migliaia
-dà l'importo giusto in qualunque formato, e in 102 query su 104 soltanto quello.
-Quasi nessuno dei quattro è un errore di programmazione: sono impostazioni
+dà l'importo giusto nei formati provati, e le 104 query degli importi tornano 106 risultati in tutto, quasi sempre soltanto quello.
+Quasi nessuno dei quattro è un errore di programmazione (l'eccezione è nella sezione~\ref{sec:numero-atto}): sono impostazioni
 ragionevoli di un motore generico, che si rompono su proprietà precise dei
 documenti amministrativi italiani.
 
@@ -42,9 +44,11 @@ Lucene ed Elasticsearch non reggono tutte e due; il peso giusto del vettore
 sembra dipendere dal tipo di query. Sceglierlo con una regola di una riga, \emph{recupero
 congiuntivo e vettore leggero se la query ha una cifra e il congiuntivo trova
 qualcosa}, vale +0,023 di nDCG@10 medio sulla migliore configurazione fissa. Se la
-regola riconosca il tipo di query o la collezione, su questi dati non si può dire,
+regola riconosce il tipo di query o la collezione, su questi dati non si può dire,
 e le query umane non lo decidono: solo 4 su 104 hanno una cifra; su quelle quattro la regola fa 0,021 di
-nDCG@10 più di sempre A, e su tutte le 104 solo 0,0008.
+nDCG@10 più di sempre A (BM25 disgiuntivo con i vettori), e su tutte le 104 solo 0,0008. Con i vettori, del resto, un solo profilo fisso (P4,
+recupero congiuntivo e peso 10) tiene insieme le ricerche per contenuto e quelle
+per numero (0,607 e 0,956).
 
 \paragraph{Il confronto con Elasticsearch.} Nella stessa macchina virtuale, con
 le stesse CPU e le richieste dell'app, Koskidex risponde in 0,9~ms di p50
@@ -58,19 +62,19 @@ Il limite è la memoria: a centomila documenti è quasi quella di
 Elasticsearch. Sulle 104 ricerche scritte da persone Koskidex innestato fa
 0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, con una differenza
 di 0,106 il cui intervallo al 95\% va da 0,035 a 0,184, e lascia a vuoto
-tre ricerche su dieci invece di quasi una su due: il campo unico sembra pesare
-anche su chi cerca per argomento. Con le stesse correzioni anche
+tre ricerche su dieci invece di quasi una su due: le correzioni di campo e di
+elisione, insieme, sembrano pesare anche su chi cerca per argomento. Con le stesse correzioni anche
 Elasticsearch arriva a 0,449, e su 104 ricerche i due non si distinguono: sulle
 ricerche per contenuto il vantaggio è compatibile con stare nelle impostazioni,
 non nel motore. Il margine più grande sta nel recupero e nei
 vettori. Dall'app, il recupero disgiuntivo porta le ricerche scritte da persone
-a 0,502 ma fa crollare quelle per numero e comune a 0,147, e solo il recupero
+a 0,502 ma fa crollare quelle per numero e comune a 0,147, e fra i cinque profili provati solo il recupero
 congiuntivo con i vettori a peso 10 tiene insieme le due cose, con 0,607 e 0,956,
 al prezzo di circa 42~ms a ricerca e di otto minuti per indicizzare i 10.018
 atti, se i vettori non sono già in cache. Fuori dall'app, lo stesso motore in recupero disgiuntivo fa 0,559 e con i
 vettori 0,613, e l'atto è fra i primi dieci nell'86\% delle ricerche. Il limite
 che resta a Documentale è il recupero congiuntivo senza vettori che ha scelto,
-non il motore.
+non il motore; Elasticsearch con i vettori non l'ho misurato.
 Due risultati sono andati contro le attese: sugli atti di Crispiano il testo
 intero, con il recupero disgiuntivo, ritrova l'atto peggio della scheda (con il
 congiuntivo aiuta), e nei vettori leggere più testo sembra peggiorare invece di
@@ -88,7 +92,7 @@ migliorare (su 50 query, senza intervallo).
         qualcosa di quelle. L'intervallo al 95\% attorno a una media di MRR@10 è
         largo da 0,075 a 0,088 in più o in meno, e delle 18 differenze accoppiate
         misurate (tabella~\ref{tab:intervalli}) quelle di 0,071 o meno includono
-        lo zero: fra queste A sopra LA, con 0,054.
+        lo zero: fra queste A sopra LA (BM25 disgiuntivo, senza vettori), con 0,054.
   \item \textbf{L'ordine delle previsioni.} Ogni previsione è committata prima
         della misura, ma non sempre prima di ogni dato: quelle del riordino (4 e
         5), del giudice e dei tre esperimenti aggiunti a raccolta chiusa sono
@@ -115,8 +119,8 @@ migliorare (su 50 query, senza intervallo).
         scelta per tipo di query, e la ragione per cui resta fuori dal motore.
   \item \textbf{I giudizi del pool.} Bisogni e giudizi del pool li ha dati un
         modello linguistico, e con il mio campione l'accordo è modesto (kappa
-        pesato 0,370): il pool non regge da solo un confronto, e il capitolo
-        finale si regge sulle known-item umane. Un kappa basso con un solo
+        pesato 0,370): il pool non regge da solo un confronto, e il capitolo~\ref{chapter:confronto}
+        si regge sulle known-item umane. Un kappa basso con un solo
         annotatore umano non dice chi dei due ha ragione, e i bisogni scritti
         dallo stesso modello che giudica lo rendono difficile da leggere.
   \item \textbf{Il richiamo del pool è un limite superiore.} I documenti pertinenti
@@ -159,8 +163,8 @@ migliorare (su 50 query, senza intervallo).
         tutto.
   \item \textbf{Un secondo stadio di riordino.} Il capitolo~\ref{chapter:confronto}
         misura fuori linea quanto vale riordinare i primi cento candidati con un
-        \emph{cross-encoder}: il re-ranking funziona se è progettato come
-        stadio, con pochi candidati e un modello preciso. Portarlo nell'app
+        \emph{cross-encoder}: il re-ranking, con questo modello, funziona se è progettato come
+        stadio, con pochi candidati. Portarlo nell'app
         vuol dire un servizio a parte, non dentro Koskidex, che resterebbe
         senza dipendenze, e un costo da abbattere: 5-12 secondi a query sul Mac con
         cento candidati. Con venti sono circa 1,2 secondi sulle schede e il

@@ -111,10 +111,10 @@ cartelle è diversa: un \texttt{match} con refusi sul percorso, in disgiunzione,
 unito a un \emph{wildcard} \texttt{*termine*}.
 
 \paragraph{Il recupero è congiuntivo anche qui.} Koskidex ed Elasticsearch, in
-due basi di codice indipendenti, arrivano alla stessa scelta per la stessa
-ragione: in una barra di ricerca, chi scrive due parole si aspetta documenti che
+due basi di codice indipendenti, arrivano alla stessa scelta, e la ragione plausibile è la stessa:
+in una barra di ricerca, chi scrive due parole si aspetta documenti che
 le contengano tutte e due. È la scelta che il capitolo~\ref{chapter:lessicale}
-misura come difetto 0 quando le query si allungano.
+misura come difetto 0 (il recupero congiuntivo) quando le query si allungano.
 
 \paragraph{Il corpus.} Documentale non ha più un archivio di clienti: Dieffetech
 lo ha abbandonato nel settembre 2026, e con lui il progetto Elasticsearch in
@@ -230,7 +230,8 @@ motore solo (tabella~\ref{tab:divergenza}).
 Ciascuna è diventata un'impostazione di Koskidex, spenta per default.
 
 \paragraph{Due ipotesi sbagliate, e un difetto di Koskidex.} Dopo il quarto passo
-restavano 9 query diverse, con 42 documenti trovati solo da Elasticsearch, tutti
+restavano 9 query diverse, con 42 documenti trovati solo da Elasticsearch (prima
+della correzione dei bigrammi, non nella tabella), tutti
 sulla query \texttt{ordinanza 187}. Le due spiegazioni scritte allora
 erano plausibili e sbagliate tutte e due. La prima era la tokenizzazione dei
 numeri. La seconda era il limite di espansioni dei refusi di Elasticsearch
@@ -284,7 +285,7 @@ Documentale, e le 24 query tre volte per motore (tabella~\ref{tab:innesto}).
 I tempi vanno letti come ordini di grandezza, per due ragioni: Elasticsearch
 gira nella macchina virtuale di Docker e Koskidex nativo, e tutti e due i tempi
 comprendono il viaggio HTTP da PHP. Quello che dicono è che, su un archivio di
-diecimila atti, il motore piccolo non costa di più. Il confronto alla pari,
+diecimila atti, il motore piccolo non costa di più in ricerca. Il confronto alla pari,
 con i due motori nella stessa macchina virtuale, sotto carico e su archivi più
 grandi, è nella sezione~\ref{sec:latenza}.
 

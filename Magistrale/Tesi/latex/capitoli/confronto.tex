@@ -62,7 +62,7 @@ loro si confrontano alla pari, con ES e KC solo nell'ordine di grandezza.
 \textbf{RR-LA} e \textbf{RR-A} sono i primi cento di LA e di A riordinati da un
 cross-encoder multilingue (\texttt{bge-reranker-v2-m3}), che legge query e
 documento insieme e costa secondi a query (5-12 sul Mac su cui sono fatte le
-altre misure, meno su una scheda grafica) (\texttt{2026-09-28\_reranker}, \texttt{reranker-gpu}). Dicono quanto vale, al massimo, riordinare
+altre misure, meno su una scheda grafica) (\texttt{2026-09-28\_reranker}, \texttt{reranker-gpu}). Dicono quanto vale, per questo cross-encoder e questi primi stadi, riordinare
 quello che il lessicale trova. Lo stesso riordino sui primi venti e sui primi
 trenta candidati, invece di cento, dice quanto del tetto resta con un costo
 minore (\texttt{riordino-corto}). La figura~\ref{fig:flusso} mostra dove le
@@ -132,7 +132,8 @@ una parola del testo. ES va a vuoto nel 46,2\% delle query e trova l'atto fra i
 primi dieci nel 42,3\%; KC, con le parole libere di stare in campi diversi e
 l'elisione, va a vuoto nel 29,8\% e fa 0,106 di MRR@10 sopra ES, 0,432 contro
 0,326. Le due previsioni hanno tenuto, la seconda di poco sulla soglia di
-0,10: il campo unico sembra pesare anche sulle ricerche per contenuto. Ma
+0,10: le correzioni di campo e di elisione, insieme, sembrano pesare anche sulle
+ricerche per contenuto; il contributo del solo campo unico non l'ho isolato. Ma
 KC resta molto sotto le configurazioni piatte con il recupero disgiuntivo, e
 tre ricerche su dieci tornano ancora vuote: il profilo consigliato corregge i
 campi, non il recupero congiuntivo senza vettori di produzione, che sulle frasi
@@ -201,7 +202,7 @@ recupero congiuntivo e quasi non toccano il disgiuntivo
 \end{table}
 
 \paragraph{Il profilo completo, dall'app.} Le date e gli importi normalizzati
-(P1) non toccano le query umane, come previsto, e portano le date da 0,315 a
+(P1, tabella~\ref{tab:profili-app}) non toccano le query umane, come previsto, e portano le date da 0,315 a
 0,979 e gli importi da 0,917 a 0,990. Il recupero disgiuntivo (P2) porta le
 umane a 0,502, senza ricerche a vuoto, ma fa crollare le ricerche per numero e
 comune a 0,147 e le date a 0,478: avevo previsto un calo di almeno 0,03, ed è
@@ -297,7 +298,7 @@ un tetto, non una configurazione da mettere in produzione.
 0,624 (0,633 con cento), A a 0,643 (0,641) e LA sulle ricerche
 \texttt{<numero> <comune>} a 0,949 (0,953), in circa un quarto del tempo: 1,2-1,3
 secondi di mediana sulle umane, contro 5,3-5,9. Con trenta candidati sono 0,629,
-0,639 e 0,960, cioè le automatiche appena sopra il recupero congiuntivo (0,9603 contro 0,9596).
+0,639 e 0,960, cioè le automatiche pari al recupero congiuntivo (0,9603 contro 0,9596).
 Il guadagno sta quasi tutto nei primi venti; il primo stadio ha già l'atto lì
 nell'83\% delle query con LA e nel 91\% con A, e dove non c'è il riordino non lo
 recupera. Le cinque previsioni hanno tenuto. Un
@@ -320,7 +321,7 @@ scheda grafica non sono stati misurati insieme.
 \paragraph{Quanto pesano 104 query.} Le differenze della
 tabella~\ref{tab:known-item-umane} vanno lette con l'incertezza di 104 query.
 Un intervallo al 95\% attorno a una singola media di MRR@10 è largo, per ogni
-configurazione, da 0,075 a 0,088 in più o in meno, quindi le medie
+configurazione, da 0,075 a 0,088 in più o in meno (figura~\ref{fig:mrr-umane}), quindi le medie
 di configurazioni vicine si sovrappongono; ma le configurazioni vedono le
 stesse query, e la differenza accoppiata è più stretta
 (tabella~\ref{tab:intervalli}, \texttt{intervalli}). Su 18 differenze, quelle
@@ -333,7 +334,7 @@ sopra KC (LA di 0,128, A di 0,181). Non si distinguono dallo zero A sopra LA
 e P2 contro LA, ESC contro KC, ESO contro P2 e A contro P3: sono i confronti
 che questo capitolo dice «nel rumore» o suggeriti, e con 104 query non sono di
 più. Il test di permutazione concorda con il bootstrap in tutti i quindici
-confronti previsti. Le cinque previsioni sono nel registro (figura~\ref{fig:mrr-umane}).
+confronti previsti. Le cinque previsioni sono nel registro.
 
 \input{figure/mrr-umane}
 
@@ -645,15 +646,16 @@ giorno prima sulla stessa macchina; 2.636 contro 376 su un secondo computer) e
 occupa un decimo della memoria. Sulle ricerche per
 numero e comune il profilo consigliato porta l'atto giusto al primo posto nel
 91,7\% dei casi, contro l'1,3\% di produzione, e con la normalizzazione delle
-date, che resta fuori dal profilo, le date si trovano in qualunque formato.
+date, che resta fuori dal profilo, le date si trovano nei formati provati.
 Sulle ricerche per contenuto scritte da persone KC fa 0,432 di MRR@10 contro
 0,326 di ES, e lascia a vuoto tre ricerche su dieci invece di quasi una su due;
 con i vettori, dall'app, P4 arriva a 0,607 senza toccare le ricerche per numero
 (0,956), al prezzo di una ricerca da circa 42~ms e, senza i vettori già in cache, di
 un'indicizzazione da otto minuti.
 
-\paragraph{Dove il vantaggio non è del motore.} Quasi tutto il guadagno di
-pertinenza viene da impostazioni che Elasticsearch ha già, o potrebbe avere:
+\paragraph{Dove il vantaggio non sembra del motore.} Sulle ricerche per contenuto quasi
+tutto il guadagno di pertinenza è compatibile con impostazioni che Elasticsearch ha già, o potrebbe avere
+(ESC contro KC, +0,017 con un intervallo da $-$0,033 a $+$0,068):
 parole in campi diversi (con \texttt{cross\_fields} o, come nella misura della
 sezione~\ref{sec:pertinenza}, con una clausola per parola), l'elisione con il suo
 filtro, le date con un \emph{char filter}; i numeri esatti non hanno
@@ -676,7 +678,7 @@ scelto, non il motore.
 
 \paragraph{Dove non regge.} La memoria: Koskidex tiene tutto in memoria, con
 identificativi e nomi dei campi come stringhe in ogni occorrenza, e a centomila
-documenti ne usa 1.184~MB, quasi quanto l'heap fisso di Elasticsearch. L'indice
+documenti ne usa 1.213~MB (1.184 dopo le correzioni delle allocazioni), quasi quanto l'heap fisso di Elasticsearch. L'indice
 su disco è quasi il doppio e l'indicizzazione 2,4 volte più lenta. Mancano le cose che
 un documentale grande dà per scontate e che questa tesi non ha misurato:
 repliche, shard, un ecosistema di strumenti. E la pertinenza sulle ricerche

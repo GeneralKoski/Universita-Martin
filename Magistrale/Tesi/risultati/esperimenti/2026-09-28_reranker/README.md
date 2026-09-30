@@ -10,7 +10,7 @@ hardware costa secondi a query.
 Scritto il 28/09/2026, prima del codice e prima di ogni esecuzione sulle
 collezioni. L'unica prova fatta è di velocità, su testi inventati: circa 20
 coppie query-documento al secondo sulla GPU del Mac (M2, MPS), in fp32 come in
-fp16. Avvertenza per la previsione 4: la sera stessa, nella prova generale
+fp16. Avvertenza per le previsioni 4 e 5: la sera stessa, nella prova generale
 della procedura delle known-item umane (`TODO.md`), ho visto le metriche dei
 primi due lotti (76 query) delle configurazioni LA e A; il riordino si misura
 invece sulla collezione completa.

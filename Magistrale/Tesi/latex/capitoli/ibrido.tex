@@ -234,7 +234,7 @@ tabella~\ref{tab:difetto3}.
 \end{table}
 
 \textbf{Il 20 era sbagliato di un fattore otto per le query in lingua naturale e
-giusto, per caso, per quelle identificative.} Calibrare la costante vale +0,015 su
+giusto per quelle identificative.} Calibrare la costante vale +0,015 su
 SciFact e +0,010 su NFCorpus; la stessa costante, 160, sul train delle known-item porta
 l'MRR da 0,87 a 0,50. RRF, che di parametri non ne ha, fa come la somma calibrata su
 NFCorpus, sotto la somma a occhio su SciFact, e dimezza le known-item: pesa la
@@ -253,7 +253,7 @@ ma senza il merito che le davo, perché anche le costanti coincidono. La scala c
 fra query lunghe e corte ma quella fra \emph{tipi} di query, che qui coincidono con le collezioni. Su una query
 identificativa il vettore non sa niente del numero e va tenuto basso; su una in
 lingua naturale va pesato otto volte più di quanto facesse il motore. Nessuna
-fusione con un parametro unico regge i due tipi, e la correzione del difetto 3 non
+fusione con un parametro unico, fra quelle provate, regge i due tipi, e la correzione del difetto 3 non
 è una formula ma una scelta: il peso del vettore per tipo di query, che è
 l'argomento della sezione~\ref{sec:scelta}.
 
@@ -329,7 +329,7 @@ qualcosa}, fa esattamente quanto il classificatore.
 
 \paragraph{Con l'unione e il peso del vettore.} I due difetti di questo capitolo
 cambiano la domanda. Con l'unione il recupero congiuntivo non torna più vuoto, e il
-peso del vettore giusto dipende dal tipo di query. Le due configurazioni fra cui
+peso del vettore giusto sembra dipendere dal tipo di query (che qui coincide con la collezione). Le due configurazioni fra cui
 scegliere diventano: \textbf{A}, recupero disgiuntivo, unione, peso 160, per le
 frasi; \textbf{B}, recupero congiuntivo, unione, peso 10, per gli identificativi.
 I pesi vengono dalla calibrazione della sezione~\ref{sec:difetto3}, senza
