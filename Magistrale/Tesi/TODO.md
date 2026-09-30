@@ -48,7 +48,8 @@ basta mettere i file nelle cartelle indicate e dirlo.
       Titolo e relatore sono già sul frontespizio (vedi sotto).
 - [ ] **Gennaio 2027**: guardare le tracce ufficiali e chiudere sul relatore.
 - [ ] **I ringraziamenti** (`latex/capitoli/ringraziamenti.tex`): solo tuoi.
-- [ ] **Frontespizio**: dedica e citazione (oggi segnaposto). Titolo ("Recupero
+- [ ] **Frontespizio**: dedica (oggi segnaposto). Citazione messa il 30/09
+      ("hee hee", scelta di Martin). Titolo ("Recupero
       ibrido lessicale e vettoriale in un sistema di gestione documentale") e
       relatore (Dal Palù) messi il 30/09; il relatore va riconfermato a dicembre.
 - [ ] **Refusi**: nell'ambiente di Claude non c'è un dizionario italiano, quindi
