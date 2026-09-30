@@ -60,12 +60,13 @@ basta mettere i file nelle cartelle indicate e dirlo.
 - [ ] **Refusi**: nell'ambiente di Claude non c'è un dizionario italiano, quindi
       il controllo ortografico automatico non è stato fatto. Uno spellcheck tuo
       sul PDF, oltre alla rilettura.
-- [ ] **Provando P4 a mano nell'app (30/09)**: `see-all` riordina per nome e
-      `ai-search` per data, quindi l'ordine di rilevanza non si vede; e l'unione
-      con i vettori porta sempre 100 documenti anche per una query senza senso
-      (Elasticsearch: 0). Da decidere: ordinare per rilevanza in `see-all` e
-      `ai-search` quando c'è una ricerca, e/o mettere una soglia di similarità
-      all'unione. Scritto fra i limiti della conclusione.
+- [x] **Provando P4 a mano nell'app (30/09)**: `see-all` riordinava per nome e
+      `ai-search` per data, perdendo l'ordine di rilevanza: corretto in
+      Documentale (commit con `SearchRelevanceOrderTest`), come il bug per cui
+      un risultato vuoto in `see-all` mostrava tutto.
+- [ ] **Soglia di similarità nell'unione**: con P4 una query senza senso torna
+      100 documenti (Elasticsearch: 0). Sarebbe un altro esperimento, con
+      previsioni scritte prima. Scritto fra i limiti della conclusione.
 - [ ] **Profilo consigliato: P4 o l'attuale?** Dall'app P4 (recupero congiuntivo,
       vettori a peso 10) fa 0,607 sulle umane e 0,956 sui numeri, ma costa circa
       42 ms a ricerca e un servizio Ollama; il profilo consigliato non li ha.
