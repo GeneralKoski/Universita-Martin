@@ -7,15 +7,15 @@
     \node[box, text width=3cm] (q) at (0,0) {query};
     \node[box] (lex) at (-2.7,-1.5) {recupero lessicale\\ disgiuntivo o congiuntivo};
     \node[tratt] (vec) at (2.7,-1.5) {i 100 documenti più vicini\\ per \texttt{bge-m3}};
-    \node[box, text width=6cm] (uni) at (0,-3.1) {unione dei candidati};
-    \node[box, text width=6cm] (fus) at (0,-4.3) {fusione dei punteggi, con il peso del vettore};
+    \node[tratt, text width=6cm] (uni) at (0,-3.1) {unione dei candidati};
+    \node[tratt, text width=6cm] (fus) at (0,-4.3) {fusione dei punteggi, con il peso del vettore};
     \node[tratt, text width=6cm] (rr) at (0,-5.5) {cross-encoder sui primi $k$ candidati};
     \node[box, text width=3cm] (ris) at (0,-6.7) {risultati};
     \draw[freccia] (q) -- (lex); \draw[freccia] (q) -- (vec);
     \draw[freccia] (lex) -- (uni); \draw[freccia] (vec) -- (uni);
     \draw[freccia] (uni) -- (fus); \draw[freccia] (fus) -- (rr); \draw[freccia] (rr) -- (ris);
   \end{tikzpicture}
-  \caption{Dove differiscono le configurazioni del capitolo. Il tratteggio segna
+  \caption[Le configurazioni a confronto, passo per passo]{Dove differiscono le configurazioni del capitolo. Il tratteggio segna
   i passi che alcune non fanno. Il recupero lessicale è disgiuntivo in LA, A e
   P2, P3, congiuntivo in LT, B e P4. Vettori e unione ci sono in A, B, P3 e P4,
   con peso 160 in A e P3 e peso 10 in B e P4. Il cross-encoder, fuori da

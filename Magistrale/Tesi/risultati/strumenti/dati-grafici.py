@@ -54,7 +54,7 @@ for c in (1, 2, 4, 8, 16, 32):
         riga.append(next(x["qps"] for x in fisso["carico"][k] if x["client"] == c))
     righe.append(riga)
 scrivi("carico.dat", ["client", "mac_es", "mac_kc", "mac_kn", "fisso_es", "fisso_kc", "fisso_kn"], righe, [fm, fa, ff],
-       "ricerche al secondo (campo qps) per numero di client; es = Elasticsearch come l'app, kc = Koskidex nel container, kn = Koskidex nativo; sul Mac Koskidex e' dopo le correzioni delle allocazioni")
+       "ricerche al secondo (campo qps) per numero di client; es = Elasticsearch come l'app, kc = Koskidex nel container, kn = Koskidex nativo; sul Mac Koskidex è dopo le correzioni delle allocazioni")
 
 # 2. MRR@10 delle known-item umane con intervallo al 95%.
 fi, iv = carica("esperimenti/2026-09-29_intervalli/*_esito.json")
@@ -66,7 +66,7 @@ for i, (n, g) in enumerate(ordine):
     righe.append([i, n, g, m["media"], m["ic95"][0], m["ic95"][1]])
 scrivi("mrr-umane.dat", ["posizione", "nome", "gruppo", "media", "basso", "alto", "meno", "piu"],
        [r + [round(r[3] - r[4], 4), round(r[5] - r[3], 4)] for r in righe], [fi],
-       "MRR@10 sulle 104 known-item umane con intervallo al 95% (bootstrap accoppiato); meno e piu sono le distanze della media dagli estremi; gruppo 0 = dall'app, 1 = Koskidex piatto, 2 = Elasticsearch corretto, 3 = riordinato")
+       "MRR@10 sulle 104 known-item umane con intervallo al 95% (bootstrap accoppiato); `meno` e `piu` sono le distanze della media dagli estremi; gruppo 0 = dall'app, 1 = Koskidex piatto, 2 = Elasticsearch corretto, 3 = riordinato")
 for g in range(4):
     scrivi(f"mrr-umane-g{g}.dat", ["posizione", "nome", "gruppo", "media", "basso", "alto", "meno", "piu"],
            [r + [round(r[3] - r[4], 4), round(r[5] - r[3], 4)] for r in righe if r[2] == g], [fi],

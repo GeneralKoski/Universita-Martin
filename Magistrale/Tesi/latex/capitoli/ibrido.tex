@@ -143,13 +143,13 @@ cambiando solo il recupero, dà la tabella~\ref{tab:difetto2-all}.
   \label{tab:difetto2-all}
 \end{table}
 
-\textbf{Con il recupero congiuntivo il difetto 2 è il più grande misurato in questa
-tesi}: l'unione vale +0,62 di nDCG@10 su SciFact e +0,14 su NFCorpus, e porta a
+\textbf{Con il recupero congiuntivo il difetto 2 è il più grande dei difetti di
+Koskidex}: l'unione vale +0,62 di nDCG@10 su SciFact e +0,14 su NFCorpus, e porta a
 zero le query a vuoto. Il re-ranking non può niente: riordina i pochi documenti che
 il lessicale ha trovato. E c'è un risultato che non avevo previsto, nell'ultima
 riga. Il recupero congiuntivo con l'unione tiene le known-item a 0,958, dove quello
 disgiuntivo con l'unione faceva 0,846, e sulle collezioni pubbliche resta vicino al
-disgiuntivo (-0,043 su SciFact, -0,001 su NFCorpus). Il motivo per cui il recupero
+disgiuntivo ($-$0,043 su SciFact, $-$0,001 su NFCorpus). Il motivo per cui il recupero
 disgiuntivo serviva alle query in lingua naturale era che il congiuntivo le
 lasciava vuote; l'unione toglie quel motivo, perché i documenti li porta il
 vettore. È anche la configurazione più vicina a Documentale, che cerca già in modo
@@ -303,7 +303,7 @@ dalla latenza di una catena di 1.024 somme dipendenti: le tre somme di prima cor
 lascia la stessa catena. Accorciarla vorrebbe più accumulatori, cioè sommare in un
 altro ordine, e punteggi diversi nelle ultime cifre. A 10.000 documenti da 1.024
 dimensioni una scansione esatta costa quindi 12-15~ms su un portatile:
-l'unione, che ne fa due, costa 39,6~ms contro i 24,6 del re-ranking, che ne fa una.
+l'unione, che ne fa due, costa 39,6~ms contro i 24,6 del re-ranking, che ne fa una (dopo aver precalcolato le norme).
 
 \paragraph{In Documentale.} Dal vivo, sulle 24 query del confronto, il re-ranking
 vettoriale sembrava portare la mediana a 33~ms, contro gli 8-11 senza vettori. Rimisurato in A/B, con il

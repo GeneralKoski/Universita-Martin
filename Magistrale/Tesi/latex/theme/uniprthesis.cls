@@ -57,7 +57,7 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-\setlength{\headheight}{15pt}
+\setlength{\headheight}{28pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Listings 
 \definecolor{mygreen}{rgb}{0,0.4,0}

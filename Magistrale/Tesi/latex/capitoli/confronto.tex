@@ -8,7 +8,7 @@ conoscono i motori, una per atto, su 120 atti (i primi tre lotti dei 160 estratt
 metà per fonte. Per ogni query c'è un atto giusto solo, quindi la misura
 principale è l'MRR@10, accanto a tre quantità che un utente sente di più:
 l'atto al primo posto, l'atto fra i primi dieci, la ricerca a vuoto. I bisogni
-aperti delle 24 query restano un confronto secondario: i giudizi del modello
+aperti delle 24 query non entrano in questo capitolo: i giudizi del modello
 concordano con quelli umani con un kappa pesato di 0,370
 (sezione~\ref{sec:giudizi}), troppo poco per reggere un capitolo, e il resto
 del pool non ha un giudizio umano.
@@ -73,7 +73,9 @@ Ogni metrica si riporta su tutte le query, per fonte (Crispiano, dove chi
 scriveva aveva letto il testo intero e l'indice ha la scheda, e Friuli Venezia
 Giulia, dove l'atto è la sola scheda) e per query con e senza un numero. Le
 sette previsioni sono state scritte il 25 settembre, prima che arrivasse una
-sola risposta. Quelle dei tre esperimenti aggiunti il 29 settembre (\texttt{profilo-completo},
+sola risposta. Le previsioni 4 e 5 del riordino (\texttt{reranker}, 28 settembre)
+sono state scritte dopo aver visto le metriche di LA e A sui primi due lotti, 76
+query. Quelle dei tre esperimenti aggiunti il 29 settembre (\texttt{profilo-completo},
 \texttt{es-corretto} e \texttt{riordino-corto}), a raccolta chiusa, sono state committate prima della misura di ciascuno, ma dopo aver visto
 le metriche delle configurazioni piatte sulle stesse query; quelle di
 Elasticsearch corretto, quando le misure di P0 e P2 che ne sono il riferimento
@@ -89,7 +91,7 @@ erano già archiviate, anche se non le avevo ancora guardate.
     & tutte & Crispiano & Friuli V.G. & con numero & senza numero \\
     \midrule
     ES & 0,326 (46\%) & 0,227 (48\%) & 0,417 (44\%) & 0,000 (100\%) & 0,339 (44\%) \\
-    KC & 0,432 (30\%) & 0,320 (36\%) & 0,536 (24\%) & 0,000 (100\%) & 0,449 (27\%) \\
+    KC & 0,432 (30\%) & 0,320 (36\%) & 0,535 (24\%) & 0,000 (100\%) & 0,449 (27\%) \\
     \midrule
     K0 & 0,337 (43\%) & 0,308 (46\%) & 0,364 (41\%) & 0,063 (75\%) & 0,348 (42\%) \\
     LA & 0,559 (1\%) & 0,477 (0\%) & 0,635 (2\%) & 0,750 (0\%) & 0,552 (1\%) \\
@@ -129,7 +131,7 @@ una parola del testo. ES va a vuoto nel 46,2\% delle query e trova l'atto fra i
 primi dieci nel 42,3\%; KC, con le parole libere di stare in campi diversi e
 l'elisione, va a vuoto nel 29,8\% e fa 0,106 di MRR@10 sopra ES, 0,432 contro
 0,326. Le due previsioni hanno tenuto, la seconda di poco sulla soglia di
-0,10: il difetto del campo unico riguarda anche le ricerche per contenuto. Ma
+0,10: il campo unico sembra pesare anche sulle ricerche per contenuto. Ma
 KC resta molto sotto le configurazioni piatte con il recupero disgiuntivo, e
 tre ricerche su dieci tornano ancora vuote: il profilo consigliato corregge i
 campi, non il recupero congiuntivo senza vettori di produzione, che sulle frasi
@@ -162,7 +164,7 @@ il 76\% di LA e il 42\% di ES.
 
 \paragraph{Le due fonti.} Su Crispiano chi scriveva aveva letto il testo
 intero, e l'indice ha la scheda: le parole che ricorda possono non esserci. LA
-fa 0,477 su Crispiano e 0,635 sul Friuli Venezia Giulia, KC 0,320 e 0,536,
+fa 0,477 su Crispiano e 0,635 sul Friuli Venezia Giulia, KC 0,320 e 0,535,
 come previsto. La spiegazione della previsione regge solo in parte. Sui soli
 atti di Crispiano (sezione~\ref{sec:scheda-testo}) il recupero congiuntivo
 trova tutte le parole della query più spesso nel testo che nella scheda, quindi
@@ -254,8 +256,9 @@ fa 0,449 sulle umane, contro 0,326 di ES in produzione e 0,432 di KC, e lascia a
 vuoto la stessa quota di ricerche di KC, il 29,8\%; sulle ricerche per numero e
 comune fa 0,938 contro 0,950. ESO, dove una parola basta, fa 0,503 contro 0,502
 di P2, e crolla come P2 sulle ricerche per numero (0,131). Le cinque
-previsioni hanno tenuto. Sulle ricerche per contenuto, quindi, il vantaggio di
-Koskidex innestato sta nelle impostazioni e non nel motore. Quello che
+previsioni hanno tenuto. Sulle ricerche per contenuto, quindi, ESC e KC non si
+distinguono su 104 query (+0,017, da $-$0,033 a $+$0,068): il vantaggio di
+Koskidex innestato è compatibile con stare nelle impostazioni e non nel motore. Quello che
 Elasticsearch, in questa prova, non ha sono i vettori. I limiti: date e importi
 restano come in produzione, perché normalizzarli in Elasticsearch vuol dire
 scrivere un \emph{char filter} per formato e non l'ho fatto (ESC fa 0,305 sulle
@@ -301,7 +304,7 @@ del Mac. Su un secondo computer, con una RTX 3060 da 12~GB in Windows
 4,75~s di mediana a query su SciFact e 4,51 su NFCorpus, contro 12,0 e 11,3 sul
 Mac, e in fp16 1,39 e 1,33, circa 3,4 volte meno. In fp32 gli ordini sono
 identici a quelli del Mac in tutte le query; in fp16 le metriche sono uguali su
-SciFact e su NFCorpus scarto di 0,0015 al massimo (nDCG@10 0,3302 contro
+SciFact e su NFCorpus, con uno scarto di 0,0015 al massimo (nDCG@10 0,3302 contro
 0,3306), con i primi dieci diversi in circa una query su venti. Le cinque
 previsioni hanno tenuto, la prima vicino al bordo della soglia. Restano secondi
 contro il millisecondo di Koskidex, quindi la conclusione non cambia: il tetto
@@ -358,8 +361,9 @@ confronti previsti. Le cinque previsioni sono nel registro (figura~\ref{fig:mrr-
   \end{tabular}
   \caption{Differenze accoppiate di MRR@10 sulle 104 known-item umane, con
   l'intervallo al 95\% del bootstrap accoppiato (10.000 ricampionamenti) e il
-  $p$ del test di permutazione a segni. Le prime quindici righe avevano una
-  previsione; le ultime tre (dopo la riga) sono state aggiunte dopo aver visto
+  $p$ del test di permutazione a segni. Le prime quindici righe sono i
+  confronti scelti prima del calcolo (le cinque previsioni riguardano C1-C5 e
+  C7-C12); le ultime tre (dopo la riga) sono state aggiunte dopo aver visto
   il primo esito.}
   \label{tab:intervalli}
 \end{table}
@@ -444,7 +448,7 @@ doppio di quello di Elasticsearch (figura~\ref{fig:carico}).
   \end{tabular}
   \caption{Sotto carico, stesse 4 CPU: ricerche al secondo e p99 in
   millisecondi. Elasticsearch e Koskidex prima saturano le CPU dagli 8 client
-  in su (375-390\%); Koskidex dopo arriva al 319\% a 8 client e al 360\% a
+  in su (377-390\%); Koskidex dopo arriva al 319\% a 8 client e al 360\% a
   32, e il resto va alla rete.}
   \label{tab:carico}
 \end{table}

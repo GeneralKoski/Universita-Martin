@@ -32,18 +32,18 @@ trova in qualunque formato. Gli importi, nell'app, si trovano già fra formati,
 ma per un refuso ammesso che fa combaciare anche importi diversi: negare i
 refusi agli importi, come ai numeri d'atto, e togliere i punti delle migliaia
 dà l'importo giusto in qualunque formato, e in 102 query su 104 soltanto quello.
-Nessuno dei quattro è un errore di programmazione: sono impostazioni
+Quasi nessuno dei quattro è un errore di programmazione: sono impostazioni
 ragionevoli di un motore generico, che si rompono su proprietà precise dei
 documenti amministrativi italiani.
 
-\paragraph{Una configurazione per tutto.} Non c'è. Il recupero congiuntivo è giusto
+\paragraph{Una configurazione per tutto.} Senza vettori non c'è. Il recupero congiuntivo è giusto
 per le ricerche identificative e disastroso per le frasi; le vie di mezzo di
 Lucene ed Elasticsearch non reggono tutte e due; il peso giusto del vettore
 dipende dal tipo di query. Sceglierlo con una regola di una riga, \emph{recupero
 congiuntivo e vettore leggero se la query ha una cifra e il congiuntivo trova
 qualcosa}, vale +0,023 di nDCG@10 medio sulla migliore configurazione fissa. Se la
 regola riconosca il tipo di query o la collezione, su questi dati non si può dire,
-e le query umane non lo decidono: solo 4 su 104 hanno una cifra: su quelle quattro la regola fa 0,021 di
+e le query umane non lo decidono: solo 4 su 104 hanno una cifra; su quelle quattro la regola fa 0,021 di
 nDCG@10 più di sempre A, e su tutte le 104 solo 0,0008.
 
 \paragraph{Il confronto con Elasticsearch.} Nella stessa macchina virtuale, con
@@ -58,10 +58,11 @@ Il limite è la memoria: a centomila documenti è quasi quella di
 Elasticsearch. Sulle 104 ricerche scritte da persone Koskidex innestato fa
 0,432 di MRR@10 contro 0,326 di Elasticsearch di produzione, con una differenza
 di 0,106 il cui intervallo al 95\% va da 0,035 a 0,184, e lascia a vuoto
-tre ricerche su dieci invece di quasi una su due: il difetto del campo unico
-colpisce anche chi cerca per argomento. Con le stesse correzioni anche
-Elasticsearch arriva a 0,449: sulle ricerche per contenuto il vantaggio sta
-nelle impostazioni, non nel motore. Il margine più grande sta nel recupero e nei
+tre ricerche su dieci invece di quasi una su due: il campo unico sembra pesare
+anche su chi cerca per argomento. Con le stesse correzioni anche
+Elasticsearch arriva a 0,449, e su 104 ricerche i due non si distinguono: sulle
+ricerche per contenuto il vantaggio è compatibile con stare nelle impostazioni,
+non nel motore. Il margine più grande sta nel recupero e nei
 vettori. Dall'app, il recupero disgiuntivo porta le ricerche scritte da persone
 a 0,502 ma fa crollare quelle per numero e comune a 0,147, e solo il recupero
 congiuntivo con i vettori a peso 10 tiene insieme le due cose, con 0,607 e 0,956,
@@ -87,6 +88,20 @@ peggiora invece di migliorare.
         largo da 0,075 a 0,088 in più o in meno, e delle 18 differenze accoppiate
         misurate (tabella~\ref{tab:intervalli}) quelle di 0,071 o meno includono
         lo zero: fra queste A sopra LA, con 0,054.
+  \item \textbf{L'ordine delle previsioni.} Ogni previsione è committata prima
+        della misura, ma non sempre prima di ogni dato: quelle del riordino (4 e
+        5), del giudice e dei tre esperimenti aggiunti a raccolta chiusa sono
+        state scritte dopo aver visto una parte dei numeri, e quelle degli
+        intervalli dopo aver visto le medie. Lo dicono i README degli
+        esperimenti e la sezione~\ref{sec:configurazioni}.
+  \item \textbf{Query scritte in un compito artificiale.} Le 104 query umane le
+        hanno scritte tre persone dopo aver letto un atto, non chi cerca un atto
+        di cui ha bisogno. Misurano il ritrovamento di un atto noto, non i
+        bisogni aperti.
+  \item \textbf{Le date non sono misurate su Elasticsearch.} Il difetto delle
+        date è misurato con Koskidex piatto come sostituto, non sull'indice di
+        produzione; lo stesso sostituto ha sbagliato per gli importi
+        (sezione~\ref{sec:date}).
   \item \textbf{Un solo corpus di dominio.} Gli albi pretori hanno la forma di un
         documentale, ma sono gli atti di comuni: altri archivi, con contratti o
         corrispondenza, hanno altri vocabolari e altre ricerche. Il testo intero

@@ -96,7 +96,7 @@ scrive probabilmente il nome con l'apostrofo.
     \textbf{con almeno una coppia persa} & \textbf{4.033} & \textbf{40,3} \\
     \quad escluso il solo nome dell'ente & 3.826 & 38,2 \\
     \midrule
-    & coppie & \\
+    & coppie & \% \\
     \midrule
     a rischio & 5.913 & \\
     salvate dalla ricerca (refusi, forme vicine) & 138 & 2,3 \\
@@ -193,10 +193,10 @@ la accende \texttt{KOSKIDEX\_TYPOS\_ON\_NUMBERS=false}.
     Elasticsearch, produzione & 0,017 & 1,3\% & 2,0\% & 70\% \\
     Koskidex, campo unico & 0,018 & 1,7\% & 2,0\% & 70\% \\
     Koskidex, campo unico, n.\ esatti & 0,020 & 2,0\% & 2,0\% & 95\% \\
-    Koskidex, parole libere & 0,548 & 38,3\% & 93,3\% & 0 \\
-    \textbf{Koskidex, parole libere, n.\ esatti} & \textbf{0,950} & \textbf{91,7\%} & \textbf{99,7\%} & \textbf{0} \\
+    Koskidex, parole libere & 0,548 & 38,3\% & 93,3\% & 0\% \\
+    \textbf{Koskidex, parole libere, n.\ esatti} & \textbf{0,950} & \textbf{91,7\%} & \textbf{99,7\%} & \textbf{0\%} \\
     \midrule
-    Elasticsearch, parole libere (controllo) & 0,534 & 36,3\% & 96,0\% & 0 \\
+    Elasticsearch, parole libere (controllo) & 0,534 & 36,3\% & 96,0\% & 0\% \\
     \bottomrule
   \end{tabular}
   \caption{Le 300 query \texttt{<numero> <comune>}. \emph{Campo unico}: tutte le
@@ -226,7 +226,8 @@ soltanto le due query con un numero d'atto: \texttt{ordinanza 187} e
 
 \section{Le date, in tre formati}\label{sec:date}
 
-Nelle schede degli atti la stessa data compare in tre formati, tutti frequenti:
+Nelle schede degli atti la stessa data compare in tre formati frequenti, più un quarto con il trattino
+(63 volte, in 40 atti):
 \texttt{14/01/2026} (3.097 volte, in 1.465 atti), \texttt{14 gennaio 2026}
 (1.834 volte, in 949) e \texttt{14.01.2026} (2.103 volte, in 982). Gli importi
 hanno quasi sempre i punti delle migliaia (312 volte, in 201 atti), e quasi mai
@@ -316,7 +317,7 @@ complete, rilanciando la misura dall'app a raccolta chiusa con tre previsioni
 scritte prima, tutte confermate: nessuna delle 104 query entra, esce o si
 sposta fra i primi dieci, nemmeno le 4 con una cifra, e gli altri numeri
 restano quelli di prima. Sulle ricerche raccolte l'anno da solo non costa
-niente. Le tre impostazioni restano comunque fuori dal profilo della sezione
+niente, ma con 4 query con una cifra su 104 la prova non ne rivela il costo. Le tre impostazioni restano comunque fuori dal profilo della sezione
 seguente, perché un profilo si misura come un tutto; la misura del profilo con
 le date, gli importi esatti e il resto è nella sezione~\ref{sec:pertinenza}
 (P1), e dà 0,979 di MRR@10 sulle date e 0,990 sugli importi, senza spostare le
@@ -351,7 +352,7 @@ indice vuoto, con le stesse query:
     \texttt{ordinanza 187} & 12° su 85 & 1° su 1 \\
     \texttt{determina 1223} & 5° su 8 & 1° su 1 \\
     \texttt{<numero> <comune>}, atto primo & 1,3\% & 91,7\% \\
-    \texttt{<numero> <comune>}, a vuoto & 70\% & 0 \\
+    \texttt{<numero> <comune>}, a vuoto & 70\% & 0\% \\
     coppie (atto, parola) perse per l'elisione & 5.775 & 36 \\
     atti con una parola introvabile & 40,3\% & 0,4\% \\
     \bottomrule
@@ -389,8 +390,8 @@ ricerche scritte da persone a 0,502 e fa crollare quelle per numero e comune a
 prime e 0,956 sulle seconde, a un costo di ricerca e di indicizzazione più
 alto.
 
-\paragraph{Cosa vuol dire.} I quattro difetti hanno una cosa in comune: nessuno è
-un errore di programmazione. Il recupero congiuntivo per campo, la tolleranza ai
+\paragraph{Cosa vuol dire.} I quattro difetti hanno una cosa in comune: quasi nessuno è
+un errore di programmazione (l'eccezione è il nome troncato da \texttt{pathinfo()}). Il recupero congiuntivo per campo, la tolleranza ai
 refusi uguale per parole e numeri, il tokenizer che rispetta l'apostrofo e tiene
 insieme le date con il punto sono tutte impostazioni ragionevoli di un motore
 generico, e ciascuna si rompe su una proprietà precisa dei documenti

@@ -33,10 +33,12 @@
 \usepgfplotslibrary{groupplots}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc,backgrounds,patterns}
 \pgfplotsset{tesi/.style={
-  tick label style={font=\footnotesize}, label style={font=\footnotesize},
+  tick label style={font=\footnotesize}, /pgf/number format/use comma, /pgf/number format/1000 sep={.}, label style={font=\footnotesize},
   legend style={font=\footnotesize, draw=none, fill=none},
   grid=major, grid style={line width=.2pt, draw=gray!35}, every axis plot/.append style={line width=.9pt}}}
 
+\usepackage{csquotes}
+\usepackage[htt]{hyphenat}
 \usepackage[backend=biber, style=numeric-comp, sorting=nyt, giveninits=true, maxbibnames=10]{biblatex}
 \addbibresource{bibliografia.bib}
 
@@ -98,6 +100,7 @@
 
 \pagenumbering{arabic}
 \tableofcontents
+\listoffigures
 
 \include{capitoli/introduzione}
 

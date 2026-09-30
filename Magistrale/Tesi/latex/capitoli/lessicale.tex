@@ -28,7 +28,7 @@ non trovava.
 
 \paragraph{La causa.} Ogni termine della query è obbligatorio
 (sezione~\ref{sec:koskidex}). Una query di SciFact ha in media 12,5 parole, e
-nessun documento le contiene tutte: 290 query su 300 tornano vuote. La prova che
+nessun documento le contiene tutte: 290 query su 300 tornano vuote. L'indizio che
 è la lunghezza della query, e non altro, sta nella stessa collezione: su NFCorpus
 le 163 query con risultati hanno in media 2,0 parole, le 160 vuote 4,7; su
 SciFact le 10 con risultati 8,7, le 290 vuote 12,6. Non è un errore di
@@ -354,7 +354,7 @@ gli articoli di Lucene, le stopword italiane di Snowball, e lo stemmer leggero d
 Savoy~\cite{savoy2002light}, controllato sulle 35.494 parole del vocabolario di
 prova di Lucene.
 
-Delle tre, solo l'elisione è misurata. Con il tokenizer compatibile con
+Delle tre, l'elisione si misura con le parole di Elasticsearch; stopword e stemmer, più sotto, sulle query umane. Con il tokenizer compatibile con
 Elasticsearch \emph{dell'infanzia} resta un termine solo, e chi cerca
 \emph{infanzia} non trova l'atto: il difetto di produzione della
 sezione~\ref{sec:elisioni}. Innestato in Documentale, Koskidex senza elisione

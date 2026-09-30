@@ -177,7 +177,9 @@ configurazioni a confronto sono state committate prima che arrivasse un solo fil
 di risposte, ma non prima che la raccolta cominciasse: il secondo lotto è stato
 aperto diciassette minuti prima del commit. Quelle dei tre esperimenti aggiunti a
 raccolta chiusa, dichiarate nella sezione~\ref{sec:configurazioni}, sono
-committate prima della misura di ciascuno.
+committate prima della misura di ciascuno. Le previsioni 4 e 5 del riordino
+(28 settembre) sono state scritte dopo una prova generale sui primi due lotti, 76
+query, in cui avevo già visto le metriche di LA e A.
 
 \paragraph{Bisogni aperti.} Per una query come \emph{manutenzione strade} non
 esiste un atto giusto solo. Le 24 query del confronto, scritte a mano il 23
@@ -223,7 +225,8 @@ con il seme fissato prima di qualunque giudizio è di quattro query intere, 178
 righe, giudicate con la pagina di annotazione senza vedere i giudizi del
 modello.
 
-Prima di vedere un mio giudizio avevo scritto le previsioni e una regola:
+Prima di vedere un mio giudizio avevo scritto le previsioni e una regola (avevo
+visto però, per caso, una decina di giudizi del modello e quante righe dava a 0):
 con un kappa pesato di almeno 0,60 il pool giudicato dal modello avrebbe retto
 il capitolo~\ref{chapter:confronto}, sotto 0,40 no. I lavori sui giudici
 automatici trovano accordi con gli annotatori umani molto variabili, spesso
@@ -264,7 +267,7 @@ bootstrap accoppiato: si ricampionano le query, non le configurazioni, perché
 le configurazioni vedono le stesse query e la loro differenza ha meno variabilità
 delle due medie prese da sole. Sono 10.000 ricampionamenti con un seme fisso; un
 test di permutazione a segni sulla differenza per query, con 20.000 permutazioni,
-serve da controllo. Lo strumento e le previsioni sono
+serve da controllo. Il bootstrap ricampiona le query come se fossero indipendenti, senza tenere conto che vengono da tre persone, e i 18 intervalli non sono corretti per i confronti multipli. Lo strumento e le previsioni sono
 nell'esperimento \texttt{intervalli}, e il risultato è nel
 capitolo~\ref{chapter:confronto}.
 

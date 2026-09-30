@@ -2,8 +2,8 @@
 
 Scritti da `risultati/strumenti/dati-grafici.py`; ogni colonna è copiata da un file archiviato in `risultati/` (percorsi relativi a quella cartella).
 
-- `carico.dat`: ricerche al secondo (campo qps) per numero di client; es = Elasticsearch come l'app, kc = Koskidex nel container, kn = Koskidex nativo; sul Mac Koskidex e' dopo le correzioni delle allocazioni. Sorgenti: `esperimenti/2026-09-28_carico/2026-09-29T074830Z_esito.json`, `esperimenti/2026-09-29_accenti/2026-09-29T080818Z_esito.json`, `esperimenti/2026-09-29_carico-fisso/2026-09-29T191821Z_esito.json`.
-- `mrr-umane.dat`: MRR@10 sulle 104 known-item umane con intervallo al 95% (bootstrap accoppiato); meno e piu sono le distanze della media dagli estremi; gruppo 0 = dall'app, 1 = Koskidex piatto, 2 = Elasticsearch corretto, 3 = riordinato. Sorgenti: `esperimenti/2026-09-29_intervalli/2026-09-29T193440Z_esito.json`.
+- `carico.dat`: ricerche al secondo (campo qps) per numero di client; es = Elasticsearch come l'app, kc = Koskidex nel container, kn = Koskidex nativo; sul Mac Koskidex è dopo le correzioni delle allocazioni. Sorgenti: `esperimenti/2026-09-28_carico/2026-09-29T074830Z_esito.json`, `esperimenti/2026-09-29_accenti/2026-09-29T080818Z_esito.json`, `esperimenti/2026-09-29_carico-fisso/2026-09-29T191821Z_esito.json`.
+- `mrr-umane.dat`: MRR@10 sulle 104 known-item umane con intervallo al 95% (bootstrap accoppiato); `meno` e `piu` sono le distanze della media dagli estremi; gruppo 0 = dall'app, 1 = Koskidex piatto, 2 = Elasticsearch corretto, 3 = riordinato. Sorgenti: `esperimenti/2026-09-29_intervalli/2026-09-29T193440Z_esito.json`.
 - `mrr-umane-g0.dat`: le righe del gruppo 0 di mrr-umane.dat. Sorgenti: `esperimenti/2026-09-29_intervalli/2026-09-29T193440Z_esito.json`.
 - `mrr-umane-g1.dat`: le righe del gruppo 1 di mrr-umane.dat. Sorgenti: `esperimenti/2026-09-29_intervalli/2026-09-29T193440Z_esito.json`.
 - `mrr-umane-g2.dat`: le righe del gruppo 2 di mrr-umane.dat. Sorgenti: `esperimenti/2026-09-29_intervalli/2026-09-29T193440Z_esito.json`.
