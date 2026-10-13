@@ -34,16 +34,17 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 - **Metodi e Modelli per l'Intelligenza Artificiale** (6 CFU) - **rinviato alla sessione invernale** (deciso l'11/08/2026): l'appello del 17 settembre 2026 non si sostiene. Corso mutuato dai gestionali (9 CFU): programma 6 CFU fino a *Trasporto generalizzato e problemi facili* incluso, e allo scritto un esercizio in meno rispetto ai gestionali (da ricordare al prof Nicolodi). Da verificare su Esse3 la data dell'appello invernale e se l'orale è in giornata o in data successiva
 - Development of Reliable, Safe and Secure Software (6 CFU)
 
-**Sessione invernale 2027 - priorità ancora da decidere.** LIC e Metodi sono entrambi rinviati a quella sessione, ma da ottobre 2026 partono i corsi del secondo anno e a gennaio arrivano i loro primi appelli. Fare prima i nuovi (materiale fresco, lezioni appena seguite) è un'opzione concreta, col rischio che LIC e Metodi slittino ancora. Da decidere a corsi avviati, viste le date su Esse3.
+**Nessun piano d'esami fisso** (deciso il 13/10/2026): gli esami si danno quando capita, cercando di darne il più possibile. Non proporre calendari o priorità fra gli esami.
 
 ### Da sostenere - Secondo anno (2026-27)
 
-Tutti e quattro al primo semestre, tutti caratterizzanti e monodisciplinari:
+Tutti e cinque al primo semestre: quattro caratterizzanti più l'esame a scelta (piano di studi compilato su Esse3 il 13/10/2026).
 
 - Algoritmi per l'Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009071, prof. Vincenzo Bonnici. **Esame: scritto, crocette + domanda aperta**, più un **orale facoltativo** per migliorare il voto, che fa media con lo scritto (slide del corso, confermato da Martin il 29/09/2026). **Martin l'orale non lo farà**: si prepara solo lo scritto
 - Analisi Statica e Verifica del Software (9 CFU, 72 ore) - cod. 1013066, prof. **Vincenzo Arceri**. La scheda 2026/27 lo dà come "NON ASSEGNATO" e Arceri come "non più in servizio": è un buco della scheda, il corso lo tiene ancora lui (confermato il 16/09/2026). La scheda resta priva di obiettivi, programma ed esame. **Esame: seminario (discussione di almeno un paper) + orale** (slide *01 - Introduction*, letta il 29/09/2026), pesi non indicati
 - Laboratorio di Intelligenza Artificiale (6 CFU, 48 ore) - cod. 1009073, prof. Vincenzo Bonnici. **Esame: progetto da presentare** (confermato dal docente il 21/09/2026; la slide *Introduzione al corso* dice progetto + orale, ma vale la conferma del docente, deciso da Martin il 29/09/2026), che deve applicare bene tutti i concetti del laboratorio **più qualcosa dal corso teorico di Algoritmi per l'IA**. La teoria di Algoritmi serve quindi per entrambi gli esami: studiarla una volta sola, non due
 - Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù - senza edizione Elly 2025/26 (mai pubblicata), quindi nessun materiale d'archivio: c'è solo quello che carica lui a lezione. Iniziato il 21/09/2026; su Elly pubblica una sezione per lezione con le slide annotate a mano, più la dispensa Dovier-Formisano come testo di riferimento
+- Teoria e Applicazioni delle Reti Complesse (6 CFU, 48 ore, **a scelta**, affine/integrativo) - cod. 1014075, prof. Michele Bellingeri (fisico, network science). Scelto al posto di Sicurezza e Informatica Forense. Centralità, community detection, modelli di rete e robustezza, con Python/NetworkX o R/igraph. Niente laboratorio strutturato. **Esame: progetto (50%)**, cioè l'analisi di un dataset di rete reale scelto dallo studente (anche in coppia) con un breve report, **+ orale (50%)** sul progetto e sui concetti. Conta più l'interpretazione dei risultati che lo strumento. Testo: Barabási, *Network Science* (gratis su networksciencebook.com) oppure Newman, *Networks*
 
 ### Elly: un'istanza per anno accademico
 
