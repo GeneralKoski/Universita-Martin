@@ -12,7 +12,7 @@ Repository personale con il materiale del percorso universitario.
 
 ## Struttura
 
-- `Magistrale/` - corso attuale (laurea magistrale). Una cartella per corso, nominata `<anno>_Nome-del-corso` (es. `1_Big-data`, `2_Programmazione-dichiarativa`), con l'anno del piano di studi: Applicazioni Industriali sta nel `2_` anche se è stato anticipato. `Tesi/` resta senza prefisso
+- `Magistrale/` - corso attuale (laurea magistrale). Una cartella per corso, nominata `<anno>_Nome-del-corso` (es. `1_Big-data`, `2_Programmazione-dichiarativa`), con l'anno del piano di studi. `Tesi/` resta senza prefisso
 - `Triennale/` - solo storico, materiale della laurea triennale già conclusa
 
 ## Magistrale - stato esami
@@ -21,7 +21,7 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 ### Superati (6)
 
-- Applicazioni Industriali dell'Intelligenza Artificiale - **30** (6 CFU, a scelta - anticipato dal 2° anno, 02/02/2026)
+- Applicazioni Industriali dell'Intelligenza Artificiale - **30** (6 CFU, a scelta del primo anno, 02/02/2026)
 - Big Data e Data Mining - **28** (6 CFU, obbligatorio, 13/02/2026)
 - Constraint Programming - **30L** (6 CFU, obbligatorio, 12/06/2026; sia Martin sia l'amico Leopoldo hanno esposto)
 - English B2 for STEM - **idoneo** (3 CFU, a scelta, 26/06/2026)
