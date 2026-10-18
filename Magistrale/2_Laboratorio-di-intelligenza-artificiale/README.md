@@ -42,7 +42,9 @@ Basi per modellare, implementare e applicare algoritmi di IA, con taglio pratico
 
 ## Edizione 2026/27 - Elly 5197
 
-Scaricato il 16/09/2026 in `2026-27/`, ricontrollato il 21/09/2026. I nomi
+Scaricato il 16/09/2026 in `2026-27/`, ricontrollato il 21/09/2026, il
+29/09/2026 e il 18/10/2026: nessun file nuovo o modificato (md5), sono arrivate
+le registrazioni delle lezioni 2-9. I nomi
 originali del docente portano il prefisso `AILAB_2627_`, che conferma che sono
 file rifatti per questa edizione e non copie della precedente.
 
@@ -84,6 +86,19 @@ ultime due date (17/12 e 23/12) rimaste libere.
 - `2026-27/1_Materiale_lezioni/Notebook - Classificazione.ipynb` (lab-classificazione.ipynb)
 - `2026-27/1_Materiale_lezioni/Notebook - Clustering.ipynb` (lab-clustering.ipynb)
 
+### 2 - Registrazioni
+
+Su Elly mancano le registrazioni delle lezioni 0 e 1.
+
+- [url] Lezione 2 - Python - parte 2 - https://elly2026.didattica.unipr.it/mod/url/view.php?id=40591
+- [url] Lezione 3 - Python - parte 3 - https://elly2026.didattica.unipr.it/mod/url/view.php?id=41112
+- [url] Lezione 4 - Librerie python - https://elly2026.didattica.unipr.it/mod/url/view.php?id=42988
+- [url] Lezione 5 - Librerie python (parte 2) + Exploratory data analysis (EDA) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=43123
+- [url] Lezione 6 - Preprocessamento dei dati - https://elly2026.didattica.unipr.it/mod/url/view.php?id=44413
+- [url] Lezione 7 - Riduzione della dimensionalità - https://elly2026.didattica.unipr.it/mod/url/view.php?id=45408
+- [url] Lezione 8 - Riduzione della dimensionalità (parte 2) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=48402
+- [url] Lezione 9 - Sbilanciamento del dataset - https://elly2026.didattica.unipr.it/mod/url/view.php?id=48963
+
 ### Cosa cambia rispetto al 2025/26
 
 **Nuovo:**
@@ -97,8 +112,8 @@ ultime due date (17/12 e 23/12) rimaste libere.
 - *Preprocessing* come slide unica.
 - I cinque seminari (Avesani, Viesi, Maresi, Bellingeri, Mensi): si aggiungono
   durante l'anno, non a calendario.
-- Le sezioni *Esami*, *Registrazioni* e *Progetti*, che nel 2025/26 si sono
-  riempite a corso avviato.
+- Le sezioni *Esami* e *Progetti*, che nel 2025/26 si sono riempite a corso
+  avviato. *Registrazioni* invece è arrivata (vedi sopra).
 
 ---
 

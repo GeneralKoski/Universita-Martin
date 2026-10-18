@@ -39,7 +39,11 @@ Basi teoriche per modellare e risolvere problemi di IA: apprendimento automatico
 Scaricato il 16/09/2026 in `2026-27/`, ricontrollato il 21/09/2026 dopo la
 prima lezione: nessun file nuovo o modificato. Ricontrollato il 29/09/2026:
 *Regressione* è stata ricaricata dal docente il 23/09 (da 20 a 58 pagine) e
-la copia locale è aggiornata; sono arrivate le prime registrazioni. I nomi originali del docente
+la copia locale è aggiornata; sono arrivate le prime registrazioni. Ricontrollato
+il 18/10/2026: *Validazione dei modelli di classificazione* è stata ricompilata
+il 05/10 (stesso testo, 33 pagine invece di 32, numeri di pagina corretti: la
+vecchia diceva "N / 1") e la copia locale è aggiornata; le registrazioni sono
+arrivate alla lezione 6. Tutto il resto è identico (md5). I nomi originali del docente
 portano il prefisso `AIALGO_2627_`, che conferma che sono file rifatti per questa edizione
 e non copie della precedente.
 
@@ -55,7 +59,7 @@ e non copie della precedente.
 - `2026-27/1_Materiale_lezioni/Introduzione al machine learning.pdf` (AIALGO_2627_1-intoML.pdf)
 - `2026-27/1_Materiale_lezioni/Introduzione alla classificazione.pdf` (AIALGO_2627_2-introClassificazione.pdf)
 - `2026-27/1_Materiale_lezioni/Distribuzioni e teoria dell'informazione.pdf` (AILAGO_2627_3-distribuzioni.pdf)
-- `2026-27/1_Materiale_lezioni/Validazione dei modelli di classificazione.pdf` (AILAGO_2627_4-classificazione-validazione.pdf)
+- `2026-27/1_Materiale_lezioni/Validazione dei modelli di classificazione.pdf` (AIALGO_2627_4-classificazione-validazione.pdf)
 - `2026-27/1_Materiale_lezioni/Modelli per la classificazione.pdf` (AIALGO_2627_5-classificazione-modelli.pdf)
 - `2026-27/1_Materiale_lezioni/Regressione.pdf` (AIALGO_2627_5-regressione.pdf)
 - `2026-27/1_Materiale_lezioni/Algoritmi di clustering.pdf` (AIALGO_2627_6-clustering-algoritmi.pdf)
@@ -70,6 +74,10 @@ e non copie della precedente.
 - [url] Lezione 0 - Introduzione al corso - https://elly2026.didattica.unipr.it/mod/url/view.php?id=34751
 - [url] Lezione 1 - Introduzione alla classificazione - https://elly2026.didattica.unipr.it/mod/url/view.php?id=36610
 - [url] Lezione 2 - Distribuzioni e teoria dell'informazione - parte 1 - https://elly2026.didattica.unipr.it/mod/url/view.php?id=38711
+- [url] Lezione 3 - Distribuzioni e teoria dell'informazione - parte 2 - https://elly2026.didattica.unipr.it/mod/url/view.php?id=41391
+- [url] Lezione 4 - Teoria dell'informazione parte 4 + Validazione dei modelli di classificazione - https://elly2026.didattica.unipr.it/mod/url/view.php?id=42985
+- [url] Lezione 5 - Modelli per la classificazione (kNN + Alberi di decisione) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=46365
+- [url] Lezione 6 - Metodi consenso - https://elly2026.didattica.unipr.it/mod/url/view.php?id=49342
 
 ### Cosa cambia rispetto al 2025/26
 

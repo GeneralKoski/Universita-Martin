@@ -19,7 +19,7 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 
 | Edizione | Elly | Corso | Stato |
 |---|---|---|---|
-| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, prime slide |
+| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, slide 01-07 |
 | 2025/26 | elly2025 | [id 741](https://elly2025.didattica.unipr.it/course/view.php?id=741) | archiviata, materiale completo |
 
 ---
@@ -27,8 +27,10 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 ## Edizione 2026/27 - Elly 5198
 
 Il 16/09/2026 il corso era vuoto. Ricontrollato il 29/09/2026: sono arrivati il
-tutorial di Miné e la prima slide, scaricati in `2026-27/`. La scheda ufficiale
-è ancora priva di programma ed esame (l'esame però lo dà la slide, vedi sopra).
+tutorial di Miné e la prima slide, scaricati in `2026-27/`. Ricontrollato il
+18/10/2026: sono arrivate le slide da 02 a 07, scaricate; tutorial e 01 identici
+(md5). La scheda ufficiale è ancora priva di programma ed esame (l'esame però
+lo dà la slide, vedi sopra).
 
 ### 0 - Introduzione
 
@@ -41,6 +43,15 @@ tutorial di Miné e la prima slide, scaricati in `2026-27/`. La scheda ufficiale
 ### 2 - Slides
 
 - `2026-27/2_Slides/01 - Introduction.pdf` (01.pdf) - rifatta rispetto al 2025/26 (88 pagine contro 89, file diverso)
+- `2026-27/2_Slides/02 - Mathematical background.pdf` (02.pdf) - 187 pagine
+- `2026-27/2_Slides/03 - Modeling programs.pdf` (03.pdf) - 36 pagine
+- `2026-27/2_Slides/04 - Dataflow analyses.pdf` (04.pdf) - 78 pagine
+- `2026-27/2_Slides/05 - Meaning of approximation.pdf` (06.pdf) - 85 pagine
+- `2026-27/2_Slides/06 - Introduction to abstract interpretation (Galois connections).pdf` (07.pdf) - 58 pagine
+- `2026-27/2_Slides/07 - Introduction to abstract interpretation (Abstract semantics).pdf` (08.pdf) - 57 pagine
+
+Dalla quinta slide i nomi originali saltano di uno (`05` è `06.pdf` e così via):
+su Elly manca un `05.pdf`, i titoli invece sono consecutivi.
 
 ---
 

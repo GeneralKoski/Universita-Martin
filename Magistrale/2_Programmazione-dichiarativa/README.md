@@ -35,7 +35,9 @@ risultati, `.venv` e zip di consegna.
 
 Al 16/09/2026 il corso era aperto ma vuoto. Con la prima lezione (21/09/2026)
 Dal Palù ha iniziato a caricare: una dispensa di riferimento e una sezione per
-ogni lezione con le slide annotate a mano in aula. Aggiornato il 21/09/2026.
+ogni lezione con le slide annotate a mano in aula. Aggiornato il 21/09/2026,
+ricontrollato il 29/09/2026 e il 18/10/2026: è arrivata la sezione della
+lezione 5 con due file Prolog; dispensa e slide della lezione 1 identiche (md5).
 
 ### 0 - Introduzione
 
@@ -74,8 +76,20 @@ sono immagini). Lezione introduttiva, senza contenuto tecnico di Prolog/ASP:
   matematico), goal dato a un **solver** di automated reasoning che restituisce
   la risposta. Nel dichiarativo il bug fixing torna sulle specifiche.
 
-Le lezioni successive dovrebbero seguire lo stesso schema: una sezione Elly per
-data, con le slide annotate.
+### 5 - Lezione 5, 13-10-26
+
+- `2026-27/5_Lezione_5_13-10-26/mdt.pl` (mdt.pl) - simulatore di **macchina di
+  Turing** in Prolog: `delta/5` come tabella di transizione, il nastro come
+  `nastro(ListaSinistra, Corrente, ListaDestra)`, `passo/4` e `calcolo/4`
+  ricorsivi fino a `statoFinale/1`, `updateNastro/4` per gli spostamenti `l`/`r`
+  con `elementoVuoto` ai bordi
+- `2026-27/5_Lezione_5_13-10-26/test.pl` (test.pl) - esempi base: chiusura
+  transitiva `q/2` in tre versioni (la terza, ricorsiva a sinistra, va in loop per
+  l'ordine di selezione SLD: prima regola del listato, atomo più a sinistra),
+  numeri di Peano `num/1`, liste, `somma/2` e `len/2` con `is`
+
+Su Elly non ci sono sezioni per le lezioni 2, 3 e 4: il docente non ha caricato
+niente. Lo schema resta una sezione Elly per data, ma non per ogni lezione.
 
 ## Contenuti
 
