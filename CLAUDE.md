@@ -49,7 +49,7 @@ Tutti e cinque al primo semestre: quattro caratterizzanti più l'esame a scelta 
 
 ### Elly: un'istanza per anno accademico
 
-Unipr pubblica un Moodle per anno (`elly2025`, `elly2026`, ...) e **le iscrizioni non migrano**. I quattro esami del primo anno vivono ancora su elly2025; i quattro del secondo anno sono su elly2026. Cercare un corso del secondo anno su elly2025 dà risultati vecchi o vuoti - è l'errore che ha prodotto le informazioni sbagliate su Analisi Statica e Programmazione Dichiarativa.
+Unipr pubblica un Moodle per anno (`elly2025`, `elly2026`, ...) e **le iscrizioni non migrano**. I quattro esami del primo anno vivono ancora su elly2025; i cinque del secondo anno sono su elly2026. Cercare un corso del secondo anno su elly2025 dà risultati vecchi o vuoti - è l'errore che ha prodotto le informazioni sbagliate su Analisi Statica e Programmazione Dichiarativa.
 
 Corrispondenza corso → istanza → id (letta il 16/09/2026):
 
@@ -59,6 +59,7 @@ Corrispondenza corso → istanza → id (letta il 16/09/2026):
 | Laboratorio di IA | elly2026 | 5197 |
 | Analisi Statica | elly2026 | 5198 |
 | Programmazione Dichiarativa | elly2026 | 4403 |
+| Teoria e Applicazioni delle Reti Complesse | elly2026 | 4989 (iscrizione del 18/10/2026) |
 | Development of Reliable, Safe and Secure Software | elly2025 | 1136 |
 | Linguaggi, Interpreti e Compilatori | elly2025 | 666 |
 | Metodi e Modelli per l'IA | elly2025 | 4351 |
@@ -68,7 +69,7 @@ Corrispondenza corso → istanza → id (letta il 16/09/2026):
 
 Ogni corso ha un `README.md` con scheda ufficiale e indice completo. Per i corsi del secondo anno il materiale è **diviso per edizione**: `2025-26/` (edizione precedente, scaricata il 15/09/2026 da elly2025, tenuta come riferimento) e `2026-27/` (l'edizione che seguo, da elly2026). Dentro ciascuna, una sottocartella per sezione Elly.
 
-**Scansione Elly** (ultima: 18/10/2026, solo i quattro corsi del secondo anno su elly2026). Si fa con `EllyClient` di `~/Progetti-personali/unidesk/packages/core/src/elly/client.ts` (login SSO Shibboleth), importato da uno script usa-e-getta con `node --experimental-transform-types`; utente `martin.trajkovski@studenti.unipr.it`, password in `~/.unipr-pass` (permessi 600, mai in git). Si scaricano tutte le `resource` in una cartella temporanea, si confrontano per md5 con le copie locali (nome locale = nome della risorsa su Elly + estensione), si copiano solo nuovi e cambiati e si aggiorna il README del corso: data del controllo, indice con il nome originale fra parentesi, registrazioni.
+**Scansione Elly** (ultima: 18/10/2026, solo i cinque corsi del secondo anno su elly2026). Si fa con `EllyClient` di `~/Progetti-personali/unidesk/packages/core/src/elly/client.ts` (login SSO Shibboleth), importato da uno script usa-e-getta con `node --experimental-transform-types`; utente `martin.trajkovski@studenti.unipr.it`, password in `~/.unipr-pass` (permessi 600, mai in git). Si scaricano tutte le `resource` in una cartella temporanea, si confrontano per md5 con le copie locali (nome locale = nome della risorsa su Elly + estensione), si copiano solo nuovi e cambiati e si aggiorna il README del corso: data del controllo, indice con il nome originale fra parentesi, registrazioni.
 
 ### Tesi
 
