@@ -27,6 +27,17 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 | 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, slide 01-07 |
 | 2025/26 | elly2025 | [id 741](https://elly2025.didattica.unipr.it/course/view.php?id=741) | archiviata, materiale completo |
 
+## Appelli 2026/27
+
+Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizioni non ancora aperte.
+
+- ven 08/01/2027 ore 14:30 - orale - iscrizioni dal 09/12/2026 al 03/01/2027 **(sessione invernale)**
+- ven 22/01/2027 ore 14:30 - orale - iscrizioni dal 23/12/2026 al 17/01/2027 **(sessione invernale)**
+- ven 11/06/2027 ore 14:30 - orale - iscrizioni dal 12/05/2027 al 06/06/2027
+- ven 25/06/2027 ore 14:30 - orale - iscrizioni dal 26/05/2027 al 20/06/2027
+- ven 27/08/2027 ore 14:30 - orale - iscrizioni dal 28/07/2027 al 22/08/2027
+- ven 10/09/2027 ore 14:30 - orale - iscrizioni dal 11/08/2027 al 05/09/2027
+
 ---
 
 ## Edizione 2026/27 - Elly 5198

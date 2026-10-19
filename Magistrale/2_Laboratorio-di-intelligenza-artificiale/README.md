@@ -37,6 +37,18 @@ Basi per modellare, implementare e applicare algoritmi di IA, con taglio pratico
 
 **Bibliografia:** Russell, Norvig - *Intelligenza artificiale: un approccio moderno*, Pearson 2016.
 
+## Appelli 2026/27
+
+Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizioni non ancora aperte.
+
+- gio 14/01/2027 ore 09:00 - orale - iscrizioni dal 15/12/2026 al 09/01/2027 **(sessione invernale)**
+- gio 28/01/2027 ore 09:00 - orale - iscrizioni dal 29/12/2026 al 23/01/2027 **(sessione invernale)**
+- gio 11/02/2027 ore 09:00 - orale - iscrizioni dal 12/01/2027 al 06/02/2027 **(sessione invernale)**
+- gio 10/06/2027 ore 14:00 - orale - iscrizioni dal 11/05/2027 al 05/06/2027
+- gio 24/06/2027 ore 14:00 - orale - iscrizioni dal 25/05/2027 al 19/06/2027
+- gio 26/08/2027 ore 14:00 - orale - iscrizioni dal 27/07/2027 al 21/08/2027
+- gio 09/09/2027 ore 14:00 - orale - iscrizioni dal 10/08/2027 al 04/09/2027
+
 ---
 
 ## Edizione 2026/27 - Elly 5197

@@ -22,6 +22,18 @@ Centralità, community detection, modelli di rete e robustezza. Niente laborator
 
 **Bibliografia** (dalla slide *Giorno 1*): Barabási - *Network Science*, Cambridge University Press 2016, gratis su networksciencebook.com (intuitivo, orientato alle applicazioni); Newman - *Networks: An Introduction*, Oxford University Press 2010 (più formale e rigoroso).
 
+## Appelli 2026/27
+
+Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizioni non ancora aperte.
+
+- gio 14/01/2027 ore 10:00 - orale - iscrizioni dal 15/12/2026 al 09/01/2027 **(sessione invernale)**
+- gio 11/02/2027 ore 10:00 - orale - iscrizioni dal 12/01/2027 al 06/02/2027 **(sessione invernale)**
+- lun 19/04/2027 ore 10:00 - orale - iscrizioni dal 20/03/2027 al 14/04/2027
+- mar 08/06/2027 ore 10:00 - orale - iscrizioni dal 09/05/2027 al 03/06/2027
+- mer 23/06/2027 ore 10:00 - orale - iscrizioni dal 24/05/2027 al 18/06/2027
+- mer 14/07/2027 ore 10:00 - orale - iscrizioni dal 14/06/2027 al 09/07/2027
+- ven 10/09/2027 ore 10:00 - orale - iscrizioni dal 11/08/2027 al 05/09/2027
+
 ---
 
 ## Edizione 2026/27 - Elly 4989

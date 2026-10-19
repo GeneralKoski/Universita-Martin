@@ -32,6 +32,18 @@ Basi teoriche per modellare e risolvere problemi di IA: apprendimento automatico
 
 **Bibliografia:** Russell, Norvig - *Intelligenza artificiale: un approccio moderno*, Pearson 2016; Bishop - *Pattern recognition and machine learning*, Springer 2016; Duda, Hart, Stork - *Pattern classification*, Wiley 2001; Hastie, Tibshirani, Friedman - *The elements of statistical learning*, Springer 2001.
 
+## Appelli 2026/27
+
+Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizioni non ancora aperte.
+
+- mar 12/01/2027 ore 09:00 - scritto - iscrizioni dal 13/12/2026 al 07/01/2027 **(sessione invernale)**
+- mar 26/01/2027 ore 09:00 - scritto - iscrizioni dal 27/12/2026 al 21/01/2027 **(sessione invernale)**
+- mar 09/02/2027 ore 09:00 - scritto - iscrizioni dal 10/01/2027 al 04/02/2027 **(sessione invernale)**
+- mer 09/06/2027 ore 09:00 - scritto - iscrizioni dal 10/05/2027 al 04/06/2027
+- mer 23/06/2027 ore 09:00 - scritto - iscrizioni dal 24/05/2027 al 18/06/2027
+- mer 25/08/2027 ore 09:00 - scritto - iscrizioni dal 26/07/2027 al 20/08/2027
+- mer 08/09/2027 ore 09:00 - scritto - iscrizioni dal 09/08/2027 al 03/09/2027
+
 ---
 
 ## Edizione 2026/27 - Elly 5196

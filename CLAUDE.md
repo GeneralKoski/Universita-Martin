@@ -32,7 +32,7 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 
 - **Linguaggi, Interpreti e Compilatori** (9 CFU), prof. Enea Zaffanella (enea.zaffanella@unipr.it) - **rinviato alla sessione invernale** (deciso il 07/09/2026): l'orale del 10 settembre 2026 **non si sostiene**, preparazione insufficiente (il calendario di studio del 25/08 non è mai partito). Iscrizione su Esse3 fatta l'11/08/2026 e non più cancellabile: **mail di assenza al prof Zaffanella già inviata** (motivazione: motivi familiari, con alcune settimane di assenza da settembre 2026). Seminario (30% del voto) svolto il 23 giugno 2026: **Zaffanella ha confermato che resta valido** anche in sessione invernale, non va rifatto (confermato entro il 15/09/2026). Resta solo l'orale (70%) con domande aperte su tutto il programma (confermato da Martin il 19/10/2026; la scheda ufficiale 329435 dice lo stesso: seminario 30% + colloquio orale 70%)
 - **Metodi e Modelli per l'Intelligenza Artificiale** (6 CFU), prof. Lorenzo Nicolodi (lorenzo.nicolodi@unipr.it) - **rinviato alla sessione invernale** (deciso l'11/08/2026): l'appello del 17 settembre 2026 non si sostiene. Corso mutuato dai gestionali (9 CFU): programma 6 CFU fino a *Trasporto generalizzato e problemi facili* incluso, e allo scritto un esercizio in meno rispetto ai gestionali (da ricordare al prof Nicolodi). **Esame: scritto (esercizi, 90-120 min) + orale (teoria e dimostrazioni), entrambi obbligatori**, confermato da Martin il 19/10/2026 (dettagli nel README del corso). Da verificare su Esse3 la data dell'appello invernale e se l'orale è in giornata o in data successiva
-- Development of Reliable, Safe and Secure Software (6 CFU), prof. Roberto Bagnara (roberto.bagnara@unipr.it) - **mail al docente da mandare dopo la sessione invernale 2027** (deciso da Martin il 19/10/2026); modalità d'esame non ancora annotata
+- Development of Reliable, Safe and Secure Software (6 CFU), prof. Roberto Bagnara (roberto.bagnara@unipr.it) - **mail al docente da mandare dopo la sessione invernale 2027** (deciso da Martin il 19/10/2026); **esame: progetto finale + colloquio orale**, elaborati da consegnare almeno 15 giorni prima dell'appello (scheda ufficiale, nel README del corso)
 
 **Nessun piano d'esami fisso** (deciso il 13/10/2026): gli esami si danno quando capita, cercando di darne il più possibile. Non proporre calendari o priorità fra gli esami.
 
@@ -46,6 +46,37 @@ Tutti e cinque al primo semestre: quattro caratterizzanti più l'esame a scelta 
 - Programmazione Dichiarativa (6 CFU, 48 ore) - cod. 1009066, prof. Alessandro Dal Palù (alessandro.dalpalu@unipr.it). **Esame: orale di teoria + discussione del progetto in ASP** (anche in coppia; problema tipicamente NP-completo: modellazione logica, implementazione in Answer Set Programming, valutazione critica delle performance; confermato da Martin il 19/10/2026, in linea con la scheda ufficiale) - senza edizione Elly 2025/26 (mai pubblicata), quindi nessun materiale d'archivio: c'è solo quello che carica lui a lezione. Iniziato il 21/09/2026; su Elly pubblica una sezione per data di lezione (non per ogni lezione: al 18/10/2026 ci sono solo la 1 e la 5) con slide annotate a mano o file Prolog, più la dispensa Dovier-Formisano come testo di riferimento
 - Teoria e Applicazioni delle Reti Complesse (6 CFU, 48 ore, **a scelta**, affine/integrativo) - cod. 1014075, prof. Michele Bellingeri (michele.bellingeri@unipr.it; fisico, network science). Scelto al posto di Sicurezza e Informatica Forense. Centralità, community detection, modelli di rete e robustezza, con Python/NetworkX o R/igraph. Niente laboratorio strutturato. **Esame: progetto (50%)**, cioè l'analisi di un dataset di rete reale scelto dallo studente (anche in coppia) con un breve report, **+ orale (50%)** sul progetto e sui concetti. Conta più l'interpretazione dei risultati che lo strumento. Testo: Barabási, *Network Science* (gratis su networksciencebook.com) oppure Newman, *Networks*
 - Tirocinio presso struttura esterna (6 CFU) - cod. 1006658. Da far convalidare con il lavoro in Dieffetech: **procedura e documenti ancora da chiedere al referente tirocini Enea Zaffanella** (enea.zaffanella@unipr.it)
+
+### Appelli della sessione invernale 2027
+
+Letti da Esse3 (via unidesk) il 19/10/2026, tutti in stato "Inserito", iscrizioni non ancora aperte. L'elenco completo dell'anno, con le finestre di iscrizione, è nel README di ogni corso (Linguaggi non ha README: sta qui sotto).
+
+| Data | Ora | Esame | Prova |
+|---|---|---|---|
+| ven 08/01/2027 | 14:30 | Analisi Statica | orale |
+| mar 12/01/2027 | 09:00 | Algoritmi per l'IA | scritto |
+| mar 12/01/2027 | 14:30 | Linguaggi, Interpreti e Compilatori | orale |
+| gio 14/01/2027 | 09:00 | Laboratorio di IA | orale |
+| gio 14/01/2027 | 10:00 | Reti Complesse | orale |
+| gio 14/01/2027 | 15:00 | Development of Reliable, Safe and Secure Software | orale |
+| mer 20/01/2027 | 09:00 | Programmazione Dichiarativa | orale |
+| ven 22/01/2027 | 14:30 | Analisi Statica | orale |
+| mar 26/01/2027 | 09:00 | Algoritmi per l'IA | scritto |
+| mar 26/01/2027 | 14:30 | Linguaggi, Interpreti e Compilatori | orale |
+| gio 28/01/2027 | 09:00 | Laboratorio di IA | orale |
+| gio 04/02/2027 | 09:00 | Programmazione Dichiarativa | orale |
+| ven 05/02/2027 | 15:00 | Development of Reliable, Safe and Secure Software | orale |
+| mar 09/02/2027 | 09:00 | Algoritmi per l'IA | scritto |
+| mar 09/02/2027 | 14:30 | Linguaggi, Interpreti e Compilatori | orale |
+| gio 11/02/2027 | 09:00 | Laboratorio di IA | orale |
+| gio 11/02/2027 | 10:00 | Reti Complesse | orale |
+| gio 18/02/2027 | 09:00 | Programmazione Dichiarativa | orale |
+
+- Le iscrizioni si aprono 30 giorni prima e chiudono 5 giorni prima dell'appello.
+- **Sovrapposizioni**: Laboratorio di IA e Reti Complesse sono alla stessa mattina sia il 14/01 sia l'11/02 (09:00 e 10:00). Algoritmi (mattina) e Linguaggi (pomeriggio) cadono negli stessi tre giorni.
+- **Metodi e Modelli per l'IA**: appelli invernali non ancora pubblicati. Stanno sull'insegnamento mutuante Metodi e Modelli per le Decisioni (cdsId 10091, adId 6757), perché quelli dell'adId 23058 su Esse3 lo studente non può leggerli. Nel 2026 scritto e orale erano in date separate, con l'orale 3-4 giorni dopo.
+- Linguaggi, appelli successivi: 21/06, 05/07, 24/08, 07/09/2027, sempre alle 14:30.
+- Reti Complesse ha anche un appello il 19/04/2027.
 
 ### Elly: un'istanza per anno accademico
 

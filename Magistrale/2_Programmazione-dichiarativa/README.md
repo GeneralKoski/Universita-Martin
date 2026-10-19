@@ -17,6 +17,18 @@ Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329459
 > pubblicata, e restava falso per quella nuova. Non c'è quindi materiale
 > d'archivio: tutto quello che arriva è dell'edizione che seguo.
 
+## Appelli 2026/27
+
+Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizioni non ancora aperte.
+
+- mer 20/01/2027 ore 09:00 - orale - iscrizioni dal 21/12/2026 al 15/01/2027 **(sessione invernale)**
+- gio 04/02/2027 ore 09:00 - orale - iscrizioni dal 05/01/2027 al 30/01/2027 **(sessione invernale)**
+- gio 18/02/2027 ore 09:00 - orale - iscrizioni dal 19/01/2027 al 13/02/2027 **(sessione invernale)**
+- gio 10/06/2027 ore 09:00 - orale - iscrizioni dal 11/05/2027 al 05/06/2027
+- gio 24/06/2027 ore 09:00 - orale - iscrizioni dal 25/05/2027 al 19/06/2027
+- mar 27/07/2027 ore 09:00 - orale - iscrizioni dal 27/06/2027 al 22/07/2027
+- ven 10/09/2027 ore 09:00 - orale - iscrizioni dal 11/08/2027 al 05/09/2027
+
 ## Struttura della cartella
 
 - `2026-27/` - materiale Elly, una sottocartella per lezione

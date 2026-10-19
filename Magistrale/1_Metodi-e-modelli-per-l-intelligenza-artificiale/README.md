@@ -76,6 +76,19 @@ Entrambe le prove sono obbligatorie (non è stato sostenuto il parziale). Modali
 
 Fonti: scheda ufficiale del corso + `Appunti_colleghi/Modalità_esame.txt` + censimento del materiale d'esame.
 
+## Appelli
+
+Gli appelli stanno sull'insegnamento mutuante, **Metodi e Modelli per le Decisioni** (LM Ingegneria Gestionale, cdsId 10091, adId 6757): quelli di Metodi e Modelli per l'IA (adId 23058) su Esse3 non sono leggibili dallo studente ("Security failed"). Al 19/10/2026 gli appelli invernali 2027 **non sono ancora pubblicati**: ci sono solo quelli dell'estate 2026. Lo schema è scritto e orale in date separate, l'orale 3-4 giorni dopo lo scritto:
+
+- lun 15/06/2026 ore 08:30 - scritto - iscrizioni dal 16/05/2026 al 13/06/2026 - Prova scritta
+- gio 18/06/2026 ore 08:30 - orale - iscrizioni dal 19/05/2026 al 16/06/2026 - Prova orale
+- gio 02/07/2026 ore 08:30 - scritto - iscrizioni dal 03/06/2026 al 30/06/2026 - Prova scritta
+- lun 06/07/2026 ore 08:30 - orale - iscrizioni dal 07/06/2026 al 04/07/2026 - Prova orale
+- gio 23/07/2026 ore 08:30 - scritto - iscrizioni dal 24/06/2026 al 21/07/2026 - Prova scritta
+- lun 27/07/2026 ore 08:30 - orale - iscrizioni dal 28/06/2026 al 25/07/2026 - Prova orale
+- lun 14/09/2026 ore 08:30 - scritto - iscrizioni dal 15/08/2026 al 12/09/2026 - Prova scritta
+- gio 17/09/2026 ore 08:30 - orale - iscrizioni dal 18/08/2026 al 15/09/2026 - Prova orale
+
 ## Bibliografia
 
 - Note a cura del docente
