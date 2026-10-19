@@ -76,6 +76,13 @@ Entrambe le prove sono obbligatorie (non è stato sostenuto il parziale). Modali
 
 Fonti: scheda ufficiale del corso + `Appunti_colleghi/Modalità_esame.txt` + censimento del materiale d'esame.
 
+## Allineamento con Elly
+
+Ricontrollato il 19/10/2026 su elly2025 (corso 416, Metodi e Modelli per le Decisioni): tutto il materiale delle sezioni 1-10 è in `Elly/` (md5). Restano fuori apposta:
+
+- sezioni 11 (*Rilassamenti lagrangiani & Dualità lagrangiana*) e 12 (*Branch & Bound*): fuori dal programma da 6 CFU, che finisce con la sezione 10. Le slide Lezioni 23-26 sono comunque in `Appunti_colleghi/Zip_appunti/LEZIONI 22-23/`; non scaricati `sol_es_Lez_23_24` ed `ese_8_2026`;
+- `Risultati_esoneri_MMD_2026`: esiti degli esoneri di altri studenti, l'esonero non è stato sostenuto.
+
 ## Appelli
 
 Gli appelli stanno sull'insegnamento mutuante, **Metodi e Modelli per le Decisioni** (LM Ingegneria Gestionale, cdsId 10091, adId 6757): quelli di Metodi e Modelli per l'IA (adId 23058) su Esse3 non sono leggibili dallo studente ("Security failed"). Al 19/10/2026 gli appelli invernali 2027 **non sono ancora pubblicati**: ci sono solo quelli dell'estate 2026. Lo schema è scritto e orale in date separate, l'orale 3-4 giorni dopo lo scritto:
