@@ -38,6 +38,17 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 - **sessione invernale 2027** (gennaio-febbraio): Algoritmi per l'IA, Laboratorio di IA, Programmazione Dichiarativa, Teoria e Applicazioni delle Reti Complesse, Analisi Statica, Linguaggi Interpreti e Compilatori;
 - **sessione estiva 2027**: Development of Reliable, Safe and Secure Software e Metodi e Modelli per l'IA.
 
+**Appelli invernali scelti** (Martin, 19/10/2026; stessa scelta in verde nel PDF `C:\Users\mtraj\Desktop\Appelli inverno 2027.pdf`):
+
+| Data | Esame | Iscrizioni Esse3 |
+|---|---|---|
+| ven 08/01/2027 14:30 | Analisi Statica (seminario + orale) | 09/12/2026 → 03/01/2027 |
+| mar 12/01/2027 09:00 | Algoritmi per l'IA (scritto) | 13/12/2026 → 07/01/2027 |
+| gio 14/01/2027 09:00 | Laboratorio di IA (progetto + orale) | 15/12/2026 → 09/01/2027 |
+| mer 20/01/2027 09:00 | Programmazione Dichiarativa (progetto + orale) | 21/12/2026 → 15/01/2027 |
+| mar 26/01/2027 14:30 | Linguaggi (orale) | 27/12/2026 → 21/01/2027 |
+| gio 11/02/2027 10:00 | Reti Complesse (progetto + orale) | 12/01/2027 → 06/02/2027 |
+
 Il piano dettagliato (quale appello per ogni esame) lo fa Martin: non proporre calendari o priorità fra gli esami se non è lui a chiederlo.
 
 ### Da sostenere - Secondo anno (2026-27)
