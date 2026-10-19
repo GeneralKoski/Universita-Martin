@@ -347,6 +347,27 @@ Claude del Mac:
       9.2, 9.3, nella frase su A e LA, e nel registro (totali: 253 previsioni,
       183 confermate, 52 smentite, 16 a metà, 2 senza esito).
 
+- [ ] **Koskidex `e853f0f` (19/10/2026): inserimento quadratico, istantanea
+      copiata a ogni scrittura, WAL troncato oltre l'istantanea.** Nessun
+      numero della tesi è falsato dai difetti in sé: i corpus usano id interi
+      o campi espliciti, blocchi da 1.000 documenti e indici sempre nuovi, e
+      `TestBaselineRankingIsFrozen` passa senza toccarlo. Da rileggere alla
+      luce della correzione:
+      - `confronto.tex` `tab:crescita` (50.000 e 100.000 documenti) e
+        "l'indicizzazione, 2,4 volte più lenta" (righe 610-613 e 683): i tempi
+        di Koskidex includevano la copia di tutti i documenti a ogni blocco,
+        non solo id e campi come stringhe. Rimisurare la crescita a `e853f0f`
+        (previsioni prima, regola 2) oppure togliere la causa dal testo.
+      - `confronto.tex` 688-694 e `conclusione.tex` 61-62, 198-203 ("oltre i
+        centomila documenti no"): le misure del 19/10 fino a un milione di
+        documenti piccoli (circa 2 KB a documento contro la heap fissa di
+        Elasticsearch) le confermano, ma non hanno file in `risultati/`:
+        citabili solo dopo averle archiviate (regola 3).
+      - Restano vere: `conclusione.tex` 204-207 (l'istantanea riscrive ancora
+        l'indice intero, solo meno spesso; niente aggiornamento parziale) e
+        `sistemi.tex` 26-28 ("istantanea periodica": ora al più una al
+        secondo).
+
 ## Regole
 
 Valgono per tutto il lavoro che resta. Se ne salta una, i numeri diventano
