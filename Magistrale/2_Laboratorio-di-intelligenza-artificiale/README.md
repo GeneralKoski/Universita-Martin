@@ -2,7 +2,7 @@
 
 **cod. 1009073** - 6 CFU, 48 ore - caratterizzante, monodisciplinare - 2° anno, primo semestre (a.a. 2026/27) - insegnamento in italiano.
 **Docente:** Vincenzo Bonnici (vincenzo.bonnici@unipr.it)
-**Esame:** **progetto da presentare** (confermato dal docente il 21/09/2026). La slide *Introduzione al corso* parla di progetto + orale: vale la conferma del docente. Il progetto deve applicare bene tutti i concetti del laboratorio **più qualcosa dal corso teorico di Algoritmi per l'IA**: la teoria va studiata comunque, anche per questo esame.
+**Esame:** **progetto + orale su tutto il programma**, voto finale = media fra voto del progetto e voto dell'orale (slide *Introduzione al corso* e scheda ufficiale 329454, "Esame orale più progetto", ricontrollate il 19/10/2026). I progetti sono pochi e assegnati a più studenti, ma ognuno lo risolve in autonomia con una propria linea di sviluppo; il progetto viene illustrato a metà corso. L'orale ha domande teoriche e problemi pratici da risolvere al computer (se non si ha un portatile lo fornisce il docente); internet e dispense sono ammessi solo per gli esercizi pratici. La nota precedente "solo progetto, confermato dal docente il 21/09/2026" non trova riscontro nel materiale ufficiale ed è superata. Che il progetto debba usare anche qualcosa del corso teorico di Algoritmi per l'IA non lo dicono né slide né scheda: da verificare con il docente.
 **Metodi didattici:** lezioni frontali, laboratorio in aula, progetto.
 
 Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329454
@@ -21,10 +21,9 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 - `project/` - il progetto d'esame, una sottocartella per progetto
 - `study/` - preparazione della presentazione
 
-Il progetto deve applicare i concetti del laboratorio **più qualcosa dal corso
-teorico di Algoritmi per l'IA**: quella teoria sta in
-`../2_Algoritmi-per-l-intelligenza-artificiale/study/`, va linkata da qui, non
-ricopiata.
+La teoria di Algoritmi per l'IA (stesso docente) sta in
+`../2_Algoritmi-per-l-intelligenza-artificiale/study/`: se serve qui, va linkata,
+non ricopiata. Che il progetto debba usarla è da verificare (vedi Esame).
 
 Il `.gitignore` del corso tiene fuori da git dataset grezzi, file generati,
 risultati, `.venv` e zip di consegna: sono tutti rigenerabili e il repository

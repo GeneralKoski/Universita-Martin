@@ -2,7 +2,7 @@
 
 **cod. 1009071** - 6 CFU, 48 ore - caratterizzante, monodisciplinare - 2° anno, primo semestre (a.a. 2026/27) - insegnamento in italiano.
 **Docente:** Vincenzo Bonnici (vincenzo.bonnici@unipr.it)
-**Esame:** **scritto - crocette + domanda aperta**, più un **orale facoltativo** per migliorare il voto, che fa media con lo scritto (come dicono la slide *Introduzione al corso* e la scheda ufficiale). L'orale non lo faccio: preparo solo lo scritto. Su Elly 2025/26 c'era una *choice* per la scelta della modalità d'esame.
+**Esame:** **scritto a risposta multipla + una domanda aperta, su tutti gli argomenti del corso**, più un **orale facoltativo** che fa media con il voto dello scritto (slide *Introduzione al corso*; scheda ufficiale, ricontrollata il 19/10/2026: "Esame scritto con integrazione del voto tramite orale"). L'orale non lo faccio: preparo solo lo scritto. Su Elly 2025/26 c'era una *choice* per la scelta della modalità d'esame.
 **Metodi didattici:** lezioni frontali, seminari con discussioni di gruppo.
 
 Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329452

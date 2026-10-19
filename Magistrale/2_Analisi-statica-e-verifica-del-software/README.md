@@ -1,16 +1,21 @@
 # Analisi statica e verifica del software
 
 **cod. 1013066** - 9 CFU, 72 ore - caratterizzante, monodisciplinare - 2° anno, primo semestre (a.a. 2026/27) - insegnamento in italiano.
-**Docente:** Vincenzo Arceri.
+**Docente:** Vincenzo Arceri (vincenzo.arceri@unipr.it, dalla slide *01 - Introduction*).
 
-> La scheda ufficiale 2026/27 dava il docente come **NON ASSEGNATO** ("non più in
-> servizio presso l'Università di Parma") ed era priva di obiettivi, programma e
-> modalità d'esame. È un buco della scheda, non la realtà: **Arceri tiene ancora
-> il corso**, e su elly2026 il corso esiste (id 5198). Quando la scheda viene
-> aggiornata, riportare qui programma ed esame.
+**Esame:** **seminario (discussione di almeno un paper) + orale**. Slide 56 di
+*01 - Introduction* (2026/27): "Seminar (1+ paper discussion) and oral exam".
+Scheda ufficiale (letta il 19/10/2026): "La verifica avviene con la discussione
+di un articolo e un esame orale. Lo studente approfondisce un argomento avanzato
+partendo da un articolo scientifico tra quelli proposti e prepara una
+presentazione da utilizzare il giorno dell'esame." Il seminario quindi si tiene
+lo stesso giorno dell'orale, sull'articolo scelto fra quelli del docente. Pesi
+non indicati.
 
-**Esame:** **seminario (discussione di almeno un paper) + orale**, dalla slide 56 di
-*01 - Introduction* (2026/27). Pesi e dettagli non ancora indicati.
+> Fino a settembre 2026 la scheda dava il docente come **NON ASSEGNATO** ed era
+> vuota. Al 19/10/2026 è compilata, con Arceri docente, obiettivi, contenuti
+> (teoria dei reticoli, semantica e fixpoint, dataflow analyses, interpretazione
+> astratta, analisi relazionali e non, numeriche e su stringhe) ed esame.
 
 Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329458
 

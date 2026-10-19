@@ -2,7 +2,7 @@
 
 **cod. 1009066** - 6 CFU, 48 ore - caratterizzante, monodisciplinare - 2° anno, primo semestre (a.a. 2026/27) - insegnamento in italiano.
 **Docente:** Alessandro Dal Palù (alessandro.dalpalu@unipr.it)
-**Esame:** prova orale (teoria e/o revisione di letteratura scientifica) + discussione di un progetto (anche in gruppo, max 2 studenti). L'orale si può ripetere più volte e approfondisce i programmi consegnati.
+**Esame:** **orale sugli argomenti di teoria + discussione del progetto** (programma in **ASP**). Progetto anche in gruppo (max 2 studenti): un problema, tipicamente NP-completo, di cui si curano la modellazione logica, l'implementazione in Answer Set Programming e la valutazione critica delle performance (materiale del docente, confermato da Martin il 19/10/2026). La scheda ufficiale aggiunge che l'orale può riguardare anche la revisione di letteratura scientifica, che si può ripetere più volte e che approfondisce i programmi consegnati.
 **Metodi didattici:** lezioni frontali ed esperienze di laboratorio.
 
 Scheda ufficiale: https://corsi.unipr.it/it/ugov/degreecourse/329459

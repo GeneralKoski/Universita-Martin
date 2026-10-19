@@ -59,9 +59,9 @@ Lezioni frontali con esempi, applicazioni ed esercizi assegnati e discussi a lez
 
 ## Modalità d'esame
 
-Entrambe le prove sono obbligatorie (non è stato sostenuto il parziale).
+Entrambe le prove sono obbligatorie (non è stato sostenuto il parziale). Modalità confermata da Martin il 19/10/2026.
 
-- Prova **scritta** (17 settembre 2026): risoluzione di esercizi, 90-120 min. Due macro-blocchi: (1) algoritmi sui grafi - BFS/DFS, Bellman, Dijkstra, Floyd-Warshall, MST; (2) programmazione intera e ottimizzazione combinatoria - formulazioni, TSP, localizzazione, rilassamenti, TU.
+- Prova **scritta** (appello invernale, data da verificare su Esse3): risoluzione di esercizi, 90-120 min. Due macro-blocchi: (1) algoritmi sui grafi - BFS/DFS, Bellman, Dijkstra, Floyd-Warshall, MST; (2) programmazione intera e ottimizzazione combinatoria - formulazioni, TSP, localizzazione, rilassamenti, TU.
 - Prova **orale**: argomenti teorici e applicazioni, cioè definizioni e **dimostrazioni** (elenco in `study/pratica/13_simulazione_esame.md`).
 
 **Specificità del caso 6 CFU** (corso mutuato dai gestionali, 9 CFU):
