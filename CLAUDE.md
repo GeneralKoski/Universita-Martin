@@ -38,7 +38,7 @@ Piano di studi ufficiale (coorte 2025-26): https://corsi.unipr.it/it/cdlm-info/i
 - **sessione invernale 2027** (gennaio-febbraio): Algoritmi per l'IA, Laboratorio di IA, Programmazione Dichiarativa, Teoria e Applicazioni delle Reti Complesse, Analisi Statica, Linguaggi Interpreti e Compilatori;
 - **sessione estiva 2027**: Development of Reliable, Safe and Secure Software e Metodi e Modelli per l'IA.
 
-**Appelli invernali scelti** (Martin, 19/10/2026; stessa scelta in verde nel PDF `C:\Users\mtraj\Desktop\Appelli inverno 2027.pdf`):
+**Appelli invernali scelti** (Martin, 19/10/2026; stessa scelta in verde nel PDF `Magistrale/Appelli inverno 2027.pdf`, copiato anche sul Desktop di Windows):
 
 | Data | Esame | Iscrizioni Esse3 |
 |---|---|---|
