@@ -50,6 +50,9 @@ Dal Palù ha iniziato a caricare: una dispensa di riferimento e una sezione per
 ogni lezione con le slide annotate a mano in aula. Aggiornato il 21/09/2026,
 ricontrollato il 29/09/2026 e il 18/10/2026: è arrivata la sezione della
 lezione 5 con due file Prolog; dispensa e slide della lezione 1 identiche (md5).
+Ricontrollato il 29/10/2026: sono arrivate le sezioni delle lezioni 7, 8 e 9
+(quattro file Prolog e un articolo), scaricate; il resto identico (md5). Nessun
+annuncio sul forum.
 
 ### 0 - Introduzione
 
@@ -100,7 +103,29 @@ sono immagini). Lezione introduttiva, senza contenuto tecnico di Prolog/ASP:
   l'ordine di selezione SLD: prima regola del listato, atomo più a sinistra),
   numeri di Peano `num/1`, liste, `somma/2` e `len/2` con `is`
 
-Su Elly non ci sono sezioni per le lezioni 2, 3 e 4: il docente non ha caricato
+### 7 - Lezione 7, 20-10-26
+
+- `2026-27/7_Lezione_7_20-10-26/struct.pl` (struct.pl) - termini composti come
+  struttura dati: fatti `struct/3` e `struct/4` con argomenti funtore `f(_, _)`
+
+### 8 - Lezione 8, 26-10-26
+
+- `2026-27/8_Lezione_8_26-10-26/generate.pl` (generate.pl) - schema
+  *generate and test*: `genera/4` e `test/4` combinati in `soluzione/4`, poi
+  `genera/2` che alloca una lista di N variabili su una lista di valori ammessi
+
+### 9 - Lezione 9, 27-10-26
+
+- `2026-27/9_Lezione_9_27-10-26/Articolo explainable ML.pdf` (s42256-019-0048-x-1-1.pdf) -
+  Cynthia Rudin, *Stop explaining black box machine learning models for high
+  stakes decisions and use interpretable models instead*, Nature Machine
+  Intelligence 2019, 10 pagine
+- `2026-27/9_Lezione_9_27-10-26/cut.pl` (cut.pl) - effetto del cut `!` e di
+  `!, fail` sul backtracking
+- `2026-27/9_Lezione_9_27-10-26/findall.pl` (findall.pl) - `findall/3` e stampa
+  ricorsiva di una lista
+
+Su Elly non ci sono sezioni per le lezioni 2, 3, 4 e 6: il docente non ha caricato
 niente. Lo schema resta una sezione Elly per data, ma non per ogni lezione.
 
 ## Contenuti

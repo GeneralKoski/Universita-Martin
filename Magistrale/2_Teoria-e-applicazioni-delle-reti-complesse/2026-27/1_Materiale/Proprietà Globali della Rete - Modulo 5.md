@@ -1,6 +1,6 @@
 # Proprietà globali della rete (Modulo 5)
 
-Fonte: `Proprietà Globali della Rete - Modulo 5.pdf`
+Fonte: `Proprietà Globali della Rete - Modulo 5.pdf`, versione ricaricata dal docente il 22/10/2026 (131 pagine; la prima era di 117)
 
 ## Componenti connesse
 
@@ -299,7 +299,7 @@ $$P(k) = \frac{\text{numero di nodi con grado } k}{n} = \frac{N_k}{n}, \qquad \s
 | 4 | 1 | $1/7 \approx 0{,}143$ |
 | Totale | 7 | 1 |
 
-  (Errore nelle slide 83-85: riportano $k_B = 2$ e quindi $P(2) = P(3) = 3/7 \approx 0{,}429$ e $\langle k \rangle = 2{,}714$; ma B è collegato ad A, C ed E, quindi $k_B = 3$. Con $k_B = 2$ la somma dei gradi sarebbe 19, dispari, impossibile per la regola $\sum k_i = 2m$. Le slide successive usano già i valori corretti, $\langle k \rangle = 20/7$)
+  (La prima versione delle slide riportava $k_B = 2$, quindi $P(2) = P(3) = 3/7$: impossibile, perché la somma dei gradi sarebbe 19, dispari. Corretto nella versione del 22/10)
 
 ### Grado medio
 - **Grado medio**, la connettività tipica della rete ($m$ = numero di legami, $n$ = numero di nodi):
@@ -307,6 +307,15 @@ $$P(k) = \frac{\text{numero di nodi con grado } k}{n} = \frac{N_k}{n}, \qquad \s
 $$\bar k = \frac{1}{n} \sum_i k_i = \sum_k k \cdot P(k) = \frac{2m}{n}$$
 
 - L'ultima uguaglianza vale **sempre** (rete non orientata): la somma dei gradi è il doppio del numero di archi, perché ogni arco contribuisce 1 al grado di ciascuno dei suoi due estremi
+
+### Lemma della stretta di mano (*handshaking lemma*)
+- In un grafo non orientato:
+
+$$\sum_i k_i = 2m$$
+
+- Ogni arco ha esattamente due estremi: sommando i gradi di tutti i nodi ogni arco viene contato **due volte**
+- Il nome: in una stanza di $n$ persone, se si sommano le strette di mano ricevute da ciascuno si ottiene il doppio delle strette avvenute, perché ognuna coinvolge due persone
+- Conseguenze: $\bar k = 2m/n$, e la somma dei gradi è sempre **pari** (utile per controllare un calcolo a mano)
 - Esempio: $\bar k = 2 \cdot \frac27 + 3 \cdot \frac47 + 4 \cdot \frac17 = \frac{20}{7} = \frac{2 \cdot 10}{7} \approx 2{,}857$
 
 ### Varianza dei gradi
@@ -368,7 +377,7 @@ $$Cov(k_i, k_j) = \frac{1}{m} \sum_{(i,j) \in E} (k_i - \mu)(k_j - \mu), \qquad 
 
 $$\sigma^2 = \frac{1}{2m} \sum_{(i,j) \in E} \left[(k_i - \mu)^2 + (k_j - \mu)^2\right]$$
 
-  (Nelle slide il fattore è $\frac{1}{m}$, che darebbe il doppio della varianza e dimezzerebbe $r$; il calcolo dell'esempio numerico usa correttamente $\frac{1}{2m}$)
+  (La prima versione delle slide aveva $\frac{1}{m}$, che darebbe il doppio della varianza; corretto in $\frac{1}{2m}$ nella versione del 22/10)
 - Interpretazione:
   - $r > 0$: **assortativa**, nodi con gradi simili tendono a collegarsi
   - $r < 0$: **disassortativa**, nodi con gradi diversi tendono a collegarsi
@@ -380,7 +389,7 @@ $$\sigma^2 = \frac{1}{2m} \sum_{(i,j) \in E} \left[(k_i - \mu)^2 + (k_j - \mu)^2
 $$\rho = \frac{\sum_i (x_i - \bar x)(y_i - \bar y)}{\sqrt{\sum_i (x_i - \bar x)^2 \cdot \sum_i (y_i - \bar y)^2}}$$
 
 - **Numeratore**: $(x_i - \bar x)$ e $(y_i - \bar y)$ sono gli scarti dalla media (positivi sopra, negativi sotto); la loro somma dei prodotti è la **covarianza** (non normalizzata), che dice se $X$ e $Y$ crescono e decrescono insieme
-- **Denominatore**: radice del prodotto delle due **varianze** (non normalizzate); è il massimo valore che il numeratore può assumere e garantisce $\rho \in [-1, 1]$ (nella slide stampato come "$[-,11]$")
+- **Denominatore**: radice del prodotto delle due **varianze** (non normalizzate); è il massimo valore assoluto che il numeratore può raggiungere, date le variabilità delle due variabili, e garantisce $\rho \in [-1, 1]$
 - Figura (Wikipedia): reti con assortatività $A = 0$, $A = 0{,}26$, $A = 0{,}43$
 
 ### Esempio numerico
@@ -425,11 +434,41 @@ $$r = \frac{\frac{45}{7} - \left(\frac{18}{7}\right)^2}{7 - \left(\frac{18}{7}\r
 
 - Schema: le reti **sociali** sono assortative, quelle **tecnologiche e biologiche** disassortative
 
-## Coefficiente di clustering (solo introdotto)
-- (La slide 115, intitolata "Clustering Coefficient", ripete in realtà la definizione del coefficiente di assortatività della slide 101: è un duplicato fuori posto)
+## Coefficiente di clustering
+
+### Triangoli e transitività
 - **L'idea più semplice di comunità: il triangolo**. Se A conosce B e B conosce C, è probabile che anche A conosca C: i tre nodi formano un **triangolo**
 - I triangoli indicano la presenza di **gruppi fortemente coesi** e sono il "**mattone elementare**" delle comunità
-- Il modulo si chiude qui: formula e proprietà del clustering non sono ancora presentate
+- È la **proprietà transitiva** delle reti sociali (*transitivity coefficient*): "amici di amici sono anche miei amici". Figura: rete a basso clustering (un solo triangolo) vs rete ad alto clustering (molti triangoli)
+- **Tripla** centrata su un nodo: il nodo e due suoi vicini
+  - **aperta**: i due vicini non sono collegati tra loro
+  - **chiusa**: i due vicini sono collegati, e formano un triangolo
+
+### Clustering locale
+- Misura quanto i vicini di un nodo sono connessi tra loro: "i miei amici sono anche amici tra loro?"
+
+$$C_i = \frac{\text{triple chiuse centrate su } i}{\text{triple totali centrate su } i} = \frac{T_i}{\frac{k_i (k_i - 1)}{2}} = \frac{2 T_i}{k_i (k_i - 1)}, \qquad 0 \leq C_i \leq 1$$
+
+- Grafi **non orientati e binari**. $T_i$ = numero di triple chiuse centrate su $i$, cioè di **triangoli** che passano per $i$; $\frac{k_i (k_i - 1)}{2}$ = coppie di vicini, cioè triple possibili centrate su $i$
+- È la **frazione di triple centrate sul nodo che risultano chiuse**, ovvero la probabilità che due vicini dello stesso nodo siano collegati tra loro
+- Esempio: A collegato a B, C, D, E ($k_A = 4$), con i soli archi B-C e D-E fra i vicini ($T_A = 2$):
+
+$$C_A = \frac{2 \cdot 2}{4 \cdot 3} = \frac{4}{12} \approx 0{,}333$$
+
+- Figura (doi 10.1111/j.1939-7445.2008.00004.x): A con tre vicini B, C, D e 0, 1, 2, 3 archi fra loro → $C_A = 0$; $0{,}33$; $0{,}67$; $1$ (le coppie di vicini sono 3)
+
+### Clustering medio della rete
+- Media aritmetica dei clustering locali di tutti i nodi:
+
+$$C = \frac{1}{n} \sum_{i=1}^n C_i$$
+
+- Nodi di grado 0 o 1 non hanno coppie di vicini: $C_i$ **non è definito**. Per convenzione si pone $C_i = 0$ oppure si escludono dalla media, e **la scelta cambia il valore** di $C$
+- In R: `mean(transitivity(G, type = "local"), na.rm = TRUE)`. `transitivity(type = "local")` restituisce `NaN` per i nodi di grado 0 o 1 e `na.rm = TRUE` li esclude (nelle slide il grafo si chiama `G_att`, quello attaccato, e manca il `mean(`)
+
+### Clustering sotto rimozione di nodi (errore vs attacco)
+- **Errore** = rimozione casuale; **attacco** = rimozione mirata (dei nodi più centrali)
+- **Grafo casuale** ER ($N = 1000$, $p = 0{,}005$, `erdos.renyi.game(n, p, type = "gnp", directed = FALSE)`): clustering medio iniziale bassissimo, circa $0{,}005$ (aggiunta: un ER ha $C \approx p$). Con 1 simulazione la curva dell'errore è molto rumorosa; con 100 simulazioni resta piatta intorno a $0{,}005$ (banda di variabilità che si allarga oltre il 60-70% di rimozioni), mentre l'attacco porta $C$ a zero già intorno al 40-50%. **Il grafo casuale ha basso clustering**
+- **Watts-Strogatz** ($N = 1000$, `sample_smallworld(dim = 1, size = n, nei = 3, p = 0.05)`, 100 simulazioni): clustering iniziale alto, circa $0{,}45$. Sotto errore resta stabile fin quasi al 90%; sotto attacco sale leggermente all'inizio (circa $0{,}48$), poi cala da circa il 30-40% e crolla a zero intorno al 73%
 
 ## Funzioni utili per il progetto (aggiunta, non nelle slide)
 Le slide mostrano solo il codice R/igraph riportato sopra; queste sono le funzioni corrispondenti per calcolare le stesse misure.
@@ -445,6 +484,9 @@ nx.average_shortest_path_length(G, weight="w")    # solleva errore se non connes
 nx.global_efficiency(G), nx.local_efficiency(G)   # non orientato e non pesato
 nx.degree_histogram(G)                            # conteggi N_k, k = 0..k_max
 nx.degree_assortativity_coefficient(G)
+nx.clustering(G)                                  # C_i, vale 0 per i nodi di grado 0 o 1
+nx.average_clustering(G)                          # media con C_i = 0 per quei nodi
+nx.transitivity(G)                                # globale: 3 * triangoli / triple connesse
 ```
 
 ```r
@@ -456,7 +498,11 @@ mean_distance(G); diameter(G); eccentricity(G)
 global_efficiency(G); average_local_efficiency(G)
 degree_distribution(G)
 assortativity_degree(G)
+transitivity(G, type = "local")    # NaN per i nodi di grado 0 o 1
+transitivity(G, type = "global")
 ```
+
+- Attenzione alla convenzione: `nx.average_clustering` conta come 0 i nodi di grado 0 o 1, `mean(..., na.rm = TRUE)` in R li esclude, quindi sulla stessa rete i due valori possono differire. Nel report va detto quale si è usata
 
 - Per pesi di tipo **prossimità** (flussi, intensità) bisogna passare esplicitamente $1/w$ come pesi delle distanze, altrimenti un legame forte viene trattato come lungo
 
@@ -472,4 +518,6 @@ assortativity_degree(G)
 - **Distribuzione dei gradi** $P(k) = N_k / n$, $\sum P(k) = 1$; **grado medio** $\bar k = \sum k P(k) = 2m/n$; **varianza** $\sigma_k^2 = \langle k^2 \rangle - \langle k \rangle^2$ (alta = eterogenea)
 - **Poisson** (omogenea, autostrade) vs **legge di potenza** $P(k) \propto k^{-\gamma}$ (hub, rete aerea, varianza enorme)
 - **Assortatività** $r$ = correlazione di Pearson dei gradi agli estremi degli archi, $-1 \leq r \leq 1$; $\mu$ è il grado medio agli estremi, non $\langle k \rangle$. Esempio: $r = -9/19 \approx -0{,}474$. Reti sociali assortative, tecnologiche e biologiche disassortative
-- **Clustering**: per ora solo l'idea del triangolo (chiusura triadica) come mattone delle comunità
+- **Lemma della stretta di mano** $\sum_i k_i = 2m$: da qui $\bar k = 2m/n$ e la somma dei gradi sempre pari
+- **Clustering locale** $C_i = \frac{2 T_i}{k_i (k_i - 1)}$ = frazione di triple chiuse centrate su $i$; esempio $C_A = 4/12 \approx 0{,}333$. **Clustering medio** $C = \frac1n \sum C_i$, con la convenzione sui nodi di grado 0 o 1 da dichiarare
+- ER ha clustering bassissimo ($\approx p$), WS alto ($\approx 0{,}45$ con `nei = 3`, $p = 0{,}05$); sotto errore il clustering medio regge, sotto attacco crolla

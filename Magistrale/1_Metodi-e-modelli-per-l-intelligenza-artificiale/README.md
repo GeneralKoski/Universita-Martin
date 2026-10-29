@@ -78,7 +78,7 @@ Fonti: scheda ufficiale del corso + `Appunti_colleghi/Modalità_esame.txt` + cen
 
 ## Allineamento con Elly
 
-Ricontrollato il 19/10/2026 su elly2025 (corso 416, Metodi e Modelli per le Decisioni): tutto il materiale delle sezioni 1-10 è in `Elly/` (md5). Restano fuori apposta:
+Ricontrollato il 19/10/2026 e il 29/10/2026 su elly2025 (corso 416, Metodi e Modelli per le Decisioni): tutto il materiale delle sezioni 1-10 è in `Elly/` (md5). Restano fuori apposta:
 
 - sezioni 11 (*Rilassamenti lagrangiani & Dualità lagrangiana*) e 12 (*Branch & Bound*): fuori dal programma da 6 CFU, che finisce con la sezione 10. Le slide Lezioni 23-26 sono comunque in `Appunti_colleghi/Zip_appunti/LEZIONI 22-23/`; non scaricati `sol_es_Lez_23_24` ed `ese_8_2026`;
 - `Risultati_esoneri_MMD_2026`: esiti degli esoneri di altri studenti, l'esonero non è stato sostenuto.

@@ -40,11 +40,23 @@ Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizio
 
 Scaricato il 18/10/2026 in `2026-27/`. Il docente tiene tutto in un'unica
 sezione, che su Elly si chiama ancora "Nuova sezione": in locale è
-`1_Materiale`. Niente registrazioni.
+`1_Materiale`. Niente registrazioni. Ricontrollato il 29/10/2026: il Modulo 5
+è stato ricaricato dal docente il 22/10 (vedi sotto), il resto è identico (md5).
 
 ### 0 - Introduzione
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6341
+
+Il docente usa gli annunci per assegnare le analisi da fare fra una lezione e
+l'altra, sui dataset di https://networks.skewed.de (Python/NetworkX o R/igraph):
+
+- 16/09/2026 - inizio del corso giovedì 24/09 alle 13:30, Aula B, Plesso di Matematica
+- 28/09/2026 - rete [Karate](https://networks.skewed.de/net/karate): caricare l'edgelist, contare nodi e link, matrice di adiacenza, numero di link per nodo
+- 01/10/2026 - sempre Karate: matrice di adiacenza, matrice di incidenza, distribuzione del grado; generare grafi casuali Erdős-Rényi con diversi N e probabilità di collegamento
+- 05/10/2026 - Karate e grafo casuale: grado, betweenness e closeness di ogni nodo in una tabella; distanze (shortest path length) fra nodi
+- 13/10/2026 - Karate e grafo casuale: PageRank e centralità degli autovettori
+- 16/10/2026 - rete dei neuroni di C. elegans (https://networks.skewed.de/net/celegans_2019, sceglierne una): distanze binarie e pesate, diametro binario e pesato
+- 22/10/2026 - niente prove intermedie nella LM Scienze Informatiche, quindi le lezioni del 3-6/11 non si fermano
 
 ### 1 - Materiale (su Elly "Nuova sezione")
 
@@ -55,7 +67,7 @@ Slide, nell'ordine del corso:
 - `2026-27/1_Materiale/Breve Storia -Modulo 2.pdf` (Breve Storia -Modulo 2.pdf) - 36 pagine
 - `2026-27/1_Materiale/Fondamenti Matematici - Modulo 3.pdf` (Fondamenti Matematici - Modulo 3.pdf) - 52 pagine
 - `2026-27/1_Materiale/Centralità dei nodi - Modulo 4.pdf` (Centralità dei Nodi - Modulo 4.pdf) - 103 pagine
-- `2026-27/1_Materiale/Proprietà Globali della Rete - Modulo 5.pdf` (Proprietà Globali della Rete - Modulo 5.pdf) - 117 pagine
+- `2026-27/1_Materiale/Proprietà Globali della Rete - Modulo 5.pdf` (Proprietà Globali della Rete - Modulo 5.pdf) - 131 pagine. Ricaricato dal docente il 22/10/2026 (prima erano 117): aggiunti il lemma della stretta di mano (somma dei gradi = 2m) e il grado medio, l'assortatività del grado spiegata come covarianza/Pearson con esempio numerico, e il coefficiente di clustering sviluppato (triangoli, transitività, clustering locale). Il riassunto `.md` è aggiornato alla nuova versione (29/10/2026)
 
 Articoli scientifici:
 

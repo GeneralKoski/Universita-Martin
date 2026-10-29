@@ -24,7 +24,7 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 
 | Edizione | Elly | Corso | Stato |
 |---|---|---|---|
-| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, slide 01-07 |
+| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, slide 01-10 |
 | 2025/26 | elly2025 | [id 741](https://elly2025.didattica.unipr.it/course/view.php?id=741) | archiviata, materiale completo |
 
 ## Appelli 2026/27
@@ -46,11 +46,16 @@ Il 16/09/2026 il corso era vuoto. Ricontrollato il 29/09/2026: sono arrivati il
 tutorial di Miné e la prima slide, scaricati in `2026-27/`. Ricontrollato il
 18/10/2026: sono arrivate le slide da 02 a 07, scaricate; tutorial e 01 identici
 (md5). La scheda ufficiale è ancora priva di programma ed esame (l'esame però
-lo dà la slide, vedi sopra).
+lo dà la slide, vedi sopra). Ricontrollato il 29/10/2026: sono arrivate le
+slide da 08 a 10, scaricate; tutto il resto identico (md5).
 
 ### 0 - Introduzione
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6550
+  - 22/09/2026 - ricevimento su appuntamento, via mail ad Arceri indicando l'oggetto
+  - 19/10/2026 - lezioni del 21/10 e 22/10 alle 9:30
+  - 26/10/2026 - dal 29/10 esercitazioni pratiche su LiSA (https://github.com/lisa-analyzer/lisa), codice in https://github.com/VincenzoArceri/lisa-lab (Java 21, Gradle >= 8, Eclipse o IntelliJ). Il clone è in `2026-27/lisa-lab/`, fuori da git, allineato a `origin/main` al 29/10/2026
+  - 27/10/2026 - lezione del 28/10 alle 9:00
 
 ### 1 - Material
 
@@ -65,6 +70,13 @@ lo dà la slide, vedi sopra).
 - `2026-27/2_Slides/05 - Meaning of approximation.pdf` (06.pdf) - 85 pagine
 - `2026-27/2_Slides/06 - Introduction to abstract interpretation (Galois connections).pdf` (07.pdf) - 58 pagine
 - `2026-27/2_Slides/07 - Introduction to abstract interpretation (Abstract semantics).pdf` (08.pdf) - 57 pagine
+- `2026-27/2_Slides/08 - The split operator.pdf` (Split.pdf) - 22 pagine: *Speeding up Static Analysis with the Split Operator*, Arceri, Dolcetti, Zaffanella
+- `2026-27/2_Slides/09 - Unconstrained variable oracles for faster numeric static analyses.pdf` (Havoc.pdf) - 28 pagine: stessi autori
+- `2026-27/2_Slides/10 - Statically analyzing R vectors.pdf` (unipr-seminar-20261028.pdf) - 164 pagine: seminario del 28/10/2026 di Manuel Di Agostino, *Statically reasoning about R vectors* (NSAD '26)
+
+Le 08-10 non sono lezioni ma presentazioni di articoli di ricerca del gruppo:
+sono il formato del seminario d'esame (discussione di un paper), e potrebbero
+essere fra gli articoli proposti. Da verificare con il docente.
 
 Dalla quinta slide i nomi originali saltano di uno (`05` è `06.pdf` e così via):
 su Elly manca un `05.pdf`, i titoli invece sono consecutivi.

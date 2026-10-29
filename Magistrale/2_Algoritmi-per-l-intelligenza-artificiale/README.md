@@ -55,13 +55,15 @@ la copia locale è aggiornata; sono arrivate le prime registrazioni. Ricontrolla
 il 18/10/2026: *Validazione dei modelli di classificazione* è stata ricompilata
 il 05/10 (stesso testo, 33 pagine invece di 32, numeri di pagina corretti: la
 vecchia diceva "N / 1") e la copia locale è aggiornata; le registrazioni sono
-arrivate alla lezione 6. Tutto il resto è identico (md5). I nomi originali del docente
+arrivate alla lezione 6. Ricontrollato il 29/10/2026: nessun file nuovo,
+le registrazioni sono arrivate alla lezione 9. Tutto il resto è identico (md5). I nomi originali del docente
 portano il prefisso `AIALGO_2627_`, che conferma che sono file rifatti per questa edizione
 e non copie della precedente.
 
 ### 0 - Introduzione
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6548
+  - 28/10/2026 - link Teams per lo streaming in diretta della lezione del 30/10
 - `2026-27/0_Introduzione/Calendario provvisorio.pdf` (calendario-v0.pdf)
 - `2026-27/0_Introduzione/Esempio compito scritto.pdf` (esempio-compito.pdf)
 
@@ -90,6 +92,9 @@ e non copie della precedente.
 - [url] Lezione 4 - Teoria dell'informazione parte 4 + Validazione dei modelli di classificazione - https://elly2026.didattica.unipr.it/mod/url/view.php?id=42985
 - [url] Lezione 5 - Modelli per la classificazione (kNN + Alberi di decisione) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=46365
 - [url] Lezione 6 - Metodi consenso - https://elly2026.didattica.unipr.it/mod/url/view.php?id=49342
+- [url] Lezione 7 - SVM - https://elly2026.didattica.unipr.it/mod/url/view.php?id=51359
+- [url] Lezione 8 - LDA +  Regressione - https://elly2026.didattica.unipr.it/mod/url/view.php?id=52976
+- [url] Lezione 9 - Regressione (parte 2) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=54051
 
 ### Cosa cambia rispetto al 2025/26
 

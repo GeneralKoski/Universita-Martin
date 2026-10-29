@@ -54,8 +54,8 @@ Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizio
 ## Edizione 2026/27 - Elly 5197
 
 Scaricato il 16/09/2026 in `2026-27/`, ricontrollato il 21/09/2026, il
-29/09/2026 e il 18/10/2026: nessun file nuovo o modificato (md5), sono arrivate
-le registrazioni delle lezioni 2-9. I nomi
+29/09/2026, il 18/10/2026 e il 29/10/2026: nessun file nuovo o modificato (md5),
+sono arrivate le registrazioni delle lezioni 2-12. Nessun annuncio sul forum. I nomi
 originali del docente portano il prefisso `AILAB_2627_`, che conferma che sono
 file rifatti per questa edizione e non copie della precedente.
 
@@ -109,6 +109,9 @@ Su Elly mancano le registrazioni delle lezioni 0 e 1.
 - [url] Lezione 7 - Riduzione della dimensionalità - https://elly2026.didattica.unipr.it/mod/url/view.php?id=45408
 - [url] Lezione 8 - Riduzione della dimensionalità (parte 2) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=48402
 - [url] Lezione 9 - Sbilanciamento del dataset - https://elly2026.didattica.unipr.it/mod/url/view.php?id=48963
+- [url] Lezione 10 - Sbilanciamento del dataset (parte 2) + Descrizione progetto CETI - https://elly2026.didattica.unipr.it/mod/url/view.php?id=52019 - **il progetto d'esame è descritto qui**, su Elly non c'è un file a parte
+- [url] Lezione 11 - Benchmarking - https://elly2026.didattica.unipr.it/mod/url/view.php?id=52978
+- [url] Lezione 12 - Serie temporali - https://elly2026.didattica.unipr.it/mod/url/view.php?id=55252
 
 ### Cosa cambia rispetto al 2025/26
 
