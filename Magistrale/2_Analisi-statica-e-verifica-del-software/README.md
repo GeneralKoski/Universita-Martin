@@ -47,7 +47,9 @@ tutorial di Miné e la prima slide, scaricati in `2026-27/`. Ricontrollato il
 18/10/2026: sono arrivate le slide da 02 a 07, scaricate; tutorial e 01 identici
 (md5). La scheda ufficiale è ancora priva di programma ed esame (l'esame però
 lo dà la slide, vedi sopra). Ricontrollato il 29/10/2026: sono arrivate le
-slide da 08 a 10, scaricate; tutto il resto identico (md5).
+slide da 08 a 10, scaricate; tutto il resto identico (md5). Ricontrollato il
+02/11/2026: è arrivata la slide della lezione 9 su LiSA, scaricata; tutto il resto
+identico (md5).
 
 ### 0 - Introduzione
 
@@ -56,6 +58,9 @@ slide da 08 a 10, scaricate; tutto il resto identico (md5).
   - 19/10/2026 - lezioni del 21/10 e 22/10 alle 9:30
   - 26/10/2026 - dal 29/10 esercitazioni pratiche su LiSA (https://github.com/lisa-analyzer/lisa), codice in https://github.com/VincenzoArceri/lisa-lab (Java 21, Gradle >= 8, Eclipse o IntelliJ). Il clone è in `2026-27/lisa-lab/`, fuori da git, allineato a `origin/main` al 29/10/2026
   - 27/10/2026 - lezione del 28/10 alle 9:00
+  - 29/10/2026 - la lezione del 30/10 si tiene in presenza e anche in diretta su Teams
+  - 30/10/2026 - link Teams della lezione del 30/10
+  - 30/10/2026 - **lezione del 04/11 annullata**
 
 ### 1 - Material
 
@@ -73,6 +78,7 @@ slide da 08 a 10, scaricate; tutto il resto identico (md5).
 - `2026-27/2_Slides/08 - The split operator.pdf` (Split.pdf) - 22 pagine: *Speeding up Static Analysis with the Split Operator*, Arceri, Dolcetti, Zaffanella
 - `2026-27/2_Slides/09 - Unconstrained variable oracles for faster numeric static analyses.pdf` (Havoc.pdf) - 28 pagine: stessi autori
 - `2026-27/2_Slides/10 - Statically analyzing R vectors.pdf` (unipr-seminar-20261028.pdf) - 164 pagine: seminario del 28/10/2026 di Manuel Di Agostino, *Statically reasoning about R vectors* (NSAD '26)
+- `2026-27/2_Slides/11 - Abstract interpretation in LiSA.pdf` (intro-lisa.pdf) - 99 pagine: *Lecture 9 - Abstract interpretation in LiSA*, la slide delle esercitazioni pratiche su LiSA (vedi annuncio del 26/10)
 
 Le 08-10 non sono lezioni ma presentazioni di articoli di ricerca del gruppo:
 sono il formato del seminario d'esame (discussione di un paper), e potrebbero

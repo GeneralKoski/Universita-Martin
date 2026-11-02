@@ -42,6 +42,8 @@ Scaricato il 18/10/2026 in `2026-27/`. Il docente tiene tutto in un'unica
 sezione, che su Elly si chiama ancora "Nuova sezione": in locale è
 `1_Materiale`. Niente registrazioni. Ricontrollato il 29/10/2026: il Modulo 5
 è stato ricaricato dal docente il 22/10 (vedi sotto), il resto è identico (md5).
+Ricontrollato il 02/11/2026: è arrivato il Modulo 7, il resto è identico (md5).
+Il Modulo 6 su Elly non c'è.
 
 ### 0 - Introduzione
 
@@ -68,6 +70,7 @@ Slide, nell'ordine del corso:
 - `2026-27/1_Materiale/Fondamenti Matematici - Modulo 3.pdf` (Fondamenti Matematici - Modulo 3.pdf) - 52 pagine
 - `2026-27/1_Materiale/Centralità dei nodi - Modulo 4.pdf` (Centralità dei Nodi - Modulo 4.pdf) - 103 pagine
 - `2026-27/1_Materiale/Proprietà Globali della Rete - Modulo 5.pdf` (Proprietà Globali della Rete - Modulo 5.pdf) - 131 pagine. Ricaricato dal docente il 22/10/2026 (prima erano 117): aggiunti il lemma della stretta di mano (somma dei gradi = 2m) e il grado medio, l'assortatività del grado spiegata come covarianza/Pearson con esempio numerico, e il coefficiente di clustering sviluppato (triangoli, transitività, clustering locale). Il riassunto `.md` è aggiornato alla nuova versione (29/10/2026)
+- `2026-27/1_Materiale/Modelli di Rete - Modulo 7.pdf` (Modelli di Rete - Modulo 7.pdf) - 67 pagine. Su Elly non c'è un Modulo 6: si passa dal 5 al 7
 
 Articoli scientifici:
 

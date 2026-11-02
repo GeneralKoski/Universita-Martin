@@ -56,7 +56,9 @@ il 18/10/2026: *Validazione dei modelli di classificazione* è stata ricompilata
 il 05/10 (stesso testo, 33 pagine invece di 32, numeri di pagina corretti: la
 vecchia diceva "N / 1") e la copia locale è aggiornata; le registrazioni sono
 arrivate alla lezione 6. Ricontrollato il 29/10/2026: nessun file nuovo,
-le registrazioni sono arrivate alla lezione 9. Tutto il resto è identico (md5). I nomi originali del docente
+le registrazioni sono arrivate alla lezione 9. Ricontrollato il 02/11/2026: è
+arrivato il calendario aggiornato al 30 ottobre, le registrazioni sono arrivate alla
+lezione 11. Tutto il resto è identico (md5). I nomi originali del docente
 portano il prefisso `AIALGO_2627_`, che conferma che sono file rifatti per questa edizione
 e non copie della precedente.
 
@@ -64,7 +66,9 @@ e non copie della precedente.
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6548
   - 28/10/2026 - link Teams per lo streaming in diretta della lezione del 30/10
+  - 30/10/2026 - lezione in più mercoledì 04/11 alle 8:30, aula B
 - `2026-27/0_Introduzione/Calendario provvisorio.pdf` (calendario-v0.pdf)
+- `2026-27/0_Introduzione/Calendario aggiornato al 30 ottobre.pdf` (calendario-v1.pdf) - **il calendario valido**: aggiunge la lezione di mercoledì 04/11 (BFR, fuzzy k-means), quindi dal 06/11 ogni argomento anticipa di una lezione: l'ultimo argomento (*Teoria dei giochi, Monte Carlo tree search*) passa dal 14/12 all'11/12, e il 14/12 resta senza argomento
 - `2026-27/0_Introduzione/Esempio compito scritto.pdf` (esempio-compito.pdf)
 
 ### 1 - Materiale lezioni
@@ -95,6 +99,8 @@ e non copie della precedente.
 - [url] Lezione 7 - SVM - https://elly2026.didattica.unipr.it/mod/url/view.php?id=51359
 - [url] Lezione 8 - LDA +  Regressione - https://elly2026.didattica.unipr.it/mod/url/view.php?id=52976
 - [url] Lezione 9 - Regressione (parte 2) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=54051
+- [url] Lezione 10 - Clustering - https://elly2026.didattica.unipr.it/mod/url/view.php?id=56639
+- [url] Lezione 11 - Clustering (parte 2) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=57509
 
 ### Cosa cambia rispetto al 2025/26
 
