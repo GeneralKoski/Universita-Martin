@@ -43,6 +43,7 @@ sezione, che su Elly si chiama ancora "Nuova sezione": in locale è
 `1_Materiale`. Niente registrazioni. Ricontrollato il 29/10/2026: il Modulo 5
 è stato ricaricato dal docente il 22/10 (vedi sotto), il resto è identico (md5).
 Ricontrollato il 02/11/2026: è arrivato il Modulo 7, il resto è identico (md5).
+Ricontrollato il 06/11/2026: nessun file nuovo e nessun annuncio nuovo, tutto identico (md5).
 Il Modulo 6 su Elly non c'è.
 
 ### 0 - Introduzione

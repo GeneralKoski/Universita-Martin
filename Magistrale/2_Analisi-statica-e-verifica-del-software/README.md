@@ -10,7 +10,9 @@ di un articolo e un esame orale. Lo studente approfondisce un argomento avanzato
 partendo da un articolo scientifico tra quelli proposti e prepara una
 presentazione da utilizzare il giorno dell'esame." Il seminario quindi si tiene
 lo stesso giorno dell'orale, sull'articolo scelto fra quelli del docente. Pesi
-non indicati.
+non indicati. Annuncio del 05/11/2026: presentazione di **max 15 minuti** più orale di
+**10 minuti**; per presentare entro dicembre il topic va scelto entro il
+**27/11/2026 alle 9:00** (dettagli negli annunci, sotto).
 
 > Fino a settembre 2026 la scheda dava il docente come **NON ASSEGNATO** ed era
 > vuota. Al 19/10/2026 è compilata, con Arceri docente, obiettivi, contenuti
@@ -24,7 +26,7 @@ Il materiale è diviso per edizione: `2026-27/` è il corso che sto seguendo,
 
 | Edizione | Elly | Corso | Stato |
 |---|---|---|---|
-| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, slide 01-10 |
+| 2026/27 | elly2026 | [id 5198](https://elly2026.didattica.unipr.it/course/view.php?id=5198) | in corso, slide 01-12 |
 | 2025/26 | elly2025 | [id 741](https://elly2025.didattica.unipr.it/course/view.php?id=741) | archiviata, materiale completo |
 
 ## Appelli 2026/27
@@ -49,7 +51,9 @@ tutorial di Miné e la prima slide, scaricati in `2026-27/`. Ricontrollato il
 lo dà la slide, vedi sopra). Ricontrollato il 29/10/2026: sono arrivate le
 slide da 08 a 10, scaricate; tutto il resto identico (md5). Ricontrollato il
 02/11/2026: è arrivata la slide della lezione 9 su LiSA, scaricata; tutto il resto
-identico (md5).
+identico (md5). Ricontrollato il 06/11/2026: sono arrivati l'elenco dei paper per i
+seminari (`Topics for seminars.zip`) e la slide 12 sul dominio degli intervalli,
+scaricati; tutto il resto identico (md5).
 
 ### 0 - Introduzione
 
@@ -61,10 +65,13 @@ identico (md5).
   - 29/10/2026 - la lezione del 30/10 si tiene in presenza e anche in diretta su Teams
   - 30/10/2026 - link Teams della lezione del 30/10
   - 30/10/2026 - **lezione del 04/11 annullata**
+  - 05/11/2026 - **topic per i seminari e informazioni sull'esame**: i paper suggeriti sono su Elly (`1_Material/Topics for seminars.zip`). Chi vuole presentare il seminario **entro dicembre** deve scegliere il topic **entro il 27/11/2026 alle 9:00**, con una mail ad Arceri con oggetto `[Static analysis and software verification] <NUMERO_TOPIC> Mat. <MATRICOLA>`. Si può proporre un articolo (o più) alternativo, allegandolo alla mail per approvazione. **L'esame**: presentazione dell'articolo di **max 15 minuti**, poi **orale di 10 minuti** sugli argomenti del corso
+  - 05/11/2026 - **lezione dell'11/11 annullata**
 
 ### 1 - Material
 
 - `2026-27/1_Material/Tutorial on Static Inference of Numeric Invariants by Abstract Interpretation (Prof. Antoine Miné).pdf` (article-mine-FTiPL17.pdf) - nel 2025/26 era solo un url, ora è il PDF
+- `2026-27/1_Material/Topics for seminars.zip` (Topics.zip) - i paper fra cui scegliere il seminario: 29 topic numerati (01 *AbsIntFramework* ... 29 *Interactive abstract interpretation*), una cartella con il PDF per topic. Rispetto al 2025/26 (20 topic, 01-20) sono aggiunti i topic 21-29 (21 *Reduced prod for ML*, 22 *JSAI*, 23 *Race condition for Java*, 24 *Trace partitioning*, 25 *EVMLiSA*, 26 *Compositional Static Value Analysis*, 27 *Under-approximating memory abstractions*, 28 *TAJ*, 29 *Interactive abstract interpretation*). Vedi l'annuncio del 05/11 per la scadenza
 
 ### 2 - Slides
 
@@ -79,6 +86,7 @@ identico (md5).
 - `2026-27/2_Slides/09 - Unconstrained variable oracles for faster numeric static analyses.pdf` (Havoc.pdf) - 28 pagine: stessi autori
 - `2026-27/2_Slides/10 - Statically analyzing R vectors.pdf` (unipr-seminar-20261028.pdf) - 164 pagine: seminario del 28/10/2026 di Manuel Di Agostino, *Statically reasoning about R vectors* (NSAD '26)
 - `2026-27/2_Slides/11 - Abstract interpretation in LiSA.pdf` (intro-lisa.pdf) - 99 pagine: *Lecture 9 - Abstract interpretation in LiSA*, la slide delle esercitazioni pratiche su LiSA (vedi annuncio del 26/10)
+- `2026-27/2_Slides/12 - The interval abstract domain.pdf` (11.pdf) - *The interval abstract domain*, 46 pagine, stessa slide del 2025/26 (là `14 - The interval abstract domain`, sempre `11.pdf`): stessa dimensione, differiscono solo 76 byte in fondo al file, quindi contenuto con ogni probabilità identico (file riesportato)
 
 Le 08-10 non sono lezioni ma presentazioni di articoli di ricerca del gruppo:
 sono il formato del seminario d'esame (discussione di un paper), e potrebbero

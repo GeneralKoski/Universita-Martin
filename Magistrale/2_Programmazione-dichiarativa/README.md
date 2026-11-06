@@ -51,8 +51,9 @@ ogni lezione con le slide annotate a mano in aula. Aggiornato il 21/09/2026,
 ricontrollato il 29/09/2026 e il 18/10/2026: è arrivata la sezione della
 lezione 5 con due file Prolog; dispensa e slide della lezione 1 identiche (md5).
 Ricontrollato il 29/10/2026: sono arrivate le sezioni delle lezioni 7, 8 e 9
-(quattro file Prolog e un articolo), scaricate; il resto identico (md5). Nessun
-annuncio sul forum.
+(quattro file Prolog e un articolo), scaricate; il resto identico (md5). Ricontrollato
+il 06/11/2026: è arrivata la sezione della lezione 11, con quattro file ASP
+(primi file ASP del corso), scaricati; il resto identico (md5). Nessun annuncio sul forum.
 
 ### 0 - Introduzione
 
@@ -125,7 +126,16 @@ sono immagini). Lezione introduttiva, senza contenuto tecnico di Prolog/ASP:
 - `2026-27/9_Lezione_9_27-10-26/findall.pl` (findall.pl) - `findall/3` e stampa
   ricorsiva di una lista
 
-Su Elly non ci sono sezioni per le lezioni 2, 3, 4 e 6: il docente non ha caricato
+### 11 - Lezione 11, 03-11-26
+
+Su Elly la sezione si chiama "Lezione 11 03-1-26": la data ha un errore di battitura, la lezione è quasi certamente del 03/11/2026 (la 9 è del 27/10). In locale è `11_Lezione_11_03-11-26`. Sono i primi file **ASP** del corso (finora solo Prolog); ognuno è un esperimento sui modelli stabili, con parti commentate da riattivare una alla volta.
+
+- `2026-27/11_Lezione_11_03-11-26/test00.asp` (test00.asp) - casi limite: programma insoddisfacibile (`a.` con `:- a.`), unico modello vuoto, vincolo `:- a.`
+- `2026-27/11_Lezione_11_03-11-26/test0.asp` (test0.asp) - programmi con più modelli: due (`a :- not b. b :- not a.`), tre (`p1`/`p2`/`p3`), tre insiemi `{t1,t2}`, `{t1,t3}`, `{t2,t3}`, tre modelli `{a}`, `{b}`, `{a,b}`; in chiaro resta la codifica di due variabili booleane `a(vero)`/`a(falso)` e `b(vero)`/`b(falso)` con il vincolo `:- a(falso), b(falso).` (almeno una vera)
+- `2026-27/11_Lezione_11_03-11-26/test01.asp` (test01.asp) - negazione per fallimento: `vola(X) :- uccello(X), not anormale(X).` con Tweety (vola) e Skippy il pinguino (anormale, quindi non vola)
+- `2026-27/11_Lezione_11_03-11-26/test02.asp` (test02.asp) - schema *choose* con `scelto/non_scelto` su `numero(1..10)`, vincolo `:- not p.` che richiede almeno due numeri scelti diversi, `#show scelto/1.`
+
+Non c'è la sezione della lezione 10: il docente non ha caricato niente. Su Elly non ci sono sezioni per le lezioni 2, 3, 4 e 6: il docente non ha caricato
 niente. Lo schema resta una sezione Elly per data, ma non per ogni lezione.
 
 ## Contenuti
