@@ -88,6 +88,8 @@ scaricati; tutto il resto identico (md5).
 - `2026-27/2_Slides/11 - Abstract interpretation in LiSA.pdf` (intro-lisa.pdf) - 99 pagine: *Lecture 9 - Abstract interpretation in LiSA*, la slide delle esercitazioni pratiche su LiSA (vedi annuncio del 26/10)
 - `2026-27/2_Slides/12 - The interval abstract domain.pdf` (11.pdf) - *The interval abstract domain*, 46 pagine, stessa slide del 2025/26 (là `14 - The interval abstract domain`, sempre `11.pdf`): stessa dimensione, differiscono solo 76 byte in fondo al file, quindi contenuto con ogni probabilità identico (file riesportato)
 
+**Seminario**: topic provvisorio il 07 (*TVL*, Simon-King-Howe), non di Arceri; scaletta di 15 minuti in `seminario/scaletta-TVL.md`. Da confermare con la mail ad Arceri entro il 27/11/2026.
+
 Le 08-10 non sono lezioni ma presentazioni di articoli di ricerca del gruppo:
 sono il formato del seminario d'esame (discussione di un paper), e potrebbero
 essere fra gli articoli proposti. Da verificare con il docente.
