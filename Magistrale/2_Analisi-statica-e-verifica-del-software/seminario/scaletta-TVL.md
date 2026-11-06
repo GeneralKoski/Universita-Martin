@@ -1,6 +1,6 @@
 # Seminario - scaletta della presentazione (15 minuti)
 
-**Paper (topic 07 dell'elenco di Arceri, scelta provvisoria):** Simon, King, Howe - *Two Variables per Linear Inequality as an Abstract Domain* (19 pagine, `2026-27/1_Material/Topics for seminars.zip`, cartella `07 - TVL`).
+**Paper (topic 07 dell'elenco di Arceri, scelta da comunicare con la mail):** Simon, King, Howe - *Two Variables per Linear Inequality as an Abstract Domain* (19 pagine, `2026-27/1_Material/Topics for seminars.zip`, cartella `07 - TVL`).
 
 **Esame:** presentazione di max 15 minuti, poi orale di 10 minuti sugli argomenti del corso. Il topic va comunicato ad Arceri entro il 27/11/2026 alle 9:00 per presentare entro dicembre (mail con oggetto `[Static analysis and software verification] 7 Mat. <MATRICOLA>`).
 
