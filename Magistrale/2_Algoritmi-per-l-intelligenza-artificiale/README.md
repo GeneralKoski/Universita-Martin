@@ -59,7 +59,8 @@ arrivate alla lezione 6. Ricontrollato il 29/10/2026: nessun file nuovo,
 le registrazioni sono arrivate alla lezione 9. Ricontrollato il 02/11/2026: è
 arrivato il calendario aggiornato al 30 ottobre, le registrazioni sono arrivate alla
 lezione 11. Ricontrollato il 06/11/2026: nessun file nuovo, le registrazioni sono
-arrivate alla lezione 12, tutto il resto è identico (md5). I nomi originali del docente
+arrivate alla lezione 12, tutto il resto è identico (md5). Ricontrollato il 13/11/2026:
+nessun file nuovo, le registrazioni sono arrivate alla lezione 14, tutto il resto è identico (md5). I nomi originali del docente
 portano il prefisso `AIALGO_2627_`, che conferma che sono file rifatti per questa edizione
 e non copie della precedente.
 
@@ -103,6 +104,8 @@ e non copie della precedente.
 - [url] Lezione 10 - Clustering - https://elly2026.didattica.unipr.it/mod/url/view.php?id=56639
 - [url] Lezione 11 - Clustering (parte 2) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=57509
 - [url] Lezione 12 - Clustering (parte 3) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=58595
+- [url] Lezione 13 - Valutaizone del clustering - https://elly2026.didattica.unipr.it/mod/url/view.php?id=62889
+- [url] Lezione 14 - Valutazione del clustering (parte 2 )+ outlier detection - https://elly2026.didattica.unipr.it/mod/url/view.php?id=62892
 
 ### Cosa cambia rispetto al 2025/26
 

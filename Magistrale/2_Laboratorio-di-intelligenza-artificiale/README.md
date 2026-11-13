@@ -55,15 +55,30 @@ Da Esse3 (via unidesk), letti il 19/10/2026. Tutti in stato "Inserito", iscrizio
 
 Scaricato il 16/09/2026 in `2026-27/`, ricontrollato il 21/09/2026, il
 29/09/2026, il 18/10/2026, il 29/10/2026, il 02/11/2026 e il 06/11/2026: nessun file nuovo o
-modificato (md5), sono arrivate le registrazioni delle lezioni 2-15. Nessun annuncio sul forum. I nomi
+modificato (md5), sono arrivate le registrazioni delle lezioni 2-15. Ricontrollato il
+13/11/2026: sono arrivati il calendario v2 e il primo annuncio sul forum, più la
+registrazione della lezione 16; il resto è identico (md5). I nomi
 originali del docente portano il prefisso `AILAB_2627_`, che conferma che sono
 file rifatti per questa edizione e non copie della precedente.
 
 ### 0 - Introduzione
 
 - [forum] Annunci - https://elly2026.didattica.unipr.it/mod/forum/view.php?id=6549
+  - 10/11/2026 - calendario aggiornato con il recupero di mercoledì 18/11 8:30-10:30, in aggiunta alle due ore già previste (vedi calendario v2)
 - `2026-27/0_Introduzione/Calendario provvisorio.pdf` (calendario-v0.pdf)
-- `2026-27/0_Introduzione/Calendario provvisorio v1.pdf` (calendario-v1.pdf) - **il calendario valido**
+- `2026-27/0_Introduzione/Calendario provvisorio v1.pdf` (calendario-v1.pdf)
+- `2026-27/0_Introduzione/Calendario provvisorio v2.pdf` (calendario-v2.pdf) - **il calendario valido**
+
+#### Calendario v2: cosa cambia rispetto a v1
+
+Mercoledì **18/11** diventa una doppia lezione in Aula B: 08:30-10:30 *Introduzione
+alla teoria dei grafi* (il recupero) e 10:30-12:30 *Network propagation, community
+detection, random walk* (prima il 19/11). Il resto anticipa di uno slot: *subgraph
+isomorphism* il 19/11 e il 25/11, i laboratori di classificazione, regressione e
+clustering il 26/11, il 02/12 e il 03/12, e i **progetti** passano dal 02/12 al
+**09/12**, ultima lezione. Il corso finisce quindi il **09/12** invece del 16/12; 16/12,
+17/12 e 23/12 restano libere. Sparisce anche la nota "sospensione prove in itinere"
+sul 04-05/11.
 
 #### Calendario v1: cosa cambia rispetto a v0
 
@@ -115,6 +130,7 @@ Su Elly mancano le registrazioni delle lezioni 0 e 1.
 - [url] Lezione 13 - Serie temporali (parte 2) + Programmazione dinamica - https://elly2026.didattica.unipr.it/mod/url/view.php?id=55859
 - [url] Lezione 14 - Programmazione dinamica (parte 2) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=59268
 - [url] Lezione 15 - Programmazione dinamica (parte 3) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=59266
+- [url] Lezione 16 - Algoritmi su grafi (parte 1) - https://elly2026.didattica.unipr.it/mod/url/view.php?id=62886
 
 ### Cosa cambia rispetto al 2025/26
 

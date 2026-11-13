@@ -53,7 +53,9 @@ slide da 08 a 10, scaricate; tutto il resto identico (md5). Ricontrollato il
 02/11/2026: è arrivata la slide della lezione 9 su LiSA, scaricata; tutto il resto
 identico (md5). Ricontrollato il 06/11/2026: sono arrivati l'elenco dei paper per i
 seminari (`Topics for seminars.zip`) e la slide 12 sul dominio degli intervalli,
-scaricati; tutto il resto identico (md5).
+scaricati; tutto il resto identico (md5). Ricontrollato il 13/11/2026: nessun file
+nuovo, tutto identico (md5); un solo annuncio nuovo (lezione del 18/11 annullata),
+nessuna data per i seminari di dicembre.
 
 ### 0 - Introduzione
 
@@ -67,6 +69,7 @@ scaricati; tutto il resto identico (md5).
   - 30/10/2026 - **lezione del 04/11 annullata**
   - 05/11/2026 - **topic per i seminari e informazioni sull'esame**: i paper suggeriti sono su Elly (`1_Material/Topics for seminars.zip`). Chi vuole presentare il seminario **entro dicembre** deve scegliere il topic **entro il 27/11/2026 alle 9:00**, con una mail ad Arceri con oggetto `[Static analysis and software verification] <NUMERO_TOPIC> Mat. <MATRICOLA>`. Si può proporre un articolo (o più) alternativo, allegandolo alla mail per approvazione. **L'esame**: presentazione dell'articolo di **max 15 minuti**, poi **orale di 10 minuti** sugli argomenti del corso
   - 05/11/2026 - **lezione dell'11/11 annullata**
+  - 08/11/2026 - **lezione del 18/11 annullata**
 
 ### 1 - Material
 

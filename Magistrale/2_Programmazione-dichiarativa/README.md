@@ -53,7 +53,9 @@ lezione 5 con due file Prolog; dispensa e slide della lezione 1 identiche (md5).
 Ricontrollato il 29/10/2026: sono arrivate le sezioni delle lezioni 7, 8 e 9
 (quattro file Prolog e un articolo), scaricate; il resto identico (md5). Ricontrollato
 il 06/11/2026: è arrivata la sezione della lezione 11, con quattro file ASP
-(primi file ASP del corso), scaricati; il resto identico (md5). Nessun annuncio sul forum.
+(primi file ASP del corso), scaricati; il resto identico (md5). Ricontrollato il
+13/11/2026: sono arrivate le sezioni delle lezioni 12 e 13 (cinque file ASP),
+scaricate; il resto identico (md5). Nessun annuncio sul forum.
 
 ### 0 - Introduzione
 
@@ -128,12 +130,23 @@ sono immagini). Lezione introduttiva, senza contenuto tecnico di Prolog/ASP:
 
 ### 11 - Lezione 11, 03-11-26
 
-Su Elly la sezione si chiama "Lezione 11 03-1-26": la data ha un errore di battitura, la lezione è quasi certamente del 03/11/2026 (la 9 è del 27/10). In locale è `11_Lezione_11_03-11-26`. Sono i primi file **ASP** del corso (finora solo Prolog); ognuno è un esperimento sui modelli stabili, con parti commentate da riattivare una alla volta.
+Su Elly la sezione si chiamava "Lezione 11 03-1-26", con un errore di battitura nella data: al 13/11/2026 il docente l'ha corretta in "Lezione 11 03-11-26". In locale è `11_Lezione_11_03-11-26`. Sono i primi file **ASP** del corso (finora solo Prolog); ognuno è un esperimento sui modelli stabili, con parti commentate da riattivare una alla volta.
 
 - `2026-27/11_Lezione_11_03-11-26/test00.asp` (test00.asp) - casi limite: programma insoddisfacibile (`a.` con `:- a.`), unico modello vuoto, vincolo `:- a.`
 - `2026-27/11_Lezione_11_03-11-26/test0.asp` (test0.asp) - programmi con più modelli: due (`a :- not b. b :- not a.`), tre (`p1`/`p2`/`p3`), tre insiemi `{t1,t2}`, `{t1,t3}`, `{t2,t3}`, tre modelli `{a}`, `{b}`, `{a,b}`; in chiaro resta la codifica di due variabili booleane `a(vero)`/`a(falso)` e `b(vero)`/`b(falso)` con il vincolo `:- a(falso), b(falso).` (almeno una vera)
 - `2026-27/11_Lezione_11_03-11-26/test01.asp` (test01.asp) - negazione per fallimento: `vola(X) :- uccello(X), not anormale(X).` con Tweety (vola) e Skippy il pinguino (anormale, quindi non vola)
 - `2026-27/11_Lezione_11_03-11-26/test02.asp` (test02.asp) - schema *choose* con `scelto/non_scelto` su `numero(1..10)`, vincolo `:- not p.` che richiede almeno due numeri scelti diversi, `#show scelto/1.`
+
+### 12 - Lezione 12, 09-11-26
+
+- `2026-27/12_Lezione_12_09-11-26/test02.asp` (test02.asp) - variante del `test02.asp` della lezione 11: stesso schema *choose* su `numero(1..10)`, ma con `almeno_1`/`almeno_2`/`almeno_3` e i vincoli `:- almeno_3.` e `:- not almeno_1.` (si sceglie uno o due numeri)
+- `2026-27/12_Lezione_12_09-11-26/test03.asp` (test03.asp) - grounding: `p/2`, `p/3`, `p/4` su `numero(1..100)`, per vedere quanto esplode il programma ground (10^4, 10^6, 10^8 atomi)
+- `2026-27/12_Lezione_12_09-11-26/bugiardo.asp` (bugiardo.asp) - puzzle onesti/bugiardi con due persone: a dice "a è bugiardo e b è bugiardo"; scelta `bugiardo/onesto` per persona e regole che rendono vere le affermazioni di chi è onesto
+
+### 13 - Lezione 13, 10-11-26
+
+- `2026-27/13_Lezione_13_10-11-26/bugiardo.asp` (bugiardo.asp) - estende quello della lezione 12 con il caso "a è bugiardo": almeno una sua affermazione è falsa, modellato con i flag `f1`..`f4` scelti liberamente e il vincolo che non siano tutti falsi
+- `2026-27/13_Lezione_13_10-11-26/bugiardo2.asp` (bugiardo2.asp) - versione generale con tre persone (a, b, c) e affermazioni `persona_dice_che(X, onesto(Y))` / `bugiardo(Y)`: valuta ogni affermazione (`valuto_affermazione/3`), ne ricava `valutazione_onesta/2` (bugiardo, onesto, non_so) e vincola la coerenza con la scelta onesto/bugiardo
 
 Non c'è la sezione della lezione 10: il docente non ha caricato niente. Su Elly non ci sono sezioni per le lezioni 2, 3, 4 e 6: il docente non ha caricato
 niente. Lo schema resta una sezione Elly per data, ma non per ogni lezione.

@@ -44,6 +44,8 @@ sezione, che su Elly si chiama ancora "Nuova sezione": in locale è
 è stato ricaricato dal docente il 22/10 (vedi sotto), il resto è identico (md5).
 Ricontrollato il 02/11/2026: è arrivato il Modulo 7, il resto è identico (md5).
 Ricontrollato il 06/11/2026: nessun file nuovo e nessun annuncio nuovo, tutto identico (md5).
+Ricontrollato il 13/11/2026: il Modulo 7 è stato ricaricato e allungato, ed è arrivato un
+articolo (vedi sotto); nessun annuncio nuovo, il resto identico (md5).
 Il Modulo 6 su Elly non c'è.
 
 ### 0 - Introduzione
@@ -71,10 +73,11 @@ Slide, nell'ordine del corso:
 - `2026-27/1_Materiale/Fondamenti Matematici - Modulo 3.pdf` (Fondamenti Matematici - Modulo 3.pdf) - 52 pagine
 - `2026-27/1_Materiale/Centralità dei nodi - Modulo 4.pdf` (Centralità dei Nodi - Modulo 4.pdf) - 103 pagine
 - `2026-27/1_Materiale/Proprietà Globali della Rete - Modulo 5.pdf` (Proprietà Globali della Rete - Modulo 5.pdf) - 131 pagine. Ricaricato dal docente il 22/10/2026 (prima erano 117): aggiunti il lemma della stretta di mano (somma dei gradi = 2m) e il grado medio, l'assortatività del grado spiegata come covarianza/Pearson con esempio numerico, e il coefficiente di clustering sviluppato (triangoli, transitività, clustering locale). Il riassunto `.md` è aggiornato alla nuova versione (29/10/2026)
-- `2026-27/1_Materiale/Modelli di Rete - Modulo 7.pdf` (Modelli di Rete - Modulo 7.pdf) - 67 pagine. Su Elly non c'è un Modulo 6: si passa dal 5 al 7
+- `2026-27/1_Materiale/Modelli di Rete - Modulo 7.pdf` (Modelli di Rete - Modulo 7.pdf) - 129 pagine. Su Elly non c'è un Modulo 6: si passa dal 5 al 7. Ricaricato entro il 13/11/2026 (prima erano 67 pagine), e su Elly la risorsa ora si chiama solo "Modelli di Rete" (il file ha ancora il nome originale, tenuto in locale): le prime 67 pagine sono quasi uguali, le nuove sviluppano il modello **Watts-Strogatz** (assortatività, robustezza, clustering) e aggiungono il modello **Barabási-Albert** (attaccamento preferenziale, effetto San Matteo, distribuzione del grado scale free, grado medio, robustezza, assortatività, clustering, distanze). Il riassunto `.md` copre solo la versione da 67 pagine
 
 Articoli scientifici:
 
 - `2026-27/1_Materiale/Review Weighted Social Networks.pdf` (Bellingeri et al. 2023, Weighted Social Network.pdf) - review del docente sulle reti sociali pesate
 - `2026-27/1_Materiale/Network Attack Manuscript.pdf` (Iyer et al. 2013, Attack Robustness and Centrality of Complex Networks.pdf) - robustezza agli attacchi e centralità
 - `2026-27/1_Materiale/Recipe Similarity Network Manuscript.pdf` (The recipe similarity network a new algorithm to extract relevant information from cookbooks.pdf)
+- `2026-27/1_Materiale/Error and attack tolerance of complex networks.pdf` (Albert et . 2009, Error and attack tolerance of complex networks.pdf) - su Elly "Articolo: Error and attack tolerance of complex networks", 5 pagine: Albert, Jeong, Barabási, robustezza delle reti scale free ai guasti casuali e fragilità agli attacchi mirati sugli hub
