@@ -121,6 +121,17 @@ basta mettere i file nelle cartelle indicate e dirlo.
       restano il capitolo 8, le appendici e i numeri nuovi di 4.4, 9.1 e 1.
 
 ## Si può fare senza aspettare nessuno
+
+- [ ] **Memoria del profilo ibrido** (da fare la sera del 16/11). La tabella
+      `tab:crescita` (`confronto.tex`) confronta solo il lessicale: ES 1.431 MB,
+      Koskidex 155 MB a 10.018 atti. P4, il profilo raccomandato, chiede anche
+      Ollama con `bge-m3`, che la tesi non misura (stima 1,2-1,5 GB), e non è
+      chiaro se i 155 MB contengano i `_vector` (1.024 float64 a documento,
+      almeno 80 MB). Misurare RSS di Ollama con il modello caricato (`ollama ps`
+      e memoria del processo) e di Koskidex con i vettori, aggiungere una riga o
+      una nota alla tabella e dire in 9.1 che il "decimo della memoria" vale per
+      il lessicale. Punto da chiarire: anche ES per l'ibrido vorrebbe un modello,
+      quindi il costo del modello è dell'ibrido, non di Koskidex.
       Fatto il 29/09 dal quarto e dal quinto controllo indipendente (subagenti
       in sola lettura), con i numeri del capitolo 8 verificati anche con uno
       script contro gli `*_esito.json`; correzioni committate.
