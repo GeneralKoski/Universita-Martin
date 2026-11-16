@@ -161,6 +161,32 @@ migliorare (su 50 query, senza intervallo).
         capitolo~\ref{chapter:ibrido} potrebbero cambiare.
 \end{itemize}
 
+\section{Un secondo sistema in produzione}\label{sec:welintouch}
+
+Dal 13 novembre 2026 Koskidex è in produzione anche in Welintouch, un altro
+progetto di Dieffetech con un backend Laravel. Non l'ho integrato io: l'ha fatto
+un collega, partendo dal repository pubblico, perché la ricerca che c'era trovava
+solo le parole esatte e il cliente ne chiedeva una più elastica. La configurazione
+che ha scelto è della stessa famiglia del profilo che raccomando
+(sezione~\ref{sec:sviluppi}): recupero ibrido in unione, con gli embedding calcolati
+in locale da Ollama. Ha scelto il modello locale per le ragioni della
+sezione~\ref{sec:embedding} e per una in più, pratica: con un servizio esterno ogni
+ricerca è una chiamata a pagamento, e con molti utenti la spesa cresce.
+
+L'integrazione ha portato a Koskidex due modifiche, nessuna delle quali tocca le
+misure di questa tesi. La prima è una soglia, \texttt{vector\_min\_similarity}: in
+unione il vettore portava sempre i cento documenti più vicini, anche quando
+nessuno era vicino davvero, e Welintouch scartava in Laravel i risultati sotto un
+punteggio di 11, che per un documento portato dal solo vettore vuol dire una
+similarità sotto 0,55 con la fusione predefinita. Ora la soglia sta nel motore e
+toglie solo i candidati del vettore. La seconda è l'aggiornamento parziale delle
+impostazioni, perché quello esistente le sostituiva tutte. Sono spente per
+default e registrate nel diario delle modifiche.
+
+Questa sezione riporta un'adozione, non una misura: i dati d'uso (quante
+ricerche, con che latenza, quante a vuoto, quanta memoria chiede il servizio
+Ollama) non ci sono ancora.
+
 \section{Sviluppi futuri}\label{sec:sviluppi}
 
 \begin{itemize}
@@ -204,5 +230,6 @@ migliorare (su 50 query, senza intervallo).
   \item \textbf{Koskidex in produzione.} La tesi misura il recupero; un motore in
         produzione chiede anche un'istantanea che non riscriva l'indice intero,
         l'aggiornamento parziale di un documento, e un indice che non stia tutto
-        in memoria.
+        in memoria. Un primo uso reale c'è (sezione~\ref{sec:welintouch}): i
+        suoi dati diranno quale di queste cose serve per prima.
 \end{itemize}

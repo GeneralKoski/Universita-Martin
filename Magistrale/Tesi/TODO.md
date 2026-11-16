@@ -234,6 +234,21 @@ basta mettere i file nelle cartelle indicate e dirlo.
       **Parte umana fatta il 29/09**: LA 0,559 → 0,633, A 0,613 → 0,641,
       previsione 4 a metà, 5 confermata; in 8.2 e nel registro.
 
+## Welintouch, quando ci sono i dati d'uso
+
+Koskidex è in produzione in Welintouch dal 13/11/2026 (integrato da Gabriele
+Bessi: recupero ibrido in unione, embedding con Ollama in locale). La tesi lo
+racconta in `conclusione.tex`, sezione `sec:welintouch`, come adozione senza
+numeri. Da aggiornare quando ci sono dati, chiedendoli a Gabriele:
+
+- [ ] Cosa si cerca e quanti documenti ha l'indice.
+- [ ] Modello di embedding, `vector_weight`, `vector_min_similarity` usati.
+- [ ] Quante ricerche, latenza (p50/p95), ricerche a vuoto.
+- [ ] Memoria di Koskidex e del servizio Ollama (`ollama ps`).
+- [ ] Riscrivere l'ultimo paragrafo della sezione, che oggi dice che i dati non
+      ci sono, e la voce "Koskidex in produzione" degli sviluppi futuri.
+- [ ] Chiedere in Dieffetech se il nome Welintouch può stare nella tesi.
+
 ## Da allineare alla fine
 
 Cinque giri di controllo indipendenti il 30/09 (numeri ricalcolati dai file per
